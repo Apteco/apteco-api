@@ -1,0 +1,10 @@
+{
+  "packageName": "apteco_api",
+  "projectName": "apteco-api",
+  "packageVersion":	"0.1.0",
+  "packageUrl": null,
+  "sortParamsByRequiredFlag": true,
+  "hideGenerationTimestamp": true,
+  "generateSourceCodeOnly": false,
+  "library": "urllib3"
+}
