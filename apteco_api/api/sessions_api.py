@@ -134,7 +134,7 @@ class SessionsApi(object):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
+            ['application/x-www-form-urlencoded'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -248,7 +248,7 @@ class SessionsApi(object):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
+            ['application/x-www-form-urlencoded'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -382,7 +382,7 @@ class SessionsApi(object):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
+            ['application/x-www-form-urlencoded'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -508,7 +508,7 @@ class SessionsApi(object):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
+            ['application/x-www-form-urlencoded'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
