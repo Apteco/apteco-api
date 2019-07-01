@@ -24,3 +24,4 @@
 
 .gitignore
 setup.py
+configuration.py

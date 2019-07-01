@@ -51,7 +51,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
     """
 
     def __init__(self, host="http://example.com/OrbitAPI",
-                 api_key={}, api_key_prefix={},
+                 api_key=None, api_key_prefix=None,
                  username="", password=""):
         """Constructor
         """
@@ -62,9 +62,13 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         """Temp file folder for downloading files
         """
         # Authentication Settings
+		if api_key is None:
+		    api_key = {}
         self.api_key = api_key
         """dict to store API key(s)
         """
+		if api_key_prefix is None:
+		    api_key_prefix = {}
         self.api_key_prefix = api_key_prefix
         """dict to store API prefix (e.g. Bearer)
         """
@@ -264,7 +268,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v2\n"\
-               "SDK Package Version: 0.1.1".\
+               "SDK Package Version: 0.1.2".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
