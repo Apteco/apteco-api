@@ -62,13 +62,13 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         """Temp file folder for downloading files
         """
         # Authentication Settings
-        if api_key is None:
-            api_key = {}
+		if api_key is None:
+		    api_key = {}
         self.api_key = api_key
         """dict to store API key(s)
         """
-        if api_key_prefix is None:
-            api_key_prefix = {}
+		if api_key_prefix is None:
+		    api_key_prefix = {}
         self.api_key_prefix = api_key_prefix
         """dict to store API prefix (e.g. Bearer)
         """
