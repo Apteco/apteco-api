@@ -130,7 +130,7 @@ has a corresponding controller class in the `apteco-api` package, named `<sectio
 e.g. `SessionsApi`, as seen above.
 
 To use endpoints from a given section,
-create an instance of the controller by passing an [authorised] `ApiClient` object
+create an instance of the controller by passing an \[authorised\] `ApiClient` object
 as the single argument to its contructor:
 
 ```python
@@ -141,13 +141,34 @@ This object then has a method corresponding to each endpoint of that section of 
 which can be called as a normal Python function.
 
 ```python
-query_result = queries_controller.queries_perform_query_file_count_synchronously('my_data_view', 'holidays', query_file='Private/Bookings to France or Germany.xml')
+query_result = queries_controller.queries_perform_query_file_count_synchronously(
+	'my_data_view', 'holidays', query_file=aa.QueryFile('Private/Bookings to France or Germany.xml')
+)
 ```
 
-While the package serialises objects to JSON to send HTTP requests to the API,
-the results are de-serialised back to Python objects to be returned from the function call.
-These methods often return 'result' objects which bundle together various data and metadata as attributes,
+Some of the parameters for this function may need to be specific object types;
+in the example here, the first two parameters are strings specifying the DataView and FastStats system to use for the query,
+while the path of the file for the query is given via a `QueryFile` object supplied as a keyword-only argument.
+The `QueryFile` object itself is initialised with a single argument, namely the filepath.
+
+Similarly, the function call returns a Python object.
+These API functions often return 'result' objects which bundle together various data and metadata as attributes,
 and these attributes can then be accessed to obtain the information of interest.
+
+```python
+count = query_result.counts[0]
+print(f"The query matched {count.count_value:,} {count.table_name.lower()}.")
+```
+
+**Output:**
+
+```commandline
+The query matched 985,734 bookings.
+```
+
+### Further details
+
+All classes and methods have detailed docstrings providing further information about their parameters and return values.
 
 
 ## Documentation for API Endpoints
@@ -543,6 +564,6 @@ Class | Method | HTTP request | Description
 
 ## Author
 
+Apteco Ltd
+
 support@apteco.com
-
-
