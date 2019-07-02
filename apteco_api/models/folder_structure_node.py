@@ -33,7 +33,7 @@ class FolderStructureNode(object):
     """
     openapi_types = {
         'folder': 'Folder',
-        'variable': 'VariableItem'
+        'variable': 'Variable'
     }
 
     attribute_map = {
@@ -80,7 +80,7 @@ class FolderStructureNode(object):
 
 
         :return: The variable of this FolderStructureNode.  # noqa: E501
-        :rtype: VariableItem
+        :rtype: Variable
         """
         return self._variable
 
@@ -90,7 +90,7 @@ class FolderStructureNode(object):
 
 
         :param variable: The variable of this FolderStructureNode.  # noqa: E501
-        :type: VariableItem
+        :type: Variable
         """
 
         self._variable = variable

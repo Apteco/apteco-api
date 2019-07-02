@@ -7,10 +7,12 @@ Method | HTTP request | Description
 [**about_example_experimental_resource**](AboutApi.md#about_example_experimental_resource) | **GET** /About/ExampleExperimentalResource | EXPERIMENTAL: Returns a sample string if experimental endpoints are enabled
 [**about_example_under_development_resource**](AboutApi.md#about_example_under_development_resource) | **GET** /About/ExampleUnderDevelopmentResource | UNDER DEVELOPMENT: Returns a sample string if under development endpoints are enabled
 [**about_force_process_garbage_collection**](AboutApi.md#about_force_process_garbage_collection) | **POST** /About/Process/ForceGarbageCollection | Requires OrbitAdmin: Forces a garbage collection in the API&#39;s process and then returns details about the API&#39;s .Net process
+[**about_get_data_view**](AboutApi.md#about_get_data_view) | **GET** /About/DataViews/{dataViewName} | Get details for a particular DataView.
 [**about_get_data_views**](AboutApi.md#about_get_data_views) | **GET** /About/DataViews | Get the list of DataViews that are available.
 [**about_get_data_views_for_domain**](AboutApi.md#about_get_data_views_for_domain) | **GET** /About/DataViews/Domains/{domain} | Get the list of DataViews that are available to users with the specified email domain.
 [**about_get_data_views_for_system_name**](AboutApi.md#about_get_data_views_for_system_name) | **GET** /About/DataViews/Systems/{systemName} | Get the list of DataViews that are configured with the given FastStats system.
 [**about_get_endpoints**](AboutApi.md#about_get_endpoints) | **GET** /About/Endpoints | Returns details of all the endpoints in the API
+[**about_get_language_details**](AboutApi.md#about_get_language_details) | **GET** /About/Language | Returns information about the current language the API is operating in (based on details in the request)
 [**about_get_process_details**](AboutApi.md#about_get_process_details) | **GET** /About/Process | Requires OrbitAdmin: Returns details about the API&#39;s .Net process
 [**about_get_version**](AboutApi.md#about_get_version) | **GET** /About/Version | Returns version information about the API
 
@@ -174,8 +176,69 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **about_get_data_view**
+> DataViewDetails about_get_data_view(data_view_name)
+
+Get details for a particular DataView.
+
+### Example
+
+* Api Key Authentication (faststats_auth):
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+configuration = apteco_api.Configuration()
+# Configure API key authorization: faststats_auth
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = apteco_api.AboutApi(apteco_api.ApiClient(configuration))
+data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+
+try:
+    # Get details for a particular DataView.
+    api_response = api_instance.about_get_data_view(data_view_name)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling AboutApi->about_get_data_view: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data_view_name** | **str**| The name of the DataView to act on | 
+
+### Return type
+
+[**DataViewDetails**](DataViewDetails.md)
+
+### Authorization
+
+[faststats_auth](../README.md#faststats_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The details of the DataView |  -  |
+**400** | The specified DataView is not the one you are currently logged in to and you are not an admin user |  -  |
+**403** | Forbidden |  -  |
+**404** | The specified DataView can&#39;t be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **about_get_data_views**
-> PagedResultsDataViewDetails about_get_data_views(filter=filter, order_by=order_by, offset=offset, count=count)
+> PagedResultsDataViewSummary about_get_data_views(filter=filter, order_by=order_by, offset=offset, count=count)
 
 Get the list of DataViews that are available.
 
@@ -214,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PagedResultsDataViewDetails**](PagedResultsDataViewDetails.md)
+[**PagedResultsDataViewSummary**](PagedResultsDataViewSummary.md)
 
 ### Authorization
 
@@ -230,12 +293,11 @@ No authorization required
 |-------------|-------------|------------------|
 **200** | The list of DataViews |  -  |
 **400** | The API has been configured not to return DataViews |  -  |
-**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **about_get_data_views_for_domain**
-> PagedResultsDataViewDetails about_get_data_views_for_domain(domain, filter=filter, order_by=order_by, offset=offset, count=count)
+> PagedResultsDataViewSummary about_get_data_views_for_domain(domain, filter=filter, order_by=order_by, offset=offset, count=count)
 
 Get the list of DataViews that are available to users with the specified email domain.
 
@@ -276,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PagedResultsDataViewDetails**](PagedResultsDataViewDetails.md)
+[**PagedResultsDataViewSummary**](PagedResultsDataViewSummary.md)
 
 ### Authorization
 
@@ -296,7 +358,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **about_get_data_views_for_system_name**
-> PagedResultsDataViewDetails about_get_data_views_for_system_name(system_name, filter=filter, order_by=order_by, offset=offset, count=count)
+> PagedResultsDataViewSummary about_get_data_views_for_system_name(system_name, filter=filter, order_by=order_by, offset=offset, count=count)
 
 Get the list of DataViews that are configured with the given FastStats system.
 
@@ -337,7 +399,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PagedResultsDataViewDetails**](PagedResultsDataViewDetails.md)
+[**PagedResultsDataViewSummary**](PagedResultsDataViewSummary.md)
 
 ### Authorization
 
@@ -415,6 +477,54 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Details of all the endpoints in the API |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **about_get_language_details**
+> LanguageDetails about_get_language_details()
+
+Returns information about the current language the API is operating in (based on details in the request)
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = apteco_api.AboutApi()
+
+try:
+    # Returns information about the current language the API is operating in (based on details in the request)
+    api_response = api_instance.about_get_language_details()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling AboutApi->about_get_language_details: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**LanguageDetails**](LanguageDetails.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The valid language information |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

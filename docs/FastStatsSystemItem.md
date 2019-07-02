@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of this item | 
-**variable** | [**VariableItem**](VariableItem.md) |  | [optional] 
+**variable** | [**Variable**](Variable.md) |  | [optional] 
 **var_code** | [**VarCode**](VarCode.md) |  | [optional] 
 **table** | [**TableItem**](TableItem.md) |  | [optional] 
 **folder** | [**Folder**](Folder.md) |  | [optional] 

@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "apteco-api"
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 # To install the library, run the following
 #
 # python setup.py install
@@ -28,7 +28,7 @@ setup(
     name=NAME,
     version=VERSION,
     description="Apteco API",
-    long_description="README.md",
+    long_description="introduction.md",
     long_description_content_type="text/markdown",
     url="https://www.apteco.com/",
 	author="Apteco Ltd",

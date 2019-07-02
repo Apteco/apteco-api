@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 # import apis into sdk package
 from apteco_api.api.about_api import AboutApi
@@ -25,7 +25,6 @@ from apteco_api.api.audiences_api import AudiencesApi
 from apteco_api.api.collection_hits_api import CollectionHitsApi
 from apteco_api.api.collections_api import CollectionsApi
 from apteco_api.api.cubes_api import CubesApi
-from apteco_api.api.data_grids_api import DataGridsApi
 from apteco_api.api.directories_api import DirectoriesApi
 from apteco_api.api.exports_api import ExportsApi
 from apteco_api.api.fast_stats_jobs_api import FastStatsJobsApi
@@ -68,6 +67,7 @@ from apteco_api.models.audience_summary import AudienceSummary
 from apteco_api.models.audience_update_detail import AudienceUpdateDetail
 from apteco_api.models.audience_update_summary import AudienceUpdateSummary
 from apteco_api.models.calculate_audience_details import CalculateAudienceDetails
+from apteco_api.models.capabilities import Capabilities
 from apteco_api.models.change_password_details import ChangePasswordDetails
 from apteco_api.models.channel_detail import ChannelDetail
 from apteco_api.models.channel_statistics import ChannelStatistics
@@ -103,9 +103,8 @@ from apteco_api.models.criteria import Criteria
 from apteco_api.models.cube import Cube
 from apteco_api.models.cube_result import CubeResult
 from apteco_api.models.dashboard_item import DashboardItem
-from apteco_api.models.data_grid_header import DataGridHeader
-from apteco_api.models.data_grid_result import DataGridResult
 from apteco_api.models.data_view_details import DataViewDetails
+from apteco_api.models.data_view_summary import DataViewSummary
 from apteco_api.models.date_rule import DateRule
 from apteco_api.models.diagram_metadata import DiagramMetadata
 from apteco_api.models.dimension import Dimension
@@ -136,6 +135,7 @@ from apteco_api.models.grid_item import GridItem
 from apteco_api.models.invalid_to_share_user_display_details import InvalidToShareUserDisplayDetails
 from apteco_api.models.job_detail import JobDetail
 from apteco_api.models.job_summary import JobSummary
+from apteco_api.models.language_details import LanguageDetails
 from apteco_api.models.last_run_details import LastRunDetails
 from apteco_api.models.licence import Licence
 from apteco_api.models.limits import Limits
@@ -167,7 +167,7 @@ from apteco_api.models.paged_results_collection_hit_summary import PagedResultsC
 from apteco_api.models.paged_results_collection_part_summary import PagedResultsCollectionPartSummary
 from apteco_api.models.paged_results_collection_summary import PagedResultsCollectionSummary
 from apteco_api.models.paged_results_composition_summary import PagedResultsCompositionSummary
-from apteco_api.models.paged_results_data_view_details import PagedResultsDataViewDetails
+from apteco_api.models.paged_results_data_view_summary import PagedResultsDataViewSummary
 from apteco_api.models.paged_results_element_status import PagedResultsElementStatus
 from apteco_api.models.paged_results_element_summary import PagedResultsElementSummary
 from apteco_api.models.paged_results_endpoint_details import PagedResultsEndpointDetails
@@ -262,7 +262,6 @@ from apteco_api.models.user_summary import UserSummary
 from apteco_api.models.value_rule import ValueRule
 from apteco_api.models.var_code import VarCode
 from apteco_api.models.variable import Variable
-from apteco_api.models.variable_item import VariableItem
 from apteco_api.models.variable_lookup import VariableLookup
 from apteco_api.models.version_details import VersionDetails
 from apteco_api.models.visualisation_detail import VisualisationDetail

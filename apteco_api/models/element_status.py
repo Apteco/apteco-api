@@ -288,7 +288,7 @@ class ElementStatus(object):
         :param channel_types: The channel_types of this ElementStatus.  # noqa: E501
         :type: list[str]
         """
-        allowed_values = ["Unknown", "Control", "Broadcast", "File", "Ftp", "Facebook", "MicrosoftDynamics", "SalesForce", "PushNotification", "Twitter", "Google", "Composite"]  # noqa: E501
+        allowed_values = ["Unknown", "Control", "Broadcast", "File", "Ftp", "Facebook", "MicrosoftDynamics", "SalesForce", "PushNotification", "Twitter", "Google", "LinkedIn", "Composite"]  # noqa: E501
         if not set(channel_types).issubset(set(allowed_values)):
             raise ValueError(
                 "Invalid values for `channel_types` [{0}], must be a subset of [{1}]"  # noqa: E501

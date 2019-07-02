@@ -48,8 +48,8 @@ class FastStatsSystemsApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Key, Type
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Key, Type
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Key, Type, TableName, VariableType
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Key, Type, TableName, VariableType
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -77,8 +77,8 @@ class FastStatsSystemsApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Key, Type
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Key, Type
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Key, Type, TableName, VariableType
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Key, Type, TableName, VariableType
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -183,6 +183,10 @@ class FastStatsSystemsApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
         :param str path: The path to the folder that should be retrieved (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description, Type, TableName, VariableType
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description, Type, TableName, VariableType
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -209,6 +213,10 @@ class FastStatsSystemsApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
         :param str path: The path to the folder that should be retrieved (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description, Type, TableName, VariableType
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description, Type, TableName, VariableType
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -225,7 +233,7 @@ class FastStatsSystemsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'system_name', 'path']  # noqa: E501
+        all_params = ['data_view_name', 'system_name', 'path', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -252,6 +260,10 @@ class FastStatsSystemsApi(object):
                 local_var_params['path'] is None):
             raise ApiValueError("Missing the required parameter `path` when calling `fast_stats_systems_get_fast_stats_folder`")  # noqa: E501
 
+        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `offset` when calling `fast_stats_systems_get_fast_stats_folder`, must be a value greater than or equal to `0`")  # noqa: E501
+        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `count` when calling `fast_stats_systems_get_fast_stats_folder`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -263,6 +275,14 @@ class FastStatsSystemsApi(object):
             path_params['path'] = local_var_params['path']  # noqa: E501
 
         query_params = []
+        if 'filter' in local_var_params:
+            query_params.append(('filter', local_var_params['filter']))  # noqa: E501
+        if 'order_by' in local_var_params:
+            query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
+        if 'offset' in local_var_params:
+            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
+        if 'count' in local_var_params:
+            query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
 
@@ -304,8 +324,8 @@ class FastStatsSystemsApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description, Type, TableName, VariableType
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description, Type, TableName, VariableType
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -333,8 +353,8 @@ class FastStatsSystemsApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description, Type, TableName, VariableType
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description, Type, TableName, VariableType
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code

@@ -12,7 +12,7 @@
         }
     },
     "host":"example.com",
-    "basePath":"/OrbitAPI",
+    "basePath":"/OrbitAPI/",
     "schemes":[
         "http"
     ],
@@ -41,6 +41,35 @@
                         "description":"The valid version information",
                         "schema":{
                             "$ref":"#/definitions/VersionDetails"
+                        }
+                    }
+                }
+            }
+        },
+        "/About/Language":{
+            "get":{
+                "tags":[
+                    "About"
+                ],
+                "summary":"Returns information about the current language the API is operating in (based on details in the request)",
+                "operationId":"About_GetLanguageDetails",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The valid language information",
+                        "schema":{
+                            "$ref":"#/definitions/LanguageDetails"
                         }
                     }
                 }
@@ -178,16 +207,64 @@
                     "200":{
                         "description":"The list of DataViews",
                         "schema":{
-                            "$ref":"#/definitions/PagedResults[DataViewDetails]"
+                            "$ref":"#/definitions/PagedResults[DataViewSummary]"
                         }
-                    },
-                    "403":{
-                        "description":"Forbidden"
                     },
                     "400":{
                         "description":"The API has been configured not to return DataViews"
                     }
                 }
+            }
+        },
+        "/About/DataViews/{dataViewName}":{
+            "get":{
+                "tags":[
+                    "About"
+                ],
+                "summary":"Get details for a particular DataView.",
+                "operationId":"About_GetDataView",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The details of the DataView",
+                        "schema":{
+                            "$ref":"#/definitions/DataViewDetails"
+                        }
+                    },
+                    "400":{
+                        "description":"The specified DataView is not the one you are currently logged in to and you are not an admin user"
+                    },
+                    "403":{
+                        "description":"Forbidden"
+                    },
+                    "404":{
+                        "description":"The specified DataView can't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
             }
         },
         "/About/DataViews/Domains/{domain}":{
@@ -249,7 +326,7 @@
                     "200":{
                         "description":"The list of DataViews",
                         "schema":{
-                            "$ref":"#/definitions/PagedResults[DataViewDetails]"
+                            "$ref":"#/definitions/PagedResults[DataViewSummary]"
                         }
                     },
                     "400":{
@@ -317,7 +394,7 @@
                     "200":{
                         "description":"The list of DataViews",
                         "schema":{
-                            "$ref":"#/definitions/PagedResults[DataViewDetails]"
+                            "$ref":"#/definitions/PagedResults[DataViewSummary]"
                         }
                     },
                     "400":{
@@ -3983,81 +4060,6 @@
                 ]
             }
         },
-        "/{dataViewName}/DataGrids/{systemName}/Files/{filePath}":{
-            "post":{
-                "tags":[
-                    "DataGrids"
-                ],
-                "summary":"EXPERIMENTAL: Returns the DataGrid from a saved file.",
-                "description":"EXPERIMENTAL\r\nRequires licence flags [Export]",
-                "operationId":"DataGrids_GetDataGridResult",
-                "consumes":[
-
-                ],
-                "produces":[
-                    "application/json",
-                    "text/json",
-                    "application/xml",
-                    "text/xml"
-                ],
-                "parameters":[
-                    {
-                        "name":"dataViewName",
-                        "in":"path",
-                        "description":"The name of the DataView to act on",
-                        "required":true,
-                        "type":"string"
-                    },
-                    {
-                        "name":"systemName",
-                        "in":"path",
-                        "description":"The name of the FastStats system to act on",
-                        "required":true,
-                        "type":"string"
-                    },
-                    {
-                        "name":"filePath",
-                        "in":"path",
-                        "description":"The path of the file to return the contents for",
-                        "required":true,
-                        "type":"string",
-                        "format":"path"
-                    },
-                    {
-                        "name":"timeoutInSeconds",
-                        "in":"query",
-                        "description":"The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration",
-                        "required":false,
-                        "type":"integer",
-                        "format":"int32"
-                    }
-                ],
-                "responses":{
-                    "200":{
-                        "description":"The contents of the file",
-                        "schema":{
-                            "$ref":"#/definitions/DataGridResult"
-                        }
-                    },
-                    "400":{
-                        "description":"A bad request"
-                    },
-                    "403":{
-                        "description":"The given session is not allowed to see the contents of the given file"
-                    },
-                    "404":{
-                        "description":"The system name or specified directory couldn't be found"
-                    }
-                },
-                "security":[
-                    {
-                        "faststats_auth":[
-
-                        ]
-                    }
-                ]
-            }
-        },
         "/{dataViewName}/Directories":{
             "get":{
                 "tags":[
@@ -5536,14 +5538,14 @@
                     {
                         "name":"filter",
                         "in":"query",
-                        "description":"Filter the list of items using a simple expression language.  The available list of fields are Name, Description",
+                        "description":"Filter the list of items using a simple expression language.  The available list of fields are Name, Description, Type, TableName, VariableType",
                         "required":false,
                         "type":"string"
                     },
                     {
                         "name":"orderBy",
                         "in":"query",
-                        "description":"Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description",
+                        "description":"Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description, Type, TableName, VariableType",
                         "required":false,
                         "type":"string"
                     },
@@ -5628,6 +5630,36 @@
                         "required":true,
                         "type":"string",
                         "format":"path"
+                    },
+                    {
+                        "name":"filter",
+                        "in":"query",
+                        "description":"Filter the list of items using a simple expression language.  The available list of fields are Name, Description, Type, TableName, VariableType",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"orderBy",
+                        "in":"query",
+                        "description":"Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description, Type, TableName, VariableType",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"offset",
+                        "in":"query",
+                        "description":"The number of items to skip in the (potentially filtered) result set before returning subsequent items.",
+                        "required":false,
+                        "type":"integer",
+                        "minimum":0.0
+                    },
+                    {
+                        "name":"count",
+                        "in":"query",
+                        "description":"The maximum number of items to show from the (potentially filtered) result set.",
+                        "required":false,
+                        "type":"integer",
+                        "minimum":0.0
                     }
                 ],
                 "responses":{
@@ -5690,14 +5722,14 @@
                     {
                         "name":"filter",
                         "in":"query",
-                        "description":"Filter the list of items using a simple expression language.  The available list of fields are Key, Type",
+                        "description":"Filter the list of items using a simple expression language.  The available list of fields are Key, Type, TableName, VariableType",
                         "required":false,
                         "type":"string"
                     },
                     {
                         "name":"orderBy",
                         "in":"query",
-                        "description":"Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Key, Type",
+                        "description":"Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Key, Type, TableName, VariableType",
                         "required":false,
                         "type":"string"
                     },
@@ -7372,7 +7404,7 @@
                 "summary":"Creates a new set of parameters to use when creating a new session via the salted login method.",
                 "operationId":"Sessions_CreateLoginParameters",
                 "consumes":[
-                    "multipart/form-data"
+                    "application/x-www-form-urlencoded"
                 ],
                 "produces":[
                     "application/json",
@@ -7420,7 +7452,7 @@
                 "summary":"Creates a session to use for other API requests",
                 "operationId":"Sessions_CreateSessionSalted",
                 "consumes":[
-                    "multipart/form-data"
+                    "application/x-www-form-urlencoded"
                 ],
                 "produces":[
                     "application/json",
@@ -7485,7 +7517,7 @@
                 "summary":"Creates a session to use for other API requests",
                 "operationId":"Sessions_CreateSessionSimple",
                 "consumes":[
-                    "multipart/form-data"
+                    "application/x-www-form-urlencoded"
                 ],
                 "produces":[
                     "application/json",
@@ -7543,7 +7575,7 @@
                 "summary":"Creates an API session token from a traditional FastStats session id",
                 "operationId":"Sessions_ConvertSessionToAccessToken",
                 "consumes":[
-                    "multipart/form-data"
+                    "application/x-www-form-urlencoded"
                 ],
                 "produces":[
                     "application/json",
@@ -9071,7 +9103,7 @@
                     {
                         "name":"partNumber",
                         "in":"path",
-                        "description":"The number of the temporary file part to create or update",
+                        "description":"The number of the temporary file part to create or update.  This is zero-based",
                         "required":true,
                         "type":"integer",
                         "format":"int32"
@@ -9086,7 +9118,7 @@
                     {
                         "name":"finalPart",
                         "in":"query",
-                        "description":"Whether this part is the final part and the full temporary file should be assembled.  If this is not specified it defaults to false",
+                        "description":"Whether this part is the final part and the full temporary file should be assembled.  If this is not specified it defaults to false.  If this is set to true all parts from 0 up to this partIndex must already exist",
                         "required":false,
                         "type":"boolean"
                     }
@@ -9964,6 +9996,13 @@
                         ]
                     },
                     {
+                        "name":"applyPinnedSort",
+                        "in":"query",
+                        "description":"If specified, whether to ensure that pinned collections are returned first in the list.  Defaults to true",
+                        "required":false,
+                        "type":"boolean"
+                    },
+                    {
                         "name":"filter",
                         "in":"query",
                         "description":"Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe",
@@ -10365,6 +10404,13 @@
                             "OnlyDeleted",
                             "All"
                         ]
+                    },
+                    {
+                        "name":"applyPinnedSort",
+                        "in":"query",
+                        "description":"If specified, whether to ensure that pinned audiences are returned first in the list.  Defaults to true",
+                        "required":false,
+                        "type":"boolean"
                     },
                     {
                         "name":"filter",
@@ -10970,6 +11016,19 @@
                 }
             }
         },
+        "LanguageDetails":{
+            "description":"The language details for the API",
+            "required":[
+                "language"
+            ],
+            "type":"object",
+            "properties":{
+                "language":{
+                    "description":"The language that the API is processing this request in.\r\nThis is in the format languagecode2-country/regioncode2\r\nlanguagecode2 is a lowercase two-letter code derived from ISO 639-1\r\ncountry/regioncode2 is derived from ISO 3166 and usually consists of two uppercase letters, or a BCP-47 language tag.\r\nFor example, en-GB.",
+                    "type":"string"
+                }
+            }
+        },
         "ProcessDetails":{
             "description":"Memory details for the API",
             "required":[
@@ -11007,7 +11066,7 @@
                 }
             }
         },
-        "PagedResults[DataViewDetails]":{
+        "PagedResults[DataViewSummary]":{
             "description":"Summary details for a user",
             "required":[
                 "offset",
@@ -11037,13 +11096,13 @@
                     "uniqueItems":false,
                     "type":"array",
                     "items":{
-                        "$ref":"#/definitions/DataViewDetails"
+                        "$ref":"#/definitions/DataViewSummary"
                     }
                 }
             }
         },
-        "DataViewDetails":{
-            "description":"Details of a DataView that can be connected to",
+        "DataViewSummary":{
+            "description":"Summary details of a DataView that can be connected to",
             "required":[
                 "name"
             ],
@@ -11052,6 +11111,37 @@
                 "name":{
                     "description":"The name of the DataView",
                     "type":"string"
+                }
+            }
+        },
+        "DataViewDetails":{
+            "description":"Details of a DataView that can be connected to",
+            "required":[
+                "capabilities",
+                "name"
+            ],
+            "type":"object",
+            "properties":{
+                "capabilities":{
+                    "$ref":"#/definitions/Capabilities",
+                    "description":"The set of capabilities available in this DataView"
+                },
+                "name":{
+                    "description":"The name of the DataView",
+                    "type":"string"
+                }
+            }
+        },
+        "Capabilities":{
+            "description":"The set of capabilities supported by a DataView",
+            "required":[
+                "supportsAudiences"
+            ],
+            "type":"object",
+            "properties":{
+                "supportsAudiences":{
+                    "description":"Whether the DataView in question can support audiences functionality",
+                    "type":"boolean"
                 }
             }
         },
@@ -14699,98 +14789,6 @@
                 }
             }
         },
-        "DataGridResult":{
-            "description":"Details for a DataGrid",
-            "required":[
-                "ranSuccessfully"
-            ],
-            "type":"object",
-            "properties":{
-                "title":{
-                    "description":"The title of the DataGrid",
-                    "type":"string"
-                },
-                "notes":{
-                    "description":"Any notes associated with the DataGrid",
-                    "type":"string"
-                },
-                "ranSuccessfully":{
-                    "description":"Whether the DataGrid was returned successfully or not",
-                    "type":"boolean"
-                },
-                "systemName":{
-                    "description":"The name of the FastStats system that this DataGrid has been produced by",
-                    "type":"string"
-                },
-                "systemLoadDate":{
-                    "format":"date-time",
-                    "description":"The date and time that the FastStats system was last built",
-                    "type":"string"
-                },
-                "userName":{
-                    "description":"The name of the user that requested this DataGrid",
-                    "type":"string"
-                },
-                "runDate":{
-                    "format":"date-time",
-                    "description":"The date and time that this DataGrid was run on",
-                    "type":"string"
-                },
-                "queryDescription":{
-                    "description":"A textual description of the query that was counted",
-                    "type":"string"
-                },
-                "counts":{
-                    "description":"A list of counts for each affected table in the FastStats system.  The first count in the list is the main one.",
-                    "uniqueItems":false,
-                    "type":"array",
-                    "items":{
-                        "$ref":"#/definitions/Count"
-                    }
-                },
-                "headers":{
-                    "description":"The DataGrid Headers",
-                    "uniqueItems":false,
-                    "type":"array",
-                    "items":{
-                        "$ref":"#/definitions/DataGridHeader"
-                    }
-                },
-                "rows":{
-                    "description":"The data values in the DataGrid formated as a list of lists",
-                    "uniqueItems":false,
-                    "type":"array",
-                    "items":{
-                        "uniqueItems":false,
-                        "type":"array",
-                        "items":{
-                            "type":"string"
-                        }
-                    }
-                }
-            }
-        },
-        "DataGridHeader":{
-            "description":"Details about the Headers in a DataGrid",
-            "type":"object",
-            "properties":{
-                "value":{
-                    "description":"Value of the column header",
-                    "type":"string"
-                },
-                "columnDataType":{
-                    "description":"The type of data in this column",
-                    "enum":[
-                        "Unknown",
-                        "Date",
-                        "DateTime",
-                        "Numeric",
-                        "Text"
-                    ],
-                    "type":"string"
-                }
-            }
-        },
         "PagedResults[FileSystemSummary]":{
             "description":"Summary details for a user",
             "required":[
@@ -15735,7 +15733,7 @@
                     "description":"A folder in the folder structure tree"
                 },
                 "variable":{
-                    "$ref":"#/definitions/VariableItem",
+                    "$ref":"#/definitions/Variable",
                     "description":"A variable in the folder structure tree"
                 }
             }
@@ -15754,29 +15752,6 @@
                 },
                 "description":{
                     "description":"The description of the folder",
-                    "type":"string"
-                }
-            }
-        },
-        "VariableItem":{
-            "description":"Details for a variable in the FastStats system returned as part of the All items endpoint",
-            "required":[
-                "name",
-                "description",
-                "tableName"
-            ],
-            "type":"object",
-            "properties":{
-                "name":{
-                    "description":"The name of the variable",
-                    "type":"string"
-                },
-                "description":{
-                    "description":"The description of the variable",
-                    "type":"string"
-                },
-                "tableName":{
-                    "description":"The name of the table the variable is on",
                     "type":"string"
                 }
             }
@@ -15834,7 +15809,7 @@
                     "type":"string"
                 },
                 "variable":{
-                    "$ref":"#/definitions/VariableItem",
+                    "$ref":"#/definitions/Variable",
                     "description":"If this item is a variable then these are the details.\r\nIf this item is a var code then these are the details of the variable the var code belongs to."
                 },
                 "varCode":{
@@ -16131,6 +16106,7 @@
                         "PushNotification",
                         "Twitter",
                         "Google",
+                        "LinkedIn",
                         "Composite"
                     ],
                     "type":"string"
@@ -16177,6 +16153,7 @@
                         "PushNotification",
                         "Twitter",
                         "Google",
+                        "LinkedIn",
                         "Composite"
                     ],
                     "type":"string"
@@ -16760,6 +16737,7 @@
                             "PushNotification",
                             "Twitter",
                             "Google",
+                            "LinkedIn",
                             "Composite"
                         ],
                         "type":"string"

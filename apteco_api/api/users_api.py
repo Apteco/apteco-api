@@ -297,6 +297,7 @@ class UsersApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str username: The username to view the audiences for (required)
         :param str include_deleted: If specified, whether to include deleted audiences, not deleted audiences or both.  Defaults to not deleted only
+        :param bool apply_pinned_sort: If specified, whether to ensure that pinned audiences are returned first in the list.  Defaults to true
         :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn
         :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
@@ -327,6 +328,7 @@ class UsersApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str username: The username to view the audiences for (required)
         :param str include_deleted: If specified, whether to include deleted audiences, not deleted audiences or both.  Defaults to not deleted only
+        :param bool apply_pinned_sort: If specified, whether to ensure that pinned audiences are returned first in the list.  Defaults to true
         :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn
         :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
@@ -347,7 +349,7 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'include_deleted', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
+        all_params = ['data_view_name', 'username', 'include_deleted', 'apply_pinned_sort', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -385,6 +387,8 @@ class UsersApi(object):
         query_params = []
         if 'include_deleted' in local_var_params:
             query_params.append(('includeDeleted', local_var_params['include_deleted']))  # noqa: E501
+        if 'apply_pinned_sort' in local_var_params:
+            query_params.append(('applyPinnedSort', local_var_params['apply_pinned_sort']))  # noqa: E501
         if 'filter' in local_var_params:
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
         if 'order_by' in local_var_params:
@@ -557,6 +561,7 @@ class UsersApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str username: The username to view the collections for (required)
         :param str include_deleted: If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only
+        :param bool apply_pinned_sort: If specified, whether to ensure that pinned collections are returned first in the list.  Defaults to true
         :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe
         :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
@@ -587,6 +592,7 @@ class UsersApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str username: The username to view the collections for (required)
         :param str include_deleted: If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only
+        :param bool apply_pinned_sort: If specified, whether to ensure that pinned collections are returned first in the list.  Defaults to true
         :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe
         :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
@@ -607,7 +613,7 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'include_deleted', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
+        all_params = ['data_view_name', 'username', 'include_deleted', 'apply_pinned_sort', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -645,6 +651,8 @@ class UsersApi(object):
         query_params = []
         if 'include_deleted' in local_var_params:
             query_params.append(('includeDeleted', local_var_params['include_deleted']))  # noqa: E501
+        if 'apply_pinned_sort' in local_var_params:
+            query_params.append(('applyPinnedSort', local_var_params['apply_pinned_sort']))  # noqa: E501
         if 'filter' in local_var_params:
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
         if 'order_by' in local_var_params:

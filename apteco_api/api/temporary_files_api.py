@@ -410,9 +410,9 @@ class TemporaryFilesApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param str id: The id for the temporary file (required)
-        :param int part_number: The number of the temporary file part to create or update (required)
+        :param int part_number: The number of the temporary file part to create or update.  This is zero-based (required)
         :param file file: The file to upload. (required)
-        :param bool final_part: Whether this part is the final part and the full temporary file should be assembled.  If this is not specified it defaults to false
+        :param bool final_part: Whether this part is the final part and the full temporary file should be assembled.  If this is not specified it defaults to false.  If this is set to true all parts from 0 up to this partIndex must already exist
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -438,9 +438,9 @@ class TemporaryFilesApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param str id: The id for the temporary file (required)
-        :param int part_number: The number of the temporary file part to create or update (required)
+        :param int part_number: The number of the temporary file part to create or update.  This is zero-based (required)
         :param file file: The file to upload. (required)
-        :param bool final_part: Whether this part is the final part and the full temporary file should be assembled.  If this is not specified it defaults to false
+        :param bool final_part: Whether this part is the final part and the full temporary file should be assembled.  If this is not specified it defaults to false.  If this is set to true all parts from 0 up to this partIndex must already exist
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will

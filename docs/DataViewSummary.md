@@ -1,10 +1,9 @@
-# FolderStructureNode
+# DataViewSummary
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**folder** | [**Folder**](Folder.md) |  | [optional] 
-**variable** | [**Variable**](Variable.md) |  | [optional] 
+**name** | **str** | The name of the DataView | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

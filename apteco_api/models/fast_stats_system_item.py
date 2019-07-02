@@ -33,7 +33,7 @@ class FastStatsSystemItem(object):
     """
     openapi_types = {
         'type': 'str',
-        'variable': 'VariableItem',
+        'variable': 'Variable',
         'var_code': 'VarCode',
         'table': 'TableItem',
         'folder': 'Folder'
@@ -104,7 +104,7 @@ class FastStatsSystemItem(object):
 
 
         :return: The variable of this FastStatsSystemItem.  # noqa: E501
-        :rtype: VariableItem
+        :rtype: Variable
         """
         return self._variable
 
@@ -114,7 +114,7 @@ class FastStatsSystemItem(object):
 
 
         :param variable: The variable of this FastStatsSystemItem.  # noqa: E501
-        :type: VariableItem
+        :type: Variable
         """
 
         self._variable = variable

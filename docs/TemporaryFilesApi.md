@@ -227,9 +227,9 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = apteco_api.TemporaryFilesApi(apteco_api.ApiClient(configuration))
 data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 id = 'id_example' # str | The id for the temporary file
-part_number = 56 # int | The number of the temporary file part to create or update
+part_number = 56 # int | The number of the temporary file part to create or update.  This is zero-based
 file = '/path/to/file' # file | The file to upload.
-final_part = True # bool | Whether this part is the final part and the full temporary file should be assembled.  If this is not specified it defaults to false (optional)
+final_part = True # bool | Whether this part is the final part and the full temporary file should be assembled.  If this is not specified it defaults to false.  If this is set to true all parts from 0 up to this partIndex must already exist (optional)
 
 try:
     # Creates or updates part of a temporary file with the given id and part number
@@ -245,9 +245,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
  **id** | **str**| The id for the temporary file | 
- **part_number** | **int**| The number of the temporary file part to create or update | 
+ **part_number** | **int**| The number of the temporary file part to create or update.  This is zero-based | 
  **file** | **file**| The file to upload. | 
- **final_part** | **bool**| Whether this part is the final part and the full temporary file should be assembled.  If this is not specified it defaults to false | [optional] 
+ **final_part** | **bool**| Whether this part is the final part and the full temporary file should be assembled.  If this is not specified it defaults to false.  If this is set to true all parts from 0 up to this partIndex must already exist | [optional] 
 
 ### Return type
 

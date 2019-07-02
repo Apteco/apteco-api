@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **users_get_user_audiences**
-> PagedResultsUserAudienceSummary users_get_user_audiences(data_view_name, username, include_deleted=include_deleted, filter=filter, order_by=order_by, offset=offset, count=count)
+> PagedResultsUserAudienceSummary users_get_user_audiences(data_view_name, username, include_deleted=include_deleted, apply_pinned_sort=apply_pinned_sort, filter=filter, order_by=order_by, offset=offset, count=count)
 
 Returns the list of audiences associated with the given user
 
@@ -177,6 +177,7 @@ api_instance = apteco_api.UsersApi(apteco_api.ApiClient(configuration))
 data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 username = 'username_example' # str | The username to view the audiences for
 include_deleted = 'include_deleted_example' # str | If specified, whether to include deleted audiences, not deleted audiences or both.  Defaults to not deleted only (optional)
+apply_pinned_sort = True # bool | If specified, whether to ensure that pinned audiences are returned first in the list.  Defaults to true (optional)
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
@@ -184,7 +185,7 @@ count = 56 # int | The maximum number of items to show from the (potentially fil
 
 try:
     # Returns the list of audiences associated with the given user
-    api_response = api_instance.users_get_user_audiences(data_view_name, username, include_deleted=include_deleted, filter=filter, order_by=order_by, offset=offset, count=count)
+    api_response = api_instance.users_get_user_audiences(data_view_name, username, include_deleted=include_deleted, apply_pinned_sort=apply_pinned_sort, filter=filter, order_by=order_by, offset=offset, count=count)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UsersApi->users_get_user_audiences: %s\n" % e)
@@ -197,6 +198,7 @@ Name | Type | Description  | Notes
  **data_view_name** | **str**| The name of the DataView to act on | 
  **username** | **str**| The username to view the audiences for | 
  **include_deleted** | **str**| If specified, whether to include deleted audiences, not deleted audiences or both.  Defaults to not deleted only | [optional] 
+ **apply_pinned_sort** | **bool**| If specified, whether to ensure that pinned audiences are returned first in the list.  Defaults to true | [optional] 
  **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn | [optional] 
  **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
@@ -291,7 +293,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **users_get_user_collections**
-> PagedResultsUserCollectionSummary users_get_user_collections(data_view_name, username, include_deleted=include_deleted, filter=filter, order_by=order_by, offset=offset, count=count)
+> PagedResultsUserCollectionSummary users_get_user_collections(data_view_name, username, include_deleted=include_deleted, apply_pinned_sort=apply_pinned_sort, filter=filter, order_by=order_by, offset=offset, count=count)
 
 Returns the list of collections associated with the given user
 
@@ -315,6 +317,7 @@ api_instance = apteco_api.UsersApi(apteco_api.ApiClient(configuration))
 data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 username = 'username_example' # str | The username to view the collections for
 include_deleted = 'include_deleted_example' # str | If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only (optional)
+apply_pinned_sort = True # bool | If specified, whether to ensure that pinned collections are returned first in the list.  Defaults to true (optional)
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
@@ -322,7 +325,7 @@ count = 56 # int | The maximum number of items to show from the (potentially fil
 
 try:
     # Returns the list of collections associated with the given user
-    api_response = api_instance.users_get_user_collections(data_view_name, username, include_deleted=include_deleted, filter=filter, order_by=order_by, offset=offset, count=count)
+    api_response = api_instance.users_get_user_collections(data_view_name, username, include_deleted=include_deleted, apply_pinned_sort=apply_pinned_sort, filter=filter, order_by=order_by, offset=offset, count=count)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UsersApi->users_get_user_collections: %s\n" % e)
@@ -335,6 +338,7 @@ Name | Type | Description  | Notes
  **data_view_name** | **str**| The name of the DataView to act on | 
  **username** | **str**| The username to view the collections for | 
  **include_deleted** | **str**| If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only | [optional] 
+ **apply_pinned_sort** | **bool**| If specified, whether to ensure that pinned collections are returned first in the list.  Defaults to true | [optional] 
  **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe | [optional] 
  **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 

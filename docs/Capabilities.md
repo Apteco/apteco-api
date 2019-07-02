@@ -1,10 +1,9 @@
-# FolderStructureNode
+# Capabilities
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**folder** | [**Folder**](Folder.md) |  | [optional] 
-**variable** | [**Variable**](Variable.md) |  | [optional] 
+**supports_audiences** | **bool** | Whether the DataView in question can support audiences functionality | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
