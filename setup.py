@@ -14,7 +14,15 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "apteco-api"
-VERSION = "0.1.3"
+VERSION = "0.1.4"
+README = "introduction.md"
+
+# read the contents of your README file
+from os import path
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, README), encoding='utf-8') as f:
+    long_description = f.read()
+
 # To install the library, run the following
 #
 # python setup.py install
@@ -28,7 +36,7 @@ setup(
     name=NAME,
     version=VERSION,
     description="Apteco API",
-    long_description="introduction.md",
+    long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://www.apteco.com/",
 	author="Apteco Ltd",
