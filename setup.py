@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "apteco-api"
-VERSION = "0.1.4"
+VERSION = "0.1.5"
 README = "introduction.md"
 
 # read the contents of your README file
@@ -42,7 +42,31 @@ setup(
 	author="Apteco Ltd",
     author_email="support@apteco.com",
 	license="Apache 2.0",
-    keywords=["OpenAPI", "OpenAPI-Generator", "Apteco API"],
+	classifiers=[
+		"License :: OSI Approved :: Apache Software License",
+		"Development Status :: 4 - Beta",
+		"Programming Language :: Python :: 2.7",
+		"Programming Language :: Python :: 3",
+		"Programming Language :: Python :: 3.4",
+		"Programming Language :: Python :: 3.5",
+		"Programming Language :: Python :: 3.6",
+		"Programming Language :: Python :: 3.7",
+	],
+    keywords=[
+		"Apteco",
+		"Apteco API",
+		"Apteco Marketing Suite",
+		"Apteco FastStats",
+		"FastStats",
+		"Apteco Orbit",
+		"Orbit",
+		"OpenAPI",
+		"OpenAPI-Generator",
+		"Swagger",
+		"Swagger API",
+		"API",
+		"REST",
+	],
     install_requires=REQUIRES,
     packages=["apteco_api", "apteco_api.api", "apteco_api.models"],
     include_package_data=True,
