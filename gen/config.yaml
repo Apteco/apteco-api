@@ -1,6 +1,6 @@
 packageName: "apteco_api"
 projectName: "apteco-api"
-packageVersion:	"0.1.5"
+packageVersion:	"0.1.6"
 #packageUrl: null
 #sortParamsByRequiredFlag: true
 #hideGenerationTimestamp: true

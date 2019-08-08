@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fast_stats_systems_get_fast_stats_system**
-> PagedResultsFastStatsSystemDetail fast_stats_systems_get_fast_stats_system(data_view_name, system_name)
+> FastStatsSystemDetail fast_stats_systems_get_fast_stats_system(data_view_name, system_name)
 
 Returns some top-level details for the specified FastStats system
 
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PagedResultsFastStatsSystemDetail**](PagedResultsFastStatsSystemDetail.md)
+[**FastStatsSystemDetail**](FastStatsSystemDetail.md)
 
 ### Authorization
 

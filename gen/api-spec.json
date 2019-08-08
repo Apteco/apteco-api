@@ -5081,7 +5081,7 @@
                     "200":{
                         "description":"Some metadata for the specified FastStats system",
                         "schema":{
-                            "$ref":"#/definitions/PagedResults[FastStatsSystemDetail]"
+                            "$ref":"#/definitions/FastStatsSystemDetail"
                         }
                     },
                     "400":{
