@@ -403,6 +403,89 @@
                 }
             }
         },
+        "/About/Orbit/Settings":{
+            "get":{
+                "tags":[
+                    "About"
+                ],
+                "summary":"Gets the complete Orbit settings object",
+                "operationId":"About_GetOrbitSettingsRoot",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The contents of the Orbit settings",
+                        "schema":{
+                            "type":"object"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to see the contents of the Orbit settings"
+                    },
+                    "404":{
+                        "description":"The Orbit settings couldn't be found"
+                    }
+                }
+            }
+        },
+        "/About/Orbit/Settings/{settingsPath}":{
+            "get":{
+                "tags":[
+                    "About"
+                ],
+                "summary":"Gets Orbit settings at the given path",
+                "operationId":"About_GetOrbitSettings",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"settingsPath",
+                        "in":"path",
+                        "description":"The path of the settings",
+                        "required":true,
+                        "type":"string",
+                        "format":"path"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The contents of the Orbit settings",
+                        "schema":{
+                            "type":"object"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to see the contents of the Orbit settings"
+                    },
+                    "404":{
+                        "description":"The Orbit settings couldn't be found"
+                    }
+                }
+            }
+        },
         "/About/ExampleExperimentalResource":{
             "get":{
                 "tags":[
@@ -2156,7 +2239,7 @@
                     }
                 ],
                 "responses":{
-                    "201":{
+                    "200":{
                         "description":"The job status details",
                         "schema":{
                             "$ref":"#/definitions/AudienceCalculateJobDetail"
@@ -3023,6 +3106,280 @@
                     },
                     "404":{
                         "description":"The DataView, audience or audience hit couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Audiences/{audienceId}/{licensingSet}/DataLicensingSync":{
+            "get":{
+                "tags":[
+                    "Audiences"
+                ],
+                "summary":"Get data licensing information for the latest version of this audience",
+                "operationId":"Audiences_CalculateAudienceDataLicensingSync",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"audienceId",
+                        "in":"path",
+                        "description":"The id of the audience to calculate the result for",
+                        "required":true,
+                        "type":"integer",
+                        "format":"int32"
+                    },
+                    {
+                        "name":"licensingSet",
+                        "in":"path",
+                        "description":"The name of the licensing set to get the information for",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"timeoutInSeconds",
+                        "in":"query",
+                        "description":"The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration",
+                        "required":false,
+                        "type":"integer",
+                        "format":"int32"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The calculation completed successfully",
+                        "schema":{
+                            "$ref":"#/definitions/LicensingInfo"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "404":{
+                        "description":"The audience couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Audiences/{audienceId}/{licensingSet}/DataLicensingJobs":{
+            "post":{
+                "tags":[
+                    "Audiences"
+                ],
+                "summary":"Create a new job to get data licensing information for the latest version of this audience",
+                "operationId":"Audiences_CreateCalculateAudienceDataLicensingJob",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"audienceId",
+                        "in":"path",
+                        "description":"The id of the audience to calculate the result for",
+                        "required":true,
+                        "type":"integer",
+                        "format":"int32"
+                    },
+                    {
+                        "name":"licensingSet",
+                        "in":"path",
+                        "description":"The name of the licensing set to get the information for",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "201":{
+                        "description":"The calculate data licensing info job was successfully created",
+                        "schema":{
+                            "$ref":"#/definitions/AudienceDataLicensingInfoJobDetail"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "404":{
+                        "description":"The audience couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Audiences/{audienceId}/{licensingSet}/DataLicensingJobs/{jobId}":{
+            "get":{
+                "tags":[
+                    "Audiences"
+                ],
+                "summary":"Get the status of a running calculate job",
+                "operationId":"Audiences_GetCalculateAudienceDataLicensingJob",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"audienceId",
+                        "in":"path",
+                        "description":"The id of the audience that the calculate job is running for.",
+                        "required":true,
+                        "type":"integer",
+                        "format":"int32"
+                    },
+                    {
+                        "name":"licensingSet",
+                        "in":"path",
+                        "description":"The name of the licensing set to get the information for",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"jobId",
+                        "in":"path",
+                        "description":"The id of the job to get the status for.",
+                        "required":true,
+                        "type":"integer",
+                        "format":"int32"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The job status details",
+                        "schema":{
+                            "$ref":"#/definitions/AudienceDataLicensingInfoJobDetail"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to get the status of this calculate job."
+                    },
+                    "404":{
+                        "description":"The DataView, audience or job couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            },
+            "delete":{
+                "tags":[
+                    "Audiences"
+                ],
+                "summary":"Cancel a running data licensing job",
+                "operationId":"Audiences_CancelCalculateAudienceDataLicensingJob",
+                "consumes":[
+
+                ],
+                "produces":[
+
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"audienceId",
+                        "in":"path",
+                        "description":"The id of the audience that the data licensing job is running for.",
+                        "required":true,
+                        "type":"integer",
+                        "format":"int32"
+                    },
+                    {
+                        "name":"licensingSet",
+                        "in":"path",
+                        "description":"The name of the licensing set to get the information for",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"jobId",
+                        "in":"path",
+                        "description":"The id of the job to cancel",
+                        "required":true,
+                        "type":"integer",
+                        "format":"int32"
+                    }
+                ],
+                "responses":{
+                    "204":{
+                        "description":"The job was cancelled successful"
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to cancel the data licensing job."
+                    },
+                    "404":{
+                        "description":"The DataView, audience or job couldn't be found"
                     }
                 },
                 "security":[
@@ -4029,7 +4386,7 @@
                     {
                         "name":"returnDefinition",
                         "in":"query",
-                        "description":"Whether to include the cube's definition in the results",
+                        "description":"Whether to include the cube's definition in the results.  Default is false.",
                         "required":false,
                         "type":"boolean"
                     }
@@ -4049,6 +4406,315 @@
                     },
                     "404":{
                         "description":"The system name couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Dashboards":{
+            "post":{
+                "tags":[
+                    "Dashboards"
+                ],
+                "summary":"EXPERIMENTAL: Test function: Removes all dashboards from the DB and creates a new one",
+                "description":"EXPERIMENTAL",
+                "operationId":"Dashboards_CreateTestDashboard",
+                "consumes":[
+
+                ],
+                "produces":[
+
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Success"
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "404":{
+                        "description":"The DataView couldn't be found"
+                    },
+                    "201":{
+                        "description":"The test dashboard was created successfully"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/DataLicensing/{systemName}/PurchaseSync":{
+            "post":{
+                "tags":[
+                    "DataLicensing"
+                ],
+                "summary":"Purchase data licensing information",
+                "operationId":"DataLicensing_PurchaseDataLicensingSync",
+                "consumes":[
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"systemName",
+                        "in":"path",
+                        "description":"The name of the FastStats system to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"purchaseDetail",
+                        "in":"body",
+                        "description":"The details for the data licensing purchase",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/DataPurchaseDetail"
+                        }
+                    },
+                    {
+                        "name":"timeoutInSeconds",
+                        "in":"query",
+                        "description":"The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration",
+                        "required":false,
+                        "type":"integer",
+                        "format":"int32"
+                    }
+                ],
+                "responses":{
+                    "201":{
+                        "description":"The purchase completed successfully",
+                        "schema":{
+                            "$ref":"#/definitions/PurchaseInfo"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/DataLicensing/{systemName}/DataPurchaseJobs":{
+            "post":{
+                "tags":[
+                    "DataLicensing"
+                ],
+                "summary":"Create a new job to purchase data licensing information",
+                "operationId":"DataLicensing_CreatePurchaseDataLicensingJob",
+                "consumes":[
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"systemName",
+                        "in":"path",
+                        "description":"The name of the FastStats system to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"purchaseDetail",
+                        "in":"body",
+                        "description":"The details for the data licensing purchase",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/DataPurchaseDetail"
+                        }
+                    }
+                ],
+                "responses":{
+                    "201":{
+                        "description":"The purchase data licensing info job was successfully created",
+                        "schema":{
+                            "$ref":"#/definitions/DataPurchaseJobDetail"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/DataLicensing/{systemName}/DataPurchaseJobs/{jobId}":{
+            "get":{
+                "tags":[
+                    "DataLicensing"
+                ],
+                "summary":"Get the status of a running purchase job",
+                "operationId":"DataLicensing_GetDataPurchaseJob",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"systemName",
+                        "in":"path",
+                        "description":"The name of the FastStats system to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"jobId",
+                        "in":"path",
+                        "description":"The id of the job to get the status for.",
+                        "required":true,
+                        "type":"integer",
+                        "format":"int32"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The job status details",
+                        "schema":{
+                            "$ref":"#/definitions/DataPurchaseJobDetail"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"Forbidden"
+                    },
+                    "404":{
+                        "description":"The DataView or job couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            },
+            "delete":{
+                "tags":[
+                    "DataLicensing"
+                ],
+                "summary":"Cancel a running data purchasing job",
+                "operationId":"DataLicensing_CancelDataPurchaseJob",
+                "consumes":[
+
+                ],
+                "produces":[
+
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"systemName",
+                        "in":"path",
+                        "description":"The name of the FastStats system to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"jobId",
+                        "in":"path",
+                        "description":"The id of the job to cancel",
+                        "required":true,
+                        "type":"integer",
+                        "format":"int32"
+                    }
+                ],
+                "responses":{
+                    "204":{
+                        "description":"The job was cancelled successful"
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "404":{
+                        "description":"The DataView, audience or job couldn't be found"
                     }
                 },
                 "security":[
@@ -4540,7 +5206,7 @@
                     {
                         "name":"returnDefinition",
                         "in":"query",
-                        "description":"Whether to include the export's definition in the results",
+                        "description":"Whether to include the export's definition in the results.  Default is false.",
                         "required":false,
                         "type":"boolean"
                     }
@@ -4569,6 +5235,66 @@
                         ]
                     }
                 ]
+            }
+        },
+        "/ExternalLogin/Login":{
+            "get":{
+                "tags":[
+                    "ExternalLogin"
+                ],
+                "summary":"UNDER DEVELOPMENT: Initiate the external login process",
+                "description":"UNDER DEVELOPMENT",
+                "operationId":"ExternalLogin_Login",
+                "consumes":[
+
+                ],
+                "produces":[
+
+                ],
+                "parameters":[
+                    {
+                        "name":"returnUrl",
+                        "in":"query",
+                        "description":"The URL to redirect to after the login process has been successful",
+                        "required":false,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Success"
+                    },
+                    "302":{
+                        "description":"A redirect to the next phase of the login process"
+                    }
+                }
+            }
+        },
+        "/ExternalLogin/AssertionConsumerService":{
+            "post":{
+                "tags":[
+                    "ExternalLogin"
+                ],
+                "summary":"UNDER DEVELOPMENT: Initiate the next phase of the login process that establishes a session.",
+                "description":"UNDER DEVELOPMENT",
+                "operationId":"ExternalLogin_AssertionConsumerService",
+                "consumes":[
+
+                ],
+                "produces":[
+
+                ],
+                "parameters":[
+
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Success"
+                    },
+                    "302":{
+                        "description":"A redirect to the application to process the created login token"
+                    }
+                }
             }
         },
         "/{dataViewName}/FastStatsJobs":{
@@ -7194,7 +7920,7 @@
                     {
                         "name":"returnDefinition",
                         "in":"query",
-                        "description":"Whether to include the query's definition in the results",
+                        "description":"Whether to include the query's definition in the results.  Default is false.",
                         "required":false,
                         "type":"boolean"
                     }
@@ -7283,7 +8009,7 @@
                     {
                         "name":"returnDefinition",
                         "in":"query",
-                        "description":"Whether to include the query's definition in the results",
+                        "description":"Whether to include the query's definition in the results.  Default is false.",
                         "required":false,
                         "type":"boolean"
                     }
@@ -7567,6 +8293,66 @@
                 }
             }
         },
+        "/{dataViewName}/Sessions/TokenLogin":{
+            "post":{
+                "tags":[
+                    "Sessions"
+                ],
+                "summary":"UNDER DEVELOPMENT: Creates a session to use for other API requests given a JWT login token from the Apteco Login Service.\r\nThe API must have the appriopriate JWT issuer, audience and signing key specified to be able to validate the token.",
+                "description":"UNDER DEVELOPMENT",
+                "operationId":"Sessions_CreateSessionFromLoginToken",
+                "consumes":[
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"loginDetails",
+                        "in":"body",
+                        "description":"The details used to create the session",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/TokenLoginDetails"
+                        }
+                    }
+                ],
+                "responses":{
+                    "201":{
+                        "description":"Session created",
+                        "schema":{
+                            "$ref":"#/definitions/SessionDetails"
+                        }
+                    },
+                    "400":{
+                        "description":"Bad request"
+                    },
+                    "401":{
+                        "description":"Bad login credentials"
+                    },
+                    "404":{
+                        "description":"The DataView couldn't be found"
+                    }
+                }
+            }
+        },
         "/{dataViewName}/Sessions/ConvertSession":{
             "post":{
                 "tags":[
@@ -7788,6 +8574,352 @@
                     },
                     "404":{
                         "description":"The DataView couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Settings/DataView":{
+            "get":{
+                "tags":[
+                    "Settings"
+                ],
+                "summary":"Gets the complete DataView settings object",
+                "operationId":"Settings_GetDataViewSettingsRoot",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The contents of the DataView settings",
+                        "schema":{
+                            "type":"object"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to see the contents of the DataView settings"
+                    },
+                    "404":{
+                        "description":"The DataView settings couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            },
+            "put":{
+                "tags":[
+                    "Settings"
+                ],
+                "summary":"Updates the complete DataView settings",
+                "operationId":"Settings_UpdateDataViewSettingsRoot",
+                "consumes":[
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"settings",
+                        "in":"body",
+                        "description":"The contents of the DataView settings",
+                        "required":false,
+                        "schema":{
+                            "type":"object"
+                        }
+                    }
+                ],
+                "responses":{
+                    "201":{
+                        "description":"Details of the created DataView settings",
+                        "schema":{
+                            "type":"object"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to see the contents of the given DataView settings"
+                    },
+                    "404":{
+                        "description":"The DataView settings couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            },
+            "delete":{
+                "tags":[
+                    "Settings"
+                ],
+                "summary":"Deletes the complete DataView settings",
+                "operationId":"Settings_DeleteDataViewSettingsRoot",
+                "consumes":[
+
+                ],
+                "produces":[
+
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "204":{
+                        "description":"Success"
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to delete the contents of the given DataView settings"
+                    },
+                    "404":{
+                        "description":"The DataView settings couldn't be found"
+                    },
+                    "200":{
+                        "description":"The DataView settings were deleted"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Settings/DataView/{settingsPath}":{
+            "get":{
+                "tags":[
+                    "Settings"
+                ],
+                "summary":"Gets DataView settings at the given path",
+                "operationId":"Settings_GetDataViewSettings",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"settingsPath",
+                        "in":"path",
+                        "description":"The path of the settings",
+                        "required":true,
+                        "type":"string",
+                        "format":"path"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The contents of the DataView settings",
+                        "schema":{
+                            "type":"object"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to see the contents of the DataView settings"
+                    },
+                    "404":{
+                        "description":"The DataView settings couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            },
+            "put":{
+                "tags":[
+                    "Settings"
+                ],
+                "summary":"Updates DataView settings at the given path",
+                "operationId":"Settings_UpdateDataViewSettings",
+                "consumes":[
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"settingsPath",
+                        "in":"path",
+                        "description":"The path of the DataView settings",
+                        "required":true,
+                        "type":"string",
+                        "format":"path"
+                    },
+                    {
+                        "name":"settings",
+                        "in":"body",
+                        "description":"The contents of the DataView settings",
+                        "required":false,
+                        "schema":{
+                            "type":"object"
+                        }
+                    }
+                ],
+                "responses":{
+                    "201":{
+                        "description":"Details of the created DataView settings",
+                        "schema":{
+                            "type":"object"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to see the contents of the given DataView settings"
+                    },
+                    "404":{
+                        "description":"The DataView settings couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            },
+            "delete":{
+                "tags":[
+                    "Settings"
+                ],
+                "summary":"Deletes DataView settings at the given path",
+                "operationId":"Settings_DeleteDataViewSettings",
+                "consumes":[
+
+                ],
+                "produces":[
+
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"settingsPath",
+                        "in":"path",
+                        "description":"The path of the DataView settings",
+                        "required":true,
+                        "type":"string",
+                        "format":"path"
+                    }
+                ],
+                "responses":{
+                    "204":{
+                        "description":"Success"
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to delete the contents of the given DataView settings"
+                    },
+                    "404":{
+                        "description":"The DataView settings couldn't be found"
+                    },
+                    "200":{
+                        "description":"The DataView settings were deleted"
                     }
                 },
                 "security":[
@@ -8890,6 +10022,484 @@
                 }
             }
         },
+        "/{dataViewName}/Telemetry/States":{
+            "post":{
+                "tags":[
+                    "Telemetry"
+                ],
+                "summary":"Creates a new telemetry state from the given details",
+                "operationId":"Telemetry_CreateTelemetryState",
+                "consumes":[
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"createTelemetryStateDetails",
+                        "in":"body",
+                        "description":"The details of the telemetry state to create",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/CreateTelemetryStateDetails"
+                        }
+                    }
+                ],
+                "responses":{
+                    "201":{
+                        "description":"The telemetry state was created successfully",
+                        "schema":{
+                            "$ref":"#/definitions/TelemetryState"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The session is not allowed to create this telemetry state"
+                    },
+                    "404":{
+                        "description":"The DataView couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Telemetry/States/{stateId}":{
+            "get":{
+                "tags":[
+                    "Telemetry"
+                ],
+                "summary":"Returns the details of a particular telemetry state",
+                "operationId":"Telemetry_GetTelemetryState",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"stateId",
+                        "in":"path",
+                        "description":"The id of the telemetry state to return",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The telemetry state",
+                        "schema":{
+                            "$ref":"#/definitions/TelemetryState"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to see this telemetry state"
+                    },
+                    "404":{
+                        "description":"The DataView or telemetry state couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Telemetry/States/ForUser/{Username}":{
+            "get":{
+                "tags":[
+                    "Telemetry"
+                ],
+                "summary":"Returns the details of a given user's telemetry state",
+                "operationId":"Telemetry_GetTelemetryStateForUser",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"username",
+                        "in":"path",
+                        "description":"The username of the telemetry state to return",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The telemetry state",
+                        "schema":{
+                            "$ref":"#/definitions/TelemetryState"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session or user is not allowed to see this telemetry state"
+                    },
+                    "404":{
+                        "description":"The DataView or telemetry state couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Telemetry/States/{stateId}/Update":{
+            "post":{
+                "tags":[
+                    "Telemetry"
+                ],
+                "summary":"Updates a particular telemetry state from the given details",
+                "operationId":"Telemetry_UpdateTelemetryState",
+                "consumes":[
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"stateId",
+                        "in":"path",
+                        "description":"The id of the telemetry state to update",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"updateTelemetryStateDetails",
+                        "in":"body",
+                        "description":"The details of the telemetry state to update",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/UpdateTelemetryStateDetails"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The telemetry state was updated successfully",
+                        "schema":{
+                            "$ref":"#/definitions/TelemetryState"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to update this telemetry state"
+                    },
+                    "404":{
+                        "description":"The DataView couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Telemetry/States/{stateId}/Sessions/{sessionId}":{
+            "get":{
+                "tags":[
+                    "Telemetry"
+                ],
+                "summary":"Returns the details of a particular telemetry session",
+                "operationId":"Telemetry_GetTelemetrySession",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"stateId",
+                        "in":"path",
+                        "description":"The id of the telemetry state the session belongs to",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"sessionId",
+                        "in":"path",
+                        "description":"The id of the telemetry session",
+                        "required":true,
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The telemetry session",
+                        "schema":{
+                            "$ref":"#/definitions/TelemetrySession"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to see this telemetry session"
+                    },
+                    "404":{
+                        "description":"The DataView or telemetry session couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            },
+            "post":{
+                "tags":[
+                    "Telemetry"
+                ],
+                "summary":"Creates a new telemetry session from the given details",
+                "operationId":"Telemetry_CreateTelemetrySession",
+                "consumes":[
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"stateId",
+                        "in":"path",
+                        "description":"The id of the telemetry state the session belongs to",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"sessionId",
+                        "in":"path",
+                        "description":"The id of the telemetry session",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"createTelemetrySessionDetails",
+                        "in":"body",
+                        "description":"The details of the telemetry session to create",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/CreateTelemetrySessionDetails"
+                        }
+                    }
+                ],
+                "responses":{
+                    "201":{
+                        "description":"The telemetry session was created successfully",
+                        "schema":{
+                            "$ref":"#/definitions/TelemetrySession"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to create this telemetry session"
+                    },
+                    "404":{
+                        "description":"The DataView couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Telemetry/States/{stateId}/Sessions/{sessionId}/Update":{
+            "post":{
+                "tags":[
+                    "Telemetry"
+                ],
+                "summary":"Update a particular telemetry session from the given details",
+                "operationId":"Telemetry_UpdateTelemetrySession",
+                "consumes":[
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"stateId",
+                        "in":"path",
+                        "description":"The id of the telemetry state the session belongs to",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"sessionId",
+                        "in":"path",
+                        "description":"The id of the telemetry session",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"updateTelemetrySessionDetails",
+                        "in":"body",
+                        "description":"The details of the telemetry session to update",
+                        "required":false,
+                        "schema":{
+                            "$ref":"#/definitions/UpdateTelemetrySessionDetails"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The telemetry session was updated successfully",
+                        "schema":{
+                            "$ref":"#/definitions/TelemetrySession"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"The given session is not allowed to update this telemetry session"
+                    },
+                    "404":{
+                        "description":"The DataView couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
         "/{dataViewName}/TemporaryFiles/{id}":{
             "get":{
                 "tags":[
@@ -9952,6 +11562,91 @@
                 ]
             }
         },
+        "/{dataViewName}/Users/{username}/LoginHistory":{
+            "get":{
+                "tags":[
+                    "Users"
+                ],
+                "summary":"Gets a list of users last login history",
+                "operationId":"Users_GetPreviousLoginHistory",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"username",
+                        "in":"path",
+                        "description":"The user to get login history for",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"filter",
+                        "in":"query",
+                        "description":"Filter the list of items using a simple expression language.  The available list of fields are Username, ClientType, SystemName, Timestamp",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"orderBy",
+                        "in":"query",
+                        "description":"Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, ClientType, SystemName, Timestamp",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"offset",
+                        "in":"query",
+                        "description":"The number of items to skip in the (potentially filtered) result set before returning subsequent items.",
+                        "required":false,
+                        "type":"integer",
+                        "minimum":0.0
+                    },
+                    {
+                        "name":"count",
+                        "in":"query",
+                        "description":"The maximum number of items to show from the (potentially filtered) result set.",
+                        "required":false,
+                        "type":"integer",
+                        "minimum":0.0
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"the username is valid",
+                        "schema":{
+                            "$ref":"#/definitions/PagedResults[UserLogin]"
+                        }
+                    },
+                    "400":{
+                        "description":"The username is not valid or the user id doesn't match the authenticated session"
+                    },
+                    "404":{
+                        "description":"The DataView or the details associated with the given session id can't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
         "/{dataViewName}/Users/{username}/Collections":{
             "get":{
                 "tags":[
@@ -10626,6 +12321,71 @@
                     },
                     "404":{
                         "description":"The audience, username or DataView couldn't be found"
+                    }
+                },
+                "security":[
+                    {
+                        "faststats_auth":[
+
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Users/{username}/Dashboards/{dashboardId}":{
+            "get":{
+                "tags":[
+                    "Users"
+                ],
+                "summary":"EXPERIMENTAL: Gets a dashboard in the DataView.",
+                "description":"EXPERIMENTAL",
+                "operationId":"Users_GetDashboard",
+                "consumes":[
+
+                ],
+                "produces":[
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters":[
+                    {
+                        "name":"dataViewName",
+                        "in":"path",
+                        "description":"The name of the DataView to act on",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"username",
+                        "in":"path",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"dashboardId",
+                        "in":"path",
+                        "required":true,
+                        "type":"integer",
+                        "format":"int32"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"The dashboard",
+                        "schema":{
+                            "$ref":"#/definitions/DashboardDetail"
+                        }
+                    },
+                    "400":{
+                        "description":"A bad request"
+                    },
+                    "403":{
+                        "description":"Forbidden"
+                    },
+                    "404":{
+                        "description":"The DataView couldn't be found"
                     }
                 },
                 "security":[
@@ -11470,6 +13230,7 @@
                 "variableName",
                 "size",
                 "chartType",
+                "omitZeros",
                 "description"
             ],
             "type":"object",
@@ -11489,12 +13250,20 @@
                         "Column",
                         "Pie",
                         "Donut",
-                        "Area",
-                        "Funnel",
                         "Line",
-                        "Radar"
+                        "UKPostArea",
+                        "NLProvinces",
+                        "NLMunicipalities",
+                        "DE2DigitPostCode",
+                        "CH2DigitPostCode",
+                        "AU2DigitPostCode",
+                        "USStates"
                     ],
                     "type":"string"
+                },
+                "omitZeros":{
+                    "description":"Whether the chart should omit categories with zero counts",
+                    "type":"boolean"
                 },
                 "description":{
                     "description":"The description to use for this item",
@@ -11577,14 +13346,14 @@
             "type":"object",
             "properties":{
                 "width":{
-                    "format":"int32",
+                    "format":"double",
                     "description":"The width of this position",
-                    "type":"integer"
+                    "type":"number"
                 },
                 "height":{
-                    "format":"int32",
+                    "format":"double",
                     "description":"The height of this position",
-                    "type":"integer"
+                    "type":"number"
                 }
             }
         },
@@ -11830,6 +13599,10 @@
                 "maximumDate":{
                     "format":"date-time",
                     "description":"If this variable is a date variable, The latest date represented by this variable",
+                    "type":"string"
+                },
+                "combinedFromVariableName":{
+                    "description":"If this variable is a summary/combined categories variable, then this is the name of the parent variable that this summarises",
                     "type":"string"
                 }
             }
@@ -14094,6 +15867,70 @@
                 }
             }
         },
+        "LicensingInfo":{
+            "description":"The details for licensing a given query",
+            "required":[
+                "creditRemaining",
+                "grandTotalCost",
+                "numberOfRecordsToLicense",
+                "queryId"
+            ],
+            "type":"object",
+            "properties":{
+                "creditRemaining":{
+                    "format":"double",
+                    "description":"The remaining money available to license records",
+                    "type":"number"
+                },
+                "grandTotalCost":{
+                    "format":"double",
+                    "description":"The total cost to license the records",
+                    "type":"number"
+                },
+                "numberOfRecordsToLicense":{
+                    "format":"int32",
+                    "description":"The number of records from the given query that have not yet been licensed",
+                    "type":"integer"
+                },
+                "queryId":{
+                    "description":"The unique id of an audience data licensing query",
+                    "type":"string"
+                }
+            }
+        },
+        "AudienceDataLicensingInfoJobDetail":{
+            "description":"Details for a job to get data licensing info for an audience",
+            "required":[
+                "id",
+                "isComplete"
+            ],
+            "type":"object",
+            "properties":{
+                "licensingInfo":{
+                    "$ref":"#/definitions/LicensingInfo",
+                    "description":"If present, the end results of this job"
+                },
+                "id":{
+                    "format":"int32",
+                    "description":"The job's id",
+                    "type":"integer"
+                },
+                "isComplete":{
+                    "description":"Whether the job is complete or not",
+                    "type":"boolean"
+                },
+                "queuePosition":{
+                    "format":"int32",
+                    "description":"If present, the position that the job is in the job queue.  Jobs only start being actively processed once they reach the head of the queue",
+                    "type":"integer"
+                },
+                "progress":{
+                    "format":"int32",
+                    "description":"If present, an estimate of how far through its processing this job is",
+                    "type":"integer"
+                }
+            }
+        },
         "PagedResults[CollectionHitSummary]":{
             "description":"Summary details for a user",
             "required":[
@@ -14664,11 +16501,6 @@
         },
         "CubeResult":{
             "description":"Results for processing a cube request",
-            "required":[
-                "ranSuccessfully",
-                "dimensionResults",
-                "measureResults"
-            ],
             "type":"object",
             "properties":{
                 "title":{
@@ -14786,6 +16618,107 @@
                     "items":{
                         "type":"string"
                     }
+                }
+            }
+        },
+        "DataPurchaseDetail":{
+            "description":"Details used to create records purchase",
+            "type":"object",
+            "properties":{
+                "queryId":{
+                    "description":"The unique id of the data licensing query to purchase records for",
+                    "type":"string"
+                },
+                "licensingSet":{
+                    "description":"The name of the licensing set to purchase records for",
+                    "type":"string"
+                },
+                "fileName":{
+                    "description":"The name of the file saved to the user's private directory",
+                    "type":"string"
+                },
+                "grandTotalCost":{
+                    "format":"double",
+                    "description":"The total cost to license the records",
+                    "type":"number"
+                },
+                "purchaseOrderNumber":{
+                    "format":"int32",
+                    "description":"The order number for this purchase of records",
+                    "type":"integer"
+                },
+                "password":{
+                    "description":"String of characters to authorise purchase",
+                    "type":"string"
+                }
+            }
+        },
+        "PurchaseInfo":{
+            "description":"The details for licensing a given query",
+            "required":[
+                "numberOfRecordsLicensed",
+                "creditRemaining",
+                "grandTotalCost",
+                "queryId",
+                "urnFilePath"
+            ],
+            "type":"object",
+            "properties":{
+                "numberOfRecordsLicensed":{
+                    "format":"int32",
+                    "description":"The number of records from the given query that have not yet been licensed",
+                    "type":"integer"
+                },
+                "creditRemaining":{
+                    "format":"double",
+                    "description":"The remaining money available to license records",
+                    "type":"number"
+                },
+                "grandTotalCost":{
+                    "format":"double",
+                    "description":"The total cost of records licensed",
+                    "type":"number"
+                },
+                "queryId":{
+                    "description":"The unique id of an audience data licensing query",
+                    "type":"string"
+                },
+                "urnFilePath":{
+                    "description":"The location of the Urn file for the purchased records",
+                    "type":"string"
+                }
+            }
+        },
+        "DataPurchaseJobDetail":{
+            "description":"Details for a job to purchase data licensing records",
+            "required":[
+                "id",
+                "isComplete"
+            ],
+            "type":"object",
+            "properties":{
+                "purchaseInfo":{
+                    "$ref":"#/definitions/PurchaseInfo",
+                    "description":"If present, the end results of this job"
+                },
+                "id":{
+                    "format":"int32",
+                    "description":"The job's id",
+                    "type":"integer"
+                },
+                "isComplete":{
+                    "description":"Whether the job is complete or not",
+                    "type":"boolean"
+                },
+                "queuePosition":{
+                    "format":"int32",
+                    "description":"If present, the position that the job is in the job queue.  Jobs only start being actively processed once they reach the head of the queue",
+                    "type":"integer"
+                },
+                "progress":{
+                    "format":"int32",
+                    "description":"If present, an estimate of how far through its processing this job is",
+                    "type":"integer"
                 }
             }
         },
@@ -14969,9 +16902,6 @@
         },
         "ExportResult":{
             "description":"Results for processing an export request",
-            "required":[
-                "ranSuccessfully"
-            ],
             "type":"object",
             "properties":{
                 "title":{
@@ -15459,41 +17389,6 @@
                     "format":"date-time",
                     "description":"The date and time that the FastStats system was built",
                     "type":"string"
-                }
-            }
-        },
-        "PagedResults[FastStatsSystemDetail]":{
-            "description":"Summary details for a user",
-            "required":[
-                "offset",
-                "count",
-                "totalCount",
-                "list"
-            ],
-            "type":"object",
-            "properties":{
-                "offset":{
-                    "format":"int32",
-                    "description":"The number of items that were skipped over from the (potentially filtered) result set",
-                    "type":"integer"
-                },
-                "count":{
-                    "format":"int32",
-                    "description":"The number of items returned in this page of the result set",
-                    "type":"integer"
-                },
-                "totalCount":{
-                    "format":"int32",
-                    "description":"The total number of items available in the (potentially filtered) result set",
-                    "type":"integer"
-                },
-                "list":{
-                    "description":"The list of results",
-                    "uniqueItems":false,
-                    "type":"array",
-                    "items":{
-                        "$ref":"#/definitions/FastStatsSystemDetail"
-                    }
                 }
             }
         },
@@ -16274,6 +18169,32 @@
                         "PauseAction"
                     ],
                     "type":"string"
+                },
+                "path":{
+                    "description":"The element's path",
+                    "uniqueItems":false,
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/definitions/ElementKey"
+                    }
+                }
+            }
+        },
+        "ElementKey":{
+            "description":"Summary information for a PeopleStage Element Key",
+            "required":[
+                "id",
+                "description"
+            ],
+            "type":"object",
+            "properties":{
+                "id":{
+                    "description":"The element's id",
+                    "type":"string"
+                },
+                "description":{
+                    "description":"The element's description",
+                    "type":"string"
                 }
             }
         },
@@ -16352,6 +18273,14 @@
                         "PauseAction"
                     ],
                     "type":"string"
+                },
+                "path":{
+                    "description":"The element's path",
+                    "uniqueItems":false,
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/definitions/ElementKey"
+                    }
                 }
             }
         },
@@ -16757,6 +18686,14 @@
                     "format":"date-time",
                     "description":"The date and time that the statistics were calculated",
                     "type":"string"
+                },
+                "path":{
+                    "description":"The element's path",
+                    "uniqueItems":false,
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/definitions/ElementKey"
+                    }
                 }
             }
         },
@@ -16996,6 +18933,7 @@
                 "accessToken",
                 "user",
                 "sessionId",
+                "lastLogin",
                 "licence"
             ],
             "type":"object",
@@ -17010,6 +18948,11 @@
                 },
                 "sessionId":{
                     "description":"The id for this current session",
+                    "type":"string"
+                },
+                "lastLogin":{
+                    "format":"date-time",
+                    "description":"The last login for the user",
                     "type":"string"
                 },
                 "licence":{
@@ -17053,6 +18996,19 @@
                 "profile":{
                     "description":"Whether this user is allowed to access \"Profile\" functionality.",
                     "type":"boolean"
+                }
+            }
+        },
+        "TokenLoginDetails":{
+            "description":"The details required to create a session to log in with using the TokenLogin method",
+            "required":[
+                "token"
+            ],
+            "type":"object",
+            "properties":{
+                "token":{
+                    "description":"The login JWT token used to create the session",
+                    "type":"string"
                 }
             }
         },
@@ -17683,6 +19639,147 @@
                 }
             }
         },
+        "CreateTelemetryStateDetails":{
+            "required":[
+                "username"
+            ],
+            "type":"object",
+            "properties":{
+                "username":{
+                    "description":"The username for this telemetry state",
+                    "type":"string"
+                }
+            }
+        },
+        "TelemetryState":{
+            "required":[
+                "id",
+                "optState",
+                "logins"
+            ],
+            "type":"object",
+            "properties":{
+                "id":{
+                    "description":"The id for this telemetry state",
+                    "type":"string"
+                },
+                "optState":{
+                    "description":"The opt state for this telemetry state",
+                    "enum":[
+                        "NotOpted",
+                        "OptedOut",
+                        "OptedIn",
+                        "ForcedOut",
+                        "ForcedIn"
+                    ],
+                    "type":"string"
+                },
+                "logins":{
+                    "format":"int64",
+                    "description":"The number of logins for this telemetry state",
+                    "type":"integer"
+                }
+            }
+        },
+        "UpdateTelemetryStateDetails":{
+            "required":[
+                "optState"
+            ],
+            "type":"object",
+            "properties":{
+                "optState":{
+                    "description":"The optState for this telemetry state",
+                    "enum":[
+                        "NotOpted",
+                        "OptedOut",
+                        "OptedIn",
+                        "ForcedOut",
+                        "ForcedIn"
+                    ],
+                    "type":"string"
+                }
+            }
+        },
+        "TelemetrySession":{
+            "required":[
+                "id",
+                "clientType"
+            ],
+            "type":"object",
+            "properties":{
+                "id":{
+                    "description":"The Id for this telemetry session",
+                    "type":"string"
+                },
+                "apiVersion":{
+                    "description":"The API version for this telemetry session",
+                    "type":"string"
+                },
+                "clientType":{
+                    "description":"The client type for this telemetry session",
+                    "enum":[
+                        "Orbit"
+                    ],
+                    "type":"string"
+                },
+                "clientVersion":{
+                    "description":"The client version for this telemetry session",
+                    "type":"string"
+                },
+                "sessionStart":{
+                    "format":"date-time",
+                    "description":"The start time for this telemetry session",
+                    "type":"string"
+                },
+                "sessionEnd":{
+                    "format":"date-time",
+                    "description":"The end time for this telemetry session",
+                    "type":"string"
+                },
+                "lastSessionAction":{
+                    "format":"date-time",
+                    "description":"The last action time for this telemetry session",
+                    "type":"string"
+                },
+                "userAgentDetails":{
+                    "description":"The user agent details for this telemetry session",
+                    "type":"string"
+                }
+            }
+        },
+        "CreateTelemetrySessionDetails":{
+            "required":[
+                "clientType"
+            ],
+            "type":"object",
+            "properties":{
+                "clientType":{
+                    "description":"The client type for this telemetry session",
+                    "enum":[
+                        "Orbit"
+                    ],
+                    "type":"string"
+                },
+                "clientVersion":{
+                    "description":"The client version for this telemetry session",
+                    "type":"string"
+                },
+                "userAgentDetails":{
+                    "description":"The user agent details for this telemetry session",
+                    "type":"string"
+                }
+            }
+        },
+        "UpdateTelemetrySessionDetails":{
+            "type":"object",
+            "properties":{
+                "sessionEnd":{
+                    "format":"date-time",
+                    "description":"The end time for this telemetry session",
+                    "type":"string"
+                }
+            }
+        },
         "TemporaryFile":{
             "description":"Details of a temporary file",
             "required":[
@@ -18215,6 +20312,70 @@
                 },
                 "newPassword":{
                     "description":"The new password to use",
+                    "type":"string"
+                }
+            }
+        },
+        "PagedResults[UserLogin]":{
+            "description":"Summary details for a user",
+            "required":[
+                "offset",
+                "count",
+                "totalCount",
+                "list"
+            ],
+            "type":"object",
+            "properties":{
+                "offset":{
+                    "format":"int32",
+                    "description":"The number of items that were skipped over from the (potentially filtered) result set",
+                    "type":"integer"
+                },
+                "count":{
+                    "format":"int32",
+                    "description":"The number of items returned in this page of the result set",
+                    "type":"integer"
+                },
+                "totalCount":{
+                    "format":"int32",
+                    "description":"The total number of items available in the (potentially filtered) result set",
+                    "type":"integer"
+                },
+                "list":{
+                    "description":"The list of results",
+                    "uniqueItems":false,
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/definitions/UserLogin"
+                    }
+                }
+            }
+        },
+        "UserLogin":{
+            "description":"The last login details for the user",
+            "required":[
+                "username",
+                "systemName",
+                "clientType",
+                "timestamp"
+            ],
+            "type":"object",
+            "properties":{
+                "username":{
+                    "description":"The username",
+                    "type":"string"
+                },
+                "systemName":{
+                    "description":"The system name logged in to",
+                    "type":"string"
+                },
+                "clientType":{
+                    "description":"The Client Type logged in to",
+                    "type":"string"
+                },
+                "timestamp":{
+                    "format":"date-time",
+                    "description":"The DateTime of the users last login",
                     "type":"string"
                 }
             }
@@ -19109,6 +21270,37 @@
                     "format":"int32",
                     "description":"The id of the last update for this audience",
                     "type":"integer"
+                }
+            }
+        },
+        "DashboardDetail":{
+            "description":"Details for a dashboard",
+            "required":[
+                "id",
+                "title"
+            ],
+            "type":"object",
+            "properties":{
+                "id":{
+                    "format":"int32",
+                    "description":"The dashboard's id",
+                    "type":"integer"
+                },
+                "title":{
+                    "description":"The title of the dashboard",
+                    "type":"string"
+                },
+                "description":{
+                    "description":"The description of the dashboard",
+                    "type":"string"
+                },
+                "definition":{
+                    "description":"The definition of the dashboard",
+                    "type":"string"
+                },
+                "systemName":{
+                    "description":"The connected system of the dashboard",
+                    "type":"string"
                 }
             }
         },
