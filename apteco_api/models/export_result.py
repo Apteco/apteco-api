@@ -79,7 +79,8 @@ class ExportResult(object):
             self.title = title
         if notes is not None:
             self.notes = notes
-        self.ran_successfully = ran_successfully
+        if ran_successfully is not None:
+            self.ran_successfully = ran_successfully
         if system_name is not None:
             self.system_name = system_name
         if system_load_date is not None:
@@ -163,8 +164,6 @@ class ExportResult(object):
         :param ran_successfully: The ran_successfully of this ExportResult.  # noqa: E501
         :type: bool
         """
-        if ran_successfully is None:
-            raise ValueError("Invalid value for `ran_successfully`, must not be `None`")  # noqa: E501
 
         self._ran_successfully = ran_successfully
 

@@ -20,6 +20,7 @@ from apteco_api.models.age_rule import AgeRule
 from apteco_api.models.audience_calculate_job_detail import AudienceCalculateJobDetail
 from apteco_api.models.audience_check_detail import AudienceCheckDetail
 from apteco_api.models.audience_check_job_detail import AudienceCheckJobDetail
+from apteco_api.models.audience_data_licensing_info_job_detail import AudienceDataLicensingInfoJobDetail
 from apteco_api.models.audience_detail import AudienceDetail
 from apteco_api.models.audience_export_detail import AudienceExportDetail
 from apteco_api.models.audience_export_job_detail import AudienceExportJobDetail
@@ -62,12 +63,17 @@ from apteco_api.models.create_reset_password_request import CreateResetPasswordR
 from apteco_api.models.create_session_parameters import CreateSessionParameters
 from apteco_api.models.create_share_detail import CreateShareDetail
 from apteco_api.models.create_share_update import CreateShareUpdate
+from apteco_api.models.create_telemetry_session_details import CreateTelemetrySessionDetails
+from apteco_api.models.create_telemetry_state_details import CreateTelemetryStateDetails
 from apteco_api.models.create_user_registration_request import CreateUserRegistrationRequest
 from apteco_api.models.created_share_update_detail import CreatedShareUpdateDetail
 from apteco_api.models.criteria import Criteria
 from apteco_api.models.cube import Cube
 from apteco_api.models.cube_result import CubeResult
+from apteco_api.models.dashboard_detail import DashboardDetail
 from apteco_api.models.dashboard_item import DashboardItem
+from apteco_api.models.data_purchase_detail import DataPurchaseDetail
+from apteco_api.models.data_purchase_job_detail import DataPurchaseJobDetail
 from apteco_api.models.data_view_details import DataViewDetails
 from apteco_api.models.data_view_summary import DataViewSummary
 from apteco_api.models.date_rule import DateRule
@@ -76,6 +82,7 @@ from apteco_api.models.dimension import Dimension
 from apteco_api.models.dimension_banding import DimensionBanding
 from apteco_api.models.dimension_result import DimensionResult
 from apteco_api.models.element_detail import ElementDetail
+from apteco_api.models.element_key import ElementKey
 from apteco_api.models.element_status import ElementStatus
 from apteco_api.models.element_summary import ElementSummary
 from apteco_api.models.email_requirements import EmailRequirements
@@ -103,6 +110,7 @@ from apteco_api.models.job_summary import JobSummary
 from apteco_api.models.language_details import LanguageDetails
 from apteco_api.models.last_run_details import LastRunDetails
 from apteco_api.models.licence import Licence
+from apteco_api.models.licensing_info import LicensingInfo
 from apteco_api.models.limits import Limits
 from apteco_api.models.link import Link
 from apteco_api.models.list_rule import ListRule
@@ -136,7 +144,6 @@ from apteco_api.models.paged_results_data_view_summary import PagedResultsDataVi
 from apteco_api.models.paged_results_element_status import PagedResultsElementStatus
 from apteco_api.models.paged_results_element_summary import PagedResultsElementSummary
 from apteco_api.models.paged_results_endpoint_details import PagedResultsEndpointDetails
-from apteco_api.models.paged_results_fast_stats_system_detail import PagedResultsFastStatsSystemDetail
 from apteco_api.models.paged_results_fast_stats_system_item import PagedResultsFastStatsSystemItem
 from apteco_api.models.paged_results_fast_stats_system_summary import PagedResultsFastStatsSystemSummary
 from apteco_api.models.paged_results_file_entry import PagedResultsFileEntry
@@ -155,6 +162,7 @@ from apteco_api.models.paged_results_table import PagedResultsTable
 from apteco_api.models.paged_results_user_audience_summary import PagedResultsUserAudienceSummary
 from apteco_api.models.paged_results_user_collection_summary import PagedResultsUserCollectionSummary
 from apteco_api.models.paged_results_user_display_details import PagedResultsUserDisplayDetails
+from apteco_api.models.paged_results_user_login import PagedResultsUserLogin
 from apteco_api.models.paged_results_user_registration_request_summary import PagedResultsUserRegistrationRequestSummary
 from apteco_api.models.paged_results_user_summary import PagedResultsUserSummary
 from apteco_api.models.paged_results_var_code import PagedResultsVarCode
@@ -168,6 +176,7 @@ from apteco_api.models.per_response_type_statistics import PerResponseTypeStatis
 from apteco_api.models.process_details import ProcessDetails
 from apteco_api.models.processing_time_statistics import ProcessingTimeStatistics
 from apteco_api.models.processing_time_statistics_details import ProcessingTimeStatisticsDetails
+from apteco_api.models.purchase_info import PurchaseInfo
 from apteco_api.models.query import Query
 from apteco_api.models.query_detail_count import QueryDetailCount
 from apteco_api.models.query_details import QueryDetails
@@ -204,13 +213,18 @@ from apteco_api.models.sub_selection import SubSelection
 from apteco_api.models.system_lookup import SystemLookup
 from apteco_api.models.table import Table
 from apteco_api.models.table_item import TableItem
+from apteco_api.models.telemetry_session import TelemetrySession
+from apteco_api.models.telemetry_state import TelemetryState
 from apteco_api.models.temporary_file import TemporaryFile
 from apteco_api.models.temporary_file_part import TemporaryFilePart
 from apteco_api.models.text_variable_info import TextVariableInfo
 from apteco_api.models.time_rule import TimeRule
+from apteco_api.models.token_login_details import TokenLoginDetails
 from apteco_api.models.top_n import TopN
 from apteco_api.models.transfer_audience_ownership_details import TransferAudienceOwnershipDetails
 from apteco_api.models.transfer_collection_ownership_details import TransferCollectionOwnershipDetails
+from apteco_api.models.update_telemetry_session_details import UpdateTelemetrySessionDetails
+from apteco_api.models.update_telemetry_state_details import UpdateTelemetryStateDetails
 from apteco_api.models.update_user_details import UpdateUserDetails
 from apteco_api.models.upsert_collection_detail import UpsertCollectionDetail
 from apteco_api.models.upsert_user_collection_detail import UpsertUserCollectionDetail
@@ -221,6 +235,7 @@ from apteco_api.models.user_collection_summary import UserCollectionSummary
 from apteco_api.models.user_configuration_details import UserConfigurationDetails
 from apteco_api.models.user_detail import UserDetail
 from apteco_api.models.user_display_details import UserDisplayDetails
+from apteco_api.models.user_login import UserLogin
 from apteco_api.models.user_registration_request_detail import UserRegistrationRequestDetail
 from apteco_api.models.user_registration_request_summary import UserRegistrationRequestSummary
 from apteco_api.models.user_summary import UserSummary

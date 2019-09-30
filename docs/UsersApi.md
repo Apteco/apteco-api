@@ -5,6 +5,8 @@ All URIs are relative to *http://example.com/OrbitAPI*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**users_change_user_password**](UsersApi.md#users_change_user_password) | **POST** /{dataViewName}/Users/{username}/ChangePassword | Change the password for the user with the given username
+[**users_get_dashboard**](UsersApi.md#users_get_dashboard) | **GET** /{dataViewName}/Users/{username}/Dashboards/{dashboardId} | EXPERIMENTAL: Gets a dashboard in the DataView.
+[**users_get_previous_login_history**](UsersApi.md#users_get_previous_login_history) | **GET** /{dataViewName}/Users/{username}/LoginHistory | Gets a list of users last login history
 [**users_get_user_audience**](UsersApi.md#users_get_user_audience) | **GET** /{dataViewName}/Users/{username}/Audiences/{audienceId} | Returns the details of a particular audience
 [**users_get_user_audiences**](UsersApi.md#users_get_user_audiences) | **GET** /{dataViewName}/Users/{username}/Audiences | Returns the list of audiences associated with the given user
 [**users_get_user_collection**](UsersApi.md#users_get_user_collection) | **GET** /{dataViewName}/Users/{username}/Collections/{collectionId} | Returns the details of a particular collection
@@ -80,6 +82,143 @@ void (empty response body)
 **400** | Bad request or supplied old password doesn&#39;t match user&#39;s current password |  -  |
 **403** | The user doesn&#39;t match the authenticated session or isn&#39;t an admin |  -  |
 **404** | The DataView couldn&#39;t be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **users_get_dashboard**
+> DashboardDetail users_get_dashboard(data_view_name, username, dashboard_id)
+
+EXPERIMENTAL: Gets a dashboard in the DataView.
+
+EXPERIMENTAL
+
+### Example
+
+* Api Key Authentication (faststats_auth):
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+configuration = apteco_api.Configuration()
+# Configure API key authorization: faststats_auth
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = apteco_api.UsersApi(apteco_api.ApiClient(configuration))
+data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+username = 'username_example' # str | 
+dashboard_id = 56 # int | 
+
+try:
+    # EXPERIMENTAL: Gets a dashboard in the DataView.
+    api_response = api_instance.users_get_dashboard(data_view_name, username, dashboard_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UsersApi->users_get_dashboard: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data_view_name** | **str**| The name of the DataView to act on | 
+ **username** | **str**|  | 
+ **dashboard_id** | **int**|  | 
+
+### Return type
+
+[**DashboardDetail**](DashboardDetail.md)
+
+### Authorization
+
+[faststats_auth](../README.md#faststats_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The dashboard |  -  |
+**400** | A bad request |  -  |
+**403** | Forbidden |  -  |
+**404** | The DataView couldn&#39;t be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **users_get_previous_login_history**
+> PagedResultsUserLogin users_get_previous_login_history(data_view_name, username, filter=filter, order_by=order_by, offset=offset, count=count)
+
+Gets a list of users last login history
+
+### Example
+
+* Api Key Authentication (faststats_auth):
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+configuration = apteco_api.Configuration()
+# Configure API key authorization: faststats_auth
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = apteco_api.UsersApi(apteco_api.ApiClient(configuration))
+data_view_name = 'data_view_name_example' # str | 
+username = 'username_example' # str | The user to get login history for
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username, ClientType, SystemName, Timestamp (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, ClientType, SystemName, Timestamp (optional)
+offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
+count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
+
+try:
+    # Gets a list of users last login history
+    api_response = api_instance.users_get_previous_login_history(data_view_name, username, filter=filter, order_by=order_by, offset=offset, count=count)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UsersApi->users_get_previous_login_history: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data_view_name** | **str**|  | 
+ **username** | **str**| The user to get login history for | 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Username, ClientType, SystemName, Timestamp | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Username, ClientType, SystemName, Timestamp | [optional] 
+ **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
+ **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
+
+### Return type
+
+[**PagedResultsUserLogin**](PagedResultsUserLogin.md)
+
+### Authorization
+
+[faststats_auth](../README.md#faststats_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the username is valid |  -  |
+**400** | The username is not valid or the user id doesn&#39;t match the authenticated session |  -  |
+**404** | The DataView or the details associated with the given session id can&#39;t be found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

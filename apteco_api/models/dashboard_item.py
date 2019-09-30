@@ -35,6 +35,7 @@ class DashboardItem(object):
         'variable_name': 'str',
         'size': 'Size',
         'chart_type': 'str',
+        'omit_zeros': 'bool',
         'description': 'str'
     }
 
@@ -42,21 +43,24 @@ class DashboardItem(object):
         'variable_name': 'variableName',
         'size': 'size',
         'chart_type': 'chartType',
+        'omit_zeros': 'omitZeros',
         'description': 'description'
     }
 
-    def __init__(self, variable_name=None, size=None, chart_type=None, description=None):  # noqa: E501
+    def __init__(self, variable_name=None, size=None, chart_type=None, omit_zeros=None, description=None):  # noqa: E501
         """DashboardItem - a model defined in OpenAPI"""  # noqa: E501
 
         self._variable_name = None
         self._size = None
         self._chart_type = None
+        self._omit_zeros = None
         self._description = None
         self.discriminator = None
 
         self.variable_name = variable_name
         self.size = size
         self.chart_type = chart_type
+        self.omit_zeros = omit_zeros
         self.description = description
 
     @property
@@ -129,7 +133,7 @@ class DashboardItem(object):
         """
         if chart_type is None:
             raise ValueError("Invalid value for `chart_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["Bar", "Column", "Pie", "Donut", "Area", "Funnel", "Line", "Radar"]  # noqa: E501
+        allowed_values = ["Bar", "Column", "Pie", "Donut", "Line", "UKPostArea", "NLProvinces", "NLMunicipalities", "DE2DigitPostCode", "CH2DigitPostCode", "AU2DigitPostCode", "USStates"]  # noqa: E501
         if chart_type not in allowed_values:
             raise ValueError(
                 "Invalid value for `chart_type` ({0}), must be one of {1}"  # noqa: E501
@@ -137,6 +141,31 @@ class DashboardItem(object):
             )
 
         self._chart_type = chart_type
+
+    @property
+    def omit_zeros(self):
+        """Gets the omit_zeros of this DashboardItem.  # noqa: E501
+
+        Whether the chart should omit categories with zero counts  # noqa: E501
+
+        :return: The omit_zeros of this DashboardItem.  # noqa: E501
+        :rtype: bool
+        """
+        return self._omit_zeros
+
+    @omit_zeros.setter
+    def omit_zeros(self, omit_zeros):
+        """Sets the omit_zeros of this DashboardItem.
+
+        Whether the chart should omit categories with zero counts  # noqa: E501
+
+        :param omit_zeros: The omit_zeros of this DashboardItem.  # noqa: E501
+        :type: bool
+        """
+        if omit_zeros is None:
+            raise ValueError("Invalid value for `omit_zeros`, must not be `None`")  # noqa: E501
+
+        self._omit_zeros = omit_zeros
 
     @property
     def description(self):

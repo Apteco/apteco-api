@@ -35,6 +35,7 @@ class SessionDetails(object):
         'access_token': 'str',
         'user': 'UserDisplayDetails',
         'session_id': 'str',
+        'last_login': 'datetime',
         'licence': 'Licence'
     }
 
@@ -42,21 +43,24 @@ class SessionDetails(object):
         'access_token': 'accessToken',
         'user': 'user',
         'session_id': 'sessionId',
+        'last_login': 'lastLogin',
         'licence': 'licence'
     }
 
-    def __init__(self, access_token=None, user=None, session_id=None, licence=None):  # noqa: E501
+    def __init__(self, access_token=None, user=None, session_id=None, last_login=None, licence=None):  # noqa: E501
         """SessionDetails - a model defined in OpenAPI"""  # noqa: E501
 
         self._access_token = None
         self._user = None
         self._session_id = None
+        self._last_login = None
         self._licence = None
         self.discriminator = None
 
         self.access_token = access_token
         self.user = user
         self.session_id = session_id
+        self.last_login = last_login
         self.licence = licence
 
     @property
@@ -131,6 +135,31 @@ class SessionDetails(object):
             raise ValueError("Invalid value for `session_id`, must not be `None`")  # noqa: E501
 
         self._session_id = session_id
+
+    @property
+    def last_login(self):
+        """Gets the last_login of this SessionDetails.  # noqa: E501
+
+        The last login for the user  # noqa: E501
+
+        :return: The last_login of this SessionDetails.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._last_login
+
+    @last_login.setter
+    def last_login(self, last_login):
+        """Sets the last_login of this SessionDetails.
+
+        The last login for the user  # noqa: E501
+
+        :param last_login: The last_login of this SessionDetails.  # noqa: E501
+        :type: datetime
+        """
+        if last_login is None:
+            raise ValueError("Invalid value for `last_login`, must not be `None`")  # noqa: E501
+
+        self._last_login = last_login
 
     @property
     def licence(self):

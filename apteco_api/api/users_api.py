@@ -155,6 +155,264 @@ class UsersApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def users_get_dashboard(self, data_view_name, username, dashboard_id, **kwargs):  # noqa: E501
+        """EXPERIMENTAL: Gets a dashboard in the DataView.  # noqa: E501
+
+        EXPERIMENTAL  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.users_get_dashboard(data_view_name, username, dashboard_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str username: (required)
+        :param int dashboard_id: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: DashboardDetail
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.users_get_dashboard_with_http_info(data_view_name, username, dashboard_id, **kwargs)  # noqa: E501
+
+    def users_get_dashboard_with_http_info(self, data_view_name, username, dashboard_id, **kwargs):  # noqa: E501
+        """EXPERIMENTAL: Gets a dashboard in the DataView.  # noqa: E501
+
+        EXPERIMENTAL  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.users_get_dashboard_with_http_info(data_view_name, username, dashboard_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str username: (required)
+        :param int dashboard_id: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(DashboardDetail, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['data_view_name', 'username', 'dashboard_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method users_get_dashboard" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if ('data_view_name' not in local_var_params or
+                local_var_params['data_view_name'] is None):
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_dashboard`")  # noqa: E501
+        # verify the required parameter 'username' is set
+        if ('username' not in local_var_params or
+                local_var_params['username'] is None):
+            raise ApiValueError("Missing the required parameter `username` when calling `users_get_dashboard`")  # noqa: E501
+        # verify the required parameter 'dashboard_id' is set
+        if ('dashboard_id' not in local_var_params or
+                local_var_params['dashboard_id'] is None):
+            raise ApiValueError("Missing the required parameter `dashboard_id` when calling `users_get_dashboard`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'username' in local_var_params:
+            path_params['username'] = local_var_params['username']  # noqa: E501
+        if 'dashboard_id' in local_var_params:
+            path_params['dashboardId'] = local_var_params['dashboard_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Users/{username}/Dashboards/{dashboardId}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='DashboardDetail',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def users_get_previous_login_history(self, data_view_name, username, **kwargs):  # noqa: E501
+        """Gets a list of users last login history  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.users_get_previous_login_history(data_view_name, username, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: (required)
+        :param str username: The user to get login history for (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, ClientType, SystemName, Timestamp
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, ClientType, SystemName, Timestamp
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: PagedResultsUserLogin
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.users_get_previous_login_history_with_http_info(data_view_name, username, **kwargs)  # noqa: E501
+
+    def users_get_previous_login_history_with_http_info(self, data_view_name, username, **kwargs):  # noqa: E501
+        """Gets a list of users last login history  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.users_get_previous_login_history_with_http_info(data_view_name, username, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: (required)
+        :param str username: The user to get login history for (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, ClientType, SystemName, Timestamp
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, ClientType, SystemName, Timestamp
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(PagedResultsUserLogin, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['data_view_name', 'username', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method users_get_previous_login_history" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if ('data_view_name' not in local_var_params or
+                local_var_params['data_view_name'] is None):
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_previous_login_history`")  # noqa: E501
+        # verify the required parameter 'username' is set
+        if ('username' not in local_var_params or
+                local_var_params['username'] is None):
+            raise ApiValueError("Missing the required parameter `username` when calling `users_get_previous_login_history`")  # noqa: E501
+
+        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `offset` when calling `users_get_previous_login_history`, must be a value greater than or equal to `0`")  # noqa: E501
+        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `count` when calling `users_get_previous_login_history`, must be a value greater than or equal to `0`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'username' in local_var_params:
+            path_params['username'] = local_var_params['username']  # noqa: E501
+
+        query_params = []
+        if 'filter' in local_var_params:
+            query_params.append(('filter', local_var_params['filter']))  # noqa: E501
+        if 'order_by' in local_var_params:
+            query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
+        if 'offset' in local_var_params:
+            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
+        if 'count' in local_var_params:
+            query_params.append(('count', local_var_params['count']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Users/{username}/LoginHistory', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PagedResultsUserLogin',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def users_get_user_audience(self, data_view_name, username, audience_id, **kwargs):  # noqa: E501
         """Returns the details of a particular audience  # noqa: E501
 

@@ -40,7 +40,8 @@ class SelectorVariableInfo(object):
         'minimum_var_code_count': 'int',
         'maximum_var_code_count': 'int',
         'minimum_date': 'datetime',
-        'maximum_date': 'datetime'
+        'maximum_date': 'datetime',
+        'combined_from_variable_name': 'str'
     }
 
     attribute_map = {
@@ -52,10 +53,11 @@ class SelectorVariableInfo(object):
         'minimum_var_code_count': 'minimumVarCodeCount',
         'maximum_var_code_count': 'maximumVarCodeCount',
         'minimum_date': 'minimumDate',
-        'maximum_date': 'maximumDate'
+        'maximum_date': 'maximumDate',
+        'combined_from_variable_name': 'combinedFromVariableName'
     }
 
-    def __init__(self, selector_type=None, sub_type=None, var_code_order=None, number_of_codes=None, code_length=None, minimum_var_code_count=None, maximum_var_code_count=None, minimum_date=None, maximum_date=None):  # noqa: E501
+    def __init__(self, selector_type=None, sub_type=None, var_code_order=None, number_of_codes=None, code_length=None, minimum_var_code_count=None, maximum_var_code_count=None, minimum_date=None, maximum_date=None, combined_from_variable_name=None):  # noqa: E501
         """SelectorVariableInfo - a model defined in OpenAPI"""  # noqa: E501
 
         self._selector_type = None
@@ -67,6 +69,7 @@ class SelectorVariableInfo(object):
         self._maximum_var_code_count = None
         self._minimum_date = None
         self._maximum_date = None
+        self._combined_from_variable_name = None
         self.discriminator = None
 
         if selector_type is not None:
@@ -87,6 +90,8 @@ class SelectorVariableInfo(object):
             self.minimum_date = minimum_date
         if maximum_date is not None:
             self.maximum_date = maximum_date
+        if combined_from_variable_name is not None:
+            self.combined_from_variable_name = combined_from_variable_name
 
     @property
     def selector_type(self):
@@ -312,6 +317,29 @@ class SelectorVariableInfo(object):
         """
 
         self._maximum_date = maximum_date
+
+    @property
+    def combined_from_variable_name(self):
+        """Gets the combined_from_variable_name of this SelectorVariableInfo.  # noqa: E501
+
+        If this variable is a summary/combined categories variable, then this is the name of the parent variable that this summarises  # noqa: E501
+
+        :return: The combined_from_variable_name of this SelectorVariableInfo.  # noqa: E501
+        :rtype: str
+        """
+        return self._combined_from_variable_name
+
+    @combined_from_variable_name.setter
+    def combined_from_variable_name(self, combined_from_variable_name):
+        """Sets the combined_from_variable_name of this SelectorVariableInfo.
+
+        If this variable is a summary/combined categories variable, then this is the name of the parent variable that this summarises  # noqa: E501
+
+        :param combined_from_variable_name: The combined_from_variable_name of this SelectorVariableInfo.  # noqa: E501
+        :type: str
+        """
+
+        self._combined_from_variable_name = combined_from_variable_name
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -34,7 +34,7 @@ api_instance = apteco_api.ExportsApi(apteco_api.ApiClient(configuration))
 data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service's configuration (optional)
-return_definition = True # bool | Whether to include the export's definition in the results (optional)
+return_definition = True # bool | Whether to include the export's definition in the results.  Default is false. (optional)
 export = apteco_api.Export() # Export | The export definition to use (optional)
 
 try:
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
  **data_view_name** | **str**| The name of the DataView to act on | 
  **system_name** | **str**| The name of the FastStats system to act on | 
  **timeout_in_seconds** | **int**| The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service&#39;s configuration | [optional] 
- **return_definition** | **bool**| Whether to include the export&#39;s definition in the results | [optional] 
+ **return_definition** | **bool**| Whether to include the export&#39;s definition in the results.  Default is false. | [optional] 
  **export** | [**Export**](Export.md)| The export definition to use | [optional] 
 
 ### Return type

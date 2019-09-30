@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **first_ran** | **datetime** | The first time that any deliveries ran within this element | [optional] 
 **last_ran** | **datetime** | The last time that any deliveries ran within this element | [optional] 
 **statistics_timestamp** | **datetime** | The date and time that the statistics were calculated | [optional] 
+**path** | [**list[ElementKey]**](ElementKey.md) | The element&#39;s path | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

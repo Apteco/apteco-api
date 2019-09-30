@@ -178,7 +178,7 @@ class QueriesApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
         :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service's configuration
-        :param bool return_definition: Whether to include the query's definition in the results
+        :param bool return_definition: Whether to include the query's definition in the results.  Default is false.
         :param Query query: The query definition to count
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
@@ -207,7 +207,7 @@ class QueriesApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
         :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service's configuration
-        :param bool return_definition: Whether to include the query's definition in the results
+        :param bool return_definition: Whether to include the query's definition in the results.  Default is false.
         :param Query query: The query definition to count
         :param _return_http_data_only: response data without head status code
                                        and headers
@@ -310,7 +310,7 @@ class QueriesApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
         :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service's configuration
-        :param bool return_definition: Whether to include the query's definition in the results
+        :param bool return_definition: Whether to include the query's definition in the results.  Default is false.
         :param QueryFile query_file: The file that holds the query definition to count
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
@@ -339,7 +339,7 @@ class QueriesApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
         :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service's configuration
-        :param bool return_definition: Whether to include the query's definition in the results
+        :param bool return_definition: Whether to include the query's definition in the results.  Default is false.
         :param QueryFile query_file: The file that holds the query definition to count
         :param _return_http_data_only: response data without head status code
                                        and headers

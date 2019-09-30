@@ -82,7 +82,8 @@ class CubeResult(object):
             self.title = title
         if notes is not None:
             self.notes = notes
-        self.ran_successfully = ran_successfully
+        if ran_successfully is not None:
+            self.ran_successfully = ran_successfully
         if system_name is not None:
             self.system_name = system_name
         if system_load_date is not None:
@@ -93,8 +94,10 @@ class CubeResult(object):
             self.run_date = run_date
         if query_description is not None:
             self.query_description = query_description
-        self.dimension_results = dimension_results
-        self.measure_results = measure_results
+        if dimension_results is not None:
+            self.dimension_results = dimension_results
+        if measure_results is not None:
+            self.measure_results = measure_results
         if cube is not None:
             self.cube = cube
         if counts is not None:
@@ -166,8 +169,6 @@ class CubeResult(object):
         :param ran_successfully: The ran_successfully of this CubeResult.  # noqa: E501
         :type: bool
         """
-        if ran_successfully is None:
-            raise ValueError("Invalid value for `ran_successfully`, must not be `None`")  # noqa: E501
 
         self._ran_successfully = ran_successfully
 
@@ -306,8 +307,6 @@ class CubeResult(object):
         :param dimension_results: The dimension_results of this CubeResult.  # noqa: E501
         :type: list[DimensionResult]
         """
-        if dimension_results is None:
-            raise ValueError("Invalid value for `dimension_results`, must not be `None`")  # noqa: E501
 
         self._dimension_results = dimension_results
 
@@ -331,8 +330,6 @@ class CubeResult(object):
         :param measure_results: The measure_results of this CubeResult.  # noqa: E501
         :type: list[MeasureResult]
         """
-        if measure_results is None:
-            raise ValueError("Invalid value for `measure_results`, must not be `None`")  # noqa: E501
 
         self._measure_results = measure_results
 

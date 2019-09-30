@@ -32,8 +32,8 @@ class Size(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'width': 'int',
-        'height': 'int'
+        'width': 'float',
+        'height': 'float'
     }
 
     attribute_map = {
@@ -58,7 +58,7 @@ class Size(object):
         The width of this position  # noqa: E501
 
         :return: The width of this Size.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._width
 
@@ -69,7 +69,7 @@ class Size(object):
         The width of this position  # noqa: E501
 
         :param width: The width of this Size.  # noqa: E501
-        :type: int
+        :type: float
         """
         if width is None:
             raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
@@ -83,7 +83,7 @@ class Size(object):
         The height of this position  # noqa: E501
 
         :return: The height of this Size.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._height
 
@@ -94,7 +94,7 @@ class Size(object):
         The height of this position  # noqa: E501
 
         :param height: The height of this Size.  # noqa: E501
-        :type: int
+        :type: float
         """
         if height is None:
             raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501

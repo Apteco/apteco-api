@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **maximum_var_code_count** | **int** | The maximum count value in the variable&#39;s set of categories (var codes) | [optional] 
 **minimum_date** | **datetime** | If this variable is a date variable, The earliest date represented by this variable | [optional] 
 **maximum_date** | **datetime** | If this variable is a date variable, The latest date represented by this variable | [optional] 
+**combined_from_variable_name** | **str** | If this variable is a summary/combined categories variable, then this is the name of the parent variable that this summarises | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

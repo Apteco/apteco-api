@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **str** | The title of the query that has been counted | [optional] 
 **notes** | **str** | Any notes associated with the query that has been counted | [optional] 
-**ran_successfully** | **bool** | Whether the query was counted successfully or not | 
+**ran_successfully** | **bool** | Whether the query was counted successfully or not | [optional] 
 **system_name** | **str** | The name of the FastStats system that this count has been produced by | [optional] 
 **system_load_date** | **datetime** | The date and time that the FastStats system from which this count has come was last built | [optional] 
 **user_name** | **str** | The name of the user that requested this count | [optional] 

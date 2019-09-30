@@ -37,6 +37,132 @@ class AudiencesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def audiences_calculate_audience_data_licensing_sync(self, data_view_name, audience_id, licensing_set, **kwargs):  # noqa: E501
+        """Get data licensing information for the latest version of this audience  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audiences_calculate_audience_data_licensing_sync(data_view_name, audience_id, licensing_set, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int audience_id: The id of the audience to calculate the result for (required)
+        :param str licensing_set: The name of the licensing set to get the information for (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: LicensingInfo
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.audiences_calculate_audience_data_licensing_sync_with_http_info(data_view_name, audience_id, licensing_set, **kwargs)  # noqa: E501
+
+    def audiences_calculate_audience_data_licensing_sync_with_http_info(self, data_view_name, audience_id, licensing_set, **kwargs):  # noqa: E501
+        """Get data licensing information for the latest version of this audience  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audiences_calculate_audience_data_licensing_sync_with_http_info(data_view_name, audience_id, licensing_set, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int audience_id: The id of the audience to calculate the result for (required)
+        :param str licensing_set: The name of the licensing set to get the information for (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(LicensingInfo, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['data_view_name', 'audience_id', 'licensing_set', 'timeout_in_seconds']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method audiences_calculate_audience_data_licensing_sync" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if ('data_view_name' not in local_var_params or
+                local_var_params['data_view_name'] is None):
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_calculate_audience_data_licensing_sync`")  # noqa: E501
+        # verify the required parameter 'audience_id' is set
+        if ('audience_id' not in local_var_params or
+                local_var_params['audience_id'] is None):
+            raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_calculate_audience_data_licensing_sync`")  # noqa: E501
+        # verify the required parameter 'licensing_set' is set
+        if ('licensing_set' not in local_var_params or
+                local_var_params['licensing_set'] is None):
+            raise ApiValueError("Missing the required parameter `licensing_set` when calling `audiences_calculate_audience_data_licensing_sync`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'audience_id' in local_var_params:
+            path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
+        if 'licensing_set' in local_var_params:
+            path_params['licensingSet'] = local_var_params['licensing_set']  # noqa: E501
+
+        query_params = []
+        if 'timeout_in_seconds' in local_var_params:
+            query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Audiences/{audienceId}/{licensingSet}/DataLicensingSync', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='LicensingInfo',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def audiences_calculate_audience_latest_update_sync(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Calculate counts against the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to produce the end result  # noqa: E501
 
@@ -156,6 +282,132 @@ class AudiencesApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='AudienceResultDetail',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def audiences_cancel_calculate_audience_data_licensing_job(self, data_view_name, audience_id, licensing_set, job_id, **kwargs):  # noqa: E501
+        """Cancel a running data licensing job  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audiences_cancel_calculate_audience_data_licensing_job(data_view_name, audience_id, licensing_set, job_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int audience_id: The id of the audience that the data licensing job is running for. (required)
+        :param str licensing_set: The name of the licensing set to get the information for (required)
+        :param int job_id: The id of the job to cancel (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.audiences_cancel_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, licensing_set, job_id, **kwargs)  # noqa: E501
+
+    def audiences_cancel_calculate_audience_data_licensing_job_with_http_info(self, data_view_name, audience_id, licensing_set, job_id, **kwargs):  # noqa: E501
+        """Cancel a running data licensing job  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audiences_cancel_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, licensing_set, job_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int audience_id: The id of the audience that the data licensing job is running for. (required)
+        :param str licensing_set: The name of the licensing set to get the information for (required)
+        :param int job_id: The id of the job to cancel (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['data_view_name', 'audience_id', 'licensing_set', 'job_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method audiences_cancel_calculate_audience_data_licensing_job" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if ('data_view_name' not in local_var_params or
+                local_var_params['data_view_name'] is None):
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_cancel_calculate_audience_data_licensing_job`")  # noqa: E501
+        # verify the required parameter 'audience_id' is set
+        if ('audience_id' not in local_var_params or
+                local_var_params['audience_id'] is None):
+            raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_cancel_calculate_audience_data_licensing_job`")  # noqa: E501
+        # verify the required parameter 'licensing_set' is set
+        if ('licensing_set' not in local_var_params or
+                local_var_params['licensing_set'] is None):
+            raise ApiValueError("Missing the required parameter `licensing_set` when calling `audiences_cancel_calculate_audience_data_licensing_job`")  # noqa: E501
+        # verify the required parameter 'job_id' is set
+        if ('job_id' not in local_var_params or
+                local_var_params['job_id'] is None):
+            raise ApiValueError("Missing the required parameter `job_id` when calling `audiences_cancel_calculate_audience_data_licensing_job`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'audience_id' in local_var_params:
+            path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
+        if 'licensing_set' in local_var_params:
+            path_params['licensingSet'] = local_var_params['licensing_set']  # noqa: E501
+        if 'job_id' in local_var_params:
+            path_params['jobId'] = local_var_params['job_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Audiences/{audienceId}/{licensingSet}/DataLicensingJobs/{jobId}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -998,6 +1250,128 @@ class AudiencesApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='AudienceUpdateDetail',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def audiences_create_calculate_audience_data_licensing_job(self, data_view_name, audience_id, licensing_set, **kwargs):  # noqa: E501
+        """Create a new job to get data licensing information for the latest version of this audience  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audiences_create_calculate_audience_data_licensing_job(data_view_name, audience_id, licensing_set, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int audience_id: The id of the audience to calculate the result for (required)
+        :param str licensing_set: The name of the licensing set to get the information for (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: AudienceDataLicensingInfoJobDetail
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.audiences_create_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, licensing_set, **kwargs)  # noqa: E501
+
+    def audiences_create_calculate_audience_data_licensing_job_with_http_info(self, data_view_name, audience_id, licensing_set, **kwargs):  # noqa: E501
+        """Create a new job to get data licensing information for the latest version of this audience  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audiences_create_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, licensing_set, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int audience_id: The id of the audience to calculate the result for (required)
+        :param str licensing_set: The name of the licensing set to get the information for (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(AudienceDataLicensingInfoJobDetail, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['data_view_name', 'audience_id', 'licensing_set']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method audiences_create_calculate_audience_data_licensing_job" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if ('data_view_name' not in local_var_params or
+                local_var_params['data_view_name'] is None):
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_create_calculate_audience_data_licensing_job`")  # noqa: E501
+        # verify the required parameter 'audience_id' is set
+        if ('audience_id' not in local_var_params or
+                local_var_params['audience_id'] is None):
+            raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_create_calculate_audience_data_licensing_job`")  # noqa: E501
+        # verify the required parameter 'licensing_set' is set
+        if ('licensing_set' not in local_var_params or
+                local_var_params['licensing_set'] is None):
+            raise ApiValueError("Missing the required parameter `licensing_set` when calling `audiences_create_calculate_audience_data_licensing_job`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'audience_id' in local_var_params:
+            path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
+        if 'licensing_set' in local_var_params:
+            path_params['licensingSet'] = local_var_params['licensing_set']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Audiences/{audienceId}/{licensingSet}/DataLicensingJobs', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AudienceDataLicensingInfoJobDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -2750,6 +3124,136 @@ class AudiencesApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='PagedResultsAudienceSummary',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def audiences_get_calculate_audience_data_licensing_job(self, data_view_name, audience_id, licensing_set, job_id, **kwargs):  # noqa: E501
+        """Get the status of a running calculate job  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audiences_get_calculate_audience_data_licensing_job(data_view_name, audience_id, licensing_set, job_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int audience_id: The id of the audience that the calculate job is running for. (required)
+        :param str licensing_set: The name of the licensing set to get the information for (required)
+        :param int job_id: The id of the job to get the status for. (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: AudienceDataLicensingInfoJobDetail
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.audiences_get_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, licensing_set, job_id, **kwargs)  # noqa: E501
+
+    def audiences_get_calculate_audience_data_licensing_job_with_http_info(self, data_view_name, audience_id, licensing_set, job_id, **kwargs):  # noqa: E501
+        """Get the status of a running calculate job  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audiences_get_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, licensing_set, job_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int audience_id: The id of the audience that the calculate job is running for. (required)
+        :param str licensing_set: The name of the licensing set to get the information for (required)
+        :param int job_id: The id of the job to get the status for. (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(AudienceDataLicensingInfoJobDetail, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['data_view_name', 'audience_id', 'licensing_set', 'job_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method audiences_get_calculate_audience_data_licensing_job" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if ('data_view_name' not in local_var_params or
+                local_var_params['data_view_name'] is None):
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_calculate_audience_data_licensing_job`")  # noqa: E501
+        # verify the required parameter 'audience_id' is set
+        if ('audience_id' not in local_var_params or
+                local_var_params['audience_id'] is None):
+            raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_calculate_audience_data_licensing_job`")  # noqa: E501
+        # verify the required parameter 'licensing_set' is set
+        if ('licensing_set' not in local_var_params or
+                local_var_params['licensing_set'] is None):
+            raise ApiValueError("Missing the required parameter `licensing_set` when calling `audiences_get_calculate_audience_data_licensing_job`")  # noqa: E501
+        # verify the required parameter 'job_id' is set
+        if ('job_id' not in local_var_params or
+                local_var_params['job_id'] is None):
+            raise ApiValueError("Missing the required parameter `job_id` when calling `audiences_get_calculate_audience_data_licensing_job`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'audience_id' in local_var_params:
+            path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
+        if 'licensing_set' in local_var_params:
+            path_params['licensingSet'] = local_var_params['licensing_set']  # noqa: E501
+        if 'job_id' in local_var_params:
+            path_params['jobId'] = local_var_params['job_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Audiences/{audienceId}/{licensingSet}/DataLicensingJobs/{jobId}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AudienceDataLicensingInfoJobDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

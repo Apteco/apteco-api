@@ -42,7 +42,8 @@ class ElementStatus(object):
         'channel_types': 'list[str]',
         'first_ran': 'datetime',
         'last_ran': 'datetime',
-        'statistics_timestamp': 'datetime'
+        'statistics_timestamp': 'datetime',
+        'path': 'list[ElementKey]'
     }
 
     attribute_map = {
@@ -56,10 +57,11 @@ class ElementStatus(object):
         'channel_types': 'channelTypes',
         'first_ran': 'firstRan',
         'last_ran': 'lastRan',
-        'statistics_timestamp': 'statisticsTimestamp'
+        'statistics_timestamp': 'statisticsTimestamp',
+        'path': 'path'
     }
 
-    def __init__(self, id=None, description=None, type=None, successful_campaigns_count=None, errored_campaigns_count=None, inactive_campaigns_count=None, needs_approval_campaigns_count=None, channel_types=None, first_ran=None, last_ran=None, statistics_timestamp=None):  # noqa: E501
+    def __init__(self, id=None, description=None, type=None, successful_campaigns_count=None, errored_campaigns_count=None, inactive_campaigns_count=None, needs_approval_campaigns_count=None, channel_types=None, first_ran=None, last_ran=None, statistics_timestamp=None, path=None):  # noqa: E501
         """ElementStatus - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
@@ -73,6 +75,7 @@ class ElementStatus(object):
         self._first_ran = None
         self._last_ran = None
         self._statistics_timestamp = None
+        self._path = None
         self.discriminator = None
 
         self.id = id
@@ -94,6 +97,8 @@ class ElementStatus(object):
             self.last_ran = last_ran
         if statistics_timestamp is not None:
             self.statistics_timestamp = statistics_timestamp
+        if path is not None:
+            self.path = path
 
     @property
     def id(self):
@@ -366,6 +371,29 @@ class ElementStatus(object):
         """
 
         self._statistics_timestamp = statistics_timestamp
+
+    @property
+    def path(self):
+        """Gets the path of this ElementStatus.  # noqa: E501
+
+        The element's path  # noqa: E501
+
+        :return: The path of this ElementStatus.  # noqa: E501
+        :rtype: list[ElementKey]
+        """
+        return self._path
+
+    @path.setter
+    def path(self, path):
+        """Sets the path of this ElementStatus.
+
+        The element's path  # noqa: E501
+
+        :param path: The path of this ElementStatus.  # noqa: E501
+        :type: list[ElementKey]
+        """
+
+        self._path = path
 
     def to_dict(self):
         """Returns the model properties as a dict"""

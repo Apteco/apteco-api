@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**about_get_data_views_for_system_name**](AboutApi.md#about_get_data_views_for_system_name) | **GET** /About/DataViews/Systems/{systemName} | Get the list of DataViews that are configured with the given FastStats system.
 [**about_get_endpoints**](AboutApi.md#about_get_endpoints) | **GET** /About/Endpoints | Returns details of all the endpoints in the API
 [**about_get_language_details**](AboutApi.md#about_get_language_details) | **GET** /About/Language | Returns information about the current language the API is operating in (based on details in the request)
+[**about_get_orbit_settings**](AboutApi.md#about_get_orbit_settings) | **GET** /About/Orbit/Settings/{settingsPath} | Gets Orbit settings at the given path
+[**about_get_orbit_settings_root**](AboutApi.md#about_get_orbit_settings_root) | **GET** /About/Orbit/Settings | Gets the complete Orbit settings object
 [**about_get_process_details**](AboutApi.md#about_get_process_details) | **GET** /About/Process | Requires OrbitAdmin: Returns details about the API&#39;s .Net process
 [**about_get_version**](AboutApi.md#about_get_version) | **GET** /About/Version | Returns version information about the API
 
@@ -525,6 +527,112 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The valid language information |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **about_get_orbit_settings**
+> object about_get_orbit_settings(settings_path)
+
+Gets Orbit settings at the given path
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = apteco_api.AboutApi()
+settings_path = 'settings_path_example' # str | The path of the settings
+
+try:
+    # Gets Orbit settings at the given path
+    api_response = api_instance.about_get_orbit_settings(settings_path)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling AboutApi->about_get_orbit_settings: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settings_path** | **str**| The path of the settings | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The contents of the Orbit settings |  -  |
+**400** | A bad request |  -  |
+**403** | The given session is not allowed to see the contents of the Orbit settings |  -  |
+**404** | The Orbit settings couldn&#39;t be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **about_get_orbit_settings_root**
+> object about_get_orbit_settings_root()
+
+Gets the complete Orbit settings object
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = apteco_api.AboutApi()
+
+try:
+    # Gets the complete Orbit settings object
+    api_response = api_instance.about_get_orbit_settings_root()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling AboutApi->about_get_orbit_settings_root: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The contents of the Orbit settings |  -  |
+**400** | A bad request |  -  |
+**403** | The given session is not allowed to see the contents of the Orbit settings |  -  |
+**404** | The Orbit settings couldn&#39;t be found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

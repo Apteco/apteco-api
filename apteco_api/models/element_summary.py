@@ -38,7 +38,8 @@ class ElementSummary(object):
         'schema_id': 'int',
         'schema_id_type': 'str',
         'parent_id': 'str',
-        'parent_type': 'str'
+        'parent_type': 'str',
+        'path': 'list[ElementKey]'
     }
 
     attribute_map = {
@@ -48,10 +49,11 @@ class ElementSummary(object):
         'schema_id': 'schemaId',
         'schema_id_type': 'schemaIdType',
         'parent_id': 'parentId',
-        'parent_type': 'parentType'
+        'parent_type': 'parentType',
+        'path': 'path'
     }
 
-    def __init__(self, id=None, description=None, type=None, schema_id=None, schema_id_type=None, parent_id=None, parent_type=None):  # noqa: E501
+    def __init__(self, id=None, description=None, type=None, schema_id=None, schema_id_type=None, parent_id=None, parent_type=None, path=None):  # noqa: E501
         """ElementSummary - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
@@ -61,6 +63,7 @@ class ElementSummary(object):
         self._schema_id_type = None
         self._parent_id = None
         self._parent_type = None
+        self._path = None
         self.discriminator = None
 
         self.id = id
@@ -72,6 +75,8 @@ class ElementSummary(object):
             self.schema_id_type = schema_id_type
         self.parent_id = parent_id
         self.parent_type = parent_type
+        if path is not None:
+            self.path = path
 
     @property
     def id(self):
@@ -261,6 +266,29 @@ class ElementSummary(object):
             )
 
         self._parent_type = parent_type
+
+    @property
+    def path(self):
+        """Gets the path of this ElementSummary.  # noqa: E501
+
+        The element's path  # noqa: E501
+
+        :return: The path of this ElementSummary.  # noqa: E501
+        :rtype: list[ElementKey]
+        """
+        return self._path
+
+    @path.setter
+    def path(self, path):
+        """Sets the path of this ElementSummary.
+
+        The element's path  # noqa: E501
+
+        :param path: The path of this ElementSummary.  # noqa: E501
+        :type: list[ElementKey]
+        """
+
+        self._path = path
 
     def to_dict(self):
         """Returns the model properties as a dict"""

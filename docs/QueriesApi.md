@@ -105,7 +105,7 @@ api_instance = apteco_api.QueriesApi(apteco_api.ApiClient(configuration))
 data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service's configuration (optional)
-return_definition = True # bool | Whether to include the query's definition in the results (optional)
+return_definition = True # bool | Whether to include the query's definition in the results.  Default is false. (optional)
 query = apteco_api.Query() # Query | The query definition to count (optional)
 
 try:
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
  **data_view_name** | **str**| The name of the DataView to act on | 
  **system_name** | **str**| The name of the FastStats system to act on | 
  **timeout_in_seconds** | **int**| The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service&#39;s configuration | [optional] 
- **return_definition** | **bool**| Whether to include the query&#39;s definition in the results | [optional] 
+ **return_definition** | **bool**| Whether to include the query&#39;s definition in the results.  Default is false. | [optional] 
  **query** | [**Query**](Query.md)| The query definition to count | [optional] 
 
 ### Return type
@@ -176,7 +176,7 @@ api_instance = apteco_api.QueriesApi(apteco_api.ApiClient(configuration))
 data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service's configuration (optional)
-return_definition = True # bool | Whether to include the query's definition in the results (optional)
+return_definition = True # bool | Whether to include the query's definition in the results.  Default is false. (optional)
 query_file = apteco_api.QueryFile() # QueryFile | The file that holds the query definition to count (optional)
 
 try:
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
  **data_view_name** | **str**| The name of the DataView to act on | 
  **system_name** | **str**| The name of the FastStats system to act on | 
  **timeout_in_seconds** | **int**| The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service&#39;s configuration | [optional] 
- **return_definition** | **bool**| Whether to include the query&#39;s definition in the results | [optional] 
+ **return_definition** | **bool**| Whether to include the query&#39;s definition in the results.  Default is false. | [optional] 
  **query_file** | [**QueryFile**](QueryFile.md)| The file that holds the query definition to count | [optional] 
 
 ### Return type
