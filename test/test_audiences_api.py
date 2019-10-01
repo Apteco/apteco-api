@@ -29,10 +29,24 @@ class TestAudiencesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_audiences_calculate_audience_data_licensing_sync(self):
+        """Test case for audiences_calculate_audience_data_licensing_sync
+
+        Get data licensing information for the latest version of this audience  # noqa: E501
+        """
+        pass
+
     def test_audiences_calculate_audience_latest_update_sync(self):
         """Test case for audiences_calculate_audience_latest_update_sync
 
         Calculate counts against the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to produce the end result  # noqa: E501
+        """
+        pass
+
+    def test_audiences_cancel_calculate_audience_data_licensing_job(self):
+        """Test case for audiences_cancel_calculate_audience_data_licensing_job
+
+        Cancel a running data licensing job  # noqa: E501
         """
         pass
 
@@ -82,6 +96,13 @@ class TestAudiencesApi(unittest.TestCase):
         """Test case for audiences_create_audience_update
 
         Updates the details of a particular audience.  If you don't have an id for the  audience then POST to the /Audiences URL to create a new audience.  # noqa: E501
+        """
+        pass
+
+    def test_audiences_create_calculate_audience_data_licensing_job(self):
+        """Test case for audiences_create_calculate_audience_data_licensing_job
+
+        Create a new job to get data licensing information for the latest version of this audience  # noqa: E501
         """
         pass
 
@@ -180,6 +201,13 @@ class TestAudiencesApi(unittest.TestCase):
         """Test case for audiences_get_audiences
 
         Requires OrbitAdmin: Gets summary information about each audience in the DataView.  # noqa: E501
+        """
+        pass
+
+    def test_audiences_get_calculate_audience_data_licensing_job(self):
+        """Test case for audiences_get_calculate_audience_data_licensing_job
+
+        Get the status of a running calculate job  # noqa: E501
         """
         pass
 

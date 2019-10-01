@@ -50,6 +50,13 @@ class TestAboutApi(unittest.TestCase):
         """
         pass
 
+    def test_about_get_data_view(self):
+        """Test case for about_get_data_view
+
+        Get details for a particular DataView.  # noqa: E501
+        """
+        pass
+
     def test_about_get_data_views(self):
         """Test case for about_get_data_views
 
@@ -75,6 +82,27 @@ class TestAboutApi(unittest.TestCase):
         """Test case for about_get_endpoints
 
         Returns details of all the endpoints in the API  # noqa: E501
+        """
+        pass
+
+    def test_about_get_language_details(self):
+        """Test case for about_get_language_details
+
+        Returns information about the current language the API is operating in (based on details in the request)  # noqa: E501
+        """
+        pass
+
+    def test_about_get_orbit_settings(self):
+        """Test case for about_get_orbit_settings
+
+        Gets Orbit settings at the given path  # noqa: E501
+        """
+        pass
+
+    def test_about_get_orbit_settings_root(self):
+        """Test case for about_get_orbit_settings_root
+
+        Gets the complete Orbit settings object  # noqa: E501
         """
         pass
 
