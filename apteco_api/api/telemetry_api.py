@@ -616,7 +616,7 @@ class TelemetryApi(object):
         auth_settings = ['faststats_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{dataViewName}/Telemetry/States/ForUser/{Username}', 'GET',
+            '/{dataViewName}/Telemetry/States/ForUser/{username}', 'GET',
             path_params,
             query_params,
             header_params,

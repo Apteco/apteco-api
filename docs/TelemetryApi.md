@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**telemetry_create_telemetry_state**](TelemetryApi.md#telemetry_create_telemetry_state) | **POST** /{dataViewName}/Telemetry/States | Creates a new telemetry state from the given details
 [**telemetry_get_telemetry_session**](TelemetryApi.md#telemetry_get_telemetry_session) | **GET** /{dataViewName}/Telemetry/States/{stateId}/Sessions/{sessionId} | Returns the details of a particular telemetry session
 [**telemetry_get_telemetry_state**](TelemetryApi.md#telemetry_get_telemetry_state) | **GET** /{dataViewName}/Telemetry/States/{stateId} | Returns the details of a particular telemetry state
-[**telemetry_get_telemetry_state_for_user**](TelemetryApi.md#telemetry_get_telemetry_state_for_user) | **GET** /{dataViewName}/Telemetry/States/ForUser/{Username} | Returns the details of a given user&#39;s telemetry state
+[**telemetry_get_telemetry_state_for_user**](TelemetryApi.md#telemetry_get_telemetry_state_for_user) | **GET** /{dataViewName}/Telemetry/States/ForUser/{username} | Returns the details of a given user&#39;s telemetry state
 [**telemetry_update_telemetry_session**](TelemetryApi.md#telemetry_update_telemetry_session) | **POST** /{dataViewName}/Telemetry/States/{stateId}/Sessions/{sessionId}/Update | Update a particular telemetry session from the given details
 [**telemetry_update_telemetry_state**](TelemetryApi.md#telemetry_update_telemetry_state) | **POST** /{dataViewName}/Telemetry/States/{stateId}/Update | Updates a particular telemetry state from the given details
 
