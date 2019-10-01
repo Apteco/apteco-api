@@ -76,7 +76,10 @@ the latter will now be authorised to access the API.
 This code retrieves a list of tables in the `Holidays` system on the given DataView:
 
 ```python
-tables = aa.FastStatsSystemsApi(api_client).fast_stats_systems_get_fast_stats_tables('my_data_view', 'holidays')
+tables = aa.FastStatsSystemsApi(api_client).fast_stats_systems_get_fast_stats_tables(
+    'my_data_view',
+    'holidays'
+)
 print(f"There are {tables.count} tables in the Holidays system:")
 print('\n'.join(t.name for t in tables.list))
 ```
@@ -105,7 +108,10 @@ and passing in the session ID returned from the logging in process above:
 aa.SessionsApi(api_client).sessions_logout_session('my_data_view', session_id)
 
 try:
-    tables = aa.FastStatsSystemsApi(api_client).fast_stats_systems_get_fast_stats_tables('my_data_view', 'holidays')
+    tables = aa.FastStatsSystemsApi(api_client).fast_stats_systems_get_fast_stats_tables(
+        'my_data_view',
+        'holidays'
+    )
 except aa.ApiException as e:
     print(f"{e.status}: {e.reason}")
 ```
@@ -143,7 +149,9 @@ which can be called as a normal Python function.
 
 ```python
 query_result = queries_controller.queries_perform_query_file_count_synchronously(
-	'my_data_view', 'holidays', query_file=aa.QueryFile('Private/Bookings to France or Germany.xml')
+	'my_data_view',
+    'holidays',
+    query_file=aa.QueryFile('Private/Bookings to France or Germany.xml')
 )
 ```
 
