@@ -10146,7 +10146,7 @@
                 ]
             }
         },
-        "/{dataViewName}/Telemetry/States/ForUser/{Username}":{
+        "/{dataViewName}/Telemetry/States/ForUser/{username}":{
             "get":{
                 "tags":[
                     "Telemetry"
