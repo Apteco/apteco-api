@@ -12,7 +12,7 @@ from urlpath import URL
 
 API_BASE_URL = "http://localhost/OrbitAPI"
 SPEC_SOURCE_PATH = "swagger/v2/swagger.json"
-SPEC_OUTPUT_PATH = "gen/api_spec_from_python.json"
+SPEC_OUTPUT_PATH = "gen/api-spec.json"
 INTRODUCTION_PATH = "introduction.md"
 
 
