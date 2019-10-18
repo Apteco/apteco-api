@@ -1,0 +1,3 @@
+bumpverion >= 0.5.3
+parse >= 1.12.1
+urlpath >= 1.1.4
