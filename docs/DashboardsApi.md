@@ -4,13 +4,13 @@ All URIs are relative to *http://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**dashboards_create_test_dashboard**](DashboardsApi.md#dashboards_create_test_dashboard) | **POST** /{dataViewName}/Dashboards | EXPERIMENTAL: Test function: Removes all dashboards from the DB and creates a new one
+[**dashboards_get_dashboard_item_data_sync**](DashboardsApi.md#dashboards_get_dashboard_item_data_sync) | **POST** /{dataViewName}/Dashboards/{dashboardId}/Items/{dashboardItemId}/CalculateSync | EXPERIMENTAL: Return data needed to render visualisation for dashboard item
 
 
-# **dashboards_create_test_dashboard**
-> dashboards_create_test_dashboard(data_view_name)
+# **dashboards_get_dashboard_item_data_sync**
+> DashboardItemDataResult dashboards_get_dashboard_item_data_sync(data_view_name, dashboard_id, dashboard_item_id, timeout_in_seconds=timeout_in_seconds, request_data=request_data)
 
-EXPERIMENTAL: Test function: Removes all dashboards from the DB and creates a new one
+EXPERIMENTAL: Return data needed to render visualisation for dashboard item
 
 EXPERIMENTAL
 
@@ -32,12 +32,17 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = apteco_api.DashboardsApi(apteco_api.ApiClient(configuration))
 data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+dashboard_id = 56 # int | The id of the dashboard to calculate the result for
+dashboard_item_id = 'dashboard_item_id_example' # str | The id of the dashboard item to calculate the results for
+timeout_in_seconds = 56 # int | The number of seconds before the request will time out. Leave unspecified to use the default value given in the dashboards service's configuration (optional)
+request_data = apteco_api.DashboardItemData() # DashboardItemData | Used to filter the data on the dashboard item and define the drill down level (optional)
 
 try:
-    # EXPERIMENTAL: Test function: Removes all dashboards from the DB and creates a new one
-    api_instance.dashboards_create_test_dashboard(data_view_name)
+    # EXPERIMENTAL: Return data needed to render visualisation for dashboard item
+    api_response = api_instance.dashboards_get_dashboard_item_data_sync(data_view_name, dashboard_id, dashboard_item_id, timeout_in_seconds=timeout_in_seconds, request_data=request_data)
+    pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DashboardsApi->dashboards_create_test_dashboard: %s\n" % e)
+    print("Exception when calling DashboardsApi->dashboards_get_dashboard_item_data_sync: %s\n" % e)
 ```
 
 ### Parameters
@@ -45,10 +50,14 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
+ **dashboard_id** | **int**| The id of the dashboard to calculate the result for | 
+ **dashboard_item_id** | **str**| The id of the dashboard item to calculate the results for | 
+ **timeout_in_seconds** | **int**| The number of seconds before the request will time out. Leave unspecified to use the default value given in the dashboards service&#39;s configuration | [optional] 
+ **request_data** | [**DashboardItemData**](DashboardItemData.md)| Used to filter the data on the dashboard item and define the drill down level | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**DashboardItemDataResult**](DashboardItemDataResult.md)
 
 ### Authorization
 
@@ -56,16 +65,16 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json, application/xml, text/xml, application/*+xml
+ - **Accept**: application/json, text/json, application/xml, text/xml
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**201** | The test dashboard was created successfully |  -  |
+**200** | The calculation completed successfully |  -  |
 **400** | A bad request |  -  |
-**404** | The DataView couldn&#39;t be found |  -  |
+**403** | The given session is not allowed to access this dashboard. |  -  |
+**404** | The DataView or dashboard item couldn&#39;t be found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

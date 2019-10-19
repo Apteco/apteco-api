@@ -37,17 +37,21 @@ class DashboardsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def dashboards_create_test_dashboard(self, data_view_name, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Test function: Removes all dashboards from the DB and creates a new one  # noqa: E501
+    def dashboards_get_dashboard_item_data_sync(self, data_view_name, dashboard_id, dashboard_item_id, **kwargs):  # noqa: E501
+        """EXPERIMENTAL: Return data needed to render visualisation for dashboard item  # noqa: E501
 
         EXPERIMENTAL  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.dashboards_create_test_dashboard(data_view_name, async_req=True)
+        >>> thread = api.dashboards_get_dashboard_item_data_sync(data_view_name, dashboard_id, dashboard_item_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
+        :param int dashboard_id: The id of the dashboard to calculate the result for (required)
+        :param str dashboard_item_id: The id of the dashboard item to calculate the results for (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out. Leave unspecified to use the default value given in the dashboards service's configuration
+        :param DashboardItemData request_data: Used to filter the data on the dashboard item and define the drill down level
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -55,24 +59,28 @@ class DashboardsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: DashboardItemDataResult
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.dashboards_create_test_dashboard_with_http_info(data_view_name, **kwargs)  # noqa: E501
+        return self.dashboards_get_dashboard_item_data_sync_with_http_info(data_view_name, dashboard_id, dashboard_item_id, **kwargs)  # noqa: E501
 
-    def dashboards_create_test_dashboard_with_http_info(self, data_view_name, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Test function: Removes all dashboards from the DB and creates a new one  # noqa: E501
+    def dashboards_get_dashboard_item_data_sync_with_http_info(self, data_view_name, dashboard_id, dashboard_item_id, **kwargs):  # noqa: E501
+        """EXPERIMENTAL: Return data needed to render visualisation for dashboard item  # noqa: E501
 
         EXPERIMENTAL  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.dashboards_create_test_dashboard_with_http_info(data_view_name, async_req=True)
+        >>> thread = api.dashboards_get_dashboard_item_data_sync_with_http_info(data_view_name, dashboard_id, dashboard_item_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
+        :param int dashboard_id: The id of the dashboard to calculate the result for (required)
+        :param str dashboard_item_id: The id of the dashboard item to calculate the results for (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out. Leave unspecified to use the default value given in the dashboards service's configuration
+        :param DashboardItemData request_data: Used to filter the data on the dashboard item and define the drill down level
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -82,14 +90,14 @@ class DashboardsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: tuple(DashboardItemDataResult, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         local_var_params = locals()
 
-        all_params = ['data_view_name']  # noqa: E501
+        all_params = ['data_view_name', 'dashboard_id', 'dashboard_item_id', 'timeout_in_seconds', 'request_data']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -99,22 +107,36 @@ class DashboardsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method dashboards_create_test_dashboard" % key
+                    " to method dashboards_get_dashboard_item_data_sync" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
         if ('data_view_name' not in local_var_params or
                 local_var_params['data_view_name'] is None):
-            raise ApiValueError("Missing the required parameter `data_view_name` when calling `dashboards_create_test_dashboard`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `dashboards_get_dashboard_item_data_sync`")  # noqa: E501
+        # verify the required parameter 'dashboard_id' is set
+        if ('dashboard_id' not in local_var_params or
+                local_var_params['dashboard_id'] is None):
+            raise ApiValueError("Missing the required parameter `dashboard_id` when calling `dashboards_get_dashboard_item_data_sync`")  # noqa: E501
+        # verify the required parameter 'dashboard_item_id' is set
+        if ('dashboard_item_id' not in local_var_params or
+                local_var_params['dashboard_item_id'] is None):
+            raise ApiValueError("Missing the required parameter `dashboard_item_id` when calling `dashboards_get_dashboard_item_data_sync`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if 'data_view_name' in local_var_params:
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'dashboard_id' in local_var_params:
+            path_params['dashboardId'] = local_var_params['dashboard_id']  # noqa: E501
+        if 'dashboard_item_id' in local_var_params:
+            path_params['dashboardItemId'] = local_var_params['dashboard_item_id']  # noqa: E501
 
         query_params = []
+        if 'timeout_in_seconds' in local_var_params:
+            query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
         header_params = {}
 
@@ -122,18 +144,28 @@ class DashboardsApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'request_data' in local_var_params:
+            body_params = local_var_params['request_data']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{dataViewName}/Dashboards', 'POST',
+            '/{dataViewName}/Dashboards/{dashboardId}/Items/{dashboardItemId}/CalculateSync', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='DashboardItemDataResult',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

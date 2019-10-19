@@ -573,8 +573,8 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = apteco_api.SharesApi(apteco_api.ApiClient(configuration))
 data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share to view the users for
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Firstname, Surname (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -592,8 +592,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
  **share_id** | **int**| The id of the share to view the users for | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Firstname, Surname | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Username, EmailAddress | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 

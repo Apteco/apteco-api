@@ -35,23 +35,26 @@ class FastStatsSystemDetail(object):
         'name': 'str',
         'view_name': 'str',
         'description': 'str',
-        'fast_stats_build_date': 'datetime'
+        'fast_stats_build_date': 'datetime',
+        'velocity_type': 'str'
     }
 
     attribute_map = {
         'name': 'name',
         'view_name': 'viewName',
         'description': 'description',
-        'fast_stats_build_date': 'fastStatsBuildDate'
+        'fast_stats_build_date': 'fastStatsBuildDate',
+        'velocity_type': 'velocityType'
     }
 
-    def __init__(self, name=None, view_name=None, description=None, fast_stats_build_date=None):  # noqa: E501
+    def __init__(self, name=None, view_name=None, description=None, fast_stats_build_date=None, velocity_type=None):  # noqa: E501
         """FastStatsSystemDetail - a model defined in OpenAPI"""  # noqa: E501
 
         self._name = None
         self._view_name = None
         self._description = None
         self._fast_stats_build_date = None
+        self._velocity_type = None
         self.discriminator = None
 
         self.name = name
@@ -59,6 +62,8 @@ class FastStatsSystemDetail(object):
         self.description = description
         if fast_stats_build_date is not None:
             self.fast_stats_build_date = fast_stats_build_date
+        if velocity_type is not None:
+            self.velocity_type = velocity_type
 
     @property
     def name(self):
@@ -157,6 +162,27 @@ class FastStatsSystemDetail(object):
         """
 
         self._fast_stats_build_date = fast_stats_build_date
+
+    @property
+    def velocity_type(self):
+        """Gets the velocity_type of this FastStatsSystemDetail.  # noqa: E501
+
+
+        :return: The velocity_type of this FastStatsSystemDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._velocity_type
+
+    @velocity_type.setter
+    def velocity_type(self, velocity_type):
+        """Sets the velocity_type of this FastStatsSystemDetail.
+
+
+        :param velocity_type: The velocity_type of this FastStatsSystemDetail.  # noqa: E501
+        :type: str
+        """
+
+        self._velocity_type = velocity_type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

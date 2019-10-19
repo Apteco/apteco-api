@@ -2949,14 +2949,23 @@
                 ]
             }
         },
-        "/{dataViewName}/Audiences/{audienceId}/{licensingSet}/DataLicensingSync": {
-            "get": {
+        "/{dataViewName}/Audiences/{audienceId}/DataLicensingSync": {
+            "post": {
                 "tags": [
                     "Audiences"
                 ],
-                "summary": "Get data licensing information for the latest version of this audience",
+                "summary": "UNDER DEVELOPMENT: Get data licensing information for the latest version of this audience",
+                "description": "UNDER DEVELOPMENT",
                 "operationId": "Audiences_CalculateAudienceDataLicensingSync",
-                "consumes": [],
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
                 "produces": [
                     "application/json",
                     "text/json",
@@ -2980,11 +2989,13 @@
                         "format": "int32"
                     },
                     {
-                        "name": "licensingSet",
-                        "in": "path",
-                        "description": "The name of the licensing set to get the information for",
-                        "required": true,
-                        "type": "string"
+                        "name": "dataLicensingDetail",
+                        "in": "body",
+                        "description": "The details required to get data licensing information for an audience",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/DataLicensingDetail"
+                        }
                     },
                     {
                         "name": "timeoutInSeconds",
@@ -3005,6 +3016,9 @@
                     "400": {
                         "description": "A bad request"
                     },
+                    "403": {
+                        "description": "The given session is not allowed to get data licensing information."
+                    },
                     "404": {
                         "description": "The audience couldn't be found"
                     }
@@ -3016,14 +3030,23 @@
                 ]
             }
         },
-        "/{dataViewName}/Audiences/{audienceId}/{licensingSet}/DataLicensingJobs": {
+        "/{dataViewName}/Audiences/{audienceId}/DataLicensingJobs": {
             "post": {
                 "tags": [
                     "Audiences"
                 ],
-                "summary": "Create a new job to get data licensing information for the latest version of this audience",
+                "summary": "UNDER DEVELOPMENT: Create a new job to get data licensing information for the latest version of this audience",
+                "description": "UNDER DEVELOPMENT",
                 "operationId": "Audiences_CreateCalculateAudienceDataLicensingJob",
-                "consumes": [],
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
                 "produces": [
                     "application/json",
                     "text/json",
@@ -3047,11 +3070,13 @@
                         "format": "int32"
                     },
                     {
-                        "name": "licensingSet",
-                        "in": "path",
-                        "description": "The name of the licensing set to get the information for",
-                        "required": true,
-                        "type": "string"
+                        "name": "dataLicensingDetail",
+                        "in": "body",
+                        "description": "The details required to get data licensing information for an audience",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/DataLicensingDetail"
+                        }
                     }
                 ],
                 "responses": {
@@ -3064,6 +3089,9 @@
                     "400": {
                         "description": "A bad request"
                     },
+                    "403": {
+                        "description": "The given session is not allowed to get the status of this data licensing job."
+                    },
                     "404": {
                         "description": "The audience couldn't be found"
                     }
@@ -3075,14 +3103,23 @@
                 ]
             }
         },
-        "/{dataViewName}/Audiences/{audienceId}/{licensingSet}/DataLicensingJobs/{jobId}": {
-            "get": {
+        "/{dataViewName}/Audiences/{audienceId}/DataLicensingJobs/{jobId}": {
+            "post": {
                 "tags": [
                     "Audiences"
                 ],
-                "summary": "Get the status of a running calculate job",
+                "summary": "UNDER DEVELOPMENT: Get the status of a running calculate job",
+                "description": "UNDER DEVELOPMENT",
                 "operationId": "Audiences_GetCalculateAudienceDataLicensingJob",
-                "consumes": [],
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
                 "produces": [
                     "application/json",
                     "text/json",
@@ -3106,11 +3143,13 @@
                         "format": "int32"
                     },
                     {
-                        "name": "licensingSet",
-                        "in": "path",
-                        "description": "The name of the licensing set to get the information for",
-                        "required": true,
-                        "type": "string"
+                        "name": "dataLicensingDetail",
+                        "in": "body",
+                        "description": "The details required to get data licensing information for an audience",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/DataLicensingDetail"
+                        }
                     },
                     {
                         "name": "jobId",
@@ -3148,7 +3187,8 @@
                 "tags": [
                     "Audiences"
                 ],
-                "summary": "Cancel a running data licensing job",
+                "summary": "UNDER DEVELOPMENT: Cancel a running data licensing job",
+                "description": "UNDER DEVELOPMENT",
                 "operationId": "Audiences_CancelCalculateAudienceDataLicensingJob",
                 "consumes": [],
                 "produces": [],
@@ -3167,13 +3207,6 @@
                         "required": true,
                         "type": "integer",
                         "format": "int32"
-                    },
-                    {
-                        "name": "licensingSet",
-                        "in": "path",
-                        "description": "The name of the licensing set to get the information for",
-                        "required": true,
-                        "type": "string"
                     },
                     {
                         "name": "jobId",
@@ -4183,16 +4216,29 @@
                 ]
             }
         },
-        "/{dataViewName}/Dashboards": {
+        "/{dataViewName}/Dashboards/{dashboardId}/Items/{dashboardItemId}/CalculateSync": {
             "post": {
                 "tags": [
                     "Dashboards"
                 ],
-                "summary": "EXPERIMENTAL: Test function: Removes all dashboards from the DB and creates a new one",
+                "summary": "EXPERIMENTAL: Return data needed to render visualisation for dashboard item",
                 "description": "EXPERIMENTAL",
-                "operationId": "Dashboards_CreateTestDashboard",
-                "consumes": [],
-                "produces": [],
+                "operationId": "Dashboards_GetDashboardItemDataSync",
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
                 "parameters": [
                     {
                         "name": "dataViewName",
@@ -4200,20 +4246,55 @@
                         "description": "The name of the DataView to act on",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "dashboardId",
+                        "in": "path",
+                        "description": "The id of the dashboard to calculate the result for",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "dashboardItemId",
+                        "in": "path",
+                        "description": "The id of the dashboard item to calculate the results for",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "requestData",
+                        "in": "body",
+                        "description": "Used to filter the data on the dashboard item and define the drill down level",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/DashboardItemData"
+                        }
+                    },
+                    {
+                        "name": "timeoutInSeconds",
+                        "in": "query",
+                        "description": "The number of seconds before the request will time out. Leave unspecified to use the default value given in the dashboards service's configuration",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "The calculation completed successfully",
+                        "schema": {
+                            "$ref": "#/definitions/DashboardItemDataResult"
+                        }
                     },
                     "400": {
                         "description": "A bad request"
                     },
-                    "404": {
-                        "description": "The DataView couldn't be found"
+                    "403": {
+                        "description": "The given session is not allowed to access this dashboard."
                     },
-                    "201": {
-                        "description": "The test dashboard was created successfully"
+                    "404": {
+                        "description": "The DataView or dashboard item couldn't be found"
                     }
                 },
                 "security": [
@@ -4228,7 +4309,8 @@
                 "tags": [
                     "DataLicensing"
                 ],
-                "summary": "Purchase data licensing information",
+                "summary": "UNDER DEVELOPMENT: Purchase data licensing information",
+                "description": "UNDER DEVELOPMENT",
                 "operationId": "DataLicensing_PurchaseDataLicensingSync",
                 "consumes": [
                     "application/json-patch+json",
@@ -4287,6 +4369,12 @@
                     },
                     "400": {
                         "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to purchase records."
+                    },
+                    "404": {
+                        "description": "The DataView or job couldn't be found"
                     }
                 },
                 "security": [
@@ -4301,7 +4389,8 @@
                 "tags": [
                     "DataLicensing"
                 ],
-                "summary": "Create a new job to purchase data licensing information",
+                "summary": "UNDER DEVELOPMENT: Create a new job to purchase data licensing information",
+                "description": "UNDER DEVELOPMENT",
                 "operationId": "DataLicensing_CreatePurchaseDataLicensingJob",
                 "consumes": [
                     "application/json-patch+json",
@@ -4352,6 +4441,12 @@
                     },
                     "400": {
                         "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to create a purchasing job."
+                    },
+                    "404": {
+                        "description": "The DataView or job couldn't be found"
                     }
                 },
                 "security": [
@@ -4366,7 +4461,8 @@
                 "tags": [
                     "DataLicensing"
                 ],
-                "summary": "Get the status of a running purchase job",
+                "summary": "UNDER DEVELOPMENT: Get the status of a running purchase job",
+                "description": "UNDER DEVELOPMENT",
                 "operationId": "DataLicensing_GetDataPurchaseJob",
                 "consumes": [],
                 "produces": [
@@ -4410,7 +4506,7 @@
                         "description": "A bad request"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "description": "The given session is not allowed to get the status of this purchasing job."
                     },
                     "404": {
                         "description": "The DataView or job couldn't be found"
@@ -4426,7 +4522,8 @@
                 "tags": [
                     "DataLicensing"
                 ],
-                "summary": "Cancel a running data purchasing job",
+                "summary": "UNDER DEVELOPMENT: Cancel a running data purchasing job",
+                "description": "UNDER DEVELOPMENT",
                 "operationId": "DataLicensing_CancelDataPurchaseJob",
                 "consumes": [],
                 "produces": [],
@@ -4461,8 +4558,104 @@
                     "400": {
                         "description": "A bad request"
                     },
+                    "403": {
+                        "description": "The given session is not allowed to cancel this purchasing job."
+                    },
                     "404": {
                         "description": "The DataView, audience or job couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/DataLicensing/{systemName}/LicensingSets": {
+            "get": {
+                "tags": [
+                    "DataLicensing"
+                ],
+                "summary": "UNDER DEVELOPMENT: Get the licensing sets for a system",
+                "description": "UNDER DEVELOPMENT",
+                "operationId": "DataLicensing_GetLicensingSetsSync",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "systemName",
+                        "in": "path",
+                        "description": "The name of the FastStats system to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "timeoutInSeconds",
+                        "in": "query",
+                        "description": "The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Filter the list of items using a simple expression language.  The available list of fields are Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "description": "Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The number of items to skip in the (potentially filtered) result set before returning subsequent items.",
+                        "required": false,
+                        "type": "integer",
+                        "minimum": 0.0
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "The maximum number of items to show from the (potentially filtered) result set.",
+                        "required": false,
+                        "type": "integer",
+                        "minimum": 0.0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Details of the available licensing sets",
+                        "schema": {
+                            "$ref": "#/definitions/PagedResults[LicensingSet]"
+                        }
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to get the available licensing sets."
+                    },
+                    "404": {
+                        "description": "The DataView or job couldn't be found"
                     }
                 },
                 "security": [
@@ -8736,14 +8929,14 @@
                     {
                         "name": "filter",
                         "in": "query",
-                        "description": "Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname",
+                        "description": "Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "orderBy",
                         "in": "query",
-                        "description": "Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Firstname, Surname",
+                        "description": "Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress",
                         "required": false,
                         "type": "string"
                     },
@@ -11723,7 +11916,7 @@
                 ],
                 "summary": "EXPERIMENTAL: Gets a dashboard in the DataView.",
                 "description": "EXPERIMENTAL",
-                "operationId": "Users_GetDashboard",
+                "operationId": "Users_GetUserDashboard",
                 "consumes": [],
                 "produces": [
                     "application/json",
@@ -12688,6 +12881,9 @@
                 "numericEncloser": {
                     "description": "The delimiter character to use when outputting a delimited file.  Specify one character only",
                     "type": "string"
+                },
+                "authorisationCode": {
+                    "type": "string"
                 }
             }
         },
@@ -12984,7 +13180,7 @@
                     "type": "string"
                 },
                 "currencySymbol": {
-                    "description": "If this variable is a currency variable, then the currency symbolfor the specific currency (i.e. \"\u00c2\u00a3\" for the UK pound sterling, \"$\" for the US dollar)",
+                    "description": "If this variable is a currency variable, then the currency symbolfor the specific currency (i.e. \"\u00a3\" for the UK pound sterling, \"$\" for the US dollar)",
                     "type": "string"
                 }
             }
@@ -15044,6 +15240,10 @@
                 "omitUnclassified": {
                     "description": "If this dimension represents a selector with an unclassified code, whether to omit this from the cube",
                     "type": "boolean"
+                },
+                "filterQuery": {
+                    "$ref": "#/definitions/Query",
+                    "description": "If definition of the query to use to filter the dimension"
                 }
             }
         },
@@ -15215,6 +15415,16 @@
             "properties": {
                 "userAgentDetails": {
                     "description": "Details of the client application that made the view",
+                    "type": "string"
+                }
+            }
+        },
+        "DataLicensingDetail": {
+            "description": "The details required to get data licensing information for an audience",
+            "type": "object",
+            "properties": {
+                "licensingSet": {
+                    "description": "The name of the licensing set to get the information for",
                     "type": "string"
                 }
             }
@@ -15973,6 +16183,43 @@
                 }
             }
         },
+        "DashboardItemData": {
+            "type": "object",
+            "properties": {
+                "filter": {
+                    "$ref": "#/definitions/Query"
+                },
+                "drillDownLevel": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "dimensionFilter": {
+                    "$ref": "#/definitions/Query"
+                }
+            }
+        },
+        "DashboardItemDataResult": {
+            "description": "Results for processing a cube request",
+            "type": "object",
+            "properties": {
+                "dimensionResults": {
+                    "description": "The set of dimension results for this cube, containing the category codes and descriptions for each dimension in the cube",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DimensionResult"
+                    }
+                },
+                "measureResults": {
+                    "description": "The set of measure results for this cube, containing the values for each measure in the cube",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MeasureResult"
+                    }
+                }
+            }
+        },
         "DataPurchaseDetail": {
             "description": "Details used to create records purchase",
             "type": "object",
@@ -15985,7 +16232,7 @@
                     "description": "The name of the licensing set to purchase records for",
                     "type": "string"
                 },
-                "fileName": {
+                "filename": {
                     "description": "The name of the file saved to the user's private directory",
                     "type": "string"
                 },
@@ -16001,6 +16248,10 @@
                 },
                 "password": {
                     "description": "String of characters to authorise purchase",
+                    "type": "string"
+                },
+                "authorisationCode": {
+                    "description": "Authorisation code to purchase records over velocity limit",
                     "type": "string"
                 }
             }
@@ -16071,6 +16322,51 @@
                     "format": "int32",
                     "description": "If present, an estimate of how far through its processing this job is",
                     "type": "integer"
+                }
+            }
+        },
+        "PagedResults[LicensingSet]": {
+            "description": "Summary details for a user",
+            "required": [
+                "offset",
+                "count",
+                "totalCount",
+                "list"
+            ],
+            "type": "object",
+            "properties": {
+                "offset": {
+                    "format": "int32",
+                    "description": "The number of items that were skipped over from the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "count": {
+                    "format": "int32",
+                    "description": "The number of items returned in this page of the result set",
+                    "type": "integer"
+                },
+                "totalCount": {
+                    "format": "int32",
+                    "description": "The total number of items available in the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "list": {
+                    "description": "The list of results",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LicensingSet"
+                    }
+                }
+            }
+        },
+        "LicensingSet": {
+            "description": "Details for a licensing set",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "The name of the licensing set",
+                    "type": "string"
                 }
             }
         },
@@ -16741,6 +17037,9 @@
                     "format": "date-time",
                     "description": "The date and time that the FastStats system was built",
                     "type": "string"
+                },
+                "velocityType": {
+                    "type": "string"
                 }
             }
         },
@@ -16768,6 +17067,9 @@
                 "fastStatsBuildDate": {
                     "format": "date-time",
                     "description": "The date and time that the FastStats system was built",
+                    "type": "string"
+                },
+                "velocityType": {
                     "type": "string"
                 }
             }
@@ -20646,13 +20948,148 @@
                     "description": "The description of the dashboard",
                     "type": "string"
                 },
-                "definition": {
-                    "description": "The definition of the dashboard",
-                    "type": "string"
+                "baseQuery": {
+                    "$ref": "#/definitions/Query",
+                    "description": "The base query for the dashboard"
+                },
+                "dashboardItems": {
+                    "description": "The items that are contained within the dashboard",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DashboardContentItem"
+                    }
                 },
                 "systemName": {
                     "description": "The connected system of the dashboard",
                     "type": "string"
+                },
+                "baseQueryLookup": {
+                    "$ref": "#/definitions/SystemLookup"
+                }
+            }
+        },
+        "DashboardContentItem": {
+            "description": "Outline for a dashboard item",
+            "required": [
+                "id",
+                "title"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "The dashboard items id",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "The dashboard items title",
+                    "type": "string"
+                },
+                "breakpoints": {
+                    "description": "The breakpoint sizing data",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Breakpoint"
+                    }
+                },
+                "dashboardItemDetails": {
+                    "description": "The dashboard items details for each breakpoint",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DashboardContentItemDetail"
+                    }
+                }
+            }
+        },
+        "Breakpoint": {
+            "required": [
+                "breakpoint",
+                "size"
+            ],
+            "type": "object",
+            "properties": {
+                "breakpoint": {
+                    "description": "The target breakpoint size",
+                    "enum": [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl"
+                    ],
+                    "type": "string"
+                },
+                "size": {
+                    "$ref": "#/definitions/Size",
+                    "description": "The size of the dashboard item at the current target breakpoint"
+                }
+            }
+        },
+        "DashboardContentItemDetail": {
+            "description": "The details of a dashboard item",
+            "required": [
+                "drilldownLevel",
+                "chartType",
+                "resolveTableName"
+            ],
+            "type": "object",
+            "properties": {
+                "drilldownLevel": {
+                    "format": "int32",
+                    "description": "The drill down level of the dashboard item",
+                    "type": "integer"
+                },
+                "description": {
+                    "description": "The description of the dashboard item",
+                    "type": "string"
+                },
+                "chartType": {
+                    "description": "The chart type that will be shown in the dashboard item",
+                    "enum": [
+                        "Bar",
+                        "Column",
+                        "Pie",
+                        "Donut",
+                        "Line",
+                        "UKPostArea",
+                        "NLProvinces",
+                        "NLMunicipalities",
+                        "DE2DigitPostCode",
+                        "CH2DigitPostCode",
+                        "AU2DigitPostCode",
+                        "USStates"
+                    ],
+                    "type": "string"
+                },
+                "resolveTableName": {
+                    "description": "The table name that the data will resolve to",
+                    "type": "string"
+                },
+                "dimensions": {
+                    "description": "The dimensions of the dashboard item chart",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Dimension"
+                    }
+                },
+                "measures": {
+                    "description": "The measures of the dashboard item chart",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Measure"
+                    }
+                },
+                "omitZeros": {
+                    "description": "Whether to omit zeroes in the data of the dashboard item",
+                    "type": "boolean"
+                },
+                "omitUnclassified": {
+                    "description": "Whether to omit unclassifieds in the data of the dashboard item",
+                    "type": "boolean"
                 }
             }
         },

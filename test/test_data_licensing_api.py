@@ -32,28 +32,35 @@ class TestDataLicensingApi(unittest.TestCase):
     def test_data_licensing_cancel_data_purchase_job(self):
         """Test case for data_licensing_cancel_data_purchase_job
 
-        Cancel a running data purchasing job  # noqa: E501
+        UNDER DEVELOPMENT: Cancel a running data purchasing job  # noqa: E501
         """
         pass
 
     def test_data_licensing_create_purchase_data_licensing_job(self):
         """Test case for data_licensing_create_purchase_data_licensing_job
 
-        Create a new job to purchase data licensing information  # noqa: E501
+        UNDER DEVELOPMENT: Create a new job to purchase data licensing information  # noqa: E501
         """
         pass
 
     def test_data_licensing_get_data_purchase_job(self):
         """Test case for data_licensing_get_data_purchase_job
 
-        Get the status of a running purchase job  # noqa: E501
+        UNDER DEVELOPMENT: Get the status of a running purchase job  # noqa: E501
+        """
+        pass
+
+    def test_data_licensing_get_licensing_sets_sync(self):
+        """Test case for data_licensing_get_licensing_sets_sync
+
+        UNDER DEVELOPMENT: Get the licensing sets for a system  # noqa: E501
         """
         pass
 
     def test_data_licensing_purchase_data_licensing_sync(self):
         """Test case for data_licensing_purchase_data_licensing_sync
 
-        Purchase data licensing information  # noqa: E501
+        UNDER DEVELOPMENT: Purchase data licensing information  # noqa: E501
         """
         pass
 

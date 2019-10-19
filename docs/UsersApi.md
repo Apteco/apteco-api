@@ -5,13 +5,13 @@ All URIs are relative to *http://example.com/OrbitAPI*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**users_change_user_password**](UsersApi.md#users_change_user_password) | **POST** /{dataViewName}/Users/{username}/ChangePassword | Change the password for the user with the given username
-[**users_get_dashboard**](UsersApi.md#users_get_dashboard) | **GET** /{dataViewName}/Users/{username}/Dashboards/{dashboardId} | EXPERIMENTAL: Gets a dashboard in the DataView.
 [**users_get_previous_login_history**](UsersApi.md#users_get_previous_login_history) | **GET** /{dataViewName}/Users/{username}/LoginHistory | Gets a list of users last login history
 [**users_get_user_audience**](UsersApi.md#users_get_user_audience) | **GET** /{dataViewName}/Users/{username}/Audiences/{audienceId} | Returns the details of a particular audience
 [**users_get_user_audiences**](UsersApi.md#users_get_user_audiences) | **GET** /{dataViewName}/Users/{username}/Audiences | Returns the list of audiences associated with the given user
 [**users_get_user_collection**](UsersApi.md#users_get_user_collection) | **GET** /{dataViewName}/Users/{username}/Collections/{collectionId} | Returns the details of a particular collection
 [**users_get_user_collections**](UsersApi.md#users_get_user_collections) | **GET** /{dataViewName}/Users/{username}/Collections | Returns the list of collections associated with the given user
 [**users_get_user_configuration**](UsersApi.md#users_get_user_configuration) | **GET** /{dataViewName}/Users/Configuration | Gets the user configuration
+[**users_get_user_dashboard**](UsersApi.md#users_get_user_dashboard) | **GET** /{dataViewName}/Users/{username}/Dashboards/{dashboardId} | EXPERIMENTAL: Gets a dashboard in the DataView.
 [**users_get_user_details**](UsersApi.md#users_get_user_details) | **GET** /{dataViewName}/Users/{username} | Returns details for the given username
 [**users_get_user_details_list**](UsersApi.md#users_get_user_details_list) | **GET** /{dataViewName}/Users | Returns all users in the system.
 [**users_modify_user_audiences**](UsersApi.md#users_modify_user_audiences) | **POST** /{dataViewName}/Users/{username}/Audiences/Modify | Updates one or more audiences
@@ -81,73 +81,6 @@ void (empty response body)
 **200** | The user&#39;s password has been successfully updated |  -  |
 **400** | Bad request or supplied old password doesn&#39;t match user&#39;s current password |  -  |
 **403** | The user doesn&#39;t match the authenticated session or isn&#39;t an admin |  -  |
-**404** | The DataView couldn&#39;t be found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **users_get_dashboard**
-> DashboardDetail users_get_dashboard(data_view_name, username, dashboard_id)
-
-EXPERIMENTAL: Gets a dashboard in the DataView.
-
-EXPERIMENTAL
-
-### Example
-
-* Api Key Authentication (faststats_auth):
-```python
-from __future__ import print_function
-import time
-import apteco_api
-from apteco_api.rest import ApiException
-from pprint import pprint
-configuration = apteco_api.Configuration()
-# Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = apteco_api.UsersApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
-username = 'username_example' # str | 
-dashboard_id = 56 # int | 
-
-try:
-    # EXPERIMENTAL: Gets a dashboard in the DataView.
-    api_response = api_instance.users_get_dashboard(data_view_name, username, dashboard_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UsersApi->users_get_dashboard: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data_view_name** | **str**| The name of the DataView to act on | 
- **username** | **str**|  | 
- **dashboard_id** | **int**|  | 
-
-### Return type
-
-[**DashboardDetail**](DashboardDetail.md)
-
-### Authorization
-
-[faststats_auth](../README.md#faststats_auth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, application/xml, text/xml
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | The dashboard |  -  |
-**400** | A bad request |  -  |
-**403** | Forbidden |  -  |
 **404** | The DataView couldn&#39;t be found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -556,6 +489,73 @@ No authorization required
 |-------------|-------------|------------------|
 **200** | The valid configuration information |  -  |
 **400** | Bad request |  -  |
+**404** | The DataView couldn&#39;t be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **users_get_user_dashboard**
+> DashboardDetail users_get_user_dashboard(data_view_name, username, dashboard_id)
+
+EXPERIMENTAL: Gets a dashboard in the DataView.
+
+EXPERIMENTAL
+
+### Example
+
+* Api Key Authentication (faststats_auth):
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+configuration = apteco_api.Configuration()
+# Configure API key authorization: faststats_auth
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = apteco_api.UsersApi(apteco_api.ApiClient(configuration))
+data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+username = 'username_example' # str | 
+dashboard_id = 56 # int | 
+
+try:
+    # EXPERIMENTAL: Gets a dashboard in the DataView.
+    api_response = api_instance.users_get_user_dashboard(data_view_name, username, dashboard_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UsersApi->users_get_user_dashboard: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data_view_name** | **str**| The name of the DataView to act on | 
+ **username** | **str**|  | 
+ **dashboard_id** | **int**|  | 
+
+### Return type
+
+[**DashboardDetail**](DashboardDetail.md)
+
+### Authorization
+
+[faststats_auth](../README.md#faststats_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The dashboard |  -  |
+**400** | A bad request |  -  |
+**403** | Forbidden |  -  |
 **404** | The DataView couldn&#39;t be found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

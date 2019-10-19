@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "0.1.9"
+__version__ = "0.1.10"
 
 # import apis into sdk package
 from apteco_api.api.about_api import AboutApi
@@ -72,6 +72,7 @@ from apteco_api.models.audience_result_summary import AudienceResultSummary
 from apteco_api.models.audience_summary import AudienceSummary
 from apteco_api.models.audience_update_detail import AudienceUpdateDetail
 from apteco_api.models.audience_update_summary import AudienceUpdateSummary
+from apteco_api.models.breakpoint import Breakpoint
 from apteco_api.models.calculate_audience_details import CalculateAudienceDetails
 from apteco_api.models.capabilities import Capabilities
 from apteco_api.models.change_password_details import ChangePasswordDetails
@@ -110,8 +111,13 @@ from apteco_api.models.created_share_update_detail import CreatedShareUpdateDeta
 from apteco_api.models.criteria import Criteria
 from apteco_api.models.cube import Cube
 from apteco_api.models.cube_result import CubeResult
+from apteco_api.models.dashboard_content_item import DashboardContentItem
+from apteco_api.models.dashboard_content_item_detail import DashboardContentItemDetail
 from apteco_api.models.dashboard_detail import DashboardDetail
 from apteco_api.models.dashboard_item import DashboardItem
+from apteco_api.models.dashboard_item_data import DashboardItemData
+from apteco_api.models.dashboard_item_data_result import DashboardItemDataResult
+from apteco_api.models.data_licensing_detail import DataLicensingDetail
 from apteco_api.models.data_purchase_detail import DataPurchaseDetail
 from apteco_api.models.data_purchase_job_detail import DataPurchaseJobDetail
 from apteco_api.models.data_view_details import DataViewDetails
@@ -151,6 +157,7 @@ from apteco_api.models.language_details import LanguageDetails
 from apteco_api.models.last_run_details import LastRunDetails
 from apteco_api.models.licence import Licence
 from apteco_api.models.licensing_info import LicensingInfo
+from apteco_api.models.licensing_set import LicensingSet
 from apteco_api.models.limits import Limits
 from apteco_api.models.link import Link
 from apteco_api.models.list_rule import ListRule
@@ -190,6 +197,7 @@ from apteco_api.models.paged_results_file_entry import PagedResultsFileEntry
 from apteco_api.models.paged_results_file_system_summary import PagedResultsFileSystemSummary
 from apteco_api.models.paged_results_folder_structure_node import PagedResultsFolderStructureNode
 from apteco_api.models.paged_results_job_summary import PagedResultsJobSummary
+from apteco_api.models.paged_results_licensing_set import PagedResultsLicensingSet
 from apteco_api.models.paged_results_modify_user_audience_detail_results import PagedResultsModifyUserAudienceDetailResults
 from apteco_api.models.paged_results_modify_user_collection_detail_results import PagedResultsModifyUserCollectionDetailResults
 from apteco_api.models.paged_results_people_stage_system_summary import PagedResultsPeopleStageSystemSummary

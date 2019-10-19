@@ -32,7 +32,7 @@ class TestAudiencesApi(unittest.TestCase):
     def test_audiences_calculate_audience_data_licensing_sync(self):
         """Test case for audiences_calculate_audience_data_licensing_sync
 
-        Get data licensing information for the latest version of this audience  # noqa: E501
+        UNDER DEVELOPMENT: Get data licensing information for the latest version of this audience  # noqa: E501
         """
         pass
 
@@ -46,7 +46,7 @@ class TestAudiencesApi(unittest.TestCase):
     def test_audiences_cancel_calculate_audience_data_licensing_job(self):
         """Test case for audiences_cancel_calculate_audience_data_licensing_job
 
-        Cancel a running data licensing job  # noqa: E501
+        UNDER DEVELOPMENT: Cancel a running data licensing job  # noqa: E501
         """
         pass
 
@@ -102,7 +102,7 @@ class TestAudiencesApi(unittest.TestCase):
     def test_audiences_create_calculate_audience_data_licensing_job(self):
         """Test case for audiences_create_calculate_audience_data_licensing_job
 
-        Create a new job to get data licensing information for the latest version of this audience  # noqa: E501
+        UNDER DEVELOPMENT: Create a new job to get data licensing information for the latest version of this audience  # noqa: E501
         """
         pass
 
@@ -207,7 +207,7 @@ class TestAudiencesApi(unittest.TestCase):
     def test_audiences_get_calculate_audience_data_licensing_job(self):
         """Test case for audiences_get_calculate_audience_data_licensing_job
 
-        Get the status of a running calculate job  # noqa: E501
+        UNDER DEVELOPMENT: Get the status of a running calculate job  # noqa: E501
         """
         pass
 

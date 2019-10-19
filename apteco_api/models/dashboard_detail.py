@@ -35,36 +35,46 @@ class DashboardDetail(object):
         'id': 'int',
         'title': 'str',
         'description': 'str',
-        'definition': 'str',
-        'system_name': 'str'
+        'base_query': 'Query',
+        'dashboard_items': 'list[DashboardContentItem]',
+        'system_name': 'str',
+        'base_query_lookup': 'SystemLookup'
     }
 
     attribute_map = {
         'id': 'id',
         'title': 'title',
         'description': 'description',
-        'definition': 'definition',
-        'system_name': 'systemName'
+        'base_query': 'baseQuery',
+        'dashboard_items': 'dashboardItems',
+        'system_name': 'systemName',
+        'base_query_lookup': 'baseQueryLookup'
     }
 
-    def __init__(self, id=None, title=None, description=None, definition=None, system_name=None):  # noqa: E501
+    def __init__(self, id=None, title=None, description=None, base_query=None, dashboard_items=None, system_name=None, base_query_lookup=None):  # noqa: E501
         """DashboardDetail - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
         self._title = None
         self._description = None
-        self._definition = None
+        self._base_query = None
+        self._dashboard_items = None
         self._system_name = None
+        self._base_query_lookup = None
         self.discriminator = None
 
         self.id = id
         self.title = title
         if description is not None:
             self.description = description
-        if definition is not None:
-            self.definition = definition
+        if base_query is not None:
+            self.base_query = base_query
+        if dashboard_items is not None:
+            self.dashboard_items = dashboard_items
         if system_name is not None:
             self.system_name = system_name
+        if base_query_lookup is not None:
+            self.base_query_lookup = base_query_lookup
 
     @property
     def id(self):
@@ -140,27 +150,48 @@ class DashboardDetail(object):
         self._description = description
 
     @property
-    def definition(self):
-        """Gets the definition of this DashboardDetail.  # noqa: E501
+    def base_query(self):
+        """Gets the base_query of this DashboardDetail.  # noqa: E501
 
-        The definition of the dashboard  # noqa: E501
 
-        :return: The definition of this DashboardDetail.  # noqa: E501
-        :rtype: str
+        :return: The base_query of this DashboardDetail.  # noqa: E501
+        :rtype: Query
         """
-        return self._definition
+        return self._base_query
 
-    @definition.setter
-    def definition(self, definition):
-        """Sets the definition of this DashboardDetail.
+    @base_query.setter
+    def base_query(self, base_query):
+        """Sets the base_query of this DashboardDetail.
 
-        The definition of the dashboard  # noqa: E501
 
-        :param definition: The definition of this DashboardDetail.  # noqa: E501
-        :type: str
+        :param base_query: The base_query of this DashboardDetail.  # noqa: E501
+        :type: Query
         """
 
-        self._definition = definition
+        self._base_query = base_query
+
+    @property
+    def dashboard_items(self):
+        """Gets the dashboard_items of this DashboardDetail.  # noqa: E501
+
+        The items that are contained within the dashboard  # noqa: E501
+
+        :return: The dashboard_items of this DashboardDetail.  # noqa: E501
+        :rtype: list[DashboardContentItem]
+        """
+        return self._dashboard_items
+
+    @dashboard_items.setter
+    def dashboard_items(self, dashboard_items):
+        """Sets the dashboard_items of this DashboardDetail.
+
+        The items that are contained within the dashboard  # noqa: E501
+
+        :param dashboard_items: The dashboard_items of this DashboardDetail.  # noqa: E501
+        :type: list[DashboardContentItem]
+        """
+
+        self._dashboard_items = dashboard_items
 
     @property
     def system_name(self):
@@ -184,6 +215,27 @@ class DashboardDetail(object):
         """
 
         self._system_name = system_name
+
+    @property
+    def base_query_lookup(self):
+        """Gets the base_query_lookup of this DashboardDetail.  # noqa: E501
+
+
+        :return: The base_query_lookup of this DashboardDetail.  # noqa: E501
+        :rtype: SystemLookup
+        """
+        return self._base_query_lookup
+
+    @base_query_lookup.setter
+    def base_query_lookup(self, base_query_lookup):
+        """Sets the base_query_lookup of this DashboardDetail.
+
+
+        :param base_query_lookup: The base_query_lookup of this DashboardDetail.  # noqa: E501
+        :type: SystemLookup
+        """
+
+        self._base_query_lookup = base_query_lookup
 
     def to_dict(self):
         """Returns the model properties as a dict"""

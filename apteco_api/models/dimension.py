@@ -39,7 +39,8 @@ class Dimension(object):
         'banding': 'DimensionBanding',
         'function': 'str',
         'none_cell': 'bool',
-        'omit_unclassified': 'bool'
+        'omit_unclassified': 'bool',
+        'filter_query': 'Query'
     }
 
     attribute_map = {
@@ -50,10 +51,11 @@ class Dimension(object):
         'banding': 'banding',
         'function': 'function',
         'none_cell': 'noneCell',
-        'omit_unclassified': 'omitUnclassified'
+        'omit_unclassified': 'omitUnclassified',
+        'filter_query': 'filterQuery'
     }
 
-    def __init__(self, id=None, type=None, query=None, variable_name=None, banding=None, function=None, none_cell=None, omit_unclassified=None):  # noqa: E501
+    def __init__(self, id=None, type=None, query=None, variable_name=None, banding=None, function=None, none_cell=None, omit_unclassified=None, filter_query=None):  # noqa: E501
         """Dimension - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
@@ -64,6 +66,7 @@ class Dimension(object):
         self._function = None
         self._none_cell = None
         self._omit_unclassified = None
+        self._filter_query = None
         self.discriminator = None
 
         self.id = id
@@ -80,6 +83,8 @@ class Dimension(object):
             self.none_cell = none_cell
         if omit_unclassified is not None:
             self.omit_unclassified = omit_unclassified
+        if filter_query is not None:
+            self.filter_query = filter_query
 
     @property
     def id(self):
@@ -276,6 +281,27 @@ class Dimension(object):
         """
 
         self._omit_unclassified = omit_unclassified
+
+    @property
+    def filter_query(self):
+        """Gets the filter_query of this Dimension.  # noqa: E501
+
+
+        :return: The filter_query of this Dimension.  # noqa: E501
+        :rtype: Query
+        """
+        return self._filter_query
+
+    @filter_query.setter
+    def filter_query(self, filter_query):
+        """Sets the filter_query of this Dimension.
+
+
+        :param filter_query: The filter_query of this Dimension.  # noqa: E501
+        :type: Query
+        """
+
+        self._filter_query = filter_query
 
     def to_dict(self):
         """Returns the model properties as a dict"""

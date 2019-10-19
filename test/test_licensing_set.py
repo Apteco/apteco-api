@@ -16,24 +16,23 @@ from __future__ import absolute_import
 import unittest
 
 import apteco_api
-from apteco_api.api.dashboards_api import DashboardsApi  # noqa: E501
+from apteco_api.models.licensing_set import LicensingSet  # noqa: E501
 from apteco_api.rest import ApiException
 
 
-class TestDashboardsApi(unittest.TestCase):
-    """DashboardsApi unit test stubs"""
+class TestLicensingSet(unittest.TestCase):
+    """LicensingSet unit test stubs"""
 
     def setUp(self):
-        self.api = apteco_api.api.dashboards_api.DashboardsApi()  # noqa: E501
+        pass
 
     def tearDown(self):
         pass
 
-    def test_dashboards_get_dashboard_item_data_sync(self):
-        """Test case for dashboards_get_dashboard_item_data_sync
-
-        EXPERIMENTAL: Return data needed to render visualisation for dashboard item  # noqa: E501
-        """
+    def testLicensingSet(self):
+        """Test LicensingSet"""
+        # FIXME: construct object with mandatory attributes with example values
+        # model = apteco_api.models.licensing_set.LicensingSet()  # noqa: E501
         pass
 
 

@@ -34,44 +34,49 @@ class DataPurchaseDetail(object):
     openapi_types = {
         'query_id': 'str',
         'licensing_set': 'str',
-        'file_name': 'str',
+        'filename': 'str',
         'grand_total_cost': 'float',
         'purchase_order_number': 'int',
-        'password': 'str'
+        'password': 'str',
+        'authorisation_code': 'str'
     }
 
     attribute_map = {
         'query_id': 'queryId',
         'licensing_set': 'licensingSet',
-        'file_name': 'fileName',
+        'filename': 'filename',
         'grand_total_cost': 'grandTotalCost',
         'purchase_order_number': 'purchaseOrderNumber',
-        'password': 'password'
+        'password': 'password',
+        'authorisation_code': 'authorisationCode'
     }
 
-    def __init__(self, query_id=None, licensing_set=None, file_name=None, grand_total_cost=None, purchase_order_number=None, password=None):  # noqa: E501
+    def __init__(self, query_id=None, licensing_set=None, filename=None, grand_total_cost=None, purchase_order_number=None, password=None, authorisation_code=None):  # noqa: E501
         """DataPurchaseDetail - a model defined in OpenAPI"""  # noqa: E501
 
         self._query_id = None
         self._licensing_set = None
-        self._file_name = None
+        self._filename = None
         self._grand_total_cost = None
         self._purchase_order_number = None
         self._password = None
+        self._authorisation_code = None
         self.discriminator = None
 
         if query_id is not None:
             self.query_id = query_id
         if licensing_set is not None:
             self.licensing_set = licensing_set
-        if file_name is not None:
-            self.file_name = file_name
+        if filename is not None:
+            self.filename = filename
         if grand_total_cost is not None:
             self.grand_total_cost = grand_total_cost
         if purchase_order_number is not None:
             self.purchase_order_number = purchase_order_number
         if password is not None:
             self.password = password
+        if authorisation_code is not None:
+            self.authorisation_code = authorisation_code
 
     @property
     def query_id(self):
@@ -120,27 +125,27 @@ class DataPurchaseDetail(object):
         self._licensing_set = licensing_set
 
     @property
-    def file_name(self):
-        """Gets the file_name of this DataPurchaseDetail.  # noqa: E501
+    def filename(self):
+        """Gets the filename of this DataPurchaseDetail.  # noqa: E501
 
         The name of the file saved to the user's private directory  # noqa: E501
 
-        :return: The file_name of this DataPurchaseDetail.  # noqa: E501
+        :return: The filename of this DataPurchaseDetail.  # noqa: E501
         :rtype: str
         """
-        return self._file_name
+        return self._filename
 
-    @file_name.setter
-    def file_name(self, file_name):
-        """Sets the file_name of this DataPurchaseDetail.
+    @filename.setter
+    def filename(self, filename):
+        """Sets the filename of this DataPurchaseDetail.
 
         The name of the file saved to the user's private directory  # noqa: E501
 
-        :param file_name: The file_name of this DataPurchaseDetail.  # noqa: E501
+        :param filename: The filename of this DataPurchaseDetail.  # noqa: E501
         :type: str
         """
 
-        self._file_name = file_name
+        self._filename = filename
 
     @property
     def grand_total_cost(self):
@@ -210,6 +215,29 @@ class DataPurchaseDetail(object):
         """
 
         self._password = password
+
+    @property
+    def authorisation_code(self):
+        """Gets the authorisation_code of this DataPurchaseDetail.  # noqa: E501
+
+        Authorisation code to purchase records over velocity limit  # noqa: E501
+
+        :return: The authorisation_code of this DataPurchaseDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._authorisation_code
+
+    @authorisation_code.setter
+    def authorisation_code(self, authorisation_code):
+        """Sets the authorisation_code of this DataPurchaseDetail.
+
+        Authorisation code to purchase records over velocity limit  # noqa: E501
+
+        :param authorisation_code: The authorisation_code of this DataPurchaseDetail.  # noqa: E501
+        :type: str
+        """
+
+        self._authorisation_code = authorisation_code
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -35,23 +35,26 @@ class Output(object):
         'format': 'str',
         'delimiter': 'str',
         'alpha_encloser': 'str',
-        'numeric_encloser': 'str'
+        'numeric_encloser': 'str',
+        'authorisation_code': 'str'
     }
 
     attribute_map = {
         'format': 'format',
         'delimiter': 'delimiter',
         'alpha_encloser': 'alphaEncloser',
-        'numeric_encloser': 'numericEncloser'
+        'numeric_encloser': 'numericEncloser',
+        'authorisation_code': 'authorisationCode'
     }
 
-    def __init__(self, format=None, delimiter=None, alpha_encloser=None, numeric_encloser=None):  # noqa: E501
+    def __init__(self, format=None, delimiter=None, alpha_encloser=None, numeric_encloser=None, authorisation_code=None):  # noqa: E501
         """Output - a model defined in OpenAPI"""  # noqa: E501
 
         self._format = None
         self._delimiter = None
         self._alpha_encloser = None
         self._numeric_encloser = None
+        self._authorisation_code = None
         self.discriminator = None
 
         if format is not None:
@@ -62,6 +65,8 @@ class Output(object):
             self.alpha_encloser = alpha_encloser
         if numeric_encloser is not None:
             self.numeric_encloser = numeric_encloser
+        if authorisation_code is not None:
+            self.authorisation_code = authorisation_code
 
     @property
     def format(self):
@@ -160,6 +165,27 @@ class Output(object):
         """
 
         self._numeric_encloser = numeric_encloser
+
+    @property
+    def authorisation_code(self):
+        """Gets the authorisation_code of this Output.  # noqa: E501
+
+
+        :return: The authorisation_code of this Output.  # noqa: E501
+        :rtype: str
+        """
+        return self._authorisation_code
+
+    @authorisation_code.setter
+    def authorisation_code(self, authorisation_code):
+        """Sets the authorisation_code of this Output.
+
+
+        :param authorisation_code: The authorisation_code of this Output.  # noqa: E501
+        :type: str
+        """
+
+        self._authorisation_code = authorisation_code
 
     def to_dict(self):
         """Returns the model properties as a dict"""

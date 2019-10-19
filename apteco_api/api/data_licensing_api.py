@@ -38,8 +38,9 @@ class DataLicensingApi(object):
         self.api_client = api_client
 
     def data_licensing_cancel_data_purchase_job(self, data_view_name, system_name, job_id, **kwargs):  # noqa: E501
-        """Cancel a running data purchasing job  # noqa: E501
+        """UNDER DEVELOPMENT: Cancel a running data purchasing job  # noqa: E501
 
+        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_licensing_cancel_data_purchase_job(data_view_name, system_name, job_id, async_req=True)
@@ -64,8 +65,9 @@ class DataLicensingApi(object):
         return self.data_licensing_cancel_data_purchase_job_with_http_info(data_view_name, system_name, job_id, **kwargs)  # noqa: E501
 
     def data_licensing_cancel_data_purchase_job_with_http_info(self, data_view_name, system_name, job_id, **kwargs):  # noqa: E501
-        """Cancel a running data purchasing job  # noqa: E501
+        """UNDER DEVELOPMENT: Cancel a running data purchasing job  # noqa: E501
 
+        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_licensing_cancel_data_purchase_job_with_http_info(data_view_name, system_name, job_id, async_req=True)
@@ -156,8 +158,9 @@ class DataLicensingApi(object):
             collection_formats=collection_formats)
 
     def data_licensing_create_purchase_data_licensing_job(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """Create a new job to purchase data licensing information  # noqa: E501
+        """UNDER DEVELOPMENT: Create a new job to purchase data licensing information  # noqa: E501
 
+        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_licensing_create_purchase_data_licensing_job(data_view_name, system_name, async_req=True)
@@ -182,8 +185,9 @@ class DataLicensingApi(object):
         return self.data_licensing_create_purchase_data_licensing_job_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
 
     def data_licensing_create_purchase_data_licensing_job_with_http_info(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """Create a new job to purchase data licensing information  # noqa: E501
+        """UNDER DEVELOPMENT: Create a new job to purchase data licensing information  # noqa: E501
 
+        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_licensing_create_purchase_data_licensing_job_with_http_info(data_view_name, system_name, async_req=True)
@@ -278,8 +282,9 @@ class DataLicensingApi(object):
             collection_formats=collection_formats)
 
     def data_licensing_get_data_purchase_job(self, data_view_name, system_name, job_id, **kwargs):  # noqa: E501
-        """Get the status of a running purchase job  # noqa: E501
+        """UNDER DEVELOPMENT: Get the status of a running purchase job  # noqa: E501
 
+        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_licensing_get_data_purchase_job(data_view_name, system_name, job_id, async_req=True)
@@ -304,8 +309,9 @@ class DataLicensingApi(object):
         return self.data_licensing_get_data_purchase_job_with_http_info(data_view_name, system_name, job_id, **kwargs)  # noqa: E501
 
     def data_licensing_get_data_purchase_job_with_http_info(self, data_view_name, system_name, job_id, **kwargs):  # noqa: E501
-        """Get the status of a running purchase job  # noqa: E501
+        """UNDER DEVELOPMENT: Get the status of a running purchase job  # noqa: E501
 
+        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_licensing_get_data_purchase_job_with_http_info(data_view_name, system_name, job_id, async_req=True)
@@ -399,9 +405,150 @@ class DataLicensingApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def data_licensing_purchase_data_licensing_sync(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """Purchase data licensing information  # noqa: E501
+    def data_licensing_get_licensing_sets_sync(self, data_view_name, system_name, **kwargs):  # noqa: E501
+        """UNDER DEVELOPMENT: Get the licensing sets for a system  # noqa: E501
 
+        UNDER DEVELOPMENT  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.data_licensing_get_licensing_sets_sync(data_view_name, system_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: PagedResultsLicensingSet
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.data_licensing_get_licensing_sets_sync_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
+
+    def data_licensing_get_licensing_sets_sync_with_http_info(self, data_view_name, system_name, **kwargs):  # noqa: E501
+        """UNDER DEVELOPMENT: Get the licensing sets for a system  # noqa: E501
+
+        UNDER DEVELOPMENT  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.data_licensing_get_licensing_sets_sync_with_http_info(data_view_name, system_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(PagedResultsLicensingSet, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['data_view_name', 'system_name', 'timeout_in_seconds', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method data_licensing_get_licensing_sets_sync" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if ('data_view_name' not in local_var_params or
+                local_var_params['data_view_name'] is None):
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `data_licensing_get_licensing_sets_sync`")  # noqa: E501
+        # verify the required parameter 'system_name' is set
+        if ('system_name' not in local_var_params or
+                local_var_params['system_name'] is None):
+            raise ApiValueError("Missing the required parameter `system_name` when calling `data_licensing_get_licensing_sets_sync`")  # noqa: E501
+
+        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `offset` when calling `data_licensing_get_licensing_sets_sync`, must be a value greater than or equal to `0`")  # noqa: E501
+        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `count` when calling `data_licensing_get_licensing_sets_sync`, must be a value greater than or equal to `0`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'system_name' in local_var_params:
+            path_params['systemName'] = local_var_params['system_name']  # noqa: E501
+
+        query_params = []
+        if 'timeout_in_seconds' in local_var_params:
+            query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
+        if 'filter' in local_var_params:
+            query_params.append(('filter', local_var_params['filter']))  # noqa: E501
+        if 'order_by' in local_var_params:
+            query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
+        if 'offset' in local_var_params:
+            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
+        if 'count' in local_var_params:
+            query_params.append(('count', local_var_params['count']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/DataLicensing/{systemName}/LicensingSets', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PagedResultsLicensingSet',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def data_licensing_purchase_data_licensing_sync(self, data_view_name, system_name, **kwargs):  # noqa: E501
+        """UNDER DEVELOPMENT: Purchase data licensing information  # noqa: E501
+
+        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_licensing_purchase_data_licensing_sync(data_view_name, system_name, async_req=True)
@@ -427,8 +574,9 @@ class DataLicensingApi(object):
         return self.data_licensing_purchase_data_licensing_sync_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
 
     def data_licensing_purchase_data_licensing_sync_with_http_info(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """Purchase data licensing information  # noqa: E501
+        """UNDER DEVELOPMENT: Purchase data licensing information  # noqa: E501
 
+        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_licensing_purchase_data_licensing_sync_with_http_info(data_view_name, system_name, async_req=True)

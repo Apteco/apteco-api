@@ -36,13 +36,6 @@ class TestUsersApi(unittest.TestCase):
         """
         pass
 
-    def test_users_get_dashboard(self):
-        """Test case for users_get_dashboard
-
-        EXPERIMENTAL: Gets a dashboard in the DataView.  # noqa: E501
-        """
-        pass
-
     def test_users_get_previous_login_history(self):
         """Test case for users_get_previous_login_history
 
@@ -82,6 +75,13 @@ class TestUsersApi(unittest.TestCase):
         """Test case for users_get_user_configuration
 
         Gets the user configuration  # noqa: E501
+        """
+        pass
+
+    def test_users_get_user_dashboard(self):
+        """Test case for users_get_user_dashboard
+
+        EXPERIMENTAL: Gets a dashboard in the DataView.  # noqa: E501
         """
         pass
 
