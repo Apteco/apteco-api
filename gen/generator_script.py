@@ -1,12 +1,12 @@
-import contextlib
-import io
+# import contextlib
+# import io
 import json
 import shutil
 import subprocess
 import warnings
 from pathlib import Path
 
-import bumpversion
+# import bumpversion
 import parse
 from urlpath import URL
 
@@ -14,6 +14,7 @@ API_BASE_URL = "http://localhost/OrbitAPI"
 SPEC_SOURCE_PATH = "swagger/v2/swagger.json"
 SPEC_OUTPUT_PATH = "gen/api-spec.json"
 INTRODUCTION_PATH = "introduction.md"
+README_PATH = "README.md"
 
 
 def update_swagger_spec(
@@ -42,24 +43,60 @@ def fetch_orbit_spec_version_no(api_base_url=API_BASE_URL):
         return spec_version
 
 
-def find_orbit_spec_version_line_no(content_lines):
+def find_line_no(content_lines, match_text, error_message):
     for line_no, line in enumerate(content_lines):
-        if line.startswith("- OrbitAPI spec version:"):
+        if line.startswith(match_text):
             return line_no
     else:
-        raise LookupError("Couldn't find where to change OrbitAPI spec version number.")
+        raise LookupError(error_message)
 
 
 def update_orbit_spec_version_number(introduction_path=INTRODUCTION_PATH):
     with open(introduction_path, "r") as f:
         introduction_content = f.readlines()
 
-    line_no = find_orbit_spec_version_line_no(introduction_content)
+    line_no = find_line_no(
+        introduction_content,
+        "- OrbitAPI spec version:",
+        "Couldn't find where to change OrbitAPI spec version number in Introduction."
+    )
     new_version = fetch_orbit_spec_version_no()
     introduction_content[line_no] = f"- OrbitAPI spec version: {new_version}\n"
 
     with open(introduction_path, "w") as f:
         f.writelines(introduction_content)
+
+
+def update_readme(readme_path=README_PATH, introduction_path=INTRODUCTION_PATH):
+    with open(readme_path, "r") as f:
+        readme_content = f.readlines()
+
+    doc_start_line_no = find_line_no(
+        readme_content,
+        "## Documentation for API Endpoints",
+        "Couldn't find start of documentation section in README."
+    )
+    doc_end_line_no = find_line_no(
+        readme_content,
+        "## Author",
+        "Couldn't find end of documentation section in README."
+    )
+
+    with open(introduction_path, "r") as f:
+        introduction_content = f.readlines()
+
+    introduction_author_line_no = find_line_no(
+        introduction_content,
+        "## Author",
+        "Couldn't find author section in Introduction."
+    )
+
+    with open(readme_path, "w") as f:
+        f.writelines(
+            introduction_content[:introduction_author_line_no]
+            + readme_content[doc_start_line_no:doc_end_line_no]
+            + introduction_content[introduction_author_line_no:]
+        )
 
 
 def get_new_version(output):
@@ -192,6 +229,7 @@ def main():
     new_version_number = bump_package_version(part="patch", allow_dirty=True)
     print(f"Bumped package to version: {new_version_number}")
     regenerate_package()
+    update_readme()
 
 
 if __name__ == "__main__":
