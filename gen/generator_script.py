@@ -8,6 +8,7 @@ from pathlib import Path
 
 # import bumpversion
 import parse
+import semver
 from urlpath import URL
 
 API_BASE_URL = "http://localhost/OrbitAPI"
@@ -116,8 +117,8 @@ def get_new_version(output):
     except (AssertionError, ValueError) as exc:
         raise ChildProcessError(f"Unexpected output from bumping version:\n{output}") from exc
 
-    if not new_version_no > current_version_no:
-        warnings.warn(
+    if not semver.compare(new_version_no, current_version_no) > 0:
+        raise ChildProcessError(
             "Version not bumped as expected:\n"
             f"Current version: {current_version_no}\n"
             f"New version: {new_version_no}\n"
