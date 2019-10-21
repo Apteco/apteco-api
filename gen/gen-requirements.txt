@@ -1,4 +1,9 @@
+### For running generator script ###
 bumpverion >= 0.5.3
 parse >= 1.12.1
 semver >= 2.8.1
 urlpath >= 1.1.4
+#
+### For building distributions/publishing ###
+twine >= 2.0.0
+wheel >= 0.33.6
