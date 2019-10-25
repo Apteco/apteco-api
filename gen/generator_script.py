@@ -3,7 +3,6 @@
 import json
 import shutil
 import subprocess
-import warnings
 from pathlib import Path
 
 # import bumpversion
@@ -11,7 +10,7 @@ import parse
 import semver
 from urlpath import URL
 
-API_BASE_URL = "http://localhost/OrbitAPI"
+API_BASE_URL = "https://www.tealgreenholidays.co.uk/OrbitAPI"
 SPEC_SOURCE_PATH = "swagger/v2/swagger.json"
 SPEC_OUTPUT_PATH = "gen/api-spec.json"
 INTRODUCTION_PATH = "introduction.md"
@@ -176,7 +175,7 @@ def generate_new_package():
         r"-i gen\api-spec.json",
         r"-g python",
         r"-o .",
-        r"-c gen\config.json",
+        r"-c gen\config.yaml",
     ]
     return subprocess.run(
         " ".join(args),
@@ -237,7 +236,7 @@ def regenerate_package():
 def main():
     update_swagger_spec()
     update_orbit_spec_version_number()
-    new_version_number = bump_package_version(part="patch", allow_dirty=True)
+    new_version_number = bump_package_version(part="minor", allow_dirty=True)
     print(f"Bumped package to version: {new_version_number}")
     regenerate_message = regenerate_package()
     print(regenerate_message)
