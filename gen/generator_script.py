@@ -185,9 +185,7 @@ def generate_new_package():
     )
 
 
-def regenerate_package():
-    delete_old_package()
-    result = generate_new_package()
+def check_generator_output(result):
     COMMON_WARNINGS = [
         "[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in content, returning only the first one",
         "[main] WARN  o.o.c.languages.PythonClientCodegen - Property (reserved word) cannot be used as model name. Renamed to ModelProperty",
@@ -205,10 +203,12 @@ def regenerate_package():
         "[main] INFO  o.o.c.languages.PythonClientCodegen - NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).",
     ]
     OKAY_TO_IGNORE = COMMON_WARNINGS + OTHER_WARNINGS + STANDARD_INFO
+    GENERATOR_IGNORE_FORMAT = "[main] INFO  o.o.codegen.DefaultGenerator - Skipped generation of C:\\Users\\tmorris\\Documents\\projects\\apteco-api\\.\\{file_path} due to rule in .openapi-generator-ignore"
+
     outlines = result.stdout.decode("utf-8").strip().split("\r\n")
     significant = [line for line in outlines if line not in OKAY_TO_IGNORE]
     not_write = [line for line in significant if not line.startswith("[main] INFO  o.o.codegen.AbstractGenerator - writing file")]
-    GENERATOR_IGNORE_FORMAT = "[main] INFO  o.o.codegen.DefaultGenerator - Skipped generation of C:\\Users\\tmorris\\Documents\\projects\\apteco-api\\.\\{file_path} due to rule in .openapi-generator-ignore"
+
     skips = []
     remaining = []
     for line in not_write:
@@ -217,11 +217,21 @@ def regenerate_package():
             skips.append(result["file_path"])
         else:
             remaining.append(line)
+
+    message = ""
     if remaining:
-        print("Running the generator produced the following unrecognised log messages:")
-        print(*remaining, sep="\n")
-    print("The following files were skipped based on the generator-ignore rules:")
-    print(*skips, sep="\n")
+        message += "Running the generator produced the following unrecognised log messages:\n"
+        message += "\n".join(remaining)
+    message += "The following files were skipped based on the .openapi-generator-ignore rules:\n"
+    message += "\n".join(skips)
+
+    return message
+
+
+def regenerate_package():
+    delete_old_package()
+    result = generate_new_package()
+    return check_generator_output(result)
 
 
 def main():
@@ -229,7 +239,8 @@ def main():
     update_orbit_spec_version_number()
     new_version_number = bump_package_version(part="patch", allow_dirty=True)
     print(f"Bumped package to version: {new_version_number}")
-    regenerate_package()
+    regenerate_message = regenerate_package()
+    print(regenerate_message)
     update_readme()
 
 
