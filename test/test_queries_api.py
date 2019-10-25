@@ -50,6 +50,13 @@ class TestQueriesApi(unittest.TestCase):
         """
         pass
 
+    def test_queries_perform_save_query_file_definition_synchronously(self):
+        """Test case for queries_perform_save_query_file_definition_synchronously
+
+        EXPERIMENTAL: Get the query definition in the specified file  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

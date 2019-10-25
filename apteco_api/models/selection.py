@@ -83,8 +83,7 @@ class Selection(object):
             self.top_n = top_n
         if limits is not None:
             self.limits = limits
-        if table_name is not None:
-            self.table_name = table_name
+        self.table_name = table_name
         if name is not None:
             self.name = name
 
@@ -253,6 +252,8 @@ class Selection(object):
         :param table_name: The table_name of this Selection.  # noqa: E501
         :type: str
         """
+        if table_name is None:
+            raise ValueError("Invalid value for `table_name`, must not be `None`")  # noqa: E501
 
         self._table_name = table_name
 

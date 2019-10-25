@@ -1,10 +1,11 @@
 # apteco_api.UsersApi
 
-All URIs are relative to *http://example.com/OrbitAPI*
+All URIs are relative to *https://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**users_change_user_password**](UsersApi.md#users_change_user_password) | **POST** /{dataViewName}/Users/{username}/ChangePassword | Change the password for the user with the given username
+[**users_get_all_user_dashboards**](UsersApi.md#users_get_all_user_dashboards) | **GET** /{dataViewName}/Users/{username}/Dashboards | EXPERIMENTAL: Gets a dashboard in the DataView.
 [**users_get_previous_login_history**](UsersApi.md#users_get_previous_login_history) | **GET** /{dataViewName}/Users/{username}/LoginHistory | Gets a list of users last login history
 [**users_get_user_audience**](UsersApi.md#users_get_user_audience) | **GET** /{dataViewName}/Users/{username}/Audiences/{audienceId} | Returns the details of a particular audience
 [**users_get_user_audiences**](UsersApi.md#users_get_user_audiences) | **GET** /{dataViewName}/Users/{username}/Audiences | Returns the list of audiences associated with the given user
@@ -81,6 +82,71 @@ void (empty response body)
 **200** | The user&#39;s password has been successfully updated |  -  |
 **400** | Bad request or supplied old password doesn&#39;t match user&#39;s current password |  -  |
 **403** | The user doesn&#39;t match the authenticated session or isn&#39;t an admin |  -  |
+**404** | The DataView couldn&#39;t be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **users_get_all_user_dashboards**
+> PagedResultsDashboardSummary users_get_all_user_dashboards(data_view_name, username)
+
+EXPERIMENTAL: Gets a dashboard in the DataView.
+
+EXPERIMENTAL
+
+### Example
+
+* Api Key Authentication (faststats_auth):
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+configuration = apteco_api.Configuration()
+# Configure API key authorization: faststats_auth
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = apteco_api.UsersApi(apteco_api.ApiClient(configuration))
+data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+username = 'username_example' # str | 
+
+try:
+    # EXPERIMENTAL: Gets a dashboard in the DataView.
+    api_response = api_instance.users_get_all_user_dashboards(data_view_name, username)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UsersApi->users_get_all_user_dashboards: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data_view_name** | **str**| The name of the DataView to act on | 
+ **username** | **str**|  | 
+
+### Return type
+
+[**PagedResultsDashboardSummary**](PagedResultsDashboardSummary.md)
+
+### Authorization
+
+[faststats_auth](../README.md#faststats_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The dashboard |  -  |
+**400** | A bad request |  -  |
+**403** | Forbidden |  -  |
 **404** | The DataView couldn&#39;t be found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

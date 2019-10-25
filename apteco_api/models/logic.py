@@ -58,8 +58,7 @@ class Logic(object):
             self.operation = operation
         if operands is not None:
             self.operands = operands
-        if table_name is not None:
-            self.table_name = table_name
+        self.table_name = table_name
         if name is not None:
             self.name = name
 
@@ -129,6 +128,8 @@ class Logic(object):
         :param table_name: The table_name of this Logic.  # noqa: E501
         :type: str
         """
+        if table_name is None:
+            raise ValueError("Invalid value for `table_name`, must not be `None`")  # noqa: E501
 
         self._table_name = table_name
 

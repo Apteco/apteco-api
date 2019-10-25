@@ -38,7 +38,11 @@ class DashboardDetail(object):
         'base_query': 'Query',
         'dashboard_items': 'list[DashboardContentItem]',
         'system_name': 'str',
-        'base_query_lookup': 'SystemLookup'
+        'base_query_lookup': 'SystemLookup',
+        'created_on': 'datetime',
+        'last_updated_on': 'datetime',
+        'last_updated_by': 'str',
+        'deleted_on': 'datetime'
     }
 
     attribute_map = {
@@ -48,10 +52,14 @@ class DashboardDetail(object):
         'base_query': 'baseQuery',
         'dashboard_items': 'dashboardItems',
         'system_name': 'systemName',
-        'base_query_lookup': 'baseQueryLookup'
+        'base_query_lookup': 'baseQueryLookup',
+        'created_on': 'createdOn',
+        'last_updated_on': 'lastUpdatedOn',
+        'last_updated_by': 'lastUpdatedBy',
+        'deleted_on': 'deletedOn'
     }
 
-    def __init__(self, id=None, title=None, description=None, base_query=None, dashboard_items=None, system_name=None, base_query_lookup=None):  # noqa: E501
+    def __init__(self, id=None, title=None, description=None, base_query=None, dashboard_items=None, system_name=None, base_query_lookup=None, created_on=None, last_updated_on=None, last_updated_by=None, deleted_on=None):  # noqa: E501
         """DashboardDetail - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
@@ -61,6 +69,10 @@ class DashboardDetail(object):
         self._dashboard_items = None
         self._system_name = None
         self._base_query_lookup = None
+        self._created_on = None
+        self._last_updated_on = None
+        self._last_updated_by = None
+        self._deleted_on = None
         self.discriminator = None
 
         self.id = id
@@ -75,6 +87,14 @@ class DashboardDetail(object):
             self.system_name = system_name
         if base_query_lookup is not None:
             self.base_query_lookup = base_query_lookup
+        if created_on is not None:
+            self.created_on = created_on
+        if last_updated_on is not None:
+            self.last_updated_on = last_updated_on
+        if last_updated_by is not None:
+            self.last_updated_by = last_updated_by
+        if deleted_on is not None:
+            self.deleted_on = deleted_on
 
     @property
     def id(self):
@@ -236,6 +256,90 @@ class DashboardDetail(object):
         """
 
         self._base_query_lookup = base_query_lookup
+
+    @property
+    def created_on(self):
+        """Gets the created_on of this DashboardDetail.  # noqa: E501
+
+
+        :return: The created_on of this DashboardDetail.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_on
+
+    @created_on.setter
+    def created_on(self, created_on):
+        """Sets the created_on of this DashboardDetail.
+
+
+        :param created_on: The created_on of this DashboardDetail.  # noqa: E501
+        :type: datetime
+        """
+
+        self._created_on = created_on
+
+    @property
+    def last_updated_on(self):
+        """Gets the last_updated_on of this DashboardDetail.  # noqa: E501
+
+
+        :return: The last_updated_on of this DashboardDetail.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._last_updated_on
+
+    @last_updated_on.setter
+    def last_updated_on(self, last_updated_on):
+        """Sets the last_updated_on of this DashboardDetail.
+
+
+        :param last_updated_on: The last_updated_on of this DashboardDetail.  # noqa: E501
+        :type: datetime
+        """
+
+        self._last_updated_on = last_updated_on
+
+    @property
+    def last_updated_by(self):
+        """Gets the last_updated_by of this DashboardDetail.  # noqa: E501
+
+
+        :return: The last_updated_by of this DashboardDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._last_updated_by
+
+    @last_updated_by.setter
+    def last_updated_by(self, last_updated_by):
+        """Sets the last_updated_by of this DashboardDetail.
+
+
+        :param last_updated_by: The last_updated_by of this DashboardDetail.  # noqa: E501
+        :type: str
+        """
+
+        self._last_updated_by = last_updated_by
+
+    @property
+    def deleted_on(self):
+        """Gets the deleted_on of this DashboardDetail.  # noqa: E501
+
+
+        :return: The deleted_on of this DashboardDetail.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._deleted_on
+
+    @deleted_on.setter
+    def deleted_on(self, deleted_on):
+        """Sets the deleted_on of this DashboardDetail.
+
+
+        :param deleted_on: The deleted_on of this DashboardDetail.  # noqa: E501
+        :type: datetime
+        """
+
+        self._deleted_on = deleted_on
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -32,35 +32,70 @@ class TestDataLicensingApi(unittest.TestCase):
     def test_data_licensing_cancel_data_purchase_job(self):
         """Test case for data_licensing_cancel_data_purchase_job
 
-        UNDER DEVELOPMENT: Cancel a running data purchasing job  # noqa: E501
+        Cancel a running data purchasing job  # noqa: E501
+        """
+        pass
+
+    def test_data_licensing_cancel_licensing_sets_job(self):
+        """Test case for data_licensing_cancel_licensing_sets_job
+
+        Cancel a running licensing sets job  # noqa: E501
+        """
+        pass
+
+    def test_data_licensing_create_get_licensing_sets_job(self):
+        """Test case for data_licensing_create_get_licensing_sets_job
+
+        Create a new job to get the available licensing sets for a system  # noqa: E501
         """
         pass
 
     def test_data_licensing_create_purchase_data_licensing_job(self):
         """Test case for data_licensing_create_purchase_data_licensing_job
 
-        UNDER DEVELOPMENT: Create a new job to purchase data licensing information  # noqa: E501
+        Create a new job to purchase data licensing information  # noqa: E501
+        """
+        pass
+
+    def test_data_licensing_get_data_licensing_system(self):
+        """Test case for data_licensing_get_data_licensing_system
+
+        Returns some top-level details for the specified FastStats system to license data from  # noqa: E501
+        """
+        pass
+
+    def test_data_licensing_get_data_licensing_systems(self):
+        """Test case for data_licensing_get_data_licensing_systems
+
+        Returns the list of FastStats systems available for licensing data from  # noqa: E501
         """
         pass
 
     def test_data_licensing_get_data_purchase_job(self):
         """Test case for data_licensing_get_data_purchase_job
 
-        UNDER DEVELOPMENT: Get the status of a running purchase job  # noqa: E501
+        Get the status of a running purchase job  # noqa: E501
+        """
+        pass
+
+    def test_data_licensing_get_licensing_sets_job(self):
+        """Test case for data_licensing_get_licensing_sets_job
+
+        Get the status of a running licensing sets job  # noqa: E501
         """
         pass
 
     def test_data_licensing_get_licensing_sets_sync(self):
         """Test case for data_licensing_get_licensing_sets_sync
 
-        UNDER DEVELOPMENT: Get the licensing sets for a system  # noqa: E501
+        Get the licensing sets for a system  # noqa: E501
         """
         pass
 
     def test_data_licensing_purchase_data_licensing_sync(self):
         """Test case for data_licensing_purchase_data_licensing_sync
 
-        UNDER DEVELOPMENT: Purchase data licensing information  # noqa: E501
+        Purchase data licensing information  # noqa: E501
         """
         pass
 

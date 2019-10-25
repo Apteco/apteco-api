@@ -1,12 +1,11 @@
 # apteco_api.SessionsApi
 
-All URIs are relative to *http://example.com/OrbitAPI*
+All URIs are relative to *https://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**sessions_convert_session_to_access_token**](SessionsApi.md#sessions_convert_session_to_access_token) | **POST** /{dataViewName}/Sessions/ConvertSession | Creates an API session token from a traditional FastStats session id
 [**sessions_create_login_parameters**](SessionsApi.md#sessions_create_login_parameters) | **POST** /{dataViewName}/Sessions/LoginParameters | Creates a new set of parameters to use when creating a new session via the salted login method.
-[**sessions_create_session_from_login_token**](SessionsApi.md#sessions_create_session_from_login_token) | **POST** /{dataViewName}/Sessions/TokenLogin | UNDER DEVELOPMENT: Creates a session to use for other API requests given a JWT login token from the Apteco Login Service.  The API must have the appriopriate JWT issuer, audience and signing key specified to be able to validate the token.
 [**sessions_create_session_salted**](SessionsApi.md#sessions_create_session_salted) | **POST** /{dataViewName}/Sessions/SaltedLogin | Creates a session to use for other API requests
 [**sessions_create_session_simple**](SessionsApi.md#sessions_create_session_simple) | **POST** /{dataViewName}/Sessions/SimpleLogin | Creates a session to use for other API requests
 [**sessions_get_session_details**](SessionsApi.md#sessions_get_session_details) | **GET** /{dataViewName}/Sessions/{sessionId} | Gets some simple user details for the given session id
@@ -124,65 +123,6 @@ No authorization required
 **200** | the login salt has been created successfully |  -  |
 **400** | The DataView name or username are not valid |  -  |
 **404** | The DataView or username aren&#39;t recognised |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **sessions_create_session_from_login_token**
-> SessionDetails sessions_create_session_from_login_token(data_view_name, login_details=login_details)
-
-UNDER DEVELOPMENT: Creates a session to use for other API requests given a JWT login token from the Apteco Login Service.  The API must have the appriopriate JWT issuer, audience and signing key specified to be able to validate the token.
-
-UNDER DEVELOPMENT
-
-### Example
-
-```python
-from __future__ import print_function
-import time
-import apteco_api
-from apteco_api.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = apteco_api.SessionsApi()
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
-login_details = apteco_api.TokenLoginDetails() # TokenLoginDetails | The details used to create the session (optional)
-
-try:
-    # UNDER DEVELOPMENT: Creates a session to use for other API requests given a JWT login token from the Apteco Login Service.  The API must have the appriopriate JWT issuer, audience and signing key specified to be able to validate the token.
-    api_response = api_instance.sessions_create_session_from_login_token(data_view_name, login_details=login_details)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SessionsApi->sessions_create_session_from_login_token: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data_view_name** | **str**| The name of the DataView to act on | 
- **login_details** | [**TokenLoginDetails**](TokenLoginDetails.md)| The details used to create the session | [optional] 
-
-### Return type
-
-[**SessionDetails**](SessionDetails.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json, application/xml, text/xml, application/*+xml
- - **Accept**: application/json, text/json, application/xml, text/xml
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Session created |  -  |
-**400** | Bad request |  -  |
-**401** | Bad login credentials |  -  |
-**404** | The DataView couldn&#39;t be found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

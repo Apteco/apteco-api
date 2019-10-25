@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "0.1.10"
+__version__ = "0.2.0"
 
 # import apis into sdk package
 from apteco_api.api.about_api import AboutApi
@@ -29,10 +29,11 @@ from apteco_api.api.dashboards_api import DashboardsApi
 from apteco_api.api.data_licensing_api import DataLicensingApi
 from apteco_api.api.directories_api import DirectoriesApi
 from apteco_api.api.exports_api import ExportsApi
-from apteco_api.api.external_login_api import ExternalLoginApi
+from apteco_api.api.fast_stats_builds_api import FastStatsBuildsApi
 from apteco_api.api.fast_stats_jobs_api import FastStatsJobsApi
 from apteco_api.api.fast_stats_systems_api import FastStatsSystemsApi
 from apteco_api.api.files_api import FilesApi
+from apteco_api.api.groups_api import GroupsApi
 from apteco_api.api.people_stage_api import PeopleStageApi
 from apteco_api.api.queries_api import QueriesApi
 from apteco_api.api.sessions_api import SessionsApi
@@ -73,6 +74,9 @@ from apteco_api.models.audience_summary import AudienceSummary
 from apteco_api.models.audience_update_detail import AudienceUpdateDetail
 from apteco_api.models.audience_update_summary import AudienceUpdateSummary
 from apteco_api.models.breakpoint import Breakpoint
+from apteco_api.models.build_definition import BuildDefinition
+from apteco_api.models.build_job_detail import BuildJobDetail
+from apteco_api.models.build_result import BuildResult
 from apteco_api.models.calculate_audience_details import CalculateAudienceDetails
 from apteco_api.models.capabilities import Capabilities
 from apteco_api.models.change_password_details import ChangePasswordDetails
@@ -117,7 +121,10 @@ from apteco_api.models.dashboard_detail import DashboardDetail
 from apteco_api.models.dashboard_item import DashboardItem
 from apteco_api.models.dashboard_item_data import DashboardItemData
 from apteco_api.models.dashboard_item_data_result import DashboardItemDataResult
+from apteco_api.models.dashboard_summary import DashboardSummary
 from apteco_api.models.data_licensing_detail import DataLicensingDetail
+from apteco_api.models.data_licensing_system_detail import DataLicensingSystemDetail
+from apteco_api.models.data_licensing_system_summary import DataLicensingSystemSummary
 from apteco_api.models.data_purchase_detail import DataPurchaseDetail
 from apteco_api.models.data_purchase_job_detail import DataPurchaseJobDetail
 from apteco_api.models.data_view_details import DataViewDetails
@@ -139,17 +146,21 @@ from apteco_api.models.export import Export
 from apteco_api.models.export_audience_details import ExportAudienceDetails
 from apteco_api.models.export_composition_definition import ExportCompositionDefinition
 from apteco_api.models.export_result import ExportResult
+from apteco_api.models.export_system_detail import ExportSystemDetail
+from apteco_api.models.export_system_summary import ExportSystemSummary
 from apteco_api.models.expression import Expression
 from apteco_api.models.fast_stats_system_detail import FastStatsSystemDetail
 from apteco_api.models.fast_stats_system_item import FastStatsSystemItem
 from apteco_api.models.fast_stats_system_summary import FastStatsSystemSummary
 from apteco_api.models.file_entry import FileEntry
+from apteco_api.models.file_permission import FilePermission
 from apteco_api.models.file_stream import FileStream
 from apteco_api.models.file_system_summary import FileSystemSummary
 from apteco_api.models.folder import Folder
 from apteco_api.models.folder_structure_node import FolderStructureNode
 from apteco_api.models.fraction import Fraction
 from apteco_api.models.grid_item import GridItem
+from apteco_api.models.group_summary import GroupSummary
 from apteco_api.models.invalid_to_share_user_display_details import InvalidToShareUserDisplayDetails
 from apteco_api.models.job_detail import JobDetail
 from apteco_api.models.job_summary import JobSummary
@@ -158,6 +169,7 @@ from apteco_api.models.last_run_details import LastRunDetails
 from apteco_api.models.licence import Licence
 from apteco_api.models.licensing_info import LicensingInfo
 from apteco_api.models.licensing_set import LicensingSet
+from apteco_api.models.licensing_sets_job_detail import LicensingSetsJobDetail
 from apteco_api.models.limits import Limits
 from apteco_api.models.link import Link
 from apteco_api.models.list_rule import ListRule
@@ -177,6 +189,7 @@ from apteco_api.models.modify_user_collection_detail_results import ModifyUserCo
 from apteco_api.models.n_per import NPer
 from apteco_api.models.numeric_variable_info import NumericVariableInfo
 from apteco_api.models.operation import Operation
+from apteco_api.models.orbit_feature_permission import OrbitFeaturePermission
 from apteco_api.models.output import Output
 from apteco_api.models.paged_results_audience_hit_summary import PagedResultsAudienceHitSummary
 from apteco_api.models.paged_results_audience_result_summary import PagedResultsAudienceResultSummary
@@ -187,20 +200,25 @@ from apteco_api.models.paged_results_collection_hit_summary import PagedResultsC
 from apteco_api.models.paged_results_collection_part_summary import PagedResultsCollectionPartSummary
 from apteco_api.models.paged_results_collection_summary import PagedResultsCollectionSummary
 from apteco_api.models.paged_results_composition_summary import PagedResultsCompositionSummary
+from apteco_api.models.paged_results_dashboard_summary import PagedResultsDashboardSummary
+from apteco_api.models.paged_results_data_licensing_system_summary import PagedResultsDataLicensingSystemSummary
 from apteco_api.models.paged_results_data_view_summary import PagedResultsDataViewSummary
 from apteco_api.models.paged_results_element_status import PagedResultsElementStatus
 from apteco_api.models.paged_results_element_summary import PagedResultsElementSummary
 from apteco_api.models.paged_results_endpoint_details import PagedResultsEndpointDetails
+from apteco_api.models.paged_results_export_system_summary import PagedResultsExportSystemSummary
 from apteco_api.models.paged_results_fast_stats_system_item import PagedResultsFastStatsSystemItem
 from apteco_api.models.paged_results_fast_stats_system_summary import PagedResultsFastStatsSystemSummary
 from apteco_api.models.paged_results_file_entry import PagedResultsFileEntry
 from apteco_api.models.paged_results_file_system_summary import PagedResultsFileSystemSummary
 from apteco_api.models.paged_results_folder_structure_node import PagedResultsFolderStructureNode
+from apteco_api.models.paged_results_group_summary import PagedResultsGroupSummary
 from apteco_api.models.paged_results_job_summary import PagedResultsJobSummary
 from apteco_api.models.paged_results_licensing_set import PagedResultsLicensingSet
 from apteco_api.models.paged_results_modify_user_audience_detail_results import PagedResultsModifyUserAudienceDetailResults
 from apteco_api.models.paged_results_modify_user_collection_detail_results import PagedResultsModifyUserCollectionDetailResults
 from apteco_api.models.paged_results_people_stage_system_summary import PagedResultsPeopleStageSystemSummary
+from apteco_api.models.paged_results_permission import PagedResultsPermission
 from apteco_api.models.paged_results_resource_category_summary import PagedResultsResourceCategorySummary
 from apteco_api.models.paged_results_resource_summary import PagedResultsResourceSummary
 from apteco_api.models.paged_results_session_and_user_details import PagedResultsSessionAndUserDetails
@@ -221,6 +239,7 @@ from apteco_api.models.people_stage_system_summary import PeopleStageSystemSumma
 from apteco_api.models.per_channel_statistics import PerChannelStatistics
 from apteco_api.models.per_response_type_per_channel_statistics import PerResponseTypePerChannelStatistics
 from apteco_api.models.per_response_type_statistics import PerResponseTypeStatistics
+from apteco_api.models.permission import Permission
 from apteco_api.models.process_details import ProcessDetails
 from apteco_api.models.processing_time_statistics import ProcessingTimeStatistics
 from apteco_api.models.processing_time_statistics_details import ProcessingTimeStatisticsDetails
@@ -247,6 +266,7 @@ from apteco_api.models.response_statistics_per_response_type_statistics_map impo
 from apteco_api.models.row import Row
 from apteco_api.models.rule import Rule
 from apteco_api.models.safe_file_handle import SafeFileHandle
+from apteco_api.models.save_query_file import SaveQueryFile
 from apteco_api.models.selection import Selection
 from apteco_api.models.selection_modifiers import SelectionModifiers
 from apteco_api.models.selector_variable_info import SelectorVariableInfo

@@ -43,13 +43,6 @@ class TestSessionsApi(unittest.TestCase):
         """
         pass
 
-    def test_sessions_create_session_from_login_token(self):
-        """Test case for sessions_create_session_from_login_token
-
-        UNDER DEVELOPMENT: Creates a session to use for other API requests given a JWT login token from the Apteco Login Service.  The API must have the appriopriate JWT issuer, audience and signing key specified to be able to validate the token.  # noqa: E501
-        """
-        pass
-
     def test_sessions_create_session_salted(self):
         """Test case for sessions_create_session_salted
 

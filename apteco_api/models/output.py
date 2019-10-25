@@ -170,6 +170,7 @@ class Output(object):
     def authorisation_code(self):
         """Gets the authorisation_code of this Output.  # noqa: E501
 
+        The velocity authorisation code string  # noqa: E501
 
         :return: The authorisation_code of this Output.  # noqa: E501
         :rtype: str
@@ -180,6 +181,7 @@ class Output(object):
     def authorisation_code(self, authorisation_code):
         """Sets the authorisation_code of this Output.
 
+        The velocity authorisation code string  # noqa: E501
 
         :param authorisation_code: The authorisation_code of this Output.  # noqa: E501
         :type: str

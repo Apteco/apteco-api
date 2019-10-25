@@ -428,3 +428,127 @@ class QueriesApi(object):
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
+
+    def queries_perform_save_query_file_definition_synchronously(self, data_view_name, system_name, **kwargs):  # noqa: E501
+        """EXPERIMENTAL: Get the query definition in the specified file  # noqa: E501
+
+        EXPERIMENTAL  Requires licence flags [AdvancedQuery]  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.queries_perform_save_query_file_definition_synchronously(data_view_name, system_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service's configuration
+        :param SaveQueryFile save_query_file: The file that holds the query definition
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.queries_perform_save_query_file_definition_synchronously_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
+
+    def queries_perform_save_query_file_definition_synchronously_with_http_info(self, data_view_name, system_name, **kwargs):  # noqa: E501
+        """EXPERIMENTAL: Get the query definition in the specified file  # noqa: E501
+
+        EXPERIMENTAL  Requires licence flags [AdvancedQuery]  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.queries_perform_save_query_file_definition_synchronously_with_http_info(data_view_name, system_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service's configuration
+        :param SaveQueryFile save_query_file: The file that holds the query definition
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['data_view_name', 'system_name', 'timeout_in_seconds', 'save_query_file']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method queries_perform_save_query_file_definition_synchronously" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if ('data_view_name' not in local_var_params or
+                local_var_params['data_view_name'] is None):
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `queries_perform_save_query_file_definition_synchronously`")  # noqa: E501
+        # verify the required parameter 'system_name' is set
+        if ('system_name' not in local_var_params or
+                local_var_params['system_name'] is None):
+            raise ApiValueError("Missing the required parameter `system_name` when calling `queries_perform_save_query_file_definition_synchronously`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'system_name' in local_var_params:
+            path_params['systemName'] = local_var_params['system_name']  # noqa: E501
+
+        query_params = []
+        if 'timeout_in_seconds' in local_var_params:
+            query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'save_query_file' in local_var_params:
+            body_params = local_var_params['save_query_file']
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Queries/{systemName}/SaveFileSync', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

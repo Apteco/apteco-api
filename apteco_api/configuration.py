@@ -50,7 +50,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
     :param password: Password for HTTP basic authentication
     """
 
-    def __init__(self, host="http://example.com/OrbitAPI",
+    def __init__(self, host="https://example.com/OrbitAPI",
                  api_key={}, api_key_prefix={},
                  username="", password=""):
         """Constructor
@@ -264,7 +264,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v2\n"\
-               "SDK Package Version: 0.1.10".\
+               "SDK Package Version: 0.2.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
@@ -274,7 +274,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         """
         return [
             {
-                'url': "http://example.com/OrbitAPI/",
+                'url': "https://example.com/OrbitAPI/",
                 'description': "No description provided",
             }
         ]

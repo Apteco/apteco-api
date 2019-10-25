@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | The user&#39;s id | 
 **username** | **str** | The user&#39;s username | 
+**group_id** | **int** | The id of the group the user is in (or null if they aren&#39;t allocated to a group) | 
 **firstname** | **str** | The user&#39;s first name | 
 **surname** | **str** | The user&#39;s surname | 
 **email_address** | **str** | The user&#39;s email address | 

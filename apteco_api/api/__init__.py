@@ -14,10 +14,11 @@ from apteco_api.api.dashboards_api import DashboardsApi
 from apteco_api.api.data_licensing_api import DataLicensingApi
 from apteco_api.api.directories_api import DirectoriesApi
 from apteco_api.api.exports_api import ExportsApi
-from apteco_api.api.external_login_api import ExternalLoginApi
+from apteco_api.api.fast_stats_builds_api import FastStatsBuildsApi
 from apteco_api.api.fast_stats_jobs_api import FastStatsJobsApi
 from apteco_api.api.fast_stats_systems_api import FastStatsSystemsApi
 from apteco_api.api.files_api import FilesApi
+from apteco_api.api.groups_api import GroupsApi
 from apteco_api.api.people_stage_api import PeopleStageApi
 from apteco_api.api.queries_api import QueriesApi
 from apteco_api.api.sessions_api import SessionsApi

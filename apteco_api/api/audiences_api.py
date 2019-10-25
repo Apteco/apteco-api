@@ -38,9 +38,8 @@ class AudiencesApi(object):
         self.api_client = api_client
 
     def audiences_calculate_audience_data_licensing_sync(self, data_view_name, audience_id, **kwargs):  # noqa: E501
-        """UNDER DEVELOPMENT: Get data licensing information for the latest version of this audience  # noqa: E501
+        """Get data licensing information for the latest version of this audience  # noqa: E501
 
-        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.audiences_calculate_audience_data_licensing_sync(data_view_name, audience_id, async_req=True)
@@ -66,9 +65,8 @@ class AudiencesApi(object):
         return self.audiences_calculate_audience_data_licensing_sync_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
 
     def audiences_calculate_audience_data_licensing_sync_with_http_info(self, data_view_name, audience_id, **kwargs):  # noqa: E501
-        """UNDER DEVELOPMENT: Get data licensing information for the latest version of this audience  # noqa: E501
+        """Get data licensing information for the latest version of this audience  # noqa: E501
 
-        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.audiences_calculate_audience_data_licensing_sync_with_http_info(data_view_name, audience_id, async_req=True)
@@ -292,9 +290,8 @@ class AudiencesApi(object):
             collection_formats=collection_formats)
 
     def audiences_cancel_calculate_audience_data_licensing_job(self, data_view_name, audience_id, job_id, **kwargs):  # noqa: E501
-        """UNDER DEVELOPMENT: Cancel a running data licensing job  # noqa: E501
+        """Cancel a running data licensing job  # noqa: E501
 
-        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.audiences_cancel_calculate_audience_data_licensing_job(data_view_name, audience_id, job_id, async_req=True)
@@ -319,9 +316,8 @@ class AudiencesApi(object):
         return self.audiences_cancel_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, job_id, **kwargs)  # noqa: E501
 
     def audiences_cancel_calculate_audience_data_licensing_job_with_http_info(self, data_view_name, audience_id, job_id, **kwargs):  # noqa: E501
-        """UNDER DEVELOPMENT: Cancel a running data licensing job  # noqa: E501
+        """Cancel a running data licensing job  # noqa: E501
 
-        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.audiences_cancel_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, job_id, async_req=True)
@@ -1254,9 +1250,8 @@ class AudiencesApi(object):
             collection_formats=collection_formats)
 
     def audiences_create_calculate_audience_data_licensing_job(self, data_view_name, audience_id, **kwargs):  # noqa: E501
-        """UNDER DEVELOPMENT: Create a new job to get data licensing information for the latest version of this audience  # noqa: E501
+        """Create a new job to get data licensing information for the latest version of this audience  # noqa: E501
 
-        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.audiences_create_calculate_audience_data_licensing_job(data_view_name, audience_id, async_req=True)
@@ -1281,9 +1276,8 @@ class AudiencesApi(object):
         return self.audiences_create_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
 
     def audiences_create_calculate_audience_data_licensing_job_with_http_info(self, data_view_name, audience_id, **kwargs):  # noqa: E501
-        """UNDER DEVELOPMENT: Create a new job to get data licensing information for the latest version of this audience  # noqa: E501
+        """Create a new job to get data licensing information for the latest version of this audience  # noqa: E501
 
-        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.audiences_create_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, async_req=True)
@@ -3130,9 +3124,8 @@ class AudiencesApi(object):
             collection_formats=collection_formats)
 
     def audiences_get_calculate_audience_data_licensing_job(self, data_view_name, audience_id, job_id, **kwargs):  # noqa: E501
-        """UNDER DEVELOPMENT: Get the status of a running calculate job  # noqa: E501
+        """Get the status of a running calculate job  # noqa: E501
 
-        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.audiences_get_calculate_audience_data_licensing_job(data_view_name, audience_id, job_id, async_req=True)
@@ -3158,9 +3151,8 @@ class AudiencesApi(object):
         return self.audiences_get_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, job_id, **kwargs)  # noqa: E501
 
     def audiences_get_calculate_audience_data_licensing_job_with_http_info(self, data_view_name, audience_id, job_id, **kwargs):  # noqa: E501
-        """UNDER DEVELOPMENT: Get the status of a running calculate job  # noqa: E501
+        """Get the status of a running calculate job  # noqa: E501
 
-        UNDER DEVELOPMENT  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.audiences_get_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, job_id, async_req=True)

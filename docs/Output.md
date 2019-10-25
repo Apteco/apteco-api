@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **delimiter** | **str** | The delimiter character to use when outputting a delimited file.  Specify one character only | [optional] 
 **alpha_encloser** | **str** | The alpha encloser character to use when outputting a delimited file.  Specify one character only | [optional] 
 **numeric_encloser** | **str** | The delimiter character to use when outputting a delimited file.  Specify one character only | [optional] 
-**authorisation_code** | **str** |  | [optional] 
+**authorisation_code** | **str** | The velocity authorisation code string | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

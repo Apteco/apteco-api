@@ -33,25 +33,30 @@ class DashboardItemDataResult(object):
     """
     openapi_types = {
         'dimension_results': 'list[DimensionResult]',
-        'measure_results': 'list[MeasureResult]'
+        'measure_results': 'list[MeasureResult]',
+        'count': 'Count'
     }
 
     attribute_map = {
         'dimension_results': 'dimensionResults',
-        'measure_results': 'measureResults'
+        'measure_results': 'measureResults',
+        'count': 'count'
     }
 
-    def __init__(self, dimension_results=None, measure_results=None):  # noqa: E501
+    def __init__(self, dimension_results=None, measure_results=None, count=None):  # noqa: E501
         """DashboardItemDataResult - a model defined in OpenAPI"""  # noqa: E501
 
         self._dimension_results = None
         self._measure_results = None
+        self._count = None
         self.discriminator = None
 
         if dimension_results is not None:
             self.dimension_results = dimension_results
         if measure_results is not None:
             self.measure_results = measure_results
+        if count is not None:
+            self.count = count
 
     @property
     def dimension_results(self):
@@ -98,6 +103,27 @@ class DashboardItemDataResult(object):
         """
 
         self._measure_results = measure_results
+
+    @property
+    def count(self):
+        """Gets the count of this DashboardItemDataResult.  # noqa: E501
+
+
+        :return: The count of this DashboardItemDataResult.  # noqa: E501
+        :rtype: Count
+        """
+        return self._count
+
+    @count.setter
+    def count(self, count):
+        """Sets the count of this DashboardItemDataResult.
+
+
+        :param count: The count of this DashboardItemDataResult.  # noqa: E501
+        :type: Count
+        """
+
+        self._count = count
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -143,12 +143,14 @@ class UserAudienceDetail(object):
         self.description = description
         self.creation_date = creation_date
         self.owner = owner
-        self.deletion_date = deletion_date
+        if deletion_date is not None:
+            self.deletion_date = deletion_date
         self.resolve_table_name = resolve_table_name
         if resolve_table_nett_count is not None:
             self.resolve_table_nett_count = resolve_table_nett_count
         self.number_of_users_shared_with = number_of_users_shared_with
-        self.share_id = share_id
+        if share_id is not None:
+            self.share_id = share_id
         self.number_of_hits = number_of_hits
         self.system_name = system_name
         self.last_updated_user = last_updated_user
@@ -553,8 +555,6 @@ class UserAudienceDetail(object):
         :param deletion_date: The deletion_date of this UserAudienceDetail.  # noqa: E501
         :type: datetime
         """
-        if deletion_date is None:
-            raise ValueError("Invalid value for `deletion_date`, must not be `None`")  # noqa: E501
 
         self._deletion_date = deletion_date
 
@@ -651,8 +651,6 @@ class UserAudienceDetail(object):
         :param share_id: The share_id of this UserAudienceDetail.  # noqa: E501
         :type: int
         """
-        if share_id is None:
-            raise ValueError("Invalid value for `share_id`, must not be `None`")  # noqa: E501
 
         self._share_id = share_id
 

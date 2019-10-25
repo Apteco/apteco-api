@@ -1,6 +1,6 @@
 # apteco_api.FilesApi
 
-All URIs are relative to *http://example.com/OrbitAPI*
+All URIs are relative to *https://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

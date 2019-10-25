@@ -29,6 +29,20 @@ class TestExportsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_exports_get_export_system(self):
+        """Test case for exports_get_export_system
+
+        Returns some top-level details for the specified FastStats system to export from  # noqa: E501
+        """
+        pass
+
+    def test_exports_get_export_systems(self):
+        """Test case for exports_get_export_systems
+
+        Returns the list of FastStats systems available for exporting data from  # noqa: E501
+        """
+        pass
+
     def test_exports_perform_export_synchronously(self):
         """Test case for exports_perform_export_synchronously
 

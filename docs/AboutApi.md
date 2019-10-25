@@ -1,11 +1,10 @@
 # apteco_api.AboutApi
 
-All URIs are relative to *http://example.com/OrbitAPI*
+All URIs are relative to *https://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**about_example_experimental_resource**](AboutApi.md#about_example_experimental_resource) | **GET** /About/ExampleExperimentalResource | EXPERIMENTAL: Returns a sample string if experimental endpoints are enabled
-[**about_example_under_development_resource**](AboutApi.md#about_example_under_development_resource) | **GET** /About/ExampleUnderDevelopmentResource | UNDER DEVELOPMENT: Returns a sample string if under development endpoints are enabled
 [**about_force_process_garbage_collection**](AboutApi.md#about_force_process_garbage_collection) | **POST** /About/Process/ForceGarbageCollection | Requires OrbitAdmin: Forces a garbage collection in the API&#39;s process and then returns details about the API&#39;s .Net process
 [**about_get_data_view**](AboutApi.md#about_get_data_view) | **GET** /About/DataViews/{dataViewName} | Get details for a particular DataView.
 [**about_get_data_views**](AboutApi.md#about_get_data_views) | **GET** /About/DataViews | Get the list of DataViews that are available.
@@ -44,57 +43,6 @@ try:
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AboutApi->about_example_experimental_resource: %s\n" % e)
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**Message**](Message.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, application/xml, text/xml
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | A sample message |  -  |
-**500** | An error message |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **about_example_under_development_resource**
-> Message about_example_under_development_resource()
-
-UNDER DEVELOPMENT: Returns a sample string if under development endpoints are enabled
-
-UNDER DEVELOPMENT
-
-### Example
-
-```python
-from __future__ import print_function
-import time
-import apteco_api
-from apteco_api.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = apteco_api.AboutApi()
-
-try:
-    # UNDER DEVELOPMENT: Returns a sample string if under development endpoints are enabled
-    api_response = api_instance.about_example_under_development_resource()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_example_under_development_resource: %s\n" % e)
 ```
 
 ### Parameters

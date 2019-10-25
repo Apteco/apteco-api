@@ -150,7 +150,7 @@ class DashboardContentItemDetail(object):
         """
         if chart_type is None:
             raise ValueError("Invalid value for `chart_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["Bar", "Column", "Pie", "Donut", "Line", "UKPostArea", "NLProvinces", "NLMunicipalities", "DE2DigitPostCode", "CH2DigitPostCode", "AU2DigitPostCode", "USStates"]  # noqa: E501
+        allowed_values = ["Bar", "Column", "Pie", "Donut", "Line", "UKPostArea", "NLProvinces", "NLMunicipalities", "DE2DigitPostCode", "CH2DigitPostCode", "AU2DigitPostCode", "USStates", "NumberCard"]  # noqa: E501
         if chart_type not in allowed_values:
             raise ValueError(
                 "Invalid value for `chart_type` ({0}), must be one of {1}"  # noqa: E501

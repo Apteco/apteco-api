@@ -34,6 +34,7 @@ class UserSummary(object):
     openapi_types = {
         'id': 'int',
         'username': 'str',
+        'group_id': 'int',
         'firstname': 'str',
         'surname': 'str',
         'email_address': 'str',
@@ -43,17 +44,19 @@ class UserSummary(object):
     attribute_map = {
         'id': 'id',
         'username': 'username',
+        'group_id': 'groupId',
         'firstname': 'firstname',
         'surname': 'surname',
         'email_address': 'emailAddress',
         'user_disabled_date': 'userDisabledDate'
     }
 
-    def __init__(self, id=None, username=None, firstname=None, surname=None, email_address=None, user_disabled_date=None):  # noqa: E501
+    def __init__(self, id=None, username=None, group_id=None, firstname=None, surname=None, email_address=None, user_disabled_date=None):  # noqa: E501
         """UserSummary - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
         self._username = None
+        self._group_id = None
         self._firstname = None
         self._surname = None
         self._email_address = None
@@ -62,6 +65,7 @@ class UserSummary(object):
 
         self.id = id
         self.username = username
+        self.group_id = group_id
         self.firstname = firstname
         self.surname = surname
         self.email_address = email_address
@@ -116,6 +120,31 @@ class UserSummary(object):
             raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
 
         self._username = username
+
+    @property
+    def group_id(self):
+        """Gets the group_id of this UserSummary.  # noqa: E501
+
+        The id of the group the user is in (or null if they aren't allocated to a group)  # noqa: E501
+
+        :return: The group_id of this UserSummary.  # noqa: E501
+        :rtype: int
+        """
+        return self._group_id
+
+    @group_id.setter
+    def group_id(self, group_id):
+        """Sets the group_id of this UserSummary.
+
+        The id of the group the user is in (or null if they aren't allocated to a group)  # noqa: E501
+
+        :param group_id: The group_id of this UserSummary.  # noqa: E501
+        :type: int
+        """
+        if group_id is None:
+            raise ValueError("Invalid value for `group_id`, must not be `None`")  # noqa: E501
+
+        self._group_id = group_id
 
     @property
     def firstname(self):

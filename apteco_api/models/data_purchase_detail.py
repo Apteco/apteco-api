@@ -36,7 +36,7 @@ class DataPurchaseDetail(object):
         'licensing_set': 'str',
         'filename': 'str',
         'grand_total_cost': 'float',
-        'purchase_order_number': 'int',
+        'purchase_order_number': 'str',
         'password': 'str',
         'authorisation_code': 'str'
     }
@@ -177,7 +177,7 @@ class DataPurchaseDetail(object):
         The order number for this purchase of records  # noqa: E501
 
         :return: The purchase_order_number of this DataPurchaseDetail.  # noqa: E501
-        :rtype: int
+        :rtype: str
         """
         return self._purchase_order_number
 
@@ -188,7 +188,7 @@ class DataPurchaseDetail(object):
         The order number for this purchase of records  # noqa: E501
 
         :param purchase_order_number: The purchase_order_number of this DataPurchaseDetail.  # noqa: E501
-        :type: int
+        :type: str
         """
 
         self._purchase_order_number = purchase_order_number

@@ -93,8 +93,7 @@ class Criteria(object):
             self.expression_rule = expression_rule
         if today_at is not None:
             self.today_at = today_at
-        if table_name is not None:
-            self.table_name = table_name
+        self.table_name = table_name
         if name is not None:
             self.name = name
 
@@ -317,6 +316,8 @@ class Criteria(object):
         :param table_name: The table_name of this Criteria.  # noqa: E501
         :type: str
         """
+        if table_name is None:
+            raise ValueError("Invalid value for `table_name`, must not be `None`")  # noqa: E501
 
         self._table_name = table_name
 

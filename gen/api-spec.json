@@ -14,7 +14,7 @@
     "host": "example.com",
     "basePath": "/OrbitAPI/",
     "schemes": [
-        "http"
+        "https"
     ],
     "paths": {
         "/About/Version": {
@@ -458,38 +458,6 @@
                 "summary": "EXPERIMENTAL: Returns a sample string if experimental endpoints are enabled",
                 "description": "EXPERIMENTAL",
                 "operationId": "About_ExampleExperimentalResource",
-                "consumes": [],
-                "produces": [
-                    "application/json",
-                    "text/json",
-                    "application/xml",
-                    "text/xml"
-                ],
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "A sample message",
-                        "schema": {
-                            "$ref": "#/definitions/Message"
-                        }
-                    },
-                    "500": {
-                        "description": "An error message",
-                        "schema": {
-                            "$ref": "#/definitions/ErrorMessage"
-                        }
-                    }
-                }
-            }
-        },
-        "/About/ExampleUnderDevelopmentResource": {
-            "get": {
-                "tags": [
-                    "About"
-                ],
-                "summary": "UNDER DEVELOPMENT: Returns a sample string if under development endpoints are enabled",
-                "description": "UNDER DEVELOPMENT",
-                "operationId": "About_ExampleUnderDevelopmentResource",
                 "consumes": [],
                 "produces": [
                     "application/json",
@@ -2954,8 +2922,7 @@
                 "tags": [
                     "Audiences"
                 ],
-                "summary": "UNDER DEVELOPMENT: Get data licensing information for the latest version of this audience",
-                "description": "UNDER DEVELOPMENT",
+                "summary": "Get data licensing information for the latest version of this audience",
                 "operationId": "Audiences_CalculateAudienceDataLicensingSync",
                 "consumes": [
                     "application/json-patch+json",
@@ -3035,8 +3002,7 @@
                 "tags": [
                     "Audiences"
                 ],
-                "summary": "UNDER DEVELOPMENT: Create a new job to get data licensing information for the latest version of this audience",
-                "description": "UNDER DEVELOPMENT",
+                "summary": "Create a new job to get data licensing information for the latest version of this audience",
                 "operationId": "Audiences_CreateCalculateAudienceDataLicensingJob",
                 "consumes": [
                     "application/json-patch+json",
@@ -3108,8 +3074,7 @@
                 "tags": [
                     "Audiences"
                 ],
-                "summary": "UNDER DEVELOPMENT: Get the status of a running calculate job",
-                "description": "UNDER DEVELOPMENT",
+                "summary": "Get the status of a running calculate job",
                 "operationId": "Audiences_GetCalculateAudienceDataLicensingJob",
                 "consumes": [
                     "application/json-patch+json",
@@ -3187,8 +3152,7 @@
                 "tags": [
                     "Audiences"
                 ],
-                "summary": "UNDER DEVELOPMENT: Cancel a running data licensing job",
-                "description": "UNDER DEVELOPMENT",
+                "summary": "Cancel a running data licensing job",
                 "operationId": "Audiences_CancelCalculateAudienceDataLicensingJob",
                 "consumes": [],
                 "produces": [],
@@ -4304,13 +4268,143 @@
                 ]
             }
         },
+        "/{dataViewName}/DataLicensing": {
+            "get": {
+                "tags": [
+                    "DataLicensing"
+                ],
+                "summary": "Returns the list of FastStats systems available for licensing data from",
+                "operationId": "DataLicensing_GetDataLicensingSystems",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Filter the list of items using a simple expression language.  The available list of fields are Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "description": "Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The number of items to skip in the (potentially filtered) result set before returning subsequent items.",
+                        "required": false,
+                        "type": "integer",
+                        "minimum": 0.0
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "The maximum number of items to show from the (potentially filtered) result set.",
+                        "required": false,
+                        "type": "integer",
+                        "minimum": 0.0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The list of systems",
+                        "schema": {
+                            "$ref": "#/definitions/PagedResults[DataLicensingSystemSummary]"
+                        }
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to see the list of systems"
+                    },
+                    "404": {
+                        "description": "The DataView couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/DataLicensing/{systemName}": {
+            "get": {
+                "tags": [
+                    "DataLicensing"
+                ],
+                "summary": "Returns some top-level details for the specified FastStats system to license data from",
+                "operationId": "DataLicensing_GetDataLicensingSystem",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "systemName",
+                        "in": "path",
+                        "description": "The name of the FastStats system to return details for",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Some metadata for the specified FastStats system",
+                        "schema": {
+                            "$ref": "#/definitions/DataLicensingSystemDetail"
+                        }
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to see the specified system"
+                    },
+                    "404": {
+                        "description": "The DataView couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
         "/{dataViewName}/DataLicensing/{systemName}/PurchaseSync": {
             "post": {
                 "tags": [
                     "DataLicensing"
                 ],
-                "summary": "UNDER DEVELOPMENT: Purchase data licensing information",
-                "description": "UNDER DEVELOPMENT",
+                "summary": "Purchase data licensing information",
                 "operationId": "DataLicensing_PurchaseDataLicensingSync",
                 "consumes": [
                     "application/json-patch+json",
@@ -4389,8 +4483,7 @@
                 "tags": [
                     "DataLicensing"
                 ],
-                "summary": "UNDER DEVELOPMENT: Create a new job to purchase data licensing information",
-                "description": "UNDER DEVELOPMENT",
+                "summary": "Create a new job to purchase data licensing information",
                 "operationId": "DataLicensing_CreatePurchaseDataLicensingJob",
                 "consumes": [
                     "application/json-patch+json",
@@ -4461,8 +4554,7 @@
                 "tags": [
                     "DataLicensing"
                 ],
-                "summary": "UNDER DEVELOPMENT: Get the status of a running purchase job",
-                "description": "UNDER DEVELOPMENT",
+                "summary": "Get the status of a running purchase job",
                 "operationId": "DataLicensing_GetDataPurchaseJob",
                 "consumes": [],
                 "produces": [
@@ -4522,8 +4614,7 @@
                 "tags": [
                     "DataLicensing"
                 ],
-                "summary": "UNDER DEVELOPMENT: Cancel a running data purchasing job",
-                "description": "UNDER DEVELOPMENT",
+                "summary": "Cancel a running data purchasing job",
                 "operationId": "DataLicensing_CancelDataPurchaseJob",
                 "consumes": [],
                 "produces": [],
@@ -4577,8 +4668,7 @@
                 "tags": [
                     "DataLicensing"
                 ],
-                "summary": "UNDER DEVELOPMENT: Get the licensing sets for a system",
-                "description": "UNDER DEVELOPMENT",
+                "summary": "Get the licensing sets for a system",
                 "operationId": "DataLicensing_GetLicensingSetsSync",
                 "consumes": [],
                 "produces": [
@@ -4656,6 +4746,174 @@
                     },
                     "404": {
                         "description": "The DataView or job couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/DataLicensing/{systemName}/LicensingSetsJobs": {
+            "post": {
+                "tags": [
+                    "DataLicensing"
+                ],
+                "summary": "Create a new job to get the available licensing sets for a system",
+                "operationId": "DataLicensing_CreateGetLicensingSetsJob",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "systemName",
+                        "in": "path",
+                        "description": "The name of the FastStats system to act on",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The licensing sets job was successfully created",
+                        "schema": {
+                            "$ref": "#/definitions/LicensingSetsJobDetail"
+                        }
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to get the available licensing sets."
+                    },
+                    "404": {
+                        "description": "The DataView or job couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/DataLicensing/{systemName}/LicensingSetsJobs/{jobId}": {
+            "get": {
+                "tags": [
+                    "DataLicensing"
+                ],
+                "summary": "Get the status of a running licensing sets job",
+                "operationId": "DataLicensing_GetLicensingSetsJob",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "systemName",
+                        "in": "path",
+                        "description": "The name of the FastStats system to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "jobId",
+                        "in": "path",
+                        "description": "The id of the job to get the status for.",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The job status details",
+                        "schema": {
+                            "$ref": "#/definitions/LicensingSetsJobDetail"
+                        }
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to get the status of this licensing sets job."
+                    },
+                    "404": {
+                        "description": "The DataView or job couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "DataLicensing"
+                ],
+                "summary": "Cancel a running licensing sets job",
+                "operationId": "DataLicensing_CancelLicensingSetsJob",
+                "consumes": [],
+                "produces": [],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "systemName",
+                        "in": "path",
+                        "description": "The name of the FastStats system to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "jobId",
+                        "in": "path",
+                        "description": "The id of the job to cancel",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The job was cancelled successful"
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to cancel this purchasing job."
+                    },
+                    "404": {
+                        "description": "The DataView, audience or job couldn't be found"
                     }
                 },
                 "security": [
@@ -5065,6 +5323,137 @@
                 ]
             }
         },
+        "/{dataViewName}/Exports": {
+            "get": {
+                "tags": [
+                    "Exports"
+                ],
+                "summary": "Returns the list of FastStats systems available for exporting data from",
+                "operationId": "Exports_GetExportSystems",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Filter the list of items using a simple expression language.  The available list of fields are Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "description": "Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The number of items to skip in the (potentially filtered) result set before returning subsequent items.",
+                        "required": false,
+                        "type": "integer",
+                        "minimum": 0.0
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "The maximum number of items to show from the (potentially filtered) result set.",
+                        "required": false,
+                        "type": "integer",
+                        "minimum": 0.0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The list of systems",
+                        "schema": {
+                            "$ref": "#/definitions/PagedResults[ExportSystemSummary]"
+                        }
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to see the list of systems"
+                    },
+                    "404": {
+                        "description": "The DataView couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Exports/{systemName}": {
+            "get": {
+                "tags": [
+                    "Exports"
+                ],
+                "summary": "Returns some top-level details for the specified FastStats system to export from",
+                "operationId": "Exports_GetExportSystem",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "systemName",
+                        "in": "path",
+                        "description": "The name of the FastStats system to return details for",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Some metadata for the specified FastStats system",
+                        "schema": {
+                            "$ref": "#/definitions/ExportSystemDetail"
+                        }
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to see the specified system"
+                    },
+                    "404": {
+                        "description": "The DataView couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
         "/{dataViewName}/Exports/{systemName}/ExportSync": {
             "post": {
                 "tags": [
@@ -5152,54 +5541,275 @@
                 ]
             }
         },
-        "/ExternalLogin/Login": {
+        "/{dataViewName}/FastStatsBuilds/{systemName}/BuildSync": {
+            "post": {
+                "tags": [
+                    "FastStatsBuilds"
+                ],
+                "summary": "EXPERIMENTAL: Requires OrbitAdmin: Builds a FastStats system from the given definition",
+                "description": "EXPERIMENTAL\r\nThis endpoint is only available for users with the OrbitAdmin role",
+                "operationId": "FastStatsBuilds_FastStatsBuildSync",
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "systemName",
+                        "in": "path",
+                        "description": "The name of the FastStats system to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "buildDefinition",
+                        "in": "body",
+                        "description": "The details needed to build the system",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/BuildDefinition"
+                        }
+                    },
+                    {
+                        "name": "timeoutInSeconds",
+                        "in": "query",
+                        "description": "The number of seconds before the request will time out.  Leave unspecified to use the default value given in the build service's configuration",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/BuildResult"
+                        }
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to build systems."
+                    },
+                    "404": {
+                        "description": "The DataView or job couldn't be found"
+                    },
+                    "201": {
+                        "description": "The build job completed"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/FastStatsBuilds/{systemName}/BuildJobs": {
+            "post": {
+                "tags": [
+                    "FastStatsBuilds"
+                ],
+                "summary": "EXPERIMENTAL: Requires OrbitAdmin: Create a new job to builds a FastStats system from the given definition",
+                "description": "EXPERIMENTAL\r\nThis endpoint is only available for users with the OrbitAdmin role",
+                "operationId": "FastStatsBuilds_CreateFastStatsBuildJob",
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "systemName",
+                        "in": "path",
+                        "description": "The name of the FastStats system to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "buildDefinition",
+                        "in": "body",
+                        "description": "The details needed to build the system",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/BuildDefinition"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "The build job job was successfully created",
+                        "schema": {
+                            "$ref": "#/definitions/BuildJobDetail"
+                        }
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to build systems."
+                    },
+                    "404": {
+                        "description": "The DataView or job couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/FastStatsBuilds/{systemName}/BuildJobs/{jobId}": {
             "get": {
                 "tags": [
-                    "ExternalLogin"
+                    "FastStatsBuilds"
                 ],
-                "summary": "UNDER DEVELOPMENT: Initiate the external login process",
-                "description": "UNDER DEVELOPMENT",
-                "operationId": "ExternalLogin_Login",
+                "summary": "EXPERIMENTAL: Requires OrbitAdmin: Get the status of a running FastStats build job",
+                "description": "EXPERIMENTAL\r\nThis endpoint is only available for users with the OrbitAdmin role",
+                "operationId": "FastStatsBuilds_GetFastStatsBuildJob",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "systemName",
+                        "in": "path",
+                        "description": "The name of the FastStats system to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "jobId",
+                        "in": "path",
+                        "description": "The id of the job to get the status for.",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The job status details",
+                        "schema": {
+                            "$ref": "#/definitions/BuildJobDetail"
+                        }
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to get the status of this FastStats build job."
+                    },
+                    "404": {
+                        "description": "The DataView or job couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "FastStatsBuilds"
+                ],
+                "summary": "EXPERIMENTAL: Requires OrbitAdmin: Cancel a running data purchasing job",
+                "description": "EXPERIMENTAL\r\nThis endpoint is only available for users with the OrbitAdmin role",
+                "operationId": "FastStatsBuilds_CancelFastStatsBuildJob",
                 "consumes": [],
                 "produces": [],
                 "parameters": [
                     {
-                        "name": "returnUrl",
-                        "in": "query",
-                        "description": "The URL to redirect to after the login process has been successful",
-                        "required": false,
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "systemName",
+                        "in": "path",
+                        "description": "The name of the FastStats system to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "jobId",
+                        "in": "path",
+                        "description": "The id of the job to cancel",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "Success"
+                    "204": {
+                        "description": "The job was cancelled successful"
                     },
-                    "302": {
-                        "description": "A redirect to the next phase of the login process"
-                    }
-                }
-            }
-        },
-        "/ExternalLogin/AssertionConsumerService": {
-            "post": {
-                "tags": [
-                    "ExternalLogin"
-                ],
-                "summary": "UNDER DEVELOPMENT: Initiate the next phase of the login process that establishes a session.",
-                "description": "UNDER DEVELOPMENT",
-                "operationId": "ExternalLogin_AssertionConsumerService",
-                "consumes": [],
-                "produces": [],
-                "parameters": [],
-                "responses": {
-                    "200": {
-                        "description": "Success"
+                    "400": {
+                        "description": "A bad request"
                     },
-                    "302": {
-                        "description": "A redirect to the application to process the created login token"
+                    "403": {
+                        "description": "The given session is not allowed to cancel this purchasing job."
+                    },
+                    "404": {
+                        "description": "The DataView, audience or job couldn't be found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
             }
         },
         "/{dataViewName}/FastStatsJobs": {
@@ -6608,6 +7218,289 @@
                 ]
             }
         },
+        "/{dataViewName}/Groups": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Requires OrbitAdmin: Returns all groups in the DataView.",
+                "description": "This endpoint is only available for users with the OrbitAdmin role",
+                "operationId": "Groups_GetGroups",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Filter the list of items using a simple expression language.  The available list of fields are Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "description": "Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The number of items to skip in the (potentially filtered) result set before returning subsequent items.",
+                        "required": false,
+                        "type": "integer",
+                        "minimum": 0.0
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "The maximum number of items to show from the (potentially filtered) result set.",
+                        "required": false,
+                        "type": "integer",
+                        "minimum": 0.0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The list of all groups",
+                        "schema": {
+                            "$ref": "#/definitions/PagedResults[GroupSummary]"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "The DataView couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Groups/{groupId}": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Requires OrbitAdmin: Returns details for the given group",
+                "description": "This endpoint is only available for users with the OrbitAdmin role",
+                "operationId": "Groups_GetGroupDetails",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "description": "The id of the group to view the details for",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The group's details",
+                        "schema": {
+                            "$ref": "#/definitions/UserDetail"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "The user isn't allowed to see the group details"
+                    },
+                    "404": {
+                        "description": "The DataView couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Groups/{groupId}/Users": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Requires OrbitAdmin: Returns all users in the given group.",
+                "description": "This endpoint is only available for users with the OrbitAdmin role",
+                "operationId": "Groups_GetUserDetailsForGroup",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "description": "The id of the group to get users for",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "description": "Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The number of items to skip in the (potentially filtered) result set before returning subsequent items.",
+                        "required": false,
+                        "type": "integer",
+                        "minimum": 0.0
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "The maximum number of items to show from the (potentially filtered) result set.",
+                        "required": false,
+                        "type": "integer",
+                        "minimum": 0.0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The list of all users in the given group",
+                        "schema": {
+                            "$ref": "#/definitions/PagedResults[UserSummary]"
+                        }
+                    },
+                    "404": {
+                        "description": "The DataView couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
+        "/{dataViewName}/Groups/Unallocated/Users": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Requires OrbitAdmin: Returns all users that haven't been allocated to a group.",
+                "description": "This endpoint is only available for users with the OrbitAdmin role",
+                "operationId": "Groups_GetUserDetailsForUnallocatedGroup",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "description": "Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The number of items to skip in the (potentially filtered) result set before returning subsequent items.",
+                        "required": false,
+                        "type": "integer",
+                        "minimum": 0.0
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "The maximum number of items to show from the (potentially filtered) result set.",
+                        "required": false,
+                        "type": "integer",
+                        "minimum": 0.0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The list of all users",
+                        "schema": {
+                            "$ref": "#/definitions/PagedResults[UserSummary]"
+                        }
+                    },
+                    "404": {
+                        "description": "The DataView couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
         "/{dataViewName}/PeopleStage": {
             "get": {
                 "tags": [
@@ -7891,6 +8784,81 @@
                 ]
             }
         },
+        "/{dataViewName}/Queries/{systemName}/SaveFileSync": {
+            "post": {
+                "tags": [
+                    "Queries"
+                ],
+                "summary": "EXPERIMENTAL: Get the query definition in the specified file",
+                "description": "EXPERIMENTAL\r\nRequires licence flags [AdvancedQuery]",
+                "operationId": "Queries_PerformSaveQueryFileDefinitionSynchronously",
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json",
+                    "application/xml",
+                    "text/xml",
+                    "application/*+xml"
+                ],
+                "produces": [],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "systemName",
+                        "in": "path",
+                        "description": "The name of the FastStats system to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "saveQueryFile",
+                        "in": "body",
+                        "description": "The file that holds the query definition",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/SaveQueryFile"
+                        }
+                    },
+                    {
+                        "name": "timeoutInSeconds",
+                        "in": "query",
+                        "description": "The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service's configuration",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "The given session is not allowed to see the contents of the given file"
+                    },
+                    "404": {
+                        "description": "The system name or specified query couldn't be found"
+                    },
+                    "200": {
+                        "description": "The definition in the given query file"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
         "/{dataViewName}/Sessions/LoginParameters": {
             "post": {
                 "tags": [
@@ -8041,66 +9009,6 @@
                         "description": "The password for the user.",
                         "required": true,
                         "type": "string"
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Session created",
-                        "schema": {
-                            "$ref": "#/definitions/SessionDetails"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "401": {
-                        "description": "Bad login credentials"
-                    },
-                    "404": {
-                        "description": "The DataView couldn't be found"
-                    }
-                }
-            }
-        },
-        "/{dataViewName}/Sessions/TokenLogin": {
-            "post": {
-                "tags": [
-                    "Sessions"
-                ],
-                "summary": "UNDER DEVELOPMENT: Creates a session to use for other API requests given a JWT login token from the Apteco Login Service.\r\nThe API must have the appriopriate JWT issuer, audience and signing key specified to be able to validate the token.",
-                "description": "UNDER DEVELOPMENT",
-                "operationId": "Sessions_CreateSessionFromLoginToken",
-                "consumes": [
-                    "application/json-patch+json",
-                    "application/json",
-                    "text/json",
-                    "application/*+json",
-                    "application/xml",
-                    "text/xml",
-                    "application/*+xml"
-                ],
-                "produces": [
-                    "application/json",
-                    "text/json",
-                    "application/xml",
-                    "text/xml"
-                ],
-                "parameters": [
-                    {
-                        "name": "dataViewName",
-                        "in": "path",
-                        "description": "The name of the DataView to act on",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "loginDetails",
-                        "in": "body",
-                        "description": "The details used to create the session",
-                        "required": false,
-                        "schema": {
-                            "$ref": "#/definitions/TokenLoginDetails"
-                        }
                     }
                 ],
                 "responses": {
@@ -11970,6 +12878,60 @@
                 ]
             }
         },
+        "/{dataViewName}/Users/{username}/Dashboards": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "EXPERIMENTAL: Gets a dashboard in the DataView.",
+                "description": "EXPERIMENTAL",
+                "operationId": "Users_GetAllUserDashboards",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dataViewName",
+                        "in": "path",
+                        "description": "The name of the DataView to act on",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The dashboard",
+                        "schema": {
+                            "$ref": "#/definitions/PagedResults[DashboardSummary]"
+                        }
+                    },
+                    "400": {
+                        "description": "A bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "The DataView couldn't be found"
+                    }
+                },
+                "security": [
+                    {
+                        "faststats_auth": []
+                    }
+                ]
+            }
+        },
         "/{dataViewName}/Visualisations/{visualisationId}": {
             "get": {
                 "tags": [
@@ -12804,7 +13766,8 @@
                         "DE2DigitPostCode",
                         "CH2DigitPostCode",
                         "AU2DigitPostCode",
-                        "USStates"
+                        "USStates",
+                        "NumberCard"
                     ],
                     "type": "string"
                 },
@@ -12883,6 +13846,7 @@
                     "type": "string"
                 },
                 "authorisationCode": {
+                    "description": "The velocity authorisation code string",
                     "type": "string"
                 }
             }
@@ -13373,10 +14337,8 @@
                 "description",
                 "creationDate",
                 "owner",
-                "deletionDate",
                 "resolveTableName",
                 "numberOfUsersSharedWith",
-                "shareId",
                 "numberOfHits",
                 "systemName",
                 "lastUpdatedUser",
@@ -13532,6 +14494,9 @@
             }
         },
         "Selection": {
+            "required": [
+                "tableName"
+            ],
             "type": "object",
             "properties": {
                 "ancestorCounts": {
@@ -13871,6 +14836,9 @@
             }
         },
         "Logic": {
+            "required": [
+                "tableName"
+            ],
             "type": "object",
             "properties": {
                 "operation": {
@@ -13900,6 +14868,9 @@
             }
         },
         "Criteria": {
+            "required": [
+                "tableName"
+            ],
             "type": "object",
             "properties": {
                 "variableName": {
@@ -14374,10 +15345,8 @@
                 "description",
                 "creationDate",
                 "owner",
-                "deletionDate",
                 "resolveTableName",
                 "numberOfUsersSharedWith",
-                "shareId",
                 "numberOfHits",
                 "systemName",
                 "lastUpdatedUser",
@@ -16217,6 +17186,79 @@
                     "items": {
                         "$ref": "#/definitions/MeasureResult"
                     }
+                },
+                "count": {
+                    "$ref": "#/definitions/Count",
+                    "description": "The count for the table of the underlying filter"
+                }
+            }
+        },
+        "PagedResults[DataLicensingSystemSummary]": {
+            "description": "Summary details for a user",
+            "required": [
+                "offset",
+                "count",
+                "totalCount",
+                "list"
+            ],
+            "type": "object",
+            "properties": {
+                "offset": {
+                    "format": "int32",
+                    "description": "The number of items that were skipped over from the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "count": {
+                    "format": "int32",
+                    "description": "The number of items returned in this page of the result set",
+                    "type": "integer"
+                },
+                "totalCount": {
+                    "format": "int32",
+                    "description": "The total number of items available in the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "list": {
+                    "description": "The list of results",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DataLicensingSystemSummary"
+                    }
+                }
+            }
+        },
+        "DataLicensingSystemSummary": {
+            "description": "Top level summary for a FastStats system",
+            "required": [
+                "name"
+            ],
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "The name of the FastStats system held in the API's configuration",
+                    "type": "string"
+                },
+                "isVelocityEnabled": {
+                    "description": "Whether export velocity checking is enabled for this system",
+                    "type": "boolean"
+                }
+            }
+        },
+        "DataLicensingSystemDetail": {
+            "description": "Top level details for a FastStats system",
+            "required": [
+                "name"
+            ],
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "The name of the FastStats system held in the API's configuration",
+                    "type": "string"
+                },
+                "isVelocityEnabled": {
+                    "description": "Whether export velocity checking is enabled for this system",
+                    "type": "boolean"
                 }
             }
         },
@@ -16242,9 +17284,8 @@
                     "type": "number"
                 },
                 "purchaseOrderNumber": {
-                    "format": "int32",
                     "description": "The order number for this purchase of records",
-                    "type": "integer"
+                    "type": "string"
                 },
                 "password": {
                     "description": "String of characters to authorise purchase",
@@ -16367,6 +17408,43 @@
                 "name": {
                     "description": "The name of the licensing set",
                     "type": "string"
+                }
+            }
+        },
+        "LicensingSetsJobDetail": {
+            "description": "Details for a job to get data licensing sets",
+            "required": [
+                "id",
+                "isComplete"
+            ],
+            "type": "object",
+            "properties": {
+                "licensingSets": {
+                    "description": "If present, the end results of this job",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LicensingSet"
+                    }
+                },
+                "id": {
+                    "format": "int32",
+                    "description": "The job's id",
+                    "type": "integer"
+                },
+                "isComplete": {
+                    "description": "Whether the job is complete or not",
+                    "type": "boolean"
+                },
+                "queuePosition": {
+                    "format": "int32",
+                    "description": "If present, the position that the job is in the job queue.  Jobs only start being actively processed once they reach the head of the queue",
+                    "type": "integer"
+                },
+                "progress": {
+                    "format": "int32",
+                    "description": "If present, an estimate of how far through its processing this job is",
+                    "type": "integer"
                 }
             }
         },
@@ -16498,6 +17576,75 @@
                 }
             }
         },
+        "PagedResults[ExportSystemSummary]": {
+            "description": "Summary details for a user",
+            "required": [
+                "offset",
+                "count",
+                "totalCount",
+                "list"
+            ],
+            "type": "object",
+            "properties": {
+                "offset": {
+                    "format": "int32",
+                    "description": "The number of items that were skipped over from the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "count": {
+                    "format": "int32",
+                    "description": "The number of items returned in this page of the result set",
+                    "type": "integer"
+                },
+                "totalCount": {
+                    "format": "int32",
+                    "description": "The total number of items available in the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "list": {
+                    "description": "The list of results",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ExportSystemSummary"
+                    }
+                }
+            }
+        },
+        "ExportSystemSummary": {
+            "description": "Top level summary for a FastStats system",
+            "required": [
+                "name"
+            ],
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "The name of the FastStats system held in the API's configuration",
+                    "type": "string"
+                },
+                "isVelocityEnabled": {
+                    "description": "Whether export velocity checking is enabled for this system",
+                    "type": "boolean"
+                }
+            }
+        },
+        "ExportSystemDetail": {
+            "description": "Top level details for a FastStats system",
+            "required": [
+                "name"
+            ],
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "The name of the FastStats system held in the API's configuration",
+                    "type": "string"
+                },
+                "isVelocityEnabled": {
+                    "description": "Whether export velocity checking is enabled for this system",
+                    "type": "boolean"
+                }
+            }
+        },
         "Export": {
             "description": "Information to request the exporting data from FastStats based upon a query",
             "required": [
@@ -16605,6 +17752,62 @@
                     "items": {
                         "$ref": "#/definitions/Count"
                     }
+                }
+            }
+        },
+        "BuildDefinition": {
+            "description": "The build definition for creating a FastStats system",
+            "type": "object",
+            "properties": {
+                "designFilename": {
+                    "description": "The name of a FastStats system design to use",
+                    "type": "string"
+                }
+            }
+        },
+        "BuildResult": {
+            "description": "The results of a FastStats system build",
+            "required": [
+                "success"
+            ],
+            "type": "object",
+            "properties": {
+                "success": {
+                    "description": "Whether the build was successfil or not",
+                    "type": "boolean"
+                }
+            }
+        },
+        "BuildJobDetail": {
+            "description": "Details for a job to build a FastStats system",
+            "required": [
+                "id",
+                "isComplete"
+            ],
+            "type": "object",
+            "properties": {
+                "buildResult": {
+                    "$ref": "#/definitions/BuildResult",
+                    "description": "If present, the end results of this job"
+                },
+                "id": {
+                    "format": "int32",
+                    "description": "The job's id",
+                    "type": "integer"
+                },
+                "isComplete": {
+                    "description": "Whether the job is complete or not",
+                    "type": "boolean"
+                },
+                "queuePosition": {
+                    "format": "int32",
+                    "description": "If present, the position that the job is in the job queue.  Jobs only start being actively processed once they reach the head of the queue",
+                    "type": "integer"
+                },
+                "progress": {
+                    "format": "int32",
+                    "description": "If present, an estimate of how far through its processing this job is",
+                    "type": "integer"
                 }
             }
         },
@@ -17037,9 +18240,6 @@
                     "format": "date-time",
                     "description": "The date and time that the FastStats system was built",
                     "type": "string"
-                },
-                "velocityType": {
-                    "type": "string"
                 }
             }
         },
@@ -17067,9 +18267,6 @@
                 "fastStatsBuildDate": {
                     "format": "date-time",
                     "description": "The date and time that the FastStats system was built",
-                    "type": "string"
-                },
-                "velocityType": {
                     "type": "string"
                 }
             }
@@ -17457,6 +18654,230 @@
                 "isClosed": {
                     "type": "boolean",
                     "readOnly": true
+                }
+            }
+        },
+        "PagedResults[GroupSummary]": {
+            "description": "Summary details for a user",
+            "required": [
+                "offset",
+                "count",
+                "totalCount",
+                "list"
+            ],
+            "type": "object",
+            "properties": {
+                "offset": {
+                    "format": "int32",
+                    "description": "The number of items that were skipped over from the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "count": {
+                    "format": "int32",
+                    "description": "The number of items returned in this page of the result set",
+                    "type": "integer"
+                },
+                "totalCount": {
+                    "format": "int32",
+                    "description": "The total number of items available in the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "list": {
+                    "description": "The list of results",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GroupSummary"
+                    }
+                }
+            }
+        },
+        "GroupSummary": {
+            "description": "Summary details for a group",
+            "required": [
+                "id",
+                "name"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "description": "The group's id",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "The group's name",
+                    "type": "string"
+                }
+            }
+        },
+        "UserDetail": {
+            "description": "Details for a user",
+            "required": [
+                "licence",
+                "id",
+                "username",
+                "groupId",
+                "firstname",
+                "surname",
+                "emailAddress",
+                "userDisabledDate"
+            ],
+            "type": "object",
+            "properties": {
+                "licence": {
+                    "$ref": "#/definitions/Licence",
+                    "description": "Licence details for the user"
+                },
+                "id": {
+                    "format": "int32",
+                    "description": "The user's id",
+                    "type": "integer"
+                },
+                "username": {
+                    "description": "The user's username",
+                    "type": "string"
+                },
+                "groupId": {
+                    "format": "int32",
+                    "description": "The id of the group the user is in (or null if they aren't allocated to a group)",
+                    "type": "integer"
+                },
+                "firstname": {
+                    "description": "The user's first name",
+                    "type": "string"
+                },
+                "surname": {
+                    "description": "The user's surname",
+                    "type": "string"
+                },
+                "emailAddress": {
+                    "description": "The user's email address",
+                    "type": "string"
+                },
+                "userDisabledDate": {
+                    "format": "date-time",
+                    "description": "The date on which the user was or will become disabled,\r\nor null if the user has not been disabled",
+                    "type": "string"
+                }
+            }
+        },
+        "Licence": {
+            "description": "The licence details for the user",
+            "required": [
+                "audienceSelection",
+                "audiencePreview",
+                "export",
+                "advancedQuery",
+                "cube",
+                "profile"
+            ],
+            "type": "object",
+            "properties": {
+                "audienceSelection": {
+                    "description": "Whether this user is allowed to access \"Audience Selection\" functionality",
+                    "type": "boolean"
+                },
+                "audiencePreview": {
+                    "description": "Whether this user is allowed to access \"Audience Preview\" functionality",
+                    "type": "boolean"
+                },
+                "export": {
+                    "description": "Whether this user is allowed to access \"Export\" functionality",
+                    "type": "boolean"
+                },
+                "advancedQuery": {
+                    "description": "Whether this user is allowed to access \"Advanced Query\" functionality",
+                    "type": "boolean"
+                },
+                "cube": {
+                    "description": "Whether this user is allowed to access \"Cube\" functionality",
+                    "type": "boolean"
+                },
+                "profile": {
+                    "description": "Whether this user is allowed to access \"Profile\" functionality.",
+                    "type": "boolean"
+                }
+            }
+        },
+        "PagedResults[UserSummary]": {
+            "description": "Summary details for a user",
+            "required": [
+                "offset",
+                "count",
+                "totalCount",
+                "list"
+            ],
+            "type": "object",
+            "properties": {
+                "offset": {
+                    "format": "int32",
+                    "description": "The number of items that were skipped over from the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "count": {
+                    "format": "int32",
+                    "description": "The number of items returned in this page of the result set",
+                    "type": "integer"
+                },
+                "totalCount": {
+                    "format": "int32",
+                    "description": "The total number of items available in the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "list": {
+                    "description": "The list of results",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UserSummary"
+                    }
+                }
+            }
+        },
+        "UserSummary": {
+            "description": "Summary details for a user",
+            "required": [
+                "id",
+                "username",
+                "groupId",
+                "firstname",
+                "surname",
+                "emailAddress",
+                "userDisabledDate"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "description": "The user's id",
+                    "type": "integer"
+                },
+                "username": {
+                    "description": "The user's username",
+                    "type": "string"
+                },
+                "groupId": {
+                    "format": "int32",
+                    "description": "The id of the group the user is in (or null if they aren't allocated to a group)",
+                    "type": "integer"
+                },
+                "firstname": {
+                    "description": "The user's first name",
+                    "type": "string"
+                },
+                "surname": {
+                    "description": "The user's surname",
+                    "type": "string"
+                },
+                "emailAddress": {
+                    "description": "The user's email address",
+                    "type": "string"
+                },
+                "userDisabledDate": {
+                    "format": "date-time",
+                    "description": "The date on which the user was or will become disabled,\r\nor null if the user has not been disabled",
+                    "type": "string"
                 }
             }
         },
@@ -18434,6 +19855,100 @@
                 }
             }
         },
+        "PagedResults[Permission]": {
+            "description": "Summary details for a user",
+            "required": [
+                "offset",
+                "count",
+                "totalCount",
+                "list"
+            ],
+            "type": "object",
+            "properties": {
+                "offset": {
+                    "format": "int32",
+                    "description": "The number of items that were skipped over from the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "count": {
+                    "format": "int32",
+                    "description": "The number of items returned in this page of the result set",
+                    "type": "integer"
+                },
+                "totalCount": {
+                    "format": "int32",
+                    "description": "The total number of items available in the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "list": {
+                    "description": "The list of results",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Permission"
+                    }
+                }
+            }
+        },
+        "Permission": {
+            "description": "Details for a permission in the system",
+            "required": [
+                "resourcePath"
+            ],
+            "type": "object",
+            "properties": {
+                "resourcePath": {
+                    "description": "The path to the resource associated with this permission",
+                    "type": "string"
+                },
+                "filePermission": {
+                    "$ref": "#/definitions/FilePermission",
+                    "description": "File permission details"
+                },
+                "orbitFeaturePermission": {
+                    "$ref": "#/definitions/OrbitFeaturePermission",
+                    "description": "Orbit feature permission details"
+                }
+            }
+        },
+        "FilePermission": {
+            "description": "Details of what file permissions are controlled for the associated resource",
+            "required": [
+                "permissionType"
+            ],
+            "type": "object",
+            "properties": {
+                "permissionType": {
+                    "description": "The type of the permission",
+                    "enum": [
+                        "None",
+                        "Read",
+                        "Write",
+                        "Delete"
+                    ],
+                    "type": "string"
+                }
+            }
+        },
+        "OrbitFeaturePermission": {
+            "description": "Details of what orbit features are controlled for the associated resource",
+            "required": [
+                "permissionType"
+            ],
+            "type": "object",
+            "properties": {
+                "permissionType": {
+                    "description": "The type of the permission",
+                    "enum": [
+                        "None",
+                        "Audiences",
+                        "DataLicensing",
+                        "CampaignSummary"
+                    ],
+                    "type": "string"
+                }
+            }
+        },
         "QueryResult": {
             "description": "Details for a count of a particular query",
             "required": [
@@ -18507,6 +20022,24 @@
                 "path": {
                     "description": "The path of the query to count",
                     "type": "string"
+                }
+            }
+        },
+        "SaveQueryFile": {
+            "description": "Information to request the saving of a query to a file",
+            "required": [
+                "path",
+                "query"
+            ],
+            "type": "object",
+            "properties": {
+                "path": {
+                    "description": "The path of the query to save",
+                    "type": "string"
+                },
+                "query": {
+                    "$ref": "#/definitions/Query",
+                    "description": "The query definition"
                 }
             }
         },
@@ -18612,44 +20145,6 @@
                 "licence": {
                     "$ref": "#/definitions/Licence",
                     "description": "Licence details for the user associated with this current session"
-                }
-            }
-        },
-        "Licence": {
-            "description": "The licence details for the user",
-            "required": [
-                "audienceSelection",
-                "audiencePreview",
-                "export",
-                "advancedQuery",
-                "cube",
-                "profile"
-            ],
-            "type": "object",
-            "properties": {
-                "audienceSelection": {
-                    "description": "Whether this user is allowed to access \"Audience Selection\" functionality",
-                    "type": "boolean"
-                },
-                "audiencePreview": {
-                    "description": "Whether this user is allowed to access \"Audience Preview\" functionality",
-                    "type": "boolean"
-                },
-                "export": {
-                    "description": "Whether this user is allowed to access \"Export\" functionality",
-                    "type": "boolean"
-                },
-                "advancedQuery": {
-                    "description": "Whether this user is allowed to access \"Advanced Query\" functionality",
-                    "type": "boolean"
-                },
-                "cube": {
-                    "description": "Whether this user is allowed to access \"Cube\" functionality",
-                    "type": "boolean"
-                },
-                "profile": {
-                    "description": "Whether this user is allowed to access \"Profile\" functionality.",
-                    "type": "boolean"
                 }
             }
         },
@@ -19646,46 +21141,6 @@
                 }
             }
         },
-        "UserSummary": {
-            "description": "Summary details for a user",
-            "required": [
-                "id",
-                "username",
-                "firstname",
-                "surname",
-                "emailAddress",
-                "userDisabledDate"
-            ],
-            "type": "object",
-            "properties": {
-                "id": {
-                    "format": "int32",
-                    "description": "The user's id",
-                    "type": "integer"
-                },
-                "username": {
-                    "description": "The user's username",
-                    "type": "string"
-                },
-                "firstname": {
-                    "description": "The user's first name",
-                    "type": "string"
-                },
-                "surname": {
-                    "description": "The user's surname",
-                    "type": "string"
-                },
-                "emailAddress": {
-                    "description": "The user's email address",
-                    "type": "string"
-                },
-                "userDisabledDate": {
-                    "format": "date-time",
-                    "description": "The date on which the user was or will become disabled,\r\nor null if the user has not been disabled",
-                    "type": "string"
-                }
-            }
-        },
         "CreateResetPasswordRequest": {
             "description": "The parameters needed to create a new reset password request",
             "required": [
@@ -19851,86 +21306,6 @@
                     "items": {
                         "type": "string"
                     }
-                }
-            }
-        },
-        "PagedResults[UserSummary]": {
-            "description": "Summary details for a user",
-            "required": [
-                "offset",
-                "count",
-                "totalCount",
-                "list"
-            ],
-            "type": "object",
-            "properties": {
-                "offset": {
-                    "format": "int32",
-                    "description": "The number of items that were skipped over from the (potentially filtered) result set",
-                    "type": "integer"
-                },
-                "count": {
-                    "format": "int32",
-                    "description": "The number of items returned in this page of the result set",
-                    "type": "integer"
-                },
-                "totalCount": {
-                    "format": "int32",
-                    "description": "The total number of items available in the (potentially filtered) result set",
-                    "type": "integer"
-                },
-                "list": {
-                    "description": "The list of results",
-                    "uniqueItems": false,
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/UserSummary"
-                    }
-                }
-            }
-        },
-        "UserDetail": {
-            "description": "Details for a user",
-            "required": [
-                "licence",
-                "id",
-                "username",
-                "firstname",
-                "surname",
-                "emailAddress",
-                "userDisabledDate"
-            ],
-            "type": "object",
-            "properties": {
-                "licence": {
-                    "$ref": "#/definitions/Licence",
-                    "description": "Licence details for the user"
-                },
-                "id": {
-                    "format": "int32",
-                    "description": "The user's id",
-                    "type": "integer"
-                },
-                "username": {
-                    "description": "The user's username",
-                    "type": "string"
-                },
-                "firstname": {
-                    "description": "The user's first name",
-                    "type": "string"
-                },
-                "surname": {
-                    "description": "The user's surname",
-                    "type": "string"
-                },
-                "emailAddress": {
-                    "description": "The user's email address",
-                    "type": "string"
-                },
-                "userDisabledDate": {
-                    "format": "date-time",
-                    "description": "The date on which the user was or will become disabled,\r\nor null if the user has not been disabled",
-                    "type": "string"
                 }
             }
         },
@@ -20516,10 +21891,8 @@
                 "description",
                 "creationDate",
                 "owner",
-                "deletionDate",
                 "resolveTableName",
                 "numberOfUsersSharedWith",
-                "shareId",
                 "numberOfHits",
                 "systemName",
                 "lastUpdatedUser",
@@ -20795,10 +22168,8 @@
                 "description",
                 "creationDate",
                 "owner",
-                "deletionDate",
                 "resolveTableName",
                 "numberOfUsersSharedWith",
-                "shareId",
                 "numberOfHits",
                 "systemName",
                 "lastUpdatedUser",
@@ -20966,6 +22337,21 @@
                 },
                 "baseQueryLookup": {
                     "$ref": "#/definitions/SystemLookup"
+                },
+                "createdOn": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "lastUpdatedOn": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "lastUpdatedBy": {
+                    "type": "string"
+                },
+                "deletedOn": {
+                    "format": "date-time",
+                    "type": "string"
                 }
             }
         },
@@ -21059,7 +22445,8 @@
                         "DE2DigitPostCode",
                         "CH2DigitPostCode",
                         "AU2DigitPostCode",
-                        "USStates"
+                        "USStates",
+                        "NumberCard"
                     ],
                     "type": "string"
                 },
@@ -21090,6 +22477,79 @@
                 "omitUnclassified": {
                     "description": "Whether to omit unclassifieds in the data of the dashboard item",
                     "type": "boolean"
+                }
+            }
+        },
+        "PagedResults[DashboardSummary]": {
+            "description": "Summary details for a user",
+            "required": [
+                "offset",
+                "count",
+                "totalCount",
+                "list"
+            ],
+            "type": "object",
+            "properties": {
+                "offset": {
+                    "format": "int32",
+                    "description": "The number of items that were skipped over from the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "count": {
+                    "format": "int32",
+                    "description": "The number of items returned in this page of the result set",
+                    "type": "integer"
+                },
+                "totalCount": {
+                    "format": "int32",
+                    "description": "The total number of items available in the (potentially filtered) result set",
+                    "type": "integer"
+                },
+                "list": {
+                    "description": "The list of results",
+                    "uniqueItems": false,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DashboardSummary"
+                    }
+                }
+            }
+        },
+        "DashboardSummary": {
+            "required": [
+                "id",
+                "title",
+                "systemName"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "systemName": {
+                    "type": "string"
+                },
+                "createdOn": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "lastUpdatedOn": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "lastUpdatedBy": {
+                    "type": "string"
+                },
+                "deletedOn": {
+                    "format": "date-time",
+                    "type": "string"
                 }
             }
         },

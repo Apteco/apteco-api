@@ -1,12 +1,12 @@
 # apteco_api.AudiencesApi
 
-All URIs are relative to *http://example.com/OrbitAPI*
+All URIs are relative to *https://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**audiences_calculate_audience_data_licensing_sync**](AudiencesApi.md#audiences_calculate_audience_data_licensing_sync) | **POST** /{dataViewName}/Audiences/{audienceId}/DataLicensingSync | UNDER DEVELOPMENT: Get data licensing information for the latest version of this audience
+[**audiences_calculate_audience_data_licensing_sync**](AudiencesApi.md#audiences_calculate_audience_data_licensing_sync) | **POST** /{dataViewName}/Audiences/{audienceId}/DataLicensingSync | Get data licensing information for the latest version of this audience
 [**audiences_calculate_audience_latest_update_sync**](AudiencesApi.md#audiences_calculate_audience_latest_update_sync) | **POST** /{dataViewName}/Audiences/{audienceId}/CalculateSync | Calculate counts against the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to produce the end result
-[**audiences_cancel_calculate_audience_data_licensing_job**](AudiencesApi.md#audiences_cancel_calculate_audience_data_licensing_job) | **DELETE** /{dataViewName}/Audiences/{audienceId}/DataLicensingJobs/{jobId} | UNDER DEVELOPMENT: Cancel a running data licensing job
+[**audiences_cancel_calculate_audience_data_licensing_job**](AudiencesApi.md#audiences_cancel_calculate_audience_data_licensing_job) | **DELETE** /{dataViewName}/Audiences/{audienceId}/DataLicensingJobs/{jobId} | Cancel a running data licensing job
 [**audiences_cancel_calculate_audience_job**](AudiencesApi.md#audiences_cancel_calculate_audience_job) | **DELETE** /{dataViewName}/Audiences/{audienceId}/CalculateJobs/{jobId} | Cancel a running calculate job
 [**audiences_cancel_check_audience_job**](AudiencesApi.md#audiences_cancel_check_audience_job) | **DELETE** /{dataViewName}/Audiences/{audienceId}/CheckJobs/{jobId} | Cancel a running check job
 [**audiences_cancel_export_audience_job**](AudiencesApi.md#audiences_cancel_export_audience_job) | **DELETE** /{dataViewName}/Audiences/{audienceId}/ExportJobs/{jobId} | Cancel a running export job
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**audiences_create_audience**](AudiencesApi.md#audiences_create_audience) | **POST** /{dataViewName}/Audiences | Creates a new audience from the given details for the logged in user.
 [**audiences_create_audience_hit_for_audience**](AudiencesApi.md#audiences_create_audience_hit_for_audience) | **POST** /{dataViewName}/Audiences/{audienceId}/Hits | Register a hit (view) for the given audience
 [**audiences_create_audience_update**](AudiencesApi.md#audiences_create_audience_update) | **POST** /{dataViewName}/Audiences/{audienceId}/Updates | Updates the details of a particular audience.  If you don&#39;t have an id for the  audience then POST to the /Audiences URL to create a new audience.
-[**audiences_create_calculate_audience_data_licensing_job**](AudiencesApi.md#audiences_create_calculate_audience_data_licensing_job) | **POST** /{dataViewName}/Audiences/{audienceId}/DataLicensingJobs | UNDER DEVELOPMENT: Create a new job to get data licensing information for the latest version of this audience
+[**audiences_create_calculate_audience_data_licensing_job**](AudiencesApi.md#audiences_create_calculate_audience_data_licensing_job) | **POST** /{dataViewName}/Audiences/{audienceId}/DataLicensingJobs | Create a new job to get data licensing information for the latest version of this audience
 [**audiences_create_calculate_audience_job_for_latest_update**](AudiencesApi.md#audiences_create_calculate_audience_job_for_latest_update) | **POST** /{dataViewName}/Audiences/{audienceId}/CalculateJobs | Create a new job to calculate counts against the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to produce the end result
 [**audiences_create_check_audience_job_for_latest_update**](AudiencesApi.md#audiences_create_check_audience_job_for_latest_update) | **POST** /{dataViewName}/Audiences/{audienceId}/CheckJobs | Create a new job to calculate check statistics against the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to identify the data to analyse and the specified dimensions will be used to perform the analysis.
 [**audiences_create_export_audience_job_for_latest_update**](AudiencesApi.md#audiences_create_export_audience_job_for_latest_update) | **POST** /{dataViewName}/Audiences/{audienceId}/ExportJobs | Create a new job to export data from the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to identify the data to export and the specified columns will be used to export the data, to a file  and/or as a sample within the body of the result
@@ -29,7 +29,7 @@ Method | HTTP request | Description
 [**audiences_get_audience_update**](AudiencesApi.md#audiences_get_audience_update) | **GET** /{dataViewName}/Audiences/{audienceId}/Updates/{audienceUpdateId} | Returns details of an update for a particular audience
 [**audiences_get_audience_updates**](AudiencesApi.md#audiences_get_audience_updates) | **GET** /{dataViewName}/Audiences/{audienceId}/Updates | Returns a summary of the updates to a particular audience
 [**audiences_get_audiences**](AudiencesApi.md#audiences_get_audiences) | **GET** /{dataViewName}/Audiences | Requires OrbitAdmin: Gets summary information about each audience in the DataView.
-[**audiences_get_calculate_audience_data_licensing_job**](AudiencesApi.md#audiences_get_calculate_audience_data_licensing_job) | **POST** /{dataViewName}/Audiences/{audienceId}/DataLicensingJobs/{jobId} | UNDER DEVELOPMENT: Get the status of a running calculate job
+[**audiences_get_calculate_audience_data_licensing_job**](AudiencesApi.md#audiences_get_calculate_audience_data_licensing_job) | **POST** /{dataViewName}/Audiences/{audienceId}/DataLicensingJobs/{jobId} | Get the status of a running calculate job
 [**audiences_get_calculate_audience_job**](AudiencesApi.md#audiences_get_calculate_audience_job) | **GET** /{dataViewName}/Audiences/{audienceId}/CalculateJobs/{jobId} | Get the status of a running calculate job
 [**audiences_get_check_audience_job**](AudiencesApi.md#audiences_get_check_audience_job) | **GET** /{dataViewName}/Audiences/{audienceId}/CheckJobs/{jobId} | Get the status of a running check job
 [**audiences_get_export_audience_job**](AudiencesApi.md#audiences_get_export_audience_job) | **GET** /{dataViewName}/Audiences/{audienceId}/ExportJobs/{jobId} | Get the status of a running export job
@@ -39,9 +39,7 @@ Method | HTTP request | Description
 # **audiences_calculate_audience_data_licensing_sync**
 > LicensingInfo audiences_calculate_audience_data_licensing_sync(data_view_name, audience_id, timeout_in_seconds=timeout_in_seconds, data_licensing_detail=data_licensing_detail)
 
-UNDER DEVELOPMENT: Get data licensing information for the latest version of this audience
-
-UNDER DEVELOPMENT
+Get data licensing information for the latest version of this audience
 
 ### Example
 
@@ -66,7 +64,7 @@ timeout_in_seconds = 56 # int | The number of seconds before the request will ti
 data_licensing_detail = apteco_api.DataLicensingDetail() # DataLicensingDetail | The details required to get data licensing information for an audience (optional)
 
 try:
-    # UNDER DEVELOPMENT: Get data licensing information for the latest version of this audience
+    # Get data licensing information for the latest version of this audience
     api_response = api_instance.audiences_calculate_audience_data_licensing_sync(data_view_name, audience_id, timeout_in_seconds=timeout_in_seconds, data_licensing_detail=data_licensing_detail)
     pprint(api_response)
 except ApiException as e:
@@ -175,9 +173,7 @@ Name | Type | Description  | Notes
 # **audiences_cancel_calculate_audience_data_licensing_job**
 > audiences_cancel_calculate_audience_data_licensing_job(data_view_name, audience_id, job_id)
 
-UNDER DEVELOPMENT: Cancel a running data licensing job
-
-UNDER DEVELOPMENT
+Cancel a running data licensing job
 
 ### Example
 
@@ -201,7 +197,7 @@ audience_id = 56 # int | The id of the audience that the data licensing job is r
 job_id = 56 # int | The id of the job to cancel
 
 try:
-    # UNDER DEVELOPMENT: Cancel a running data licensing job
+    # Cancel a running data licensing job
     api_instance.audiences_cancel_calculate_audience_data_licensing_job(data_view_name, audience_id, job_id)
 except ApiException as e:
     print("Exception when calling AudiencesApi->audiences_cancel_calculate_audience_data_licensing_job: %s\n" % e)
@@ -696,9 +692,7 @@ Name | Type | Description  | Notes
 # **audiences_create_calculate_audience_data_licensing_job**
 > AudienceDataLicensingInfoJobDetail audiences_create_calculate_audience_data_licensing_job(data_view_name, audience_id, data_licensing_detail=data_licensing_detail)
 
-UNDER DEVELOPMENT: Create a new job to get data licensing information for the latest version of this audience
-
-UNDER DEVELOPMENT
+Create a new job to get data licensing information for the latest version of this audience
 
 ### Example
 
@@ -722,7 +716,7 @@ audience_id = 56 # int | The id of the audience to calculate the result for
 data_licensing_detail = apteco_api.DataLicensingDetail() # DataLicensingDetail | The details required to get data licensing information for an audience (optional)
 
 try:
-    # UNDER DEVELOPMENT: Create a new job to get data licensing information for the latest version of this audience
+    # Create a new job to get data licensing information for the latest version of this audience
     api_response = api_instance.audiences_create_calculate_audience_data_licensing_job(data_view_name, audience_id, data_licensing_detail=data_licensing_detail)
     pprint(api_response)
 except ApiException as e:
@@ -1708,9 +1702,7 @@ Name | Type | Description  | Notes
 # **audiences_get_calculate_audience_data_licensing_job**
 > AudienceDataLicensingInfoJobDetail audiences_get_calculate_audience_data_licensing_job(data_view_name, audience_id, job_id, data_licensing_detail=data_licensing_detail)
 
-UNDER DEVELOPMENT: Get the status of a running calculate job
-
-UNDER DEVELOPMENT
+Get the status of a running calculate job
 
 ### Example
 
@@ -1735,7 +1727,7 @@ job_id = 56 # int | The id of the job to get the status for.
 data_licensing_detail = apteco_api.DataLicensingDetail() # DataLicensingDetail | The details required to get data licensing information for an audience (optional)
 
 try:
-    # UNDER DEVELOPMENT: Get the status of a running calculate job
+    # Get the status of a running calculate job
     api_response = api_instance.audiences_get_calculate_audience_data_licensing_job(data_view_name, audience_id, job_id, data_licensing_detail=data_licensing_detail)
     pprint(api_response)
 except ApiException as e:

@@ -36,13 +36,6 @@ class TestAboutApi(unittest.TestCase):
         """
         pass
 
-    def test_about_example_under_development_resource(self):
-        """Test case for about_example_under_development_resource
-
-        UNDER DEVELOPMENT: Returns a sample string if under development endpoints are enabled  # noqa: E501
-        """
-        pass
-
     def test_about_force_process_garbage_collection(self):
         """Test case for about_force_process_garbage_collection
 
