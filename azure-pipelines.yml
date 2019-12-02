@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+pool:
+  vmImage: 'vs2017-win2016'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.7'
+    # addToPath: true
+    # architecture: 'x64'
+  displayName: 'Use Python 3.7'
+
+- script: |
+    pip install --upgrade pip
+    pip install -r gen/gen-requirements.txt
+  displayName: 'Install dependencies'
+
+# - script: |
+    # python gen/generator_script.py
+  # displayName: 'Re-generate package'
