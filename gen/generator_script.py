@@ -1,11 +1,8 @@
-# import contextlib
-# import io
 import json
 import shutil
 import subprocess
 from pathlib import Path
 
-# import bumpversion
 import parse
 import semver
 from urlpath import URL
@@ -130,22 +127,9 @@ def get_new_version(output):
 def bump_package_version(part="minor", allow_dirty=False):
     if part not in ["major", "minor", "patch"]:
         raise ValueError(f"'{part}' is not a valid part parameter.")
-
-    # allow_dirty_arg = ["--allow-dirty"] if allow_dirty else []
-    # args = allow_dirty_arg + ["--list", part]
-    #
-    # out = io.StringIO()
-    # err = io.StringIO()
-    # try:
-    #     with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
-    #         bumpversion.main(args)
-    #     out_text = out.getvalue()
-    #     err_text = err.getvalue()
-    # except bumpversion.WorkingDirectoryIsDirtyException:
-    #     raise
-
     allow_dirty_arg = ["--allow-dirty"] if allow_dirty else []
     args = ["bumpversion"] + allow_dirty_arg + ["--list", part]
+
     result = subprocess.run(
         args,
         stdout=subprocess.PIPE,
