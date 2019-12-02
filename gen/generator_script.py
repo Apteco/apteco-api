@@ -202,15 +202,15 @@ def check_generator_output(result):
         "[main] INFO  o.o.c.languages.PythonClientCodegen - NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).",
     ]
     OKAY_TO_IGNORE = COMMON_WARNINGS + OTHER_WARNINGS + STANDARD_INFO
-    GENERATOR_IGNORE_FORMAT = "[main] INFO  o.o.codegen.DefaultGenerator - Skipped generation of C:\\Users\\tmorris\\Documents\\projects\\apteco-api\\.\\{file_path} due to rule in .openapi-generator-ignore"
+    GENERATOR_IGNORE_FORMAT = "[main] INFO  o.o.codegen.DefaultGenerator - Skipped generation of {base_path}\\.\\{file_path} due to rule in .openapi-generator-ignore"
+    WRITE_INFO_MESSAGE_START = "[main] INFO  o.o.codegen.AbstractGenerator - writing file"
 
     outlines = result.stdout.decode("utf-8").strip().split("\r\n")
-    significant = [line for line in outlines if line not in OKAY_TO_IGNORE]
-    not_write = [line for line in significant if not line.startswith("[main] INFO  o.o.codegen.AbstractGenerator - writing file")]
+    significant = [line for line in outlines if not (line in OKAY_TO_IGNORE or line.startswith(WRITE_INFO_MESSAGE_START))]
 
     skips = []
     remaining = []
-    for line in not_write:
+    for line in significant:
         result = parse.parse(GENERATOR_IGNORE_FORMAT, line)
         if result is not None:
             skips.append(result["file_path"])
@@ -221,8 +221,9 @@ def check_generator_output(result):
     if remaining:
         message += "Running the generator produced the following unrecognised log messages:\n"
         message += "\n".join(remaining)
-    message += "The following files were skipped based on the .openapi-generator-ignore rules:\n"
-    message += "\n".join(skips)
+    if skips:
+        message += "The following files were skipped based on the .openapi-generator-ignore rules:\n"
+        message += "\n".join(skips)
 
     return message
 
