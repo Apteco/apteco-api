@@ -1,3 +1,12 @@
+"""
+Script to re-generate the ``apteco-api`` package
+based on the API spec at the given source.
+
+This only generates the Python source code;
+it does *not* then build a distribution from it or publish it to PyPI.
+
+"""
+
 import json
 import shutil
 import subprocess
@@ -19,6 +28,7 @@ def update_swagger_spec(
         api_base_url=API_BASE_URL,
         spec_source_path=SPEC_SOURCE_PATH,
 ):
+    """Update the API spec using the spec at the given source."""
     spec_url = URL(api_base_url) / spec_source_path
     spec_response = spec_url.get()
     spec = spec_response.json()
@@ -31,6 +41,7 @@ def update_swagger_spec(
 
 
 def fetch_orbit_spec_version_no(api_base_url=API_BASE_URL):
+    """Get the Orbit API spec version number from the given source."""
     spec_version_url = URL(api_base_url) / "About/Version"
     spec_version_response = spec_version_url.get()
     spec_version = spec_version_response.json().get("version")
@@ -41,6 +52,7 @@ def fetch_orbit_spec_version_no(api_base_url=API_BASE_URL):
 
 
 def find_line_no(content_lines, match_text, error_message):
+    """Find line number where given content occurs."""
     for line_no, line in enumerate(content_lines):
         if line.startswith(match_text):
             return line_no
@@ -49,9 +61,9 @@ def find_line_no(content_lines, match_text, error_message):
 
 
 def update_orbit_spec_version_number(introduction_path=INTRODUCTION_PATH):
+    """Write new Orbit API spec version number into README content."""
     with open(introduction_path, "r") as f:
         introduction_content = f.readlines()
-
     line_no = find_line_no(
         introduction_content,
         "- OrbitAPI spec version:",
@@ -65,9 +77,9 @@ def update_orbit_spec_version_number(introduction_path=INTRODUCTION_PATH):
 
 
 def update_readme(readme_path=README_PATH, introduction_path=INTRODUCTION_PATH):
+    """Update static README content with generated docs links."""
     with open(readme_path, "r") as f:
         readme_content = f.readlines()
-
     doc_start_line_no = find_line_no(
         readme_content,
         "## Documentation for API Endpoints",
@@ -81,7 +93,6 @@ def update_readme(readme_path=README_PATH, introduction_path=INTRODUCTION_PATH):
 
     with open(introduction_path, "r") as f:
         introduction_content = f.readlines()
-
     introduction_author_line_no = find_line_no(
         introduction_content,
         "## Author",
@@ -97,6 +108,7 @@ def update_readme(readme_path=README_PATH, introduction_path=INTRODUCTION_PATH):
 
 
 def get_new_version(output):
+    """Parse new version number from version bumping output."""
     output = output.strip()
     out_lines = output.split("\r\n")
     (current,) = [line for line in out_lines if line.startswith("current_version")]
@@ -125,6 +137,7 @@ def get_new_version(output):
 
 
 def bump_package_version(part="minor", allow_dirty=False):
+    """Bump version and return new version number if successful."""
     if part not in ["major", "minor", "patch"]:
         raise ValueError(f"'{part}' is not a valid part parameter.")
     allow_dirty_arg = ["--allow-dirty"] if allow_dirty else []
@@ -148,12 +161,14 @@ def bump_package_version(part="minor", allow_dirty=False):
 
 
 def delete_old_package():
+    """Remove code, docs and tests for existing package."""
     shutil.rmtree("apteco_api/")
     shutil.rmtree("docs/")
     shutil.rmtree("test/")
 
 
 def generate_new_package():
+    """Run package generator process and return result."""
     args = [
         r"java -jar gen\openapi-generator-cli-4.0.1.jar generate",
         r"-i gen\api-spec.json",
@@ -169,6 +184,7 @@ def generate_new_package():
 
 
 def check_generator_output(result):
+    """Check for and return important info from package generator."""
     COMMON_WARNINGS = [
         "[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in content, returning only the first one",
         "[main] WARN  o.o.c.languages.PythonClientCodegen - Property (reserved word) cannot be used as model name. Renamed to ModelProperty",
@@ -213,6 +229,7 @@ def check_generator_output(result):
 
 
 def regenerate_package():
+    """Delete old package, generate new version and check output."""
     delete_old_package()
     result = generate_new_package()
     return check_generator_output(result)
