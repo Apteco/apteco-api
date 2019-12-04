@@ -20,6 +20,13 @@ steps:
     java -version
   displayName: 'Print Java version'
 
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'Invoke-WebRequest -OutFile gen/openapi-generator-cli-$env:GENERATOR-VERSION.jar http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/$env:GENERATOR-VERSION/openapi-generator-cli-$env:GENERATOR-VERSION.jar'
+    failOnStderr: true
+  displayName: 'Download OpenAPI generator (version $(generator-version))'
+
 - script: |
     pip install --upgrade pip
     pip install -r gen/gen-requirements.txt
