@@ -69,11 +69,13 @@ def update_orbit_spec_version_number(introduction_path=INTRODUCTION_PATH):
         "- OrbitAPI spec version:",
         "Couldn't find where to change OrbitAPI spec version number in Introduction."
     )
-    new_version = fetch_orbit_spec_version_no()
-    introduction_content[line_no] = f"- OrbitAPI spec version: {new_version}\n"
+    orbit_version = fetch_orbit_spec_version_no()
+    introduction_content[line_no] = f"- OrbitAPI spec version: {orbit_version}\n"
 
     with open(introduction_path, "w") as f:
         f.writelines(introduction_content)
+
+    return orbit_version
 
 
 def update_readme(readme_path=README_PATH, introduction_path=INTRODUCTION_PATH):
@@ -237,7 +239,8 @@ def regenerate_package():
 
 def main():
     update_swagger_spec()
-    update_orbit_spec_version_number()
+    orbit_spec_version_number = update_orbit_spec_version_number()
+    print(f"Using Orbit API spec version: {orbit_spec_version_number}")
     new_version_number = bump_package_version(part="minor", allow_dirty=True)
     print(f"Bumped package to version: {new_version_number}")
     regenerate_message = regenerate_package()
