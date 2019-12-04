@@ -65,4 +65,3 @@ target/
 
 # generators
 gen/openapi-generator-cli-*
-!gen/openapi-generator-cli-4.0.1.jar

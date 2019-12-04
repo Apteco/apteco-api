@@ -9,13 +9,6 @@ pool:
   vmImage: 'vs2017-win2016'
 
 steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.7'
-    # addToPath: true
-    # architecture: 'x64'
-  displayName: 'Use Python 3.7'
-
 - script: |
     java -version
   displayName: 'Print Java version'
@@ -26,6 +19,13 @@ steps:
     script: 'Invoke-WebRequest -OutFile gen/openapi-generator-cli-$(generator-version).jar http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/$(generator-version)/openapi-generator-cli-$(generator-version).jar'
     failOnStderr: true
   displayName: 'Download OpenAPI generator (version $(generator-version))'
+
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.7'
+    # addToPath: true
+    # architecture: 'x64'
+  displayName: 'Use Python 3.7'
 
 - script: |
     pip install --upgrade pip
