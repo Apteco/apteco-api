@@ -25,6 +25,6 @@ steps:
     pip install -r gen/gen-requirements.txt
   displayName: 'Install dependencies'
 
- - script: |
-     python gen/generator_script.py
-   displayName: 'Re-generate package'
+- script: |
+    python gen/generator_script.py
+  displayName: 'Re-generate package'
