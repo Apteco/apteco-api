@@ -17,10 +17,14 @@ steps:
   displayName: 'Use Python 3.7'
 
 - script: |
+    java -version
+  displayName: 'Print Java version'
+
+- script: |
     pip install --upgrade pip
     pip install -r gen/gen-requirements.txt
   displayName: 'Install dependencies'
 
-# - script: |
-    # python gen/generator_script.py
-  # displayName: 'Re-generate package'
+ - script: |
+     python gen/generator_script.py
+   displayName: 'Re-generate package'
