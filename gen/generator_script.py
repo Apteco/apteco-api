@@ -211,21 +211,24 @@ def check_generator_output(result):
     significant = [line for line in outlines if not (line in OKAY_TO_IGNORE or line.startswith(WRITE_INFO_MESSAGE_START))]
 
     skips = []
-    remaining = []
+    unrecognised = []
     for line in significant:
         result = parse.parse(GENERATOR_IGNORE_FORMAT, line)
         if result is not None:
             skips.append(result["file_path"])
         else:
-            remaining.append(line)
+            unrecognised.append(line)
 
-    message = ""
-    if remaining:
-        message += "Running the generator produced the following unrecognised log messages:\n"
-        message += "\n".join(remaining)
+    if unrecognised:
+        message = "Running the generator produced the following unrecognised log messages:\n"
+        message += "\n".join(unrecognised)
+        raise ChildProcessError(message)
+
     if skips:
-        message += "The following files were skipped based on the .openapi-generator-ignore rules:\n"
+        message = "The following files were skipped based on the .openapi-generator-ignore rules:\n"
         message += "\n".join(skips)
+    else:
+        message = "No files were skipped based on the .openapi-generator-ignore rules."
 
     return message
 
