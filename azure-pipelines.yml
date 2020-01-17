@@ -16,7 +16,7 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: 'Invoke-WebRequest -OutFile gen/openapi-generator-cli-$(generator-version).jar http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/$(generator-version)/openapi-generator-cli-$(generator-version).jar'
+    script: 'Invoke-WebRequest -OutFile gen/openapi-generator-cli-$(generator-version).jar https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$(generator-version)/openapi-generator-cli-$(generator-version).jar'
     failOnStderr: true
   displayName: 'Download OpenAPI generator (version $(generator-version))'
 
