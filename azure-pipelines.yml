@@ -40,8 +40,8 @@ steps:
   inputs:
     script: |
       git status
-      git config user.email "$env:MAPPED_USER_EMAIL"
-      git config user.name "$env:MAPPED_USER_NAME"
+      git config user.email "%MAPPED_USER_EMAIL%"
+      git config user.name "%MAPPED_USER_NAME%"
       git config --global core.autocrlf true
       git commit -a -m "Bump package to version 0.3.0 and re-generate (api-spec from release 20th Dec 2019)."
       git status
