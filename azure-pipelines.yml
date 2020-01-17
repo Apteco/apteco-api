@@ -35,3 +35,11 @@ steps:
 - script: |
     python gen/generator_script.py
   displayName: 'Re-generate package'
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo git status
+      git commit -a -m "Bump package to version 0.3.0 and re-generate (api-spec from release 20th Dec 2019)."
+      echo git status
+    failOnStderr: true
