@@ -60,7 +60,8 @@ class SessionDetails(object):
         self.access_token = access_token
         self.user = user
         self.session_id = session_id
-        self.last_login = last_login
+        if last_login is not None:
+            self.last_login = last_login
         self.licence = licence
 
     @property
@@ -156,8 +157,6 @@ class SessionDetails(object):
         :param last_login: The last_login of this SessionDetails.  # noqa: E501
         :type: datetime
         """
-        if last_login is None:
-            raise ValueError("Invalid value for `last_login`, must not be `None`")  # noqa: E501
 
         self._last_login = last_login
 

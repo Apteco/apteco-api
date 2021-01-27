@@ -20120,7 +20120,6 @@
                 "accessToken",
                 "user",
                 "sessionId",
-                "lastLogin",
                 "licence"
             ],
             "type": "object",
