@@ -39,13 +39,16 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      git status
       git config --global user.email "apteco-api-bot@apteco.com"
       git config --global user.name "Apteco-Api bot"
       git config --global core.autocrlf true
+      echo First Git status (before adding)
+      git status
       git add .
+      echo Second Git status (after adding)
       git status
       git commit -m "Bump package to version 0.3.0 and re-generate (api-spec from release 20th Dec 2019)."
+      echo Third Git status (after committing)
       git status
     failOnStderr: true
   displayName: 'Commit re-generated package'
