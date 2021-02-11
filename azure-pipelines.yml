@@ -41,7 +41,7 @@ steps:
     script: |
       git config --global user.email "apteco-api-bot@apteco.com"
       git config --global user.name "Apteco-Api bot"
-      git config --global core.autocrlf true
+      # git config --global core.autocrlf true
       echo First Git status (before adding)
       git status
       git add .
