@@ -65,3 +65,6 @@ target/
 
 # generators
 gen/openapi-generator-cli-*
+
+# PyCharm config files
+.idea/
