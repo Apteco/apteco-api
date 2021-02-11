@@ -17,27 +17,22 @@ import semver
 from urlpath import URL
 
 API_BASE_URL = "https://www.tealgreenholidays.co.uk/OrbitAPI"
-SPEC_SOURCE_PATH = "swagger/v2/swagger.json"
-SPEC_OUTPUT_PATH = "gen/api-spec.json"
+API_SPEC_PATH = "gen/api-spec.json"
 INTRODUCTION_PATH = "introduction.md"
+GEN_CONFIG_PATH = "gen/config.yaml"
 README_PATH = "README.md"
-BUMPVERSION_CFG_PATH = ".bumpversion.cfg"
 
 
-def update_swagger_spec(
-        spec_output_path=SPEC_OUTPUT_PATH,
-        api_base_url=API_BASE_URL,
-        spec_source_path=SPEC_SOURCE_PATH,
-):
+def update_swagger_spec(api_base_url=API_BASE_URL, api_spec_path=API_SPEC_PATH):
     """Update the API spec using the spec at the given source."""
-    spec_url = URL(api_base_url) / spec_source_path
+    spec_url = URL(api_base_url) / "swagger/v2/swagger.json"
     spec_response = spec_url.get()
     spec = spec_response.json()
 
     spec.update({"host": "example.com", "basePath": "/OrbitAPI/"})
 
-    spec_output_path = Path(spec_output_path)
-    with open(spec_output_path, "w") as f:
+    api_spec_path = Path(api_spec_path)
+    with open(api_spec_path, "w") as f:
         f.write(json.dumps(spec, indent=4))
 
 
@@ -139,14 +134,14 @@ def delete_old_package():
     shutil.rmtree("test/")
 
 
-def generate_new_package():
+def generate_new_package(api_spec_path=API_SPEC_PATH, gen_config_path=GEN_CONFIG_PATH):
     """Run package generator process and return result."""
     args = [
         r"java -jar gen\openapi-generator-cli-4.0.1.jar generate",
-        r"-i gen\api-spec.json",
-        r"-g python",
-        r"-o .",
-        r"-c gen\config.yaml",
+        f"-i {api_spec_path}",
+        "-g python",
+        "-o .",
+        f"-c {gen_config_path}",
     ]
     return subprocess.run(
         " ".join(args),
@@ -253,10 +248,10 @@ def convert_line_endings_to_lf(file_path):
 def correct_line_endings():
     """Convert files with CRLF line endings to LF."""
     for file_path in (
-            SPEC_OUTPUT_PATH,
-            "gen/config.yaml",
+            API_SPEC_PATH,
+            GEN_CONFIG_PATH,
             "setup.py",
-            BUMPVERSION_CFG_PATH,
+            ".bumpversion.cfg",
             README_PATH,
     ):
         convert_line_endings_to_lf(file_path)
