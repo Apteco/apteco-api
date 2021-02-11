@@ -1,0 +1,2 @@
+# Set default line-ending behaviour to lf, to avoid git warnings.
+* text=lf
