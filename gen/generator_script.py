@@ -37,7 +37,7 @@ def update_swagger_spec(
     spec.update({"host": "example.com", "basePath": "/OrbitAPI/"})
 
     spec_output_path = Path(spec_output_path)
-    with open(spec_output_path, "w", newline="\n") as f:
+    with open(spec_output_path, "w") as f:
         f.write(json.dumps(spec, indent=4))
 
 
@@ -73,19 +73,10 @@ def update_orbit_spec_version_number(introduction_path=INTRODUCTION_PATH):
     orbit_version = fetch_orbit_spec_version_no()
     introduction_content[line_no] = f"- OrbitAPI spec version: {orbit_version}\n"
 
-    with open(introduction_path, "w", newline="\n") as f:
+    with open(introduction_path, "w") as f:
         f.writelines(introduction_content)
 
     return orbit_version
-
-
-def convert_line_endings_to_lf(file_path):
-    """Re-write the file with LF line endings."""
-    with open(file_path, "r") as f:
-        content = f.readlines()
-
-    with open(file_path, "w", newline="\n") as f:
-        f.writelines(content)
 
 
 def get_new_version(output):
@@ -113,8 +104,6 @@ def get_new_version(output):
             f"New version: {new_version_no}\n"
             "(new version does not compare as greater than current)"
         )
-
-    convert_line_endings_to_lf(BUMPVERSION_CFG_PATH)
 
     return new_version_no
 
@@ -244,12 +233,33 @@ def update_readme(readme_path=README_PATH, introduction_path=INTRODUCTION_PATH):
         "Couldn't find author section in Introduction."
     )
 
-    with open(readme_path, "w", newline="\n") as f:
+    with open(readme_path, "w") as f:
         f.writelines(
             introduction_content[:introduction_author_line_no]
             + readme_content[doc_start_line_no:doc_end_line_no]
             + introduction_content[introduction_author_line_no:]
         )
+
+
+def convert_line_endings_to_lf(file_path):
+    """Re-write the file with LF line endings."""
+    with open(file_path, "r") as f:
+        content = f.readlines()
+
+    with open(file_path, "w", newline="\n") as f:
+        f.writelines(content)
+
+
+def correct_line_endings():
+    """Convert files with CRLF line endings to LF."""
+    for file_path in (
+            SPEC_OUTPUT_PATH,
+            "gen/config.yaml",
+            "setup.py",
+            BUMPVERSION_CFG_PATH,
+            README_PATH,
+    ):
+        convert_line_endings_to_lf(file_path)
 
 
 def main():
@@ -261,6 +271,7 @@ def main():
     regenerate_message = regenerate_package()
     print(regenerate_message)
     update_readme()
+    correct_line_endings()
 
 
 if __name__ == "__main__":
