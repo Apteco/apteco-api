@@ -41,6 +41,15 @@ def update_swagger_spec(
         f.write(json.dumps(spec, indent=4))
 
 
+def find_line_no(content_lines, match_text, error_message):
+    """Find line number where given content occurs."""
+    for line_no, line in enumerate(content_lines):
+        if line.startswith(match_text):
+            return line_no
+    else:
+        raise LookupError(error_message)
+
+
 def fetch_orbit_spec_version_no(api_base_url=API_BASE_URL):
     """Get the Orbit API spec version number from the given source."""
     spec_version_url = URL(api_base_url) / "About/Version"
@@ -50,15 +59,6 @@ def fetch_orbit_spec_version_no(api_base_url=API_BASE_URL):
         raise LookupError("Failed to fetch OrbitAPI spec version number.")
     else:
         return spec_version
-
-
-def find_line_no(content_lines, match_text, error_message):
-    """Find line number where given content occurs."""
-    for line_no, line in enumerate(content_lines):
-        if line.startswith(match_text):
-            return line_no
-    else:
-        raise LookupError(error_message)
 
 
 def update_orbit_spec_version_number(introduction_path=INTRODUCTION_PATH):
@@ -77,37 +77,6 @@ def update_orbit_spec_version_number(introduction_path=INTRODUCTION_PATH):
         f.writelines(introduction_content)
 
     return orbit_version
-
-
-def update_readme(readme_path=README_PATH, introduction_path=INTRODUCTION_PATH):
-    """Update static README content with generated docs links."""
-    with open(readme_path, "r") as f:
-        readme_content = f.readlines()
-    doc_start_line_no = find_line_no(
-        readme_content,
-        "## Documentation for API Endpoints",
-        "Couldn't find start of documentation section in README."
-    )
-    doc_end_line_no = find_line_no(
-        readme_content,
-        "## Author",
-        "Couldn't find end of documentation section in README."
-    )
-
-    with open(introduction_path, "r") as f:
-        introduction_content = f.readlines()
-    introduction_author_line_no = find_line_no(
-        introduction_content,
-        "## Author",
-        "Couldn't find author section in Introduction."
-    )
-
-    with open(readme_path, "w", newline="\n") as f:
-        f.writelines(
-            introduction_content[:introduction_author_line_no]
-            + readme_content[doc_start_line_no:doc_end_line_no]
-            + introduction_content[introduction_author_line_no:]
-        )
 
 
 def convert_line_endings_to_lf(file_path):
@@ -250,6 +219,37 @@ def regenerate_package():
     delete_old_package()
     result = generate_new_package()
     return check_generator_output(result)
+
+
+def update_readme(readme_path=README_PATH, introduction_path=INTRODUCTION_PATH):
+    """Update static README content with generated docs links."""
+    with open(readme_path, "r") as f:
+        readme_content = f.readlines()
+    doc_start_line_no = find_line_no(
+        readme_content,
+        "## Documentation for API Endpoints",
+        "Couldn't find start of documentation section in README."
+    )
+    doc_end_line_no = find_line_no(
+        readme_content,
+        "## Author",
+        "Couldn't find end of documentation section in README."
+    )
+
+    with open(introduction_path, "r") as f:
+        introduction_content = f.readlines()
+    introduction_author_line_no = find_line_no(
+        introduction_content,
+        "## Author",
+        "Couldn't find author section in Introduction."
+    )
+
+    with open(readme_path, "w", newline="\n") as f:
+        f.writelines(
+            introduction_content[:introduction_author_line_no]
+            + readme_content[doc_start_line_no:doc_end_line_no]
+            + introduction_content[introduction_author_line_no:]
+        )
 
 
 def main():
