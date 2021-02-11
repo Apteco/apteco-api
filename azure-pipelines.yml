@@ -40,10 +40,12 @@ steps:
   inputs:
     script: |
       git status
-      git config user.email "%USER_EMAIL%"
-      git config user.name "%USER_NAME%"
+      git config --global user.email "apteco-api-bot@apteco.com"
+      git config --global user.name "Apteco-Api bot"
       git config --global core.autocrlf true
-      git commit -a -m "Bump package to version 0.3.0 and re-generate (api-spec from release 20th Dec 2019)."
+      git add .
+      git status
+      git commit -m "Bump package to version 0.3.0 and re-generate (api-spec from release 20th Dec 2019)."
       git status
     failOnStderr: true
   displayName: 'Commit re-generated package'
