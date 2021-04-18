@@ -23,8 +23,8 @@ GEN_CONFIG_PATH = "gen/config.yaml"
 README_PATH = "README.md"
 
 
-def update_swagger_spec(api_base_url=API_BASE_URL, api_spec_path=API_SPEC_PATH):
-    """Update the API spec using the spec at the given source."""
+def update_spec_from_api(api_base_url=API_BASE_URL, api_spec_path=API_SPEC_PATH):
+    """Update the API Swagger spec using the spec at the given source."""
     spec_url = URL(api_base_url) / "swagger/v2/swagger.json"
     spec_response = spec_url.get()
     spec = spec_response.json()
@@ -34,6 +34,10 @@ def update_swagger_spec(api_base_url=API_BASE_URL, api_spec_path=API_SPEC_PATH):
     api_spec_path = Path(api_spec_path)
     with open(api_spec_path, "w") as f:
         f.write(json.dumps(spec, indent=4))
+
+    version = fetch_orbit_spec_version_no(api_base_url)
+
+    return version
 
 
 def find_line_no(content_lines, match_text, error_message):
@@ -56,7 +60,7 @@ def fetch_orbit_spec_version_no(api_base_url=API_BASE_URL):
         return spec_version
 
 
-def update_orbit_spec_version_number(introduction_path=INTRODUCTION_PATH):
+def update_orbit_spec_version_number(orbit_version, introduction_path=INTRODUCTION_PATH):
     """Write new Orbit API spec version number into README content."""
     with open(introduction_path, "r") as f:
         introduction_content = f.readlines()
@@ -65,13 +69,10 @@ def update_orbit_spec_version_number(introduction_path=INTRODUCTION_PATH):
         "- OrbitAPI spec version:",
         "Couldn't find where to change OrbitAPI spec version number in Introduction."
     )
-    orbit_version = fetch_orbit_spec_version_no()
     introduction_content[line_no] = f"- OrbitAPI spec version: {orbit_version}\n"
 
     with open(introduction_path, "w") as f:
         f.writelines(introduction_content)
-
-    return orbit_version
 
 
 def get_new_version(output):
@@ -258,8 +259,8 @@ def correct_line_endings():
 
 
 def main():
-    update_swagger_spec()
-    orbit_spec_version_number = update_orbit_spec_version_number()
+    orbit_spec_version_number = update_spec_from_api()
+    update_orbit_spec_version_number(orbit_spec_version_number)
     print(f"Using Orbit API spec version: {orbit_spec_version_number}")
     new_version_number = bump_package_version(part="minor", allow_dirty=True)
     print(f"Bumped package to version: {new_version_number}")
