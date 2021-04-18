@@ -8,6 +8,7 @@ it does *not* then build a distribution from it or publish it to PyPI.
 """
 
 import json
+import re
 import shutil
 import subprocess
 from pathlib import Path
@@ -36,6 +37,30 @@ def update_spec_from_api(api_base_url=API_BASE_URL, api_spec_path=API_SPEC_PATH)
         f.write(json.dumps(spec, indent=4))
 
     version = fetch_orbit_spec_version_no(api_base_url)
+
+    return version
+
+
+def update_spec_from_file(spec_source, version=None, api_spec_path=API_SPEC_PATH):
+    """Update the API Swagger spec using the spec in the given file."""
+    spec_source_path = Path(spec_source)
+    with open(spec_source_path) as f:
+        spec = json.load(f)
+
+    spec.update({"host": "example.com", "basePath": "/OrbitAPI/"})
+
+    api_spec_path = Path(api_spec_path)
+    with open(api_spec_path, "w") as f:
+        f.write(json.dumps(spec, indent=4))
+
+    if version is None:
+        match = re.match(r"OrbitAPI-spec-([0-9.]+)(-formatted)?", spec_source_path.stem)
+        if match is None:
+            raise ValueError(
+                "No version number was provided"
+                " and it could not be derived from spec source filename."
+            )
+        version = match[1]
 
     return version
 
