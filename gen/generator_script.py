@@ -24,34 +24,22 @@ GEN_CONFIG_PATH = "gen/config.yaml"
 README_PATH = "README.md"
 
 
-def update_spec_from_api(api_base_url=API_BASE_URL, api_spec_path=API_SPEC_PATH):
-    """Update the API Swagger spec using the spec at the given source."""
+def get_spec_from_api(api_base_url=API_BASE_URL):
+    """Get the spec and version at the given source."""
     spec_url = URL(api_base_url) / "swagger/v2/swagger.json"
     spec_response = spec_url.get()
     spec = spec_response.json()
 
-    spec.update({"host": "example.com", "basePath": "/OrbitAPI/"})
-
-    api_spec_path = Path(api_spec_path)
-    with open(api_spec_path, "w") as f:
-        f.write(json.dumps(spec, indent=4))
-
     version = fetch_orbit_spec_version_no(api_base_url)
 
-    return version
+    return spec, version
 
 
-def update_spec_from_file(spec_source, version=None, api_spec_path=API_SPEC_PATH):
-    """Update the API Swagger spec using the spec in the given file."""
+def get_spec_from_file(spec_source, version=None):
+    """Load the spec from the given file."""
     spec_source_path = Path(spec_source)
     with open(spec_source_path) as f:
         spec = json.load(f)
-
-    spec.update({"host": "example.com", "basePath": "/OrbitAPI/"})
-
-    api_spec_path = Path(api_spec_path)
-    with open(api_spec_path, "w") as f:
-        f.write(json.dumps(spec, indent=4))
 
     if version is None:
         match = re.match(r"OrbitAPI-spec-([0-9.]+)(-formatted)?", spec_source_path.stem)
@@ -62,7 +50,15 @@ def update_spec_from_file(spec_source, version=None, api_spec_path=API_SPEC_PATH
             )
         version = match[1]
 
-    return version
+    return spec, version
+
+
+def update_spec(spec, api_spec_path=API_SPEC_PATH):
+    """Update the API Swagger spec using the one provided."""
+    spec.update({"host": "example.com", "basePath": "/OrbitAPI/"})
+    api_spec_path = Path(api_spec_path)
+    with open(api_spec_path, "w") as f:
+        f.write(json.dumps(spec, indent=4))
 
 
 def find_line_no(content_lines, match_text, error_message):
@@ -284,7 +280,8 @@ def correct_line_endings():
 
 
 def main():
-    orbit_spec_version_number = update_spec_from_api()
+    new_spec, orbit_spec_version_number = get_spec_from_api()
+    update_spec(new_spec)
     update_orbit_spec_version_number(orbit_spec_version_number)
     print(f"Using Orbit API spec version: {orbit_spec_version_number}")
     new_version_number = bump_package_version(part="minor", allow_dirty=True)
