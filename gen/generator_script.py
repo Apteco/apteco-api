@@ -94,7 +94,7 @@ def update_spec(spec, api_spec_path=API_SPEC_PATH):
     spec.update({"host": "example.com", "basePath": "/OrbitAPI/"})
     api_spec_path = Path(api_spec_path)
     with open(api_spec_path, "w") as f:
-        f.write(json.dumps(spec, indent=4))
+        f.write(json.dumps(spec, indent=4, ensure_ascii=False))
 
 
 def find_line_no(content_lines, match_text, error_message):

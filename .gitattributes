@@ -1,2 +1,24 @@
 # Set default line-ending behaviour to lf, to avoid git warnings.
 * text=lf
+
+# The setting above seems to be sufficient for now,
+# but the settings below are the outline of what would be needed to set behaviour
+# at a finer level of detail if issues arise in future.
+# Adapted from: https://superuser.com/questions/882691/atlassian-sourcetree-how-to-change-line-endings-globally
+#
+# # Explicitly declare text files you want to always be normalized and converted
+# # to native line endings on checkout.
+# *.yml text
+# *.py text
+# *.md text
+# .bumpversion.cfg text
+# git_push.sh text
+# test-requirements.txt text
+# tox.ini text
+#
+# # Declare files that will always have CRLF line endings on checkout.
+# *.sln text eol=crlf
+#
+# # Denote all files that are truly binary and should not be modified.
+# *.png binary
+# *.jpg binary

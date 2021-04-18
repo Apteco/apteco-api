@@ -40,7 +40,7 @@ steps:
   inputs:
     script: |
       git config --global user.email "apteco-api-bot@apteco.com"
-      git config --global user.name "Apteco-Api bot"
+      git config --global user.name "apteco-api bot"
       git config --global core.autocrlf input
       echo First Git status (before adding)
       git status
