@@ -5,8 +5,16 @@ based on the API spec at the given source.
 This only generates the Python source code;
 it does *not* then build a distribution from it or publish it to PyPI.
 
-"""
+Calling routines (all have optional -p):
 
+    1) Fetch spec from API instance: -u
+    2) Fetch spec from file with version no. in filename: -f
+    3) Fetch spec from file and supply version no.: -fs
+    4) Supply new version no. (e.g. having manually changed spec): -s
+    5) Just bump package version (without changing spec):
+
+"""
+import argparse
 import json
 import re
 import shutil
@@ -17,14 +25,42 @@ import parse
 import semver
 from urlpath import URL
 
-API_BASE_URL = "https://www.tealgreenholidays.co.uk/OrbitAPI"
 API_SPEC_PATH = "gen/api-spec.json"
 INTRODUCTION_PATH = "introduction.md"
 GEN_CONFIG_PATH = "gen/config.yaml"
 README_PATH = "README.md"
 
 
-def get_spec_from_api(api_base_url=API_BASE_URL):
+def parse_options():
+    """Parse command line options passed to script."""
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-u", "--url", type=str, help="URL of OrbitAPI to retrieve spec from")
+    parser.add_argument("-f", "--file", type=Path, help="filepath of OrbitAPI spec to use")
+    parser.add_argument("-s", "--spec-version", type=str, help="OrbitAPI spec version")
+    parser.add_argument("-p", "--part", default="minor", type=str, choices=["major", "minor", "patch", "dev_num"], help="version part to increase when bumping package version")
+    args = parser.parse_args()
+
+    if args.url:
+        if args.file:
+            parser.exit(message="Can only set one of url or file")
+        if args.spec:
+            parser.exit(message="Cannot specify spec version with url")
+
+    return args
+
+
+def fetch_orbit_spec_version_no(api_base_url):
+    """Get the Orbit API spec version number from the given source."""
+    spec_version_url = URL(api_base_url) / "About/Version"
+    spec_version_response = spec_version_url.get()
+    spec_version = spec_version_response.json().get("version")
+    if spec_version is None:
+        raise LookupError("Failed to fetch OrbitAPI spec version number.")
+    else:
+        return spec_version
+
+
+def get_spec_from_api(api_base_url):
     """Get the spec and version at the given source."""
     spec_url = URL(api_base_url) / "swagger/v2/swagger.json"
     spec_response = spec_url.get()
@@ -70,17 +106,6 @@ def find_line_no(content_lines, match_text, error_message):
         raise LookupError(error_message)
 
 
-def fetch_orbit_spec_version_no(api_base_url=API_BASE_URL):
-    """Get the Orbit API spec version number from the given source."""
-    spec_version_url = URL(api_base_url) / "About/Version"
-    spec_version_response = spec_version_url.get()
-    spec_version = spec_version_response.json().get("version")
-    if spec_version is None:
-        raise LookupError("Failed to fetch OrbitAPI spec version number.")
-    else:
-        return spec_version
-
-
 def update_orbit_spec_version_number(orbit_version, introduction_path=INTRODUCTION_PATH):
     """Write new Orbit API spec version number into README content."""
     with open(introduction_path, "r") as f:
@@ -94,6 +119,26 @@ def update_orbit_spec_version_number(orbit_version, introduction_path=INTRODUCTI
 
     with open(introduction_path, "w") as f:
         f.writelines(introduction_content)
+
+
+def fetch_and_update_spec(url=None, filepath=None, version=None):
+    """Update the package with a new spec from the supplied source."""
+    if url and filepath:
+        raise ValueError("Can only specify one of url or filepath")
+
+    new_spec, new_version = None, None
+    if url:
+        new_spec, new_version = get_spec_from_api(url)
+    if filepath:
+        new_spec, new_version = get_spec_from_file(filepath, version)
+
+    if new_spec is not None:
+        update_spec(new_spec)
+        update_orbit_spec_version_number(new_version)
+        return new_version
+    elif version is not None:
+        update_orbit_spec_version_number(version)
+        return version
 
 
 def get_new_version(output):
@@ -280,11 +325,11 @@ def correct_line_endings():
 
 
 def main():
-    new_spec, orbit_spec_version_number = get_spec_from_api()
-    update_spec(new_spec)
-    update_orbit_spec_version_number(orbit_spec_version_number)
-    print(f"Using Orbit API spec version: {orbit_spec_version_number}")
-    new_version_number = bump_package_version(part="minor", allow_dirty=True)
+    args = parse_options()
+    orbit_spec_version_number = fetch_and_update_spec(args.url, args.file, args.spec_version)
+    if orbit_spec_version_number is not None:
+        print(f"Using Orbit API spec version: {orbit_spec_version_number}")
+    new_version_number = bump_package_version(part=args.part, allow_dirty=True)
     print(f"Bumped package to version: {new_version_number}")
     regenerate_message = regenerate_package()
     print(regenerate_message)

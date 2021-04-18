@@ -33,7 +33,7 @@ steps:
   displayName: 'Install dependencies'
 
 - script: |
-    python gen/generator_script.py
+    python gen/generator_script.py "https://www.tealgreenholidays.co.uk/OrbitAPI"
   displayName: 'Re-generate package'
 
 - task: CmdLine@2

@@ -7,3 +7,7 @@ urlpath >= 1.1.4
 ### For building distributions/publishing ###
 twine >= 2.0.0
 wheel >= 0.33.6
+#
+### For developing generator script ###
+black >= 20.8b1
+pytest >= 6.2.3
