@@ -11,7 +11,7 @@ Calling routines (all have optional -p):
     2) Fetch spec from file with version no. in filename: -f
     3) Fetch spec from file and supply version no.: -fs
     4) Supply new version no. (e.g. having manually changed spec): -s
-    5) Just bump package version (without changing spec):
+    5) Just bump package version (without changing spec): -p
 
 """
 import argparse
@@ -29,22 +29,25 @@ API_SPEC_PATH = "gen/api-spec.json"
 INTRODUCTION_PATH = "introduction.md"
 GEN_CONFIG_PATH = "gen/config.yaml"
 README_PATH = "README.md"
+VERSION_PARTS = ["major", "minor", "patch", "dev_num"]
 
 
 def parse_options():
     """Parse command line options passed to script."""
     parser = argparse.ArgumentParser()
-    parser.add_argument("-u", "--url", type=str, help="URL of OrbitAPI to retrieve spec from")
-    parser.add_argument("-f", "--file", type=Path, help="filepath of OrbitAPI spec to use")
+    source_group = parser.add_mutually_exclusive_group()
+    source_group.add_argument("-u", "--url", type=str, help="URL of OrbitAPI to retrieve spec from")
+    source_group.add_argument("-f", "--file", type=Path, help="filepath of OrbitAPI spec to use")
     parser.add_argument("-s", "--spec-version", type=str, help="OrbitAPI spec version")
-    parser.add_argument("-p", "--part", default="minor", type=str, choices=["major", "minor", "patch", "dev_num"], help="version part to increase when bumping package version")
-    args = parser.parse_args()
+    parser.add_argument("-p", "--part", type=str, choices=VERSION_PARTS, help="version part to increase when bumping package version")
 
-    if args.url:
-        if args.file:
-            parser.exit(message="Can only set one of url or file")
-        if args.spec:
-            parser.exit(message="Cannot specify spec version with url")
+    args = parser.parse_args()
+    if not any(vars(args).values()):  # print help if no arguments passed
+        parser.parse_args(["-h"])
+    if args.url and args.spec_version:
+        parser.error("argument -s/--spec-version: not allowed with argument -u/--url")
+    if args.part is None:
+        args.part = "minor"
 
     return args
 
@@ -172,7 +175,7 @@ def get_new_version(output):
 
 def bump_package_version(part="minor", allow_dirty=False):
     """Bump version and return new version number if successful."""
-    if part not in ["major", "minor", "patch"]:
+    if part not in VERSION_PARTS:
         raise ValueError(f"'{part}' is not a valid part parameter.")
     allow_dirty_arg = ["--allow-dirty"] if allow_dirty else []
     args = ["bumpversion"] + allow_dirty_arg + ["--list", part]
