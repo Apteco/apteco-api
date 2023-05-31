@@ -95,9 +95,21 @@ def get_spec_from_file(spec_source, version=None):
 def update_spec(spec, api_spec_path=API_SPEC_PATH):
     """Update the API Swagger spec using the one provided."""
     spec.update({"host": "example.com", "basePath": "/OrbitAPI/"})
+    fix_spec_issues(spec)
     api_spec_path = Path(api_spec_path)
     with open(api_spec_path, "w") as f:
         f.write(json.dumps(spec, indent=4, ensure_ascii=False))
+
+
+def fix_spec_issues(spec):
+    """Apply manual fixes to spec."""
+
+    # lastLogin property in SessionDetails should be optional
+    session_details_required = spec["definitions"]["SessionDetails"]["required"]
+    if "lastLogin" in session_details_required:
+        session_details_required.remove("lastLogin")
+    else:
+        print("Spec issue not detected: `lastLogin` property for `SessionDetails` already set as optional")
 
 
 def find_line_no(content_lines, match_text, error_message):
