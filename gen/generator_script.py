@@ -280,11 +280,100 @@ def check_generator_output(result):
     return message
 
 
+def fix_generated_package_issues():
+    """Apply manual fixes to generated package."""
+    fix_parameters_with_path_format_issue()
+
+
+def fix_parameters_with_path_format_issue():
+    """Fix issue with parameters whose format is 'path' not being handled correctly."""
+    with open(API_SPEC_PATH) as f:
+        spec = json.load(f)
+
+    parameter_matches = []
+    for path, operations in spec["paths"].items():
+        for verb, operation in operations.items():
+            for idx, parameter in enumerate(operation["parameters"]):
+                if parameter.get("format") == "path":
+                    parameter_matches.append({
+                        "path": path,
+                        "verb": verb,
+                        "operation_id": operation["operationId"],
+                        "param_idx": idx,  # not used
+                        "param_name": parameter["name"],
+                    })
+
+    for match in parameter_matches:
+        fix_path_format_parameter(
+            match["path"],
+            match["verb"],
+            match["operation_id"],
+            match["param_name"],
+        )
+
+
+def fix_path_format_parameter(path, verb, operation_id, param_name):
+    """Insert code snippet to correctly handle parameter with 'path' format."""
+    api, method = operation_id.split("_")
+
+    api_split = re.split("(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])", api)
+    api_py = "_".join(api_split).lower()
+    method_split = re.split("(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])", method)
+    method_name_py = "_".join(method_split).lower()
+    param_name_split = re.split("(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])", param_name)
+    param_name_py = "_".join(param_name_split).lower()
+
+    full_method_name_py = f"{api_py}_{method_name_py}"
+    api_filename = f"apteco_api/api/{api_py}_api.py"
+
+    with open(api_filename) as f:
+        code_lines = f.readlines()
+
+    method_definitions = [(line_no, line) for line_no, line in enumerate(code_lines) if line.startswith("    def ")]
+    ((method_idx, method_line_no),) = [(idx, line_no) for idx, (line_no, line) in enumerate(method_definitions) if line.startswith(f"    def {full_method_name_py}_with_http_info(")]
+    try:
+        next_method_line_no = method_definitions[method_idx + 1][0]
+    except IndexError:  # this method is the last one
+        next_method_line_no = len(code_lines)
+    before_method, method_lines, after_method = code_lines[:method_line_no], code_lines[method_line_no:next_method_line_no], code_lines[next_method_line_no:]
+
+    param_section_find = f"""
+        if '{param_name_py}' in local_var_params:
+            path_params['{param_name}'] = local_var_params['{param_name_py}']  # noqa: E501"""
+    param_section_replace = f"""
+        if '{param_name_py}' in local_var_params:
+            # handle '{param_name_py}' correctly as parameter with 'path' format 
+            {param_name_py}_segments = local_var_params['{param_name_py}'].split('/')
+            {param_name_py}_params = {{f'{param_name}{{i}}': seg for i, seg in enumerate({param_name_py}_segments)}}
+            {param_name_py}_template = '/'.join(f'{{{{{{k}}}}}}' for k in {param_name_py}_params.keys())
+            path_params.update({param_name_py}_params)
+        else:
+            {param_name_py}_template = '{{{param_name}}}'"""
+
+    path_before, __, path_after = path.partition(f"{{{param_name}}}")
+    api_call_section_find = f"""return self.api_client.call_api(
+            '{path}', '{verb.upper()}',"""
+    api_call_section_replace = f"""return self.api_client.call_api(
+            {f"'{path_before}' + " if path_before else ""}{param_name_py}_template{f" + '{path_after}'" if path_after else ""}, '{verb.upper()}',"""
+
+    method_text = "".join(method_lines)
+    assert method_text.count(param_section_find) == 1
+    modified_method_text = method_text.replace(param_section_find, param_section_replace)
+    assert modified_method_text.count(api_call_section_find) == 1
+    modified_method_text = modified_method_text.replace(api_call_section_find, api_call_section_replace)
+    modified_code = "".join(before_method) + modified_method_text + "".join(after_method)
+
+    with open(api_filename, "w") as f:
+        f.write(modified_code)
+
+
 def regenerate_package():
     """Delete old package, generate new version and check output."""
     delete_old_package()
     result = generate_new_package()
-    return check_generator_output(result)
+    generator_output = check_generator_output(result)
+    fix_generated_package_issues()
+    return generator_output
 
 
 def update_readme(readme_path=README_PATH, introduction_path=INTRODUCTION_PATH):

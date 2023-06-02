@@ -128,7 +128,13 @@ class FilesApi(object):
         if 'system_name' in local_var_params:
             path_params['systemName'] = local_var_params['system_name']  # noqa: E501
         if 'file_path' in local_var_params:
-            path_params['filePath'] = local_var_params['file_path']  # noqa: E501
+            # handle 'file_path' correctly as parameter with 'path' format 
+            file_path_segments = local_var_params['file_path'].split('/')
+            file_path_params = {f'filePath{i}': seg for i, seg in enumerate(file_path_segments)}
+            file_path_template = '/'.join(f'{{{k}}}' for k in file_path_params.keys())
+            path_params.update(file_path_params)
+        else:
+            file_path_template = '{filePath}'
 
         query_params = []
         if 'timeout_in_seconds' in local_var_params:
@@ -144,7 +150,7 @@ class FilesApi(object):
         auth_settings = ['faststats_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{dataViewName}/Files/{systemName}/{filePath}', 'DELETE',
+            '/{dataViewName}/Files/{systemName}/' + file_path_template, 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -250,7 +256,13 @@ class FilesApi(object):
         if 'system_name' in local_var_params:
             path_params['systemName'] = local_var_params['system_name']  # noqa: E501
         if 'file_path' in local_var_params:
-            path_params['filePath'] = local_var_params['file_path']  # noqa: E501
+            # handle 'file_path' correctly as parameter with 'path' format 
+            file_path_segments = local_var_params['file_path'].split('/')
+            file_path_params = {f'filePath{i}': seg for i, seg in enumerate(file_path_segments)}
+            file_path_template = '/'.join(f'{{{k}}}' for k in file_path_params.keys())
+            path_params.update(file_path_params)
+        else:
+            file_path_template = '{filePath}'
 
         query_params = []
         if 'timeout_in_seconds' in local_var_params:
@@ -270,7 +282,7 @@ class FilesApi(object):
         auth_settings = ['faststats_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{dataViewName}/Files/{systemName}/{filePath}', 'GET',
+            '/{dataViewName}/Files/{systemName}/' + file_path_template, 'GET',
             path_params,
             query_params,
             header_params,
@@ -382,7 +394,13 @@ class FilesApi(object):
         if 'system_name' in local_var_params:
             path_params['systemName'] = local_var_params['system_name']  # noqa: E501
         if 'file_path' in local_var_params:
-            path_params['filePath'] = local_var_params['file_path']  # noqa: E501
+            # handle 'file_path' correctly as parameter with 'path' format 
+            file_path_segments = local_var_params['file_path'].split('/')
+            file_path_params = {f'filePath{i}': seg for i, seg in enumerate(file_path_segments)}
+            file_path_template = '/'.join(f'{{{k}}}' for k in file_path_params.keys())
+            path_params.update(file_path_params)
+        else:
+            file_path_template = '{filePath}'
 
         query_params = []
         if 'timeout_in_seconds' in local_var_params:
@@ -408,7 +426,7 @@ class FilesApi(object):
         auth_settings = ['faststats_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{dataViewName}/Files/{systemName}/{filePath}', 'PUT',
+            '/{dataViewName}/Files/{systemName}/' + file_path_template, 'PUT',
             path_params,
             query_params,
             header_params,

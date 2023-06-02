@@ -128,7 +128,13 @@ class DirectoriesApi(object):
         if 'system_name' in local_var_params:
             path_params['systemName'] = local_var_params['system_name']  # noqa: E501
         if 'directory_path' in local_var_params:
-            path_params['directoryPath'] = local_var_params['directory_path']  # noqa: E501
+            # handle 'directory_path' correctly as parameter with 'path' format 
+            directory_path_segments = local_var_params['directory_path'].split('/')
+            directory_path_params = {f'directoryPath{i}': seg for i, seg in enumerate(directory_path_segments)}
+            directory_path_template = '/'.join(f'{{{k}}}' for k in directory_path_params.keys())
+            path_params.update(directory_path_params)
+        else:
+            directory_path_template = '{directoryPath}'
 
         query_params = []
         if 'timeout_in_seconds' in local_var_params:
@@ -144,7 +150,7 @@ class DirectoriesApi(object):
         auth_settings = ['faststats_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{dataViewName}/Directories/{systemName}/{directoryPath}', 'DELETE',
+            '/{dataViewName}/Directories/{systemName}/' + directory_path_template, 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -262,7 +268,13 @@ class DirectoriesApi(object):
         if 'system_name' in local_var_params:
             path_params['systemName'] = local_var_params['system_name']  # noqa: E501
         if 'directory_path' in local_var_params:
-            path_params['directoryPath'] = local_var_params['directory_path']  # noqa: E501
+            # handle 'directory_path' correctly as parameter with 'path' format 
+            directory_path_segments = local_var_params['directory_path'].split('/')
+            directory_path_params = {f'directoryPath{i}': seg for i, seg in enumerate(directory_path_segments)}
+            directory_path_template = '/'.join(f'{{{k}}}' for k in directory_path_params.keys())
+            path_params.update(directory_path_params)
+        else:
+            directory_path_template = '{directoryPath}'
 
         query_params = []
         if 'timeout_in_seconds' in local_var_params:
@@ -290,7 +302,7 @@ class DirectoriesApi(object):
         auth_settings = ['faststats_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{dataViewName}/Directories/{systemName}/{directoryPath}', 'GET',
+            '/{dataViewName}/Directories/{systemName}/' + directory_path_template, 'GET',
             path_params,
             query_params,
             header_params,
@@ -660,7 +672,13 @@ class DirectoriesApi(object):
         if 'system_name' in local_var_params:
             path_params['systemName'] = local_var_params['system_name']  # noqa: E501
         if 'directory_path' in local_var_params:
-            path_params['directoryPath'] = local_var_params['directory_path']  # noqa: E501
+            # handle 'directory_path' correctly as parameter with 'path' format 
+            directory_path_segments = local_var_params['directory_path'].split('/')
+            directory_path_params = {f'directoryPath{i}': seg for i, seg in enumerate(directory_path_segments)}
+            directory_path_template = '/'.join(f'{{{k}}}' for k in directory_path_params.keys())
+            path_params.update(directory_path_params)
+        else:
+            directory_path_template = '{directoryPath}'
 
         query_params = []
         if 'timeout_in_seconds' in local_var_params:
@@ -680,7 +698,7 @@ class DirectoriesApi(object):
         auth_settings = ['faststats_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{dataViewName}/Directories/{systemName}/{directoryPath}', 'PUT',
+            '/{dataViewName}/Directories/{systemName}/' + directory_path_template, 'PUT',
             path_params,
             query_params,
             header_params,

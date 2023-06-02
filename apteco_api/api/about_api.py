@@ -1010,7 +1010,13 @@ class AboutApi(object):
 
         path_params = {}
         if 'settings_path' in local_var_params:
-            path_params['settingsPath'] = local_var_params['settings_path']  # noqa: E501
+            # handle 'settings_path' correctly as parameter with 'path' format 
+            settings_path_segments = local_var_params['settings_path'].split('/')
+            settings_path_params = {f'settingsPath{i}': seg for i, seg in enumerate(settings_path_segments)}
+            settings_path_template = '/'.join(f'{{{k}}}' for k in settings_path_params.keys())
+            path_params.update(settings_path_params)
+        else:
+            settings_path_template = '{settingsPath}'
 
         query_params = []
 
@@ -1028,7 +1034,7 @@ class AboutApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/About/Orbit/Settings/{settingsPath}', 'GET',
+            '/About/Orbit/Settings/' + settings_path_template, 'GET',
             path_params,
             query_params,
             header_params,

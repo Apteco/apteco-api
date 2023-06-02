@@ -272,7 +272,13 @@ class FastStatsSystemsApi(object):
         if 'system_name' in local_var_params:
             path_params['systemName'] = local_var_params['system_name']  # noqa: E501
         if 'path' in local_var_params:
-            path_params['path'] = local_var_params['path']  # noqa: E501
+            # handle 'path' correctly as parameter with 'path' format 
+            path_segments = local_var_params['path'].split('/')
+            path_params = {f'path{i}': seg for i, seg in enumerate(path_segments)}
+            path_template = '/'.join(f'{{{k}}}' for k in path_params.keys())
+            path_params.update(path_params)
+        else:
+            path_template = '{path}'
 
         query_params = []
         if 'filter' in local_var_params:
@@ -298,7 +304,7 @@ class FastStatsSystemsApi(object):
         auth_settings = ['faststats_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{dataViewName}/FastStatsSystems/{systemName}/Folders/{path}', 'GET',
+            '/{dataViewName}/FastStatsSystems/{systemName}/Folders/' + path_template, 'GET',
             path_params,
             query_params,
             header_params,
