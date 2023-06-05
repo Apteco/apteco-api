@@ -282,7 +282,7 @@ def check_generator_output(result):
 
 def fix_generated_package_issues():
     """Apply manual fixes to generated package."""
-    fix_parameters_with_path_format_issue()
+    return fix_parameters_with_path_format_issue()
 
 
 def fix_parameters_with_path_format_issue():
@@ -303,13 +303,16 @@ def fix_parameters_with_path_format_issue():
                         "param_name": parameter["name"],
                     })
 
+    output_message = ""
     for match in parameter_matches:
-        fix_path_format_parameter(
+        output_message += fix_path_format_parameter(
             match["path"],
             match["verb"],
             match["operation_id"],
             match["param_name"],
         )
+
+    return output_message
 
 
 def fix_path_format_parameter(path, verb, operation_id, param_name):
@@ -364,14 +367,16 @@ def fix_path_format_parameter(path, verb, operation_id, param_name):
             {f"'{path_before}' + " if path_before else ""}{param_name_py}_template{f" + '{path_after}'" if path_after else ""}, '{verb.upper()}',"""
 
     method_text = "".join(method_lines)
-    assert method_text.count(param_section_find) == 1
+    assert method_text.count(param_section_find) == 1, f"Could not find check for parameter `{param_name_py}` in method `{method_name_py}()`"
     modified_method_text = method_text.replace(param_section_find, param_section_replace)
-    assert modified_method_text.count(api_call_section_find) == 1
+    assert modified_method_text.count(api_call_section_find) == 1, f"Could not find API client call with parameter `{param_name_py}` in method `{method_name_py}()`"
     modified_method_text = modified_method_text.replace(api_call_section_find, api_call_section_replace)
     modified_code = "".join(before_method) + modified_method_text + "".join(after_method)
 
     with open(api_filename, "w") as f:
         f.write(modified_code)
+
+    return f"Applied fix for path-formatted parameter `{param_name}` in method `{api}Api.{method_name_py}()`\n"
 
 
 def regenerate_package():
@@ -379,8 +384,8 @@ def regenerate_package():
     delete_old_package()
     result = generate_new_package()
     generator_output = check_generator_output(result)
-    fix_generated_package_issues()
-    return generator_output
+    generator_fixes_output = fix_generated_package_issues()
+    return generator_output + "\n" + generator_fixes_output
 
 
 def update_readme(readme_path=README_PATH, introduction_path=INTRODUCTION_PATH):

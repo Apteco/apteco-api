@@ -14144,7 +14144,7 @@
                     "type": "string"
                 },
                 "currencySymbol": {
-                    "description": "If this variable is a currency variable, then the currency symbolfor the specific currency (i.e. \"\u00a3\" for the UK pound sterling, \"$\" for the US dollar)",
+                    "description": "If this variable is a currency variable, then the currency symbolfor the specific currency (i.e. \"£\" for the UK pound sterling, \"$\" for the US dollar)",
                     "type": "string"
                 }
             }
