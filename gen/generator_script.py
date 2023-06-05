@@ -337,6 +337,13 @@ def fix_path_format_parameter(path, verb, operation_id, param_name):
         next_method_line_no = len(code_lines)
     before_method, method_lines, after_method = code_lines[:method_line_no], code_lines[method_line_no:next_method_line_no], code_lines[next_method_line_no:]
 
+    # check for cases where parameter name gets `_` prepended by the generator (presumably to avoid collision with reserved name)
+    if f", {param_name_py}" not in method_lines[0]:
+        if f", _{param_name_py}" in method_lines[0]:
+            param_name_py = f"_{param_name_py}"
+        else:
+            raise ValueError(f"Parameter `{param_name_py}` not found in signature of method `{full_method_name_py}()`")
+
     param_section_find = f"""
         if '{param_name_py}' in local_var_params:
             path_params['{param_name}'] = local_var_params['{param_name_py}']  # noqa: E501"""
