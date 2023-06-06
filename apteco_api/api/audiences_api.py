@@ -19,7 +19,7 @@ import re  # noqa: F401
 import six
 
 from apteco_api.api_client import ApiClient
-from apteco_api.exceptions import (
+from apteco_api.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
@@ -93,11 +93,20 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'timeout_in_seconds', 'data_licensing_detail']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'timeout_in_seconds',
+            'data_licensing_detail'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -219,11 +228,20 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'timeout_in_seconds', 'calculate_audience_details']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'timeout_in_seconds',
+            'calculate_audience_details'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -343,11 +361,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'job_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'job_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -461,11 +487,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'job_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'job_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -579,11 +613,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'job_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'job_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -697,11 +739,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'job_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'job_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -817,11 +867,20 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'timeout_in_seconds', 'check_audience_details']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'timeout_in_seconds',
+            'check_audience_details'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -941,11 +1000,18 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_detail']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_detail'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1057,11 +1123,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'create_audience_hit_details']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'create_audience_hit_details'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1181,11 +1255,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'create_audience_update']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'create_audience_update'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1303,11 +1385,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'data_licensing_detail']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'data_licensing_detail'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1425,11 +1515,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'calculate_audience_details']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'calculate_audience_details'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1547,11 +1645,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'check_audience_details']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'check_audience_details'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1671,11 +1777,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'export_audience_details']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'export_audience_details'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1793,11 +1907,18 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1909,11 +2030,20 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'timeout_in_seconds', 'export_audience_details']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'timeout_in_seconds',
+            'export_audience_details'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -2035,11 +2165,20 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'include_queries', 'include_brief']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'include_queries',
+            'include_brief'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -2155,11 +2294,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'audience_hit_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'audience_hit_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -2283,11 +2430,22 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'filter',
+            'order_by',
+            'offset',
+            'count'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -2409,11 +2567,18 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -2525,11 +2690,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'audience_result_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'audience_result_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -2653,11 +2826,22 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'filter',
+            'order_by',
+            'offset',
+            'count'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -2785,11 +2969,21 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'audience_update_id', 'include_queries', 'include_brief']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'audience_update_id',
+            'include_queries',
+            'include_brief'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -2917,11 +3111,22 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'filter',
+            'order_by',
+            'offset',
+            'count'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -3053,11 +3258,22 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'include_deleted', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'include_deleted',
+            'filter',
+            'order_by',
+            'offset',
+            'count'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -3179,11 +3395,20 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'job_id', 'data_licensing_detail']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'job_id',
+            'data_licensing_detail'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -3307,11 +3532,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'job_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'job_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -3429,11 +3662,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'job_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'job_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -3551,11 +3792,19 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'job_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'job_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -3679,11 +3928,21 @@ class AudiencesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'audience_id', 'include_queries', 'include_brief', 'transfer_ownership_details']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'include_queries',
+            'include_brief',
+            'transfer_ownership_details'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:

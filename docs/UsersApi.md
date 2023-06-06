@@ -36,14 +36,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -106,14 +119,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -173,14 +199,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -247,14 +286,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -320,14 +372,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -399,14 +464,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -468,14 +546,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -546,6 +637,12 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient() as api_client:
@@ -605,14 +702,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -674,14 +784,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -741,14 +864,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -814,14 +950,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -887,14 +1036,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -958,14 +1120,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1031,14 +1206,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1102,14 +1290,27 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-configuration = apteco_api.Configuration()
+# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: faststats_auth
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# Defining host is optional and default to https://example.com/OrbitAPI
-configuration.host = "https://example.com/OrbitAPI"
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class

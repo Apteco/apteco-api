@@ -19,7 +19,7 @@ import re  # noqa: F401
 import six
 
 from apteco_api.api_client import ApiClient
-from apteco_api.exceptions import (
+from apteco_api.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
@@ -91,11 +91,19 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'change_password_details']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username',
+            'change_password_details'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -209,11 +217,18 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -331,11 +346,22 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username',
+            'filter',
+            'order_by',
+            'offset',
+            'count'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -463,11 +489,21 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'audience_id', 'include_queries', 'include_brief']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username',
+            'audience_id',
+            'include_queries',
+            'include_brief'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -599,11 +635,24 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'include_deleted', 'apply_pinned_sort', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username',
+            'include_deleted',
+            'apply_pinned_sort',
+            'filter',
+            'order_by',
+            'offset',
+            'count'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -731,11 +780,19 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'collection_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username',
+            'collection_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -863,11 +920,24 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'include_deleted', 'apply_pinned_sort', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username',
+            'include_deleted',
+            'apply_pinned_sort',
+            'filter',
+            'order_by',
+            'offset',
+            'count'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -991,11 +1061,17 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1103,11 +1179,19 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'dashboard_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username',
+            'dashboard_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1223,11 +1307,18 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1343,11 +1434,21 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'filter', 'order_by', 'offset', 'count']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'filter',
+            'order_by',
+            'offset',
+            'count'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1471,11 +1572,21 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'include_queries', 'include_brief', 'updates']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username',
+            'include_queries',
+            'include_brief',
+            'updates'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1597,11 +1708,19 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'updates']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username',
+            'updates'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1723,11 +1842,20 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'collection_id', 'patch']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username',
+            'collection_id',
+            'patch'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1855,11 +1983,20 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'collection_id', 'collection_detail']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username',
+            'collection_id',
+            'collection_detail'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -1983,11 +2120,19 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['data_view_name', 'username', 'update_user_details']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'data_view_name',
+            'username',
+            'update_user_details'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:

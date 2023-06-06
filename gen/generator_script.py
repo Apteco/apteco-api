@@ -28,7 +28,7 @@ from urlpath import URL
 API_SPEC_PATH = "gen/api-spec.json"
 INTRODUCTION_PATH = "introduction.md"
 GEN_CONFIG_PATH = "gen/config.yaml"
-GEN_VERSION = "4.2.3"
+GEN_VERSION = "4.3.1"
 README_PATH = "README.md"
 VERSION_PARTS = ["major", "minor", "patch", "dev_num"]
 
@@ -244,6 +244,9 @@ def check_generator_output(result):
     """Check for and return important info from package generator."""
     COMMON_WARNINGS = [
         "[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in content, returning only the first one",
+        "[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)",
+        "[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json-patch+json)",
+        "[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (text/xml)",
         "[main] WARN  o.o.c.languages.PythonClientCodegen - Property (reserved word) cannot be used as model name. Renamed to ModelProperty",
         "[main] WARN  o.o.codegen.DefaultCodegen - Multiple MediaTypes found, using only the first one",
     ]
@@ -253,6 +256,7 @@ def check_generator_output(result):
         "[main] INFO  o.o.codegen.DefaultGenerator - Model ReferenceVariableInfo not generated since it's a free-form object",
     ]
     STANDARD_INFO = [
+        "[main] INFO  o.o.codegen.DefaultGenerator - Generating with dryRun=false",
         "[main] INFO  o.o.codegen.DefaultGenerator - OpenAPI Generator: python (client)",
         "[main] INFO  o.o.codegen.DefaultGenerator - Generator 'python' is considered stable.",
         "[main] INFO  o.o.c.languages.PythonClientCodegen - Environment variable PYTHON_POST_PROCESS_FILE not defined so the Python code may not be properly formatted. To define it, try 'export PYTHON_POST_PROCESS_FILE=\"/usr/local/bin/yapf -i\"' (Linux/Mac)",
