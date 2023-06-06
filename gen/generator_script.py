@@ -28,6 +28,7 @@ from urlpath import URL
 API_SPEC_PATH = "gen/api-spec.json"
 INTRODUCTION_PATH = "introduction.md"
 GEN_CONFIG_PATH = "gen/config.yaml"
+GEN_VERSION = "4.0.1"
 README_PATH = "README.md"
 VERSION_PARTS = ["major", "minor", "patch", "dev_num"]
 
@@ -121,16 +122,23 @@ def find_line_no(content_lines, match_text, error_message):
         raise LookupError(error_message)
 
 
-def update_orbit_spec_version_number(orbit_version, introduction_path=INTRODUCTION_PATH):
+def update_orbit_spec_version_number(orbit_version, introduction_path=INTRODUCTION_PATH, gen_version=GEN_VERSION):
     """Write new Orbit API spec version number into README content."""
     with open(introduction_path, "r") as f:
         introduction_content = f.readlines()
-    line_no = find_line_no(
+
+    spec_version_line_no = find_line_no(
         introduction_content,
         "- OrbitAPI spec version:",
         "Couldn't find where to change OrbitAPI spec version number in Introduction."
     )
-    introduction_content[line_no] = f"- OrbitAPI spec version: {orbit_version}\n"
+    introduction_content[spec_version_line_no] = f"- OrbitAPI spec version: {orbit_version}\n"
+    gen_version_line_no = find_line_no(
+        introduction_content,
+        "- Generator version:",
+        "Couldn't find where to change Generator version number in Introduction."
+    )
+    introduction_content[gen_version_line_no] = f"- Generator version: {gen_version}\n"
 
     with open(introduction_path, "w") as f:
         f.writelines(introduction_content)
@@ -216,10 +224,10 @@ def delete_old_package():
     shutil.rmtree("test/")
 
 
-def generate_new_package(api_spec_path=API_SPEC_PATH, gen_config_path=GEN_CONFIG_PATH):
+def generate_new_package(api_spec_path=API_SPEC_PATH, gen_config_path=GEN_CONFIG_PATH, gen_version=GEN_VERSION):
     """Run package generator process and return result."""
     args = [
-        r"java -jar gen\openapi-generator-cli-4.0.1.jar generate",
+        fr"java -jar gen\openapi-generator-cli-{gen_version}.jar generate",
         f"-i {api_spec_path}",
         "-g python",
         "-o .",
