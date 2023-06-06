@@ -31,18 +31,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DirectoriesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DirectoriesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 directory_path = 'directory_path_example' # str | The path to the directory to be deleted
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration (optional)
 
-try:
-    # Deletes directory at location
-    api_instance.directories_delete_directory(data_view_name, system_name, directory_path, timeout_in_seconds=timeout_in_seconds)
-except ApiException as e:
-    print("Exception when calling DirectoriesApi->directories_delete_directory: %s\n" % e)
+    try:
+        # Deletes directory at location
+        api_instance.directories_delete_directory(data_view_name, system_name, directory_path, timeout_in_seconds=timeout_in_seconds)
+    except ApiException as e:
+        print("Exception when calling DirectoriesApi->directories_delete_directory: %s\n" % e)
 ```
 
 ### Parameters
@@ -98,9 +102,13 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DirectoriesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DirectoriesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 directory_path = 'directory_path_example' # str | The path of the directory to list the contents of
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration (optional)
@@ -109,12 +117,12 @@ order_by = 'order_by_example' # str | Order the items by a given field (in ascen
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns the list of files and subdirectories under the given directory
-    api_response = api_instance.directories_get_file_entries(data_view_name, system_name, directory_path, timeout_in_seconds=timeout_in_seconds, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DirectoriesApi->directories_get_file_entries: %s\n" % e)
+    try:
+        # Returns the list of files and subdirectories under the given directory
+        api_response = api_instance.directories_get_file_entries(data_view_name, system_name, directory_path, timeout_in_seconds=timeout_in_seconds, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DirectoriesApi->directories_get_file_entries: %s\n" % e)
 ```
 
 ### Parameters
@@ -173,20 +181,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DirectoriesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DirectoriesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are SystemName (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are SystemName (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns the list of systems that have access to a filesystem
-    api_response = api_instance.directories_get_file_systems(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DirectoriesApi->directories_get_file_systems: %s\n" % e)
+    try:
+        # Returns the list of systems that have access to a filesystem
+        api_response = api_instance.directories_get_file_systems(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DirectoriesApi->directories_get_file_systems: %s\n" % e)
 ```
 
 ### Parameters
@@ -242,9 +254,13 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DirectoriesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DirectoriesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration (optional)
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name, Type (optional)
@@ -252,12 +268,12 @@ order_by = 'order_by_example' # str | Order the items by a given field (in ascen
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns the list of root directories configured in this FastStats system
-    api_response = api_instance.directories_get_root_file_entries(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DirectoriesApi->directories_get_root_file_entries: %s\n" % e)
+    try:
+        # Returns the list of root directories configured in this FastStats system
+        api_response = api_instance.directories_get_root_file_entries(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DirectoriesApi->directories_get_root_file_entries: %s\n" % e)
 ```
 
 ### Parameters
@@ -315,19 +331,23 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DirectoriesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DirectoriesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 directory_path = 'directory_path_example' # str | The path to the directory that should exist
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration (optional)
 
-try:
-    # Ensure that a directory exists in a location
-    api_response = api_instance.directories_upsert_directory(data_view_name, system_name, directory_path, timeout_in_seconds=timeout_in_seconds)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DirectoriesApi->directories_upsert_directory: %s\n" % e)
+    try:
+        # Ensure that a directory exists in a location
+        api_response = api_instance.directories_upsert_directory(data_view_name, system_name, directory_path, timeout_in_seconds=timeout_in_seconds)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DirectoriesApi->directories_upsert_directory: %s\n" % e)
 ```
 
 ### Parameters

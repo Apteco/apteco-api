@@ -1,5 +1,6 @@
 # DashboardItem
 
+The definition of one item to show in a dashboard composition
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

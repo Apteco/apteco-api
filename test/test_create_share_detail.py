@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.create_share_detail import CreateShareDetail  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestCreateShareDetail(unittest.TestCase):
     """CreateShareDetail unit test stubs"""
@@ -29,11 +29,38 @@ class TestCreateShareDetail(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CreateShareDetail
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.create_share_detail.CreateShareDetail()  # noqa: E501
+        if include_optional :
+            return CreateShareDetail(
+                shareable_type = 'Collection', 
+                shareable_id = 56, 
+                email_addresses_to_add = [
+                    '0'
+                    ], 
+                notify_added_users = True, 
+                added_user_notification_message = '0', 
+                notes = '0', 
+                view_shareable_url = '0'
+            )
+        else :
+            return CreateShareDetail(
+                shareable_type = 'Collection',
+                shareable_id = 56,
+                email_addresses_to_add = [
+                    '0'
+                    ],
+                notify_added_users = True,
+        )
+
     def testCreateShareDetail(self):
         """Test CreateShareDetail"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.create_share_detail.CreateShareDetail()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

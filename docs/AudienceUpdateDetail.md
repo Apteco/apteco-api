@@ -1,5 +1,6 @@
 # AudienceUpdateDetail
 
+Details for an audience update
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

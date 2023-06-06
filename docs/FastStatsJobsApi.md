@@ -33,18 +33,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsJobsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsJobsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 processing_time_statistics_details = apteco_api.ProcessingTimeStatisticsDetails() # ProcessingTimeStatisticsDetails | The details to calcuate the stats with (optional)
 
-try:
-    # EXPERIMENTAL: Requires OrbitAdmin: Calculate processing statistics for the specified jobs in the FastStats job queue for the given system.
-    api_response = api_instance.fast_stats_jobs_calculate_processing_time_stats_for_system_sync(data_view_name, system_name, processing_time_statistics_details=processing_time_statistics_details)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsJobsApi->fast_stats_jobs_calculate_processing_time_stats_for_system_sync: %s\n" % e)
+    try:
+        # EXPERIMENTAL: Requires OrbitAdmin: Calculate processing statistics for the specified jobs in the FastStats job queue for the given system.
+        api_response = api_instance.fast_stats_jobs_calculate_processing_time_stats_for_system_sync(data_view_name, system_name, processing_time_statistics_details=processing_time_statistics_details)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsJobsApi->fast_stats_jobs_calculate_processing_time_stats_for_system_sync: %s\n" % e)
 ```
 
 ### Parameters
@@ -100,17 +104,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsJobsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsJobsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 processing_time_statistics_details = apteco_api.ProcessingTimeStatisticsDetails() # ProcessingTimeStatisticsDetails | The details to calcuate the stats with (optional)
 
-try:
-    # EXPERIMENTAL: Requires OrbitAdmin: Calculate processing statistics for the specified jobs in the FastStats job queue for all systems in a particular DataView.
-    api_response = api_instance.fast_stats_jobs_calculate_processing_time_stats_sync(data_view_name, processing_time_statistics_details=processing_time_statistics_details)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsJobsApi->fast_stats_jobs_calculate_processing_time_stats_sync: %s\n" % e)
+    try:
+        # EXPERIMENTAL: Requires OrbitAdmin: Calculate processing statistics for the specified jobs in the FastStats job queue for all systems in a particular DataView.
+        api_response = api_instance.fast_stats_jobs_calculate_processing_time_stats_sync(data_view_name, processing_time_statistics_details=processing_time_statistics_details)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsJobsApi->fast_stats_jobs_calculate_processing_time_stats_sync: %s\n" % e)
 ```
 
 ### Parameters
@@ -165,20 +173,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsJobsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsJobsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the system the job is in
 job_id = 56 # int | The id of the FastStats job
 return_request = True # bool | Whether to return the request XML for the job.  Defaults to false (optional)
 return_results = True # bool | Whether to return the result XML for the job.  Defaults to false (optional)
 
-try:
-    # EXPERIMENTAL: Requires OrbitAdmin: Gets details for a particular job in the FastStats job queue for the given system.
-    api_response = api_instance.fast_stats_jobs_get_fast_stats_job(data_view_name, system_name, job_id, return_request=return_request, return_results=return_results)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsJobsApi->fast_stats_jobs_get_fast_stats_job: %s\n" % e)
+    try:
+        # EXPERIMENTAL: Requires OrbitAdmin: Gets details for a particular job in the FastStats job queue for the given system.
+        api_response = api_instance.fast_stats_jobs_get_fast_stats_job(data_view_name, system_name, job_id, return_request=return_request, return_results=return_results)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsJobsApi->fast_stats_jobs_get_fast_stats_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -236,20 +248,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsJobsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsJobsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # EXPERIMENTAL: Requires OrbitAdmin: Gets all the jobs in the FastStats job queue for all systems in a particular DataView.
-    api_response = api_instance.fast_stats_jobs_get_fast_stats_jobs(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsJobsApi->fast_stats_jobs_get_fast_stats_jobs: %s\n" % e)
+    try:
+        # EXPERIMENTAL: Requires OrbitAdmin: Gets all the jobs in the FastStats job queue for all systems in a particular DataView.
+        api_response = api_instance.fast_stats_jobs_get_fast_stats_jobs(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsJobsApi->fast_stats_jobs_get_fast_stats_jobs: %s\n" % e)
 ```
 
 ### Parameters
@@ -307,21 +323,25 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsJobsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsJobsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the system to return jobs for
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # EXPERIMENTAL: Requires OrbitAdmin: Gets all the jobs in the FastStats job queue for the given system.
-    api_response = api_instance.fast_stats_jobs_get_fast_stats_jobs_for_system(data_view_name, system_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsJobsApi->fast_stats_jobs_get_fast_stats_jobs_for_system: %s\n" % e)
+    try:
+        # EXPERIMENTAL: Requires OrbitAdmin: Gets all the jobs in the FastStats job queue for the given system.
+        api_response = api_instance.fast_stats_jobs_get_fast_stats_jobs_for_system(data_view_name, system_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsJobsApi->fast_stats_jobs_get_fast_stats_jobs_for_system: %s\n" % e)
 ```
 
 ### Parameters

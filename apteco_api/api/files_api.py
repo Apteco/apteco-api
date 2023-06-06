@@ -108,16 +108,16 @@ class FilesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `files_delete_file`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `files_delete_file`")  # noqa: E501
         # verify the required parameter 'file_path' is set
-        if ('file_path' not in local_var_params or
-                local_var_params['file_path'] is None):
+        if self.api_client.client_side_validation and ('file_path' not in local_var_params or  # noqa: E501
+                                                        local_var_params['file_path'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `file_path` when calling `files_delete_file`")  # noqa: E501
 
         collection_formats = {}
@@ -137,7 +137,7 @@ class FilesApi(object):
             file_path_template = '{filePath}'
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
         header_params = {}
@@ -236,16 +236,16 @@ class FilesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `files_get_file`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `files_get_file`")  # noqa: E501
         # verify the required parameter 'file_path' is set
-        if ('file_path' not in local_var_params or
-                local_var_params['file_path'] is None):
+        if self.api_client.client_side_validation and ('file_path' not in local_var_params or  # noqa: E501
+                                                        local_var_params['file_path'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `file_path` when calling `files_get_file`")  # noqa: E501
 
         collection_formats = {}
@@ -265,7 +265,7 @@ class FilesApi(object):
             file_path_template = '{filePath}'
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
         header_params = {}
@@ -370,20 +370,20 @@ class FilesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `files_upsert_file`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `files_upsert_file`")  # noqa: E501
         # verify the required parameter 'file_path' is set
-        if ('file_path' not in local_var_params or
-                local_var_params['file_path'] is None):
+        if self.api_client.client_side_validation and ('file_path' not in local_var_params or  # noqa: E501
+                                                        local_var_params['file_path'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `file_path` when calling `files_upsert_file`")  # noqa: E501
         # verify the required parameter 'file' is set
-        if ('file' not in local_var_params or
-                local_var_params['file'] is None):
+        if self.api_client.client_side_validation and ('file' not in local_var_params or  # noqa: E501
+                                                        local_var_params['file'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `file` when calling `files_upsert_file`")  # noqa: E501
 
         collection_formats = {}
@@ -403,7 +403,7 @@ class FilesApi(object):
             file_path_template = '{filePath}'
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
         header_params = {}

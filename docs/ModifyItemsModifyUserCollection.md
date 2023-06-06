@@ -1,5 +1,6 @@
 # ModifyItemsModifyUserCollection
 
+A set of items to modify
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

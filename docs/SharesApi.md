@@ -36,17 +36,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SharesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SharesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_detail = apteco_api.CreateShareDetail() # CreateShareDetail | The details of the shareable item (collection, audience, etc) to share and who to share it with (optional)
 
-try:
-    # Creates a new share from the given details, sharing from the logged in user.
-    api_response = api_instance.shares_create_share(data_view_name, share_detail=share_detail)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SharesApi->shares_create_share: %s\n" % e)
+    try:
+        # Creates a new share from the given details, sharing from the logged in user.
+        api_response = api_instance.shares_create_share(data_view_name, share_detail=share_detail)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SharesApi->shares_create_share: %s\n" % e)
 ```
 
 ### Parameters
@@ -98,18 +102,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SharesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SharesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share to update
 share_update = apteco_api.CreateShareUpdate() # CreateShareUpdate | The details of the share update, including who to add and remove from the share and notification settings (optional)
 
-try:
-    # Creates a new share update from the given details, sharing from the logged in user.
-    api_response = api_instance.shares_create_share_update(data_view_name, share_id, share_update=share_update)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SharesApi->shares_create_share_update: %s\n" % e)
+    try:
+        # Creates a new share update from the given details, sharing from the logged in user.
+        api_response = api_instance.shares_create_share_update(data_view_name, share_id, share_update=share_update)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SharesApi->shares_create_share_update: %s\n" % e)
 ```
 
 ### Parameters
@@ -162,16 +170,20 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SharesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SharesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share to delete
 
-try:
-    # Deletes the specified share
-    api_instance.shares_delete_share(data_view_name, share_id)
-except ApiException as e:
-    print("Exception when calling SharesApi->shares_delete_share: %s\n" % e)
+    try:
+        # Deletes the specified share
+        api_instance.shares_delete_share(data_view_name, share_id)
+    except ApiException as e:
+        print("Exception when calling SharesApi->shares_delete_share: %s\n" % e)
 ```
 
 ### Parameters
@@ -224,17 +236,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SharesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SharesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share to view
 
-try:
-    # Returns the details of a particular share
-    api_response = api_instance.shares_get_share(data_view_name, share_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SharesApi->shares_get_share: %s\n" % e)
+    try:
+        # Returns the details of a particular share
+        api_response = api_instance.shares_get_share(data_view_name, share_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SharesApi->shares_get_share: %s\n" % e)
 ```
 
 ### Parameters
@@ -287,18 +303,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SharesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SharesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share the update is associated with
 share_update_id = 56 # int | The id of the share update to view
 
-try:
-    # Returns a specific update that is associated with a particular share
-    api_response = api_instance.shares_get_share_update(data_view_name, share_id, share_update_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SharesApi->shares_get_share_update: %s\n" % e)
+    try:
+        # Returns a specific update that is associated with a particular share
+        api_response = api_instance.shares_get_share_update(data_view_name, share_id, share_update_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SharesApi->shares_get_share_update: %s\n" % e)
 ```
 
 ### Parameters
@@ -352,9 +372,13 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SharesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SharesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share the update is associated with
 share_update_id = 56 # int | The id of the share update to view
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname (optional)
@@ -362,12 +386,12 @@ order_by = 'order_by_example' # str | Order the items by a given field (in ascen
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns the list of the users added to a share as part of a specific update
-    api_response = api_instance.shares_get_share_update_added_users(data_view_name, share_id, share_update_id, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SharesApi->shares_get_share_update_added_users: %s\n" % e)
+    try:
+        # Returns the list of the users added to a share as part of a specific update
+        api_response = api_instance.shares_get_share_update_added_users(data_view_name, share_id, share_update_id, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SharesApi->shares_get_share_update_added_users: %s\n" % e)
 ```
 
 ### Parameters
@@ -425,9 +449,13 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SharesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SharesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share the update is associated with
 share_update_id = 56 # int | The id of the share update to view
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname (optional)
@@ -435,12 +463,12 @@ order_by = 'order_by_example' # str | Order the items by a given field (in ascen
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns the list of the users removed from a share as part of a specific update
-    api_response = api_instance.shares_get_share_update_removed_users(data_view_name, share_id, share_update_id, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SharesApi->shares_get_share_update_removed_users: %s\n" % e)
+    try:
+        # Returns the list of the users removed from a share as part of a specific update
+        api_response = api_instance.shares_get_share_update_removed_users(data_view_name, share_id, share_update_id, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SharesApi->shares_get_share_update_removed_users: %s\n" % e)
 ```
 
 ### Parameters
@@ -498,21 +526,25 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SharesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SharesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share to view
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Notes (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Notes (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns the updates that are associated with a particular share
-    api_response = api_instance.shares_get_share_updates(data_view_name, share_id, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SharesApi->shares_get_share_updates: %s\n" % e)
+    try:
+        # Returns the updates that are associated with a particular share
+        api_response = api_instance.shares_get_share_updates(data_view_name, share_id, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SharesApi->shares_get_share_updates: %s\n" % e)
 ```
 
 ### Parameters
@@ -569,21 +601,25 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SharesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SharesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share to view the users for
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns the list of users that are associated with a particular share
-    api_response = api_instance.shares_get_share_users(data_view_name, share_id, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SharesApi->shares_get_share_users: %s\n" % e)
+    try:
+        # Returns the list of users that are associated with a particular share
+        api_response = api_instance.shares_get_share_users(data_view_name, share_id, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SharesApi->shares_get_share_users: %s\n" % e)
 ```
 
 ### Parameters
@@ -642,20 +678,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SharesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SharesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are ShareableId, ShareableType, NumberOfUsersSharedWith (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are ShareableId, ShareableType, NumberOfUsersSharedWith (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Requires OrbitAdmin: Gets summary information about each share in the DataView.
-    api_response = api_instance.shares_get_shares(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SharesApi->shares_get_shares: %s\n" % e)
+    try:
+        # Requires OrbitAdmin: Gets summary information about each share in the DataView.
+        api_response = api_instance.shares_get_shares(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SharesApi->shares_get_shares: %s\n" % e)
 ```
 
 ### Parameters

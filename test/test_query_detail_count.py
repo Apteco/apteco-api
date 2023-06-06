@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.query_detail_count import QueryDetailCount  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestQueryDetailCount(unittest.TestCase):
     """QueryDetailCount unit test stubs"""
@@ -29,11 +29,26 @@ class TestQueryDetailCount(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test QueryDetailCount
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.query_detail_count.QueryDetailCount()  # noqa: E501
+        if include_optional :
+            return QueryDetailCount(
+                table_name = '0', 
+                table_description = '0', 
+                count_value = 56
+            )
+        else :
+            return QueryDetailCount(
+        )
+
     def testQueryDetailCount(self):
         """Test QueryDetailCount"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.query_detail_count.QueryDetailCount()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

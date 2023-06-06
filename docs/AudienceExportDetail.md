@@ -1,5 +1,6 @@
 # AudienceExportDetail
 
+Detail information for an audience export
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

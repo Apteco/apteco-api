@@ -1,5 +1,6 @@
 # TextVariableInfo
 
+Details specific for text variables in the FastStats system
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

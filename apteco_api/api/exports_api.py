@@ -104,12 +104,12 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `exports_get_export_system`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `exports_get_export_system`")  # noqa: E501
 
         collection_formats = {}
@@ -224,13 +224,13 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `exports_get_export_systems`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `exports_get_export_systems`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `exports_get_export_systems`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -239,13 +239,13 @@ class ExportsApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -352,12 +352,12 @@ class ExportsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `exports_perform_export_synchronously`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `exports_perform_export_synchronously`")  # noqa: E501
 
         collection_formats = {}
@@ -369,9 +369,9 @@ class ExportsApi(object):
             path_params['systemName'] = local_var_params['system_name']  # noqa: E501
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
-        if 'return_definition' in local_var_params:
+        if 'return_definition' in local_var_params and local_var_params['return_definition'] is not None:  # noqa: E501
             query_params.append(('returnDefinition', local_var_params['return_definition']))  # noqa: E501
 
         header_params = {}

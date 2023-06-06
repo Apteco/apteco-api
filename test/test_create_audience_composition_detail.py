@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.create_audience_composition_detail import CreateAudienceCompositionDetail  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestCreateAudienceCompositionDetail(unittest.TestCase):
     """CreateAudienceCompositionDetail unit test stubs"""
@@ -29,11 +29,59 @@ class TestCreateAudienceCompositionDetail(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CreateAudienceCompositionDetail
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.create_audience_composition_detail.CreateAudienceCompositionDetail()  # noqa: E501
+        if include_optional :
+            return CreateAudienceCompositionDetail(
+                description = '0', 
+                type = 'Check', 
+                check_composition_definition = apteco_api.models.check_composition_definition.CheckCompositionDefinition(
+                    dashboard_items = [
+                        apteco_api.models.dashboard_item.DashboardItem(
+                            variable_name = '0', 
+                            size = apteco_api.models.size.Size(
+                                width = 1.337, 
+                                height = 1.337, ), 
+                            chart_type = 'Bar', 
+                            omit_zeros = True, 
+                            description = '0', )
+                        ], 
+                    grid_items = [
+                        apteco_api.models.grid_item.GridItem(
+                            variable_name = '0', 
+                            detail = 'Code', 
+                            unclassified_format = 'FromDesign', 
+                            description = '0', )
+                        ], ), 
+                export_composition_definition = apteco_api.models.export_composition_definition.ExportCompositionDefinition(
+                    output = apteco_api.models.output.Output(
+                        format = 'CSV', 
+                        delimiter = '0', 
+                        alpha_encloser = '0', 
+                        numeric_encloser = '0', 
+                        authorisation_code = '0', ), 
+                    grid_items = [
+                        apteco_api.models.grid_item.GridItem(
+                            variable_name = '0', 
+                            detail = 'Code', 
+                            unclassified_format = 'FromDesign', 
+                            description = '0', )
+                        ], )
+            )
+        else :
+            return CreateAudienceCompositionDetail(
+                description = '0',
+                type = 'Check',
+        )
+
     def testCreateAudienceCompositionDetail(self):
         """Test CreateAudienceCompositionDetail"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.create_audience_composition_detail.CreateAudienceCompositionDetail()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

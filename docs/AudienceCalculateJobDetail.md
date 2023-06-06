@@ -1,5 +1,6 @@
 # AudienceCalculateJobDetail
 
+Details for a job to count an audience
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

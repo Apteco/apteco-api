@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.file_stream import FileStream  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestFileStream(unittest.TestCase):
     """FileStream unit test stubs"""
@@ -29,11 +29,37 @@ class TestFileStream(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test FileStream
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.file_stream.FileStream()  # noqa: E501
+        if include_optional :
+            return FileStream(
+                handle = None, 
+                can_read = True, 
+                can_write = True, 
+                safe_file_handle = apteco_api.models.safe_file_handle.SafeFileHandle(
+                    is_invalid = True, 
+                    is_closed = True, ), 
+                name = '0', 
+                is_async = True, 
+                length = 56, 
+                position = 56, 
+                can_seek = True, 
+                can_timeout = True, 
+                read_timeout = 56, 
+                write_timeout = 56
+            )
+        else :
+            return FileStream(
+        )
+
     def testFileStream(self):
         """Test FileStream"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.file_stream.FileStream()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

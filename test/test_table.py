@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.table import Table  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestTable(unittest.TestCase):
     """Table unit test stubs"""
@@ -29,11 +29,43 @@ class TestTable(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test Table
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.table.Table()  # noqa: E501
+        if include_optional :
+            return Table(
+                name = '0', 
+                singular_display_name = '0', 
+                plural_display_name = '0', 
+                is_default_table = True, 
+                is_people_table = True, 
+                total_records = 56, 
+                child_relationship_name = '0', 
+                parent_relationship_name = '0', 
+                has_child_tables = True, 
+                parent_table = '0'
+            )
+        else :
+            return Table(
+                name = '0',
+                singular_display_name = '0',
+                plural_display_name = '0',
+                is_default_table = True,
+                is_people_table = True,
+                total_records = 56,
+                child_relationship_name = '0',
+                parent_relationship_name = '0',
+                has_child_tables = True,
+                parent_table = '0',
+        )
+
     def testTable(self):
         """Test Table"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.table.Table()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

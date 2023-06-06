@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.people_stage_system_detail import PeopleStageSystemDetail  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestPeopleStageSystemDetail(unittest.TestCase):
     """PeopleStageSystemDetail unit test stubs"""
@@ -29,11 +29,38 @@ class TestPeopleStageSystemDetail(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test PeopleStageSystemDetail
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.people_stage_system_detail.PeopleStageSystemDetail()  # noqa: E501
+        if include_optional :
+            return PeopleStageSystemDetail(
+                metadata = apteco_api.models.diagram_metadata.DiagramMetadata(
+                    default_currency_locale = '0', ), 
+                last_requested_data_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                system_name = '0', 
+                diagram_id = '0', 
+                programme_id = '0', 
+                programme_description = '0', 
+                is_able_to_provide_statistics = True
+            )
+        else :
+            return PeopleStageSystemDetail(
+                metadata = apteco_api.models.diagram_metadata.DiagramMetadata(
+                    default_currency_locale = '0', ),
+                system_name = '0',
+                diagram_id = '0',
+                programme_id = '0',
+                programme_description = '0',
+                is_able_to_provide_statistics = True,
+        )
+
     def testPeopleStageSystemDetail(self):
         """Test PeopleStageSystemDetail"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.people_stage_system_detail.PeopleStageSystemDetail()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

@@ -36,17 +36,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DataLicensingApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DataLicensingApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 job_id = 56 # int | The id of the job to cancel
 
-try:
-    # Cancel a running data purchasing job
-    api_instance.data_licensing_cancel_data_purchase_job(data_view_name, system_name, job_id)
-except ApiException as e:
-    print("Exception when calling DataLicensingApi->data_licensing_cancel_data_purchase_job: %s\n" % e)
+    try:
+        # Cancel a running data purchasing job
+        api_instance.data_licensing_cancel_data_purchase_job(data_view_name, system_name, job_id)
+    except ApiException as e:
+        print("Exception when calling DataLicensingApi->data_licensing_cancel_data_purchase_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -100,17 +104,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DataLicensingApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DataLicensingApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 job_id = 56 # int | The id of the job to cancel
 
-try:
-    # Cancel a running licensing sets job
-    api_instance.data_licensing_cancel_licensing_sets_job(data_view_name, system_name, job_id)
-except ApiException as e:
-    print("Exception when calling DataLicensingApi->data_licensing_cancel_licensing_sets_job: %s\n" % e)
+    try:
+        # Cancel a running licensing sets job
+        api_instance.data_licensing_cancel_licensing_sets_job(data_view_name, system_name, job_id)
+    except ApiException as e:
+        print("Exception when calling DataLicensingApi->data_licensing_cancel_licensing_sets_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -164,17 +172,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DataLicensingApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DataLicensingApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 
-try:
-    # Create a new job to get the available licensing sets for a system
-    api_response = api_instance.data_licensing_create_get_licensing_sets_job(data_view_name, system_name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DataLicensingApi->data_licensing_create_get_licensing_sets_job: %s\n" % e)
+    try:
+        # Create a new job to get the available licensing sets for a system
+        api_response = api_instance.data_licensing_create_get_licensing_sets_job(data_view_name, system_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DataLicensingApi->data_licensing_create_get_licensing_sets_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -227,18 +239,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DataLicensingApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DataLicensingApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 purchase_detail = apteco_api.DataPurchaseDetail() # DataPurchaseDetail | The details for the data licensing purchase (optional)
 
-try:
-    # Create a new job to purchase data licensing information
-    api_response = api_instance.data_licensing_create_purchase_data_licensing_job(data_view_name, system_name, purchase_detail=purchase_detail)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DataLicensingApi->data_licensing_create_purchase_data_licensing_job: %s\n" % e)
+    try:
+        # Create a new job to purchase data licensing information
+        api_response = api_instance.data_licensing_create_purchase_data_licensing_job(data_view_name, system_name, purchase_detail=purchase_detail)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DataLicensingApi->data_licensing_create_purchase_data_licensing_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -292,17 +308,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DataLicensingApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DataLicensingApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to return details for
 
-try:
-    # Returns some top-level details for the specified FastStats system to license data from
-    api_response = api_instance.data_licensing_get_data_licensing_system(data_view_name, system_name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DataLicensingApi->data_licensing_get_data_licensing_system: %s\n" % e)
+    try:
+        # Returns some top-level details for the specified FastStats system to license data from
+        api_response = api_instance.data_licensing_get_data_licensing_system(data_view_name, system_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DataLicensingApi->data_licensing_get_data_licensing_system: %s\n" % e)
 ```
 
 ### Parameters
@@ -355,20 +375,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DataLicensingApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DataLicensingApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns the list of FastStats systems available for licensing data from
-    api_response = api_instance.data_licensing_get_data_licensing_systems(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DataLicensingApi->data_licensing_get_data_licensing_systems: %s\n" % e)
+    try:
+        # Returns the list of FastStats systems available for licensing data from
+        api_response = api_instance.data_licensing_get_data_licensing_systems(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DataLicensingApi->data_licensing_get_data_licensing_systems: %s\n" % e)
 ```
 
 ### Parameters
@@ -424,18 +448,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DataLicensingApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DataLicensingApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 job_id = 56 # int | The id of the job to get the status for.
 
-try:
-    # Get the status of a running purchase job
-    api_response = api_instance.data_licensing_get_data_purchase_job(data_view_name, system_name, job_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DataLicensingApi->data_licensing_get_data_purchase_job: %s\n" % e)
+    try:
+        # Get the status of a running purchase job
+        api_response = api_instance.data_licensing_get_data_purchase_job(data_view_name, system_name, job_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DataLicensingApi->data_licensing_get_data_purchase_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -489,18 +517,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DataLicensingApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DataLicensingApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 job_id = 56 # int | The id of the job to get the status for.
 
-try:
-    # Get the status of a running licensing sets job
-    api_response = api_instance.data_licensing_get_licensing_sets_job(data_view_name, system_name, job_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DataLicensingApi->data_licensing_get_licensing_sets_job: %s\n" % e)
+    try:
+        # Get the status of a running licensing sets job
+        api_response = api_instance.data_licensing_get_licensing_sets_job(data_view_name, system_name, job_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DataLicensingApi->data_licensing_get_licensing_sets_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -554,9 +586,13 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DataLicensingApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DataLicensingApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration (optional)
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name (optional)
@@ -564,12 +600,12 @@ order_by = 'order_by_example' # str | Order the items by a given field (in ascen
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Get the licensing sets for a system
-    api_response = api_instance.data_licensing_get_licensing_sets_sync(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DataLicensingApi->data_licensing_get_licensing_sets_sync: %s\n" % e)
+    try:
+        # Get the licensing sets for a system
+        api_response = api_instance.data_licensing_get_licensing_sets_sync(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DataLicensingApi->data_licensing_get_licensing_sets_sync: %s\n" % e)
 ```
 
 ### Parameters
@@ -627,19 +663,23 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DataLicensingApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DataLicensingApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration (optional)
 purchase_detail = apteco_api.DataPurchaseDetail() # DataPurchaseDetail | The details for the data licensing purchase (optional)
 
-try:
-    # Purchase data licensing information
-    api_response = api_instance.data_licensing_purchase_data_licensing_sync(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, purchase_detail=purchase_detail)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DataLicensingApi->data_licensing_purchase_data_licensing_sync: %s\n" % e)
+    try:
+        # Purchase data licensing information
+        api_response = api_instance.data_licensing_purchase_data_licensing_sync(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, purchase_detail=purchase_detail)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DataLicensingApi->data_licensing_purchase_data_licensing_sync: %s\n" % e)
 ```
 
 ### Parameters

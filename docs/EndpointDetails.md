@@ -1,5 +1,6 @@
 # EndpointDetails
 
+The details of a particular endpoint in the API
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

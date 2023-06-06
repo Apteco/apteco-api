@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.build_job_detail import BuildJobDetail  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestBuildJobDetail(unittest.TestCase):
     """BuildJobDetail unit test stubs"""
@@ -29,11 +29,31 @@ class TestBuildJobDetail(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test BuildJobDetail
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.build_job_detail.BuildJobDetail()  # noqa: E501
+        if include_optional :
+            return BuildJobDetail(
+                build_result = apteco_api.models.build_result.BuildResult(
+                    success = True, ), 
+                id = 56, 
+                is_complete = True, 
+                queue_position = 56, 
+                progress = 56
+            )
+        else :
+            return BuildJobDetail(
+                id = 56,
+                is_complete = True,
+        )
+
     def testBuildJobDetail(self):
         """Test BuildJobDetail"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.build_job_detail.BuildJobDetail()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

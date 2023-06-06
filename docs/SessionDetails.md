@@ -1,5 +1,6 @@
 # SessionDetails
 
+The details for a newly created session
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

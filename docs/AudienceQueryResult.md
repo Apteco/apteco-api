@@ -1,5 +1,6 @@
 # AudienceQueryResult
 
+Details of a query results, returning counts and any associated server messages
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

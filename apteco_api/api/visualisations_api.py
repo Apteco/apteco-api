@@ -106,16 +106,16 @@ class VisualisationsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `visualisations_cancel_visualisation_render_data_refresh_job`")  # noqa: E501
         # verify the required parameter 'visualisation_id' is set
-        if ('visualisation_id' not in local_var_params or
-                local_var_params['visualisation_id'] is None):
+        if self.api_client.client_side_validation and ('visualisation_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['visualisation_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `visualisation_id` when calling `visualisations_cancel_visualisation_render_data_refresh_job`")  # noqa: E501
         # verify the required parameter 'refresh_request_id' is set
-        if ('refresh_request_id' not in local_var_params or
-                local_var_params['refresh_request_id'] is None):
+        if self.api_client.client_side_validation and ('refresh_request_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['refresh_request_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `refresh_request_id` when calling `visualisations_cancel_visualisation_render_data_refresh_job`")  # noqa: E501
 
         collection_formats = {}
@@ -222,12 +222,12 @@ class VisualisationsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `visualisations_create_visualisation_render_data_refresh_job`")  # noqa: E501
         # verify the required parameter 'visualisation_id' is set
-        if ('visualisation_id' not in local_var_params or
-                local_var_params['visualisation_id'] is None):
+        if self.api_client.client_side_validation and ('visualisation_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['visualisation_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `visualisation_id` when calling `visualisations_create_visualisation_render_data_refresh_job`")  # noqa: E501
 
         collection_formats = {}
@@ -336,12 +336,12 @@ class VisualisationsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `visualisations_get_visualisation`")  # noqa: E501
         # verify the required parameter 'visualisation_id' is set
-        if ('visualisation_id' not in local_var_params or
-                local_var_params['visualisation_id'] is None):
+        if self.api_client.client_side_validation and ('visualisation_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['visualisation_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `visualisation_id` when calling `visualisations_get_visualisation`")  # noqa: E501
 
         collection_formats = {}
@@ -450,12 +450,12 @@ class VisualisationsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `visualisations_get_visualisation_render_data`")  # noqa: E501
         # verify the required parameter 'visualisation_id' is set
-        if ('visualisation_id' not in local_var_params or
-                local_var_params['visualisation_id'] is None):
+        if self.api_client.client_side_validation and ('visualisation_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['visualisation_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `visualisation_id` when calling `visualisations_get_visualisation_render_data`")  # noqa: E501
 
         collection_formats = {}
@@ -566,16 +566,16 @@ class VisualisationsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `visualisations_get_visualisation_render_data_refresh_job`")  # noqa: E501
         # verify the required parameter 'visualisation_id' is set
-        if ('visualisation_id' not in local_var_params or
-                local_var_params['visualisation_id'] is None):
+        if self.api_client.client_side_validation and ('visualisation_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['visualisation_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `visualisation_id` when calling `visualisations_get_visualisation_render_data_refresh_job`")  # noqa: E501
         # verify the required parameter 'refresh_request_id' is set
-        if ('refresh_request_id' not in local_var_params or
-                local_var_params['refresh_request_id'] is None):
+        if self.api_client.client_side_validation and ('refresh_request_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['refresh_request_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `refresh_request_id` when calling `visualisations_get_visualisation_render_data_refresh_job`")  # noqa: E501
 
         collection_formats = {}
@@ -688,12 +688,12 @@ class VisualisationsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `visualisations_perform_visualisation_render_data_refresh_synchronously`")  # noqa: E501
         # verify the required parameter 'visualisation_id' is set
-        if ('visualisation_id' not in local_var_params or
-                local_var_params['visualisation_id'] is None):
+        if self.api_client.client_side_validation and ('visualisation_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['visualisation_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `visualisation_id` when calling `visualisations_perform_visualisation_render_data_refresh_synchronously`")  # noqa: E501
 
         collection_formats = {}
@@ -705,7 +705,7 @@ class VisualisationsApi(object):
             path_params['visualisationId'] = local_var_params['visualisation_id']  # noqa: E501
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
         header_params = {}

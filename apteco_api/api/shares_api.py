@@ -104,8 +104,8 @@ class SharesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `shares_create_share`")  # noqa: E501
 
         collection_formats = {}
@@ -220,12 +220,12 @@ class SharesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `shares_create_share_update`")  # noqa: E501
         # verify the required parameter 'share_id' is set
-        if ('share_id' not in local_var_params or
-                local_var_params['share_id'] is None):
+        if self.api_client.client_side_validation and ('share_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['share_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `share_id` when calling `shares_create_share_update`")  # noqa: E501
 
         collection_formats = {}
@@ -340,12 +340,12 @@ class SharesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `shares_delete_share`")  # noqa: E501
         # verify the required parameter 'share_id' is set
-        if ('share_id' not in local_var_params or
-                local_var_params['share_id'] is None):
+        if self.api_client.client_side_validation and ('share_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['share_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `share_id` when calling `shares_delete_share`")  # noqa: E501
 
         collection_formats = {}
@@ -450,12 +450,12 @@ class SharesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `shares_get_share`")  # noqa: E501
         # verify the required parameter 'share_id' is set
-        if ('share_id' not in local_var_params or
-                local_var_params['share_id'] is None):
+        if self.api_client.client_side_validation and ('share_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['share_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `share_id` when calling `shares_get_share`")  # noqa: E501
 
         collection_formats = {}
@@ -566,16 +566,16 @@ class SharesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `shares_get_share_update`")  # noqa: E501
         # verify the required parameter 'share_id' is set
-        if ('share_id' not in local_var_params or
-                local_var_params['share_id'] is None):
+        if self.api_client.client_side_validation and ('share_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['share_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `share_id` when calling `shares_get_share_update`")  # noqa: E501
         # verify the required parameter 'share_update_id' is set
-        if ('share_update_id' not in local_var_params or
-                local_var_params['share_update_id'] is None):
+        if self.api_client.client_side_validation and ('share_update_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['share_update_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `share_update_id` when calling `shares_get_share_update`")  # noqa: E501
 
         collection_formats = {}
@@ -696,21 +696,21 @@ class SharesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `shares_get_share_update_added_users`")  # noqa: E501
         # verify the required parameter 'share_id' is set
-        if ('share_id' not in local_var_params or
-                local_var_params['share_id'] is None):
+        if self.api_client.client_side_validation and ('share_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['share_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `share_id` when calling `shares_get_share_update_added_users`")  # noqa: E501
         # verify the required parameter 'share_update_id' is set
-        if ('share_update_id' not in local_var_params or
-                local_var_params['share_update_id'] is None):
+        if self.api_client.client_side_validation and ('share_update_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['share_update_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `share_update_id` when calling `shares_get_share_update_added_users`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `shares_get_share_update_added_users`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `shares_get_share_update_added_users`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -723,13 +723,13 @@ class SharesApi(object):
             path_params['shareUpdateId'] = local_var_params['share_update_id']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -838,21 +838,21 @@ class SharesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `shares_get_share_update_removed_users`")  # noqa: E501
         # verify the required parameter 'share_id' is set
-        if ('share_id' not in local_var_params or
-                local_var_params['share_id'] is None):
+        if self.api_client.client_side_validation and ('share_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['share_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `share_id` when calling `shares_get_share_update_removed_users`")  # noqa: E501
         # verify the required parameter 'share_update_id' is set
-        if ('share_update_id' not in local_var_params or
-                local_var_params['share_update_id'] is None):
+        if self.api_client.client_side_validation and ('share_update_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['share_update_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `share_update_id` when calling `shares_get_share_update_removed_users`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `shares_get_share_update_removed_users`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `shares_get_share_update_removed_users`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -865,13 +865,13 @@ class SharesApi(object):
             path_params['shareUpdateId'] = local_var_params['share_update_id']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -978,17 +978,17 @@ class SharesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `shares_get_share_updates`")  # noqa: E501
         # verify the required parameter 'share_id' is set
-        if ('share_id' not in local_var_params or
-                local_var_params['share_id'] is None):
+        if self.api_client.client_side_validation and ('share_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['share_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `share_id` when calling `shares_get_share_updates`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `shares_get_share_updates`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `shares_get_share_updates`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -999,13 +999,13 @@ class SharesApi(object):
             path_params['shareId'] = local_var_params['share_id']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -1112,17 +1112,17 @@ class SharesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `shares_get_share_users`")  # noqa: E501
         # verify the required parameter 'share_id' is set
-        if ('share_id' not in local_var_params or
-                local_var_params['share_id'] is None):
+        if self.api_client.client_side_validation and ('share_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['share_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `share_id` when calling `shares_get_share_users`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `shares_get_share_users`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `shares_get_share_users`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -1133,13 +1133,13 @@ class SharesApi(object):
             path_params['shareId'] = local_var_params['share_id']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -1246,13 +1246,13 @@ class SharesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `shares_get_shares`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `shares_get_shares`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `shares_get_shares`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -1261,13 +1261,13 @@ class SharesApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}

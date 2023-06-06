@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.paged_results_job_summary import PagedResultsJobSummary  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestPagedResultsJobSummary(unittest.TestCase):
     """PagedResultsJobSummary unit test stubs"""
@@ -29,11 +29,59 @@ class TestPagedResultsJobSummary(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test PagedResultsJobSummary
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.paged_results_job_summary.PagedResultsJobSummary()  # noqa: E501
+        if include_optional :
+            return PagedResultsJobSummary(
+                offset = 56, 
+                count = 56, 
+                total_count = 56, 
+                list = [
+                    apteco_api.models.job_summary.JobSummary(
+                        id = 56, 
+                        priority = 56, 
+                        state = '0', 
+                        cancel_requested = True, 
+                        time_added = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        time_sent = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        time_finished = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        server = '0', 
+                        system_name = '0', 
+                        thread_number = 56, 
+                        username = '0', 
+                        job_type = '0', )
+                    ]
+            )
+        else :
+            return PagedResultsJobSummary(
+                offset = 56,
+                count = 56,
+                total_count = 56,
+                list = [
+                    apteco_api.models.job_summary.JobSummary(
+                        id = 56, 
+                        priority = 56, 
+                        state = '0', 
+                        cancel_requested = True, 
+                        time_added = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        time_sent = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        time_finished = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        server = '0', 
+                        system_name = '0', 
+                        thread_number = 56, 
+                        username = '0', 
+                        job_type = '0', )
+                    ],
+        )
+
     def testPagedResultsJobSummary(self):
         """Test PagedResultsJobSummary"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.paged_results_job_summary.PagedResultsJobSummary()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

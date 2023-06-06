@@ -29,18 +29,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FilesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FilesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 file_path = 'file_path_example' # str | The path to the file to be deleted
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration (optional)
 
-try:
-    # Deletes file at location
-    api_instance.files_delete_file(data_view_name, system_name, file_path, timeout_in_seconds=timeout_in_seconds)
-except ApiException as e:
-    print("Exception when calling FilesApi->files_delete_file: %s\n" % e)
+    try:
+        # Deletes file at location
+        api_instance.files_delete_file(data_view_name, system_name, file_path, timeout_in_seconds=timeout_in_seconds)
+    except ApiException as e:
+        print("Exception when calling FilesApi->files_delete_file: %s\n" % e)
 ```
 
 ### Parameters
@@ -96,19 +100,23 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FilesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FilesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 file_path = 'file_path_example' # str | The path of the file to return the contents for
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration (optional)
 
-try:
-    # Returns the contents for a file
-    api_response = api_instance.files_get_file(data_view_name, system_name, file_path, timeout_in_seconds=timeout_in_seconds)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FilesApi->files_get_file: %s\n" % e)
+    try:
+        # Returns the contents for a file
+        api_response = api_instance.files_get_file(data_view_name, system_name, file_path, timeout_in_seconds=timeout_in_seconds)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FilesApi->files_get_file: %s\n" % e)
 ```
 
 ### Parameters
@@ -163,20 +171,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FilesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FilesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 file_path = 'file_path_example' # str | The path in the system where the file will be put
 file = '/path/to/file' # file | The file to upload.
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration (optional)
 
-try:
-    # Creates or updates a file at a location
-    api_response = api_instance.files_upsert_file(data_view_name, system_name, file_path, file, timeout_in_seconds=timeout_in_seconds)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FilesApi->files_upsert_file: %s\n" % e)
+    try:
+        # Creates or updates a file at a location
+        api_response = api_instance.files_upsert_file(data_view_name, system_name, file_path, file, timeout_in_seconds=timeout_in_seconds)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FilesApi->files_upsert_file: %s\n" % e)
 ```
 
 ### Parameters

@@ -1,5 +1,6 @@
 # MeasureResult
 
+The results returned for a measure defined in the cube
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

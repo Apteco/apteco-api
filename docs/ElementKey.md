@@ -1,5 +1,6 @@
 # ElementKey
 
+Summary information for a PeopleStage Element Key
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

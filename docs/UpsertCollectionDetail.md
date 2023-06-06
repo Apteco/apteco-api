@@ -1,5 +1,6 @@
 # UpsertCollectionDetail
 
+Details used to create or update a collection
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

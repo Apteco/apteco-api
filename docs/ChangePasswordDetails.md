@@ -1,5 +1,6 @@
 # ChangePasswordDetails
 
+Details to change a user's password with
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

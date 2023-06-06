@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.rfv import RFV  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestRFV(unittest.TestCase):
     """RFV unit test stubs"""
@@ -29,11 +29,37 @@ class TestRFV(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test RFV
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.rfv.RFV()  # noqa: E501
+        if include_optional :
+            return RFV(
+                frequency = apteco_api.models.rfv_frequency.RFVFrequency(
+                    values = '0', ), 
+                recency = apteco_api.models.rfv_recency.RFVRecency(
+                    variable_name = '0', 
+                    sequence = '0', 
+                    direction = 'Any', 
+                    value = 56, 
+                    distinct = True, ), 
+                value = apteco_api.models.rfv_value.RFVValue(
+                    variable_name = '0', 
+                    action = 'Sum', 
+                    values = '0', ), 
+                grouping_table = '0', 
+                transactional_table = '0'
+            )
+        else :
+            return RFV(
+        )
+
     def testRFV(self):
         """Test RFV"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.rfv.RFV()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

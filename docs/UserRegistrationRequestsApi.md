@@ -24,17 +24,19 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.UserRegistrationRequestsApi()
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.UserRegistrationRequestsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 token = 'token_example' # str | The token of the request
 
-try:
-    # Confirms a given user registration request and creates the user
-    api_response = api_instance.user_registration_requests_confirm_registration_request(data_view_name, token)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserRegistrationRequestsApi->user_registration_requests_confirm_registration_request: %s\n" % e)
+    try:
+        # Confirms a given user registration request and creates the user
+        api_response = api_instance.user_registration_requests_confirm_registration_request(data_view_name, token)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UserRegistrationRequestsApi->user_registration_requests_confirm_registration_request: %s\n" % e)
 ```
 
 ### Parameters
@@ -80,17 +82,19 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.UserRegistrationRequestsApi()
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.UserRegistrationRequestsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 create_user_registration_request = apteco_api.CreateUserRegistrationRequest() # CreateUserRegistrationRequest | The details needed to create the registration request (optional)
 
-try:
-    # Creates a new user registration requests, which will check the sign-up details and then issue a confirmation notification
-    api_response = api_instance.user_registration_requests_create_registration_request(data_view_name, create_user_registration_request=create_user_registration_request)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserRegistrationRequestsApi->user_registration_requests_create_registration_request: %s\n" % e)
+    try:
+        # Creates a new user registration requests, which will check the sign-up details and then issue a confirmation notification
+        api_response = api_instance.user_registration_requests_create_registration_request(data_view_name, create_user_registration_request=create_user_registration_request)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UserRegistrationRequestsApi->user_registration_requests_create_registration_request: %s\n" % e)
 ```
 
 ### Parameters
@@ -144,17 +148,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.UserRegistrationRequestsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.UserRegistrationRequestsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 token = 'token_example' # str | The token of the request
 
-try:
-    # Requires OrbitAdmin: Returns details for a given user registration request
-    api_response = api_instance.user_registration_requests_get_registration_request(data_view_name, token)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserRegistrationRequestsApi->user_registration_requests_get_registration_request: %s\n" % e)
+    try:
+        # Requires OrbitAdmin: Returns details for a given user registration request
+        api_response = api_instance.user_registration_requests_get_registration_request(data_view_name, token)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UserRegistrationRequestsApi->user_registration_requests_get_registration_request: %s\n" % e)
 ```
 
 ### Parameters
@@ -209,20 +217,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.UserRegistrationRequestsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.UserRegistrationRequestsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username, Firstname, Surname, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Firstname, Surname, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Requires OrbitAdmin: Returns all the current user regisration requests in the system.
-    api_response = api_instance.user_registration_requests_get_registration_requests(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserRegistrationRequestsApi->user_registration_requests_get_registration_requests: %s\n" % e)
+    try:
+        # Requires OrbitAdmin: Returns all the current user regisration requests in the system.
+        api_response = api_instance.user_registration_requests_get_registration_requests(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UserRegistrationRequestsApi->user_registration_requests_get_registration_requests: %s\n" % e)
 ```
 
 ### Parameters

@@ -32,17 +32,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.VisualisationsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.VisualisationsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 visualisation_id = 'visualisation_id_example' # str | The id of the visualisation that the job is refreshing
 refresh_request_id = 56 # int | The id of the refresh job to cancel
 
-try:
-    # Cancel a job refreshing the render data for a particular visualisation
-    api_instance.visualisations_cancel_visualisation_render_data_refresh_job(data_view_name, visualisation_id, refresh_request_id)
-except ApiException as e:
-    print("Exception when calling VisualisationsApi->visualisations_cancel_visualisation_render_data_refresh_job: %s\n" % e)
+    try:
+        # Cancel a job refreshing the render data for a particular visualisation
+        api_instance.visualisations_cancel_visualisation_render_data_refresh_job(data_view_name, visualisation_id, refresh_request_id)
+    except ApiException as e:
+        print("Exception when calling VisualisationsApi->visualisations_cancel_visualisation_render_data_refresh_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -96,17 +100,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.VisualisationsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.VisualisationsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 visualisation_id = 'visualisation_id_example' # str | The id of the visualisation that the job is to refresh
 
-try:
-    # Creates a job to refresh the render data for a particular visualisation
-    api_response = api_instance.visualisations_create_visualisation_render_data_refresh_job(data_view_name, visualisation_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling VisualisationsApi->visualisations_create_visualisation_render_data_refresh_job: %s\n" % e)
+    try:
+        # Creates a job to refresh the render data for a particular visualisation
+        api_response = api_instance.visualisations_create_visualisation_render_data_refresh_job(data_view_name, visualisation_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling VisualisationsApi->visualisations_create_visualisation_render_data_refresh_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -159,17 +167,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.VisualisationsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.VisualisationsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 visualisation_id = 'visualisation_id_example' # str | The id of the visualisation to view
 
-try:
-    # Returns the details of a particular visualisation
-    api_response = api_instance.visualisations_get_visualisation(data_view_name, visualisation_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling VisualisationsApi->visualisations_get_visualisation: %s\n" % e)
+    try:
+        # Returns the details of a particular visualisation
+        api_response = api_instance.visualisations_get_visualisation(data_view_name, visualisation_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling VisualisationsApi->visualisations_get_visualisation: %s\n" % e)
 ```
 
 ### Parameters
@@ -222,17 +234,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.VisualisationsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.VisualisationsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 visualisation_id = 'visualisation_id_example' # str | The id of the visualisation to generate the render data for
 
-try:
-    # Returns the render data for a particular visualisation
-    api_response = api_instance.visualisations_get_visualisation_render_data(data_view_name, visualisation_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling VisualisationsApi->visualisations_get_visualisation_render_data: %s\n" % e)
+    try:
+        # Returns the render data for a particular visualisation
+        api_response = api_instance.visualisations_get_visualisation_render_data(data_view_name, visualisation_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling VisualisationsApi->visualisations_get_visualisation_render_data: %s\n" % e)
 ```
 
 ### Parameters
@@ -285,18 +301,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.VisualisationsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.VisualisationsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 visualisation_id = 'visualisation_id_example' # str | The id of the visualisation that the job is refreshing
 refresh_request_id = 56 # int | The id of the refresh job to view
 
-try:
-    # Returns the details of a job to refresh the render data for a particular visualisation
-    api_response = api_instance.visualisations_get_visualisation_render_data_refresh_job(data_view_name, visualisation_id, refresh_request_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling VisualisationsApi->visualisations_get_visualisation_render_data_refresh_job: %s\n" % e)
+    try:
+        # Returns the details of a job to refresh the render data for a particular visualisation
+        api_response = api_instance.visualisations_get_visualisation_render_data_refresh_job(data_view_name, visualisation_id, refresh_request_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling VisualisationsApi->visualisations_get_visualisation_render_data_refresh_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -350,18 +370,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.VisualisationsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.VisualisationsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 visualisation_id = 'visualisation_id_example' # str | The id of the visualisation to generate the render data for
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the visualisation service's configuration (optional)
 
-try:
-    # Performs a synchronous refresh of the render data for a particular visualisation
-    api_response = api_instance.visualisations_perform_visualisation_render_data_refresh_synchronously(data_view_name, visualisation_id, timeout_in_seconds=timeout_in_seconds)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling VisualisationsApi->visualisations_perform_visualisation_render_data_refresh_synchronously: %s\n" % e)
+    try:
+        # Performs a synchronous refresh of the render data for a particular visualisation
+        api_response = api_instance.visualisations_perform_visualisation_render_data_refresh_synchronously(data_view_name, visualisation_id, timeout_in_seconds=timeout_in_seconds)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling VisualisationsApi->visualisations_perform_visualisation_render_data_refresh_synchronously: %s\n" % e)
 ```
 
 ### Parameters

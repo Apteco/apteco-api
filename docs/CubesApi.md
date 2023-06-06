@@ -29,20 +29,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.CubesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.CubesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service's configuration (optional)
 return_definition = True # bool | Whether to include the cube's definition in the results.  Default is false. (optional)
 cube = apteco_api.Cube() # Cube | The cube definition to use (optional)
 
-try:
-    # EXPERIMENTAL: Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.
-    api_response = api_instance.cubes_calculate_cube_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, return_definition=return_definition, cube=cube)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CubesApi->cubes_calculate_cube_synchronously: %s\n" % e)
+    try:
+        # EXPERIMENTAL: Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.
+        api_response = api_instance.cubes_calculate_cube_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, return_definition=return_definition, cube=cube)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CubesApi->cubes_calculate_cube_synchronously: %s\n" % e)
 ```
 
 ### Parameters

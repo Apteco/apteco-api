@@ -37,17 +37,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.CollectionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.CollectionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 collection_detail = apteco_api.UpsertCollectionDetail() # UpsertCollectionDetail | The details for the collection to create.  If you want              to update a specific collection then PUT to the /Collections/{collectionId} URL (optional)
 
-try:
-    # Creates a new collection from the given details for the logged in user.
-    api_response = api_instance.collections_create_collection(data_view_name, collection_detail=collection_detail)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CollectionsApi->collections_create_collection: %s\n" % e)
+    try:
+        # Creates a new collection from the given details for the logged in user.
+        api_response = api_instance.collections_create_collection(data_view_name, collection_detail=collection_detail)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CollectionsApi->collections_create_collection: %s\n" % e)
 ```
 
 ### Parameters
@@ -99,18 +103,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.CollectionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.CollectionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 collection_id = 56 # int | The id of the collection to register the hit for
 create_collection_hit_details = apteco_api.CreateCollectionHitDetails() # CreateCollectionHitDetails | Details to register the hit with (optional)
 
-try:
-    # Register a hit (view) for the given collection
-    api_response = api_instance.collections_create_collection_hit_for_collection(data_view_name, collection_id, create_collection_hit_details=create_collection_hit_details)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CollectionsApi->collections_create_collection_hit_for_collection: %s\n" % e)
+    try:
+        # Register a hit (view) for the given collection
+        api_response = api_instance.collections_create_collection_hit_for_collection(data_view_name, collection_id, create_collection_hit_details=create_collection_hit_details)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CollectionsApi->collections_create_collection_hit_for_collection: %s\n" % e)
 ```
 
 ### Parameters
@@ -164,16 +172,20 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.CollectionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.CollectionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 collection_id = 56 # int | The id of the collection to delete
 
-try:
-    # Deletes the specified collection
-    api_instance.collections_delete_collection(data_view_name, collection_id)
-except ApiException as e:
-    print("Exception when calling CollectionsApi->collections_delete_collection: %s\n" % e)
+    try:
+        # Deletes the specified collection
+        api_instance.collections_delete_collection(data_view_name, collection_id)
+    except ApiException as e:
+        print("Exception when calling CollectionsApi->collections_delete_collection: %s\n" % e)
 ```
 
 ### Parameters
@@ -226,17 +238,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.CollectionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.CollectionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 collection_id = 56 # int | The id of the collection to view
 
-try:
-    # Returns the details of a particular collection
-    api_response = api_instance.collections_get_collection(data_view_name, collection_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CollectionsApi->collections_get_collection: %s\n" % e)
+    try:
+        # Returns the details of a particular collection
+        api_response = api_instance.collections_get_collection(data_view_name, collection_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CollectionsApi->collections_get_collection: %s\n" % e)
 ```
 
 ### Parameters
@@ -289,18 +305,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.CollectionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.CollectionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 collection_id = 56 # int | The id of the collection to get the hit information for
 collection_hit_id = 56 # int | The id of the hit
 
-try:
-    # Returns details for a given collection hit for this collection
-    api_response = api_instance.collections_get_collection_hit_for_collection(data_view_name, collection_id, collection_hit_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CollectionsApi->collections_get_collection_hit_for_collection: %s\n" % e)
+    try:
+        # Returns details for a given collection hit for this collection
+        api_response = api_instance.collections_get_collection_hit_for_collection(data_view_name, collection_id, collection_hit_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CollectionsApi->collections_get_collection_hit_for_collection: %s\n" % e)
 ```
 
 ### Parameters
@@ -354,21 +374,25 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.CollectionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.CollectionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 collection_id = 56 # int | The id of the collection to get the hit information for
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns a summary of the hits for this collection - i.e. information about when users have viewed the collection.
-    api_response = api_instance.collections_get_collection_hits_for_collection(data_view_name, collection_id, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CollectionsApi->collections_get_collection_hits_for_collection: %s\n" % e)
+    try:
+        # Returns a summary of the hits for this collection - i.e. information about when users have viewed the collection.
+        api_response = api_instance.collections_get_collection_hits_for_collection(data_view_name, collection_id, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CollectionsApi->collections_get_collection_hits_for_collection: %s\n" % e)
 ```
 
 ### Parameters
@@ -425,18 +449,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.CollectionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.CollectionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 collection_id = 56 # int | The id of the collection that contains the part
 part_index = 56 # int | The index of the part within the collection
 
-try:
-    # Returns details of a part contained within a particular collection
-    api_response = api_instance.collections_get_collection_part(data_view_name, collection_id, part_index)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CollectionsApi->collections_get_collection_part: %s\n" % e)
+    try:
+        # Returns details of a part contained within a particular collection
+        api_response = api_instance.collections_get_collection_part(data_view_name, collection_id, part_index)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CollectionsApi->collections_get_collection_part: %s\n" % e)
 ```
 
 ### Parameters
@@ -490,21 +518,25 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.CollectionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.CollectionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 collection_id = 56 # int | The id of the collection to get the parts for
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Title, VisualisationType (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Title, VisualisationType (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns a summary of the parts contained within a particular collection
-    api_response = api_instance.collections_get_collection_parts(data_view_name, collection_id, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CollectionsApi->collections_get_collection_parts: %s\n" % e)
+    try:
+        # Returns a summary of the parts contained within a particular collection
+        api_response = api_instance.collections_get_collection_parts(data_view_name, collection_id, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CollectionsApi->collections_get_collection_parts: %s\n" % e)
 ```
 
 ### Parameters
@@ -563,21 +595,25 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.CollectionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.CollectionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 include_deleted = 'include_deleted_example' # str | If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only (optional)
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Requires OrbitAdmin: Gets summary information about each collection in the DataView.
-    api_response = api_instance.collections_get_collections(data_view_name, include_deleted=include_deleted, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CollectionsApi->collections_get_collections: %s\n" % e)
+    try:
+        # Requires OrbitAdmin: Gets summary information about each collection in the DataView.
+        api_response = api_instance.collections_get_collections(data_view_name, include_deleted=include_deleted, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CollectionsApi->collections_get_collections: %s\n" % e)
 ```
 
 ### Parameters
@@ -634,18 +670,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.CollectionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.CollectionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 collection_id = 56 # int | The id of the collection to transfer.
 transfer_ownership_details = apteco_api.TransferCollectionOwnershipDetails() # TransferCollectionOwnershipDetails | The details for transferring ownership of the collection. (optional)
 
-try:
-    # Transfer ownership of a collection from the current user to a new owner
-    api_response = api_instance.collections_transfer_collection_ownership(data_view_name, collection_id, transfer_ownership_details=transfer_ownership_details)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CollectionsApi->collections_transfer_collection_ownership: %s\n" % e)
+    try:
+        # Transfer ownership of a collection from the current user to a new owner
+        api_response = api_instance.collections_transfer_collection_ownership(data_view_name, collection_id, transfer_ownership_details=transfer_ownership_details)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CollectionsApi->collections_transfer_collection_ownership: %s\n" % e)
 ```
 
 ### Parameters
@@ -699,18 +739,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.CollectionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.CollectionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 collection_id = 56 # int | The id of the collection to add/update
 collection_detail = apteco_api.UpsertCollectionDetail() # UpsertCollectionDetail | The details for the collection to add/update (optional)
 
-try:
-    # Updates the details of a particular collection.  If you don't have an id for the  collection then POST to the /Collections URL to create a new collection.
-    api_response = api_instance.collections_upsert_collection(data_view_name, collection_id, collection_detail=collection_detail)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CollectionsApi->collections_upsert_collection: %s\n" % e)
+    try:
+        # Updates the details of a particular collection.  If you don't have an id for the  collection then POST to the /Collections URL to create a new collection.
+        api_response = api_instance.collections_upsert_collection(data_view_name, collection_id, collection_detail=collection_detail)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CollectionsApi->collections_upsert_collection: %s\n" % e)
 ```
 
 ### Parameters

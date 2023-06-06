@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.variable_lookup import VariableLookup  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestVariableLookup(unittest.TestCase):
     """VariableLookup unit test stubs"""
@@ -29,11 +29,89 @@ class TestVariableLookup(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test VariableLookup
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.variable_lookup.VariableLookup()  # noqa: E501
+        if include_optional :
+            return VariableLookup(
+                variable = apteco_api.models.variable.Variable(
+                    name = '0', 
+                    description = '0', 
+                    type = 'Selector', 
+                    folder_name = '0', 
+                    table_name = '0', 
+                    is_selectable = True, 
+                    is_browsable = True, 
+                    is_exportable = True, 
+                    is_virtual = True, 
+                    selector_info = apteco_api.models.selector_variable_info.SelectorVariableInfo(
+                        selector_type = 'SingleValue', 
+                        sub_type = 'Categorical', 
+                        var_code_order = 'Nominal', 
+                        number_of_codes = 56, 
+                        code_length = 56, 
+                        minimum_var_code_count = 56, 
+                        maximum_var_code_count = 56, 
+                        minimum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        maximum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        combined_from_variable_name = '0', ), 
+                    numeric_info = apteco_api.models.numeric_variable_info.NumericVariableInfo(
+                        minimum = 1.337, 
+                        maximum = 1.337, 
+                        is_currency = True, 
+                        currency_locale = '0', 
+                        currency_symbol = '0', ), 
+                    text_info = apteco_api.models.text_variable_info.TextVariableInfo(
+                        maximum_text_length = 56, ), 
+                    reference_info = apteco_api.models.reference_variable_info.ReferenceVariableInfo(), ), 
+                var_codes_lookup = [
+                    apteco_api.models.var_code.VarCode(
+                        code = '0', 
+                        description = '0', 
+                        count = 56, )
+                    ]
+            )
+        else :
+            return VariableLookup(
+                variable = apteco_api.models.variable.Variable(
+                    name = '0', 
+                    description = '0', 
+                    type = 'Selector', 
+                    folder_name = '0', 
+                    table_name = '0', 
+                    is_selectable = True, 
+                    is_browsable = True, 
+                    is_exportable = True, 
+                    is_virtual = True, 
+                    selector_info = apteco_api.models.selector_variable_info.SelectorVariableInfo(
+                        selector_type = 'SingleValue', 
+                        sub_type = 'Categorical', 
+                        var_code_order = 'Nominal', 
+                        number_of_codes = 56, 
+                        code_length = 56, 
+                        minimum_var_code_count = 56, 
+                        maximum_var_code_count = 56, 
+                        minimum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        maximum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        combined_from_variable_name = '0', ), 
+                    numeric_info = apteco_api.models.numeric_variable_info.NumericVariableInfo(
+                        minimum = 1.337, 
+                        maximum = 1.337, 
+                        is_currency = True, 
+                        currency_locale = '0', 
+                        currency_symbol = '0', ), 
+                    text_info = apteco_api.models.text_variable_info.TextVariableInfo(
+                        maximum_text_length = 56, ), 
+                    reference_info = apteco_api.models.reference_variable_info.ReferenceVariableInfo(), ),
+        )
+
     def testVariableLookup(self):
         """Test VariableLookup"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.variable_lookup.VariableLookup()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

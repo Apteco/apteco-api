@@ -1,5 +1,6 @@
 # ChannelDetail
 
+Details for a PeopleStage Channel
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

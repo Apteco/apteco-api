@@ -32,16 +32,20 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SettingsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SettingsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 settings_path = 'settings_path_example' # str | The path of the DataView settings
 
-try:
-    # Deletes DataView settings at the given path
-    api_instance.settings_delete_data_view_settings(data_view_name, settings_path)
-except ApiException as e:
-    print("Exception when calling SettingsApi->settings_delete_data_view_settings: %s\n" % e)
+    try:
+        # Deletes DataView settings at the given path
+        api_instance.settings_delete_data_view_settings(data_view_name, settings_path)
+    except ApiException as e:
+        print("Exception when calling SettingsApi->settings_delete_data_view_settings: %s\n" % e)
 ```
 
 ### Parameters
@@ -95,15 +99,19 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SettingsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SettingsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 
-try:
-    # Deletes the complete DataView settings
-    api_instance.settings_delete_data_view_settings_root(data_view_name)
-except ApiException as e:
-    print("Exception when calling SettingsApi->settings_delete_data_view_settings_root: %s\n" % e)
+    try:
+        # Deletes the complete DataView settings
+        api_instance.settings_delete_data_view_settings_root(data_view_name)
+    except ApiException as e:
+        print("Exception when calling SettingsApi->settings_delete_data_view_settings_root: %s\n" % e)
 ```
 
 ### Parameters
@@ -156,17 +164,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SettingsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SettingsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 settings_path = 'settings_path_example' # str | The path of the settings
 
-try:
-    # Gets DataView settings at the given path
-    api_response = api_instance.settings_get_data_view_settings(data_view_name, settings_path)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SettingsApi->settings_get_data_view_settings: %s\n" % e)
+    try:
+        # Gets DataView settings at the given path
+        api_response = api_instance.settings_get_data_view_settings(data_view_name, settings_path)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SettingsApi->settings_get_data_view_settings: %s\n" % e)
 ```
 
 ### Parameters
@@ -219,16 +231,20 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SettingsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SettingsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 
-try:
-    # Gets the complete DataView settings object
-    api_response = api_instance.settings_get_data_view_settings_root(data_view_name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SettingsApi->settings_get_data_view_settings_root: %s\n" % e)
+    try:
+        # Gets the complete DataView settings object
+        api_response = api_instance.settings_get_data_view_settings_root(data_view_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SettingsApi->settings_get_data_view_settings_root: %s\n" % e)
 ```
 
 ### Parameters
@@ -280,18 +296,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SettingsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SettingsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 settings_path = 'settings_path_example' # str | The path of the DataView settings
 settings = None # object | The contents of the DataView settings (optional)
 
-try:
-    # Updates DataView settings at the given path
-    api_response = api_instance.settings_update_data_view_settings(data_view_name, settings_path, settings=settings)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SettingsApi->settings_update_data_view_settings: %s\n" % e)
+    try:
+        # Updates DataView settings at the given path
+        api_response = api_instance.settings_update_data_view_settings(data_view_name, settings_path, settings=settings)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SettingsApi->settings_update_data_view_settings: %s\n" % e)
 ```
 
 ### Parameters
@@ -345,17 +365,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SettingsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SettingsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 settings = None # object | The contents of the DataView settings (optional)
 
-try:
-    # Updates the complete DataView settings
-    api_response = api_instance.settings_update_data_view_settings_root(data_view_name, settings=settings)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SettingsApi->settings_update_data_view_settings_root: %s\n" % e)
+    try:
+        # Updates the complete DataView settings
+        api_response = api_instance.settings_update_data_view_settings_root(data_view_name, settings=settings)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SettingsApi->settings_update_data_view_settings_root: %s\n" % e)
 ```
 
 ### Parameters

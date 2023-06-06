@@ -112,16 +112,16 @@ class DashboardsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `dashboards_get_dashboard_item_data_sync`")  # noqa: E501
         # verify the required parameter 'dashboard_id' is set
-        if ('dashboard_id' not in local_var_params or
-                local_var_params['dashboard_id'] is None):
+        if self.api_client.client_side_validation and ('dashboard_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['dashboard_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `dashboard_id` when calling `dashboards_get_dashboard_item_data_sync`")  # noqa: E501
         # verify the required parameter 'dashboard_item_id' is set
-        if ('dashboard_item_id' not in local_var_params or
-                local_var_params['dashboard_item_id'] is None):
+        if self.api_client.client_side_validation and ('dashboard_item_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['dashboard_item_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `dashboard_item_id` when calling `dashboards_get_dashboard_item_data_sync`")  # noqa: E501
 
         collection_formats = {}
@@ -135,7 +135,7 @@ class DashboardsApi(object):
             path_params['dashboardItemId'] = local_var_params['dashboard_item_id']  # noqa: E501
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
         header_params = {}

@@ -1,5 +1,6 @@
 # DimensionBanding
 
+Information on how to band up numeric or date variables for a cube dimension
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

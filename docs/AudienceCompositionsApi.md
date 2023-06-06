@@ -34,17 +34,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.AudienceCompositionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AudienceCompositionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to create the composition for
 create_audience_composition_detail = apteco_api.CreateAudienceCompositionDetail() # CreateAudienceCompositionDetail | Details to create the audience composition with (optional)
 
-try:
-    # Requires OrbitAdmin: Create an audience composition for the given FastStats system.
-    api_instance.audience_compositions_create_audience_composition(data_view_name, system_name, create_audience_composition_detail=create_audience_composition_detail)
-except ApiException as e:
-    print("Exception when calling AudienceCompositionsApi->audience_compositions_create_audience_composition: %s\n" % e)
+    try:
+        # Requires OrbitAdmin: Create an audience composition for the given FastStats system.
+        api_instance.audience_compositions_create_audience_composition(data_view_name, system_name, create_audience_composition_detail=create_audience_composition_detail)
+    except ApiException as e:
+        print("Exception when calling AudienceCompositionsApi->audience_compositions_create_audience_composition: %s\n" % e)
 ```
 
 ### Parameters
@@ -101,17 +105,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.AudienceCompositionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AudienceCompositionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to delete the composition for
 audience_composition_id = 56 # int | The id of the audience composition
 
-try:
-    # Requires OrbitAdmin: Deletes a given audience composition for the given FastStats system.
-    api_instance.audience_compositions_delete_audience_composition(data_view_name, system_name, audience_composition_id)
-except ApiException as e:
-    print("Exception when calling AudienceCompositionsApi->audience_compositions_delete_audience_composition: %s\n" % e)
+    try:
+        # Requires OrbitAdmin: Deletes a given audience composition for the given FastStats system.
+        api_instance.audience_compositions_delete_audience_composition(data_view_name, system_name, audience_composition_id)
+    except ApiException as e:
+        print("Exception when calling AudienceCompositionsApi->audience_compositions_delete_audience_composition: %s\n" % e)
 ```
 
 ### Parameters
@@ -165,18 +173,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.AudienceCompositionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AudienceCompositionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to get the composition for
 audience_composition_id = 56 # int | The id of the audience composition
 
-try:
-    # Returns details for a given audience composition
-    api_response = api_instance.audience_compositions_get_audience_composition(data_view_name, system_name, audience_composition_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AudienceCompositionsApi->audience_compositions_get_audience_composition: %s\n" % e)
+    try:
+        # Returns details for a given audience composition
+        api_response = api_instance.audience_compositions_get_audience_composition(data_view_name, system_name, audience_composition_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AudienceCompositionsApi->audience_compositions_get_audience_composition: %s\n" % e)
 ```
 
 ### Parameters
@@ -229,20 +241,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.AudienceCompositionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AudienceCompositionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Description, Type, SystemName (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type, SystemName (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns all the avaiable audience compositions.
-    api_response = api_instance.audience_compositions_get_audience_compositions(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AudienceCompositionsApi->audience_compositions_get_audience_compositions: %s\n" % e)
+    try:
+        # Returns all the avaiable audience compositions.
+        api_response = api_instance.audience_compositions_get_audience_compositions(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AudienceCompositionsApi->audience_compositions_get_audience_compositions: %s\n" % e)
 ```
 
 ### Parameters
@@ -297,21 +313,25 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.AudienceCompositionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AudienceCompositionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to get compositions for
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Description, Type, SystemName (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type, SystemName (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns all the avaiable audience compositions for the given FastStats system
-    api_response = api_instance.audience_compositions_get_audience_compositions_for_system(data_view_name, system_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AudienceCompositionsApi->audience_compositions_get_audience_compositions_for_system: %s\n" % e)
+    try:
+        # Returns all the avaiable audience compositions for the given FastStats system
+        api_response = api_instance.audience_compositions_get_audience_compositions_for_system(data_view_name, system_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AudienceCompositionsApi->audience_compositions_get_audience_compositions_for_system: %s\n" % e)
 ```
 
 ### Parameters
@@ -369,18 +389,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.AudienceCompositionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AudienceCompositionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to update the composition for
 audience_composition_id = 56 # int | The id of the audience composition
 create_audience_composition_detail = apteco_api.CreateAudienceCompositionDetail() # CreateAudienceCompositionDetail | Details to create the audience composition with (optional)
 
-try:
-    # Requires OrbitAdmin: Update a given audience composition for the given FastStats system.
-    api_instance.audience_compositions_update_audience_composition(data_view_name, system_name, audience_composition_id, create_audience_composition_detail=create_audience_composition_detail)
-except ApiException as e:
-    print("Exception when calling AudienceCompositionsApi->audience_compositions_update_audience_composition: %s\n" % e)
+    try:
+        # Requires OrbitAdmin: Update a given audience composition for the given FastStats system.
+        api_instance.audience_compositions_update_audience_composition(data_view_name, system_name, audience_composition_id, create_audience_composition_detail=create_audience_composition_detail)
+    except ApiException as e:
+        print("Exception when calling AudienceCompositionsApi->audience_compositions_update_audience_composition: %s\n" % e)
 ```
 
 ### Parameters

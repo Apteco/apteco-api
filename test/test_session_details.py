@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.session_details import SessionDetails  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestSessionDetails(unittest.TestCase):
     """SessionDetails unit test stubs"""
@@ -29,11 +29,52 @@ class TestSessionDetails(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test SessionDetails
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.session_details.SessionDetails()  # noqa: E501
+        if include_optional :
+            return SessionDetails(
+                access_token = '0', 
+                user = apteco_api.models.user_display_details.UserDisplayDetails(
+                    username = '0', 
+                    firstname = '0', 
+                    surname = '0', 
+                    email_address = '0', ), 
+                session_id = '0', 
+                last_login = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                licence = apteco_api.models.licence.Licence(
+                    audience_selection = True, 
+                    audience_preview = True, 
+                    export = True, 
+                    advanced_query = True, 
+                    cube = True, 
+                    profile = True, )
+            )
+        else :
+            return SessionDetails(
+                access_token = '0',
+                user = apteco_api.models.user_display_details.UserDisplayDetails(
+                    username = '0', 
+                    firstname = '0', 
+                    surname = '0', 
+                    email_address = '0', ),
+                session_id = '0',
+                licence = apteco_api.models.licence.Licence(
+                    audience_selection = True, 
+                    audience_preview = True, 
+                    export = True, 
+                    advanced_query = True, 
+                    cube = True, 
+                    profile = True, ),
+        )
+
     def testSessionDetails(self):
         """Test SessionDetails"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.session_details.SessionDetails()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

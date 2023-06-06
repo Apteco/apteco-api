@@ -33,19 +33,23 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.TelemetryApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.TelemetryApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 state_id = 'state_id_example' # str | The id of the telemetry state the session belongs to
 session_id = 'session_id_example' # str | The id of the telemetry session
 create_telemetry_session_details = apteco_api.CreateTelemetrySessionDetails() # CreateTelemetrySessionDetails | The details of the telemetry session to create (optional)
 
-try:
-    # Creates a new telemetry session from the given details
-    api_response = api_instance.telemetry_create_telemetry_session(data_view_name, state_id, session_id, create_telemetry_session_details=create_telemetry_session_details)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling TelemetryApi->telemetry_create_telemetry_session: %s\n" % e)
+    try:
+        # Creates a new telemetry session from the given details
+        api_response = api_instance.telemetry_create_telemetry_session(data_view_name, state_id, session_id, create_telemetry_session_details=create_telemetry_session_details)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling TelemetryApi->telemetry_create_telemetry_session: %s\n" % e)
 ```
 
 ### Parameters
@@ -100,17 +104,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.TelemetryApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.TelemetryApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 create_telemetry_state_details = apteco_api.CreateTelemetryStateDetails() # CreateTelemetryStateDetails | The details of the telemetry state to create (optional)
 
-try:
-    # Creates a new telemetry state from the given details
-    api_response = api_instance.telemetry_create_telemetry_state(data_view_name, create_telemetry_state_details=create_telemetry_state_details)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling TelemetryApi->telemetry_create_telemetry_state: %s\n" % e)
+    try:
+        # Creates a new telemetry state from the given details
+        api_response = api_instance.telemetry_create_telemetry_state(data_view_name, create_telemetry_state_details=create_telemetry_state_details)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling TelemetryApi->telemetry_create_telemetry_state: %s\n" % e)
 ```
 
 ### Parameters
@@ -163,18 +171,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.TelemetryApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.TelemetryApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 state_id = 'state_id_example' # str | The id of the telemetry state the session belongs to
 session_id = 'session_id_example' # str | The id of the telemetry session
 
-try:
-    # Returns the details of a particular telemetry session
-    api_response = api_instance.telemetry_get_telemetry_session(data_view_name, state_id, session_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling TelemetryApi->telemetry_get_telemetry_session: %s\n" % e)
+    try:
+        # Returns the details of a particular telemetry session
+        api_response = api_instance.telemetry_get_telemetry_session(data_view_name, state_id, session_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling TelemetryApi->telemetry_get_telemetry_session: %s\n" % e)
 ```
 
 ### Parameters
@@ -228,17 +240,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.TelemetryApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.TelemetryApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 state_id = 'state_id_example' # str | The id of the telemetry state to return
 
-try:
-    # Returns the details of a particular telemetry state
-    api_response = api_instance.telemetry_get_telemetry_state(data_view_name, state_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling TelemetryApi->telemetry_get_telemetry_state: %s\n" % e)
+    try:
+        # Returns the details of a particular telemetry state
+        api_response = api_instance.telemetry_get_telemetry_state(data_view_name, state_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling TelemetryApi->telemetry_get_telemetry_state: %s\n" % e)
 ```
 
 ### Parameters
@@ -291,17 +307,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.TelemetryApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.TelemetryApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 username = 'username_example' # str | The username of the telemetry state to return
 
-try:
-    # Returns the details of a given user's telemetry state
-    api_response = api_instance.telemetry_get_telemetry_state_for_user(data_view_name, username)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling TelemetryApi->telemetry_get_telemetry_state_for_user: %s\n" % e)
+    try:
+        # Returns the details of a given user's telemetry state
+        api_response = api_instance.telemetry_get_telemetry_state_for_user(data_view_name, username)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling TelemetryApi->telemetry_get_telemetry_state_for_user: %s\n" % e)
 ```
 
 ### Parameters
@@ -354,19 +374,23 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.TelemetryApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.TelemetryApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 state_id = 'state_id_example' # str | The id of the telemetry state the session belongs to
 session_id = 'session_id_example' # str | The id of the telemetry session
 update_telemetry_session_details = apteco_api.UpdateTelemetrySessionDetails() # UpdateTelemetrySessionDetails | The details of the telemetry session to update (optional)
 
-try:
-    # Update a particular telemetry session from the given details
-    api_response = api_instance.telemetry_update_telemetry_session(data_view_name, state_id, session_id, update_telemetry_session_details=update_telemetry_session_details)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling TelemetryApi->telemetry_update_telemetry_session: %s\n" % e)
+    try:
+        # Update a particular telemetry session from the given details
+        api_response = api_instance.telemetry_update_telemetry_session(data_view_name, state_id, session_id, update_telemetry_session_details=update_telemetry_session_details)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling TelemetryApi->telemetry_update_telemetry_session: %s\n" % e)
 ```
 
 ### Parameters
@@ -421,18 +445,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.TelemetryApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.TelemetryApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 state_id = 'state_id_example' # str | The id of the telemetry state to update
 update_telemetry_state_details = apteco_api.UpdateTelemetryStateDetails() # UpdateTelemetryStateDetails | The details of the telemetry state to update (optional)
 
-try:
-    # Updates a particular telemetry state from the given details
-    api_response = api_instance.telemetry_update_telemetry_state(data_view_name, state_id, update_telemetry_state_details=update_telemetry_state_details)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling TelemetryApi->telemetry_update_telemetry_state: %s\n" % e)
+    try:
+        # Updates a particular telemetry state from the given details
+        api_response = api_instance.telemetry_update_telemetry_state(data_view_name, state_id, update_telemetry_state_details=update_telemetry_state_details)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling TelemetryApi->telemetry_update_telemetry_state: %s\n" % e)
 ```
 
 ### Parameters

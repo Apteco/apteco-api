@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.telemetry_session import TelemetrySession  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestTelemetrySession(unittest.TestCase):
     """TelemetrySession unit test stubs"""
@@ -29,11 +29,33 @@ class TestTelemetrySession(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test TelemetrySession
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.telemetry_session.TelemetrySession()  # noqa: E501
+        if include_optional :
+            return TelemetrySession(
+                id = '0', 
+                api_version = '0', 
+                client_type = 'Orbit', 
+                client_version = '0', 
+                session_start = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                session_end = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                last_session_action = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                user_agent_details = '0'
+            )
+        else :
+            return TelemetrySession(
+                id = '0',
+                client_type = 'Orbit',
+        )
+
     def testTelemetrySession(self):
         """Test TelemetrySession"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.telemetry_session.TelemetrySession()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

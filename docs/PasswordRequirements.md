@@ -1,5 +1,6 @@
 # PasswordRequirements
 
+The details of the password requirements within the user configuration
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

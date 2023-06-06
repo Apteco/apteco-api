@@ -106,12 +106,12 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_change_user_password`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_change_user_password`")  # noqa: E501
 
         collection_formats = {}
@@ -224,12 +224,12 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_all_user_dashboards`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_get_all_user_dashboards`")  # noqa: E501
 
         collection_formats = {}
@@ -346,17 +346,17 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_previous_login_history`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_get_previous_login_history`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `users_get_previous_login_history`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `users_get_previous_login_history`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -367,13 +367,13 @@ class UsersApi(object):
             path_params['username'] = local_var_params['username']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -478,16 +478,16 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_user_audience`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_get_user_audience`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `users_get_user_audience`")  # noqa: E501
 
         collection_formats = {}
@@ -501,9 +501,9 @@ class UsersApi(object):
             path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
 
         query_params = []
-        if 'include_queries' in local_var_params:
+        if 'include_queries' in local_var_params and local_var_params['include_queries'] is not None:  # noqa: E501
             query_params.append(('includeQueries', local_var_params['include_queries']))  # noqa: E501
-        if 'include_brief' in local_var_params:
+        if 'include_brief' in local_var_params and local_var_params['include_brief'] is not None:  # noqa: E501
             query_params.append(('includeBrief', local_var_params['include_brief']))  # noqa: E501
 
         header_params = {}
@@ -614,17 +614,17 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_user_audiences`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_get_user_audiences`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `users_get_user_audiences`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `users_get_user_audiences`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -635,17 +635,17 @@ class UsersApi(object):
             path_params['username'] = local_var_params['username']  # noqa: E501
 
         query_params = []
-        if 'include_deleted' in local_var_params:
+        if 'include_deleted' in local_var_params and local_var_params['include_deleted'] is not None:  # noqa: E501
             query_params.append(('includeDeleted', local_var_params['include_deleted']))  # noqa: E501
-        if 'apply_pinned_sort' in local_var_params:
+        if 'apply_pinned_sort' in local_var_params and local_var_params['apply_pinned_sort'] is not None:  # noqa: E501
             query_params.append(('applyPinnedSort', local_var_params['apply_pinned_sort']))  # noqa: E501
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -746,16 +746,16 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_user_collection`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_get_user_collection`")  # noqa: E501
         # verify the required parameter 'collection_id' is set
-        if ('collection_id' not in local_var_params or
-                local_var_params['collection_id'] is None):
+        if self.api_client.client_side_validation and ('collection_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['collection_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `collection_id` when calling `users_get_user_collection`")  # noqa: E501
 
         collection_formats = {}
@@ -878,17 +878,17 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_user_collections`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_get_user_collections`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `users_get_user_collections`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `users_get_user_collections`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -899,17 +899,17 @@ class UsersApi(object):
             path_params['username'] = local_var_params['username']  # noqa: E501
 
         query_params = []
-        if 'include_deleted' in local_var_params:
+        if 'include_deleted' in local_var_params and local_var_params['include_deleted'] is not None:  # noqa: E501
             query_params.append(('includeDeleted', local_var_params['include_deleted']))  # noqa: E501
-        if 'apply_pinned_sort' in local_var_params:
+        if 'apply_pinned_sort' in local_var_params and local_var_params['apply_pinned_sort'] is not None:  # noqa: E501
             query_params.append(('applyPinnedSort', local_var_params['apply_pinned_sort']))  # noqa: E501
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -1006,8 +1006,8 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_user_configuration`")  # noqa: E501
 
         collection_formats = {}
@@ -1118,16 +1118,16 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_user_dashboard`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_get_user_dashboard`")  # noqa: E501
         # verify the required parameter 'dashboard_id' is set
-        if ('dashboard_id' not in local_var_params or
-                local_var_params['dashboard_id'] is None):
+        if self.api_client.client_side_validation and ('dashboard_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['dashboard_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `dashboard_id` when calling `users_get_user_dashboard`")  # noqa: E501
 
         collection_formats = {}
@@ -1238,12 +1238,12 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_user_details`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_get_user_details`")  # noqa: E501
 
         collection_formats = {}
@@ -1358,13 +1358,13 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_user_details_list`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `users_get_user_details_list`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `users_get_user_details_list`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -1373,13 +1373,13 @@ class UsersApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -1486,12 +1486,12 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_modify_user_audiences`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_modify_user_audiences`")  # noqa: E501
 
         collection_formats = {}
@@ -1503,9 +1503,9 @@ class UsersApi(object):
             path_params['username'] = local_var_params['username']  # noqa: E501
 
         query_params = []
-        if 'include_queries' in local_var_params:
+        if 'include_queries' in local_var_params and local_var_params['include_queries'] is not None:  # noqa: E501
             query_params.append(('includeQueries', local_var_params['include_queries']))  # noqa: E501
-        if 'include_brief' in local_var_params:
+        if 'include_brief' in local_var_params and local_var_params['include_brief'] is not None:  # noqa: E501
             query_params.append(('includeBrief', local_var_params['include_brief']))  # noqa: E501
 
         header_params = {}
@@ -1612,12 +1612,12 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_modify_user_collections`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_modify_user_collections`")  # noqa: E501
 
         collection_formats = {}
@@ -1738,16 +1738,16 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_patch_user_collection`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_patch_user_collection`")  # noqa: E501
         # verify the required parameter 'collection_id' is set
-        if ('collection_id' not in local_var_params or
-                local_var_params['collection_id'] is None):
+        if self.api_client.client_side_validation and ('collection_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['collection_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `collection_id` when calling `users_patch_user_collection`")  # noqa: E501
 
         collection_formats = {}
@@ -1870,16 +1870,16 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_update_user_collection`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_update_user_collection`")  # noqa: E501
         # verify the required parameter 'collection_id' is set
-        if ('collection_id' not in local_var_params or
-                local_var_params['collection_id'] is None):
+        if self.api_client.client_side_validation and ('collection_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['collection_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `collection_id` when calling `users_update_user_collection`")  # noqa: E501
 
         collection_formats = {}
@@ -1998,12 +1998,12 @@ class UsersApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_update_user_details`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `users_update_user_details`")  # noqa: E501
 
         collection_formats = {}

@@ -29,17 +29,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.ExportsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.ExportsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to return details for
 
-try:
-    # Returns some top-level details for the specified FastStats system to export from
-    api_response = api_instance.exports_get_export_system(data_view_name, system_name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ExportsApi->exports_get_export_system: %s\n" % e)
+    try:
+        # Returns some top-level details for the specified FastStats system to export from
+        api_response = api_instance.exports_get_export_system(data_view_name, system_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ExportsApi->exports_get_export_system: %s\n" % e)
 ```
 
 ### Parameters
@@ -92,20 +96,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.ExportsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.ExportsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns the list of FastStats systems available for exporting data from
-    api_response = api_instance.exports_get_export_systems(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ExportsApi->exports_get_export_systems: %s\n" % e)
+    try:
+        # Returns the list of FastStats systems available for exporting data from
+        api_response = api_instance.exports_get_export_systems(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ExportsApi->exports_get_export_systems: %s\n" % e)
 ```
 
 ### Parameters
@@ -163,20 +171,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.ExportsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.ExportsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the analysis service's configuration (optional)
 return_definition = True # bool | Whether to include the export's definition in the results.  Default is false. (optional)
 export = apteco_api.Export() # Export | The export definition to use (optional)
 
-try:
-    # EXPERIMENTAL: Exports data using the given export definition and returns the results.  The results might contain the actual data in the \"rows\" part of the result or this might be written to a file.  The data to be exported is defined by the base query provided, along with any limits defined in the export request.
-    api_response = api_instance.exports_perform_export_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, return_definition=return_definition, export=export)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ExportsApi->exports_perform_export_synchronously: %s\n" % e)
+    try:
+        # EXPERIMENTAL: Exports data using the given export definition and returns the results.  The results might contain the actual data in the \"rows\" part of the result or this might be written to a file.  The data to be exported is defined by the base query provided, along with any limits defined in the export request.
+        api_response = api_instance.exports_perform_export_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, return_definition=return_definition, export=export)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ExportsApi->exports_perform_export_synchronously: %s\n" % e)
 ```
 
 ### Parameters

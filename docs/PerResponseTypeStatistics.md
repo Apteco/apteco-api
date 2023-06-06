@@ -1,5 +1,6 @@
 # PerResponseTypeStatistics
 
+Per-response type response data
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

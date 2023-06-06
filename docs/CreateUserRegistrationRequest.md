@@ -1,5 +1,6 @@
 # CreateUserRegistrationRequest
 
+The parameters needed to create a new user registration request
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

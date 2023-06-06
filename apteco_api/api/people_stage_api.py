@@ -106,16 +106,16 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_channel`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_channel`")  # noqa: E501
         # verify the required parameter 'channel_id' is set
-        if ('channel_id' not in local_var_params or
-                local_var_params['channel_id'] is None):
+        if self.api_client.client_side_validation and ('channel_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['channel_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `channel_id` when calling `people_stage_get_people_stage_channel`")  # noqa: E501
 
         collection_formats = {}
@@ -234,17 +234,17 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_channels`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_channels`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `people_stage_get_people_stage_channels`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `people_stage_get_people_stage_channels`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -255,13 +255,13 @@ class PeopleStageApi(object):
             path_params['systemName'] = local_var_params['system_name']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -362,16 +362,16 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_element`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_element`")  # noqa: E501
         # verify the required parameter 'element_id' is set
-        if ('element_id' not in local_var_params or
-                local_var_params['element_id'] is None):
+        if self.api_client.client_side_validation and ('element_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['element_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `element_id` when calling `people_stage_get_people_stage_element`")  # noqa: E501
 
         collection_formats = {}
@@ -484,16 +484,16 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_element_channel_statistics`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_element_channel_statistics`")  # noqa: E501
         # verify the required parameter 'element_id' is set
-        if ('element_id' not in local_var_params or
-                local_var_params['element_id'] is None):
+        if self.api_client.client_side_validation and ('element_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['element_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `element_id` when calling `people_stage_get_people_stage_element_channel_statistics`")  # noqa: E501
 
         collection_formats = {}
@@ -614,21 +614,21 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_element_children`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_element_children`")  # noqa: E501
         # verify the required parameter 'element_id' is set
-        if ('element_id' not in local_var_params or
-                local_var_params['element_id'] is None):
+        if self.api_client.client_side_validation and ('element_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['element_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `element_id` when calling `people_stage_get_people_stage_element_children`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `people_stage_get_people_stage_element_children`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `people_stage_get_people_stage_element_children`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -641,13 +641,13 @@ class PeopleStageApi(object):
             path_params['elementId'] = local_var_params['element_id']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -748,16 +748,16 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_element_communication_statistics`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_element_communication_statistics`")  # noqa: E501
         # verify the required parameter 'element_id' is set
-        if ('element_id' not in local_var_params or
-                local_var_params['element_id'] is None):
+        if self.api_client.client_side_validation and ('element_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['element_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `element_id` when calling `people_stage_get_people_stage_element_communication_statistics`")  # noqa: E501
 
         collection_formats = {}
@@ -870,16 +870,16 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_element_response_statistics`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_element_response_statistics`")  # noqa: E501
         # verify the required parameter 'element_id' is set
-        if ('element_id' not in local_var_params or
-                local_var_params['element_id'] is None):
+        if self.api_client.client_side_validation and ('element_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['element_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `element_id` when calling `people_stage_get_people_stage_element_response_statistics`")  # noqa: E501
 
         collection_formats = {}
@@ -992,16 +992,16 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_element_status`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_element_status`")  # noqa: E501
         # verify the required parameter 'element_id' is set
-        if ('element_id' not in local_var_params or
-                local_var_params['element_id'] is None):
+        if self.api_client.client_side_validation and ('element_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['element_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `element_id` when calling `people_stage_get_people_stage_element_status`")  # noqa: E501
 
         collection_formats = {}
@@ -1122,21 +1122,21 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_element_status_for_descendants`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_element_status_for_descendants`")  # noqa: E501
         # verify the required parameter 'element_id' is set
-        if ('element_id' not in local_var_params or
-                local_var_params['element_id'] is None):
+        if self.api_client.client_side_validation and ('element_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['element_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `element_id` when calling `people_stage_get_people_stage_element_status_for_descendants`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `people_stage_get_people_stage_element_status_for_descendants`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `people_stage_get_people_stage_element_status_for_descendants`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -1149,13 +1149,13 @@ class PeopleStageApi(object):
             path_params['elementId'] = local_var_params['element_id']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -1262,17 +1262,17 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_elements`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_elements`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `people_stage_get_people_stage_elements`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `people_stage_get_people_stage_elements`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -1283,13 +1283,13 @@ class PeopleStageApi(object):
             path_params['systemName'] = local_var_params['system_name']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -1402,21 +1402,21 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_range_statistics_for_descendants_sync`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_range_statistics_for_descendants_sync`")  # noqa: E501
         # verify the required parameter 'element_id' is set
-        if ('element_id' not in local_var_params or
-                local_var_params['element_id'] is None):
+        if self.api_client.client_side_validation and ('element_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['element_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `element_id` when calling `people_stage_get_people_stage_range_statistics_for_descendants_sync`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `people_stage_get_people_stage_range_statistics_for_descendants_sync`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `people_stage_get_people_stage_range_statistics_for_descendants_sync`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -1429,17 +1429,17 @@ class PeopleStageApi(object):
             path_params['elementId'] = local_var_params['element_id']  # noqa: E501
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
-        if 'date_range' in local_var_params:
+        if 'date_range' in local_var_params and local_var_params['date_range'] is not None:  # noqa: E501
             query_params.append(('dateRange', local_var_params['date_range']))  # noqa: E501
 
         header_params = {}
@@ -1544,16 +1544,16 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_range_statistics_sync`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_range_statistics_sync`")  # noqa: E501
         # verify the required parameter 'element_id' is set
-        if ('element_id' not in local_var_params or
-                local_var_params['element_id'] is None):
+        if self.api_client.client_side_validation and ('element_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['element_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `element_id` when calling `people_stage_get_people_stage_range_statistics_sync`")  # noqa: E501
 
         collection_formats = {}
@@ -1567,9 +1567,9 @@ class PeopleStageApi(object):
             path_params['elementId'] = local_var_params['element_id']  # noqa: E501
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
-        if 'date_range' in local_var_params:
+        if 'date_range' in local_var_params and local_var_params['date_range'] is not None:  # noqa: E501
             query_params.append(('dateRange', local_var_params['date_range']))  # noqa: E501
 
         header_params = {}
@@ -1668,12 +1668,12 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_system`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `people_stage_get_people_stage_system`")  # noqa: E501
 
         collection_formats = {}
@@ -1788,13 +1788,13 @@ class PeopleStageApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `people_stage_get_people_stage_systems`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `people_stage_get_people_stage_systems`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `people_stage_get_people_stage_systems`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -1803,13 +1803,13 @@ class PeopleStageApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}

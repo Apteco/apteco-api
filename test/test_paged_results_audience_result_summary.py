@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.paged_results_audience_result_summary import PagedResultsAudienceResultSummary  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestPagedResultsAudienceResultSummary(unittest.TestCase):
     """PagedResultsAudienceResultSummary unit test stubs"""
@@ -29,11 +29,79 @@ class TestPagedResultsAudienceResultSummary(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test PagedResultsAudienceResultSummary
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.paged_results_audience_result_summary.PagedResultsAudienceResultSummary()  # noqa: E501
+        if include_optional :
+            return PagedResultsAudienceResultSummary(
+                offset = 56, 
+                count = 56, 
+                total_count = 56, 
+                list = [
+                    apteco_api.models.audience_result_summary.AudienceResultSummary(
+                        id = 56, 
+                        audience_update_id = 56, 
+                        timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        user = apteco_api.models.user_display_details.UserDisplayDetails(
+                            username = '0', 
+                            firstname = '0', 
+                            surname = '0', 
+                            email_address = '0', ), 
+                        nett_results = apteco_api.models.audience_query_result.AudienceQueryResult(
+                            counts = [
+                                apteco_api.models.count.Count(
+                                    table_name = '0', 
+                                    count_value = 56, )
+                                ], 
+                            messages = [
+                                apteco_api.models.server_message.ServerMessage(
+                                    type = 'Error', 
+                                    number = 56, 
+                                    text = '0', )
+                                ], ), 
+                        urn_file_path = '0', )
+                    ]
+            )
+        else :
+            return PagedResultsAudienceResultSummary(
+                offset = 56,
+                count = 56,
+                total_count = 56,
+                list = [
+                    apteco_api.models.audience_result_summary.AudienceResultSummary(
+                        id = 56, 
+                        audience_update_id = 56, 
+                        timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        user = apteco_api.models.user_display_details.UserDisplayDetails(
+                            username = '0', 
+                            firstname = '0', 
+                            surname = '0', 
+                            email_address = '0', ), 
+                        nett_results = apteco_api.models.audience_query_result.AudienceQueryResult(
+                            counts = [
+                                apteco_api.models.count.Count(
+                                    table_name = '0', 
+                                    count_value = 56, )
+                                ], 
+                            messages = [
+                                apteco_api.models.server_message.ServerMessage(
+                                    type = 'Error', 
+                                    number = 56, 
+                                    text = '0', )
+                                ], ), 
+                        urn_file_path = '0', )
+                    ],
+        )
+
     def testPagedResultsAudienceResultSummary(self):
         """Test PagedResultsAudienceResultSummary"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.paged_results_audience_result_summary.PagedResultsAudienceResultSummary()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

@@ -37,21 +37,25 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsSystemsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsSystemsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Key, Type, TableName, VariableType (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Key, Type, TableName, VariableType (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Gets all FastStats systems items - variables, var codes, tables and folders
-    api_response = api_instance.fast_stats_systems_get_all_fast_stats_system_items(data_view_name, system_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_all_fast_stats_system_items: %s\n" % e)
+    try:
+        # Gets all FastStats systems items - variables, var codes, tables and folders
+        api_response = api_instance.fast_stats_systems_get_all_fast_stats_system_items(data_view_name, system_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_all_fast_stats_system_items: %s\n" % e)
 ```
 
 ### Parameters
@@ -108,9 +112,13 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsSystemsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsSystemsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 path = 'path_example' # str | The path to the folder that should be retrieved
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name, Description, Type, TableName, VariableType (optional)
@@ -118,12 +126,12 @@ order_by = 'order_by_example' # str | Order the items by a given field (in ascen
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Gets the folder structure for the FastStats system
-    api_response = api_instance.fast_stats_systems_get_fast_stats_folder(data_view_name, system_name, path, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_folder: %s\n" % e)
+    try:
+        # Gets the folder structure for the FastStats system
+        api_response = api_instance.fast_stats_systems_get_fast_stats_folder(data_view_name, system_name, path, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_folder: %s\n" % e)
 ```
 
 ### Parameters
@@ -181,21 +189,25 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsSystemsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsSystemsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name, Description, Type, TableName, VariableType (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description, Type, TableName, VariableType (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Gets the items in the root of the FastStats system folder structure
-    api_response = api_instance.fast_stats_systems_get_fast_stats_root_folder(data_view_name, system_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_root_folder: %s\n" % e)
+    try:
+        # Gets the items in the root of the FastStats system folder structure
+        api_response = api_instance.fast_stats_systems_get_fast_stats_root_folder(data_view_name, system_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_root_folder: %s\n" % e)
 ```
 
 ### Parameters
@@ -252,17 +264,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsSystemsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsSystemsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to return details for
 
-try:
-    # Returns some top-level details for the specified FastStats system
-    api_response = api_instance.fast_stats_systems_get_fast_stats_system(data_view_name, system_name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_system: %s\n" % e)
+    try:
+        # Returns some top-level details for the specified FastStats system
+        api_response = api_instance.fast_stats_systems_get_fast_stats_system(data_view_name, system_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_system: %s\n" % e)
 ```
 
 ### Parameters
@@ -315,20 +331,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsSystemsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsSystemsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name, Description, FastStatsBuildDate (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description, FastStatsBuildDate (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns the list of FastStats systems available
-    api_response = api_instance.fast_stats_systems_get_fast_stats_systems(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_systems: %s\n" % e)
+    try:
+        # Returns the list of FastStats systems available
+        api_response = api_instance.fast_stats_systems_get_fast_stats_systems(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_systems: %s\n" % e)
 ```
 
 ### Parameters
@@ -384,18 +404,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsSystemsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsSystemsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 table_name = 'table_name_example' # str | The name of the table to get the details for
 
-try:
-    # Gets the details for a particular table in the FastStats system
-    api_response = api_instance.fast_stats_systems_get_fast_stats_table(data_view_name, system_name, table_name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_table: %s\n" % e)
+    try:
+        # Gets the details for a particular table in the FastStats system
+        api_response = api_instance.fast_stats_systems_get_fast_stats_table(data_view_name, system_name, table_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_table: %s\n" % e)
 ```
 
 ### Parameters
@@ -449,21 +473,25 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsSystemsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsSystemsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name, SingularDisplayName, PluralDisplayName, TotalRecords (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, SingularDisplayName, PluralDisplayName, TotalRecords (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Gets all the tables present in the FastStats system
-    api_response = api_instance.fast_stats_systems_get_fast_stats_tables(data_view_name, system_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_tables: %s\n" % e)
+    try:
+        # Gets all the tables present in the FastStats system
+        api_response = api_instance.fast_stats_systems_get_fast_stats_tables(data_view_name, system_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_tables: %s\n" % e)
 ```
 
 ### Parameters
@@ -520,18 +548,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsSystemsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsSystemsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 variable_name = 'variable_name_example' # str | The name of the variable to get the details for
 
-try:
-    # Gets the details for a particular variable in the FastStats system
-    api_response = api_instance.fast_stats_systems_get_fast_stats_variable(data_view_name, system_name, variable_name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_variable: %s\n" % e)
+    try:
+        # Gets the details for a particular variable in the FastStats system
+        api_response = api_instance.fast_stats_systems_get_fast_stats_variable(data_view_name, system_name, variable_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_variable: %s\n" % e)
 ```
 
 ### Parameters
@@ -585,9 +617,13 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsSystemsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsSystemsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 variable_name = 'variable_name_example' # str | The name of the variable to get the var codes for
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Code, Description, Count (optional)
@@ -595,12 +631,12 @@ order_by = 'order_by_example' # str | Order the items by a given field (in ascen
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Gets all the categories (var codes) for the specified variable in the FastStats system if it is a selector variable
-    api_response = api_instance.fast_stats_systems_get_fast_stats_variable_codes(data_view_name, system_name, variable_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_variable_codes: %s\n" % e)
+    try:
+        # Gets all the categories (var codes) for the specified variable in the FastStats system if it is a selector variable
+        api_response = api_instance.fast_stats_systems_get_fast_stats_variable_codes(data_view_name, system_name, variable_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_variable_codes: %s\n" % e)
 ```
 
 ### Parameters
@@ -658,21 +694,25 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsSystemsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsSystemsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name, Description, Type, SelectorType, TableName, NumberOfCodes, FolderName (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description, Type, SelectorType, TableName, NumberOfCodes, FolderName (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Gets all the variables present in the FastStats system
-    api_response = api_instance.fast_stats_systems_get_fast_stats_variables(data_view_name, system_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_variables: %s\n" % e)
+    try:
+        # Gets all the variables present in the FastStats system
+        api_response = api_instance.fast_stats_systems_get_fast_stats_variables(data_view_name, system_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsSystemsApi->fast_stats_systems_get_fast_stats_variables: %s\n" % e)
 ```
 
 ### Parameters
@@ -731,16 +771,20 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsSystemsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsSystemsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 
-try:
-    # Requires OrbitAdmin: An endpoint to request the API refresh any information it holds on the given FastStats system.  This endpoint will wait until the refresh has completed before returning.
-    api_instance.fast_stats_systems_refresh_system_information_sync(data_view_name, system_name)
-except ApiException as e:
-    print("Exception when calling FastStatsSystemsApi->fast_stats_systems_refresh_system_information_sync: %s\n" % e)
+    try:
+        # Requires OrbitAdmin: An endpoint to request the API refresh any information it holds on the given FastStats system.  This endpoint will wait until the refresh has completed before returning.
+        api_instance.fast_stats_systems_refresh_system_information_sync(data_view_name, system_name)
+    except ApiException as e:
+        print("Exception when calling FastStatsSystemsApi->fast_stats_systems_refresh_system_information_sync: %s\n" % e)
 ```
 
 ### Parameters

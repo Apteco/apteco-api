@@ -1,5 +1,6 @@
 # CheckDimensionResult
 
+Detail information for an audience check
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

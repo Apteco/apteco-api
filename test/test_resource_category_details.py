@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.resource_category_details import ResourceCategoryDetails  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestResourceCategoryDetails(unittest.TestCase):
     """ResourceCategoryDetails unit test stubs"""
@@ -29,11 +29,27 @@ class TestResourceCategoryDetails(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ResourceCategoryDetails
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.resource_category_details.ResourceCategoryDetails()  # noqa: E501
+        if include_optional :
+            return ResourceCategoryDetails(
+                name = '0', 
+                description = '0'
+            )
+        else :
+            return ResourceCategoryDetails(
+                name = '0',
+                description = '0',
+        )
+
     def testResourceCategoryDetails(self):
         """Test ResourceCategoryDetails"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.resource_category_details.ResourceCategoryDetails()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

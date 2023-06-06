@@ -112,12 +112,12 @@ class CubesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `cubes_calculate_cube_synchronously`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `cubes_calculate_cube_synchronously`")  # noqa: E501
 
         collection_formats = {}
@@ -129,9 +129,9 @@ class CubesApi(object):
             path_params['systemName'] = local_var_params['system_name']  # noqa: E501
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
-        if 'return_definition' in local_var_params:
+        if 'return_definition' in local_var_params and local_var_params['return_definition'] is not None:  # noqa: E501
             query_params.append(('returnDefinition', local_var_params['return_definition']))  # noqa: E501
 
         header_params = {}

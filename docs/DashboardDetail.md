@@ -1,5 +1,6 @@
 # DashboardDetail
 
+Details for a dashboard
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,6 @@
 # VisualisationDetail
 
+Details for a visualisation
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

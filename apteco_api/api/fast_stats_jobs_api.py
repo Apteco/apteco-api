@@ -108,12 +108,12 @@ class FastStatsJobsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `fast_stats_jobs_calculate_processing_time_stats_for_system_sync`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `fast_stats_jobs_calculate_processing_time_stats_for_system_sync`")  # noqa: E501
 
         collection_formats = {}
@@ -230,8 +230,8 @@ class FastStatsJobsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `fast_stats_jobs_calculate_processing_time_stats_sync`")  # noqa: E501
 
         collection_formats = {}
@@ -352,16 +352,16 @@ class FastStatsJobsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `fast_stats_jobs_get_fast_stats_job`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `fast_stats_jobs_get_fast_stats_job`")  # noqa: E501
         # verify the required parameter 'job_id' is set
-        if ('job_id' not in local_var_params or
-                local_var_params['job_id'] is None):
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `job_id` when calling `fast_stats_jobs_get_fast_stats_job`")  # noqa: E501
 
         collection_formats = {}
@@ -375,9 +375,9 @@ class FastStatsJobsApi(object):
             path_params['jobId'] = local_var_params['job_id']  # noqa: E501
 
         query_params = []
-        if 'return_request' in local_var_params:
+        if 'return_request' in local_var_params and local_var_params['return_request'] is not None:  # noqa: E501
             query_params.append(('returnRequest', local_var_params['return_request']))  # noqa: E501
-        if 'return_results' in local_var_params:
+        if 'return_results' in local_var_params and local_var_params['return_results'] is not None:  # noqa: E501
             query_params.append(('returnResults', local_var_params['return_results']))  # noqa: E501
 
         header_params = {}
@@ -484,13 +484,13 @@ class FastStatsJobsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `fast_stats_jobs_get_fast_stats_jobs`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `fast_stats_jobs_get_fast_stats_jobs`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `fast_stats_jobs_get_fast_stats_jobs`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -499,13 +499,13 @@ class FastStatsJobsApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -614,17 +614,17 @@ class FastStatsJobsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `fast_stats_jobs_get_fast_stats_jobs_for_system`")  # noqa: E501
         # verify the required parameter 'system_name' is set
-        if ('system_name' not in local_var_params or
-                local_var_params['system_name'] is None):
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `system_name` when calling `fast_stats_jobs_get_fast_stats_jobs_for_system`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `fast_stats_jobs_get_fast_stats_jobs_for_system`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `fast_stats_jobs_get_fast_stats_jobs_for_system`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -635,13 +635,13 @@ class FastStatsJobsApi(object):
             path_params['systemName'] = local_var_params['system_name']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}

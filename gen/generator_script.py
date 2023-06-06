@@ -28,7 +28,7 @@ from urlpath import URL
 API_SPEC_PATH = "gen/api-spec.json"
 INTRODUCTION_PATH = "introduction.md"
 GEN_CONFIG_PATH = "gen/config.yaml"
-GEN_VERSION = "4.0.1"
+GEN_VERSION = "4.2.3"
 README_PATH = "README.md"
 VERSION_PARTS = ["major", "minor", "patch", "dev_num"]
 

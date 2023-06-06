@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.collection_part_summary import CollectionPartSummary  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestCollectionPartSummary(unittest.TestCase):
     """CollectionPartSummary unit test stubs"""
@@ -29,11 +29,31 @@ class TestCollectionPartSummary(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CollectionPartSummary
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.collection_part_summary.CollectionPartSummary()  # noqa: E501
+        if include_optional :
+            return CollectionPartSummary(
+                title = '0', 
+                index = 56, 
+                visualisation_type = 'None', 
+                visualisation_id = '0'
+            )
+        else :
+            return CollectionPartSummary(
+                title = '0',
+                index = 56,
+                visualisation_type = 'None',
+                visualisation_id = '0',
+        )
+
     def testCollectionPartSummary(self):
         """Test CollectionPartSummary"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.collection_part_summary.CollectionPartSummary()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

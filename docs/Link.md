@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **href** | **str** |  | [optional] 
-**templated** | **bool** |  | [optional] 
+**templated** | **bool** |  | [optional] [readonly] 
 **type** | **str** |  | [optional] 
 **deprecation** | **bool** |  | [optional] 
 **name** | **str** |  | [optional] 

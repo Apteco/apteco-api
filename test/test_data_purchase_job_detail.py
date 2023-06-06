@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.data_purchase_job_detail import DataPurchaseJobDetail  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestDataPurchaseJobDetail(unittest.TestCase):
     """DataPurchaseJobDetail unit test stubs"""
@@ -29,11 +29,35 @@ class TestDataPurchaseJobDetail(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test DataPurchaseJobDetail
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.data_purchase_job_detail.DataPurchaseJobDetail()  # noqa: E501
+        if include_optional :
+            return DataPurchaseJobDetail(
+                purchase_info = apteco_api.models.purchase_info.PurchaseInfo(
+                    number_of_records_licensed = 56, 
+                    credit_remaining = 1.337, 
+                    grand_total_cost = 1.337, 
+                    query_id = '0', 
+                    urn_file_path = '0', ), 
+                id = 56, 
+                is_complete = True, 
+                queue_position = 56, 
+                progress = 56
+            )
+        else :
+            return DataPurchaseJobDetail(
+                id = 56,
+                is_complete = True,
+        )
+
     def testDataPurchaseJobDetail(self):
         """Test DataPurchaseJobDetail"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.data_purchase_job_detail.DataPurchaseJobDetail()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

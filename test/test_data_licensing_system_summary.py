@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.data_licensing_system_summary import DataLicensingSystemSummary  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestDataLicensingSystemSummary(unittest.TestCase):
     """DataLicensingSystemSummary unit test stubs"""
@@ -29,11 +29,26 @@ class TestDataLicensingSystemSummary(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test DataLicensingSystemSummary
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.data_licensing_system_summary.DataLicensingSystemSummary()  # noqa: E501
+        if include_optional :
+            return DataLicensingSystemSummary(
+                name = '0', 
+                is_velocity_enabled = True
+            )
+        else :
+            return DataLicensingSystemSummary(
+                name = '0',
+        )
+
     def testDataLicensingSystemSummary(self):
         """Test DataLicensingSystemSummary"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.data_licensing_system_summary.DataLicensingSystemSummary()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

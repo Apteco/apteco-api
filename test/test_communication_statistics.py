@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.communication_statistics import CommunicationStatistics  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestCommunicationStatistics(unittest.TestCase):
     """CommunicationStatistics unit test stubs"""
@@ -29,11 +29,70 @@ class TestCommunicationStatistics(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test CommunicationStatistics
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.communication_statistics.CommunicationStatistics()  # noqa: E501
+        if include_optional :
+            return CommunicationStatistics(
+                days = [
+                    '0'
+                    ], 
+                communications_counts = [
+                    56
+                    ], 
+                total_communications_count = 56, 
+                deliveries_counts = [
+                    56
+                    ], 
+                total_deliveries_count = 56, 
+                messages_counts = [
+                    56
+                    ], 
+                total_messages_count = 56, 
+                campaigns_counts = [
+                    56
+                    ], 
+                total_campaigns_count = 56, 
+                people_counts = [
+                    56
+                    ], 
+                communication_statistics_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                campaign_statistics_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                people_statistics_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+            )
+        else :
+            return CommunicationStatistics(
+                days = [
+                    '0'
+                    ],
+                communications_counts = [
+                    56
+                    ],
+                total_communications_count = 56,
+                deliveries_counts = [
+                    56
+                    ],
+                total_deliveries_count = 56,
+                messages_counts = [
+                    56
+                    ],
+                total_messages_count = 56,
+                campaigns_counts = [
+                    56
+                    ],
+                total_campaigns_count = 56,
+                people_counts = [
+                    56
+                    ],
+        )
+
     def testCommunicationStatistics(self):
         """Test CommunicationStatistics"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.communication_statistics.CommunicationStatistics()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

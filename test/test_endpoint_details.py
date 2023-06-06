@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.endpoint_details import EndpointDetails  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestEndpointDetails(unittest.TestCase):
     """EndpointDetails unit test stubs"""
@@ -29,11 +29,55 @@ class TestEndpointDetails(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test EndpointDetails
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.endpoint_details.EndpointDetails()  # noqa: E501
+        if include_optional :
+            return EndpointDetails(
+                name = '0', 
+                group_name = '0', 
+                method = '0', 
+                url_template = '0', 
+                allows_anonymous_access = True, 
+                is_experimental = True, 
+                is_under_development = True, 
+                requires_licence_flags = [
+                    'AudienceSelection'
+                    ], 
+                optionally_requires_licence_flags = [
+                    'AudienceSelection'
+                    ], 
+                requires_roles = [
+                    '0'
+                    ]
+            )
+        else :
+            return EndpointDetails(
+                name = '0',
+                group_name = '0',
+                method = '0',
+                url_template = '0',
+                allows_anonymous_access = True,
+                is_experimental = True,
+                is_under_development = True,
+                requires_licence_flags = [
+                    'AudienceSelection'
+                    ],
+                optionally_requires_licence_flags = [
+                    'AudienceSelection'
+                    ],
+                requires_roles = [
+                    '0'
+                    ],
+        )
+
     def testEndpointDetails(self):
         """Test EndpointDetails"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.endpoint_details.EndpointDetails()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

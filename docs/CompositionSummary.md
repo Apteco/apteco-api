@@ -1,5 +1,6 @@
 # CompositionSummary
 
+Summary for an audience composition
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

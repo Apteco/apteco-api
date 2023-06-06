@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.per_channel_statistics import PerChannelStatistics  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestPerChannelStatistics(unittest.TestCase):
     """PerChannelStatistics unit test stubs"""
@@ -29,11 +29,39 @@ class TestPerChannelStatistics(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test PerChannelStatistics
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.per_channel_statistics.PerChannelStatistics()  # noqa: E501
+        if include_optional :
+            return PerChannelStatistics(
+                communications_counts = [
+                    56
+                    ], 
+                costs = [
+                    1.337
+                    ], 
+                total_communications_count = 56, 
+                total_cost = 1.337
+            )
+        else :
+            return PerChannelStatistics(
+                communications_counts = [
+                    56
+                    ],
+                costs = [
+                    1.337
+                    ],
+                total_communications_count = 56,
+                total_cost = 1.337,
+        )
+
     def testPerChannelStatistics(self):
         """Test PerChannelStatistics"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.per_channel_statistics.PerChannelStatistics()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

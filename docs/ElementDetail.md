@@ -1,5 +1,6 @@
 # ElementDetail
 
+Details for a PeopleStage Element
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

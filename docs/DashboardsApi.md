@@ -29,20 +29,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.DashboardsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.DashboardsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 dashboard_id = 56 # int | The id of the dashboard to calculate the result for
 dashboard_item_id = 'dashboard_item_id_example' # str | The id of the dashboard item to calculate the results for
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out. Leave unspecified to use the default value given in the dashboards service's configuration (optional)
 request_data = apteco_api.DashboardItemData() # DashboardItemData | Used to filter the data on the dashboard item and define the drill down level (optional)
 
-try:
-    # EXPERIMENTAL: Return data needed to render visualisation for dashboard item
-    api_response = api_instance.dashboards_get_dashboard_item_data_sync(data_view_name, dashboard_id, dashboard_item_id, timeout_in_seconds=timeout_in_seconds, request_data=request_data)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DashboardsApi->dashboards_get_dashboard_item_data_sync: %s\n" % e)
+    try:
+        # EXPERIMENTAL: Return data needed to render visualisation for dashboard item
+        api_response = api_instance.dashboards_get_dashboard_item_data_sync(data_view_name, dashboard_id, dashboard_item_id, timeout_in_seconds=timeout_in_seconds, request_data=request_data)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DashboardsApi->dashboards_get_dashboard_item_data_sync: %s\n" % e)
 ```
 
 ### Parameters

@@ -1,5 +1,6 @@
 # ResourceCategorySummary
 
+The summary information for a particular category of static resources
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

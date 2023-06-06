@@ -108,16 +108,16 @@ class TelemetryApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `telemetry_create_telemetry_session`")  # noqa: E501
         # verify the required parameter 'state_id' is set
-        if ('state_id' not in local_var_params or
-                local_var_params['state_id'] is None):
+        if self.api_client.client_side_validation and ('state_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['state_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `state_id` when calling `telemetry_create_telemetry_session`")  # noqa: E501
         # verify the required parameter 'session_id' is set
-        if ('session_id' not in local_var_params or
-                local_var_params['session_id'] is None):
+        if self.api_client.client_side_validation and ('session_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['session_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `session_id` when calling `telemetry_create_telemetry_session`")  # noqa: E501
 
         collection_formats = {}
@@ -234,8 +234,8 @@ class TelemetryApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `telemetry_create_telemetry_state`")  # noqa: E501
 
         collection_formats = {}
@@ -350,16 +350,16 @@ class TelemetryApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `telemetry_get_telemetry_session`")  # noqa: E501
         # verify the required parameter 'state_id' is set
-        if ('state_id' not in local_var_params or
-                local_var_params['state_id'] is None):
+        if self.api_client.client_side_validation and ('state_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['state_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `state_id` when calling `telemetry_get_telemetry_session`")  # noqa: E501
         # verify the required parameter 'session_id' is set
-        if ('session_id' not in local_var_params or
-                local_var_params['session_id'] is None):
+        if self.api_client.client_side_validation and ('session_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['session_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `session_id` when calling `telemetry_get_telemetry_session`")  # noqa: E501
 
         collection_formats = {}
@@ -470,12 +470,12 @@ class TelemetryApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `telemetry_get_telemetry_state`")  # noqa: E501
         # verify the required parameter 'state_id' is set
-        if ('state_id' not in local_var_params or
-                local_var_params['state_id'] is None):
+        if self.api_client.client_side_validation and ('state_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['state_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `state_id` when calling `telemetry_get_telemetry_state`")  # noqa: E501
 
         collection_formats = {}
@@ -584,12 +584,12 @@ class TelemetryApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `telemetry_get_telemetry_state_for_user`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `telemetry_get_telemetry_state_for_user`")  # noqa: E501
 
         collection_formats = {}
@@ -702,16 +702,16 @@ class TelemetryApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `telemetry_update_telemetry_session`")  # noqa: E501
         # verify the required parameter 'state_id' is set
-        if ('state_id' not in local_var_params or
-                local_var_params['state_id'] is None):
+        if self.api_client.client_side_validation and ('state_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['state_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `state_id` when calling `telemetry_update_telemetry_session`")  # noqa: E501
         # verify the required parameter 'session_id' is set
-        if ('session_id' not in local_var_params or
-                local_var_params['session_id'] is None):
+        if self.api_client.client_side_validation and ('session_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['session_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `session_id` when calling `telemetry_update_telemetry_session`")  # noqa: E501
 
         collection_formats = {}
@@ -830,12 +830,12 @@ class TelemetryApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `telemetry_update_telemetry_state`")  # noqa: E501
         # verify the required parameter 'state_id' is set
-        if ('state_id' not in local_var_params or
-                local_var_params['state_id'] is None):
+        if self.api_client.client_side_validation and ('state_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['state_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `state_id` when calling `telemetry_update_telemetry_state`")  # noqa: E501
 
         collection_formats = {}

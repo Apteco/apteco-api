@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.dashboard_item_data_result import DashboardItemDataResult  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestDashboardItemDataResult(unittest.TestCase):
     """DashboardItemDataResult unit test stubs"""
@@ -29,11 +29,42 @@ class TestDashboardItemDataResult(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test DashboardItemDataResult
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.dashboard_item_data_result.DashboardItemDataResult()  # noqa: E501
+        if include_optional :
+            return DashboardItemDataResult(
+                dimension_results = [
+                    apteco_api.models.dimension_result.DimensionResult(
+                        id = '0', 
+                        header_codes = '0', 
+                        header_descriptions = '0', )
+                    ], 
+                measure_results = [
+                    apteco_api.models.measure_result.MeasureResult(
+                        id = '0', 
+                        rows = [
+                            '0'
+                            ], 
+                        cells = [
+                            '0'
+                            ], )
+                    ], 
+                count = apteco_api.models.count.Count(
+                    table_name = '0', 
+                    count_value = 56, )
+            )
+        else :
+            return DashboardItemDataResult(
+        )
+
     def testDashboardItemDataResult(self):
         """Test DashboardItemDataResult"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.dashboard_item_data_result.DashboardItemDataResult()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

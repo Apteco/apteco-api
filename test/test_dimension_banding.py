@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.dimension_banding import DimensionBanding  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestDimensionBanding(unittest.TestCase):
     """DimensionBanding unit test stubs"""
@@ -29,11 +29,26 @@ class TestDimensionBanding(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test DimensionBanding
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.dimension_banding.DimensionBanding()  # noqa: E501
+        if include_optional :
+            return DimensionBanding(
+                type = 'None', 
+                custom_values = '0'
+            )
+        else :
+            return DimensionBanding(
+                type = 'None',
+        )
+
     def testDimensionBanding(self):
         """Test DimensionBanding"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.dimension_banding.DimensionBanding()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

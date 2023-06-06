@@ -104,12 +104,12 @@ class TemporaryFilesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `temporary_files_get_temporary_file`")  # noqa: E501
         # verify the required parameter 'id' is set
-        if ('id' not in local_var_params or
-                local_var_params['id'] is None):
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `temporary_files_get_temporary_file`")  # noqa: E501
 
         collection_formats = {}
@@ -220,16 +220,16 @@ class TemporaryFilesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `temporary_files_get_temporary_file_part`")  # noqa: E501
         # verify the required parameter 'id' is set
-        if ('id' not in local_var_params or
-                local_var_params['id'] is None):
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `temporary_files_get_temporary_file_part`")  # noqa: E501
         # verify the required parameter 'part_number' is set
-        if ('part_number' not in local_var_params or
-                local_var_params['part_number'] is None):
+        if self.api_client.client_side_validation and ('part_number' not in local_var_params or  # noqa: E501
+                                                        local_var_params['part_number'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `part_number` when calling `temporary_files_get_temporary_file_part`")  # noqa: E501
 
         collection_formats = {}
@@ -342,16 +342,16 @@ class TemporaryFilesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `temporary_files_upsert_temporary_file`")  # noqa: E501
         # verify the required parameter 'id' is set
-        if ('id' not in local_var_params or
-                local_var_params['id'] is None):
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `temporary_files_upsert_temporary_file`")  # noqa: E501
         # verify the required parameter 'file' is set
-        if ('file' not in local_var_params or
-                local_var_params['file'] is None):
+        if self.api_client.client_side_validation and ('file' not in local_var_params or  # noqa: E501
+                                                        local_var_params['file'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `file` when calling `temporary_files_upsert_temporary_file`")  # noqa: E501
 
         collection_formats = {}
@@ -472,20 +472,20 @@ class TemporaryFilesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `temporary_files_upsert_temporary_file_part`")  # noqa: E501
         # verify the required parameter 'id' is set
-        if ('id' not in local_var_params or
-                local_var_params['id'] is None):
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `temporary_files_upsert_temporary_file_part`")  # noqa: E501
         # verify the required parameter 'part_number' is set
-        if ('part_number' not in local_var_params or
-                local_var_params['part_number'] is None):
+        if self.api_client.client_side_validation and ('part_number' not in local_var_params or  # noqa: E501
+                                                        local_var_params['part_number'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `part_number` when calling `temporary_files_upsert_temporary_file_part`")  # noqa: E501
         # verify the required parameter 'file' is set
-        if ('file' not in local_var_params or
-                local_var_params['file'] is None):
+        if self.api_client.client_side_validation and ('file' not in local_var_params or  # noqa: E501
+                                                        local_var_params['file'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `file` when calling `temporary_files_upsert_temporary_file_part`")  # noqa: E501
 
         collection_formats = {}
@@ -499,7 +499,7 @@ class TemporaryFilesApi(object):
             path_params['partNumber'] = local_var_params['part_number']  # noqa: E501
 
         query_params = []
-        if 'final_part' in local_var_params:
+        if 'final_part' in local_var_params and local_var_params['final_part'] is not None:  # noqa: E501
             query_params.append(('finalPart', local_var_params['final_part']))  # noqa: E501
 
         header_params = {}

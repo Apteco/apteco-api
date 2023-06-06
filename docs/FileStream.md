@@ -3,16 +3,16 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**handle** | [**object**](.md) |  | [optional] 
-**can_read** | **bool** |  | [optional] 
-**can_write** | **bool** |  | [optional] 
+**handle** | [**object**](.md) |  | [optional] [readonly] 
+**can_read** | **bool** |  | [optional] [readonly] 
+**can_write** | **bool** |  | [optional] [readonly] 
 **safe_file_handle** | [**SafeFileHandle**](SafeFileHandle.md) |  | [optional] 
-**name** | **str** |  | [optional] 
-**is_async** | **bool** |  | [optional] 
-**length** | **int** |  | [optional] 
+**name** | **str** |  | [optional] [readonly] 
+**is_async** | **bool** |  | [optional] [readonly] 
+**length** | **int** |  | [optional] [readonly] 
 **position** | **int** |  | [optional] 
-**can_seek** | **bool** |  | [optional] 
-**can_timeout** | **bool** |  | [optional] 
+**can_seek** | **bool** |  | [optional] [readonly] 
+**can_timeout** | **bool** |  | [optional] [readonly] 
 **read_timeout** | **int** |  | [optional] 
 **write_timeout** | **int** |  | [optional] 
 

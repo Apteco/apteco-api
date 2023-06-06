@@ -1,5 +1,6 @@
 # CreateShareDetail
 
+The details required to create a new share
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

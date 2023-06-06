@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.output import Output  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestOutput(unittest.TestCase):
     """Output unit test stubs"""
@@ -29,11 +29,28 @@ class TestOutput(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test Output
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.output.Output()  # noqa: E501
+        if include_optional :
+            return Output(
+                format = 'CSV', 
+                delimiter = '0', 
+                alpha_encloser = '0', 
+                numeric_encloser = '0', 
+                authorisation_code = '0'
+            )
+        else :
+            return Output(
+        )
+
     def testOutput(self):
         """Test Output"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.output.Output()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,6 @@
 # CollectionHitDetail
 
+Details for a collection hit
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

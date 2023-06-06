@@ -32,17 +32,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsBuildsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsBuildsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 job_id = 56 # int | The id of the job to cancel
 
-try:
-    # EXPERIMENTAL: Requires OrbitAdmin: Cancel a running data purchasing job
-    api_instance.fast_stats_builds_cancel_fast_stats_build_job(data_view_name, system_name, job_id)
-except ApiException as e:
-    print("Exception when calling FastStatsBuildsApi->fast_stats_builds_cancel_fast_stats_build_job: %s\n" % e)
+    try:
+        # EXPERIMENTAL: Requires OrbitAdmin: Cancel a running data purchasing job
+        api_instance.fast_stats_builds_cancel_fast_stats_build_job(data_view_name, system_name, job_id)
+    except ApiException as e:
+        print("Exception when calling FastStatsBuildsApi->fast_stats_builds_cancel_fast_stats_build_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -98,18 +102,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsBuildsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsBuildsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 build_definition = apteco_api.BuildDefinition() # BuildDefinition | The details needed to build the system (optional)
 
-try:
-    # EXPERIMENTAL: Requires OrbitAdmin: Create a new job to builds a FastStats system from the given definition
-    api_response = api_instance.fast_stats_builds_create_fast_stats_build_job(data_view_name, system_name, build_definition=build_definition)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsBuildsApi->fast_stats_builds_create_fast_stats_build_job: %s\n" % e)
+    try:
+        # EXPERIMENTAL: Requires OrbitAdmin: Create a new job to builds a FastStats system from the given definition
+        api_response = api_instance.fast_stats_builds_create_fast_stats_build_job(data_view_name, system_name, build_definition=build_definition)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsBuildsApi->fast_stats_builds_create_fast_stats_build_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -165,19 +173,23 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsBuildsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsBuildsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the build service's configuration (optional)
 build_definition = apteco_api.BuildDefinition() # BuildDefinition | The details needed to build the system (optional)
 
-try:
-    # EXPERIMENTAL: Requires OrbitAdmin: Builds a FastStats system from the given definition
-    api_response = api_instance.fast_stats_builds_fast_stats_build_sync(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, build_definition=build_definition)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsBuildsApi->fast_stats_builds_fast_stats_build_sync: %s\n" % e)
+    try:
+        # EXPERIMENTAL: Requires OrbitAdmin: Builds a FastStats system from the given definition
+        api_response = api_instance.fast_stats_builds_fast_stats_build_sync(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, build_definition=build_definition)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsBuildsApi->fast_stats_builds_fast_stats_build_sync: %s\n" % e)
 ```
 
 ### Parameters
@@ -235,18 +247,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.FastStatsBuildsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsBuildsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 job_id = 56 # int | The id of the job to get the status for.
 
-try:
-    # EXPERIMENTAL: Requires OrbitAdmin: Get the status of a running FastStats build job
-    api_response = api_instance.fast_stats_builds_get_fast_stats_build_job(data_view_name, system_name, job_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FastStatsBuildsApi->fast_stats_builds_get_fast_stats_build_job: %s\n" % e)
+    try:
+        # EXPERIMENTAL: Requires OrbitAdmin: Get the status of a running FastStats build job
+        api_response = api_instance.fast_stats_builds_get_fast_stats_build_job(data_view_name, system_name, job_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FastStatsBuildsApi->fast_stats_builds_get_fast_stats_build_job: %s\n" % e)
 ```
 
 ### Parameters

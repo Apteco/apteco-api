@@ -30,17 +30,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.TemporaryFilesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.TemporaryFilesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 id = 'id_example' # str | The id of the temporary file to return the contents for
 
-try:
-    # Returns the contents of a temporary file with the given id
-    api_response = api_instance.temporary_files_get_temporary_file(data_view_name, id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling TemporaryFilesApi->temporary_files_get_temporary_file: %s\n" % e)
+    try:
+        # Returns the contents of a temporary file with the given id
+        api_response = api_instance.temporary_files_get_temporary_file(data_view_name, id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling TemporaryFilesApi->temporary_files_get_temporary_file: %s\n" % e)
 ```
 
 ### Parameters
@@ -93,18 +97,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.TemporaryFilesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.TemporaryFilesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 id = 'id_example' # str | The id of the temporary file
 part_number = 56 # int | The number of the temporary file part to return the contents for
 
-try:
-    # Returns the contents of a temporary file part with the given id and part number
-    api_response = api_instance.temporary_files_get_temporary_file_part(data_view_name, id, part_number)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling TemporaryFilesApi->temporary_files_get_temporary_file_part: %s\n" % e)
+    try:
+        # Returns the contents of a temporary file part with the given id and part number
+        api_response = api_instance.temporary_files_get_temporary_file_part(data_view_name, id, part_number)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling TemporaryFilesApi->temporary_files_get_temporary_file_part: %s\n" % e)
 ```
 
 ### Parameters
@@ -158,18 +166,22 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.TemporaryFilesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.TemporaryFilesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 id = 'id_example' # str | The id for the temporary file to create or update
 file = '/path/to/file' # file | The file to upload.
 
-try:
-    # Creates or updates a temporary file with the given id
-    api_response = api_instance.temporary_files_upsert_temporary_file(data_view_name, id, file)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling TemporaryFilesApi->temporary_files_upsert_temporary_file: %s\n" % e)
+    try:
+        # Creates or updates a temporary file with the given id
+        api_response = api_instance.temporary_files_upsert_temporary_file(data_view_name, id, file)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling TemporaryFilesApi->temporary_files_upsert_temporary_file: %s\n" % e)
 ```
 
 ### Parameters
@@ -223,20 +235,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.TemporaryFilesApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.TemporaryFilesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 id = 'id_example' # str | The id for the temporary file
 part_number = 56 # int | The number of the temporary file part to create or update.  This is zero-based
 file = '/path/to/file' # file | The file to upload.
 final_part = True # bool | Whether this part is the final part and the full temporary file should be assembled.  If this is not specified it defaults to false.  If this is set to true all parts from 0 up to this partIndex must already exist (optional)
 
-try:
-    # Creates or updates part of a temporary file with the given id and part number
-    api_response = api_instance.temporary_files_upsert_temporary_file_part(data_view_name, id, part_number, file, final_part=final_part)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling TemporaryFilesApi->temporary_files_upsert_temporary_file_part: %s\n" % e)
+    try:
+        # Creates or updates part of a temporary file with the given id and part number
+        api_response = api_instance.temporary_files_upsert_temporary_file_part(data_view_name, id, part_number, file, final_part=final_part)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling TemporaryFilesApi->temporary_files_upsert_temporary_file_part: %s\n" % e)
 ```
 
 ### Parameters

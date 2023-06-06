@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.measure_result import MeasureResult  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestMeasureResult(unittest.TestCase):
     """MeasureResult unit test stubs"""
@@ -29,11 +29,37 @@ class TestMeasureResult(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test MeasureResult
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.measure_result.MeasureResult()  # noqa: E501
+        if include_optional :
+            return MeasureResult(
+                id = '0', 
+                rows = [
+                    '0'
+                    ], 
+                cells = [
+                    '0'
+                    ]
+            )
+        else :
+            return MeasureResult(
+                id = '0',
+                rows = [
+                    '0'
+                    ],
+                cells = [
+                    '0'
+                    ],
+        )
+
     def testMeasureResult(self):
         """Test MeasureResult"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.measure_result.MeasureResult()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

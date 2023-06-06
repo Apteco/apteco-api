@@ -1,5 +1,6 @@
 # CreatedShareUpdateDetail
 
+Details about the creation of a new share update
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

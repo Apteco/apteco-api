@@ -1,5 +1,6 @@
 # InvalidToShareUserDisplayDetails
 
+Display details for a user that was invalid for being added or removed  from sharing a particular shareable item
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

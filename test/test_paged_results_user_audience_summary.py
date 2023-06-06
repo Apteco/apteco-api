@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.paged_results_user_audience_summary import PagedResultsUserAudienceSummary  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestPagedResultsUserAudienceSummary(unittest.TestCase):
     """PagedResultsUserAudienceSummary unit test stubs"""
@@ -29,11 +29,89 @@ class TestPagedResultsUserAudienceSummary(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test PagedResultsUserAudienceSummary
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.paged_results_user_audience_summary.PagedResultsUserAudienceSummary()  # noqa: E501
+        if include_optional :
+            return PagedResultsUserAudienceSummary(
+                offset = 56, 
+                count = 56, 
+                total_count = 56, 
+                list = [
+                    apteco_api.models.user_audience_summary.UserAudienceSummary(
+                        viewing_username = '0', 
+                        status = 'Default', 
+                        shared_to_me = True, 
+                        shared_by_me = True, 
+                        id = 56, 
+                        title = '0', 
+                        description = '0', 
+                        creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        owner = apteco_api.models.user_display_details.UserDisplayDetails(
+                            username = '0', 
+                            firstname = '0', 
+                            surname = '0', 
+                            email_address = '0', ), 
+                        deletion_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        resolve_table_name = '0', 
+                        resolve_table_nett_count = 56, 
+                        number_of_users_shared_with = 56, 
+                        share_id = 56, 
+                        number_of_hits = 56, 
+                        system_name = '0', 
+                        last_updated_user = apteco_api.models.user_display_details.UserDisplayDetails(
+                            username = '0', 
+                            firstname = '0', 
+                            surname = '0', 
+                            email_address = '0', ), 
+                        last_updated_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        last_update_id = 56, )
+                    ]
+            )
+        else :
+            return PagedResultsUserAudienceSummary(
+                offset = 56,
+                count = 56,
+                total_count = 56,
+                list = [
+                    apteco_api.models.user_audience_summary.UserAudienceSummary(
+                        viewing_username = '0', 
+                        status = 'Default', 
+                        shared_to_me = True, 
+                        shared_by_me = True, 
+                        id = 56, 
+                        title = '0', 
+                        description = '0', 
+                        creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        owner = apteco_api.models.user_display_details.UserDisplayDetails(
+                            username = '0', 
+                            firstname = '0', 
+                            surname = '0', 
+                            email_address = '0', ), 
+                        deletion_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        resolve_table_name = '0', 
+                        resolve_table_nett_count = 56, 
+                        number_of_users_shared_with = 56, 
+                        share_id = 56, 
+                        number_of_hits = 56, 
+                        system_name = '0', 
+                        last_updated_user = apteco_api.models.user_display_details.UserDisplayDetails(
+                            username = '0', 
+                            firstname = '0', 
+                            surname = '0', 
+                            email_address = '0', ), 
+                        last_updated_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        last_update_id = 56, )
+                    ],
+        )
+
     def testPagedResultsUserAudienceSummary(self):
         """Test PagedResultsUserAudienceSummary"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.paged_results_user_audience_summary.PagedResultsUserAudienceSummary()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

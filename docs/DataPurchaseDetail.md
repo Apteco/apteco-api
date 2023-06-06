@@ -1,5 +1,6 @@
 # DataPurchaseDetail
 
+Details used to create records purchase
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

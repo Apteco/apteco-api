@@ -112,13 +112,13 @@ class StaticResourcesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `static_resources_get_static_resource_categories`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `static_resources_get_static_resource_categories`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `static_resources_get_static_resource_categories`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -127,13 +127,13 @@ class StaticResourcesApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -234,12 +234,12 @@ class StaticResourcesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `static_resources_get_static_resource_category`")  # noqa: E501
         # verify the required parameter 'resource_category' is set
-        if ('resource_category' not in local_var_params or
-                local_var_params['resource_category'] is None):
+        if self.api_client.client_side_validation and ('resource_category' not in local_var_params or  # noqa: E501
+                                                        local_var_params['resource_category'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `resource_category` when calling `static_resources_get_static_resource_category`")  # noqa: E501
 
         collection_formats = {}
@@ -350,16 +350,16 @@ class StaticResourcesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `static_resources_get_static_resource_file`")  # noqa: E501
         # verify the required parameter 'resource_category' is set
-        if ('resource_category' not in local_var_params or
-                local_var_params['resource_category'] is None):
+        if self.api_client.client_side_validation and ('resource_category' not in local_var_params or  # noqa: E501
+                                                        local_var_params['resource_category'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `resource_category` when calling `static_resources_get_static_resource_file`")  # noqa: E501
         # verify the required parameter 'resource_name' is set
-        if ('resource_name' not in local_var_params or
-                local_var_params['resource_name'] is None):
+        if self.api_client.client_side_validation and ('resource_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['resource_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `resource_name` when calling `static_resources_get_static_resource_file`")  # noqa: E501
 
         collection_formats = {}
@@ -470,16 +470,16 @@ class StaticResourcesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `static_resources_get_static_resource_file_details`")  # noqa: E501
         # verify the required parameter 'resource_category' is set
-        if ('resource_category' not in local_var_params or
-                local_var_params['resource_category'] is None):
+        if self.api_client.client_side_validation and ('resource_category' not in local_var_params or  # noqa: E501
+                                                        local_var_params['resource_category'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `resource_category` when calling `static_resources_get_static_resource_file_details`")  # noqa: E501
         # verify the required parameter 'resource_name' is set
-        if ('resource_name' not in local_var_params or
-                local_var_params['resource_name'] is None):
+        if self.api_client.client_side_validation and ('resource_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['resource_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `resource_name` when calling `static_resources_get_static_resource_file_details`")  # noqa: E501
 
         collection_formats = {}
@@ -600,17 +600,17 @@ class StaticResourcesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `static_resources_get_static_resources_for_category`")  # noqa: E501
         # verify the required parameter 'resource_category' is set
-        if ('resource_category' not in local_var_params or
-                local_var_params['resource_category'] is None):
+        if self.api_client.client_side_validation and ('resource_category' not in local_var_params or  # noqa: E501
+                                                        local_var_params['resource_category'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `resource_category` when calling `static_resources_get_static_resources_for_category`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `static_resources_get_static_resources_for_category`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `static_resources_get_static_resources_for_category`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -621,13 +621,13 @@ class StaticResourcesApi(object):
             path_params['resourceCategory'] = local_var_params['resource_category']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}

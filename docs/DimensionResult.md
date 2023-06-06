@@ -1,5 +1,6 @@
 # DimensionResult
 
+The results returned for a dimension defined in the cube
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

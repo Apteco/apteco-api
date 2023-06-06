@@ -106,12 +106,12 @@ class UserResetPasswordRequestsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `user_reset_password_requests_confirm_reset_password_request`")  # noqa: E501
         # verify the required parameter 'token' is set
-        if ('token' not in local_var_params or
-                local_var_params['token'] is None):
+        if self.api_client.client_side_validation and ('token' not in local_var_params or  # noqa: E501
+                                                        local_var_params['token'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `token` when calling `user_reset_password_requests_confirm_reset_password_request`")  # noqa: E501
 
         collection_formats = {}
@@ -222,8 +222,8 @@ class UserResetPasswordRequestsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `user_reset_password_requests_create_reset_password_request`")  # noqa: E501
 
         collection_formats = {}
@@ -338,12 +338,12 @@ class UserResetPasswordRequestsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `user_reset_password_requests_get_reset_password_request`")  # noqa: E501
         # verify the required parameter 'token' is set
-        if ('token' not in local_var_params or
-                local_var_params['token'] is None):
+        if self.api_client.client_side_validation and ('token' not in local_var_params or  # noqa: E501
+                                                        local_var_params['token'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `token` when calling `user_reset_password_requests_get_reset_password_request`")  # noqa: E501
 
         collection_formats = {}
@@ -460,13 +460,13 @@ class UserResetPasswordRequestsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `user_reset_password_requests_get_reset_password_requests`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `user_reset_password_requests_get_reset_password_requests`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `user_reset_password_requests_get_reset_password_requests`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -475,13 +475,13 @@ class UserResetPasswordRequestsApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}

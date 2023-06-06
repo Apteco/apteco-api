@@ -1,5 +1,6 @@
 # DashboardContentItem
 
+Outline for a dashboard item
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

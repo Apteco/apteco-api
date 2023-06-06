@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.date_rule import DateRule  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestDateRule(unittest.TestCase):
     """DateRule unit test stubs"""
@@ -29,11 +29,45 @@ class TestDateRule(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test DateRule
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.date_rule.DateRule()  # noqa: E501
+        if include_optional :
+            return DateRule(
+                pattern_frequency = 'Daily', 
+                pattern_interval = 56, 
+                pattern_type = 'CalculatedDay', 
+                pattern_days_of_week = [
+                    'None'
+                    ], 
+                pattern_day_of_month = 56, 
+                pattern_month_of_year = 56, 
+                pattern_occurrence_of_day_in_month = 'None', 
+                start_range_limit = 'Earliest', 
+                range_start_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                start_range_relative = 'Today', 
+                start_range_offset_direction = 'Forward', 
+                start_range_offset = 56, 
+                start_range_offset_units = 'Days', 
+                end_range_limit = 'Earliest', 
+                range_end_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                end_range_relative = 'Today', 
+                end_range_offset_direction = 'Forward', 
+                end_range_offset = 56, 
+                end_range_offset_units = 'Days', 
+                range_max_occurrences = 56
+            )
+        else :
+            return DateRule(
+        )
+
     def testDateRule(self):
         """Test DateRule"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.date_rule.DateRule()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.limits import Limits  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestLimits(unittest.TestCase):
     """Limits unit test stubs"""
@@ -29,11 +29,32 @@ class TestLimits(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test Limits
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.limits.Limits()  # noqa: E501
+        if include_optional :
+            return Limits(
+                sampling = 'All', 
+                stop_at_limit = True, 
+                total = 56, 
+                type = 'None', 
+                start_at = 56, 
+                percent = 1.337, 
+                fraction = apteco_api.models.fraction.Fraction(
+                    numerator = 56, 
+                    denominator = 56, )
+            )
+        else :
+            return Limits(
+        )
+
     def testLimits(self):
         """Test Limits"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.limits.Limits()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

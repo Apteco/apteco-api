@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.channel_summary import ChannelSummary  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestChannelSummary(unittest.TestCase):
     """ChannelSummary unit test stubs"""
@@ -29,11 +29,31 @@ class TestChannelSummary(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ChannelSummary
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.channel_summary.ChannelSummary()  # noqa: E501
+        if include_optional :
+            return ChannelSummary(
+                id = '0', 
+                schema_id = 56, 
+                description = '0', 
+                type = 'Unknown', 
+                parent_id = '0'
+            )
+        else :
+            return ChannelSummary(
+                id = '0',
+                description = '0',
+                type = 'Unknown',
+        )
+
     def testChannelSummary(self):
         """Test ChannelSummary"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.channel_summary.ChannelSummary()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

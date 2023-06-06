@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.channel_statistics import ChannelStatistics  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestChannelStatistics(unittest.TestCase):
     """ChannelStatistics unit test stubs"""
@@ -29,11 +29,56 @@ class TestChannelStatistics(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test ChannelStatistics
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.channel_statistics.ChannelStatistics()  # noqa: E501
+        if include_optional :
+            return ChannelStatistics(
+                days = [
+                    '0'
+                    ], 
+                per_channel_stats = {
+                    'key' : apteco_api.models.per_channel_statistics.PerChannelStatistics(
+                        communications_counts = [
+                            56
+                            ], 
+                        costs = [
+                            1.337
+                            ], 
+                        total_communications_count = 56, 
+                        total_cost = 1.337, )
+                    }, 
+                total_communications_count = 56, 
+                total_cost = 1.337, 
+                statistics_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+            )
+        else :
+            return ChannelStatistics(
+                days = [
+                    '0'
+                    ],
+                per_channel_stats = {
+                    'key' : apteco_api.models.per_channel_statistics.PerChannelStatistics(
+                        communications_counts = [
+                            56
+                            ], 
+                        costs = [
+                            1.337
+                            ], 
+                        total_communications_count = 56, 
+                        total_cost = 1.337, )
+                    },
+                total_communications_count = 56,
+                total_cost = 1.337,
+        )
+
     def testChannelStatistics(self):
         """Test ChannelStatistics"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.channel_statistics.ChannelStatistics()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,6 @@
 # ModifyUserAudienceDetailResults
 
+Details used to modify an audience for a given user
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,6 @@
 # PeopleStageSystemDetail
 
+Top level details for a PeopleStage system
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

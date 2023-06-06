@@ -1,5 +1,6 @@
 # ConfirmResetPasswordRequest
 
+The parameters needed to confirm an existing reset password request
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

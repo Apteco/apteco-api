@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.paged_results_file_entry import PagedResultsFileEntry  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestPagedResultsFileEntry(unittest.TestCase):
     """PagedResultsFileEntry unit test stubs"""
@@ -29,11 +29,41 @@ class TestPagedResultsFileEntry(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test PagedResultsFileEntry
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.paged_results_file_entry.PagedResultsFileEntry()  # noqa: E501
+        if include_optional :
+            return PagedResultsFileEntry(
+                offset = 56, 
+                count = 56, 
+                total_count = 56, 
+                list = [
+                    apteco_api.models.file_entry.FileEntry(
+                        name = '0', 
+                        path = '0', 
+                        type = 'Unknown', )
+                    ]
+            )
+        else :
+            return PagedResultsFileEntry(
+                offset = 56,
+                count = 56,
+                total_count = 56,
+                list = [
+                    apteco_api.models.file_entry.FileEntry(
+                        name = '0', 
+                        path = '0', 
+                        type = 'Unknown', )
+                    ],
+        )
+
     def testPagedResultsFileEntry(self):
         """Test PagedResultsFileEntry"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.paged_results_file_entry.PagedResultsFileEntry()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

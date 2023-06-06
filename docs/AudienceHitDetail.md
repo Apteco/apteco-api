@@ -1,5 +1,6 @@
 # AudienceHitDetail
 
+Details for an audience hit
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

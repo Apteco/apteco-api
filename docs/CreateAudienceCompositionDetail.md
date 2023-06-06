@@ -1,5 +1,6 @@
 # CreateAudienceCompositionDetail
 
+Details for creating a composition
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

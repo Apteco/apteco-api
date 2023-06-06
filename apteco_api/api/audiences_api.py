@@ -108,12 +108,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_calculate_audience_data_licensing_sync`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_calculate_audience_data_licensing_sync`")  # noqa: E501
 
         collection_formats = {}
@@ -125,7 +125,7 @@ class AudiencesApi(object):
             path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
         header_params = {}
@@ -234,12 +234,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_calculate_audience_latest_update_sync`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_calculate_audience_latest_update_sync`")  # noqa: E501
 
         collection_formats = {}
@@ -251,7 +251,7 @@ class AudiencesApi(object):
             path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
         header_params = {}
@@ -358,16 +358,16 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_cancel_calculate_audience_data_licensing_job`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_cancel_calculate_audience_data_licensing_job`")  # noqa: E501
         # verify the required parameter 'job_id' is set
-        if ('job_id' not in local_var_params or
-                local_var_params['job_id'] is None):
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `job_id` when calling `audiences_cancel_calculate_audience_data_licensing_job`")  # noqa: E501
 
         collection_formats = {}
@@ -476,16 +476,16 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_cancel_calculate_audience_job`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_cancel_calculate_audience_job`")  # noqa: E501
         # verify the required parameter 'job_id' is set
-        if ('job_id' not in local_var_params or
-                local_var_params['job_id'] is None):
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `job_id` when calling `audiences_cancel_calculate_audience_job`")  # noqa: E501
 
         collection_formats = {}
@@ -594,16 +594,16 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_cancel_check_audience_job`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_cancel_check_audience_job`")  # noqa: E501
         # verify the required parameter 'job_id' is set
-        if ('job_id' not in local_var_params or
-                local_var_params['job_id'] is None):
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `job_id` when calling `audiences_cancel_check_audience_job`")  # noqa: E501
 
         collection_formats = {}
@@ -712,16 +712,16 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_cancel_export_audience_job`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_cancel_export_audience_job`")  # noqa: E501
         # verify the required parameter 'job_id' is set
-        if ('job_id' not in local_var_params or
-                local_var_params['job_id'] is None):
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `job_id` when calling `audiences_cancel_export_audience_job`")  # noqa: E501
 
         collection_formats = {}
@@ -832,12 +832,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_check_audience_latest_update_sync`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_check_audience_latest_update_sync`")  # noqa: E501
 
         collection_formats = {}
@@ -849,7 +849,7 @@ class AudiencesApi(object):
             path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
         header_params = {}
@@ -956,8 +956,8 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_create_audience`")  # noqa: E501
 
         collection_formats = {}
@@ -1072,12 +1072,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_create_audience_hit_for_audience`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_create_audience_hit_for_audience`")  # noqa: E501
 
         collection_formats = {}
@@ -1196,12 +1196,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_create_audience_update`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_create_audience_update`")  # noqa: E501
 
         collection_formats = {}
@@ -1318,12 +1318,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_create_calculate_audience_data_licensing_job`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_create_calculate_audience_data_licensing_job`")  # noqa: E501
 
         collection_formats = {}
@@ -1440,12 +1440,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_create_calculate_audience_job_for_latest_update`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_create_calculate_audience_job_for_latest_update`")  # noqa: E501
 
         collection_formats = {}
@@ -1562,12 +1562,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_create_check_audience_job_for_latest_update`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_create_check_audience_job_for_latest_update`")  # noqa: E501
 
         collection_formats = {}
@@ -1686,12 +1686,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_create_export_audience_job_for_latest_update`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_create_export_audience_job_for_latest_update`")  # noqa: E501
 
         collection_formats = {}
@@ -1808,12 +1808,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_delete_audience`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_delete_audience`")  # noqa: E501
 
         collection_formats = {}
@@ -1924,12 +1924,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_export_audience_latest_update_sync`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_export_audience_latest_update_sync`")  # noqa: E501
 
         collection_formats = {}
@@ -1941,7 +1941,7 @@ class AudiencesApi(object):
             path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
 
         query_params = []
-        if 'timeout_in_seconds' in local_var_params:
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
         header_params = {}
@@ -2050,12 +2050,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_audience`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_audience`")  # noqa: E501
 
         collection_formats = {}
@@ -2067,9 +2067,9 @@ class AudiencesApi(object):
             path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
 
         query_params = []
-        if 'include_queries' in local_var_params:
+        if 'include_queries' in local_var_params and local_var_params['include_queries'] is not None:  # noqa: E501
             query_params.append(('includeQueries', local_var_params['include_queries']))  # noqa: E501
-        if 'include_brief' in local_var_params:
+        if 'include_brief' in local_var_params and local_var_params['include_brief'] is not None:  # noqa: E501
             query_params.append(('includeBrief', local_var_params['include_brief']))  # noqa: E501
 
         header_params = {}
@@ -2170,16 +2170,16 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_audience_hit_for_audience`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_audience_hit_for_audience`")  # noqa: E501
         # verify the required parameter 'audience_hit_id' is set
-        if ('audience_hit_id' not in local_var_params or
-                local_var_params['audience_hit_id'] is None):
+        if self.api_client.client_side_validation and ('audience_hit_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_hit_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_hit_id` when calling `audiences_get_audience_hit_for_audience`")  # noqa: E501
 
         collection_formats = {}
@@ -2298,17 +2298,17 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_audience_hits_for_audience`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_audience_hits_for_audience`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `audiences_get_audience_hits_for_audience`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `audiences_get_audience_hits_for_audience`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -2319,13 +2319,13 @@ class AudiencesApi(object):
             path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -2424,12 +2424,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_audience_latest_native_for_nett_query`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_audience_latest_native_for_nett_query`")  # noqa: E501
 
         collection_formats = {}
@@ -2540,16 +2540,16 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_audience_result`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_audience_result`")  # noqa: E501
         # verify the required parameter 'audience_result_id' is set
-        if ('audience_result_id' not in local_var_params or
-                local_var_params['audience_result_id'] is None):
+        if self.api_client.client_side_validation and ('audience_result_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_result_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_result_id` when calling `audiences_get_audience_result`")  # noqa: E501
 
         collection_formats = {}
@@ -2668,17 +2668,17 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_audience_results`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_audience_results`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `audiences_get_audience_results`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `audiences_get_audience_results`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -2689,13 +2689,13 @@ class AudiencesApi(object):
             path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -2800,16 +2800,16 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_audience_update`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_audience_update`")  # noqa: E501
         # verify the required parameter 'audience_update_id' is set
-        if ('audience_update_id' not in local_var_params or
-                local_var_params['audience_update_id'] is None):
+        if self.api_client.client_side_validation and ('audience_update_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_update_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_update_id` when calling `audiences_get_audience_update`")  # noqa: E501
 
         collection_formats = {}
@@ -2823,9 +2823,9 @@ class AudiencesApi(object):
             path_params['audienceUpdateId'] = local_var_params['audience_update_id']  # noqa: E501
 
         query_params = []
-        if 'include_queries' in local_var_params:
+        if 'include_queries' in local_var_params and local_var_params['include_queries'] is not None:  # noqa: E501
             query_params.append(('includeQueries', local_var_params['include_queries']))  # noqa: E501
-        if 'include_brief' in local_var_params:
+        if 'include_brief' in local_var_params and local_var_params['include_brief'] is not None:  # noqa: E501
             query_params.append(('includeBrief', local_var_params['include_brief']))  # noqa: E501
 
         header_params = {}
@@ -2932,17 +2932,17 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_audience_updates`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_audience_updates`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `audiences_get_audience_updates`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `audiences_get_audience_updates`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -2953,13 +2953,13 @@ class AudiencesApi(object):
             path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -3068,13 +3068,13 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_audiences`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `audiences_get_audiences`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `audiences_get_audiences`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -3083,15 +3083,15 @@ class AudiencesApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
-        if 'include_deleted' in local_var_params:
+        if 'include_deleted' in local_var_params and local_var_params['include_deleted'] is not None:  # noqa: E501
             query_params.append(('includeDeleted', local_var_params['include_deleted']))  # noqa: E501
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -3194,16 +3194,16 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_calculate_audience_data_licensing_job`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_calculate_audience_data_licensing_job`")  # noqa: E501
         # verify the required parameter 'job_id' is set
-        if ('job_id' not in local_var_params or
-                local_var_params['job_id'] is None):
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `job_id` when calling `audiences_get_calculate_audience_data_licensing_job`")  # noqa: E501
 
         collection_formats = {}
@@ -3322,16 +3322,16 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_calculate_audience_job`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_calculate_audience_job`")  # noqa: E501
         # verify the required parameter 'job_id' is set
-        if ('job_id' not in local_var_params or
-                local_var_params['job_id'] is None):
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `job_id` when calling `audiences_get_calculate_audience_job`")  # noqa: E501
 
         collection_formats = {}
@@ -3444,16 +3444,16 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_check_audience_job`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_check_audience_job`")  # noqa: E501
         # verify the required parameter 'job_id' is set
-        if ('job_id' not in local_var_params or
-                local_var_params['job_id'] is None):
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `job_id` when calling `audiences_get_check_audience_job`")  # noqa: E501
 
         collection_formats = {}
@@ -3566,16 +3566,16 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_get_export_audience_job`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_get_export_audience_job`")  # noqa: E501
         # verify the required parameter 'job_id' is set
-        if ('job_id' not in local_var_params or
-                local_var_params['job_id'] is None):
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `job_id` when calling `audiences_get_export_audience_job`")  # noqa: E501
 
         collection_formats = {}
@@ -3694,12 +3694,12 @@ class AudiencesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_transfer_audience_ownership`")  # noqa: E501
         # verify the required parameter 'audience_id' is set
-        if ('audience_id' not in local_var_params or
-                local_var_params['audience_id'] is None):
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_transfer_audience_ownership`")  # noqa: E501
 
         collection_formats = {}
@@ -3711,9 +3711,9 @@ class AudiencesApi(object):
             path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
 
         query_params = []
-        if 'include_queries' in local_var_params:
+        if 'include_queries' in local_var_params and local_var_params['include_queries'] is not None:  # noqa: E501
             query_params.append(('includeQueries', local_var_params['include_queries']))  # noqa: E501
-        if 'include_brief' in local_var_params:
+        if 'include_brief' in local_var_params and local_var_params['include_brief'] is not None:  # noqa: E501
             query_params.append(('includeBrief', local_var_params['include_brief']))  # noqa: E501
 
         header_params = {}

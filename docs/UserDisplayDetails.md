@@ -1,5 +1,6 @@
 # UserDisplayDetails
 
+Display details for a user
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

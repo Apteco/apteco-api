@@ -27,17 +27,19 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.SessionsApi()
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SessionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 session_id = 'session_id_example' # str | An existing valid session id
 
-try:
-    # Creates an API session token from a traditional FastStats session id
-    api_response = api_instance.sessions_convert_session_to_access_token(data_view_name, session_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SessionsApi->sessions_convert_session_to_access_token: %s\n" % e)
+    try:
+        # Creates an API session token from a traditional FastStats session id
+        api_response = api_instance.sessions_convert_session_to_access_token(data_view_name, session_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SessionsApi->sessions_convert_session_to_access_token: %s\n" % e)
 ```
 
 ### Parameters
@@ -84,17 +86,19 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.SessionsApi()
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SessionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 user_name = 'user_name_example' # str | The name of the user to create the session for (optional)
 
-try:
-    # Creates a new set of parameters to use when creating a new session via the salted login method.
-    api_response = api_instance.sessions_create_login_parameters(data_view_name, user_name=user_name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SessionsApi->sessions_create_login_parameters: %s\n" % e)
+    try:
+        # Creates a new set of parameters to use when creating a new session via the salted login method.
+        api_response = api_instance.sessions_create_login_parameters(data_view_name, user_name=user_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SessionsApi->sessions_create_login_parameters: %s\n" % e)
 ```
 
 ### Parameters
@@ -140,19 +144,21 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.SessionsApi()
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SessionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 username = 'username_example' # str | The username of the user
 login_salt = 'login_salt_example' # str | The salt to use when loging in
 password_hash = 'password_hash_example' # str | The password hash for the user.  Depending on the settings for the user this will be generated in a complicated way
 
-try:
-    # Creates a session to use for other API requests
-    api_response = api_instance.sessions_create_session_salted(data_view_name, username, login_salt, password_hash)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SessionsApi->sessions_create_session_salted: %s\n" % e)
+    try:
+        # Creates a session to use for other API requests
+        api_response = api_instance.sessions_create_session_salted(data_view_name, username, login_salt, password_hash)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SessionsApi->sessions_create_session_salted: %s\n" % e)
 ```
 
 ### Parameters
@@ -201,18 +207,20 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.SessionsApi()
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SessionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 user_login = 'user_login_example' # str | The piece of information used to identify the user.  This always be a username, and  if the option has been configured an email address can also be used.  Note that a  user can only successfully log on with their email address if no other user has  the same email address registered in the system.
 password = 'password_example' # str | The password for the user.
 
-try:
-    # Creates a session to use for other API requests
-    api_response = api_instance.sessions_create_session_simple(data_view_name, user_login, password)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SessionsApi->sessions_create_session_simple: %s\n" % e)
+    try:
+        # Creates a session to use for other API requests
+        api_response = api_instance.sessions_create_session_simple(data_view_name, user_login, password)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SessionsApi->sessions_create_session_simple: %s\n" % e)
 ```
 
 ### Parameters
@@ -266,17 +274,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SessionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SessionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 session_id = 'session_id_example' # str | The session id to look up
 
-try:
-    # Gets some simple user details for the given session id
-    api_response = api_instance.sessions_get_session_details(data_view_name, session_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SessionsApi->sessions_get_session_details: %s\n" % e)
+    try:
+        # Gets some simple user details for the given session id
+        api_response = api_instance.sessions_get_session_details(data_view_name, session_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SessionsApi->sessions_get_session_details: %s\n" % e)
 ```
 
 ### Parameters
@@ -330,20 +342,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SessionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SessionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Requires OrbitAdmin: Gets some simple user details for all currently valid sessions.
-    api_response = api_instance.sessions_get_session_details_list(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling SessionsApi->sessions_get_session_details_list: %s\n" % e)
+    try:
+        # Requires OrbitAdmin: Gets some simple user details for all currently valid sessions.
+        api_response = api_instance.sessions_get_session_details_list(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SessionsApi->sessions_get_session_details_list: %s\n" % e)
 ```
 
 ### Parameters
@@ -398,16 +414,20 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.SessionsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SessionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 session_id = 'session_id_example' # str | The session id to log out from
 
-try:
-    # Logs out the specified session
-    api_instance.sessions_logout_session(data_view_name, session_id)
-except ApiException as e:
-    print("Exception when calling SessionsApi->sessions_logout_session: %s\n" % e)
+    try:
+        # Logs out the specified session
+        api_instance.sessions_logout_session(data_view_name, session_id)
+    except ApiException as e:
+        print("Exception when calling SessionsApi->sessions_logout_session: %s\n" % e)
 ```
 
 ### Parameters

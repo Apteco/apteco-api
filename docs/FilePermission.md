@@ -1,5 +1,6 @@
 # FilePermission
 
+Details of what file permissions are controlled for the associated resource
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

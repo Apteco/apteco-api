@@ -24,17 +24,19 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.UserResetPasswordRequestsApi()
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.UserResetPasswordRequestsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 token = 'token_example' # str | The token of the request
 confirm_reset_password_request = apteco_api.ConfirmResetPasswordRequest() # ConfirmResetPasswordRequest | The details needed to confirm the reset password request (optional)
 
-try:
-    # Confirms a given reset password request and changes the password
-    api_instance.user_reset_password_requests_confirm_reset_password_request(data_view_name, token, confirm_reset_password_request=confirm_reset_password_request)
-except ApiException as e:
-    print("Exception when calling UserResetPasswordRequestsApi->user_reset_password_requests_confirm_reset_password_request: %s\n" % e)
+    try:
+        # Confirms a given reset password request and changes the password
+        api_instance.user_reset_password_requests_confirm_reset_password_request(data_view_name, token, confirm_reset_password_request=confirm_reset_password_request)
+    except ApiException as e:
+        print("Exception when calling UserResetPasswordRequestsApi->user_reset_password_requests_confirm_reset_password_request: %s\n" % e)
 ```
 
 ### Parameters
@@ -81,17 +83,19 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.UserResetPasswordRequestsApi()
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.UserResetPasswordRequestsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 create_reset_password_request = apteco_api.CreateResetPasswordRequest() # CreateResetPasswordRequest | The details needed to create the reset password request (optional)
 
-try:
-    # Creates a new reset password requests, which will check that the provided email address exists and then issue a confirmation notification
-    api_response = api_instance.user_reset_password_requests_create_reset_password_request(data_view_name, create_reset_password_request=create_reset_password_request)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserResetPasswordRequestsApi->user_reset_password_requests_create_reset_password_request: %s\n" % e)
+    try:
+        # Creates a new reset password requests, which will check that the provided email address exists and then issue a confirmation notification
+        api_response = api_instance.user_reset_password_requests_create_reset_password_request(data_view_name, create_reset_password_request=create_reset_password_request)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UserResetPasswordRequestsApi->user_reset_password_requests_create_reset_password_request: %s\n" % e)
 ```
 
 ### Parameters
@@ -145,17 +149,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.UserResetPasswordRequestsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.UserResetPasswordRequestsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 token = 'token_example' # str | The token of the request
 
-try:
-    # Requires OrbitAdmin: Returns details for a given reset password request
-    api_response = api_instance.user_reset_password_requests_get_reset_password_request(data_view_name, token)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserResetPasswordRequestsApi->user_reset_password_requests_get_reset_password_request: %s\n" % e)
+    try:
+        # Requires OrbitAdmin: Returns details for a given reset password request
+        api_response = api_instance.user_reset_password_requests_get_reset_password_request(data_view_name, token)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UserResetPasswordRequestsApi->user_reset_password_requests_get_reset_password_request: %s\n" % e)
 ```
 
 ### Parameters
@@ -210,20 +218,24 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.UserResetPasswordRequestsApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.UserResetPasswordRequestsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Requires OrbitAdmin: Returns all the current reset password requests in the system.
-    api_response = api_instance.user_reset_password_requests_get_reset_password_requests(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserResetPasswordRequestsApi->user_reset_password_requests_get_reset_password_requests: %s\n" % e)
+    try:
+        # Requires OrbitAdmin: Returns all the current reset password requests in the system.
+        api_response = api_instance.user_reset_password_requests_get_reset_password_requests(data_view_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UserResetPasswordRequestsApi->user_reset_password_requests_get_reset_password_requests: %s\n" % e)
 ```
 
 ### Parameters

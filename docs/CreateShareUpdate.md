@@ -1,5 +1,6 @@
 # CreateShareUpdate
 
+The details required to create a new share update
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

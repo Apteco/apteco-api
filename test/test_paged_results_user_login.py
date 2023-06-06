@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.paged_results_user_login import PagedResultsUserLogin  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestPagedResultsUserLogin(unittest.TestCase):
     """PagedResultsUserLogin unit test stubs"""
@@ -29,11 +29,43 @@ class TestPagedResultsUserLogin(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test PagedResultsUserLogin
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.paged_results_user_login.PagedResultsUserLogin()  # noqa: E501
+        if include_optional :
+            return PagedResultsUserLogin(
+                offset = 56, 
+                count = 56, 
+                total_count = 56, 
+                list = [
+                    apteco_api.models.user_login.UserLogin(
+                        username = '0', 
+                        system_name = '0', 
+                        client_type = '0', 
+                        timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                    ]
+            )
+        else :
+            return PagedResultsUserLogin(
+                offset = 56,
+                count = 56,
+                total_count = 56,
+                list = [
+                    apteco_api.models.user_login.UserLogin(
+                        username = '0', 
+                        system_name = '0', 
+                        client_type = '0', 
+                        timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                    ],
+        )
+
     def testPagedResultsUserLogin(self):
         """Test PagedResultsUserLogin"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.paged_results_user_login.PagedResultsUserLogin()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

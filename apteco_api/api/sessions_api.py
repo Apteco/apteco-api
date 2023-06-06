@@ -104,12 +104,12 @@ class SessionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `sessions_convert_session_to_access_token`")  # noqa: E501
         # verify the required parameter 'session_id' is set
-        if ('session_id' not in local_var_params or
-                local_var_params['session_id'] is None):
+        if self.api_client.client_side_validation and ('session_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['session_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `session_id` when calling `sessions_convert_session_to_access_token`")  # noqa: E501
 
         collection_formats = {}
@@ -222,8 +222,8 @@ class SessionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `sessions_create_login_parameters`")  # noqa: E501
 
         collection_formats = {}
@@ -340,20 +340,20 @@ class SessionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `sessions_create_session_salted`")  # noqa: E501
         # verify the required parameter 'username' is set
-        if ('username' not in local_var_params or
-                local_var_params['username'] is None):
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `username` when calling `sessions_create_session_salted`")  # noqa: E501
         # verify the required parameter 'login_salt' is set
-        if ('login_salt' not in local_var_params or
-                local_var_params['login_salt'] is None):
+        if self.api_client.client_side_validation and ('login_salt' not in local_var_params or  # noqa: E501
+                                                        local_var_params['login_salt'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `login_salt` when calling `sessions_create_session_salted`")  # noqa: E501
         # verify the required parameter 'password_hash' is set
-        if ('password_hash' not in local_var_params or
-                local_var_params['password_hash'] is None):
+        if self.api_client.client_side_validation and ('password_hash' not in local_var_params or  # noqa: E501
+                                                        local_var_params['password_hash'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `password_hash` when calling `sessions_create_session_salted`")  # noqa: E501
 
         collection_formats = {}
@@ -472,16 +472,16 @@ class SessionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `sessions_create_session_simple`")  # noqa: E501
         # verify the required parameter 'user_login' is set
-        if ('user_login' not in local_var_params or
-                local_var_params['user_login'] is None):
+        if self.api_client.client_side_validation and ('user_login' not in local_var_params or  # noqa: E501
+                                                        local_var_params['user_login'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `user_login` when calling `sessions_create_session_simple`")  # noqa: E501
         # verify the required parameter 'password' is set
-        if ('password' not in local_var_params or
-                local_var_params['password'] is None):
+        if self.api_client.client_side_validation and ('password' not in local_var_params or  # noqa: E501
+                                                        local_var_params['password'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `password` when calling `sessions_create_session_simple`")  # noqa: E501
 
         collection_formats = {}
@@ -596,12 +596,12 @@ class SessionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `sessions_get_session_details`")  # noqa: E501
         # verify the required parameter 'session_id' is set
-        if ('session_id' not in local_var_params or
-                local_var_params['session_id'] is None):
+        if self.api_client.client_side_validation and ('session_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['session_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `session_id` when calling `sessions_get_session_details`")  # noqa: E501
 
         collection_formats = {}
@@ -718,13 +718,13 @@ class SessionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `sessions_get_session_details_list`")  # noqa: E501
 
-        if 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `offset` when calling `sessions_get_session_details_list`, must be a value greater than or equal to `0`")  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
             raise ApiValueError("Invalid value for parameter `count` when calling `sessions_get_session_details_list`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
@@ -733,13 +733,13 @@ class SessionsApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
-        if 'filter' in local_var_params:
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
-        if 'order_by' in local_var_params:
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
             query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
-        if 'offset' in local_var_params:
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
             query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'count' in local_var_params:
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
@@ -838,12 +838,12 @@ class SessionsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `sessions_logout_session`")  # noqa: E501
         # verify the required parameter 'session_id' is set
-        if ('session_id' not in local_var_params or
-                local_var_params['session_id'] is None):
+        if self.api_client.client_side_validation and ('session_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['session_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `session_id` when calling `sessions_logout_session`")  # noqa: E501
 
         collection_formats = {}

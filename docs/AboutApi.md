@@ -34,15 +34,17 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.AboutApi()
-
-try:
-    # EXPERIMENTAL: Returns a sample string if experimental endpoints are enabled
-    api_response = api_instance.about_example_experimental_resource()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_example_experimental_resource: %s\n" % e)
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    
+    try:
+        # EXPERIMENTAL: Returns a sample string if experimental endpoints are enabled
+        api_response = api_instance.about_example_experimental_resource()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_example_experimental_resource: %s\n" % e)
 ```
 
 ### Parameters
@@ -91,15 +93,19 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.AboutApi(apteco_api.ApiClient(configuration))
-
-try:
-    # Requires OrbitAdmin: Forces a garbage collection in the API's process and then returns details about the API's .Net process
-    api_response = api_instance.about_force_process_garbage_collection()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_force_process_garbage_collection: %s\n" % e)
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    
+    try:
+        # Requires OrbitAdmin: Forces a garbage collection in the API's process and then returns details about the API's .Net process
+        api_response = api_instance.about_force_process_garbage_collection()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_force_process_garbage_collection: %s\n" % e)
 ```
 
 ### Parameters
@@ -146,16 +152,20 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.AboutApi(apteco_api.ApiClient(configuration))
-data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 
-try:
-    # Get details for a particular DataView.
-    api_response = api_instance.about_get_data_view(data_view_name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_get_data_view: %s\n" % e)
+    try:
+        # Get details for a particular DataView.
+        api_response = api_instance.about_get_data_view(data_view_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_get_data_view: %s\n" % e)
 ```
 
 ### Parameters
@@ -201,19 +211,21 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.AboutApi()
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name (optional)
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Get the list of DataViews that are available.
-    api_response = api_instance.about_get_data_views(filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_get_data_views: %s\n" % e)
+    try:
+        # Get the list of DataViews that are available.
+        api_response = api_instance.about_get_data_views(filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_get_data_views: %s\n" % e)
 ```
 
 ### Parameters
@@ -260,20 +272,22 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.AboutApi()
-domain = 'domain_example' # str | The email domain to list DataViews for (i.e. \"example.com\")
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    domain = 'domain_example' # str | The email domain to list DataViews for (i.e. \"example.com\")
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Get the list of DataViews that are available to users with the specified email domain.
-    api_response = api_instance.about_get_data_views_for_domain(domain, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_get_data_views_for_domain: %s\n" % e)
+    try:
+        # Get the list of DataViews that are available to users with the specified email domain.
+        api_response = api_instance.about_get_data_views_for_domain(domain, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_get_data_views_for_domain: %s\n" % e)
 ```
 
 ### Parameters
@@ -321,20 +335,22 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.AboutApi()
-system_name = 'system_name_example' # str | The name of the system to list DataViews for (i.e. \"holidays\")
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    system_name = 'system_name_example' # str | The name of the system to list DataViews for (i.e. \"holidays\")
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Get the list of DataViews that are configured with the given FastStats system.
-    api_response = api_instance.about_get_data_views_for_system_name(system_name, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_get_data_views_for_system_name: %s\n" % e)
+    try:
+        # Get the list of DataViews that are configured with the given FastStats system.
+        api_response = api_instance.about_get_data_views_for_system_name(system_name, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_get_data_views_for_system_name: %s\n" % e)
 ```
 
 ### Parameters
@@ -382,21 +398,23 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.AboutApi()
-exclude_endpoints_with_no_licence_requirements = True # bool | If specified, don't return endpoints in the output that have no licence requirements.  Defaults to false - returns all endpoints (optional)
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    exclude_endpoints_with_no_licence_requirements = True # bool | If specified, don't return endpoints in the output that have no licence requirements.  Defaults to false - returns all endpoints (optional)
 exclude_endpoints_with_no_role_requirements = True # bool | If specified, don't return endpoints in the output that have no role requirements.  Defaults to false - returns all endpoints (optional)
 filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name, GroupName, Method, UrlTemplate (optional)
 order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, GroupName, Method, UrlTemplate (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
-try:
-    # Returns details of all the endpoints in the API
-    api_response = api_instance.about_get_endpoints(exclude_endpoints_with_no_licence_requirements=exclude_endpoints_with_no_licence_requirements, exclude_endpoints_with_no_role_requirements=exclude_endpoints_with_no_role_requirements, filter=filter, order_by=order_by, offset=offset, count=count)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_get_endpoints: %s\n" % e)
+    try:
+        # Returns details of all the endpoints in the API
+        api_response = api_instance.about_get_endpoints(exclude_endpoints_with_no_licence_requirements=exclude_endpoints_with_no_licence_requirements, exclude_endpoints_with_no_role_requirements=exclude_endpoints_with_no_role_requirements, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_get_endpoints: %s\n" % e)
 ```
 
 ### Parameters
@@ -444,15 +462,17 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.AboutApi()
-
-try:
-    # Returns information about the current language the API is operating in (based on details in the request)
-    api_response = api_instance.about_get_language_details()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_get_language_details: %s\n" % e)
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    
+    try:
+        # Returns information about the current language the API is operating in (based on details in the request)
+        api_response = api_instance.about_get_language_details()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_get_language_details: %s\n" % e)
 ```
 
 ### Parameters
@@ -492,16 +512,18 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.AboutApi()
-settings_path = 'settings_path_example' # str | The path of the settings
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    settings_path = 'settings_path_example' # str | The path of the settings
 
-try:
-    # Gets Orbit settings at the given path
-    api_response = api_instance.about_get_orbit_settings(settings_path)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_get_orbit_settings: %s\n" % e)
+    try:
+        # Gets Orbit settings at the given path
+        api_response = api_instance.about_get_orbit_settings(settings_path)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_get_orbit_settings: %s\n" % e)
 ```
 
 ### Parameters
@@ -547,15 +569,17 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.AboutApi()
-
-try:
-    # Gets the complete Orbit settings object
-    api_response = api_instance.about_get_orbit_settings_root()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_get_orbit_settings_root: %s\n" % e)
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    
+    try:
+        # Gets the complete Orbit settings object
+        api_response = api_instance.about_get_orbit_settings_root()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_get_orbit_settings_root: %s\n" % e)
 ```
 
 ### Parameters
@@ -606,15 +630,19 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
-api_instance = apteco_api.AboutApi(apteco_api.ApiClient(configuration))
-
-try:
-    # Requires OrbitAdmin: Returns details about the API's .Net process
-    api_response = api_instance.about_get_process_details()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_get_process_details: %s\n" % e)
+# Defining host is optional and default to https://example.com/OrbitAPI
+configuration.host = "https://example.com/OrbitAPI"
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    
+    try:
+        # Requires OrbitAdmin: Returns details about the API's .Net process
+        api_response = api_instance.about_get_process_details()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_get_process_details: %s\n" % e)
 ```
 
 ### Parameters
@@ -655,15 +683,17 @@ import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = apteco_api.AboutApi()
-
-try:
-    # Returns version information about the API
-    api_response = api_instance.about_get_version()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AboutApi->about_get_version: %s\n" % e)
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    
+    try:
+        # Returns version information about the API
+        api_response = api_instance.about_get_version()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_get_version: %s\n" % e)
 ```
 
 ### Parameters

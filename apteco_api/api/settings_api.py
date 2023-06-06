@@ -104,12 +104,12 @@ class SettingsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `settings_delete_data_view_settings`")  # noqa: E501
         # verify the required parameter 'settings_path' is set
-        if ('settings_path' not in local_var_params or
-                local_var_params['settings_path'] is None):
+        if self.api_client.client_side_validation and ('settings_path' not in local_var_params or  # noqa: E501
+                                                        local_var_params['settings_path'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `settings_path` when calling `settings_delete_data_view_settings`")  # noqa: E501
 
         collection_formats = {}
@@ -218,8 +218,8 @@ class SettingsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `settings_delete_data_view_settings_root`")  # noqa: E501
 
         collection_formats = {}
@@ -322,12 +322,12 @@ class SettingsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `settings_get_data_view_settings`")  # noqa: E501
         # verify the required parameter 'settings_path' is set
-        if ('settings_path' not in local_var_params or
-                local_var_params['settings_path'] is None):
+        if self.api_client.client_side_validation and ('settings_path' not in local_var_params or  # noqa: E501
+                                                        local_var_params['settings_path'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `settings_path` when calling `settings_get_data_view_settings`")  # noqa: E501
 
         collection_formats = {}
@@ -440,8 +440,8 @@ class SettingsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `settings_get_data_view_settings_root`")  # noqa: E501
 
         collection_formats = {}
@@ -550,12 +550,12 @@ class SettingsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `settings_update_data_view_settings`")  # noqa: E501
         # verify the required parameter 'settings_path' is set
-        if ('settings_path' not in local_var_params or
-                local_var_params['settings_path'] is None):
+        if self.api_client.client_side_validation and ('settings_path' not in local_var_params or  # noqa: E501
+                                                        local_var_params['settings_path'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `settings_path` when calling `settings_update_data_view_settings`")  # noqa: E501
 
         collection_formats = {}
@@ -676,8 +676,8 @@ class SettingsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
-        if ('data_view_name' not in local_var_params or
-                local_var_params['data_view_name'] is None):
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data_view_name` when calling `settings_update_data_view_settings_root`")  # noqa: E501
 
         collection_formats = {}

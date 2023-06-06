@@ -1,5 +1,6 @@
 # ModifyUserCollectionDetailResults
 
+Details used to modify a collection for a given user
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

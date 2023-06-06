@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.user_login import UserLogin  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestUserLogin(unittest.TestCase):
     """UserLogin unit test stubs"""
@@ -29,11 +29,31 @@ class TestUserLogin(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test UserLogin
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.user_login.UserLogin()  # noqa: E501
+        if include_optional :
+            return UserLogin(
+                username = '0', 
+                system_name = '0', 
+                client_type = '0', 
+                timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+            )
+        else :
+            return UserLogin(
+                username = '0',
+                system_name = '0',
+                client_type = '0',
+                timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+        )
+
     def testUserLogin(self):
         """Test UserLogin"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.user_login.UserLogin()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

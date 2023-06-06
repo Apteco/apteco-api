@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "0.2.2"
+__version__ = "0.2.3"
 
 # import apis into sdk package
 from apteco_api.api.about_api import AboutApi

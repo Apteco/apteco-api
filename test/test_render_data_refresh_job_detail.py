@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import apteco_api
 from apteco_api.models.render_data_refresh_job_detail import RenderDataRefreshJobDetail  # noqa: E501
 from apteco_api.rest import ApiException
-
 
 class TestRenderDataRefreshJobDetail(unittest.TestCase):
     """RenderDataRefreshJobDetail unit test stubs"""
@@ -29,11 +29,27 @@ class TestRenderDataRefreshJobDetail(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test RenderDataRefreshJobDetail
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = apteco_api.models.render_data_refresh_job_detail.RenderDataRefreshJobDetail()  # noqa: E501
+        if include_optional :
+            return RenderDataRefreshJobDetail(
+                id = 56, 
+                is_complete = True
+            )
+        else :
+            return RenderDataRefreshJobDetail(
+                id = 56,
+                is_complete = True,
+        )
+
     def testRenderDataRefreshJobDetail(self):
         """Test RenderDataRefreshJobDetail"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = apteco_api.models.render_data_refresh_job_detail.RenderDataRefreshJobDetail()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':
