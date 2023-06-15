@@ -1079,9 +1079,9 @@ class AboutApi(object):
         if 'settings_path' in local_var_params:
             # handle 'settings_path' correctly as parameter with 'path' format 
             settings_path_segments = local_var_params['settings_path'].split('/')
-            settings_path_params = {f'settingsPath{i}': seg for i, seg in enumerate(settings_path_segments)}
-            settings_path_template = '/'.join(f'{{{k}}}' for k in settings_path_params.keys())
-            path_params.update(settings_path_params)
+            settings_path_extra_path_params = {f'settingsPath{i}': seg for i, seg in enumerate(settings_path_segments)}
+            settings_path_template = '/'.join(f'{{{k}}}' for k in settings_path_extra_path_params.keys())
+            path_params.update(settings_path_extra_path_params)
         else:
             settings_path_template = '{settingsPath}'
 

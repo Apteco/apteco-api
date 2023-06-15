@@ -139,9 +139,9 @@ class FilesApi(object):
         if 'file_path' in local_var_params:
             # handle 'file_path' correctly as parameter with 'path' format 
             file_path_segments = local_var_params['file_path'].split('/')
-            file_path_params = {f'filePath{i}': seg for i, seg in enumerate(file_path_segments)}
-            file_path_template = '/'.join(f'{{{k}}}' for k in file_path_params.keys())
-            path_params.update(file_path_params)
+            file_path_extra_path_params = {f'filePath{i}': seg for i, seg in enumerate(file_path_segments)}
+            file_path_template = '/'.join(f'{{{k}}}' for k in file_path_extra_path_params.keys())
+            path_params.update(file_path_extra_path_params)
         else:
             file_path_template = '{filePath}'
 
@@ -276,9 +276,9 @@ class FilesApi(object):
         if 'file_path' in local_var_params:
             # handle 'file_path' correctly as parameter with 'path' format 
             file_path_segments = local_var_params['file_path'].split('/')
-            file_path_params = {f'filePath{i}': seg for i, seg in enumerate(file_path_segments)}
-            file_path_template = '/'.join(f'{{{k}}}' for k in file_path_params.keys())
-            path_params.update(file_path_params)
+            file_path_extra_path_params = {f'filePath{i}': seg for i, seg in enumerate(file_path_segments)}
+            file_path_template = '/'.join(f'{{{k}}}' for k in file_path_extra_path_params.keys())
+            path_params.update(file_path_extra_path_params)
         else:
             file_path_template = '{filePath}'
 
@@ -424,9 +424,9 @@ class FilesApi(object):
         if 'file_path' in local_var_params:
             # handle 'file_path' correctly as parameter with 'path' format 
             file_path_segments = local_var_params['file_path'].split('/')
-            file_path_params = {f'filePath{i}': seg for i, seg in enumerate(file_path_segments)}
-            file_path_template = '/'.join(f'{{{k}}}' for k in file_path_params.keys())
-            path_params.update(file_path_params)
+            file_path_extra_path_params = {f'filePath{i}': seg for i, seg in enumerate(file_path_segments)}
+            file_path_template = '/'.join(f'{{{k}}}' for k in file_path_extra_path_params.keys())
+            path_params.update(file_path_extra_path_params)
         else:
             file_path_template = '{filePath}'
 

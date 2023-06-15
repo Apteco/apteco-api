@@ -297,9 +297,9 @@ class FastStatsSystemsApi(object):
         if 'path' in local_var_params:
             # handle 'path' correctly as parameter with 'path' format 
             path_segments = local_var_params['path'].split('/')
-            path_params = {f'path{i}': seg for i, seg in enumerate(path_segments)}
-            path_template = '/'.join(f'{{{k}}}' for k in path_params.keys())
-            path_params.update(path_params)
+            path_extra_path_params = {f'path{i}': seg for i, seg in enumerate(path_segments)}
+            path_template = '/'.join(f'{{{k}}}' for k in path_extra_path_params.keys())
+            path_params.update(path_extra_path_params)
         else:
             path_template = '{path}'
 

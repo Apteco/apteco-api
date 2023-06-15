@@ -340,6 +340,7 @@ def fix_path_format_parameter(path, verb, operation_id, param_name):
 
     full_method_name_py = f"{api_py}_{method_name_py}"
     api_filename = f"apteco_api/api/{api_py}_api.py"
+    var_name_prefix = param_name_py
 
     with open(api_filename) as f:
         code_lines = f.readlines()
@@ -365,18 +366,18 @@ def fix_path_format_parameter(path, verb, operation_id, param_name):
     param_section_replace = f"""
         if '{param_name_py}' in local_var_params:
             # handle '{param_name_py}' correctly as parameter with 'path' format 
-            {param_name_py}_segments = local_var_params['{param_name_py}'].split('/')
-            {param_name_py}_params = {{f'{param_name}{{i}}': seg for i, seg in enumerate({param_name_py}_segments)}}
-            {param_name_py}_template = '/'.join(f'{{{{{{k}}}}}}' for k in {param_name_py}_params.keys())
-            path_params.update({param_name_py}_params)
+            {var_name_prefix}_segments = local_var_params['{param_name_py}'].split('/')
+            {var_name_prefix}_extra_path_params = {{f'{param_name}{{i}}': seg for i, seg in enumerate({var_name_prefix}_segments)}}
+            {var_name_prefix}_template = '/'.join(f'{{{{{{k}}}}}}' for k in {var_name_prefix}_extra_path_params.keys())
+            path_params.update({var_name_prefix}_extra_path_params)
         else:
-            {param_name_py}_template = '{{{param_name}}}'"""
+            {var_name_prefix}_template = '{{{param_name}}}'"""
 
     path_before, __, path_after = path.partition(f"{{{param_name}}}")
     api_call_section_find = f"""return self.api_client.call_api(
             '{path}', '{verb.upper()}',"""
     api_call_section_replace = f"""return self.api_client.call_api(
-            {f"'{path_before}' + " if path_before else ""}{param_name_py}_template{f" + '{path_after}'" if path_after else ""}, '{verb.upper()}',"""
+            {f"'{path_before}' + " if path_before else ""}{var_name_prefix}_template{f" + '{path_after}'" if path_after else ""}, '{verb.upper()}',"""
 
     method_text = "".join(method_lines)
     assert method_text.count(param_section_find) == 1, f"Could not find check for parameter `{param_name_py}` in method `{method_name_py}()`"

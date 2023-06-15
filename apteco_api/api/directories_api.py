@@ -139,9 +139,9 @@ class DirectoriesApi(object):
         if 'directory_path' in local_var_params:
             # handle 'directory_path' correctly as parameter with 'path' format 
             directory_path_segments = local_var_params['directory_path'].split('/')
-            directory_path_params = {f'directoryPath{i}': seg for i, seg in enumerate(directory_path_segments)}
-            directory_path_template = '/'.join(f'{{{k}}}' for k in directory_path_params.keys())
-            path_params.update(directory_path_params)
+            directory_path_extra_path_params = {f'directoryPath{i}': seg for i, seg in enumerate(directory_path_segments)}
+            directory_path_template = '/'.join(f'{{{k}}}' for k in directory_path_extra_path_params.keys())
+            path_params.update(directory_path_extra_path_params)
         else:
             directory_path_template = '{directoryPath}'
 
@@ -292,9 +292,9 @@ class DirectoriesApi(object):
         if 'directory_path' in local_var_params:
             # handle 'directory_path' correctly as parameter with 'path' format 
             directory_path_segments = local_var_params['directory_path'].split('/')
-            directory_path_params = {f'directoryPath{i}': seg for i, seg in enumerate(directory_path_segments)}
-            directory_path_template = '/'.join(f'{{{k}}}' for k in directory_path_params.keys())
-            path_params.update(directory_path_params)
+            directory_path_extra_path_params = {f'directoryPath{i}': seg for i, seg in enumerate(directory_path_segments)}
+            directory_path_template = '/'.join(f'{{{k}}}' for k in directory_path_extra_path_params.keys())
+            path_params.update(directory_path_extra_path_params)
         else:
             directory_path_template = '{directoryPath}'
 
@@ -727,9 +727,9 @@ class DirectoriesApi(object):
         if 'directory_path' in local_var_params:
             # handle 'directory_path' correctly as parameter with 'path' format 
             directory_path_segments = local_var_params['directory_path'].split('/')
-            directory_path_params = {f'directoryPath{i}': seg for i, seg in enumerate(directory_path_segments)}
-            directory_path_template = '/'.join(f'{{{k}}}' for k in directory_path_params.keys())
-            path_params.update(directory_path_params)
+            directory_path_extra_path_params = {f'directoryPath{i}': seg for i, seg in enumerate(directory_path_segments)}
+            directory_path_template = '/'.join(f'{{{k}}}' for k in directory_path_extra_path_params.keys())
+            path_params.update(directory_path_extra_path_params)
         else:
             directory_path_template = '{directoryPath}'
 
