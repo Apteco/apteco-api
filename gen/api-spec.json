@@ -6857,7 +6857,7 @@
                     "200": {
                         "description": "The FastStats system folder structure",
                         "schema": {
-                            "$ref": "#/definitions/Folder"
+                            "$ref": "#/definitions/PagedResults[FolderStructureNode]"
                         }
                     },
                     "400": {

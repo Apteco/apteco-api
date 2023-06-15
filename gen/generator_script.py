@@ -112,6 +112,17 @@ def fix_spec_issues(spec):
     else:
         print("Spec issue not detected: `lastLogin` property for `SessionDetails` already set as optional")
 
+    # FastStatsSystems_GetFastStatsFolder should return PagedResults[FolderStructureNode] not Folder
+    fast_stats_systems_get_fast_stats_folder_response_schema = spec["paths"]["/{dataViewName}/FastStatsSystems/{systemName}/Folders/{path}"]["get"]["responses"]["200"]["schema"]
+    response_type = fast_stats_systems_get_fast_stats_folder_response_schema.get("$ref")
+    if response_type == "#/definitions/Folder":
+        fast_stats_systems_get_fast_stats_folder_response_schema["$ref"] = "#/definitions/PagedResults[FolderStructureNode]"
+        print("Spec issue corrected: changed return type for FastStatsSystems_GetFastStatsFolder from `Folder` to `PagedResults[FolderStructureNode]`")
+    elif response_type == "#/definitions/PagedResults[FolderStructureNode]":
+        print("Spec issue not detected: return type of FastStatsSystems_GetFastStatsFolder property already set to `PagedResults[FolderStructureNode]`")
+    else:
+        print(f"Spec issue not corrected: unexpected return type for FastStatsSystems_GetFastStatsFolder of `{response_type.replace('#/definitions/', '')}`")
+
 
 def find_line_no(content_lines, match_text, error_message):
     """Find line number where given content occurs."""

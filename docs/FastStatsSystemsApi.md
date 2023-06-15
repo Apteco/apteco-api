@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fast_stats_systems_get_fast_stats_folder**
-> Folder fast_stats_systems_get_fast_stats_folder(data_view_name, system_name, path, filter=filter, order_by=order_by, offset=offset, count=count)
+> PagedResultsFolderStructureNode fast_stats_systems_get_fast_stats_folder(data_view_name, system_name, path, filter=filter, order_by=order_by, offset=offset, count=count)
 
 Gets the folder structure for the FastStats system
 
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Folder**](Folder.md)
+[**PagedResultsFolderStructureNode**](PagedResultsFolderStructureNode.md)
 
 ### Authorization
 
