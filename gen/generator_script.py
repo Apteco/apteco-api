@@ -27,9 +27,10 @@ from urlpath import URL
 
 API_SPEC_PATH = "gen/api-spec.json"
 INTRODUCTION_PATH = "introduction.md"
+PACKAGE_DIR = "pkg"
 GEN_CONFIG_PATH = "gen/config.yaml"
 GEN_VERSION = "4.3.1"
-README_PATH = "README.md"
+README_PATH = f"{PACKAGE_DIR}/README.md"
 VERSION_PARTS = ["major", "minor", "patch", "dev_num"]
 
 
@@ -228,20 +229,25 @@ def bump_package_version(part="minor", allow_dirty=False):
     return get_new_version(out_text)
 
 
-def delete_old_package():
+def delete_old_package(package_dir=PACKAGE_DIR):
     """Remove code, docs and tests for existing package."""
-    shutil.rmtree("apteco_api/")
-    shutil.rmtree("docs/")
-    shutil.rmtree("test/")
+    shutil.rmtree(f"{package_dir}/apteco_api/")
+    shutil.rmtree(f"{package_dir}/docs/")
+    shutil.rmtree(f"{package_dir}/test/")
 
 
-def generate_new_package(api_spec_path=API_SPEC_PATH, gen_config_path=GEN_CONFIG_PATH, gen_version=GEN_VERSION):
+def check_package_dir_exists(package_dir=PACKAGE_DIR):
+    """Ensure that the package directory exists."""
+    Path(package_dir).mkdir(parents=True, exist_ok=True)
+
+
+def generate_new_package(api_spec_path=API_SPEC_PATH, gen_config_path=GEN_CONFIG_PATH, package_dir=PACKAGE_DIR, gen_version=GEN_VERSION):
     """Run package generator process and return result."""
     args = [
         fr"java -jar gen\openapi-generator-cli-{gen_version}.jar generate",
         f"-i {api_spec_path}",
         "-g python",
-        "-o .",
+        f"-o {package_dir}",
         f"-c {gen_config_path}",
     ]
     return subprocess.run(
@@ -265,6 +271,7 @@ def check_generator_output(result):
         "[main] WARN  o.o.c.languages.PythonClientCodegen - Type object not handled properly in setParameterExampleValue",
         "[main] WARN  o.o.c.languages.PythonClientCodegen - Type list not handled properly in setParameterExampleValue",
         "[main] INFO  o.o.codegen.DefaultGenerator - Model ReferenceVariableInfo not generated since it's a free-form object",
+        "[main] INFO  o.o.codegen.DefaultGenerator - Model AbstractAnalysisItemResult not generated since it's a free-form object",
     ]
     STANDARD_INFO = [
         "[main] INFO  o.o.codegen.DefaultGenerator - Generating with dryRun=false",
@@ -274,11 +281,15 @@ def check_generator_output(result):
         "[main] INFO  o.o.c.languages.PythonClientCodegen - NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).",
     ]
     OKAY_TO_IGNORE = COMMON_WARNINGS + OTHER_WARNINGS + STANDARD_INFO
-    GENERATOR_IGNORE_FORMAT = "[main] INFO  o.o.codegen.DefaultGenerator - Skipped generation of {base_path}\\.\\{file_path} due to rule in .openapi-generator-ignore"
+    GENERATOR_IGNORE_FORMAT = "[main] INFO  o.o.codegen.DefaultGenerator - Skipped generation of {base_path}\\{file_path} due to rule in .openapi-generator-ignore"
     WRITE_INFO_MESSAGE_START = "[main] INFO  o.o.codegen.AbstractGenerator - writing file"
 
-    outlines = result.stdout.decode("utf-8").strip().split("\r\n")
-    significant = [line for line in outlines if not (line in OKAY_TO_IGNORE or line.startswith(WRITE_INFO_MESSAGE_START))]
+    if result.stderr:
+        error_lines = result.stderr.decode("utf-8").strip().splitlines()
+        raise ChildProcessError("Running the generator gave the following error:\n" + "\n".join(error_lines))
+
+    out_lines = result.stdout.decode("utf-8").strip().splitlines()
+    significant = [line for line in out_lines if not (line in OKAY_TO_IGNORE or line.startswith(WRITE_INFO_MESSAGE_START))]
 
     skips = []
     unrecognised = []
@@ -316,7 +327,7 @@ def fix_parameters_with_path_format_issue():
     parameter_matches = []
     for path, operations in spec["paths"].items():
         for verb, operation in operations.items():
-            for idx, parameter in enumerate(operation["parameters"]):
+            for idx, parameter in enumerate(operation.get("parameters", [])):
                 if parameter.get("format") == "path":
                     parameter_matches.append({
                         "path": path,
@@ -350,7 +361,7 @@ def fix_path_format_parameter(path, verb, operation_id, param_name):
     param_name_py = "_".join(param_name_split).lower()
 
     full_method_name_py = f"{api_py}_{method_name_py}"
-    api_filename = f"apteco_api/api/{api_py}_api.py"
+    api_filename = f"{PACKAGE_DIR}/apteco_api/api/{api_py}_api.py"
     var_name_prefix = param_name_py
 
     with open(api_filename) as f:
@@ -406,6 +417,7 @@ def fix_path_format_parameter(path, verb, operation_id, param_name):
 def regenerate_package():
     """Delete old package, generate new version and check output."""
     delete_old_package()
+    check_package_dir_exists()
     result = generate_new_package()
     generator_output = check_generator_output(result)
     generator_fixes_output = fix_generated_package_issues()
@@ -457,7 +469,7 @@ def correct_line_endings():
     for file_path in (
             API_SPEC_PATH,
             GEN_CONFIG_PATH,
-            "setup.py",
+            f"{PACKAGE_DIR}/setup.py",
             ".bumpversion.cfg",
             README_PATH,
     ):

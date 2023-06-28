@@ -14,7 +14,7 @@ from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "apteco-api"
 VERSION = "0.2.6"
-README = "introduction.md"
+README = "../introduction.md"
 
 # read the contents of your README file
 from os import path
