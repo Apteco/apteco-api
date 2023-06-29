@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -56,7 +56,7 @@ class AudienceResultSummary(object):
     def __init__(self, id=None, audience_update_id=None, timestamp=None, fast_stats_build_date=None, user=None, nett_results=None, urn_file_path=None, local_vars_configuration=None):  # noqa: E501
         """AudienceResultSummary - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -94,7 +94,7 @@ class AudienceResultSummary(object):
         The id for this audience result  # noqa: E501
 
         :param id: The id of this AudienceResultSummary.  # noqa: E501
-        :type: int
+        :type id: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -119,7 +119,7 @@ class AudienceResultSummary(object):
         The id of the update (audience version) that this audience result was calculated with  # noqa: E501
 
         :param audience_update_id: The audience_update_id of this AudienceResultSummary.  # noqa: E501
-        :type: int
+        :type audience_update_id: int
         """
         if self.local_vars_configuration.client_side_validation and audience_update_id is None:  # noqa: E501
             raise ValueError("Invalid value for `audience_update_id`, must not be `None`")  # noqa: E501
@@ -144,7 +144,7 @@ class AudienceResultSummary(object):
         The date and time that this audience result was calculated  # noqa: E501
 
         :param timestamp: The timestamp of this AudienceResultSummary.  # noqa: E501
-        :type: datetime
+        :type timestamp: datetime
         """
         if self.local_vars_configuration.client_side_validation and timestamp is None:  # noqa: E501
             raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
@@ -169,7 +169,7 @@ class AudienceResultSummary(object):
         The date and time that the FastStats system used to calculate this audience result was built  # noqa: E501
 
         :param fast_stats_build_date: The fast_stats_build_date of this AudienceResultSummary.  # noqa: E501
-        :type: datetime
+        :type fast_stats_build_date: datetime
         """
         if self.local_vars_configuration.client_side_validation and fast_stats_build_date is None:  # noqa: E501
             raise ValueError("Invalid value for `fast_stats_build_date`, must not be `None`")  # noqa: E501
@@ -192,7 +192,7 @@ class AudienceResultSummary(object):
 
 
         :param user: The user of this AudienceResultSummary.  # noqa: E501
-        :type: UserDisplayDetails
+        :type user: UserDisplayDetails
         """
         if self.local_vars_configuration.client_side_validation and user is None:  # noqa: E501
             raise ValueError("Invalid value for `user`, must not be `None`")  # noqa: E501
@@ -215,7 +215,7 @@ class AudienceResultSummary(object):
 
 
         :param nett_results: The nett_results of this AudienceResultSummary.  # noqa: E501
-        :type: AudienceQueryResult
+        :type nett_results: AudienceQueryResult
         """
         if self.local_vars_configuration.client_side_validation and nett_results is None:  # noqa: E501
             raise ValueError("Invalid value for `nett_results`, must not be `None`")  # noqa: E501
@@ -240,34 +240,42 @@ class AudienceResultSummary(object):
         If a URN file was generated as part of this audience result then this will be its path within the FastStats system  # noqa: E501
 
         :param urn_file_path: The urn_file_path of this AudienceResultSummary.  # noqa: E501
-        :type: str
+        :type urn_file_path: str
         """
         if self.local_vars_configuration.client_side_validation and urn_file_path is None:  # noqa: E501
             raise ValueError("Invalid value for `urn_file_path`, must not be `None`")  # noqa: E501
 
         self._urn_file_path = urn_file_path
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

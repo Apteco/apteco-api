@@ -37,8 +37,8 @@ class TestTimeRule(unittest.TestCase):
         # model = apteco_api.models.time_rule.TimeRule()  # noqa: E501
         if include_optional :
             return TimeRule(
-                range_low = '0', 
-                range_high = '0'
+                range_low = '', 
+                range_high = ''
             )
         else :
             return TimeRule(
@@ -48,7 +48,6 @@ class TestTimeRule(unittest.TestCase):
         """Test TimeRule"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

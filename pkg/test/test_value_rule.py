@@ -69,13 +69,13 @@ class TestValueRule(unittest.TestCase):
                     range_max_occurrences = 56, ), 
                 list_rule = apteco_api.models.list_rule.ListRule(
                     banding_type = 'None', 
-                    list = '0', 
-                    variable_name = '0', ), 
+                    list = '', 
+                    variable_name = '', ), 
                 time_rule = apteco_api.models.time_rule.TimeRule(
-                    range_low = '0', 
-                    range_high = '0', ), 
+                    range_low = '', 
+                    range_high = '', ), 
                 predefined_rule = 'DateRange', 
-                name = '0'
+                name = ''
             )
         else :
             return ValueRule(
@@ -85,7 +85,6 @@ class TestValueRule(unittest.TestCase):
         """Test ValueRule"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

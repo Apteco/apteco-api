@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -54,7 +54,7 @@ class Column(object):
     def __init__(self, id=None, variable_name=None, query=None, column_header=None, detail=None, unclassified_format=None, local_vars_configuration=None):  # noqa: E501
         """Column - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -94,7 +94,7 @@ class Column(object):
         The id of the column  # noqa: E501
 
         :param id: The id of this Column.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -119,7 +119,7 @@ class Column(object):
         The variable to output in this column  # noqa: E501
 
         :param variable_name: The variable_name of this Column.  # noqa: E501
-        :type: str
+        :type variable_name: str
         """
 
         self._variable_name = variable_name
@@ -140,7 +140,7 @@ class Column(object):
 
 
         :param query: The query of this Column.  # noqa: E501
-        :type: Query
+        :type query: Query
         """
 
         self._query = query
@@ -163,7 +163,7 @@ class Column(object):
         The text to use as the column header  # noqa: E501
 
         :param column_header: The column_header of this Column.  # noqa: E501
-        :type: str
+        :type column_header: str
         """
         if self.local_vars_configuration.client_side_validation and column_header is None:  # noqa: E501
             raise ValueError("Invalid value for `column_header`, must not be `None`")  # noqa: E501
@@ -188,7 +188,7 @@ class Column(object):
         Whether to output the codes or descriptions for this column when data is exported to a file  # noqa: E501
 
         :param detail: The detail of this Column.  # noqa: E501
-        :type: str
+        :type detail: str
         """
         allowed_values = ["Code", "Description"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and detail not in allowed_values:  # noqa: E501
@@ -217,7 +217,7 @@ class Column(object):
         How to format unclassified values for selector variables  # noqa: E501
 
         :param unclassified_format: The unclassified_format of this Column.  # noqa: E501
-        :type: str
+        :type unclassified_format: str
         """
         allowed_values = ["FromDesign", "Empty"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and unclassified_format not in allowed_values:  # noqa: E501
@@ -228,27 +228,35 @@ class Column(object):
 
         self._unclassified_format = unclassified_format
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

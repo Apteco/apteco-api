@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -46,7 +46,7 @@ class Breakpoint(object):
     def __init__(self, breakpoint=None, size=None, local_vars_configuration=None):  # noqa: E501
         """Breakpoint - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._breakpoint = None
@@ -74,7 +74,7 @@ class Breakpoint(object):
         The target breakpoint size  # noqa: E501
 
         :param breakpoint: The breakpoint of this Breakpoint.  # noqa: E501
-        :type: str
+        :type breakpoint: str
         """
         if self.local_vars_configuration.client_side_validation and breakpoint is None:  # noqa: E501
             raise ValueError("Invalid value for `breakpoint`, must not be `None`")  # noqa: E501
@@ -103,34 +103,42 @@ class Breakpoint(object):
 
 
         :param size: The size of this Breakpoint.  # noqa: E501
-        :type: Size
+        :type size: Size
         """
         if self.local_vars_configuration.client_side_validation and size is None:  # noqa: E501
             raise ValueError("Invalid value for `size`, must not be `None`")  # noqa: E501
 
         self._size = size
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

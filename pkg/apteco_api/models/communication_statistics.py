@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -68,7 +68,7 @@ class CommunicationStatistics(object):
     def __init__(self, days=None, communications_counts=None, total_communications_count=None, deliveries_counts=None, total_deliveries_count=None, messages_counts=None, total_messages_count=None, campaigns_counts=None, total_campaigns_count=None, people_counts=None, communication_statistics_timestamp=None, campaign_statistics_timestamp=None, people_statistics_timestamp=None, local_vars_configuration=None):  # noqa: E501
         """CommunicationStatistics - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._days = None
@@ -121,7 +121,7 @@ class CommunicationStatistics(object):
         The set of days where communication information is available  # noqa: E501
 
         :param days: The days of this CommunicationStatistics.  # noqa: E501
-        :type: list[str]
+        :type days: list[str]
         """
         if self.local_vars_configuration.client_side_validation and days is None:  # noqa: E501
             raise ValueError("Invalid value for `days`, must not be `None`")  # noqa: E501
@@ -146,7 +146,7 @@ class CommunicationStatistics(object):
         The set of counts representing the number of communications on the corresponding day.  The first figure is data for the first day in the Days list, and so on.  # noqa: E501
 
         :param communications_counts: The communications_counts of this CommunicationStatistics.  # noqa: E501
-        :type: list[int]
+        :type communications_counts: list[int]
         """
         if self.local_vars_configuration.client_side_validation and communications_counts is None:  # noqa: E501
             raise ValueError("Invalid value for `communications_counts`, must not be `None`")  # noqa: E501
@@ -171,7 +171,7 @@ class CommunicationStatistics(object):
         The total number of communications across all days  # noqa: E501
 
         :param total_communications_count: The total_communications_count of this CommunicationStatistics.  # noqa: E501
-        :type: int
+        :type total_communications_count: int
         """
         if self.local_vars_configuration.client_side_validation and total_communications_count is None:  # noqa: E501
             raise ValueError("Invalid value for `total_communications_count`, must not be `None`")  # noqa: E501
@@ -196,7 +196,7 @@ class CommunicationStatistics(object):
         The set of counts representing the number of deliveries that have run on the corresponding day.  The first figure is data for the first day in the Days list, and so on.  # noqa: E501
 
         :param deliveries_counts: The deliveries_counts of this CommunicationStatistics.  # noqa: E501
-        :type: list[int]
+        :type deliveries_counts: list[int]
         """
         if self.local_vars_configuration.client_side_validation and deliveries_counts is None:  # noqa: E501
             raise ValueError("Invalid value for `deliveries_counts`, must not be `None`")  # noqa: E501
@@ -221,7 +221,7 @@ class CommunicationStatistics(object):
         The total number of deliveries that have run across all days  # noqa: E501
 
         :param total_deliveries_count: The total_deliveries_count of this CommunicationStatistics.  # noqa: E501
-        :type: int
+        :type total_deliveries_count: int
         """
         if self.local_vars_configuration.client_side_validation and total_deliveries_count is None:  # noqa: E501
             raise ValueError("Invalid value for `total_deliveries_count`, must not be `None`")  # noqa: E501
@@ -246,7 +246,7 @@ class CommunicationStatistics(object):
         The set of counts representing the number of messages that have had at least one delivery run on the corresponding day.  The first figure is data for the first day in the Days list, and so on.  # noqa: E501
 
         :param messages_counts: The messages_counts of this CommunicationStatistics.  # noqa: E501
-        :type: list[int]
+        :type messages_counts: list[int]
         """
         if self.local_vars_configuration.client_side_validation and messages_counts is None:  # noqa: E501
             raise ValueError("Invalid value for `messages_counts`, must not be `None`")  # noqa: E501
@@ -271,7 +271,7 @@ class CommunicationStatistics(object):
         The total number of messages that have had at least one delivery run across all days  # noqa: E501
 
         :param total_messages_count: The total_messages_count of this CommunicationStatistics.  # noqa: E501
-        :type: int
+        :type total_messages_count: int
         """
         if self.local_vars_configuration.client_side_validation and total_messages_count is None:  # noqa: E501
             raise ValueError("Invalid value for `total_messages_count`, must not be `None`")  # noqa: E501
@@ -296,7 +296,7 @@ class CommunicationStatistics(object):
         The set of counts representing the number of campaigns that have had at least one delivery run on the corresponding day.  The first figure is data for the first day in the Days list, and so on.  # noqa: E501
 
         :param campaigns_counts: The campaigns_counts of this CommunicationStatistics.  # noqa: E501
-        :type: list[int]
+        :type campaigns_counts: list[int]
         """
         if self.local_vars_configuration.client_side_validation and campaigns_counts is None:  # noqa: E501
             raise ValueError("Invalid value for `campaigns_counts`, must not be `None`")  # noqa: E501
@@ -321,7 +321,7 @@ class CommunicationStatistics(object):
         The total number of campaigns that have had at least one delivery run across all days  # noqa: E501
 
         :param total_campaigns_count: The total_campaigns_count of this CommunicationStatistics.  # noqa: E501
-        :type: int
+        :type total_campaigns_count: int
         """
         if self.local_vars_configuration.client_side_validation and total_campaigns_count is None:  # noqa: E501
             raise ValueError("Invalid value for `total_campaigns_count`, must not be `None`")  # noqa: E501
@@ -346,7 +346,7 @@ class CommunicationStatistics(object):
         The set of counts representing the number of unique people processed on the corresponding day.  The first figure is data for the first day in the Days list, and so on.  # noqa: E501
 
         :param people_counts: The people_counts of this CommunicationStatistics.  # noqa: E501
-        :type: list[int]
+        :type people_counts: list[int]
         """
         if self.local_vars_configuration.client_side_validation and people_counts is None:  # noqa: E501
             raise ValueError("Invalid value for `people_counts`, must not be `None`")  # noqa: E501
@@ -371,7 +371,7 @@ class CommunicationStatistics(object):
         The date and time that the communication statistics were calculated  # noqa: E501
 
         :param communication_statistics_timestamp: The communication_statistics_timestamp of this CommunicationStatistics.  # noqa: E501
-        :type: datetime
+        :type communication_statistics_timestamp: datetime
         """
 
         self._communication_statistics_timestamp = communication_statistics_timestamp
@@ -394,7 +394,7 @@ class CommunicationStatistics(object):
         The date and time that the delivery, message and campaign statistics were calculated  # noqa: E501
 
         :param campaign_statistics_timestamp: The campaign_statistics_timestamp of this CommunicationStatistics.  # noqa: E501
-        :type: datetime
+        :type campaign_statistics_timestamp: datetime
         """
 
         self._campaign_statistics_timestamp = campaign_statistics_timestamp
@@ -417,32 +417,40 @@ class CommunicationStatistics(object):
         The date and time that the people statistics were calculated  # noqa: E501
 
         :param people_statistics_timestamp: The people_statistics_timestamp of this CommunicationStatistics.  # noqa: E501
-        :type: datetime
+        :type people_statistics_timestamp: datetime
         """
 
         self._people_statistics_timestamp = people_statistics_timestamp
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

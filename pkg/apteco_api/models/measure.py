@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -58,7 +58,7 @@ class Measure(object):
     def __init__(self, id=None, resolve_table_name=None, function=None, variable_name=None, query=None, filter_query=None, expression=None, sort=None, local_vars_configuration=None):  # noqa: E501
         """Measure - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -103,7 +103,7 @@ class Measure(object):
         The id of the measure  # noqa: E501
 
         :param id: The id of this Measure.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -128,7 +128,7 @@ class Measure(object):
         The name of the table to resolve this measure to.  I.e. all the counts in this measure will be counts of entities from this table  # noqa: E501
 
         :param resolve_table_name: The resolve_table_name of this Measure.  # noqa: E501
-        :type: str
+        :type resolve_table_name: str
         """
         if self.local_vars_configuration.client_side_validation and resolve_table_name is None:  # noqa: E501
             raise ValueError("Invalid value for `resolve_table_name`, must not be `None`")  # noqa: E501
@@ -153,7 +153,7 @@ class Measure(object):
         The function to use to aggregate up the data per cell within this measure  # noqa: E501
 
         :param function: The function of this Measure.  # noqa: E501
-        :type: str
+        :type function: str
         """
         if self.local_vars_configuration.client_side_validation and function is None:  # noqa: E501
             raise ValueError("Invalid value for `function`, must not be `None`")  # noqa: E501
@@ -184,7 +184,7 @@ class Measure(object):
         If the measure is based on a variable then the name of the variable to use  # noqa: E501
 
         :param variable_name: The variable_name of this Measure.  # noqa: E501
-        :type: str
+        :type variable_name: str
         """
 
         self._variable_name = variable_name
@@ -205,7 +205,7 @@ class Measure(object):
 
 
         :param query: The query of this Measure.  # noqa: E501
-        :type: Query
+        :type query: Query
         """
 
         self._query = query
@@ -226,7 +226,7 @@ class Measure(object):
 
 
         :param filter_query: The filter_query of this Measure.  # noqa: E501
-        :type: Query
+        :type filter_query: Query
         """
 
         self._filter_query = filter_query
@@ -247,7 +247,7 @@ class Measure(object):
 
 
         :param expression: The expression of this Measure.  # noqa: E501
-        :type: Expression
+        :type expression: Expression
         """
 
         self._expression = expression
@@ -270,7 +270,7 @@ class Measure(object):
         How the cells are sorted in this measure  # noqa: E501
 
         :param sort: The sort of this Measure.  # noqa: E501
-        :type: str
+        :type sort: str
         """
         allowed_values = ["None", "Ascending", "Descending"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and sort not in allowed_values:  # noqa: E501
@@ -281,27 +281,35 @@ class Measure(object):
 
         self._sort = sort
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -37,13 +37,13 @@ class TestResourceSummary(unittest.TestCase):
         # model = apteco_api.models.resource_summary.ResourceSummary()  # noqa: E501
         if include_optional :
             return ResourceSummary(
-                name = '0', 
+                name = '', 
                 size = 56, 
                 last_modified = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else :
             return ResourceSummary(
-                name = '0',
+                name = '',
                 size = 56,
                 last_modified = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )
@@ -52,7 +52,6 @@ class TestResourceSummary(unittest.TestCase):
         """Test ResourceSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

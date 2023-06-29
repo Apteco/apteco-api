@@ -37,41 +37,40 @@ class TestJobDetail(unittest.TestCase):
         # model = apteco_api.models.job_detail.JobDetail()  # noqa: E501
         if include_optional :
             return JobDetail(
-                request = '0', 
-                results = '0', 
+                request = '', 
+                results = '', 
                 id = 56, 
                 priority = 56, 
-                state = '0', 
+                state = '', 
                 cancel_requested = True, 
                 time_added = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 time_sent = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 time_finished = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                server = '0', 
-                system_name = '0', 
+                server = '', 
+                system_name = '', 
                 thread_number = 56, 
-                username = '0', 
-                job_type = '0'
+                username = '', 
+                job_type = ''
             )
         else :
             return JobDetail(
-                request = '0',
-                results = '0',
+                request = '',
+                results = '',
                 id = 56,
                 priority = 56,
-                state = '0',
+                state = '',
                 cancel_requested = True,
-                server = '0',
-                system_name = '0',
+                server = '',
+                system_name = '',
                 thread_number = 56,
-                username = '0',
-                job_type = '0',
+                username = '',
+                job_type = '',
         )
 
     def testJobDetail(self):
         """Test JobDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

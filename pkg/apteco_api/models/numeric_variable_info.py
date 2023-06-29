@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -52,7 +52,7 @@ class NumericVariableInfo(object):
     def __init__(self, minimum=None, maximum=None, is_currency=None, currency_locale=None, currency_symbol=None, local_vars_configuration=None):  # noqa: E501
         """NumericVariableInfo - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._minimum = None
@@ -91,7 +91,7 @@ class NumericVariableInfo(object):
         The minimum value that this numeric value has  # noqa: E501
 
         :param minimum: The minimum of this NumericVariableInfo.  # noqa: E501
-        :type: float
+        :type minimum: float
         """
 
         self._minimum = minimum
@@ -114,7 +114,7 @@ class NumericVariableInfo(object):
         The maximum value that this numeric value has  # noqa: E501
 
         :param maximum: The maximum of this NumericVariableInfo.  # noqa: E501
-        :type: float
+        :type maximum: float
         """
 
         self._maximum = maximum
@@ -137,7 +137,7 @@ class NumericVariableInfo(object):
         Whether this variable represents a currency value  # noqa: E501
 
         :param is_currency: The is_currency of this NumericVariableInfo.  # noqa: E501
-        :type: bool
+        :type is_currency: bool
         """
 
         self._is_currency = is_currency
@@ -160,7 +160,7 @@ class NumericVariableInfo(object):
         If this variable is a currency variable, then the locale name for the specific currency (i.e. \"en-GB\" for the UK pound sterling, \"en-US\" for the US dollar)  # noqa: E501
 
         :param currency_locale: The currency_locale of this NumericVariableInfo.  # noqa: E501
-        :type: str
+        :type currency_locale: str
         """
 
         self._currency_locale = currency_locale
@@ -183,32 +183,40 @@ class NumericVariableInfo(object):
         If this variable is a currency variable, then the currency symbolfor the specific currency (i.e. \"£\" for the UK pound sterling, \"$\" for the US dollar)  # noqa: E501
 
         :param currency_symbol: The currency_symbol of this NumericVariableInfo.  # noqa: E501
-        :type: str
+        :type currency_symbol: str
         """
 
         self._currency_symbol = currency_symbol
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

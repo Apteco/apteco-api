@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -66,7 +66,7 @@ class AudienceExportDetail(object):
     def __init__(self, audience_update_id=None, timestamp=None, fast_stats_build_date=None, user=None, nett_counts=None, urn_file_path=None, maximum_number_of_rows_to_browse=None, return_browse_rows=None, file_path=None, output=None, columns=None, rows=None, local_vars_configuration=None):  # noqa: E501
         """AudienceExportDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._audience_update_id = None
@@ -117,7 +117,7 @@ class AudienceExportDetail(object):
         The id of the update (audience version) that the export was created from  # noqa: E501
 
         :param audience_update_id: The audience_update_id of this AudienceExportDetail.  # noqa: E501
-        :type: int
+        :type audience_update_id: int
         """
         if self.local_vars_configuration.client_side_validation and audience_update_id is None:  # noqa: E501
             raise ValueError("Invalid value for `audience_update_id`, must not be `None`")  # noqa: E501
@@ -142,7 +142,7 @@ class AudienceExportDetail(object):
         The date and time that the export was produced  # noqa: E501
 
         :param timestamp: The timestamp of this AudienceExportDetail.  # noqa: E501
-        :type: datetime
+        :type timestamp: datetime
         """
         if self.local_vars_configuration.client_side_validation and timestamp is None:  # noqa: E501
             raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
@@ -167,7 +167,7 @@ class AudienceExportDetail(object):
         The date and time that the FastStats system used to create this export was built  # noqa: E501
 
         :param fast_stats_build_date: The fast_stats_build_date of this AudienceExportDetail.  # noqa: E501
-        :type: datetime
+        :type fast_stats_build_date: datetime
         """
         if self.local_vars_configuration.client_side_validation and fast_stats_build_date is None:  # noqa: E501
             raise ValueError("Invalid value for `fast_stats_build_date`, must not be `None`")  # noqa: E501
@@ -190,7 +190,7 @@ class AudienceExportDetail(object):
 
 
         :param user: The user of this AudienceExportDetail.  # noqa: E501
-        :type: UserDisplayDetails
+        :type user: UserDisplayDetails
         """
         if self.local_vars_configuration.client_side_validation and user is None:  # noqa: E501
             raise ValueError("Invalid value for `user`, must not be `None`")  # noqa: E501
@@ -215,7 +215,7 @@ class AudienceExportDetail(object):
         The set of overall counts for the audience behind this export  # noqa: E501
 
         :param nett_counts: The nett_counts of this AudienceExportDetail.  # noqa: E501
-        :type: list[Count]
+        :type nett_counts: list[Count]
         """
         if self.local_vars_configuration.client_side_validation and nett_counts is None:  # noqa: E501
             raise ValueError("Invalid value for `nett_counts`, must not be `None`")  # noqa: E501
@@ -240,7 +240,7 @@ class AudienceExportDetail(object):
         If a URN file was generated as part of this export then this will be its path within the FastStats system  # noqa: E501
 
         :param urn_file_path: The urn_file_path of this AudienceExportDetail.  # noqa: E501
-        :type: str
+        :type urn_file_path: str
         """
         if self.local_vars_configuration.client_side_validation and urn_file_path is None:  # noqa: E501
             raise ValueError("Invalid value for `urn_file_path`, must not be `None`")  # noqa: E501
@@ -265,7 +265,7 @@ class AudienceExportDetail(object):
         The requested maximum number of rows to return when browsing the data  # noqa: E501
 
         :param maximum_number_of_rows_to_browse: The maximum_number_of_rows_to_browse of this AudienceExportDetail.  # noqa: E501
-        :type: int
+        :type maximum_number_of_rows_to_browse: int
         """
         if self.local_vars_configuration.client_side_validation and maximum_number_of_rows_to_browse is None:  # noqa: E501
             raise ValueError("Invalid value for `maximum_number_of_rows_to_browse`, must not be `None`")  # noqa: E501
@@ -290,7 +290,7 @@ class AudienceExportDetail(object):
         Whether data rows were requested to be returned or whether the data was exported directly to the specified file  # noqa: E501
 
         :param return_browse_rows: The return_browse_rows of this AudienceExportDetail.  # noqa: E501
-        :type: bool
+        :type return_browse_rows: bool
         """
         if self.local_vars_configuration.client_side_validation and return_browse_rows is None:  # noqa: E501
             raise ValueError("Invalid value for `return_browse_rows`, must not be `None`")  # noqa: E501
@@ -315,7 +315,7 @@ class AudienceExportDetail(object):
         If specified, the path of a file that the data was exported to  # noqa: E501
 
         :param file_path: The file_path of this AudienceExportDetail.  # noqa: E501
-        :type: str
+        :type file_path: str
         """
 
         self._file_path = file_path
@@ -336,7 +336,7 @@ class AudienceExportDetail(object):
 
 
         :param output: The output of this AudienceExportDetail.  # noqa: E501
-        :type: Output
+        :type output: Output
         """
 
         self._output = output
@@ -359,7 +359,7 @@ class AudienceExportDetail(object):
         The list of columns that have been included in this export  # noqa: E501
 
         :param columns: The columns of this AudienceExportDetail.  # noqa: E501
-        :type: list[Column]
+        :type columns: list[Column]
         """
         if self.local_vars_configuration.client_side_validation and columns is None:  # noqa: E501
             raise ValueError("Invalid value for `columns`, must not be `None`")  # noqa: E501
@@ -384,32 +384,40 @@ class AudienceExportDetail(object):
         If data rows were requested to be returned then the set of rows containing data for the given columns selected by the audience queries  # noqa: E501
 
         :param rows: The rows of this AudienceExportDetail.  # noqa: E501
-        :type: list[Row]
+        :type rows: list[Row]
         """
 
         self._rows = rows
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

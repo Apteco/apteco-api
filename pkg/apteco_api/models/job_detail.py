@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -70,7 +70,7 @@ class JobDetail(object):
     def __init__(self, request=None, results=None, id=None, priority=None, state=None, cancel_requested=None, time_added=None, time_sent=None, time_finished=None, server=None, system_name=None, thread_number=None, username=None, job_type=None, local_vars_configuration=None):  # noqa: E501
         """JobDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._request = None
@@ -125,7 +125,7 @@ class JobDetail(object):
         The request XML for the job  # noqa: E501
 
         :param request: The request of this JobDetail.  # noqa: E501
-        :type: str
+        :type request: str
         """
         if self.local_vars_configuration.client_side_validation and request is None:  # noqa: E501
             raise ValueError("Invalid value for `request`, must not be `None`")  # noqa: E501
@@ -150,7 +150,7 @@ class JobDetail(object):
         The results XML for the job  # noqa: E501
 
         :param results: The results of this JobDetail.  # noqa: E501
-        :type: str
+        :type results: str
         """
         if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
             raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
@@ -175,7 +175,7 @@ class JobDetail(object):
         The id of the job  # noqa: E501
 
         :param id: The id of this JobDetail.  # noqa: E501
-        :type: int
+        :type id: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -200,7 +200,7 @@ class JobDetail(object):
         The priority of the job.  The lower the number the more important the job  # noqa: E501
 
         :param priority: The priority of this JobDetail.  # noqa: E501
-        :type: int
+        :type priority: int
         """
         if self.local_vars_configuration.client_side_validation and priority is None:  # noqa: E501
             raise ValueError("Invalid value for `priority`, must not be `None`")  # noqa: E501
@@ -225,7 +225,7 @@ class JobDetail(object):
         The state of the job.  Valid values can include 'cancel', 'done', 'incomplete', 'inserting' and 'unassigned'  # noqa: E501
 
         :param state: The state of this JobDetail.  # noqa: E501
-        :type: str
+        :type state: str
         """
         if self.local_vars_configuration.client_side_validation and state is None:  # noqa: E501
             raise ValueError("Invalid value for `state`, must not be `None`")  # noqa: E501
@@ -250,7 +250,7 @@ class JobDetail(object):
         Whether this job has been asked to cancel.  If it has then acted on this request and been cancelled then the state will be set to 'cancel'  # noqa: E501
 
         :param cancel_requested: The cancel_requested of this JobDetail.  # noqa: E501
-        :type: bool
+        :type cancel_requested: bool
         """
         if self.local_vars_configuration.client_side_validation and cancel_requested is None:  # noqa: E501
             raise ValueError("Invalid value for `cancel_requested`, must not be `None`")  # noqa: E501
@@ -275,7 +275,7 @@ class JobDetail(object):
         The date and time that the job was added to the job queue  # noqa: E501
 
         :param time_added: The time_added of this JobDetail.  # noqa: E501
-        :type: datetime
+        :type time_added: datetime
         """
 
         self._time_added = time_added
@@ -298,7 +298,7 @@ class JobDetail(object):
         The date and time that the job was sent from the queue to be processed  # noqa: E501
 
         :param time_sent: The time_sent of this JobDetail.  # noqa: E501
-        :type: datetime
+        :type time_sent: datetime
         """
 
         self._time_sent = time_sent
@@ -321,7 +321,7 @@ class JobDetail(object):
         The date and time that the job finished processing  # noqa: E501
 
         :param time_finished: The time_finished of this JobDetail.  # noqa: E501
-        :type: datetime
+        :type time_finished: datetime
         """
 
         self._time_finished = time_finished
@@ -344,7 +344,7 @@ class JobDetail(object):
         The hostname of the server that is processing/processed this job  # noqa: E501
 
         :param server: The server of this JobDetail.  # noqa: E501
-        :type: str
+        :type server: str
         """
         if self.local_vars_configuration.client_side_validation and server is None:  # noqa: E501
             raise ValueError("Invalid value for `server`, must not be `None`")  # noqa: E501
@@ -369,7 +369,7 @@ class JobDetail(object):
         The name of the FastStats system that this job is running against  # noqa: E501
 
         :param system_name: The system_name of this JobDetail.  # noqa: E501
-        :type: str
+        :type system_name: str
         """
         if self.local_vars_configuration.client_side_validation and system_name is None:  # noqa: E501
             raise ValueError("Invalid value for `system_name`, must not be `None`")  # noqa: E501
@@ -394,7 +394,7 @@ class JobDetail(object):
         The number of the thread within the FastStats Service that is running this job  # noqa: E501
 
         :param thread_number: The thread_number of this JobDetail.  # noqa: E501
-        :type: int
+        :type thread_number: int
         """
         if self.local_vars_configuration.client_side_validation and thread_number is None:  # noqa: E501
             raise ValueError("Invalid value for `thread_number`, must not be `None`")  # noqa: E501
@@ -419,7 +419,7 @@ class JobDetail(object):
         The name of the user that submitted this job  # noqa: E501
 
         :param username: The username of this JobDetail.  # noqa: E501
-        :type: str
+        :type username: str
         """
         if self.local_vars_configuration.client_side_validation and username is None:  # noqa: E501
             raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
@@ -444,34 +444,42 @@ class JobDetail(object):
         The type of the job  # noqa: E501
 
         :param job_type: The job_type of this JobDetail.  # noqa: E501
-        :type: str
+        :type job_type: str
         """
         if self.local_vars_configuration.client_side_validation and job_type is None:  # noqa: E501
             raise ValueError("Invalid value for `job_type`, must not be `None`")  # noqa: E501
 
         self._job_type = job_type
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -41,10 +41,10 @@ class TestCollectionHitSummary(unittest.TestCase):
                 collection_id = 56, 
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', )
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', )
             )
         else :
             return CollectionHitSummary(
@@ -52,17 +52,16 @@ class TestCollectionHitSummary(unittest.TestCase):
                 collection_id = 56,
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', ),
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', ),
         )
 
     def testCollectionHitSummary(self):
         """Test CollectionHitSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

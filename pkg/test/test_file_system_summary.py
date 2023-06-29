@@ -37,18 +37,17 @@ class TestFileSystemSummary(unittest.TestCase):
         # model = apteco_api.models.file_system_summary.FileSystemSummary()  # noqa: E501
         if include_optional :
             return FileSystemSummary(
-                system_name = '0'
+                system_name = ''
             )
         else :
             return FileSystemSummary(
-                system_name = '0',
+                system_name = '',
         )
 
     def testFileSystemSummary(self):
         """Test FileSystemSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

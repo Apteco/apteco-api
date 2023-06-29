@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -50,7 +50,7 @@ class SelectionModifiers(object):
     def __init__(self, limits=None, top_n=None, n_per=None, rfv=None, local_vars_configuration=None):  # noqa: E501
         """SelectionModifiers - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._limits = None
@@ -84,7 +84,7 @@ class SelectionModifiers(object):
 
 
         :param limits: The limits of this SelectionModifiers.  # noqa: E501
-        :type: Limits
+        :type limits: Limits
         """
 
         self._limits = limits
@@ -105,7 +105,7 @@ class SelectionModifiers(object):
 
 
         :param top_n: The top_n of this SelectionModifiers.  # noqa: E501
-        :type: TopN
+        :type top_n: TopN
         """
 
         self._top_n = top_n
@@ -126,7 +126,7 @@ class SelectionModifiers(object):
 
 
         :param n_per: The n_per of this SelectionModifiers.  # noqa: E501
-        :type: NPer
+        :type n_per: NPer
         """
 
         self._n_per = n_per
@@ -147,32 +147,40 @@ class SelectionModifiers(object):
 
 
         :param rfv: The rfv of this SelectionModifiers.  # noqa: E501
-        :type: RFV
+        :type rfv: RFV
         """
 
         self._rfv = rfv
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

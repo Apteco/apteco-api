@@ -40,21 +40,20 @@ class TestLicensingInfo(unittest.TestCase):
                 credit_remaining = 1.337, 
                 grand_total_cost = 1.337, 
                 number_of_records_to_license = 56, 
-                query_id = '0'
+                query_id = ''
             )
         else :
             return LicensingInfo(
                 credit_remaining = 1.337,
                 grand_total_cost = 1.337,
                 number_of_records_to_license = 56,
-                query_id = '0',
+                query_id = '',
         )
 
     def testLicensingInfo(self):
         """Test LicensingInfo"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

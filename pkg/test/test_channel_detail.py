@@ -37,16 +37,16 @@ class TestChannelDetail(unittest.TestCase):
         # model = apteco_api.models.channel_detail.ChannelDetail()  # noqa: E501
         if include_optional :
             return ChannelDetail(
-                id = '0', 
+                id = '', 
                 schema_id = 56, 
-                description = '0', 
+                description = '', 
                 type = 'Unknown', 
-                parent_id = '0'
+                parent_id = ''
             )
         else :
             return ChannelDetail(
-                id = '0',
-                description = '0',
+                id = '',
+                description = '',
                 type = 'Unknown',
         )
 
@@ -54,7 +54,6 @@ class TestChannelDetail(unittest.TestCase):
         """Test ChannelDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

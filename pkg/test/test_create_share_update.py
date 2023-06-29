@@ -37,19 +37,19 @@ class TestCreateShareUpdate(unittest.TestCase):
         # model = apteco_api.models.create_share_update.CreateShareUpdate()  # noqa: E501
         if include_optional :
             return CreateShareUpdate(
-                notes = '0', 
+                notes = '', 
                 email_addresses_to_add = [
-                    '0'
+                    ''
                     ], 
                 notify_added_users = True, 
-                added_user_notification_message = '0', 
+                added_user_notification_message = '', 
                 email_addresses_to_remove = [
-                    '0'
+                    ''
                     ], 
                 notify_removed_users = True, 
-                removed_user_notification_message = '0', 
+                removed_user_notification_message = '', 
                 notify_unchanged_users = True, 
-                unchanged_user_notification_message = '0'
+                unchanged_user_notification_message = ''
             )
         else :
             return CreateShareUpdate(
@@ -62,7 +62,6 @@ class TestCreateShareUpdate(unittest.TestCase):
         """Test CreateShareUpdate"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

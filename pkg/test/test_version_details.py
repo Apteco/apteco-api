@@ -37,18 +37,17 @@ class TestVersionDetails(unittest.TestCase):
         # model = apteco_api.models.version_details.VersionDetails()  # noqa: E501
         if include_optional :
             return VersionDetails(
-                version = '0'
+                version = ''
             )
         else :
             return VersionDetails(
-                version = '0',
+                version = '',
         )
 
     def testVersionDetails(self):
         """Test VersionDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

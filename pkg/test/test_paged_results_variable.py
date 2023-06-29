@@ -42,11 +42,11 @@ class TestPagedResultsVariable(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.variable.Variable(
-                        name = '0', 
-                        description = '0', 
+                        name = '', 
+                        description = '', 
                         type = 'Selector', 
-                        folder_name = '0', 
-                        table_name = '0', 
+                        folder_name = '', 
+                        table_name = '', 
                         is_selectable = True, 
                         is_browsable = True, 
                         is_exportable = True, 
@@ -61,13 +61,13 @@ class TestPagedResultsVariable(unittest.TestCase):
                             maximum_var_code_count = 56, 
                             minimum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             maximum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                            combined_from_variable_name = '0', ), 
+                            combined_from_variable_name = '', ), 
                         numeric_info = apteco_api.models.numeric_variable_info.NumericVariableInfo(
                             minimum = 1.337, 
                             maximum = 1.337, 
                             is_currency = True, 
-                            currency_locale = '0', 
-                            currency_symbol = '0', ), 
+                            currency_locale = '', 
+                            currency_symbol = '', ), 
                         text_info = apteco_api.models.text_variable_info.TextVariableInfo(
                             maximum_text_length = 56, ), 
                         reference_info = apteco_api.models.reference_variable_info.ReferenceVariableInfo(), )
@@ -80,11 +80,11 @@ class TestPagedResultsVariable(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.variable.Variable(
-                        name = '0', 
-                        description = '0', 
+                        name = '', 
+                        description = '', 
                         type = 'Selector', 
-                        folder_name = '0', 
-                        table_name = '0', 
+                        folder_name = '', 
+                        table_name = '', 
                         is_selectable = True, 
                         is_browsable = True, 
                         is_exportable = True, 
@@ -99,13 +99,13 @@ class TestPagedResultsVariable(unittest.TestCase):
                             maximum_var_code_count = 56, 
                             minimum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             maximum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                            combined_from_variable_name = '0', ), 
+                            combined_from_variable_name = '', ), 
                         numeric_info = apteco_api.models.numeric_variable_info.NumericVariableInfo(
                             minimum = 1.337, 
                             maximum = 1.337, 
                             is_currency = True, 
-                            currency_locale = '0', 
-                            currency_symbol = '0', ), 
+                            currency_locale = '', 
+                            currency_symbol = '', ), 
                         text_info = apteco_api.models.text_variable_info.TextVariableInfo(
                             maximum_text_length = 56, ), 
                         reference_info = apteco_api.models.reference_variable_info.ReferenceVariableInfo(), )
@@ -116,7 +116,6 @@ class TestPagedResultsVariable(unittest.TestCase):
         """Test PagedResultsVariable"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

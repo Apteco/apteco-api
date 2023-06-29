@@ -38,11 +38,11 @@ class TestRecordSet(unittest.TestCase):
         if include_optional :
             return RecordSet(
                 type = 'URN', 
-                key_variable_name = '0', 
+                key_variable_name = '', 
                 by_reference = True, 
-                path = '0', 
+                path = '', 
                 transient = True, 
-                values = '0', 
+                values = '', 
                 min_occurs = 56
             )
         else :
@@ -53,7 +53,6 @@ class TestRecordSet(unittest.TestCase):
         """Test RecordSet"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

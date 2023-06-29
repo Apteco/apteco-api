@@ -38,19 +38,18 @@ class TestGroupSummary(unittest.TestCase):
         if include_optional :
             return GroupSummary(
                 id = 56, 
-                name = '0'
+                name = ''
             )
         else :
             return GroupSummary(
                 id = 56,
-                name = '0',
+                name = '',
         )
 
     def testGroupSummary(self):
         """Test GroupSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

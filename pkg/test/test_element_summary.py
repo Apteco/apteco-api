@@ -37,25 +37,25 @@ class TestElementSummary(unittest.TestCase):
         # model = apteco_api.models.element_summary.ElementSummary()  # noqa: E501
         if include_optional :
             return ElementSummary(
-                id = '0', 
-                description = '0', 
+                id = '', 
+                description = '', 
                 type = 'Unknown', 
                 schema_id = 56, 
                 schema_id_type = 'Unknown', 
-                parent_id = '0', 
+                parent_id = '', 
                 parent_type = 'Unknown', 
                 path = [
                     apteco_api.models.element_key.ElementKey(
-                        id = '0', 
-                        description = '0', )
+                        id = '', 
+                        description = '', )
                     ]
             )
         else :
             return ElementSummary(
-                id = '0',
-                description = '0',
+                id = '',
+                description = '',
                 type = 'Unknown',
-                parent_id = '0',
+                parent_id = '',
                 parent_type = 'Unknown',
         )
 
@@ -63,7 +63,6 @@ class TestElementSummary(unittest.TestCase):
         """Test ElementSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

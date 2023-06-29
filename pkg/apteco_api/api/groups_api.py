@@ -43,22 +43,28 @@ class GroupsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.groups_get_group_details(data_view_name, group_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int group_id: The id of the group to view the details for (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param group_id: The id of the group to view the details for (required)
+        :type group_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: UserDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: UserDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.groups_get_group_details_with_http_info(data_view_name, group_id, **kwargs)  # noqa: E501
@@ -69,24 +75,35 @@ class GroupsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.groups_get_group_details_with_http_info(data_view_name, group_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int group_id: The id of the group to view the details for (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param group_id: The id of the group to view the details for (required)
+        :type group_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(UserDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(UserDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -100,7 +117,8 @@ class GroupsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -143,6 +161,13 @@ class GroupsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "UserDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Groups/{groupId}', 'GET',
@@ -152,13 +177,14 @@ class GroupsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='UserDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def groups_get_groups(self, data_view_name, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Returns all groups in the DataView.  # noqa: E501
@@ -166,25 +192,34 @@ class GroupsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.groups_get_groups(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsGroupSummary
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PagedResultsGroupSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.groups_get_groups_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -195,27 +230,41 @@ class GroupsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.groups_get_groups_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsGroupSummary, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PagedResultsGroupSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -232,7 +281,8 @@ class GroupsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -281,6 +331,12 @@ class GroupsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "PagedResultsGroupSummary",
+            400: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Groups', 'GET',
@@ -290,13 +346,14 @@ class GroupsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsGroupSummary',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def groups_get_user_details_for_group(self, data_view_name, group_id, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Returns all users in the given group.  # noqa: E501
@@ -304,26 +361,36 @@ class GroupsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.groups_get_user_details_for_group(data_view_name, group_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int group_id: The id of the group to get users for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param group_id: The id of the group to get users for (required)
+        :type group_id: int
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsUserSummary
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PagedResultsUserSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.groups_get_user_details_for_group_with_http_info(data_view_name, group_id, **kwargs)  # noqa: E501
@@ -334,28 +401,43 @@ class GroupsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.groups_get_user_details_for_group_with_http_info(data_view_name, group_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int group_id: The id of the group to get users for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param group_id: The id of the group to get users for (required)
+        :type group_id: int
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsUserSummary, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PagedResultsUserSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -373,7 +455,8 @@ class GroupsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -428,6 +511,11 @@ class GroupsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "PagedResultsUserSummary",
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Groups/{groupId}/Users', 'GET',
@@ -437,13 +525,14 @@ class GroupsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsUserSummary',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def groups_get_user_details_for_unallocated_group(self, data_view_name, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Returns all users that haven't been allocated to a group.  # noqa: E501
@@ -451,25 +540,34 @@ class GroupsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.groups_get_user_details_for_unallocated_group(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsUserSummary
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PagedResultsUserSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.groups_get_user_details_for_unallocated_group_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -480,27 +578,41 @@ class GroupsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.groups_get_user_details_for_unallocated_group_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsUserSummary, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PagedResultsUserSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -517,7 +629,8 @@ class GroupsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -566,6 +679,11 @@ class GroupsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "PagedResultsUserSummary",
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Groups/Unallocated/Users', 'GET',
@@ -575,10 +693,11 @@ class GroupsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsUserSummary',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))

@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -58,7 +58,7 @@ class Export(object):
     def __init__(self, base_query=None, resolve_table_name=None, maximum_number_of_rows_to_browse=None, return_browse_rows=None, path_to_export_to=None, output=None, columns=None, limits=None, local_vars_configuration=None):  # noqa: E501
         """Export - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._base_query = None
@@ -99,7 +99,7 @@ class Export(object):
 
 
         :param base_query: The base_query of this Export.  # noqa: E501
-        :type: Query
+        :type base_query: Query
         """
         if self.local_vars_configuration.client_side_validation and base_query is None:  # noqa: E501
             raise ValueError("Invalid value for `base_query`, must not be `None`")  # noqa: E501
@@ -124,7 +124,7 @@ class Export(object):
         The name of the table to resolve this export to.  I.e. each row will correspond to one record from this table  # noqa: E501
 
         :param resolve_table_name: The resolve_table_name of this Export.  # noqa: E501
-        :type: str
+        :type resolve_table_name: str
         """
         if self.local_vars_configuration.client_side_validation and resolve_table_name is None:  # noqa: E501
             raise ValueError("Invalid value for `resolve_table_name`, must not be `None`")  # noqa: E501
@@ -149,7 +149,7 @@ class Export(object):
         The maximum number of rows to return in the browse results  # noqa: E501
 
         :param maximum_number_of_rows_to_browse: The maximum_number_of_rows_to_browse of this Export.  # noqa: E501
-        :type: int
+        :type maximum_number_of_rows_to_browse: int
         """
         if self.local_vars_configuration.client_side_validation and maximum_number_of_rows_to_browse is None:  # noqa: E501
             raise ValueError("Invalid value for `maximum_number_of_rows_to_browse`, must not be `None`")  # noqa: E501
@@ -174,7 +174,7 @@ class Export(object):
         Whether to output browse rows as well as generating a file  # noqa: E501
 
         :param return_browse_rows: The return_browse_rows of this Export.  # noqa: E501
-        :type: bool
+        :type return_browse_rows: bool
         """
         if self.local_vars_configuration.client_side_validation and return_browse_rows is None:  # noqa: E501
             raise ValueError("Invalid value for `return_browse_rows`, must not be `None`")  # noqa: E501
@@ -199,7 +199,7 @@ class Export(object):
         The path of the file to export results to  # noqa: E501
 
         :param path_to_export_to: The path_to_export_to of this Export.  # noqa: E501
-        :type: str
+        :type path_to_export_to: str
         """
 
         self._path_to_export_to = path_to_export_to
@@ -220,7 +220,7 @@ class Export(object):
 
 
         :param output: The output of this Export.  # noqa: E501
-        :type: Output
+        :type output: Output
         """
 
         self._output = output
@@ -243,7 +243,7 @@ class Export(object):
         The name of the table to resolve this export to.  I.e. each row will correspond to one record from this table  # noqa: E501
 
         :param columns: The columns of this Export.  # noqa: E501
-        :type: list[Column]
+        :type columns: list[Column]
         """
         if self.local_vars_configuration.client_side_validation and columns is None:  # noqa: E501
             raise ValueError("Invalid value for `columns`, must not be `None`")  # noqa: E501
@@ -266,32 +266,40 @@ class Export(object):
 
 
         :param limits: The limits of this Export.  # noqa: E501
-        :type: Limits
+        :type limits: Limits
         """
 
         self._limits = limits
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

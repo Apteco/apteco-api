@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -66,7 +66,7 @@ class CubeResult(object):
     def __init__(self, title=None, notes=None, ran_successfully=None, system_name=None, system_load_date=None, user_name=None, run_date=None, query_description=None, dimension_results=None, measure_results=None, cube=None, counts=None, local_vars_configuration=None):  # noqa: E501
         """CubeResult - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._title = None
@@ -126,7 +126,7 @@ class CubeResult(object):
         The title of the cube that has been calculated  # noqa: E501
 
         :param title: The title of this CubeResult.  # noqa: E501
-        :type: str
+        :type title: str
         """
 
         self._title = title
@@ -149,7 +149,7 @@ class CubeResult(object):
         Any notes associated with the query that has been counted  # noqa: E501
 
         :param notes: The notes of this CubeResult.  # noqa: E501
-        :type: str
+        :type notes: str
         """
 
         self._notes = notes
@@ -172,7 +172,7 @@ class CubeResult(object):
         Whether the query was counted successfully or not  # noqa: E501
 
         :param ran_successfully: The ran_successfully of this CubeResult.  # noqa: E501
-        :type: bool
+        :type ran_successfully: bool
         """
 
         self._ran_successfully = ran_successfully
@@ -195,7 +195,7 @@ class CubeResult(object):
         The name of the FastStats system that this count has been produced by  # noqa: E501
 
         :param system_name: The system_name of this CubeResult.  # noqa: E501
-        :type: str
+        :type system_name: str
         """
 
         self._system_name = system_name
@@ -218,7 +218,7 @@ class CubeResult(object):
         The date and time that the FastStats system from which this count has come was last built  # noqa: E501
 
         :param system_load_date: The system_load_date of this CubeResult.  # noqa: E501
-        :type: datetime
+        :type system_load_date: datetime
         """
 
         self._system_load_date = system_load_date
@@ -241,7 +241,7 @@ class CubeResult(object):
         The name of the user that requested this count  # noqa: E501
 
         :param user_name: The user_name of this CubeResult.  # noqa: E501
-        :type: str
+        :type user_name: str
         """
 
         self._user_name = user_name
@@ -264,7 +264,7 @@ class CubeResult(object):
         The date and time that this count was run on  # noqa: E501
 
         :param run_date: The run_date of this CubeResult.  # noqa: E501
-        :type: datetime
+        :type run_date: datetime
         """
 
         self._run_date = run_date
@@ -287,7 +287,7 @@ class CubeResult(object):
         A textual description of the query that was counted  # noqa: E501
 
         :param query_description: The query_description of this CubeResult.  # noqa: E501
-        :type: str
+        :type query_description: str
         """
 
         self._query_description = query_description
@@ -310,7 +310,7 @@ class CubeResult(object):
         The set of dimension results for this cube, containing the category codes and descriptions for each dimension in the cube  # noqa: E501
 
         :param dimension_results: The dimension_results of this CubeResult.  # noqa: E501
-        :type: list[DimensionResult]
+        :type dimension_results: list[DimensionResult]
         """
 
         self._dimension_results = dimension_results
@@ -333,7 +333,7 @@ class CubeResult(object):
         The set of measure results for this cube, containing the values for each measure in the cube  # noqa: E501
 
         :param measure_results: The measure_results of this CubeResult.  # noqa: E501
-        :type: list[MeasureResult]
+        :type measure_results: list[MeasureResult]
         """
 
         self._measure_results = measure_results
@@ -354,7 +354,7 @@ class CubeResult(object):
 
 
         :param cube: The cube of this CubeResult.  # noqa: E501
-        :type: Cube
+        :type cube: Cube
         """
 
         self._cube = cube
@@ -377,32 +377,40 @@ class CubeResult(object):
         A list of counts for each affected table in the FastStats system.  The first count in the list is the main one.  # noqa: E501
 
         :param counts: The counts of this CubeResult.  # noqa: E501
-        :type: list[Count]
+        :type counts: list[Count]
         """
 
         self._counts = counts
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

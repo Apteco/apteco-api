@@ -47,7 +47,7 @@ class TestUserConfigurationDetails(unittest.TestCase):
                 email_requirements = apteco_api.models.email_requirements.EmailRequirements(
                     allow_unrestricted_email_domains = True, 
                     restricted_email_domains = [
-                        '0'
+                        ''
                         ], )
             )
         else :
@@ -62,7 +62,7 @@ class TestUserConfigurationDetails(unittest.TestCase):
                 email_requirements = apteco_api.models.email_requirements.EmailRequirements(
                     allow_unrestricted_email_domains = True, 
                     restricted_email_domains = [
-                        '0'
+                        ''
                         ], ),
         )
 
@@ -70,7 +70,6 @@ class TestUserConfigurationDetails(unittest.TestCase):
         """Test UserConfigurationDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

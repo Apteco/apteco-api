@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -64,7 +64,7 @@ class Criteria(object):
     def __init__(self, variable_name=None, path=None, include=None, logic=None, ignore_case=None, text_match_type=None, value_rules=None, expression_rule=None, today_at=None, table_name=None, name=None, local_vars_configuration=None):  # noqa: E501
         """Criteria - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._variable_name = None
@@ -118,7 +118,7 @@ class Criteria(object):
 
 
         :param variable_name: The variable_name of this Criteria.  # noqa: E501
-        :type: str
+        :type variable_name: str
         """
 
         self._variable_name = variable_name
@@ -139,7 +139,7 @@ class Criteria(object):
 
 
         :param path: The path of this Criteria.  # noqa: E501
-        :type: str
+        :type path: str
         """
 
         self._path = path
@@ -160,7 +160,7 @@ class Criteria(object):
 
 
         :param include: The include of this Criteria.  # noqa: E501
-        :type: bool
+        :type include: bool
         """
 
         self._include = include
@@ -181,7 +181,7 @@ class Criteria(object):
 
 
         :param logic: The logic of this Criteria.  # noqa: E501
-        :type: str
+        :type logic: str
         """
         allowed_values = ["OR", "AND"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and logic not in allowed_values:  # noqa: E501
@@ -208,7 +208,7 @@ class Criteria(object):
 
 
         :param ignore_case: The ignore_case of this Criteria.  # noqa: E501
-        :type: bool
+        :type ignore_case: bool
         """
 
         self._ignore_case = ignore_case
@@ -229,7 +229,7 @@ class Criteria(object):
 
 
         :param text_match_type: The text_match_type of this Criteria.  # noqa: E501
-        :type: str
+        :type text_match_type: str
         """
         allowed_values = ["Ranges", "Is", "Begins", "Ends", "Contains"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and text_match_type not in allowed_values:  # noqa: E501
@@ -256,7 +256,7 @@ class Criteria(object):
 
 
         :param value_rules: The value_rules of this Criteria.  # noqa: E501
-        :type: list[ValueRule]
+        :type value_rules: list[ValueRule]
         """
 
         self._value_rules = value_rules
@@ -277,7 +277,7 @@ class Criteria(object):
 
 
         :param expression_rule: The expression_rule of this Criteria.  # noqa: E501
-        :type: Expression
+        :type expression_rule: Expression
         """
 
         self._expression_rule = expression_rule
@@ -298,7 +298,7 @@ class Criteria(object):
 
 
         :param today_at: The today_at of this Criteria.  # noqa: E501
-        :type: str
+        :type today_at: str
         """
 
         self._today_at = today_at
@@ -319,7 +319,7 @@ class Criteria(object):
 
 
         :param table_name: The table_name of this Criteria.  # noqa: E501
-        :type: str
+        :type table_name: str
         """
         if self.local_vars_configuration.client_side_validation and table_name is None:  # noqa: E501
             raise ValueError("Invalid value for `table_name`, must not be `None`")  # noqa: E501
@@ -342,32 +342,40 @@ class Criteria(object):
 
 
         :param name: The name of this Criteria.  # noqa: E501
-        :type: str
+        :type name: str
         """
 
         self._name = name
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

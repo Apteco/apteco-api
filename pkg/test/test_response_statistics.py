@@ -38,7 +38,7 @@ class TestResponseStatistics(unittest.TestCase):
         if include_optional :
             return ResponseStatistics(
                 days = [
-                    '0'
+                    ''
                     ], 
                 per_response_type_statistics_map = apteco_api.models.response_statistics_per_response_type_statistics_map.ResponseStatistics_perResponseTypeStatisticsMap(
                     unknown = apteco_api.models.per_response_type_statistics.PerResponseTypeStatistics(
@@ -181,7 +181,7 @@ class TestResponseStatistics(unittest.TestCase):
         else :
             return ResponseStatistics(
                 days = [
-                    '0'
+                    ''
                     ],
                 per_response_type_statistics_map = apteco_api.models.response_statistics_per_response_type_statistics_map.ResponseStatistics_perResponseTypeStatisticsMap(
                     unknown = apteco_api.models.per_response_type_statistics.PerResponseTypeStatistics(
@@ -325,7 +325,6 @@ class TestResponseStatistics(unittest.TestCase):
         """Test ResponseStatistics"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

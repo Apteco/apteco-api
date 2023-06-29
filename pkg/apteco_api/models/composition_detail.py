@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -56,7 +56,7 @@ class CompositionDetail(object):
     def __init__(self, check_composition_definition=None, export_composition_definition=None, compositions_lookup=None, id=None, description=None, type=None, system_name=None, local_vars_configuration=None):  # noqa: E501
         """CompositionDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._check_composition_definition = None
@@ -95,7 +95,7 @@ class CompositionDetail(object):
 
 
         :param check_composition_definition: The check_composition_definition of this CompositionDetail.  # noqa: E501
-        :type: CheckCompositionDefinition
+        :type check_composition_definition: CheckCompositionDefinition
         """
 
         self._check_composition_definition = check_composition_definition
@@ -116,7 +116,7 @@ class CompositionDetail(object):
 
 
         :param export_composition_definition: The export_composition_definition of this CompositionDetail.  # noqa: E501
-        :type: ExportCompositionDefinition
+        :type export_composition_definition: ExportCompositionDefinition
         """
 
         self._export_composition_definition = export_composition_definition
@@ -137,7 +137,7 @@ class CompositionDetail(object):
 
 
         :param compositions_lookup: The compositions_lookup of this CompositionDetail.  # noqa: E501
-        :type: SystemLookup
+        :type compositions_lookup: SystemLookup
         """
 
         self._compositions_lookup = compositions_lookup
@@ -160,7 +160,7 @@ class CompositionDetail(object):
         The id of this composition  # noqa: E501
 
         :param id: The id of this CompositionDetail.  # noqa: E501
-        :type: int
+        :type id: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -185,7 +185,7 @@ class CompositionDetail(object):
         The description of this composition  # noqa: E501
 
         :param description: The description of this CompositionDetail.  # noqa: E501
-        :type: str
+        :type description: str
         """
         if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
             raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
@@ -210,7 +210,7 @@ class CompositionDetail(object):
         The type of this composition  # noqa: E501
 
         :param type: The type of this CompositionDetail.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -241,34 +241,42 @@ class CompositionDetail(object):
         The name of the FastStats system that this composition is for  # noqa: E501
 
         :param system_name: The system_name of this CompositionDetail.  # noqa: E501
-        :type: str
+        :type system_name: str
         """
         if self.local_vars_configuration.client_side_validation and system_name is None:  # noqa: E501
             raise ValueError("Invalid value for `system_name`, must not be `None`")  # noqa: E501
 
         self._system_name = system_name
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

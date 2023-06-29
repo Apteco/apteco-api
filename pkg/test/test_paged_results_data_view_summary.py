@@ -42,7 +42,7 @@ class TestPagedResultsDataViewSummary(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.data_view_summary.DataViewSummary(
-                        name = '0', )
+                        name = '', )
                     ]
             )
         else :
@@ -52,7 +52,7 @@ class TestPagedResultsDataViewSummary(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.data_view_summary.DataViewSummary(
-                        name = '0', )
+                        name = '', )
                     ],
         )
 
@@ -60,7 +60,6 @@ class TestPagedResultsDataViewSummary(unittest.TestCase):
         """Test PagedResultsDataViewSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

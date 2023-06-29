@@ -37,8 +37,8 @@ class TestErrorMessageParameter(unittest.TestCase):
         # model = apteco_api.models.error_message_parameter.ErrorMessageParameter()  # noqa: E501
         if include_optional :
             return ErrorMessageParameter(
-                key = '0', 
-                value = '0'
+                key = '', 
+                value = ''
             )
         else :
             return ErrorMessageParameter(
@@ -48,7 +48,6 @@ class TestErrorMessageParameter(unittest.TestCase):
         """Test ErrorMessageParameter"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

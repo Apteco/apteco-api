@@ -40,44 +40,44 @@ class TestCompositionDetail(unittest.TestCase):
                 check_composition_definition = apteco_api.models.check_composition_definition.CheckCompositionDefinition(
                     dashboard_items = [
                         apteco_api.models.dashboard_item.DashboardItem(
-                            variable_name = '0', 
+                            variable_name = '', 
                             size = apteco_api.models.size.Size(
                                 width = 1.337, 
                                 height = 1.337, ), 
                             chart_type = 'Bar', 
                             omit_zeros = True, 
-                            description = '0', )
+                            description = '', )
                         ], 
                     grid_items = [
                         apteco_api.models.grid_item.GridItem(
-                            variable_name = '0', 
+                            variable_name = '', 
                             detail = 'Code', 
                             unclassified_format = 'FromDesign', 
-                            description = '0', )
+                            description = '', )
                         ], ), 
                 export_composition_definition = apteco_api.models.export_composition_definition.ExportCompositionDefinition(
                     output = apteco_api.models.output.Output(
                         format = 'CSV', 
-                        delimiter = '0', 
-                        alpha_encloser = '0', 
-                        numeric_encloser = '0', 
-                        authorisation_code = '0', ), 
+                        delimiter = '', 
+                        alpha_encloser = '', 
+                        numeric_encloser = '', 
+                        authorisation_code = '', ), 
                     grid_items = [
                         apteco_api.models.grid_item.GridItem(
-                            variable_name = '0', 
+                            variable_name = '', 
                             detail = 'Code', 
                             unclassified_format = 'FromDesign', 
-                            description = '0', )
+                            description = '', )
                         ], ), 
                 compositions_lookup = apteco_api.models.system_lookup.SystemLookup(
                     variables_lookup = [
                         apteco_api.models.variable_lookup.VariableLookup(
                             variable = apteco_api.models.variable.Variable(
-                                name = '0', 
-                                description = '0', 
+                                name = '', 
+                                description = '', 
                                 type = 'Selector', 
-                                folder_name = '0', 
-                                table_name = '0', 
+                                folder_name = '', 
+                                table_name = '', 
                                 is_selectable = True, 
                                 is_browsable = True, 
                                 is_exportable = True, 
@@ -92,41 +92,40 @@ class TestCompositionDetail(unittest.TestCase):
                                     maximum_var_code_count = 56, 
                                     minimum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                     maximum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                    combined_from_variable_name = '0', ), 
+                                    combined_from_variable_name = '', ), 
                                 numeric_info = apteco_api.models.numeric_variable_info.NumericVariableInfo(
                                     minimum = 1.337, 
                                     maximum = 1.337, 
                                     is_currency = True, 
-                                    currency_locale = '0', 
-                                    currency_symbol = '0', ), 
+                                    currency_locale = '', 
+                                    currency_symbol = '', ), 
                                 text_info = apteco_api.models.text_variable_info.TextVariableInfo(
                                     maximum_text_length = 56, ), 
                                 reference_info = apteco_api.models.reference_variable_info.ReferenceVariableInfo(), ), 
                             var_codes_lookup = [
                                 apteco_api.models.var_code.VarCode(
-                                    code = '0', 
-                                    description = '0', 
+                                    code = '', 
+                                    description = '', 
                                     count = 56, )
                                 ], )
                         ], ), 
                 id = 56, 
-                description = '0', 
+                description = '', 
                 type = 'Check', 
-                system_name = '0'
+                system_name = ''
             )
         else :
             return CompositionDetail(
                 id = 56,
-                description = '0',
+                description = '',
                 type = 'Check',
-                system_name = '0',
+                system_name = '',
         )
 
     def testCompositionDetail(self):
         """Test CompositionDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

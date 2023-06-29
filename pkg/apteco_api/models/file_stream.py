@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -66,7 +66,7 @@ class FileStream(object):
     def __init__(self, handle=None, can_read=None, can_write=None, safe_file_handle=None, name=None, is_async=None, length=None, position=None, can_seek=None, can_timeout=None, read_timeout=None, write_timeout=None, local_vars_configuration=None):  # noqa: E501
         """FileStream - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._handle = None
@@ -124,7 +124,7 @@ class FileStream(object):
 
 
         :param handle: The handle of this FileStream.  # noqa: E501
-        :type: object
+        :type handle: object
         """
 
         self._handle = handle
@@ -145,7 +145,7 @@ class FileStream(object):
 
 
         :param can_read: The can_read of this FileStream.  # noqa: E501
-        :type: bool
+        :type can_read: bool
         """
 
         self._can_read = can_read
@@ -166,7 +166,7 @@ class FileStream(object):
 
 
         :param can_write: The can_write of this FileStream.  # noqa: E501
-        :type: bool
+        :type can_write: bool
         """
 
         self._can_write = can_write
@@ -187,7 +187,7 @@ class FileStream(object):
 
 
         :param safe_file_handle: The safe_file_handle of this FileStream.  # noqa: E501
-        :type: SafeFileHandle
+        :type safe_file_handle: SafeFileHandle
         """
 
         self._safe_file_handle = safe_file_handle
@@ -208,7 +208,7 @@ class FileStream(object):
 
 
         :param name: The name of this FileStream.  # noqa: E501
-        :type: str
+        :type name: str
         """
 
         self._name = name
@@ -229,7 +229,7 @@ class FileStream(object):
 
 
         :param is_async: The is_async of this FileStream.  # noqa: E501
-        :type: bool
+        :type is_async: bool
         """
 
         self._is_async = is_async
@@ -250,7 +250,7 @@ class FileStream(object):
 
 
         :param length: The length of this FileStream.  # noqa: E501
-        :type: int
+        :type length: int
         """
 
         self._length = length
@@ -271,7 +271,7 @@ class FileStream(object):
 
 
         :param position: The position of this FileStream.  # noqa: E501
-        :type: int
+        :type position: int
         """
 
         self._position = position
@@ -292,7 +292,7 @@ class FileStream(object):
 
 
         :param can_seek: The can_seek of this FileStream.  # noqa: E501
-        :type: bool
+        :type can_seek: bool
         """
 
         self._can_seek = can_seek
@@ -313,7 +313,7 @@ class FileStream(object):
 
 
         :param can_timeout: The can_timeout of this FileStream.  # noqa: E501
-        :type: bool
+        :type can_timeout: bool
         """
 
         self._can_timeout = can_timeout
@@ -334,7 +334,7 @@ class FileStream(object):
 
 
         :param read_timeout: The read_timeout of this FileStream.  # noqa: E501
-        :type: int
+        :type read_timeout: int
         """
 
         self._read_timeout = read_timeout
@@ -355,32 +355,40 @@ class FileStream(object):
 
 
         :param write_timeout: The write_timeout of this FileStream.  # noqa: E501
-        :type: int
+        :type write_timeout: int
         """
 
         self._write_timeout = write_timeout
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

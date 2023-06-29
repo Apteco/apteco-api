@@ -40,8 +40,8 @@ class TestNumericVariableInfo(unittest.TestCase):
                 minimum = 1.337, 
                 maximum = 1.337, 
                 is_currency = True, 
-                currency_locale = '0', 
-                currency_symbol = '0'
+                currency_locale = '', 
+                currency_symbol = ''
             )
         else :
             return NumericVariableInfo(
@@ -51,7 +51,6 @@ class TestNumericVariableInfo(unittest.TestCase):
         """Test NumericVariableInfo"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

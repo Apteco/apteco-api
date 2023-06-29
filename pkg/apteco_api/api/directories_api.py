@@ -42,24 +42,32 @@ class DirectoriesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.directories_delete_directory(data_view_name, system_name, directory_path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param str directory_path: The path to the directory to be deleted (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param directory_path: The path to the directory to be deleted (required)
+        :type directory_path: str
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :type timeout_in_seconds: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.directories_delete_directory_with_http_info(data_view_name, system_name, directory_path, **kwargs)  # noqa: E501
@@ -69,26 +77,39 @@ class DirectoriesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.directories_delete_directory_with_http_info(data_view_name, system_name, directory_path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param str directory_path: The path to the directory to be deleted (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param directory_path: The path to the directory to be deleted (required)
+        :type directory_path: str
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :type timeout_in_seconds: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -104,7 +125,8 @@ class DirectoriesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -157,6 +179,8 @@ class DirectoriesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/Directories/{systemName}/' + directory_path_template, 'DELETE',
@@ -166,41 +190,54 @@ class DirectoriesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def directories_get_file_entries(self, data_view_name, system_name, directory_path, **kwargs):  # noqa: E501
         """Returns the list of files and subdirectories under the given directory  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.directories_get_file_entries(data_view_name, system_name, directory_path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param str directory_path: The path of the directory to list the contents of (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param directory_path: The path of the directory to list the contents of (required)
+        :type directory_path: str
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :type timeout_in_seconds: int
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsFileEntry
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PagedResultsFileEntry
         """
         kwargs['_return_http_data_only'] = True
         return self.directories_get_file_entries_with_http_info(data_view_name, system_name, directory_path, **kwargs)  # noqa: E501
@@ -210,30 +247,47 @@ class DirectoriesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.directories_get_file_entries_with_http_info(data_view_name, system_name, directory_path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param str directory_path: The path of the directory to list the contents of (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param directory_path: The path of the directory to list the contents of (required)
+        :type directory_path: str
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :type timeout_in_seconds: int
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsFileEntry, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PagedResultsFileEntry, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -253,7 +307,8 @@ class DirectoriesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -322,6 +377,13 @@ class DirectoriesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "PagedResultsFileEntry",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Directories/{systemName}/' + directory_path_template, 'GET',
@@ -331,38 +393,48 @@ class DirectoriesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsFileEntry',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def directories_get_file_systems(self, data_view_name, **kwargs):  # noqa: E501
         """Returns the list of systems that have access to a filesystem  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.directories_get_file_systems(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are SystemName
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are SystemName
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are SystemName
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are SystemName
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsFileSystemSummary
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PagedResultsFileSystemSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.directories_get_file_systems_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -372,27 +444,41 @@ class DirectoriesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.directories_get_file_systems_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are SystemName
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are SystemName
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are SystemName
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are SystemName
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsFileSystemSummary, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PagedResultsFileSystemSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -409,7 +495,8 @@ class DirectoriesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -458,6 +545,13 @@ class DirectoriesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "PagedResultsFileSystemSummary",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Directories', 'GET',
@@ -467,40 +561,52 @@ class DirectoriesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsFileSystemSummary',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def directories_get_root_file_entries(self, data_view_name, system_name, **kwargs):  # noqa: E501
         """Returns the list of root directories configured in this FastStats system  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.directories_get_root_file_entries(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :type timeout_in_seconds: int
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsFileEntry
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PagedResultsFileEntry
         """
         kwargs['_return_http_data_only'] = True
         return self.directories_get_root_file_entries_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
@@ -510,29 +616,45 @@ class DirectoriesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.directories_get_root_file_entries_with_http_info(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :type timeout_in_seconds: int
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsFileEntry, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PagedResultsFileEntry, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -551,7 +673,8 @@ class DirectoriesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -608,6 +731,13 @@ class DirectoriesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "PagedResultsFileEntry",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Directories/{systemName}', 'GET',
@@ -617,37 +747,46 @@ class DirectoriesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsFileEntry',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def directories_upsert_directory(self, data_view_name, system_name, directory_path, **kwargs):  # noqa: E501
         """Ensure that a directory exists in a location  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.directories_upsert_directory(data_view_name, system_name, directory_path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param str directory_path: The path to the directory that should exist (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param directory_path: The path to the directory that should exist (required)
+        :type directory_path: str
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :type timeout_in_seconds: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: FileEntry
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: FileEntry
         """
         kwargs['_return_http_data_only'] = True
         return self.directories_upsert_directory_with_http_info(data_view_name, system_name, directory_path, **kwargs)  # noqa: E501
@@ -657,26 +796,39 @@ class DirectoriesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.directories_upsert_directory_with_http_info(data_view_name, system_name, directory_path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param str directory_path: The path to the directory that should exist (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param directory_path: The path to the directory that should exist (required)
+        :type directory_path: str
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :type timeout_in_seconds: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(FileEntry, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(FileEntry, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -692,7 +844,8 @@ class DirectoriesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -749,6 +902,13 @@ class DirectoriesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            201: "FileEntry",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Directories/{systemName}/' + directory_path_template, 'PUT',
@@ -758,10 +918,11 @@ class DirectoriesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='FileEntry',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))

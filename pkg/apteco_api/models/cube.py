@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -52,7 +52,7 @@ class Cube(object):
     def __init__(self, base_query=None, resolve_table_name=None, storage=None, dimensions=None, measures=None, local_vars_configuration=None):  # noqa: E501
         """Cube - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._base_query = None
@@ -84,7 +84,7 @@ class Cube(object):
 
 
         :param base_query: The base_query of this Cube.  # noqa: E501
-        :type: Query
+        :type base_query: Query
         """
         if self.local_vars_configuration.client_side_validation and base_query is None:  # noqa: E501
             raise ValueError("Invalid value for `base_query`, must not be `None`")  # noqa: E501
@@ -109,7 +109,7 @@ class Cube(object):
         The name of the table to resolve this cube to.  I.e. all the counts in the cube will be counts of entities from this table  # noqa: E501
 
         :param resolve_table_name: The resolve_table_name of this Cube.  # noqa: E501
-        :type: str
+        :type resolve_table_name: str
         """
         if self.local_vars_configuration.client_side_validation and resolve_table_name is None:  # noqa: E501
             raise ValueError("Invalid value for `resolve_table_name`, must not be `None`")  # noqa: E501
@@ -134,7 +134,7 @@ class Cube(object):
         How the results of the cube will be returned  # noqa: E501
 
         :param storage: The storage of this Cube.  # noqa: E501
-        :type: str
+        :type storage: str
         """
         if self.local_vars_configuration.client_side_validation and storage is None:  # noqa: E501
             raise ValueError("Invalid value for `storage`, must not be `None`")  # noqa: E501
@@ -165,7 +165,7 @@ class Cube(object):
         The dimensions to build the cube with.  This can be one or more variables, queries, etc.  # noqa: E501
 
         :param dimensions: The dimensions of this Cube.  # noqa: E501
-        :type: list[Dimension]
+        :type dimensions: list[Dimension]
         """
         if self.local_vars_configuration.client_side_validation and dimensions is None:  # noqa: E501
             raise ValueError("Invalid value for `dimensions`, must not be `None`")  # noqa: E501
@@ -190,34 +190,42 @@ class Cube(object):
         The measures to build the cube with.  This can be one or more aggregations to calculate for the specified dimensions such as counts, sums, means, etc.  # noqa: E501
 
         :param measures: The measures of this Cube.  # noqa: E501
-        :type: list[Measure]
+        :type measures: list[Measure]
         """
         if self.local_vars_configuration.client_side_validation and measures is None:  # noqa: E501
             raise ValueError("Invalid value for `measures`, must not be `None`")  # noqa: E501
 
         self._measures = measures
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -72,7 +72,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
     def __init__(self, unknown=None, broadcast_bounce=None, broadcast_open=None, broadcast_click=None, broadcast_reply=None, broadcast_opt_in=None, broadcast_opt_out=None, broadcast_delivered=None, broadcast_failed=None, facebook_like=None, facebook_comment=None, facebook_share=None, facebook_link_click=None, twitter_like=None, twitter_retweet=None, local_vars_configuration=None):  # noqa: E501
         """ResponseStatisticsPerResponseTypeStatisticsMap - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._unknown = None
@@ -139,7 +139,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param unknown: The unknown of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type unknown: PerResponseTypeStatistics
         """
 
         self._unknown = unknown
@@ -160,7 +160,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param broadcast_bounce: The broadcast_bounce of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type broadcast_bounce: PerResponseTypeStatistics
         """
 
         self._broadcast_bounce = broadcast_bounce
@@ -181,7 +181,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param broadcast_open: The broadcast_open of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type broadcast_open: PerResponseTypeStatistics
         """
 
         self._broadcast_open = broadcast_open
@@ -202,7 +202,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param broadcast_click: The broadcast_click of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type broadcast_click: PerResponseTypeStatistics
         """
 
         self._broadcast_click = broadcast_click
@@ -223,7 +223,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param broadcast_reply: The broadcast_reply of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type broadcast_reply: PerResponseTypeStatistics
         """
 
         self._broadcast_reply = broadcast_reply
@@ -244,7 +244,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param broadcast_opt_in: The broadcast_opt_in of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type broadcast_opt_in: PerResponseTypeStatistics
         """
 
         self._broadcast_opt_in = broadcast_opt_in
@@ -265,7 +265,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param broadcast_opt_out: The broadcast_opt_out of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type broadcast_opt_out: PerResponseTypeStatistics
         """
 
         self._broadcast_opt_out = broadcast_opt_out
@@ -286,7 +286,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param broadcast_delivered: The broadcast_delivered of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type broadcast_delivered: PerResponseTypeStatistics
         """
 
         self._broadcast_delivered = broadcast_delivered
@@ -307,7 +307,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param broadcast_failed: The broadcast_failed of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type broadcast_failed: PerResponseTypeStatistics
         """
 
         self._broadcast_failed = broadcast_failed
@@ -328,7 +328,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param facebook_like: The facebook_like of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type facebook_like: PerResponseTypeStatistics
         """
 
         self._facebook_like = facebook_like
@@ -349,7 +349,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param facebook_comment: The facebook_comment of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type facebook_comment: PerResponseTypeStatistics
         """
 
         self._facebook_comment = facebook_comment
@@ -370,7 +370,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param facebook_share: The facebook_share of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type facebook_share: PerResponseTypeStatistics
         """
 
         self._facebook_share = facebook_share
@@ -391,7 +391,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param facebook_link_click: The facebook_link_click of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type facebook_link_click: PerResponseTypeStatistics
         """
 
         self._facebook_link_click = facebook_link_click
@@ -412,7 +412,7 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param twitter_like: The twitter_like of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type twitter_like: PerResponseTypeStatistics
         """
 
         self._twitter_like = twitter_like
@@ -433,32 +433,40 @@ class ResponseStatisticsPerResponseTypeStatisticsMap(object):
 
 
         :param twitter_retweet: The twitter_retweet of this ResponseStatisticsPerResponseTypeStatisticsMap.  # noqa: E501
-        :type: PerResponseTypeStatistics
+        :type twitter_retweet: PerResponseTypeStatistics
         """
 
         self._twitter_retweet = twitter_retweet
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

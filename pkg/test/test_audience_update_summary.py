@@ -40,45 +40,44 @@ class TestAudienceUpdateSummary(unittest.TestCase):
                 id = 56, 
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', ), 
-                title = '0', 
-                description = '0', 
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', ), 
+                title = '', 
+                description = '', 
                 owner = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', ), 
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', ), 
                 is_deleted = True, 
-                resolve_table_name = '0'
+                resolve_table_name = ''
             )
         else :
             return AudienceUpdateSummary(
                 id = 56,
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', ),
-                title = '0',
-                description = '0',
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', ),
+                title = '',
+                description = '',
                 owner = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', ),
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', ),
                 is_deleted = True,
-                resolve_table_name = '0',
+                resolve_table_name = '',
         )
 
     def testAudienceUpdateSummary(self):
         """Test AudienceUpdateSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

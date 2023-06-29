@@ -37,20 +37,19 @@ class TestConfirmResetPasswordRequest(unittest.TestCase):
         # model = apteco_api.models.confirm_reset_password_request.ConfirmResetPasswordRequest()  # noqa: E501
         if include_optional :
             return ConfirmResetPasswordRequest(
-                email_address = '0', 
-                new_password = '0'
+                email_address = '', 
+                new_password = ''
             )
         else :
             return ConfirmResetPasswordRequest(
-                email_address = '0',
-                new_password = '0',
+                email_address = '',
+                new_password = '',
         )
 
     def testConfirmResetPasswordRequest(self):
         """Test ConfirmResetPasswordRequest"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

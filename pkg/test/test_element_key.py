@@ -37,20 +37,19 @@ class TestElementKey(unittest.TestCase):
         # model = apteco_api.models.element_key.ElementKey()  # noqa: E501
         if include_optional :
             return ElementKey(
-                id = '0', 
-                description = '0'
+                id = '', 
+                description = ''
             )
         else :
             return ElementKey(
-                id = '0',
-                description = '0',
+                id = '',
+                description = '',
         )
 
     def testElementKey(self):
         """Test ElementKey"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

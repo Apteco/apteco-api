@@ -42,7 +42,7 @@ class TestPagedResultsDataLicensingSystemSummary(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.data_licensing_system_summary.DataLicensingSystemSummary(
-                        name = '0', 
+                        name = '', 
                         is_velocity_enabled = True, )
                     ]
             )
@@ -53,7 +53,7 @@ class TestPagedResultsDataLicensingSystemSummary(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.data_licensing_system_summary.DataLicensingSystemSummary(
-                        name = '0', 
+                        name = '', 
                         is_velocity_enabled = True, )
                     ],
         )
@@ -62,7 +62,6 @@ class TestPagedResultsDataLicensingSystemSummary(unittest.TestCase):
         """Test PagedResultsDataLicensingSystemSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

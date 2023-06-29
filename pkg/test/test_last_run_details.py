@@ -37,9 +37,9 @@ class TestLastRunDetails(unittest.TestCase):
         # model = apteco_api.models.last_run_details.LastRunDetails()  # noqa: E501
         if include_optional :
             return LastRunDetails(
-                system_name = '0', 
+                system_name = '', 
                 system_load_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                user_name = '0', 
+                user_name = '', 
                 run_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else :
@@ -50,7 +50,6 @@ class TestLastRunDetails(unittest.TestCase):
         """Test LastRunDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

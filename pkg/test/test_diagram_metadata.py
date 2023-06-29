@@ -37,18 +37,17 @@ class TestDiagramMetadata(unittest.TestCase):
         # model = apteco_api.models.diagram_metadata.DiagramMetadata()  # noqa: E501
         if include_optional :
             return DiagramMetadata(
-                default_currency_locale = '0'
+                default_currency_locale = ''
             )
         else :
             return DiagramMetadata(
-                default_currency_locale = '0',
+                default_currency_locale = '',
         )
 
     def testDiagramMetadata(self):
         """Test DiagramMetadata"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

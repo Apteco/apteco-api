@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -52,7 +52,7 @@ class ProcessDetails(object):
     def __init__(self, process_id=None, private_memory_in_bytes=None, working_set_in_bytes=None, heap_size_in_bytes=None, is_server_garbage_collection_enabled=None, local_vars_configuration=None):  # noqa: E501
         """ProcessDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._process_id = None
@@ -86,7 +86,7 @@ class ProcessDetails(object):
         The process id of the API's process  # noqa: E501
 
         :param process_id: The process_id of this ProcessDetails.  # noqa: E501
-        :type: int
+        :type process_id: int
         """
         if self.local_vars_configuration.client_side_validation and process_id is None:  # noqa: E501
             raise ValueError("Invalid value for `process_id`, must not be `None`")  # noqa: E501
@@ -111,7 +111,7 @@ class ProcessDetails(object):
         The amount of \"private memory\" used by the API's process, in bytes  # noqa: E501
 
         :param private_memory_in_bytes: The private_memory_in_bytes of this ProcessDetails.  # noqa: E501
-        :type: int
+        :type private_memory_in_bytes: int
         """
         if self.local_vars_configuration.client_side_validation and private_memory_in_bytes is None:  # noqa: E501
             raise ValueError("Invalid value for `private_memory_in_bytes`, must not be `None`")  # noqa: E501
@@ -136,7 +136,7 @@ class ProcessDetails(object):
         The amount of physical memory used by the API's process, in bytes  # noqa: E501
 
         :param working_set_in_bytes: The working_set_in_bytes of this ProcessDetails.  # noqa: E501
-        :type: int
+        :type working_set_in_bytes: int
         """
         if self.local_vars_configuration.client_side_validation and working_set_in_bytes is None:  # noqa: E501
             raise ValueError("Invalid value for `working_set_in_bytes`, must not be `None`")  # noqa: E501
@@ -161,7 +161,7 @@ class ProcessDetails(object):
         The amount of memory in the .Net heap used by the API's process, in bytes  # noqa: E501
 
         :param heap_size_in_bytes: The heap_size_in_bytes of this ProcessDetails.  # noqa: E501
-        :type: int
+        :type heap_size_in_bytes: int
         """
         if self.local_vars_configuration.client_side_validation and heap_size_in_bytes is None:  # noqa: E501
             raise ValueError("Invalid value for `heap_size_in_bytes`, must not be `None`")  # noqa: E501
@@ -186,34 +186,42 @@ class ProcessDetails(object):
         Whether the \"Server\" garbage collection strategy is enabled or not  # noqa: E501
 
         :param is_server_garbage_collection_enabled: The is_server_garbage_collection_enabled of this ProcessDetails.  # noqa: E501
-        :type: bool
+        :type is_server_garbage_collection_enabled: bool
         """
         if self.local_vars_configuration.client_side_validation and is_server_garbage_collection_enabled is None:  # noqa: E501
             raise ValueError("Invalid value for `is_server_garbage_collection_enabled`, must not be `None`")  # noqa: E501
 
         self._is_server_garbage_collection_enabled = is_server_garbage_collection_enabled
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

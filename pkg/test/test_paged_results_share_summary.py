@@ -45,7 +45,7 @@ class TestPagedResultsShareSummary(unittest.TestCase):
                         id = 56, 
                         shareable_type = 'Unknown', 
                         shareable_id = 56, 
-                        shareable_title = '0', 
+                        shareable_title = '', 
                         number_of_users_shared_with = 56, )
                     ]
             )
@@ -59,7 +59,7 @@ class TestPagedResultsShareSummary(unittest.TestCase):
                         id = 56, 
                         shareable_type = 'Unknown', 
                         shareable_id = 56, 
-                        shareable_title = '0', 
+                        shareable_title = '', 
                         number_of_users_shared_with = 56, )
                     ],
         )
@@ -68,7 +68,6 @@ class TestPagedResultsShareSummary(unittest.TestCase):
         """Test PagedResultsShareSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

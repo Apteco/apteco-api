@@ -37,23 +37,22 @@ class TestFastStatsSystemDetail(unittest.TestCase):
         # model = apteco_api.models.fast_stats_system_detail.FastStatsSystemDetail()  # noqa: E501
         if include_optional :
             return FastStatsSystemDetail(
-                name = '0', 
-                view_name = '0', 
-                description = '0', 
+                name = '', 
+                view_name = '', 
+                description = '', 
                 fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else :
             return FastStatsSystemDetail(
-                name = '0',
-                view_name = '0',
-                description = '0',
+                name = '',
+                view_name = '',
+                description = '',
         )
 
     def testFastStatsSystemDetail(self):
         """Test FastStatsSystemDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

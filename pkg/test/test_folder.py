@@ -37,20 +37,19 @@ class TestFolder(unittest.TestCase):
         # model = apteco_api.models.folder.Folder()  # noqa: E501
         if include_optional :
             return Folder(
-                name = '0', 
-                description = '0'
+                name = '', 
+                description = ''
             )
         else :
             return Folder(
-                name = '0',
-                description = '0',
+                name = '',
+                description = '',
         )
 
     def testFolder(self):
         """Test Folder"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

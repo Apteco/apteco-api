@@ -42,11 +42,11 @@ class TestPagedResultsChannelSummary(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.channel_summary.ChannelSummary(
-                        id = '0', 
+                        id = '', 
                         schema_id = 56, 
-                        description = '0', 
+                        description = '', 
                         type = 'Unknown', 
-                        parent_id = '0', )
+                        parent_id = '', )
                     ]
             )
         else :
@@ -56,11 +56,11 @@ class TestPagedResultsChannelSummary(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.channel_summary.ChannelSummary(
-                        id = '0', 
+                        id = '', 
                         schema_id = 56, 
-                        description = '0', 
+                        description = '', 
                         type = 'Unknown', 
-                        parent_id = '0', )
+                        parent_id = '', )
                     ],
         )
 
@@ -68,7 +68,6 @@ class TestPagedResultsChannelSummary(unittest.TestCase):
         """Test PagedResultsChannelSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

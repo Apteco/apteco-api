@@ -43,23 +43,30 @@ class FastStatsBuildsApi(object):
         EXPERIMENTAL  This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fast_stats_builds_cancel_fast_stats_build_job(data_view_name, system_name, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param int job_id: The id of the job to cancel (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param job_id: The id of the job to cancel (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.fast_stats_builds_cancel_fast_stats_build_job_with_http_info(data_view_name, system_name, job_id, **kwargs)  # noqa: E501
@@ -70,25 +77,37 @@ class FastStatsBuildsApi(object):
         EXPERIMENTAL  This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fast_stats_builds_cancel_fast_stats_build_job_with_http_info(data_view_name, system_name, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param int job_id: The id of the job to cancel (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param job_id: The id of the job to cancel (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -103,7 +122,8 @@ class FastStatsBuildsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -148,6 +168,8 @@ class FastStatsBuildsApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/FastStatsBuilds/{systemName}/BuildJobs/{jobId}', 'DELETE',
@@ -157,13 +179,14 @@ class FastStatsBuildsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def fast_stats_builds_create_fast_stats_build_job(self, data_view_name, system_name, **kwargs):  # noqa: E501
         """EXPERIMENTAL: Requires OrbitAdmin: Create a new job to builds a FastStats system from the given definition  # noqa: E501
@@ -171,23 +194,30 @@ class FastStatsBuildsApi(object):
         EXPERIMENTAL  This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fast_stats_builds_create_fast_stats_build_job(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param BuildDefinition build_definition: The details needed to build the system
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param build_definition: The details needed to build the system
+        :type build_definition: BuildDefinition
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BuildJobDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BuildJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.fast_stats_builds_create_fast_stats_build_job_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
@@ -198,25 +228,37 @@ class FastStatsBuildsApi(object):
         EXPERIMENTAL  This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fast_stats_builds_create_fast_stats_build_job_with_http_info(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param BuildDefinition build_definition: The details needed to build the system
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param build_definition: The details needed to build the system
+        :type build_definition: BuildDefinition
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BuildJobDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BuildJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -231,7 +273,8 @@ class FastStatsBuildsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -280,6 +323,13 @@ class FastStatsBuildsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            201: "BuildJobDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/FastStatsBuilds/{systemName}/BuildJobs', 'POST',
@@ -289,13 +339,14 @@ class FastStatsBuildsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='BuildJobDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def fast_stats_builds_fast_stats_build_sync(self, data_view_name, system_name, **kwargs):  # noqa: E501
         """EXPERIMENTAL: Requires OrbitAdmin: Builds a FastStats system from the given definition  # noqa: E501
@@ -303,24 +354,32 @@ class FastStatsBuildsApi(object):
         EXPERIMENTAL  This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fast_stats_builds_fast_stats_build_sync(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the build service's configuration
-        :param BuildDefinition build_definition: The details needed to build the system
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the build service's configuration
+        :type timeout_in_seconds: int
+        :param build_definition: The details needed to build the system
+        :type build_definition: BuildDefinition
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BuildResult
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BuildResult
         """
         kwargs['_return_http_data_only'] = True
         return self.fast_stats_builds_fast_stats_build_sync_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
@@ -331,26 +390,39 @@ class FastStatsBuildsApi(object):
         EXPERIMENTAL  This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fast_stats_builds_fast_stats_build_sync_with_http_info(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the build service's configuration
-        :param BuildDefinition build_definition: The details needed to build the system
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the build service's configuration
+        :type timeout_in_seconds: int
+        :param build_definition: The details needed to build the system
+        :type build_definition: BuildDefinition
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BuildResult, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BuildResult, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -366,7 +438,8 @@ class FastStatsBuildsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -417,6 +490,14 @@ class FastStatsBuildsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "BuildResult",
+            201: None,
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/FastStatsBuilds/{systemName}/BuildSync', 'POST',
@@ -426,13 +507,14 @@ class FastStatsBuildsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='BuildResult',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def fast_stats_builds_get_fast_stats_build_job(self, data_view_name, system_name, job_id, **kwargs):  # noqa: E501
         """EXPERIMENTAL: Requires OrbitAdmin: Get the status of a running FastStats build job  # noqa: E501
@@ -440,23 +522,30 @@ class FastStatsBuildsApi(object):
         EXPERIMENTAL  This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fast_stats_builds_get_fast_stats_build_job(data_view_name, system_name, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param int job_id: The id of the job to get the status for. (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param job_id: The id of the job to get the status for. (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BuildJobDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BuildJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.fast_stats_builds_get_fast_stats_build_job_with_http_info(data_view_name, system_name, job_id, **kwargs)  # noqa: E501
@@ -467,25 +556,37 @@ class FastStatsBuildsApi(object):
         EXPERIMENTAL  This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.fast_stats_builds_get_fast_stats_build_job_with_http_info(data_view_name, system_name, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to act on (required)
-        :param int job_id: The id of the job to get the status for. (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to act on (required)
+        :type system_name: str
+        :param job_id: The id of the job to get the status for. (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BuildJobDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BuildJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -500,7 +601,8 @@ class FastStatsBuildsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -549,6 +651,13 @@ class FastStatsBuildsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "BuildJobDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/FastStatsBuilds/{systemName}/BuildJobs/{jobId}', 'GET',
@@ -558,10 +667,11 @@ class FastStatsBuildsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='BuildJobDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))

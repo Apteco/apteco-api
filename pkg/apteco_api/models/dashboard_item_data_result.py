@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -48,7 +48,7 @@ class DashboardItemDataResult(object):
     def __init__(self, dimension_results=None, measure_results=None, count=None, local_vars_configuration=None):  # noqa: E501
         """DashboardItemDataResult - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._dimension_results = None
@@ -81,7 +81,7 @@ class DashboardItemDataResult(object):
         The set of dimension results for this cube, containing the category codes and descriptions for each dimension in the cube  # noqa: E501
 
         :param dimension_results: The dimension_results of this DashboardItemDataResult.  # noqa: E501
-        :type: list[DimensionResult]
+        :type dimension_results: list[DimensionResult]
         """
 
         self._dimension_results = dimension_results
@@ -104,7 +104,7 @@ class DashboardItemDataResult(object):
         The set of measure results for this cube, containing the values for each measure in the cube  # noqa: E501
 
         :param measure_results: The measure_results of this DashboardItemDataResult.  # noqa: E501
-        :type: list[MeasureResult]
+        :type measure_results: list[MeasureResult]
         """
 
         self._measure_results = measure_results
@@ -125,32 +125,40 @@ class DashboardItemDataResult(object):
 
 
         :param count: The count of this DashboardItemDataResult.  # noqa: E501
-        :type: Count
+        :type count: Count
         """
 
         self._count = count
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -37,25 +37,24 @@ class TestCreateUserRegistrationRequest(unittest.TestCase):
         # model = apteco_api.models.create_user_registration_request.CreateUserRegistrationRequest()  # noqa: E501
         if include_optional :
             return CreateUserRegistrationRequest(
-                username = '0', 
-                firstname = '0', 
-                surname = '0', 
-                email_address = '0', 
-                password = '0', 
-                confirm_registration_url = '0'
+                username = '', 
+                firstname = '', 
+                surname = '', 
+                email_address = '', 
+                password = '', 
+                confirm_registration_url = ''
             )
         else :
             return CreateUserRegistrationRequest(
-                username = '0',
-                email_address = '0',
-                password = '0',
+                username = '',
+                email_address = '',
+                password = '',
         )
 
     def testCreateUserRegistrationRequest(self):
         """Test CreateUserRegistrationRequest"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

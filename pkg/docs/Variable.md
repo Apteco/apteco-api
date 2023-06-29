@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **selector_info** | [**SelectorVariableInfo**](SelectorVariableInfo.md) |  | [optional] 
 **numeric_info** | [**NumericVariableInfo**](NumericVariableInfo.md) |  | [optional] 
 **text_info** | [**TextVariableInfo**](TextVariableInfo.md) |  | [optional] 
-**reference_info** | [**object**](.md) | Details specific for reference (URN) variables in the FastStats system | [optional] 
+**reference_info** | **object** | Details specific for reference (URN) variables in the FastStats system | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

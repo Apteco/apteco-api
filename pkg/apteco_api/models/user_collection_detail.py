@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -74,7 +74,7 @@ class UserCollectionDetail(object):
     def __init__(self, viewing_username=None, status=None, shared_to_me=None, shared_by_me=None, id=None, owner=None, number_of_parts=None, number_of_users_shared_with=None, share_id=None, number_of_hits=None, system_name=None, title=None, description=None, creation_date=None, file_path=None, deletion_date=None, local_vars_configuration=None):  # noqa: E501
         """UserCollectionDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._viewing_username = None
@@ -132,7 +132,7 @@ class UserCollectionDetail(object):
         The username of the user that has access to this collection  # noqa: E501
 
         :param viewing_username: The viewing_username of this UserCollectionDetail.  # noqa: E501
-        :type: str
+        :type viewing_username: str
         """
         if self.local_vars_configuration.client_side_validation and viewing_username is None:  # noqa: E501
             raise ValueError("Invalid value for `viewing_username`, must not be `None`")  # noqa: E501
@@ -157,7 +157,7 @@ class UserCollectionDetail(object):
         The status of the collection  # noqa: E501
 
         :param status: The status of this UserCollectionDetail.  # noqa: E501
-        :type: str
+        :type status: str
         """
         if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
@@ -188,7 +188,7 @@ class UserCollectionDetail(object):
         Whether this collection has been shared to the given user by someone else  # noqa: E501
 
         :param shared_to_me: The shared_to_me of this UserCollectionDetail.  # noqa: E501
-        :type: bool
+        :type shared_to_me: bool
         """
         if self.local_vars_configuration.client_side_validation and shared_to_me is None:  # noqa: E501
             raise ValueError("Invalid value for `shared_to_me`, must not be `None`")  # noqa: E501
@@ -213,7 +213,7 @@ class UserCollectionDetail(object):
         Whether this collection has been shared to others by the given user  # noqa: E501
 
         :param shared_by_me: The shared_by_me of this UserCollectionDetail.  # noqa: E501
-        :type: bool
+        :type shared_by_me: bool
         """
         if self.local_vars_configuration.client_side_validation and shared_by_me is None:  # noqa: E501
             raise ValueError("Invalid value for `shared_by_me`, must not be `None`")  # noqa: E501
@@ -238,7 +238,7 @@ class UserCollectionDetail(object):
         The collection's id  # noqa: E501
 
         :param id: The id of this UserCollectionDetail.  # noqa: E501
-        :type: int
+        :type id: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -261,7 +261,7 @@ class UserCollectionDetail(object):
 
 
         :param owner: The owner of this UserCollectionDetail.  # noqa: E501
-        :type: UserDisplayDetails
+        :type owner: UserDisplayDetails
         """
         if self.local_vars_configuration.client_side_validation and owner is None:  # noqa: E501
             raise ValueError("Invalid value for `owner`, must not be `None`")  # noqa: E501
@@ -286,7 +286,7 @@ class UserCollectionDetail(object):
         The number of parts within this collection  # noqa: E501
 
         :param number_of_parts: The number_of_parts of this UserCollectionDetail.  # noqa: E501
-        :type: int
+        :type number_of_parts: int
         """
 
         self._number_of_parts = number_of_parts
@@ -309,7 +309,7 @@ class UserCollectionDetail(object):
         The number of people this collection has been shared with  # noqa: E501
 
         :param number_of_users_shared_with: The number_of_users_shared_with of this UserCollectionDetail.  # noqa: E501
-        :type: int
+        :type number_of_users_shared_with: int
         """
         if self.local_vars_configuration.client_side_validation and number_of_users_shared_with is None:  # noqa: E501
             raise ValueError("Invalid value for `number_of_users_shared_with`, must not be `None`")  # noqa: E501
@@ -334,7 +334,7 @@ class UserCollectionDetail(object):
         The id of the share associated with this collection, or null if the  collection has not yet been shared  # noqa: E501
 
         :param share_id: The share_id of this UserCollectionDetail.  # noqa: E501
-        :type: int
+        :type share_id: int
         """
         if self.local_vars_configuration.client_side_validation and share_id is None:  # noqa: E501
             raise ValueError("Invalid value for `share_id`, must not be `None`")  # noqa: E501
@@ -359,7 +359,7 @@ class UserCollectionDetail(object):
         The number of hits associated with this collection  # noqa: E501
 
         :param number_of_hits: The number_of_hits of this UserCollectionDetail.  # noqa: E501
-        :type: int
+        :type number_of_hits: int
         """
         if self.local_vars_configuration.client_side_validation and number_of_hits is None:  # noqa: E501
             raise ValueError("Invalid value for `number_of_hits`, must not be `None`")  # noqa: E501
@@ -384,7 +384,7 @@ class UserCollectionDetail(object):
         The FastStats system that this collection has been created against  # noqa: E501
 
         :param system_name: The system_name of this UserCollectionDetail.  # noqa: E501
-        :type: str
+        :type system_name: str
         """
         if self.local_vars_configuration.client_side_validation and system_name is None:  # noqa: E501
             raise ValueError("Invalid value for `system_name`, must not be `None`")  # noqa: E501
@@ -409,7 +409,7 @@ class UserCollectionDetail(object):
         The title of the collection  # noqa: E501
 
         :param title: The title of this UserCollectionDetail.  # noqa: E501
-        :type: str
+        :type title: str
         """
         if self.local_vars_configuration.client_side_validation and title is None:  # noqa: E501
             raise ValueError("Invalid value for `title`, must not be `None`")  # noqa: E501
@@ -434,7 +434,7 @@ class UserCollectionDetail(object):
         The description of the collection  # noqa: E501
 
         :param description: The description of this UserCollectionDetail.  # noqa: E501
-        :type: str
+        :type description: str
         """
         if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
             raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
@@ -459,7 +459,7 @@ class UserCollectionDetail(object):
         The date the collection was created  # noqa: E501
 
         :param creation_date: The creation_date of this UserCollectionDetail.  # noqa: E501
-        :type: datetime
+        :type creation_date: datetime
         """
         if self.local_vars_configuration.client_side_validation and creation_date is None:  # noqa: E501
             raise ValueError("Invalid value for `creation_date`, must not be `None`")  # noqa: E501
@@ -484,7 +484,7 @@ class UserCollectionDetail(object):
         The path to the file that contains the parts of this collection  # noqa: E501
 
         :param file_path: The file_path of this UserCollectionDetail.  # noqa: E501
-        :type: str
+        :type file_path: str
         """
         if self.local_vars_configuration.client_side_validation and file_path is None:  # noqa: E501
             raise ValueError("Invalid value for `file_path`, must not be `None`")  # noqa: E501
@@ -509,32 +509,40 @@ class UserCollectionDetail(object):
         The date the collection was deleted, or null if it has not been deleted  # noqa: E501
 
         :param deletion_date: The deletion_date of this UserCollectionDetail.  # noqa: E501
-        :type: datetime
+        :type deletion_date: datetime
         """
 
         self._deletion_date = deletion_date
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

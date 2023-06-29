@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | [**object**](.md) |  | [optional] 
+**value** | **object** |  | [optional] 
 **path** | **str** |  | [optional] 
 **op** | **str** |  | [optional] 
 **_from** | **str** |  | [optional] 

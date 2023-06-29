@@ -37,18 +37,17 @@ class TestLanguageDetails(unittest.TestCase):
         # model = apteco_api.models.language_details.LanguageDetails()  # noqa: E501
         if include_optional :
             return LanguageDetails(
-                language = '0'
+                language = ''
             )
         else :
             return LanguageDetails(
-                language = '0',
+                language = '',
         )
 
     def testLanguageDetails(self):
         """Test LanguageDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

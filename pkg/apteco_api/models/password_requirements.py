@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -54,7 +54,7 @@ class PasswordRequirements(object):
     def __init__(self, minimum_password_length=None, minimum_number_of_digits_in_password=None, minimum_number_of_letters_in_password=None, minimum_number_of_lowercase_letters_in_password=None, minimum_number_of_uppercase_letters_in_password=None, minimum_number_of_symbols_in_password=None, local_vars_configuration=None):  # noqa: E501
         """PasswordRequirements - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._minimum_password_length = None
@@ -90,7 +90,7 @@ class PasswordRequirements(object):
         The minimum number of characters required for a new password  # noqa: E501
 
         :param minimum_password_length: The minimum_password_length of this PasswordRequirements.  # noqa: E501
-        :type: int
+        :type minimum_password_length: int
         """
         if self.local_vars_configuration.client_side_validation and minimum_password_length is None:  # noqa: E501
             raise ValueError("Invalid value for `minimum_password_length`, must not be `None`")  # noqa: E501
@@ -115,7 +115,7 @@ class PasswordRequirements(object):
         The minimum number of numeric digit characters required in a new password  # noqa: E501
 
         :param minimum_number_of_digits_in_password: The minimum_number_of_digits_in_password of this PasswordRequirements.  # noqa: E501
-        :type: int
+        :type minimum_number_of_digits_in_password: int
         """
         if self.local_vars_configuration.client_side_validation and minimum_number_of_digits_in_password is None:  # noqa: E501
             raise ValueError("Invalid value for `minimum_number_of_digits_in_password`, must not be `None`")  # noqa: E501
@@ -140,7 +140,7 @@ class PasswordRequirements(object):
         The minimum number of alphabetic characters required in a new password  # noqa: E501
 
         :param minimum_number_of_letters_in_password: The minimum_number_of_letters_in_password of this PasswordRequirements.  # noqa: E501
-        :type: int
+        :type minimum_number_of_letters_in_password: int
         """
         if self.local_vars_configuration.client_side_validation and minimum_number_of_letters_in_password is None:  # noqa: E501
             raise ValueError("Invalid value for `minimum_number_of_letters_in_password`, must not be `None`")  # noqa: E501
@@ -165,7 +165,7 @@ class PasswordRequirements(object):
         The minimum number of lowercase characters required in a new password  # noqa: E501
 
         :param minimum_number_of_lowercase_letters_in_password: The minimum_number_of_lowercase_letters_in_password of this PasswordRequirements.  # noqa: E501
-        :type: int
+        :type minimum_number_of_lowercase_letters_in_password: int
         """
         if self.local_vars_configuration.client_side_validation and minimum_number_of_lowercase_letters_in_password is None:  # noqa: E501
             raise ValueError("Invalid value for `minimum_number_of_lowercase_letters_in_password`, must not be `None`")  # noqa: E501
@@ -190,7 +190,7 @@ class PasswordRequirements(object):
         The minimum number of uppercase characters required in a new password  # noqa: E501
 
         :param minimum_number_of_uppercase_letters_in_password: The minimum_number_of_uppercase_letters_in_password of this PasswordRequirements.  # noqa: E501
-        :type: int
+        :type minimum_number_of_uppercase_letters_in_password: int
         """
         if self.local_vars_configuration.client_side_validation and minimum_number_of_uppercase_letters_in_password is None:  # noqa: E501
             raise ValueError("Invalid value for `minimum_number_of_uppercase_letters_in_password`, must not be `None`")  # noqa: E501
@@ -215,34 +215,42 @@ class PasswordRequirements(object):
         The minimum number of symbols (i.e. not digits or letters) required in a new password  # noqa: E501
 
         :param minimum_number_of_symbols_in_password: The minimum_number_of_symbols_in_password of this PasswordRequirements.  # noqa: E501
-        :type: int
+        :type minimum_number_of_symbols_in_password: int
         """
         if self.local_vars_configuration.client_side_validation and minimum_number_of_symbols_in_password is None:  # noqa: E501
             raise ValueError("Invalid value for `minimum_number_of_symbols_in_password`, must not be `None`")  # noqa: E501
 
         self._minimum_number_of_symbols_in_password = minimum_number_of_symbols_in_password
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

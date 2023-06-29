@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -52,7 +52,7 @@ class PurchaseInfo(object):
     def __init__(self, number_of_records_licensed=None, credit_remaining=None, grand_total_cost=None, query_id=None, urn_file_path=None, local_vars_configuration=None):  # noqa: E501
         """PurchaseInfo - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._number_of_records_licensed = None
@@ -86,7 +86,7 @@ class PurchaseInfo(object):
         The number of records from the given query that have not yet been licensed  # noqa: E501
 
         :param number_of_records_licensed: The number_of_records_licensed of this PurchaseInfo.  # noqa: E501
-        :type: int
+        :type number_of_records_licensed: int
         """
         if self.local_vars_configuration.client_side_validation and number_of_records_licensed is None:  # noqa: E501
             raise ValueError("Invalid value for `number_of_records_licensed`, must not be `None`")  # noqa: E501
@@ -111,7 +111,7 @@ class PurchaseInfo(object):
         The remaining money available to license records  # noqa: E501
 
         :param credit_remaining: The credit_remaining of this PurchaseInfo.  # noqa: E501
-        :type: float
+        :type credit_remaining: float
         """
         if self.local_vars_configuration.client_side_validation and credit_remaining is None:  # noqa: E501
             raise ValueError("Invalid value for `credit_remaining`, must not be `None`")  # noqa: E501
@@ -136,7 +136,7 @@ class PurchaseInfo(object):
         The total cost of records licensed  # noqa: E501
 
         :param grand_total_cost: The grand_total_cost of this PurchaseInfo.  # noqa: E501
-        :type: float
+        :type grand_total_cost: float
         """
         if self.local_vars_configuration.client_side_validation and grand_total_cost is None:  # noqa: E501
             raise ValueError("Invalid value for `grand_total_cost`, must not be `None`")  # noqa: E501
@@ -161,7 +161,7 @@ class PurchaseInfo(object):
         The unique id of an audience data licensing query  # noqa: E501
 
         :param query_id: The query_id of this PurchaseInfo.  # noqa: E501
-        :type: str
+        :type query_id: str
         """
         if self.local_vars_configuration.client_side_validation and query_id is None:  # noqa: E501
             raise ValueError("Invalid value for `query_id`, must not be `None`")  # noqa: E501
@@ -186,34 +186,42 @@ class PurchaseInfo(object):
         The location of the Urn file for the purchased records  # noqa: E501
 
         :param urn_file_path: The urn_file_path of this PurchaseInfo.  # noqa: E501
-        :type: str
+        :type urn_file_path: str
         """
         if self.local_vars_configuration.client_side_validation and urn_file_path is None:  # noqa: E501
             raise ValueError("Invalid value for `urn_file_path`, must not be `None`")  # noqa: E501
 
         self._urn_file_path = urn_file_path
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

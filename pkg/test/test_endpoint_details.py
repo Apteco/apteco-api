@@ -37,10 +37,10 @@ class TestEndpointDetails(unittest.TestCase):
         # model = apteco_api.models.endpoint_details.EndpointDetails()  # noqa: E501
         if include_optional :
             return EndpointDetails(
-                name = '0', 
-                group_name = '0', 
-                method = '0', 
-                url_template = '0', 
+                name = '', 
+                group_name = '', 
+                method = '', 
+                url_template = '', 
                 allows_anonymous_access = True, 
                 is_experimental = True, 
                 is_under_development = True, 
@@ -51,15 +51,15 @@ class TestEndpointDetails(unittest.TestCase):
                     'AudienceSelection'
                     ], 
                 requires_roles = [
-                    '0'
+                    ''
                     ]
             )
         else :
             return EndpointDetails(
-                name = '0',
-                group_name = '0',
-                method = '0',
-                url_template = '0',
+                name = '',
+                group_name = '',
+                method = '',
+                url_template = '',
                 allows_anonymous_access = True,
                 is_experimental = True,
                 is_under_development = True,
@@ -70,7 +70,7 @@ class TestEndpointDetails(unittest.TestCase):
                     'AudienceSelection'
                     ],
                 requires_roles = [
-                    '0'
+                    ''
                     ],
         )
 
@@ -78,7 +78,6 @@ class TestEndpointDetails(unittest.TestCase):
         """Test EndpointDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

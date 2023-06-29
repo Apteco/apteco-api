@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -58,7 +58,7 @@ class CreateAudienceDetail(object):
     def __init__(self, title=None, description=None, exclude_query=None, include_query=None, body_query=None, selection_modifiers=None, brief_text=None, system_name=None, local_vars_configuration=None):  # noqa: E501
         """CreateAudienceDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._title = None
@@ -104,7 +104,7 @@ class CreateAudienceDetail(object):
         The title of the audience  # noqa: E501
 
         :param title: The title of this CreateAudienceDetail.  # noqa: E501
-        :type: str
+        :type title: str
         """
         if self.local_vars_configuration.client_side_validation and title is None:  # noqa: E501
             raise ValueError("Invalid value for `title`, must not be `None`")  # noqa: E501
@@ -129,7 +129,7 @@ class CreateAudienceDetail(object):
         The description of the audience  # noqa: E501
 
         :param description: The description of this CreateAudienceDetail.  # noqa: E501
-        :type: str
+        :type description: str
         """
 
         self._description = description
@@ -150,7 +150,7 @@ class CreateAudienceDetail(object):
 
 
         :param exclude_query: The exclude_query of this CreateAudienceDetail.  # noqa: E501
-        :type: Query
+        :type exclude_query: Query
         """
 
         self._exclude_query = exclude_query
@@ -171,7 +171,7 @@ class CreateAudienceDetail(object):
 
 
         :param include_query: The include_query of this CreateAudienceDetail.  # noqa: E501
-        :type: Query
+        :type include_query: Query
         """
 
         self._include_query = include_query
@@ -192,7 +192,7 @@ class CreateAudienceDetail(object):
 
 
         :param body_query: The body_query of this CreateAudienceDetail.  # noqa: E501
-        :type: Query
+        :type body_query: Query
         """
 
         self._body_query = body_query
@@ -213,7 +213,7 @@ class CreateAudienceDetail(object):
 
 
         :param selection_modifiers: The selection_modifiers of this CreateAudienceDetail.  # noqa: E501
-        :type: SelectionModifiers
+        :type selection_modifiers: SelectionModifiers
         """
 
         self._selection_modifiers = selection_modifiers
@@ -236,7 +236,7 @@ class CreateAudienceDetail(object):
         Notes associated with the audience  # noqa: E501
 
         :param brief_text: The brief_text of this CreateAudienceDetail.  # noqa: E501
-        :type: str
+        :type brief_text: str
         """
 
         self._brief_text = brief_text
@@ -259,34 +259,42 @@ class CreateAudienceDetail(object):
         The name of the FastStats system this audience is to be calculated against  # noqa: E501
 
         :param system_name: The system_name of this CreateAudienceDetail.  # noqa: E501
-        :type: str
+        :type system_name: str
         """
         if self.local_vars_configuration.client_side_validation and system_name is None:  # noqa: E501
             raise ValueError("Invalid value for `system_name`, must not be `None`")  # noqa: E501
 
         self._system_name = system_name
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

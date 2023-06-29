@@ -43,23 +43,30 @@ class AudienceCompositionsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audience_compositions_create_audience_composition(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to create the composition for (required)
-        :param CreateAudienceCompositionDetail create_audience_composition_detail: Details to create the audience composition with
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to create the composition for (required)
+        :type system_name: str
+        :param create_audience_composition_detail: Details to create the audience composition with
+        :type create_audience_composition_detail: CreateAudienceCompositionDetail
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.audience_compositions_create_audience_composition_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
@@ -70,25 +77,37 @@ class AudienceCompositionsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audience_compositions_create_audience_composition_with_http_info(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to create the composition for (required)
-        :param CreateAudienceCompositionDetail create_audience_composition_detail: Details to create the audience composition with
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to create the composition for (required)
+        :type system_name: str
+        :param create_audience_composition_detail: Details to create the audience composition with
+        :type create_audience_composition_detail: CreateAudienceCompositionDetail
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -103,7 +122,8 @@ class AudienceCompositionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -152,6 +172,8 @@ class AudienceCompositionsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/AudienceCompositions/{systemName}', 'POST',
@@ -161,13 +183,14 @@ class AudienceCompositionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audience_compositions_delete_audience_composition(self, data_view_name, system_name, audience_composition_id, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Deletes a given audience composition for the given FastStats system.  # noqa: E501
@@ -175,23 +198,30 @@ class AudienceCompositionsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audience_compositions_delete_audience_composition(data_view_name, system_name, audience_composition_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to delete the composition for (required)
-        :param int audience_composition_id: The id of the audience composition (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to delete the composition for (required)
+        :type system_name: str
+        :param audience_composition_id: The id of the audience composition (required)
+        :type audience_composition_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.audience_compositions_delete_audience_composition_with_http_info(data_view_name, system_name, audience_composition_id, **kwargs)  # noqa: E501
@@ -202,25 +232,37 @@ class AudienceCompositionsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audience_compositions_delete_audience_composition_with_http_info(data_view_name, system_name, audience_composition_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to delete the composition for (required)
-        :param int audience_composition_id: The id of the audience composition (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to delete the composition for (required)
+        :type system_name: str
+        :param audience_composition_id: The id of the audience composition (required)
+        :type audience_composition_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -235,7 +277,8 @@ class AudienceCompositionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -280,6 +323,8 @@ class AudienceCompositionsApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/AudienceCompositions/{systemName}/{audienceCompositionId}', 'DELETE',
@@ -289,36 +334,44 @@ class AudienceCompositionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audience_compositions_get_audience_composition(self, data_view_name, system_name, audience_composition_id, **kwargs):  # noqa: E501
         """Returns details for a given audience composition  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audience_compositions_get_audience_composition(data_view_name, system_name, audience_composition_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to get the composition for (required)
-        :param int audience_composition_id: The id of the audience composition (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to get the composition for (required)
+        :type system_name: str
+        :param audience_composition_id: The id of the audience composition (required)
+        :type audience_composition_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CompositionDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CompositionDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audience_compositions_get_audience_composition_with_http_info(data_view_name, system_name, audience_composition_id, **kwargs)  # noqa: E501
@@ -328,25 +381,37 @@ class AudienceCompositionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audience_compositions_get_audience_composition_with_http_info(data_view_name, system_name, audience_composition_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to get the composition for (required)
-        :param int audience_composition_id: The id of the audience composition (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to get the composition for (required)
+        :type system_name: str
+        :param audience_composition_id: The id of the audience composition (required)
+        :type audience_composition_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CompositionDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CompositionDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -361,7 +426,8 @@ class AudienceCompositionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -410,6 +476,12 @@ class AudienceCompositionsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "CompositionDetail",
+            400: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/AudienceCompositions/{systemName}/{audienceCompositionId}', 'GET',
@@ -419,38 +491,48 @@ class AudienceCompositionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='CompositionDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audience_compositions_get_audience_compositions(self, data_view_name, **kwargs):  # noqa: E501
         """Returns all the avaiable audience compositions.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audience_compositions_get_audience_compositions(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Description, Type, SystemName
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type, SystemName
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Description, Type, SystemName
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type, SystemName
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsCompositionSummary
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PagedResultsCompositionSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.audience_compositions_get_audience_compositions_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -460,27 +542,41 @@ class AudienceCompositionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audience_compositions_get_audience_compositions_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Description, Type, SystemName
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type, SystemName
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Description, Type, SystemName
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type, SystemName
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsCompositionSummary, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PagedResultsCompositionSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -497,7 +593,8 @@ class AudienceCompositionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -546,6 +643,12 @@ class AudienceCompositionsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "PagedResultsCompositionSummary",
+            400: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/AudienceCompositions', 'GET',
@@ -555,39 +658,50 @@ class AudienceCompositionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsCompositionSummary',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audience_compositions_get_audience_compositions_for_system(self, data_view_name, system_name, **kwargs):  # noqa: E501
         """Returns all the avaiable audience compositions for the given FastStats system  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audience_compositions_get_audience_compositions_for_system(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to get compositions for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Description, Type, SystemName
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type, SystemName
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to get compositions for (required)
+        :type system_name: str
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Description, Type, SystemName
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type, SystemName
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsCompositionSummary
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PagedResultsCompositionSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.audience_compositions_get_audience_compositions_for_system_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
@@ -597,28 +711,43 @@ class AudienceCompositionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audience_compositions_get_audience_compositions_for_system_with_http_info(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to get compositions for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Description, Type, SystemName
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type, SystemName
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to get compositions for (required)
+        :type system_name: str
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Description, Type, SystemName
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type, SystemName
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsCompositionSummary, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PagedResultsCompositionSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -636,7 +765,8 @@ class AudienceCompositionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -691,6 +821,12 @@ class AudienceCompositionsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "PagedResultsCompositionSummary",
+            400: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/AudienceCompositions/{systemName}', 'GET',
@@ -700,13 +836,14 @@ class AudienceCompositionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsCompositionSummary',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audience_compositions_update_audience_composition(self, data_view_name, system_name, audience_composition_id, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Update a given audience composition for the given FastStats system.  # noqa: E501
@@ -714,24 +851,32 @@ class AudienceCompositionsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audience_compositions_update_audience_composition(data_view_name, system_name, audience_composition_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to update the composition for (required)
-        :param int audience_composition_id: The id of the audience composition (required)
-        :param CreateAudienceCompositionDetail create_audience_composition_detail: Details to create the audience composition with
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to update the composition for (required)
+        :type system_name: str
+        :param audience_composition_id: The id of the audience composition (required)
+        :type audience_composition_id: int
+        :param create_audience_composition_detail: Details to create the audience composition with
+        :type create_audience_composition_detail: CreateAudienceCompositionDetail
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.audience_compositions_update_audience_composition_with_http_info(data_view_name, system_name, audience_composition_id, **kwargs)  # noqa: E501
@@ -742,26 +887,39 @@ class AudienceCompositionsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audience_compositions_update_audience_composition_with_http_info(data_view_name, system_name, audience_composition_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str system_name: The name of the FastStats system to update the composition for (required)
-        :param int audience_composition_id: The id of the audience composition (required)
-        :param CreateAudienceCompositionDetail create_audience_composition_detail: Details to create the audience composition with
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param system_name: The name of the FastStats system to update the composition for (required)
+        :type system_name: str
+        :param audience_composition_id: The id of the audience composition (required)
+        :type audience_composition_id: int
+        :param create_audience_composition_detail: Details to create the audience composition with
+        :type create_audience_composition_detail: CreateAudienceCompositionDetail
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -777,7 +935,8 @@ class AudienceCompositionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -832,6 +991,8 @@ class AudienceCompositionsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/AudienceCompositions/{systemName}/{audienceCompositionId}', 'PUT',
@@ -841,10 +1002,11 @@ class AudienceCompositionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))

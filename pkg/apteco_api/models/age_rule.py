@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -54,7 +54,7 @@ class AgeRule(object):
     def __init__(self, range_low=None, range_high=None, units=None, relative_to=None, reference_type=None, reference_date=None, local_vars_configuration=None):  # noqa: E501
         """AgeRule - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._range_low = None
@@ -94,7 +94,7 @@ class AgeRule(object):
 
 
         :param range_low: The range_low of this AgeRule.  # noqa: E501
-        :type: int
+        :type range_low: int
         """
 
         self._range_low = range_low
@@ -115,7 +115,7 @@ class AgeRule(object):
 
 
         :param range_high: The range_high of this AgeRule.  # noqa: E501
-        :type: int
+        :type range_high: int
         """
 
         self._range_high = range_high
@@ -136,7 +136,7 @@ class AgeRule(object):
 
 
         :param units: The units of this AgeRule.  # noqa: E501
-        :type: str
+        :type units: str
         """
         allowed_values = ["Days", "Weeks", "Months", "Quarters", "Years"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and units not in allowed_values:  # noqa: E501
@@ -163,7 +163,7 @@ class AgeRule(object):
 
 
         :param relative_to: The relative_to of this AgeRule.  # noqa: E501
-        :type: str
+        :type relative_to: str
         """
         allowed_values = ["Actual", "Relative"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and relative_to not in allowed_values:  # noqa: E501
@@ -190,7 +190,7 @@ class AgeRule(object):
 
 
         :param reference_type: The reference_type of this AgeRule.  # noqa: E501
-        :type: str
+        :type reference_type: str
         """
         allowed_values = ["Today", "ThisWeek", "ThisMonth", "ThisQuarter", "ThisYear", "ThisBusinessMonth", "ThisBusinessQuarter", "ThisBusinessYear", "LoadDate", "LoadWeek", "LoadMonth", "LoadQuarter", "LoadYear", "FirstPopulatedDate", "FirstPopulatedWeek", "FirstPopulatedMonth", "FirstPopulatedQuarter", "FirstPopulatedYear", "LastPopulatedDate", "LastPopulatedWeek", "LastPopulatedMonth", "LastPopulatedQuarter", "LastPopulatedYear"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and reference_type not in allowed_values:  # noqa: E501
@@ -217,32 +217,40 @@ class AgeRule(object):
 
 
         :param reference_date: The reference_date of this AgeRule.  # noqa: E501
-        :type: datetime
+        :type reference_date: datetime
         """
 
         self._reference_date = reference_date
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

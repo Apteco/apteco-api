@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -70,7 +70,7 @@ class AbstractRenderSpec(object):
     def __init__(self, type=None, title=None, page_width=None, page_height=None, visualisation_width=None, visualisation_height=None, ran_successfully=None, notes_title=None, notes=None, show_notes=None, selection_title=None, show_selection=None, last_run_details=None, query_details=None, local_vars_configuration=None):  # noqa: E501
         """AbstractRenderSpec - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._type = None
@@ -134,7 +134,7 @@ class AbstractRenderSpec(object):
 
 
         :param type: The type of this AbstractRenderSpec.  # noqa: E501
-        :type: str
+        :type type: str
         """
 
         self._type = type
@@ -155,7 +155,7 @@ class AbstractRenderSpec(object):
 
 
         :param title: The title of this AbstractRenderSpec.  # noqa: E501
-        :type: str
+        :type title: str
         """
 
         self._title = title
@@ -176,7 +176,7 @@ class AbstractRenderSpec(object):
 
 
         :param page_width: The page_width of this AbstractRenderSpec.  # noqa: E501
-        :type: int
+        :type page_width: int
         """
 
         self._page_width = page_width
@@ -197,7 +197,7 @@ class AbstractRenderSpec(object):
 
 
         :param page_height: The page_height of this AbstractRenderSpec.  # noqa: E501
-        :type: int
+        :type page_height: int
         """
 
         self._page_height = page_height
@@ -218,7 +218,7 @@ class AbstractRenderSpec(object):
 
 
         :param visualisation_width: The visualisation_width of this AbstractRenderSpec.  # noqa: E501
-        :type: int
+        :type visualisation_width: int
         """
 
         self._visualisation_width = visualisation_width
@@ -239,7 +239,7 @@ class AbstractRenderSpec(object):
 
 
         :param visualisation_height: The visualisation_height of this AbstractRenderSpec.  # noqa: E501
-        :type: int
+        :type visualisation_height: int
         """
 
         self._visualisation_height = visualisation_height
@@ -260,7 +260,7 @@ class AbstractRenderSpec(object):
 
 
         :param ran_successfully: The ran_successfully of this AbstractRenderSpec.  # noqa: E501
-        :type: bool
+        :type ran_successfully: bool
         """
 
         self._ran_successfully = ran_successfully
@@ -281,7 +281,7 @@ class AbstractRenderSpec(object):
 
 
         :param notes_title: The notes_title of this AbstractRenderSpec.  # noqa: E501
-        :type: str
+        :type notes_title: str
         """
 
         self._notes_title = notes_title
@@ -302,7 +302,7 @@ class AbstractRenderSpec(object):
 
 
         :param notes: The notes of this AbstractRenderSpec.  # noqa: E501
-        :type: str
+        :type notes: str
         """
 
         self._notes = notes
@@ -323,7 +323,7 @@ class AbstractRenderSpec(object):
 
 
         :param show_notes: The show_notes of this AbstractRenderSpec.  # noqa: E501
-        :type: bool
+        :type show_notes: bool
         """
 
         self._show_notes = show_notes
@@ -344,7 +344,7 @@ class AbstractRenderSpec(object):
 
 
         :param selection_title: The selection_title of this AbstractRenderSpec.  # noqa: E501
-        :type: str
+        :type selection_title: str
         """
 
         self._selection_title = selection_title
@@ -365,7 +365,7 @@ class AbstractRenderSpec(object):
 
 
         :param show_selection: The show_selection of this AbstractRenderSpec.  # noqa: E501
-        :type: bool
+        :type show_selection: bool
         """
 
         self._show_selection = show_selection
@@ -386,7 +386,7 @@ class AbstractRenderSpec(object):
 
 
         :param last_run_details: The last_run_details of this AbstractRenderSpec.  # noqa: E501
-        :type: LastRunDetails
+        :type last_run_details: LastRunDetails
         """
 
         self._last_run_details = last_run_details
@@ -407,32 +407,40 @@ class AbstractRenderSpec(object):
 
 
         :param query_details: The query_details of this AbstractRenderSpec.  # noqa: E501
-        :type: QueryDetails
+        :type query_details: QueryDetails
         """
 
         self._query_details = query_details
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

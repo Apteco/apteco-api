@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -52,7 +52,7 @@ class CreateSessionParameters(object):
     def __init__(self, login_salt=None, salt_password=None, user_salt=None, use_password_hashes=None, hash_algorithm=None, local_vars_configuration=None):  # noqa: E501
         """CreateSessionParameters - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._login_salt = None
@@ -86,7 +86,7 @@ class CreateSessionParameters(object):
         The salt to use when creating a session  # noqa: E501
 
         :param login_salt: The login_salt of this CreateSessionParameters.  # noqa: E501
-        :type: str
+        :type login_salt: str
         """
         if self.local_vars_configuration.client_side_validation and login_salt is None:  # noqa: E501
             raise ValueError("Invalid value for `login_salt`, must not be `None`")  # noqa: E501
@@ -111,7 +111,7 @@ class CreateSessionParameters(object):
         Whether you have to use the UserSalt to create the password hash when logging in via the SaltedLogin method  # noqa: E501
 
         :param salt_password: The salt_password of this CreateSessionParameters.  # noqa: E501
-        :type: bool
+        :type salt_password: bool
         """
         if self.local_vars_configuration.client_side_validation and salt_password is None:  # noqa: E501
             raise ValueError("Invalid value for `salt_password`, must not be `None`")  # noqa: E501
@@ -136,7 +136,7 @@ class CreateSessionParameters(object):
         The password salt for the particular user  # noqa: E501
 
         :param user_salt: The user_salt of this CreateSessionParameters.  # noqa: E501
-        :type: str
+        :type user_salt: str
         """
         if self.local_vars_configuration.client_side_validation and user_salt is None:  # noqa: E501
             raise ValueError("Invalid value for `user_salt`, must not be `None`")  # noqa: E501
@@ -161,7 +161,7 @@ class CreateSessionParameters(object):
         Whether you have to hash the password with the given algorithm before it is combined with the login salt or not  # noqa: E501
 
         :param use_password_hashes: The use_password_hashes of this CreateSessionParameters.  # noqa: E501
-        :type: bool
+        :type use_password_hashes: bool
         """
         if self.local_vars_configuration.client_side_validation and use_password_hashes is None:  # noqa: E501
             raise ValueError("Invalid value for `use_password_hashes`, must not be `None`")  # noqa: E501
@@ -186,7 +186,7 @@ class CreateSessionParameters(object):
         The hash algorithm to use when generating the password hash  # noqa: E501
 
         :param hash_algorithm: The hash_algorithm of this CreateSessionParameters.  # noqa: E501
-        :type: str
+        :type hash_algorithm: str
         """
         if self.local_vars_configuration.client_side_validation and hash_algorithm is None:  # noqa: E501
             raise ValueError("Invalid value for `hash_algorithm`, must not be `None`")  # noqa: E501
@@ -199,27 +199,35 @@ class CreateSessionParameters(object):
 
         self._hash_algorithm = hash_algorithm
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

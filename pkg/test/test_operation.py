@@ -38,9 +38,9 @@ class TestOperation(unittest.TestCase):
         if include_optional :
             return Operation(
                 value = None, 
-                path = '0', 
-                op = '0', 
-                _from = '0'
+                path = '', 
+                op = '', 
+                _from = ''
             )
         else :
             return Operation(
@@ -50,7 +50,6 @@ class TestOperation(unittest.TestCase):
         """Test Operation"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

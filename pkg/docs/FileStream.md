@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**handle** | [**object**](.md) |  | [optional] [readonly] 
+**handle** | **object** |  | [optional] [readonly] 
 **can_read** | **bool** |  | [optional] [readonly] 
 **can_write** | **bool** |  | [optional] [readonly] 
 **safe_file_handle** | [**SafeFileHandle**](SafeFileHandle.md) |  | [optional] 

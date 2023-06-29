@@ -42,10 +42,10 @@ class TestPagedResultsPeopleStageSystemSummary(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.people_stage_system_summary.PeopleStageSystemSummary(
-                        system_name = '0', 
-                        diagram_id = '0', 
-                        programme_id = '0', 
-                        programme_description = '0', 
+                        system_name = '', 
+                        diagram_id = '', 
+                        programme_id = '', 
+                        programme_description = '', 
                         is_able_to_provide_statistics = True, )
                     ]
             )
@@ -56,10 +56,10 @@ class TestPagedResultsPeopleStageSystemSummary(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.people_stage_system_summary.PeopleStageSystemSummary(
-                        system_name = '0', 
-                        diagram_id = '0', 
-                        programme_id = '0', 
-                        programme_description = '0', 
+                        system_name = '', 
+                        diagram_id = '', 
+                        programme_id = '', 
+                        programme_description = '', 
                         is_able_to_provide_statistics = True, )
                     ],
         )
@@ -68,7 +68,6 @@ class TestPagedResultsPeopleStageSystemSummary(unittest.TestCase):
         """Test PagedResultsPeopleStageSystemSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

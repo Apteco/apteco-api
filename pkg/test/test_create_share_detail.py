@@ -40,19 +40,19 @@ class TestCreateShareDetail(unittest.TestCase):
                 shareable_type = 'Collection', 
                 shareable_id = 56, 
                 email_addresses_to_add = [
-                    '0'
+                    ''
                     ], 
                 notify_added_users = True, 
-                added_user_notification_message = '0', 
-                notes = '0', 
-                view_shareable_url = '0'
+                added_user_notification_message = '', 
+                notes = '', 
+                view_shareable_url = ''
             )
         else :
             return CreateShareDetail(
                 shareable_type = 'Collection',
                 shareable_id = 56,
                 email_addresses_to_add = [
-                    '0'
+                    ''
                     ],
                 notify_added_users = True,
         )
@@ -61,7 +61,6 @@ class TestCreateShareDetail(unittest.TestCase):
         """Test CreateShareDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

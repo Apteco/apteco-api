@@ -37,9 +37,9 @@ class TestUpdateUserDetails(unittest.TestCase):
         # model = apteco_api.models.update_user_details.UpdateUserDetails()  # noqa: E501
         if include_optional :
             return UpdateUserDetails(
-                firstname = '0', 
-                surname = '0', 
-                email_address = '0'
+                firstname = '', 
+                surname = '', 
+                email_address = ''
             )
         else :
             return UpdateUserDetails(
@@ -49,7 +49,6 @@ class TestUpdateUserDetails(unittest.TestCase):
         """Test UpdateUserDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

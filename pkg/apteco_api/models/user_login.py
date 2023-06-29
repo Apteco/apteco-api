@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -50,7 +50,7 @@ class UserLogin(object):
     def __init__(self, username=None, system_name=None, client_type=None, timestamp=None, local_vars_configuration=None):  # noqa: E501
         """UserLogin - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._username = None
@@ -82,7 +82,7 @@ class UserLogin(object):
         The username  # noqa: E501
 
         :param username: The username of this UserLogin.  # noqa: E501
-        :type: str
+        :type username: str
         """
         if self.local_vars_configuration.client_side_validation and username is None:  # noqa: E501
             raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
@@ -107,7 +107,7 @@ class UserLogin(object):
         The system name logged in to  # noqa: E501
 
         :param system_name: The system_name of this UserLogin.  # noqa: E501
-        :type: str
+        :type system_name: str
         """
         if self.local_vars_configuration.client_side_validation and system_name is None:  # noqa: E501
             raise ValueError("Invalid value for `system_name`, must not be `None`")  # noqa: E501
@@ -132,7 +132,7 @@ class UserLogin(object):
         The Client Type logged in to  # noqa: E501
 
         :param client_type: The client_type of this UserLogin.  # noqa: E501
-        :type: str
+        :type client_type: str
         """
         if self.local_vars_configuration.client_side_validation and client_type is None:  # noqa: E501
             raise ValueError("Invalid value for `client_type`, must not be `None`")  # noqa: E501
@@ -157,34 +157,42 @@ class UserLogin(object):
         The DateTime of the users last login  # noqa: E501
 
         :param timestamp: The timestamp of this UserLogin.  # noqa: E501
-        :type: datetime
+        :type timestamp: datetime
         """
         if self.local_vars_configuration.client_side_validation and timestamp is None:  # noqa: E501
             raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
 
         self._timestamp = timestamp
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -38,8 +38,8 @@ class TestListRule(unittest.TestCase):
         if include_optional :
             return ListRule(
                 banding_type = 'None', 
-                list = '0', 
-                variable_name = '0'
+                list = '', 
+                variable_name = ''
             )
         else :
             return ListRule(
@@ -49,7 +49,6 @@ class TestListRule(unittest.TestCase):
         """Test ListRule"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

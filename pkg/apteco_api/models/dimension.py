@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -60,7 +60,7 @@ class Dimension(object):
     def __init__(self, id=None, type=None, query=None, variable_name=None, banding=None, function=None, none_cell=None, omit_unclassified=None, filter_query=None, local_vars_configuration=None):  # noqa: E501
         """Dimension - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -109,7 +109,7 @@ class Dimension(object):
         The id of the dimension  # noqa: E501
 
         :param id: The id of this Dimension.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -134,7 +134,7 @@ class Dimension(object):
         The type of the dimension  # noqa: E501
 
         :param type: The type of this Dimension.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -163,7 +163,7 @@ class Dimension(object):
 
 
         :param query: The query of this Dimension.  # noqa: E501
-        :type: Query
+        :type query: Query
         """
 
         self._query = query
@@ -186,7 +186,7 @@ class Dimension(object):
         If the dimension is a selector, numeric, date or text dimension then the name of the variable to use  # noqa: E501
 
         :param variable_name: The variable_name of this Dimension.  # noqa: E501
-        :type: str
+        :type variable_name: str
         """
 
         self._variable_name = variable_name
@@ -207,7 +207,7 @@ class Dimension(object):
 
 
         :param banding: The banding of this Dimension.  # noqa: E501
-        :type: DimensionBanding
+        :type banding: DimensionBanding
         """
 
         self._banding = banding
@@ -230,7 +230,7 @@ class Dimension(object):
         Details of the function to use for this dimension  # noqa: E501
 
         :param function: The function of this Dimension.  # noqa: E501
-        :type: str
+        :type function: str
         """
         allowed_values = ["None", "Sum", "Mean", "Min", "Max", "Median", "Mode", "Distinct", "Frequency", "Recency", "RankCoefficient"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and function not in allowed_values:  # noqa: E501
@@ -259,7 +259,7 @@ class Dimension(object):
         If this dimension represents something for a table lower down the hierarchy to the cube's resolve table,  whether to include a cell for where there a no records on the lower table.  I.e. for where a person has no orders  # noqa: E501
 
         :param none_cell: The none_cell of this Dimension.  # noqa: E501
-        :type: bool
+        :type none_cell: bool
         """
 
         self._none_cell = none_cell
@@ -282,7 +282,7 @@ class Dimension(object):
         If this dimension represents a selector with an unclassified code, whether to omit this from the cube  # noqa: E501
 
         :param omit_unclassified: The omit_unclassified of this Dimension.  # noqa: E501
-        :type: bool
+        :type omit_unclassified: bool
         """
 
         self._omit_unclassified = omit_unclassified
@@ -303,32 +303,40 @@ class Dimension(object):
 
 
         :param filter_query: The filter_query of this Dimension.  # noqa: E501
-        :type: Query
+        :type filter_query: Query
         """
 
         self._filter_query = filter_query
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

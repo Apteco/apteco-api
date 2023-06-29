@@ -37,18 +37,17 @@ class TestMessage(unittest.TestCase):
         # model = apteco_api.models.message.Message()  # noqa: E501
         if include_optional :
             return Message(
-                text = '0'
+                text = ''
             )
         else :
             return Message(
-                text = '0',
+                text = '',
         )
 
     def testMessage(self):
         """Test Message"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

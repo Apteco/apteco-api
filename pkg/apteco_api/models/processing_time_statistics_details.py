@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -54,7 +54,7 @@ class ProcessingTimeStatisticsDetails(object):
     def __init__(self, start=None, end=None, measure=None, dimension=None, job_property_selection_type=None, job_property_selections=None, local_vars_configuration=None):  # noqa: E501
         """ProcessingTimeStatisticsDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._start = None
@@ -90,7 +90,7 @@ class ProcessingTimeStatisticsDetails(object):
         The start date and time of window of jobs to analyse  # noqa: E501
 
         :param start: The start of this ProcessingTimeStatisticsDetails.  # noqa: E501
-        :type: datetime
+        :type start: datetime
         """
         if self.local_vars_configuration.client_side_validation and start is None:  # noqa: E501
             raise ValueError("Invalid value for `start`, must not be `None`")  # noqa: E501
@@ -115,7 +115,7 @@ class ProcessingTimeStatisticsDetails(object):
         The end date and time of window of jobs to analyse  # noqa: E501
 
         :param end: The end of this ProcessingTimeStatisticsDetails.  # noqa: E501
-        :type: datetime
+        :type end: datetime
         """
         if self.local_vars_configuration.client_side_validation and end is None:  # noqa: E501
             raise ValueError("Invalid value for `end`, must not be `None`")  # noqa: E501
@@ -140,7 +140,7 @@ class ProcessingTimeStatisticsDetails(object):
         The type of processing time to measure  # noqa: E501
 
         :param measure: The measure of this ProcessingTimeStatisticsDetails.  # noqa: E501
-        :type: str
+        :type measure: str
         """
         if self.local_vars_configuration.client_side_validation and measure is None:  # noqa: E501
             raise ValueError("Invalid value for `measure`, must not be `None`")  # noqa: E501
@@ -171,7 +171,7 @@ class ProcessingTimeStatisticsDetails(object):
         The type of thing to break down the jobs into - either a time period or other property such as job type  # noqa: E501
 
         :param dimension: The dimension of this ProcessingTimeStatisticsDetails.  # noqa: E501
-        :type: str
+        :type dimension: str
         """
         if self.local_vars_configuration.client_side_validation and dimension is None:  # noqa: E501
             raise ValueError("Invalid value for `dimension`, must not be `None`")  # noqa: E501
@@ -202,7 +202,7 @@ class ProcessingTimeStatisticsDetails(object):
         The property to use to select on the jobs to analyse  # noqa: E501
 
         :param job_property_selection_type: The job_property_selection_type of this ProcessingTimeStatisticsDetails.  # noqa: E501
-        :type: str
+        :type job_property_selection_type: str
         """
         if self.local_vars_configuration.client_side_validation and job_property_selection_type is None:  # noqa: E501
             raise ValueError("Invalid value for `job_property_selection_type`, must not be `None`")  # noqa: E501
@@ -233,34 +233,42 @@ class ProcessingTimeStatisticsDetails(object):
         The set of property values to use to select the jobs  # noqa: E501
 
         :param job_property_selections: The job_property_selections of this ProcessingTimeStatisticsDetails.  # noqa: E501
-        :type: list[str]
+        :type job_property_selections: list[str]
         """
         if self.local_vars_configuration.client_side_validation and job_property_selections is None:  # noqa: E501
             raise ValueError("Invalid value for `job_property_selections`, must not be `None`")  # noqa: E501
 
         self._job_property_selections = job_property_selections
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -56,7 +56,7 @@ class PeopleStageSystemDetail(object):
     def __init__(self, metadata=None, last_requested_data_at=None, system_name=None, diagram_id=None, programme_id=None, programme_description=None, is_able_to_provide_statistics=None, local_vars_configuration=None):  # noqa: E501
         """PeopleStageSystemDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._metadata = None
@@ -93,7 +93,7 @@ class PeopleStageSystemDetail(object):
 
 
         :param metadata: The metadata of this PeopleStageSystemDetail.  # noqa: E501
-        :type: DiagramMetadata
+        :type metadata: DiagramMetadata
         """
         if self.local_vars_configuration.client_side_validation and metadata is None:  # noqa: E501
             raise ValueError("Invalid value for `metadata`, must not be `None`")  # noqa: E501
@@ -118,7 +118,7 @@ class PeopleStageSystemDetail(object):
         The date and time that the API last polled for PeopleStage data  # noqa: E501
 
         :param last_requested_data_at: The last_requested_data_at of this PeopleStageSystemDetail.  # noqa: E501
-        :type: datetime
+        :type last_requested_data_at: datetime
         """
 
         self._last_requested_data_at = last_requested_data_at
@@ -141,7 +141,7 @@ class PeopleStageSystemDetail(object):
         The name of the system that has PeopleStage configured  # noqa: E501
 
         :param system_name: The system_name of this PeopleStageSystemDetail.  # noqa: E501
-        :type: str
+        :type system_name: str
         """
         if self.local_vars_configuration.client_side_validation and system_name is None:  # noqa: E501
             raise ValueError("Invalid value for `system_name`, must not be `None`")  # noqa: E501
@@ -166,7 +166,7 @@ class PeopleStageSystemDetail(object):
         The top-level diagram id for this PeopleStage system  # noqa: E501
 
         :param diagram_id: The diagram_id of this PeopleStageSystemDetail.  # noqa: E501
-        :type: str
+        :type diagram_id: str
         """
         if self.local_vars_configuration.client_side_validation and diagram_id is None:  # noqa: E501
             raise ValueError("Invalid value for `diagram_id`, must not be `None`")  # noqa: E501
@@ -191,7 +191,7 @@ class PeopleStageSystemDetail(object):
         The id of the first programme configured within the PeopleStage diagram  # noqa: E501
 
         :param programme_id: The programme_id of this PeopleStageSystemDetail.  # noqa: E501
-        :type: str
+        :type programme_id: str
         """
         if self.local_vars_configuration.client_side_validation and programme_id is None:  # noqa: E501
             raise ValueError("Invalid value for `programme_id`, must not be `None`")  # noqa: E501
@@ -216,7 +216,7 @@ class PeopleStageSystemDetail(object):
         The description of the first programme configured within the PeopleStage diagram  # noqa: E501
 
         :param programme_description: The programme_description of this PeopleStageSystemDetail.  # noqa: E501
-        :type: str
+        :type programme_description: str
         """
         if self.local_vars_configuration.client_side_validation and programme_description is None:  # noqa: E501
             raise ValueError("Invalid value for `programme_description`, must not be `None`")  # noqa: E501
@@ -241,34 +241,42 @@ class PeopleStageSystemDetail(object):
         Whether statistics information can be gathered for this PeopleStage system  # noqa: E501
 
         :param is_able_to_provide_statistics: The is_able_to_provide_statistics of this PeopleStageSystemDetail.  # noqa: E501
-        :type: bool
+        :type is_able_to_provide_statistics: bool
         """
         if self.local_vars_configuration.client_side_validation and is_able_to_provide_statistics is None:  # noqa: E501
             raise ValueError("Invalid value for `is_able_to_provide_statistics`, must not be `None`")  # noqa: E501
 
         self._is_able_to_provide_statistics = is_able_to_provide_statistics
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

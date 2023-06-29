@@ -38,26 +38,25 @@ class TestUpsertUserCollectionDetail(unittest.TestCase):
         if include_optional :
             return UpsertUserCollectionDetail(
                 status = 'Default', 
-                title = '0', 
-                description = '0', 
+                title = '', 
+                description = '', 
                 creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                file_path = '0', 
+                file_path = '', 
                 deletion_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else :
             return UpsertUserCollectionDetail(
                 status = 'Default',
-                title = '0',
-                description = '0',
+                title = '',
+                description = '',
                 creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                file_path = '0',
+                file_path = '',
         )
 
     def testUpsertUserCollectionDetail(self):
         """Test UpsertUserCollectionDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

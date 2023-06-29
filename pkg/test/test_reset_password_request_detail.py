@@ -37,11 +37,11 @@ class TestResetPasswordRequestDetail(unittest.TestCase):
         # model = apteco_api.models.reset_password_request_detail.ResetPasswordRequestDetail()  # noqa: E501
         if include_optional :
             return ResetPasswordRequestDetail(
-                reset_password_url = '0', 
+                reset_password_url = '', 
                 has_notification_been_sent = True, 
-                token = '0', 
-                username = '0', 
-                email_address = '0', 
+                token = '', 
+                username = '', 
+                email_address = '', 
                 creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 confirmed_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 expired_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
@@ -49,9 +49,9 @@ class TestResetPasswordRequestDetail(unittest.TestCase):
         else :
             return ResetPasswordRequestDetail(
                 has_notification_been_sent = True,
-                token = '0',
-                username = '0',
-                email_address = '0',
+                token = '',
+                username = '',
+                email_address = '',
                 creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )
 
@@ -59,7 +59,6 @@ class TestResetPasswordRequestDetail(unittest.TestCase):
         """Test ResetPasswordRequestDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

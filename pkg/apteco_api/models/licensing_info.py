@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -50,7 +50,7 @@ class LicensingInfo(object):
     def __init__(self, credit_remaining=None, grand_total_cost=None, number_of_records_to_license=None, query_id=None, local_vars_configuration=None):  # noqa: E501
         """LicensingInfo - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._credit_remaining = None
@@ -82,7 +82,7 @@ class LicensingInfo(object):
         The remaining money available to license records  # noqa: E501
 
         :param credit_remaining: The credit_remaining of this LicensingInfo.  # noqa: E501
-        :type: float
+        :type credit_remaining: float
         """
         if self.local_vars_configuration.client_side_validation and credit_remaining is None:  # noqa: E501
             raise ValueError("Invalid value for `credit_remaining`, must not be `None`")  # noqa: E501
@@ -107,7 +107,7 @@ class LicensingInfo(object):
         The total cost to license the records  # noqa: E501
 
         :param grand_total_cost: The grand_total_cost of this LicensingInfo.  # noqa: E501
-        :type: float
+        :type grand_total_cost: float
         """
         if self.local_vars_configuration.client_side_validation and grand_total_cost is None:  # noqa: E501
             raise ValueError("Invalid value for `grand_total_cost`, must not be `None`")  # noqa: E501
@@ -132,7 +132,7 @@ class LicensingInfo(object):
         The number of records from the given query that have not yet been licensed  # noqa: E501
 
         :param number_of_records_to_license: The number_of_records_to_license of this LicensingInfo.  # noqa: E501
-        :type: int
+        :type number_of_records_to_license: int
         """
         if self.local_vars_configuration.client_side_validation and number_of_records_to_license is None:  # noqa: E501
             raise ValueError("Invalid value for `number_of_records_to_license`, must not be `None`")  # noqa: E501
@@ -157,34 +157,42 @@ class LicensingInfo(object):
         The unique id of an audience data licensing query  # noqa: E501
 
         :param query_id: The query_id of this LicensingInfo.  # noqa: E501
-        :type: str
+        :type query_id: str
         """
         if self.local_vars_configuration.client_side_validation and query_id is None:  # noqa: E501
             raise ValueError("Invalid value for `query_id`, must not be `None`")  # noqa: E501
 
         self._query_id = query_id
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

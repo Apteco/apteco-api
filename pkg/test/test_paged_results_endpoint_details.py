@@ -42,10 +42,10 @@ class TestPagedResultsEndpointDetails(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.endpoint_details.EndpointDetails(
-                        name = '0', 
-                        group_name = '0', 
-                        method = '0', 
-                        url_template = '0', 
+                        name = '', 
+                        group_name = '', 
+                        method = '', 
+                        url_template = '', 
                         allows_anonymous_access = True, 
                         is_experimental = True, 
                         is_under_development = True, 
@@ -56,7 +56,7 @@ class TestPagedResultsEndpointDetails(unittest.TestCase):
                             'AudienceSelection'
                             ], 
                         requires_roles = [
-                            '0'
+                            ''
                             ], )
                     ]
             )
@@ -67,10 +67,10 @@ class TestPagedResultsEndpointDetails(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.endpoint_details.EndpointDetails(
-                        name = '0', 
-                        group_name = '0', 
-                        method = '0', 
-                        url_template = '0', 
+                        name = '', 
+                        group_name = '', 
+                        method = '', 
+                        url_template = '', 
                         allows_anonymous_access = True, 
                         is_experimental = True, 
                         is_under_development = True, 
@@ -81,7 +81,7 @@ class TestPagedResultsEndpointDetails(unittest.TestCase):
                             'AudienceSelection'
                             ], 
                         requires_roles = [
-                            '0'
+                            ''
                             ], )
                     ],
         )
@@ -90,7 +90,6 @@ class TestPagedResultsEndpointDetails(unittest.TestCase):
         """Test PagedResultsEndpointDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

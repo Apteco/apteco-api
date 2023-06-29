@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -56,7 +56,7 @@ class Limits(object):
     def __init__(self, sampling=None, stop_at_limit=None, total=None, type=None, start_at=None, percent=None, fraction=None, local_vars_configuration=None):  # noqa: E501
         """Limits - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._sampling = None
@@ -99,7 +99,7 @@ class Limits(object):
 
 
         :param sampling: The sampling of this Limits.  # noqa: E501
-        :type: str
+        :type sampling: str
         """
         allowed_values = ["All", "First", "Stratified", "Random"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and sampling not in allowed_values:  # noqa: E501
@@ -126,7 +126,7 @@ class Limits(object):
 
 
         :param stop_at_limit: The stop_at_limit of this Limits.  # noqa: E501
-        :type: bool
+        :type stop_at_limit: bool
         """
 
         self._stop_at_limit = stop_at_limit
@@ -147,7 +147,7 @@ class Limits(object):
 
 
         :param total: The total of this Limits.  # noqa: E501
-        :type: int
+        :type total: int
         """
 
         self._total = total
@@ -168,7 +168,7 @@ class Limits(object):
 
 
         :param type: The type of this Limits.  # noqa: E501
-        :type: str
+        :type type: str
         """
         allowed_values = ["None", "Total", "Fraction", "Percent"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
@@ -195,7 +195,7 @@ class Limits(object):
 
 
         :param start_at: The start_at of this Limits.  # noqa: E501
-        :type: int
+        :type start_at: int
         """
 
         self._start_at = start_at
@@ -216,7 +216,7 @@ class Limits(object):
 
 
         :param percent: The percent of this Limits.  # noqa: E501
-        :type: float
+        :type percent: float
         """
 
         self._percent = percent
@@ -237,32 +237,40 @@ class Limits(object):
 
 
         :param fraction: The fraction of this Limits.  # noqa: E501
-        :type: Fraction
+        :type fraction: Fraction
         """
 
         self._fraction = fraction
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

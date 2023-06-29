@@ -37,13 +37,13 @@ class TestUserRegistrationRequestDetail(unittest.TestCase):
         # model = apteco_api.models.user_registration_request_detail.UserRegistrationRequestDetail()  # noqa: E501
         if include_optional :
             return UserRegistrationRequestDetail(
-                confirm_registration_url = '0', 
+                confirm_registration_url = '', 
                 has_notification_been_sent = True, 
-                token = '0', 
-                username = '0', 
-                firstname = '0', 
-                surname = '0', 
-                email_address = '0', 
+                token = '', 
+                username = '', 
+                firstname = '', 
+                surname = '', 
+                email_address = '', 
                 creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 confirmed_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 expired_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
@@ -51,9 +51,9 @@ class TestUserRegistrationRequestDetail(unittest.TestCase):
         else :
             return UserRegistrationRequestDetail(
                 has_notification_been_sent = True,
-                token = '0',
-                username = '0',
-                email_address = '0',
+                token = '',
+                username = '',
+                email_address = '',
                 creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )
 
@@ -61,7 +61,6 @@ class TestUserRegistrationRequestDetail(unittest.TestCase):
         """Test UserRegistrationRequestDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

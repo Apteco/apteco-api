@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -58,7 +58,7 @@ class ElementSummary(object):
     def __init__(self, id=None, description=None, type=None, schema_id=None, schema_id_type=None, parent_id=None, parent_type=None, path=None, local_vars_configuration=None):  # noqa: E501
         """ElementSummary - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -101,7 +101,7 @@ class ElementSummary(object):
         The element's id  # noqa: E501
 
         :param id: The id of this ElementSummary.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -126,7 +126,7 @@ class ElementSummary(object):
         The element's description  # noqa: E501
 
         :param description: The description of this ElementSummary.  # noqa: E501
-        :type: str
+        :type description: str
         """
         if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
             raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
@@ -151,7 +151,7 @@ class ElementSummary(object):
         The element's type  # noqa: E501
 
         :param type: The type of this ElementSummary.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -182,7 +182,7 @@ class ElementSummary(object):
         The element's schema id - if it has one.  This is the key field into the PeopleStage schema tables such as ProcessDefinition.  Published elements should have a schema id.  # noqa: E501
 
         :param schema_id: The schema_id of this ElementSummary.  # noqa: E501
-        :type: int
+        :type schema_id: int
         """
 
         self._schema_id = schema_id
@@ -205,7 +205,7 @@ class ElementSummary(object):
         The type of the element's schema id - if it has a schema id.  Published elements should have a schema id and type.  # noqa: E501
 
         :param schema_id_type: The schema_id_type of this ElementSummary.  # noqa: E501
-        :type: str
+        :type schema_id_type: str
         """
         allowed_values = ["Unknown", "ProcessId"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and schema_id_type not in allowed_values:  # noqa: E501
@@ -234,7 +234,7 @@ class ElementSummary(object):
         The parent of this element's id  # noqa: E501
 
         :param parent_id: The parent_id of this ElementSummary.  # noqa: E501
-        :type: str
+        :type parent_id: str
         """
         if self.local_vars_configuration.client_side_validation and parent_id is None:  # noqa: E501
             raise ValueError("Invalid value for `parent_id`, must not be `None`")  # noqa: E501
@@ -259,7 +259,7 @@ class ElementSummary(object):
         The parent of this element's type  # noqa: E501
 
         :param parent_type: The parent_type of this ElementSummary.  # noqa: E501
-        :type: str
+        :type parent_type: str
         """
         if self.local_vars_configuration.client_side_validation and parent_type is None:  # noqa: E501
             raise ValueError("Invalid value for `parent_type`, must not be `None`")  # noqa: E501
@@ -290,32 +290,40 @@ class ElementSummary(object):
         The element's path  # noqa: E501
 
         :param path: The path of this ElementSummary.  # noqa: E501
-        :type: list[ElementKey]
+        :type path: list[ElementKey]
         """
 
         self._path = path
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

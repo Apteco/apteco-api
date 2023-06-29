@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -52,7 +52,7 @@ class ShareSummary(object):
     def __init__(self, id=None, shareable_type=None, shareable_id=None, shareable_title=None, number_of_users_shared_with=None, local_vars_configuration=None):  # noqa: E501
         """ShareSummary - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -86,7 +86,7 @@ class ShareSummary(object):
         The id of the share  # noqa: E501
 
         :param id: The id of this ShareSummary.  # noqa: E501
-        :type: int
+        :type id: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -111,7 +111,7 @@ class ShareSummary(object):
         The type of the shareable item (collection, list, etc.)  # noqa: E501
 
         :param shareable_type: The shareable_type of this ShareSummary.  # noqa: E501
-        :type: str
+        :type shareable_type: str
         """
         if self.local_vars_configuration.client_side_validation and shareable_type is None:  # noqa: E501
             raise ValueError("Invalid value for `shareable_type`, must not be `None`")  # noqa: E501
@@ -142,7 +142,7 @@ class ShareSummary(object):
         The id of the shareable item  # noqa: E501
 
         :param shareable_id: The shareable_id of this ShareSummary.  # noqa: E501
-        :type: int
+        :type shareable_id: int
         """
         if self.local_vars_configuration.client_side_validation and shareable_id is None:  # noqa: E501
             raise ValueError("Invalid value for `shareable_id`, must not be `None`")  # noqa: E501
@@ -167,7 +167,7 @@ class ShareSummary(object):
         The title of the shareable item  # noqa: E501
 
         :param shareable_title: The shareable_title of this ShareSummary.  # noqa: E501
-        :type: str
+        :type shareable_title: str
         """
         if self.local_vars_configuration.client_side_validation and shareable_title is None:  # noqa: E501
             raise ValueError("Invalid value for `shareable_title`, must not be `None`")  # noqa: E501
@@ -192,34 +192,42 @@ class ShareSummary(object):
         The number of people the shareable item has been shared with  # noqa: E501
 
         :param number_of_users_shared_with: The number_of_users_shared_with of this ShareSummary.  # noqa: E501
-        :type: int
+        :type number_of_users_shared_with: int
         """
         if self.local_vars_configuration.client_side_validation and number_of_users_shared_with is None:  # noqa: E501
             raise ValueError("Invalid value for `number_of_users_shared_with`, must not be `None`")  # noqa: E501
 
         self._number_of_users_shared_with = number_of_users_shared_with
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

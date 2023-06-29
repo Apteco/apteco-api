@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -58,7 +58,7 @@ class UserRegistrationRequestSummary(object):
     def __init__(self, token=None, username=None, firstname=None, surname=None, email_address=None, creation_date=None, confirmed_date=None, expired_date=None, local_vars_configuration=None):  # noqa: E501
         """UserRegistrationRequestSummary - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._token = None
@@ -102,7 +102,7 @@ class UserRegistrationRequestSummary(object):
         The token for this registration request  # noqa: E501
 
         :param token: The token of this UserRegistrationRequestSummary.  # noqa: E501
-        :type: str
+        :type token: str
         """
         if self.local_vars_configuration.client_side_validation and token is None:  # noqa: E501
             raise ValueError("Invalid value for `token`, must not be `None`")  # noqa: E501
@@ -127,7 +127,7 @@ class UserRegistrationRequestSummary(object):
         The requested username  # noqa: E501
 
         :param username: The username of this UserRegistrationRequestSummary.  # noqa: E501
-        :type: str
+        :type username: str
         """
         if self.local_vars_configuration.client_side_validation and username is None:  # noqa: E501
             raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
@@ -152,7 +152,7 @@ class UserRegistrationRequestSummary(object):
         The requested first name  # noqa: E501
 
         :param firstname: The firstname of this UserRegistrationRequestSummary.  # noqa: E501
-        :type: str
+        :type firstname: str
         """
 
         self._firstname = firstname
@@ -175,7 +175,7 @@ class UserRegistrationRequestSummary(object):
         The requested surname  # noqa: E501
 
         :param surname: The surname of this UserRegistrationRequestSummary.  # noqa: E501
-        :type: str
+        :type surname: str
         """
 
         self._surname = surname
@@ -198,7 +198,7 @@ class UserRegistrationRequestSummary(object):
         The requested email address  # noqa: E501
 
         :param email_address: The email_address of this UserRegistrationRequestSummary.  # noqa: E501
-        :type: str
+        :type email_address: str
         """
         if self.local_vars_configuration.client_side_validation and email_address is None:  # noqa: E501
             raise ValueError("Invalid value for `email_address`, must not be `None`")  # noqa: E501
@@ -223,7 +223,7 @@ class UserRegistrationRequestSummary(object):
         The date and time this request was created  # noqa: E501
 
         :param creation_date: The creation_date of this UserRegistrationRequestSummary.  # noqa: E501
-        :type: datetime
+        :type creation_date: datetime
         """
         if self.local_vars_configuration.client_side_validation and creation_date is None:  # noqa: E501
             raise ValueError("Invalid value for `creation_date`, must not be `None`")  # noqa: E501
@@ -248,7 +248,7 @@ class UserRegistrationRequestSummary(object):
         The date and time this request was confirmed  # noqa: E501
 
         :param confirmed_date: The confirmed_date of this UserRegistrationRequestSummary.  # noqa: E501
-        :type: datetime
+        :type confirmed_date: datetime
         """
 
         self._confirmed_date = confirmed_date
@@ -271,32 +271,40 @@ class UserRegistrationRequestSummary(object):
         The date and time this request expired  # noqa: E501
 
         :param expired_date: The expired_date of this UserRegistrationRequestSummary.  # noqa: E501
-        :type: datetime
+        :type expired_date: datetime
         """
 
         self._expired_date = expired_date
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

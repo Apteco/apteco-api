@@ -37,26 +37,25 @@ class TestCheckDimensionResult(unittest.TestCase):
         # model = apteco_api.models.check_dimension_result.CheckDimensionResult()  # noqa: E501
         if include_optional :
             return CheckDimensionResult(
-                id = '0', 
-                codes = '0', 
-                descriptions = '0', 
-                base_counts = '0', 
-                audience_counts = '0'
+                id = '', 
+                codes = '', 
+                descriptions = '', 
+                base_counts = '', 
+                audience_counts = ''
             )
         else :
             return CheckDimensionResult(
-                id = '0',
-                codes = '0',
-                descriptions = '0',
-                base_counts = '0',
-                audience_counts = '0',
+                id = '',
+                codes = '',
+                descriptions = '',
+                base_counts = '',
+                audience_counts = '',
         )
 
     def testCheckDimensionResult(self):
         """Test CheckDimensionResult"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

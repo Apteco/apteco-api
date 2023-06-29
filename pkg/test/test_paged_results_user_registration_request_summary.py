@@ -42,11 +42,11 @@ class TestPagedResultsUserRegistrationRequestSummary(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.user_registration_request_summary.UserRegistrationRequestSummary(
-                        token = '0', 
-                        username = '0', 
-                        firstname = '0', 
-                        surname = '0', 
-                        email_address = '0', 
+                        token = '', 
+                        username = '', 
+                        firstname = '', 
+                        surname = '', 
+                        email_address = '', 
                         creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         confirmed_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         expired_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
@@ -59,11 +59,11 @@ class TestPagedResultsUserRegistrationRequestSummary(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.user_registration_request_summary.UserRegistrationRequestSummary(
-                        token = '0', 
-                        username = '0', 
-                        firstname = '0', 
-                        surname = '0', 
-                        email_address = '0', 
+                        token = '', 
+                        username = '', 
+                        firstname = '', 
+                        surname = '', 
+                        email_address = '', 
                         creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         confirmed_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         expired_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
@@ -74,7 +74,6 @@ class TestPagedResultsUserRegistrationRequestSummary(unittest.TestCase):
         """Test PagedResultsUserRegistrationRequestSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

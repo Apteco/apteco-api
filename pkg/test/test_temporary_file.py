@@ -37,18 +37,17 @@ class TestTemporaryFile(unittest.TestCase):
         # model = apteco_api.models.temporary_file.TemporaryFile()  # noqa: E501
         if include_optional :
             return TemporaryFile(
-                id = '0'
+                id = ''
             )
         else :
             return TemporaryFile(
-                id = '0',
+                id = '',
         )
 
     def testTemporaryFile(self):
         """Test TemporaryFile"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

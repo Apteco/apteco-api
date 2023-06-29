@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -66,7 +66,7 @@ class ElementStatus(object):
     def __init__(self, id=None, description=None, type=None, successful_campaigns_count=None, errored_campaigns_count=None, inactive_campaigns_count=None, needs_approval_campaigns_count=None, channel_types=None, first_ran=None, last_ran=None, statistics_timestamp=None, path=None, local_vars_configuration=None):  # noqa: E501
         """ElementStatus - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -123,7 +123,7 @@ class ElementStatus(object):
         The element's id  # noqa: E501
 
         :param id: The id of this ElementStatus.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -148,7 +148,7 @@ class ElementStatus(object):
         The element's description  # noqa: E501
 
         :param description: The description of this ElementStatus.  # noqa: E501
-        :type: str
+        :type description: str
         """
         if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
             raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
@@ -173,7 +173,7 @@ class ElementStatus(object):
         The element's type  # noqa: E501
 
         :param type: The type of this ElementStatus.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -204,7 +204,7 @@ class ElementStatus(object):
         The number of campaigns that currently have a success status within this element  # noqa: E501
 
         :param successful_campaigns_count: The successful_campaigns_count of this ElementStatus.  # noqa: E501
-        :type: int
+        :type successful_campaigns_count: int
         """
 
         self._successful_campaigns_count = successful_campaigns_count
@@ -227,7 +227,7 @@ class ElementStatus(object):
         The number of campaigns that currently have an errored status within this element  # noqa: E501
 
         :param errored_campaigns_count: The errored_campaigns_count of this ElementStatus.  # noqa: E501
-        :type: int
+        :type errored_campaigns_count: int
         """
 
         self._errored_campaigns_count = errored_campaigns_count
@@ -250,7 +250,7 @@ class ElementStatus(object):
         The number of campaigns that currently have an inactive status within this element  # noqa: E501
 
         :param inactive_campaigns_count: The inactive_campaigns_count of this ElementStatus.  # noqa: E501
-        :type: int
+        :type inactive_campaigns_count: int
         """
 
         self._inactive_campaigns_count = inactive_campaigns_count
@@ -273,7 +273,7 @@ class ElementStatus(object):
         The number of campaigns that currently have a message that needs approval within this element  # noqa: E501
 
         :param needs_approval_campaigns_count: The needs_approval_campaigns_count of this ElementStatus.  # noqa: E501
-        :type: int
+        :type needs_approval_campaigns_count: int
         """
 
         self._needs_approval_campaigns_count = needs_approval_campaigns_count
@@ -296,7 +296,7 @@ class ElementStatus(object):
         The different types of channel that have been used by deliveries within this element  # noqa: E501
 
         :param channel_types: The channel_types of this ElementStatus.  # noqa: E501
-        :type: list[str]
+        :type channel_types: list[str]
         """
         allowed_values = ["Unknown", "Control", "Broadcast", "File", "Ftp", "Facebook", "MicrosoftDynamics", "SalesForce", "PushNotification", "Twitter", "Google", "LinkedIn", "Composite"]  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
@@ -327,7 +327,7 @@ class ElementStatus(object):
         The first time that any deliveries ran within this element  # noqa: E501
 
         :param first_ran: The first_ran of this ElementStatus.  # noqa: E501
-        :type: datetime
+        :type first_ran: datetime
         """
 
         self._first_ran = first_ran
@@ -350,7 +350,7 @@ class ElementStatus(object):
         The last time that any deliveries ran within this element  # noqa: E501
 
         :param last_ran: The last_ran of this ElementStatus.  # noqa: E501
-        :type: datetime
+        :type last_ran: datetime
         """
 
         self._last_ran = last_ran
@@ -373,7 +373,7 @@ class ElementStatus(object):
         The date and time that the statistics were calculated  # noqa: E501
 
         :param statistics_timestamp: The statistics_timestamp of this ElementStatus.  # noqa: E501
-        :type: datetime
+        :type statistics_timestamp: datetime
         """
 
         self._statistics_timestamp = statistics_timestamp
@@ -396,32 +396,40 @@ class ElementStatus(object):
         The element's path  # noqa: E501
 
         :param path: The path of this ElementStatus.  # noqa: E501
-        :type: list[ElementKey]
+        :type path: list[ElementKey]
         """
 
         self._path = path
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

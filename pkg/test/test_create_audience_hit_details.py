@@ -37,7 +37,7 @@ class TestCreateAudienceHitDetails(unittest.TestCase):
         # model = apteco_api.models.create_audience_hit_details.CreateAudienceHitDetails()  # noqa: E501
         if include_optional :
             return CreateAudienceHitDetails(
-                user_agent_details = '0'
+                user_agent_details = ''
             )
         else :
             return CreateAudienceHitDetails(
@@ -47,7 +47,6 @@ class TestCreateAudienceHitDetails(unittest.TestCase):
         """Test CreateAudienceHitDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

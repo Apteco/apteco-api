@@ -37,20 +37,19 @@ class TestTableItem(unittest.TestCase):
         # model = apteco_api.models.table_item.TableItem()  # noqa: E501
         if include_optional :
             return TableItem(
-                name = '0', 
-                plural_display_name = '0'
+                name = '', 
+                plural_display_name = ''
             )
         else :
             return TableItem(
-                name = '0',
-                plural_display_name = '0',
+                name = '',
+                plural_display_name = '',
         )
 
     def testTableItem(self):
         """Test TableItem"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

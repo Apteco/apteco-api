@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -62,7 +62,7 @@ class SelectorVariableInfo(object):
     def __init__(self, selector_type=None, sub_type=None, var_code_order=None, number_of_codes=None, code_length=None, minimum_var_code_count=None, maximum_var_code_count=None, minimum_date=None, maximum_date=None, combined_from_variable_name=None, local_vars_configuration=None):  # noqa: E501
         """SelectorVariableInfo - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._selector_type = None
@@ -116,7 +116,7 @@ class SelectorVariableInfo(object):
         The type of selector that this variable is  # noqa: E501
 
         :param selector_type: The selector_type of this SelectorVariableInfo.  # noqa: E501
-        :type: str
+        :type selector_type: str
         """
         allowed_values = ["SingleValue", "OrArray", "AndArray", "OrBitArray", "AndBitArray"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and selector_type not in allowed_values:  # noqa: E501
@@ -145,7 +145,7 @@ class SelectorVariableInfo(object):
         Further type information (such as whether the selector variable is a date or datetime) for this variable  # noqa: E501
 
         :param sub_type: The sub_type of this SelectorVariableInfo.  # noqa: E501
-        :type: str
+        :type sub_type: str
         """
         allowed_values = ["Categorical", "Date", "DateTime"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and sub_type not in allowed_values:  # noqa: E501
@@ -174,7 +174,7 @@ class SelectorVariableInfo(object):
         How the categories are ordered within this variable  # noqa: E501
 
         :param var_code_order: The var_code_order of this SelectorVariableInfo.  # noqa: E501
-        :type: str
+        :type var_code_order: str
         """
         allowed_values = ["Nominal", "Ascending", "Descending"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and var_code_order not in allowed_values:  # noqa: E501
@@ -203,7 +203,7 @@ class SelectorVariableInfo(object):
         The number of different categories (var codes) that this variable has  # noqa: E501
 
         :param number_of_codes: The number_of_codes of this SelectorVariableInfo.  # noqa: E501
-        :type: int
+        :type number_of_codes: int
         """
 
         self._number_of_codes = number_of_codes
@@ -226,7 +226,7 @@ class SelectorVariableInfo(object):
         The length of the code for each category (in bytes) for this variable  # noqa: E501
 
         :param code_length: The code_length of this SelectorVariableInfo.  # noqa: E501
-        :type: int
+        :type code_length: int
         """
 
         self._code_length = code_length
@@ -249,7 +249,7 @@ class SelectorVariableInfo(object):
         The minimum count value in the variable's set of categories (var codes)  # noqa: E501
 
         :param minimum_var_code_count: The minimum_var_code_count of this SelectorVariableInfo.  # noqa: E501
-        :type: int
+        :type minimum_var_code_count: int
         """
 
         self._minimum_var_code_count = minimum_var_code_count
@@ -272,7 +272,7 @@ class SelectorVariableInfo(object):
         The maximum count value in the variable's set of categories (var codes)  # noqa: E501
 
         :param maximum_var_code_count: The maximum_var_code_count of this SelectorVariableInfo.  # noqa: E501
-        :type: int
+        :type maximum_var_code_count: int
         """
 
         self._maximum_var_code_count = maximum_var_code_count
@@ -295,7 +295,7 @@ class SelectorVariableInfo(object):
         If this variable is a date variable, The earliest date represented by this variable  # noqa: E501
 
         :param minimum_date: The minimum_date of this SelectorVariableInfo.  # noqa: E501
-        :type: datetime
+        :type minimum_date: datetime
         """
 
         self._minimum_date = minimum_date
@@ -318,7 +318,7 @@ class SelectorVariableInfo(object):
         If this variable is a date variable, The latest date represented by this variable  # noqa: E501
 
         :param maximum_date: The maximum_date of this SelectorVariableInfo.  # noqa: E501
-        :type: datetime
+        :type maximum_date: datetime
         """
 
         self._maximum_date = maximum_date
@@ -341,32 +341,40 @@ class SelectorVariableInfo(object):
         If this variable is a summary/combined categories variable, then this is the name of the parent variable that this summarises  # noqa: E501
 
         :param combined_from_variable_name: The combined_from_variable_name of this SelectorVariableInfo.  # noqa: E501
-        :type: str
+        :type combined_from_variable_name: str
         """
 
         self._combined_from_variable_name = combined_from_variable_name
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

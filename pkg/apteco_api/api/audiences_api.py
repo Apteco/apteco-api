@@ -42,24 +42,32 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_calculate_audience_data_licensing_sync(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to calculate the result for (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :param DataLicensingDetail data_licensing_detail: The details required to get data licensing information for an audience
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to calculate the result for (required)
+        :type audience_id: int
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :type timeout_in_seconds: int
+        :param data_licensing_detail: The details required to get data licensing information for an audience
+        :type data_licensing_detail: DataLicensingDetail
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: LicensingInfo
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: LicensingInfo
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_calculate_audience_data_licensing_sync_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -69,26 +77,39 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_calculate_audience_data_licensing_sync_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to calculate the result for (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :param DataLicensingDetail data_licensing_detail: The details required to get data licensing information for an audience
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to calculate the result for (required)
+        :type audience_id: int
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :type timeout_in_seconds: int
+        :param data_licensing_detail: The details required to get data licensing information for an audience
+        :type data_licensing_detail: DataLicensingDetail
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(LicensingInfo, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(LicensingInfo, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -104,7 +125,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -155,6 +177,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "LicensingInfo",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/DataLicensingSync', 'POST',
@@ -164,37 +193,46 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='LicensingInfo',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_calculate_audience_latest_update_sync(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Calculate counts against the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to produce the end result  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_calculate_audience_latest_update_sync(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to calculate the result for. (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :param CalculateAudienceDetails calculate_audience_details: The details for calculating this audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to calculate the result for. (required)
+        :type audience_id: int
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :type timeout_in_seconds: int
+        :param calculate_audience_details: The details for calculating this audience.
+        :type calculate_audience_details: CalculateAudienceDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceResultDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceResultDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_calculate_audience_latest_update_sync_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -204,26 +242,39 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_calculate_audience_latest_update_sync_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to calculate the result for. (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :param CalculateAudienceDetails calculate_audience_details: The details for calculating this audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to calculate the result for. (required)
+        :type audience_id: int
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :type timeout_in_seconds: int
+        :param calculate_audience_details: The details for calculating this audience.
+        :type calculate_audience_details: CalculateAudienceDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceResultDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceResultDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -239,7 +290,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -290,6 +342,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            201: "AudienceResultDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/CalculateSync', 'POST',
@@ -299,36 +358,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceResultDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_cancel_calculate_audience_data_licensing_job(self, data_view_name, audience_id, job_id, **kwargs):  # noqa: E501
         """Cancel a running data licensing job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_cancel_calculate_audience_data_licensing_job(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the data licensing job is running for. (required)
-        :param int job_id: The id of the job to cancel (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the data licensing job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to cancel (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_cancel_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, job_id, **kwargs)  # noqa: E501
@@ -338,25 +405,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_cancel_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the data licensing job is running for. (required)
-        :param int job_id: The id of the job to cancel (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the data licensing job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to cancel (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -371,7 +450,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -416,6 +496,8 @@ class AudiencesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/DataLicensingJobs/{jobId}', 'DELETE',
@@ -425,36 +507,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_cancel_calculate_audience_job(self, data_view_name, audience_id, job_id, **kwargs):  # noqa: E501
         """Cancel a running calculate job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_cancel_calculate_audience_job(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the calculate job is running for. (required)
-        :param int job_id: The id of the job to cancel (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the calculate job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to cancel (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_cancel_calculate_audience_job_with_http_info(data_view_name, audience_id, job_id, **kwargs)  # noqa: E501
@@ -464,25 +554,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_cancel_calculate_audience_job_with_http_info(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the calculate job is running for. (required)
-        :param int job_id: The id of the job to cancel (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the calculate job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to cancel (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -497,7 +599,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -542,6 +645,8 @@ class AudiencesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/CalculateJobs/{jobId}', 'DELETE',
@@ -551,36 +656,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_cancel_check_audience_job(self, data_view_name, audience_id, job_id, **kwargs):  # noqa: E501
         """Cancel a running check job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_cancel_check_audience_job(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the check job is running for. (required)
-        :param int job_id: The id of the job to cancel (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the check job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to cancel (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_cancel_check_audience_job_with_http_info(data_view_name, audience_id, job_id, **kwargs)  # noqa: E501
@@ -590,25 +703,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_cancel_check_audience_job_with_http_info(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the check job is running for. (required)
-        :param int job_id: The id of the job to cancel (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the check job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to cancel (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -623,7 +748,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -668,6 +794,8 @@ class AudiencesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/CheckJobs/{jobId}', 'DELETE',
@@ -677,36 +805,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_cancel_export_audience_job(self, data_view_name, audience_id, job_id, **kwargs):  # noqa: E501
         """Cancel a running export job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_cancel_export_audience_job(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the export job is running for. (required)
-        :param int job_id: The id of the job to cancel (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the export job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to cancel (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_cancel_export_audience_job_with_http_info(data_view_name, audience_id, job_id, **kwargs)  # noqa: E501
@@ -716,25 +852,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_cancel_export_audience_job_with_http_info(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the export job is running for. (required)
-        :param int job_id: The id of the job to cancel (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the export job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to cancel (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -749,7 +897,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -794,6 +943,8 @@ class AudiencesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/ExportJobs/{jobId}', 'DELETE',
@@ -803,37 +954,46 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_check_audience_latest_update_sync(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Calculate check statistics against the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to identify the data to analyse and the specified dimensions will be used to perform the analysis.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_check_audience_latest_update_sync(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to calculate the result for. (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :param CheckAudienceDetails check_audience_details: The details for checking this audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to calculate the result for. (required)
+        :type audience_id: int
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :type timeout_in_seconds: int
+        :param check_audience_details: The details for checking this audience.
+        :type check_audience_details: CheckAudienceDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceCheckDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceCheckDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_check_audience_latest_update_sync_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -843,26 +1003,39 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_check_audience_latest_update_sync_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to calculate the result for. (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :param CheckAudienceDetails check_audience_details: The details for checking this audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to calculate the result for. (required)
+        :type audience_id: int
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :type timeout_in_seconds: int
+        :param check_audience_details: The details for checking this audience.
+        :type check_audience_details: CheckAudienceDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceCheckDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceCheckDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -878,7 +1051,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -929,6 +1103,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "AudienceCheckDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/CheckSync', 'POST',
@@ -938,13 +1119,14 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceCheckDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_create_audience(self, data_view_name, **kwargs):  # noqa: E501
         """Creates a new audience from the given details for the logged in user.  # noqa: E501
@@ -952,22 +1134,28 @@ class AudiencesApi(object):
         Requires licence flags [AudienceSelection]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_audience(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param CreateAudienceDetail audience_detail: The details for the audience to create.  If you want              to update a specific audience then PUT to the /Audiences/{audienceId} URL
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_detail: The details for the audience to create.  If you want              to update a specific audience then PUT to the /Audiences/{audienceId} URL
+        :type audience_detail: CreateAudienceDetail
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_create_audience_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -978,24 +1166,35 @@ class AudiencesApi(object):
         Requires licence flags [AudienceSelection]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_audience_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param CreateAudienceDetail audience_detail: The details for the audience to create.  If you want              to update a specific audience then PUT to the /Audiences/{audienceId} URL
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_detail: The details for the audience to create.  If you want              to update a specific audience then PUT to the /Audiences/{audienceId} URL
+        :type audience_detail: CreateAudienceDetail
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1009,7 +1208,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -1052,6 +1252,12 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            201: "AudienceDetail",
+            400: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences', 'POST',
@@ -1061,36 +1267,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_create_audience_hit_for_audience(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Register a hit (view) for the given audience  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_audience_hit_for_audience(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to register the hit for (required)
-        :param CreateAudienceHitDetails create_audience_hit_details: Details to register the hit with
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to register the hit for (required)
+        :type audience_id: int
+        :param create_audience_hit_details: Details to register the hit with
+        :type create_audience_hit_details: CreateAudienceHitDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceHitDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceHitDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_create_audience_hit_for_audience_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -1100,25 +1314,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_audience_hit_for_audience_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to register the hit for (required)
-        :param CreateAudienceHitDetails create_audience_hit_details: Details to register the hit with
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to register the hit for (required)
+        :type audience_id: int
+        :param create_audience_hit_details: Details to register the hit with
+        :type create_audience_hit_details: CreateAudienceHitDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceHitDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceHitDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1133,7 +1359,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -1182,6 +1409,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "AudienceHitDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/Hits', 'POST',
@@ -1191,13 +1425,14 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceHitDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_create_audience_update(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Updates the details of a particular audience.  If you don't have an id for the  audience then POST to the /Audiences URL to create a new audience.  # noqa: E501
@@ -1205,23 +1440,30 @@ class AudiencesApi(object):
         Requires licence flags [AudienceSelection]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_audience_update(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to add/update (required)
-        :param CreateAudienceUpdate create_audience_update: The details for the audience to add/update
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to add/update (required)
+        :type audience_id: int
+        :param create_audience_update: The details for the audience to add/update
+        :type create_audience_update: CreateAudienceUpdate
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceUpdateDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceUpdateDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_create_audience_update_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -1232,25 +1474,37 @@ class AudiencesApi(object):
         Requires licence flags [AudienceSelection]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_audience_update_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to add/update (required)
-        :param CreateAudienceUpdate create_audience_update: The details for the audience to add/update
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to add/update (required)
+        :type audience_id: int
+        :param create_audience_update: The details for the audience to add/update
+        :type create_audience_update: CreateAudienceUpdate
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceUpdateDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceUpdateDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1265,7 +1519,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -1314,6 +1569,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            201: "AudienceUpdateDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/Updates', 'POST',
@@ -1323,36 +1585,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceUpdateDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_create_calculate_audience_data_licensing_job(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Create a new job to get data licensing information for the latest version of this audience  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_calculate_audience_data_licensing_job(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to calculate the result for (required)
-        :param DataLicensingDetail data_licensing_detail: The details required to get data licensing information for an audience
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to calculate the result for (required)
+        :type audience_id: int
+        :param data_licensing_detail: The details required to get data licensing information for an audience
+        :type data_licensing_detail: DataLicensingDetail
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceDataLicensingInfoJobDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceDataLicensingInfoJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_create_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -1362,25 +1632,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to calculate the result for (required)
-        :param DataLicensingDetail data_licensing_detail: The details required to get data licensing information for an audience
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to calculate the result for (required)
+        :type audience_id: int
+        :param data_licensing_detail: The details required to get data licensing information for an audience
+        :type data_licensing_detail: DataLicensingDetail
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceDataLicensingInfoJobDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceDataLicensingInfoJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1395,7 +1677,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -1444,6 +1727,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            201: "AudienceDataLicensingInfoJobDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/DataLicensingJobs', 'POST',
@@ -1453,36 +1743,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceDataLicensingInfoJobDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_create_calculate_audience_job_for_latest_update(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Create a new job to calculate counts against the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to produce the end result  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_calculate_audience_job_for_latest_update(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to calculate the result for. (required)
-        :param CalculateAudienceDetails calculate_audience_details: The details for calculating this audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to calculate the result for. (required)
+        :type audience_id: int
+        :param calculate_audience_details: The details for calculating this audience.
+        :type calculate_audience_details: CalculateAudienceDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceCalculateJobDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceCalculateJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_create_calculate_audience_job_for_latest_update_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -1492,25 +1790,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_calculate_audience_job_for_latest_update_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to calculate the result for. (required)
-        :param CalculateAudienceDetails calculate_audience_details: The details for calculating this audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to calculate the result for. (required)
+        :type audience_id: int
+        :param calculate_audience_details: The details for calculating this audience.
+        :type calculate_audience_details: CalculateAudienceDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceCalculateJobDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceCalculateJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1525,7 +1835,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -1574,6 +1885,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            201: "AudienceCalculateJobDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/CalculateJobs', 'POST',
@@ -1583,36 +1901,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceCalculateJobDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_create_check_audience_job_for_latest_update(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Create a new job to calculate check statistics against the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to identify the data to analyse and the specified dimensions will be used to perform the analysis.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_check_audience_job_for_latest_update(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to calculate the result for. (required)
-        :param CheckAudienceDetails check_audience_details: The details for checking this audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to calculate the result for. (required)
+        :type audience_id: int
+        :param check_audience_details: The details for checking this audience.
+        :type check_audience_details: CheckAudienceDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceCheckJobDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceCheckJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_create_check_audience_job_for_latest_update_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -1622,25 +1948,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_check_audience_job_for_latest_update_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to calculate the result for. (required)
-        :param CheckAudienceDetails check_audience_details: The details for checking this audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to calculate the result for. (required)
+        :type audience_id: int
+        :param check_audience_details: The details for checking this audience.
+        :type check_audience_details: CheckAudienceDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceCheckJobDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceCheckJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1655,7 +1993,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -1704,6 +2043,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            201: "AudienceCheckJobDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/CheckJobs', 'POST',
@@ -1713,13 +2059,14 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceCheckJobDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_create_export_audience_job_for_latest_update(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Create a new job to export data from the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to identify the data to export and the specified columns will be used to export the data, to a file  and/or as a sample within the body of the result  # noqa: E501
@@ -1727,23 +2074,30 @@ class AudiencesApi(object):
         Might require licence flags [Export]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_export_audience_job_for_latest_update(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to export data for. (required)
-        :param ExportAudienceDetails export_audience_details: The details for exporting this audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to export data for. (required)
+        :type audience_id: int
+        :param export_audience_details: The details for exporting this audience.
+        :type export_audience_details: ExportAudienceDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceExportJobDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceExportJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_create_export_audience_job_for_latest_update_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -1754,25 +2108,37 @@ class AudiencesApi(object):
         Might require licence flags [Export]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_create_export_audience_job_for_latest_update_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to export data for. (required)
-        :param ExportAudienceDetails export_audience_details: The details for exporting this audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to export data for. (required)
+        :type audience_id: int
+        :param export_audience_details: The details for exporting this audience.
+        :type export_audience_details: ExportAudienceDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceExportJobDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceExportJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1787,7 +2153,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -1836,6 +2203,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            201: "AudienceExportJobDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/ExportJobs', 'POST',
@@ -1845,13 +2219,14 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceExportJobDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_delete_audience(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Deletes the specified audience  # noqa: E501
@@ -1859,22 +2234,28 @@ class AudiencesApi(object):
         Requires licence flags [AudienceSelection]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_delete_audience(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to delete (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to delete (required)
+        :type audience_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_delete_audience_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -1885,24 +2266,35 @@ class AudiencesApi(object):
         Requires licence flags [AudienceSelection]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_delete_audience_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to delete (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to delete (required)
+        :type audience_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -1916,7 +2308,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -1955,6 +2348,8 @@ class AudiencesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}', 'DELETE',
@@ -1964,13 +2359,14 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_export_audience_latest_update_sync(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Create a new job to export data from the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to identify the data to export and the specified columns will be used to export the data, to a file  and/or as a sample within the body of the result  # noqa: E501
@@ -1978,24 +2374,32 @@ class AudiencesApi(object):
         Might require licence flags [Export]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_export_audience_latest_update_sync(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to export data for. (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :param ExportAudienceDetails export_audience_details: The details for calculating this audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to export data for. (required)
+        :type audience_id: int
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :type timeout_in_seconds: int
+        :param export_audience_details: The details for calculating this audience.
+        :type export_audience_details: ExportAudienceDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceExportDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceExportDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_export_audience_latest_update_sync_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -2006,26 +2410,39 @@ class AudiencesApi(object):
         Might require licence flags [Export]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_export_audience_latest_update_sync_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to export data for. (required)
-        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :param ExportAudienceDetails export_audience_details: The details for calculating this audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to export data for. (required)
+        :type audience_id: int
+        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :type timeout_in_seconds: int
+        :param export_audience_details: The details for calculating this audience.
+        :type export_audience_details: ExportAudienceDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceExportDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceExportDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -2041,7 +2458,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -2092,6 +2510,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "AudienceExportDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/ExportSync', 'POST',
@@ -2101,37 +2526,46 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceExportDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_audience(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Returns the details of a particular audience  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to view (required)
-        :param bool include_queries: If specified, whether to include the query definitions for this audience or not.  Defaults to true - to return query definitions
-        :param bool include_brief: If specified, whether to include the brief for this audience or not.  Defaults to true - to return the brief
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to view (required)
+        :type audience_id: int
+        :param include_queries: If specified, whether to include the query definitions for this audience or not.  Defaults to true - to return query definitions
+        :type include_queries: bool
+        :param include_brief: If specified, whether to include the brief for this audience or not.  Defaults to true - to return the brief
+        :type include_brief: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_audience_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -2141,26 +2575,39 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to view (required)
-        :param bool include_queries: If specified, whether to include the query definitions for this audience or not.  Defaults to true - to return query definitions
-        :param bool include_brief: If specified, whether to include the brief for this audience or not.  Defaults to true - to return the brief
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to view (required)
+        :type audience_id: int
+        :param include_queries: If specified, whether to include the query definitions for this audience or not.  Defaults to true - to return query definitions
+        :type include_queries: bool
+        :param include_brief: If specified, whether to include the brief for this audience or not.  Defaults to true - to return the brief
+        :type include_brief: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -2176,7 +2623,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -2223,6 +2671,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "AudienceDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}', 'GET',
@@ -2232,36 +2687,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_audience_hit_for_audience(self, data_view_name, audience_id, audience_hit_id, **kwargs):  # noqa: E501
         """Returns details for a given audience hit for this audience  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_hit_for_audience(data_view_name, audience_id, audience_hit_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to get the hit information for (required)
-        :param int audience_hit_id: The id of the hit (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to get the hit information for (required)
+        :type audience_id: int
+        :param audience_hit_id: The id of the hit (required)
+        :type audience_hit_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceHitDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceHitDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_audience_hit_for_audience_with_http_info(data_view_name, audience_id, audience_hit_id, **kwargs)  # noqa: E501
@@ -2271,25 +2734,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_hit_for_audience_with_http_info(data_view_name, audience_id, audience_hit_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to get the hit information for (required)
-        :param int audience_hit_id: The id of the hit (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to get the hit information for (required)
+        :type audience_id: int
+        :param audience_hit_id: The id of the hit (required)
+        :type audience_hit_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceHitDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceHitDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -2304,7 +2779,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -2353,6 +2829,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "AudienceHitDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/Hits/{audienceHitId}', 'GET',
@@ -2362,39 +2845,50 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceHitDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_audience_hits_for_audience(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Returns a summary of the hits for this audience - i.e. information about when users have viewed the audience.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_hits_for_audience(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to get the hit information for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to get the hit information for (required)
+        :type audience_id: int
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsAudienceHitSummary
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PagedResultsAudienceHitSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_audience_hits_for_audience_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -2404,28 +2898,43 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_hits_for_audience_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to get the hit information for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to get the hit information for (required)
+        :type audience_id: int
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsAudienceHitSummary, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PagedResultsAudienceHitSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -2443,7 +2952,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -2498,6 +3008,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "PagedResultsAudienceHitSummary",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/Hits', 'GET',
@@ -2507,35 +3024,42 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsAudienceHitSummary',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_audience_latest_native_for_nett_query(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Returns native XML (i.e. for use with other FastStats applications) for the Nett query of the latest update for a particular audience  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_latest_native_for_nett_query(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience (required)
+        :type audience_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: str
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: str
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_audience_latest_native_for_nett_query_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -2545,24 +3069,35 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_latest_native_for_nett_query_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience (required)
+        :type audience_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(str, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(str, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -2576,7 +3111,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -2619,6 +3155,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "str",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/Native/Nett', 'GET',
@@ -2628,36 +3171,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='str',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_audience_result(self, data_view_name, audience_id, audience_result_id, **kwargs):  # noqa: E501
         """Returns details of a particular result for a particular audience  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_result(data_view_name, audience_id, audience_result_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to get the results for (required)
-        :param int audience_result_id: The id of the result for the audience (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to get the results for (required)
+        :type audience_id: int
+        :param audience_result_id: The id of the result for the audience (required)
+        :type audience_result_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceResultDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceResultDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_audience_result_with_http_info(data_view_name, audience_id, audience_result_id, **kwargs)  # noqa: E501
@@ -2667,25 +3218,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_result_with_http_info(data_view_name, audience_id, audience_result_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to get the results for (required)
-        :param int audience_result_id: The id of the result for the audience (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to get the results for (required)
+        :type audience_id: int
+        :param audience_result_id: The id of the result for the audience (required)
+        :type audience_result_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceResultDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceResultDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -2700,7 +3263,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -2749,6 +3313,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "AudienceResultDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/Results/{audienceResultId}', 'GET',
@@ -2758,39 +3329,50 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceResultDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_audience_results(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Returns a summary of the results for a particular audience  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_results(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to get the audience of results for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to get the audience of results for (required)
+        :type audience_id: int
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsAudienceResultSummary
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PagedResultsAudienceResultSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_audience_results_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -2800,28 +3382,43 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_results_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to get the audience of results for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to get the audience of results for (required)
+        :type audience_id: int
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsAudienceResultSummary, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PagedResultsAudienceResultSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -2839,7 +3436,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -2894,6 +3492,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "PagedResultsAudienceResultSummary",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/Results', 'GET',
@@ -2903,38 +3508,48 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsAudienceResultSummary',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_audience_update(self, data_view_name, audience_id, audience_update_id, **kwargs):  # noqa: E501
         """Returns details of an update for a particular audience  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_update(data_view_name, audience_id, audience_update_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that contains the update (required)
-        :param int audience_update_id: The id of the update for the audience (required)
-        :param bool include_queries: If specified, whether to include the query definitions for this update or not.  Defaults to true - to return query definitions
-        :param bool include_brief: If specified, whether to include the brief for this update or not.  Defaults to true - to return the brief
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that contains the update (required)
+        :type audience_id: int
+        :param audience_update_id: The id of the update for the audience (required)
+        :type audience_update_id: int
+        :param include_queries: If specified, whether to include the query definitions for this update or not.  Defaults to true - to return query definitions
+        :type include_queries: bool
+        :param include_brief: If specified, whether to include the brief for this update or not.  Defaults to true - to return the brief
+        :type include_brief: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceUpdateDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceUpdateDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_audience_update_with_http_info(data_view_name, audience_id, audience_update_id, **kwargs)  # noqa: E501
@@ -2944,27 +3559,41 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_update_with_http_info(data_view_name, audience_id, audience_update_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that contains the update (required)
-        :param int audience_update_id: The id of the update for the audience (required)
-        :param bool include_queries: If specified, whether to include the query definitions for this update or not.  Defaults to true - to return query definitions
-        :param bool include_brief: If specified, whether to include the brief for this update or not.  Defaults to true - to return the brief
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that contains the update (required)
+        :type audience_id: int
+        :param audience_update_id: The id of the update for the audience (required)
+        :type audience_update_id: int
+        :param include_queries: If specified, whether to include the query definitions for this update or not.  Defaults to true - to return query definitions
+        :type include_queries: bool
+        :param include_brief: If specified, whether to include the brief for this update or not.  Defaults to true - to return the brief
+        :type include_brief: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceUpdateDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceUpdateDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -2981,7 +3610,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -3034,6 +3664,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "AudienceUpdateDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/Updates/{audienceUpdateId}', 'GET',
@@ -3043,39 +3680,50 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceUpdateDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_audience_updates(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Returns a summary of the updates to a particular audience  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_updates(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to get the updates for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to get the updates for (required)
+        :type audience_id: int
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsAudienceUpdateSummary
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PagedResultsAudienceUpdateSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_audience_updates_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -3085,28 +3733,43 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audience_updates_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to get the updates for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to get the updates for (required)
+        :type audience_id: int
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsAudienceUpdateSummary, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PagedResultsAudienceUpdateSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -3124,7 +3787,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -3179,6 +3843,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "PagedResultsAudienceUpdateSummary",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/Updates', 'GET',
@@ -3188,13 +3859,14 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsAudienceUpdateSummary',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_audiences(self, data_view_name, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Gets summary information about each audience in the DataView.  # noqa: E501
@@ -3202,26 +3874,36 @@ class AudiencesApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audiences(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str include_deleted: If specified, whether to include deleted audience, not deleted audience or both.  Defaults to not deleted only
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param include_deleted: If specified, whether to include deleted audience, not deleted audience or both.  Defaults to not deleted only
+        :type include_deleted: str
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsAudienceSummary
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PagedResultsAudienceSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_audiences_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -3232,28 +3914,43 @@ class AudiencesApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_audiences_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str include_deleted: If specified, whether to include deleted audience, not deleted audience or both.  Defaults to not deleted only
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn
-        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param include_deleted: If specified, whether to include deleted audience, not deleted audience or both.  Defaults to not deleted only
+        :type include_deleted: str
+        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn
+        :type filter: str
+        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn
+        :type order_by: str
+        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :type offset: int
+        :param count: The maximum number of items to show from the (potentially filtered) result set.
+        :type count: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsAudienceSummary, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PagedResultsAudienceSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -3271,7 +3968,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -3322,6 +4020,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "PagedResultsAudienceSummary",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences', 'GET',
@@ -3331,37 +4036,46 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsAudienceSummary',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_calculate_audience_data_licensing_job(self, data_view_name, audience_id, job_id, **kwargs):  # noqa: E501
         """Get the status of a running calculate job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_calculate_audience_data_licensing_job(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the calculate job is running for. (required)
-        :param int job_id: The id of the job to get the status for. (required)
-        :param DataLicensingDetail data_licensing_detail: The details required to get data licensing information for an audience
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the calculate job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to get the status for. (required)
+        :type job_id: int
+        :param data_licensing_detail: The details required to get data licensing information for an audience
+        :type data_licensing_detail: DataLicensingDetail
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceDataLicensingInfoJobDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceDataLicensingInfoJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, job_id, **kwargs)  # noqa: E501
@@ -3371,26 +4085,39 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_calculate_audience_data_licensing_job_with_http_info(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the calculate job is running for. (required)
-        :param int job_id: The id of the job to get the status for. (required)
-        :param DataLicensingDetail data_licensing_detail: The details required to get data licensing information for an audience
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the calculate job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to get the status for. (required)
+        :type job_id: int
+        :param data_licensing_detail: The details required to get data licensing information for an audience
+        :type data_licensing_detail: DataLicensingDetail
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceDataLicensingInfoJobDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceDataLicensingInfoJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -3406,7 +4133,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -3461,6 +4189,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "AudienceDataLicensingInfoJobDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/DataLicensingJobs/{jobId}', 'POST',
@@ -3470,36 +4205,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceDataLicensingInfoJobDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_calculate_audience_job(self, data_view_name, audience_id, job_id, **kwargs):  # noqa: E501
         """Get the status of a running calculate job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_calculate_audience_job(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the calculate job is running for. (required)
-        :param int job_id: The id of the job to get the status for. (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the calculate job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to get the status for. (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceCalculateJobDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceCalculateJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_calculate_audience_job_with_http_info(data_view_name, audience_id, job_id, **kwargs)  # noqa: E501
@@ -3509,25 +4252,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_calculate_audience_job_with_http_info(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the calculate job is running for. (required)
-        :param int job_id: The id of the job to get the status for. (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the calculate job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to get the status for. (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceCalculateJobDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceCalculateJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -3542,7 +4297,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -3591,6 +4347,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "AudienceCalculateJobDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/CalculateJobs/{jobId}', 'GET',
@@ -3600,36 +4363,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceCalculateJobDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_check_audience_job(self, data_view_name, audience_id, job_id, **kwargs):  # noqa: E501
         """Get the status of a running check job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_check_audience_job(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the check job is running for. (required)
-        :param int job_id: The id of the job to get the status for. (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the check job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to get the status for. (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceCheckJobDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceCheckJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_check_audience_job_with_http_info(data_view_name, audience_id, job_id, **kwargs)  # noqa: E501
@@ -3639,25 +4410,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_check_audience_job_with_http_info(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the check job is running for. (required)
-        :param int job_id: The id of the job to get the status for. (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the check job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to get the status for. (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceCheckJobDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceCheckJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -3672,7 +4455,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -3721,6 +4505,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "AudienceCheckJobDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/CheckJobs/{jobId}', 'GET',
@@ -3730,36 +4521,44 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceCheckJobDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_get_export_audience_job(self, data_view_name, audience_id, job_id, **kwargs):  # noqa: E501
         """Get the status of a running export job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_export_audience_job(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the export job is running for. (required)
-        :param int job_id: The id of the job to get the status for. (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the export job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to get the status for. (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceExportJobDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceExportJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_get_export_audience_job_with_http_info(data_view_name, audience_id, job_id, **kwargs)  # noqa: E501
@@ -3769,25 +4568,37 @@ class AudiencesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_get_export_audience_job_with_http_info(data_view_name, audience_id, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience that the export job is running for. (required)
-        :param int job_id: The id of the job to get the status for. (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience that the export job is running for. (required)
+        :type audience_id: int
+        :param job_id: The id of the job to get the status for. (required)
+        :type job_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceExportJobDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceExportJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -3802,7 +4613,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -3851,6 +4663,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "AudienceExportJobDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/ExportJobs/{jobId}', 'GET',
@@ -3860,13 +4679,14 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceExportJobDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def audiences_transfer_audience_ownership(self, data_view_name, audience_id, **kwargs):  # noqa: E501
         """Transfer ownership of an audience from the current user to a new owner  # noqa: E501
@@ -3874,25 +4694,34 @@ class AudiencesApi(object):
         Requires licence flags [AudienceSelection]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_transfer_audience_ownership(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to transfer. (required)
-        :param bool include_queries: If specified, whether to include the query definitions for the returned audience or not.  Defaults to true - to return query definitions
-        :param bool include_brief: If specified, whether to include the brief for this audience or not.  Defaults to true - to return the brief
-        :param TransferAudienceOwnershipDetails transfer_ownership_details: The details for transferring ownership of the audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to transfer. (required)
+        :type audience_id: int
+        :param include_queries: If specified, whether to include the query definitions for the returned audience or not.  Defaults to true - to return query definitions
+        :type include_queries: bool
+        :param include_brief: If specified, whether to include the brief for this audience or not.  Defaults to true - to return the brief
+        :type include_brief: bool
+        :param transfer_ownership_details: The details for transferring ownership of the audience.
+        :type transfer_ownership_details: TransferAudienceOwnershipDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceDetail
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AudienceDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.audiences_transfer_audience_ownership_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
@@ -3903,27 +4732,41 @@ class AudiencesApi(object):
         Requires licence flags [AudienceSelection]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.audiences_transfer_audience_ownership_with_http_info(data_view_name, audience_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param int audience_id: The id of the audience to transfer. (required)
-        :param bool include_queries: If specified, whether to include the query definitions for the returned audience or not.  Defaults to true - to return query definitions
-        :param bool include_brief: If specified, whether to include the brief for this audience or not.  Defaults to true - to return the brief
-        :param TransferAudienceOwnershipDetails transfer_ownership_details: The details for transferring ownership of the audience.
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param audience_id: The id of the audience to transfer. (required)
+        :type audience_id: int
+        :param include_queries: If specified, whether to include the query definitions for the returned audience or not.  Defaults to true - to return query definitions
+        :type include_queries: bool
+        :param include_brief: If specified, whether to include the brief for this audience or not.  Defaults to true - to return the brief
+        :type include_brief: bool
+        :param transfer_ownership_details: The details for transferring ownership of the audience.
+        :type transfer_ownership_details: TransferAudienceOwnershipDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceDetail, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AudienceDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -3940,7 +4783,8 @@ class AudiencesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -3993,6 +4837,13 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "AudienceDetail",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Audiences/{audienceId}/TransferOwnership', 'POST',
@@ -4002,10 +4853,11 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceDetail',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))

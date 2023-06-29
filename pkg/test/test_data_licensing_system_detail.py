@@ -37,19 +37,18 @@ class TestDataLicensingSystemDetail(unittest.TestCase):
         # model = apteco_api.models.data_licensing_system_detail.DataLicensingSystemDetail()  # noqa: E501
         if include_optional :
             return DataLicensingSystemDetail(
-                name = '0', 
+                name = '', 
                 is_velocity_enabled = True
             )
         else :
             return DataLicensingSystemDetail(
-                name = '0',
+                name = '',
         )
 
     def testDataLicensingSystemDetail(self):
         """Test DataLicensingSystemDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

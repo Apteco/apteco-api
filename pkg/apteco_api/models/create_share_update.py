@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -60,7 +60,7 @@ class CreateShareUpdate(object):
     def __init__(self, notes=None, email_addresses_to_add=None, notify_added_users=None, added_user_notification_message=None, email_addresses_to_remove=None, notify_removed_users=None, removed_user_notification_message=None, notify_unchanged_users=None, unchanged_user_notification_message=None, local_vars_configuration=None):  # noqa: E501
         """CreateShareUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._notes = None
@@ -108,7 +108,7 @@ class CreateShareUpdate(object):
         The notes associated with this share update  # noqa: E501
 
         :param notes: The notes of this CreateShareUpdate.  # noqa: E501
-        :type: str
+        :type notes: str
         """
 
         self._notes = notes
@@ -131,7 +131,7 @@ class CreateShareUpdate(object):
         Email addresses of new users to share this shareable item with  # noqa: E501
 
         :param email_addresses_to_add: The email_addresses_to_add of this CreateShareUpdate.  # noqa: E501
-        :type: list[str]
+        :type email_addresses_to_add: list[str]
         """
 
         self._email_addresses_to_add = email_addresses_to_add
@@ -154,7 +154,7 @@ class CreateShareUpdate(object):
         Whether to notify new users that the shareable item has now been shared with them  # noqa: E501
 
         :param notify_added_users: The notify_added_users of this CreateShareUpdate.  # noqa: E501
-        :type: bool
+        :type notify_added_users: bool
         """
         if self.local_vars_configuration.client_side_validation and notify_added_users is None:  # noqa: E501
             raise ValueError("Invalid value for `notify_added_users`, must not be `None`")  # noqa: E501
@@ -179,7 +179,7 @@ class CreateShareUpdate(object):
         If added users are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
 
         :param added_user_notification_message: The added_user_notification_message of this CreateShareUpdate.  # noqa: E501
-        :type: str
+        :type added_user_notification_message: str
         """
 
         self._added_user_notification_message = added_user_notification_message
@@ -202,7 +202,7 @@ class CreateShareUpdate(object):
         Email addresses of users that this shareable item has already been shared with that should be removed from the share  # noqa: E501
 
         :param email_addresses_to_remove: The email_addresses_to_remove of this CreateShareUpdate.  # noqa: E501
-        :type: list[str]
+        :type email_addresses_to_remove: list[str]
         """
 
         self._email_addresses_to_remove = email_addresses_to_remove
@@ -225,7 +225,7 @@ class CreateShareUpdate(object):
         Whether to notify existing users that the share has been updated  # noqa: E501
 
         :param notify_removed_users: The notify_removed_users of this CreateShareUpdate.  # noqa: E501
-        :type: bool
+        :type notify_removed_users: bool
         """
         if self.local_vars_configuration.client_side_validation and notify_removed_users is None:  # noqa: E501
             raise ValueError("Invalid value for `notify_removed_users`, must not be `None`")  # noqa: E501
@@ -250,7 +250,7 @@ class CreateShareUpdate(object):
         If removed users are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
 
         :param removed_user_notification_message: The removed_user_notification_message of this CreateShareUpdate.  # noqa: E501
-        :type: str
+        :type removed_user_notification_message: str
         """
 
         self._removed_user_notification_message = removed_user_notification_message
@@ -273,7 +273,7 @@ class CreateShareUpdate(object):
         Whether to notify users that the shareable item is shared with, but that haven't   been added or removed that the share has been updated  # noqa: E501
 
         :param notify_unchanged_users: The notify_unchanged_users of this CreateShareUpdate.  # noqa: E501
-        :type: bool
+        :type notify_unchanged_users: bool
         """
         if self.local_vars_configuration.client_side_validation and notify_unchanged_users is None:  # noqa: E501
             raise ValueError("Invalid value for `notify_unchanged_users`, must not be `None`")  # noqa: E501
@@ -298,32 +298,40 @@ class CreateShareUpdate(object):
         If unchanged users are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
 
         :param unchanged_user_notification_message: The unchanged_user_notification_message of this CreateShareUpdate.  # noqa: E501
-        :type: str
+        :type unchanged_user_notification_message: str
         """
 
         self._unchanged_user_notification_message = unchanged_user_notification_message
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

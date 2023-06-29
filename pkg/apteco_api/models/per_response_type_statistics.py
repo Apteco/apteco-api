@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -46,7 +46,7 @@ class PerResponseTypeStatistics(object):
     def __init__(self, per_channel_statistics_map=None, total_responses_count=None, local_vars_configuration=None):  # noqa: E501
         """PerResponseTypeStatistics - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._per_channel_statistics_map = None
@@ -74,7 +74,7 @@ class PerResponseTypeStatistics(object):
         A map between a channel's id and its response statistics data  # noqa: E501
 
         :param per_channel_statistics_map: The per_channel_statistics_map of this PerResponseTypeStatistics.  # noqa: E501
-        :type: dict(str, PerResponseTypePerChannelStatistics)
+        :type per_channel_statistics_map: dict(str, PerResponseTypePerChannelStatistics)
         """
         if self.local_vars_configuration.client_side_validation and per_channel_statistics_map is None:  # noqa: E501
             raise ValueError("Invalid value for `per_channel_statistics_map`, must not be `None`")  # noqa: E501
@@ -99,34 +99,42 @@ class PerResponseTypeStatistics(object):
         The total number of responses for the given response type  # noqa: E501
 
         :param total_responses_count: The total_responses_count of this PerResponseTypeStatistics.  # noqa: E501
-        :type: int
+        :type total_responses_count: int
         """
         if self.local_vars_configuration.client_side_validation and total_responses_count is None:  # noqa: E501
             raise ValueError("Invalid value for `total_responses_count`, must not be `None`")  # noqa: E501
 
         self._total_responses_count = total_responses_count
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

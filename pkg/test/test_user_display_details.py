@@ -37,24 +37,23 @@ class TestUserDisplayDetails(unittest.TestCase):
         # model = apteco_api.models.user_display_details.UserDisplayDetails()  # noqa: E501
         if include_optional :
             return UserDisplayDetails(
-                username = '0', 
-                firstname = '0', 
-                surname = '0', 
-                email_address = '0'
+                username = '', 
+                firstname = '', 
+                surname = '', 
+                email_address = ''
             )
         else :
             return UserDisplayDetails(
-                username = '0',
-                firstname = '0',
-                surname = '0',
-                email_address = '0',
+                username = '',
+                firstname = '',
+                surname = '',
+                email_address = '',
         )
 
     def testUserDisplayDetails(self):
         """Test UserDisplayDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

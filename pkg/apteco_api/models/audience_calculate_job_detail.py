@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -52,7 +52,7 @@ class AudienceCalculateJobDetail(object):
     def __init__(self, audience_result=None, id=None, is_complete=None, queue_position=None, progress=None, local_vars_configuration=None):  # noqa: E501
         """AudienceCalculateJobDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._audience_result = None
@@ -87,7 +87,7 @@ class AudienceCalculateJobDetail(object):
 
 
         :param audience_result: The audience_result of this AudienceCalculateJobDetail.  # noqa: E501
-        :type: AudienceResultDetail
+        :type audience_result: AudienceResultDetail
         """
 
         self._audience_result = audience_result
@@ -110,7 +110,7 @@ class AudienceCalculateJobDetail(object):
         The job's id  # noqa: E501
 
         :param id: The id of this AudienceCalculateJobDetail.  # noqa: E501
-        :type: int
+        :type id: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -135,7 +135,7 @@ class AudienceCalculateJobDetail(object):
         Whether the job is complete or not  # noqa: E501
 
         :param is_complete: The is_complete of this AudienceCalculateJobDetail.  # noqa: E501
-        :type: bool
+        :type is_complete: bool
         """
         if self.local_vars_configuration.client_side_validation and is_complete is None:  # noqa: E501
             raise ValueError("Invalid value for `is_complete`, must not be `None`")  # noqa: E501
@@ -160,7 +160,7 @@ class AudienceCalculateJobDetail(object):
         If present, the position that the job is in the job queue.  Jobs only start being actively processed once they reach the head of the queue  # noqa: E501
 
         :param queue_position: The queue_position of this AudienceCalculateJobDetail.  # noqa: E501
-        :type: int
+        :type queue_position: int
         """
 
         self._queue_position = queue_position
@@ -183,32 +183,40 @@ class AudienceCalculateJobDetail(object):
         If present, an estimate of how far through its processing this job is  # noqa: E501
 
         :param progress: The progress of this AudienceCalculateJobDetail.  # noqa: E501
-        :type: int
+        :type progress: int
         """
 
         self._progress = progress
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

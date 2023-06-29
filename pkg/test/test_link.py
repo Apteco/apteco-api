@@ -37,14 +37,14 @@ class TestLink(unittest.TestCase):
         # model = apteco_api.models.link.Link()  # noqa: E501
         if include_optional :
             return Link(
-                href = '0', 
+                href = '', 
                 templated = True, 
-                type = '0', 
+                type = '', 
                 deprecation = True, 
-                name = '0', 
-                profile = '0', 
-                title = '0', 
-                hreflang = '0'
+                name = '', 
+                profile = '', 
+                title = '', 
+                hreflang = ''
             )
         else :
             return Link(
@@ -54,7 +54,6 @@ class TestLink(unittest.TestCase):
         """Test Link"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

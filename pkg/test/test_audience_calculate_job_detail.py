@@ -41,14 +41,14 @@ class TestAudienceCalculateJobDetail(unittest.TestCase):
                     exclude_results = apteco_api.models.audience_query_result.AudienceQueryResult(
                         counts = [
                             apteco_api.models.count.Count(
-                                table_name = '0', 
+                                table_name = '', 
                                 count_value = 56, )
                             ], 
                         messages = [
                             apteco_api.models.server_message.ServerMessage(
                                 type = 'Error', 
                                 number = 56, 
-                                text = '0', )
+                                text = '', )
                             ], ), 
                     include_results = apteco_api.models.audience_query_result.AudienceQueryResult(), 
                     body_results = apteco_api.models.audience_query_result.AudienceQueryResult(), 
@@ -57,12 +57,12 @@ class TestAudienceCalculateJobDetail(unittest.TestCase):
                     timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     user = apteco_api.models.user_display_details.UserDisplayDetails(
-                        username = '0', 
-                        firstname = '0', 
-                        surname = '0', 
-                        email_address = '0', ), 
+                        username = '', 
+                        firstname = '', 
+                        surname = '', 
+                        email_address = '', ), 
                     nett_results = apteco_api.models.audience_query_result.AudienceQueryResult(), 
-                    urn_file_path = '0', ), 
+                    urn_file_path = '', ), 
                 id = 56, 
                 is_complete = True, 
                 queue_position = 56, 
@@ -78,7 +78,6 @@ class TestAudienceCalculateJobDetail(unittest.TestCase):
         """Test AudienceCalculateJobDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

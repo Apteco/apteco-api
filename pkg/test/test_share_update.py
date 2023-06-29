@@ -40,53 +40,52 @@ class TestShareUpdate(unittest.TestCase):
                 id = 56, 
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', ), 
-                notes = '0', 
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', ), 
+                notes = '', 
                 number_of_added_users = 56, 
                 first_added_user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', ), 
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', ), 
                 number_of_removed_users = 56, 
                 first_removed_user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', )
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', )
             )
         else :
             return ShareUpdate(
                 id = 56,
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', ),
-                notes = '0',
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', ),
+                notes = '',
                 number_of_added_users = 56,
                 first_added_user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', ),
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', ),
                 number_of_removed_users = 56,
                 first_removed_user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', ),
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', ),
         )
 
     def testShareUpdate(self):
         """Test ShareUpdate"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

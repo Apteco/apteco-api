@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -52,7 +52,7 @@ class Output(object):
     def __init__(self, format=None, delimiter=None, alpha_encloser=None, numeric_encloser=None, authorisation_code=None, local_vars_configuration=None):  # noqa: E501
         """Output - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._format = None
@@ -91,7 +91,7 @@ class Output(object):
         The format of the file to generate  # noqa: E501
 
         :param format: The format of this Output.  # noqa: E501
-        :type: str
+        :type format: str
         """
         allowed_values = ["CSV", "SDF", "XLSX", "MDB", "DBF", "URN"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and format not in allowed_values:  # noqa: E501
@@ -120,7 +120,7 @@ class Output(object):
         The delimiter character to use when outputting a delimited file.  Specify one character only  # noqa: E501
 
         :param delimiter: The delimiter of this Output.  # noqa: E501
-        :type: str
+        :type delimiter: str
         """
 
         self._delimiter = delimiter
@@ -143,7 +143,7 @@ class Output(object):
         The alpha encloser character to use when outputting a delimited file.  Specify one character only  # noqa: E501
 
         :param alpha_encloser: The alpha_encloser of this Output.  # noqa: E501
-        :type: str
+        :type alpha_encloser: str
         """
 
         self._alpha_encloser = alpha_encloser
@@ -166,7 +166,7 @@ class Output(object):
         The delimiter character to use when outputting a delimited file.  Specify one character only  # noqa: E501
 
         :param numeric_encloser: The numeric_encloser of this Output.  # noqa: E501
-        :type: str
+        :type numeric_encloser: str
         """
 
         self._numeric_encloser = numeric_encloser
@@ -189,32 +189,40 @@ class Output(object):
         The velocity authorisation code string  # noqa: E501
 
         :param authorisation_code: The authorisation_code of this Output.  # noqa: E501
-        :type: str
+        :type authorisation_code: str
         """
 
         self._authorisation_code = authorisation_code
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -58,7 +58,7 @@ class DashboardContentItemDetail(object):
     def __init__(self, drilldown_level=None, description=None, chart_type=None, resolve_table_name=None, dimensions=None, measures=None, omit_zeros=None, omit_unclassified=None, local_vars_configuration=None):  # noqa: E501
         """DashboardContentItemDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._drilldown_level = None
@@ -103,7 +103,7 @@ class DashboardContentItemDetail(object):
         The drill down level of the dashboard item  # noqa: E501
 
         :param drilldown_level: The drilldown_level of this DashboardContentItemDetail.  # noqa: E501
-        :type: int
+        :type drilldown_level: int
         """
         if self.local_vars_configuration.client_side_validation and drilldown_level is None:  # noqa: E501
             raise ValueError("Invalid value for `drilldown_level`, must not be `None`")  # noqa: E501
@@ -128,7 +128,7 @@ class DashboardContentItemDetail(object):
         The description of the dashboard item  # noqa: E501
 
         :param description: The description of this DashboardContentItemDetail.  # noqa: E501
-        :type: str
+        :type description: str
         """
 
         self._description = description
@@ -151,7 +151,7 @@ class DashboardContentItemDetail(object):
         The chart type that will be shown in the dashboard item  # noqa: E501
 
         :param chart_type: The chart_type of this DashboardContentItemDetail.  # noqa: E501
-        :type: str
+        :type chart_type: str
         """
         if self.local_vars_configuration.client_side_validation and chart_type is None:  # noqa: E501
             raise ValueError("Invalid value for `chart_type`, must not be `None`")  # noqa: E501
@@ -182,7 +182,7 @@ class DashboardContentItemDetail(object):
         The table name that the data will resolve to  # noqa: E501
 
         :param resolve_table_name: The resolve_table_name of this DashboardContentItemDetail.  # noqa: E501
-        :type: str
+        :type resolve_table_name: str
         """
         if self.local_vars_configuration.client_side_validation and resolve_table_name is None:  # noqa: E501
             raise ValueError("Invalid value for `resolve_table_name`, must not be `None`")  # noqa: E501
@@ -207,7 +207,7 @@ class DashboardContentItemDetail(object):
         The dimensions of the dashboard item chart  # noqa: E501
 
         :param dimensions: The dimensions of this DashboardContentItemDetail.  # noqa: E501
-        :type: list[Dimension]
+        :type dimensions: list[Dimension]
         """
 
         self._dimensions = dimensions
@@ -230,7 +230,7 @@ class DashboardContentItemDetail(object):
         The measures of the dashboard item chart  # noqa: E501
 
         :param measures: The measures of this DashboardContentItemDetail.  # noqa: E501
-        :type: list[Measure]
+        :type measures: list[Measure]
         """
 
         self._measures = measures
@@ -253,7 +253,7 @@ class DashboardContentItemDetail(object):
         Whether to omit zeroes in the data of the dashboard item  # noqa: E501
 
         :param omit_zeros: The omit_zeros of this DashboardContentItemDetail.  # noqa: E501
-        :type: bool
+        :type omit_zeros: bool
         """
 
         self._omit_zeros = omit_zeros
@@ -276,32 +276,40 @@ class DashboardContentItemDetail(object):
         Whether to omit unclassifieds in the data of the dashboard item  # noqa: E501
 
         :param omit_unclassified: The omit_unclassified of this DashboardContentItemDetail.  # noqa: E501
-        :type: bool
+        :type omit_unclassified: bool
         """
 
         self._omit_unclassified = omit_unclassified
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

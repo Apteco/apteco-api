@@ -37,54 +37,53 @@ class TestUserCollectionDetail(unittest.TestCase):
         # model = apteco_api.models.user_collection_detail.UserCollectionDetail()  # noqa: E501
         if include_optional :
             return UserCollectionDetail(
-                viewing_username = '0', 
+                viewing_username = '', 
                 status = 'Default', 
                 shared_to_me = True, 
                 shared_by_me = True, 
                 id = 56, 
                 owner = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', ), 
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', ), 
                 number_of_parts = 56, 
                 number_of_users_shared_with = 56, 
                 share_id = 56, 
                 number_of_hits = 56, 
-                system_name = '0', 
-                title = '0', 
-                description = '0', 
+                system_name = '', 
+                title = '', 
+                description = '', 
                 creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                file_path = '0', 
+                file_path = '', 
                 deletion_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else :
             return UserCollectionDetail(
-                viewing_username = '0',
+                viewing_username = '',
                 status = 'Default',
                 shared_to_me = True,
                 shared_by_me = True,
                 id = 56,
                 owner = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '0', 
-                    firstname = '0', 
-                    surname = '0', 
-                    email_address = '0', ),
+                    username = '', 
+                    firstname = '', 
+                    surname = '', 
+                    email_address = '', ),
                 number_of_users_shared_with = 56,
                 share_id = 56,
                 number_of_hits = 56,
-                system_name = '0',
-                title = '0',
-                description = '0',
+                system_name = '',
+                title = '',
+                description = '',
                 creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                file_path = '0',
+                file_path = '',
         )
 
     def testUserCollectionDetail(self):
         """Test UserCollectionDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

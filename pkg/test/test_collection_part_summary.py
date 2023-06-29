@@ -37,24 +37,23 @@ class TestCollectionPartSummary(unittest.TestCase):
         # model = apteco_api.models.collection_part_summary.CollectionPartSummary()  # noqa: E501
         if include_optional :
             return CollectionPartSummary(
-                title = '0', 
+                title = '', 
                 index = 56, 
                 visualisation_type = 'None', 
-                visualisation_id = '0'
+                visualisation_id = ''
             )
         else :
             return CollectionPartSummary(
-                title = '0',
+                title = '',
                 index = 56,
                 visualisation_type = 'None',
-                visualisation_id = '0',
+                visualisation_id = '',
         )
 
     def testCollectionPartSummary(self):
         """Test CollectionPartSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

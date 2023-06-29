@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -56,7 +56,7 @@ class UserSummary(object):
     def __init__(self, id=None, username=None, group_id=None, firstname=None, surname=None, email_address=None, user_disabled_date=None, local_vars_configuration=None):  # noqa: E501
         """UserSummary - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -94,7 +94,7 @@ class UserSummary(object):
         The user's id  # noqa: E501
 
         :param id: The id of this UserSummary.  # noqa: E501
-        :type: int
+        :type id: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -119,7 +119,7 @@ class UserSummary(object):
         The user's username  # noqa: E501
 
         :param username: The username of this UserSummary.  # noqa: E501
-        :type: str
+        :type username: str
         """
         if self.local_vars_configuration.client_side_validation and username is None:  # noqa: E501
             raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
@@ -144,7 +144,7 @@ class UserSummary(object):
         The id of the group the user is in (or null if they aren't allocated to a group)  # noqa: E501
 
         :param group_id: The group_id of this UserSummary.  # noqa: E501
-        :type: int
+        :type group_id: int
         """
         if self.local_vars_configuration.client_side_validation and group_id is None:  # noqa: E501
             raise ValueError("Invalid value for `group_id`, must not be `None`")  # noqa: E501
@@ -169,7 +169,7 @@ class UserSummary(object):
         The user's first name  # noqa: E501
 
         :param firstname: The firstname of this UserSummary.  # noqa: E501
-        :type: str
+        :type firstname: str
         """
         if self.local_vars_configuration.client_side_validation and firstname is None:  # noqa: E501
             raise ValueError("Invalid value for `firstname`, must not be `None`")  # noqa: E501
@@ -194,7 +194,7 @@ class UserSummary(object):
         The user's surname  # noqa: E501
 
         :param surname: The surname of this UserSummary.  # noqa: E501
-        :type: str
+        :type surname: str
         """
         if self.local_vars_configuration.client_side_validation and surname is None:  # noqa: E501
             raise ValueError("Invalid value for `surname`, must not be `None`")  # noqa: E501
@@ -219,7 +219,7 @@ class UserSummary(object):
         The user's email address  # noqa: E501
 
         :param email_address: The email_address of this UserSummary.  # noqa: E501
-        :type: str
+        :type email_address: str
         """
         if self.local_vars_configuration.client_side_validation and email_address is None:  # noqa: E501
             raise ValueError("Invalid value for `email_address`, must not be `None`")  # noqa: E501
@@ -244,34 +244,42 @@ class UserSummary(object):
         The date on which the user was or will become disabled,  or null if the user has not been disabled  # noqa: E501
 
         :param user_disabled_date: The user_disabled_date of this UserSummary.  # noqa: E501
-        :type: datetime
+        :type user_disabled_date: datetime
         """
         if self.local_vars_configuration.client_side_validation and user_disabled_date is None:  # noqa: E501
             raise ValueError("Invalid value for `user_disabled_date`, must not be `None`")  # noqa: E501
 
         self._user_disabled_date = user_disabled_date
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

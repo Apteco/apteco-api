@@ -38,19 +38,19 @@ class TestRFV(unittest.TestCase):
         if include_optional :
             return RFV(
                 frequency = apteco_api.models.rfv_frequency.RFVFrequency(
-                    values = '0', ), 
+                    values = '', ), 
                 recency = apteco_api.models.rfv_recency.RFVRecency(
-                    variable_name = '0', 
-                    sequence = '0', 
+                    variable_name = '', 
+                    sequence = '', 
                     direction = 'Any', 
                     value = 56, 
                     distinct = True, ), 
                 value = apteco_api.models.rfv_value.RFVValue(
-                    variable_name = '0', 
+                    variable_name = '', 
                     action = 'Sum', 
-                    values = '0', ), 
-                grouping_table = '0', 
-                transactional_table = '0'
+                    values = '', ), 
+                grouping_table = '', 
+                transactional_table = ''
             )
         else :
             return RFV(
@@ -60,7 +60,6 @@ class TestRFV(unittest.TestCase):
         """Test RFV"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

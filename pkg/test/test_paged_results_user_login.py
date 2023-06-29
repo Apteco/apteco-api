@@ -42,9 +42,9 @@ class TestPagedResultsUserLogin(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.user_login.UserLogin(
-                        username = '0', 
-                        system_name = '0', 
-                        client_type = '0', 
+                        username = '', 
+                        system_name = '', 
+                        client_type = '', 
                         timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ]
             )
@@ -55,9 +55,9 @@ class TestPagedResultsUserLogin(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.user_login.UserLogin(
-                        username = '0', 
-                        system_name = '0', 
-                        client_type = '0', 
+                        username = '', 
+                        system_name = '', 
+                        client_type = '', 
                         timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
         )
@@ -66,7 +66,6 @@ class TestPagedResultsUserLogin(unittest.TestCase):
         """Test PagedResultsUserLogin"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

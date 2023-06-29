@@ -37,24 +37,23 @@ class TestGridItem(unittest.TestCase):
         # model = apteco_api.models.grid_item.GridItem()  # noqa: E501
         if include_optional :
             return GridItem(
-                variable_name = '0', 
+                variable_name = '', 
                 detail = 'Code', 
                 unclassified_format = 'FromDesign', 
-                description = '0'
+                description = ''
             )
         else :
             return GridItem(
-                variable_name = '0',
+                variable_name = '',
                 detail = 'Code',
                 unclassified_format = 'FromDesign',
-                description = '0',
+                description = '',
         )
 
     def testGridItem(self):
         """Test GridItem"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

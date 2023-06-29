@@ -38,25 +38,24 @@ class TestInvalidToShareUserDisplayDetails(unittest.TestCase):
         if include_optional :
             return InvalidToShareUserDisplayDetails(
                 reason = 'ShareableAlreadySharedToUser', 
-                username = '0', 
-                firstname = '0', 
-                surname = '0', 
-                email_address = '0'
+                username = '', 
+                firstname = '', 
+                surname = '', 
+                email_address = ''
             )
         else :
             return InvalidToShareUserDisplayDetails(
                 reason = 'ShareableAlreadySharedToUser',
-                username = '0',
-                firstname = '0',
-                surname = '0',
-                email_address = '0',
+                username = '',
+                firstname = '',
+                surname = '',
+                email_address = '',
         )
 
     def testInvalidToShareUserDisplayDetails(self):
         """Test InvalidToShareUserDisplayDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -42,24 +42,32 @@ class TelemetryApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_create_telemetry_session(data_view_name, state_id, session_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str state_id: The id of the telemetry state the session belongs to (required)
-        :param str session_id: The id of the telemetry session (required)
-        :param CreateTelemetrySessionDetails create_telemetry_session_details: The details of the telemetry session to create
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param state_id: The id of the telemetry state the session belongs to (required)
+        :type state_id: str
+        :param session_id: The id of the telemetry session (required)
+        :type session_id: str
+        :param create_telemetry_session_details: The details of the telemetry session to create
+        :type create_telemetry_session_details: CreateTelemetrySessionDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: TelemetrySession
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: TelemetrySession
         """
         kwargs['_return_http_data_only'] = True
         return self.telemetry_create_telemetry_session_with_http_info(data_view_name, state_id, session_id, **kwargs)  # noqa: E501
@@ -69,26 +77,39 @@ class TelemetryApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_create_telemetry_session_with_http_info(data_view_name, state_id, session_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str state_id: The id of the telemetry state the session belongs to (required)
-        :param str session_id: The id of the telemetry session (required)
-        :param CreateTelemetrySessionDetails create_telemetry_session_details: The details of the telemetry session to create
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param state_id: The id of the telemetry state the session belongs to (required)
+        :type state_id: str
+        :param session_id: The id of the telemetry session (required)
+        :type session_id: str
+        :param create_telemetry_session_details: The details of the telemetry session to create
+        :type create_telemetry_session_details: CreateTelemetrySessionDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(TelemetrySession, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(TelemetrySession, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -104,7 +125,8 @@ class TelemetryApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -159,6 +181,13 @@ class TelemetryApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            201: "TelemetrySession",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Telemetry/States/{stateId}/Sessions/{sessionId}', 'POST',
@@ -168,35 +197,42 @@ class TelemetryApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TelemetrySession',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def telemetry_create_telemetry_state(self, data_view_name, **kwargs):  # noqa: E501
         """Creates a new telemetry state from the given details  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_create_telemetry_state(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param CreateTelemetryStateDetails create_telemetry_state_details: The details of the telemetry state to create
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param create_telemetry_state_details: The details of the telemetry state to create
+        :type create_telemetry_state_details: CreateTelemetryStateDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: TelemetryState
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: TelemetryState
         """
         kwargs['_return_http_data_only'] = True
         return self.telemetry_create_telemetry_state_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -206,24 +242,35 @@ class TelemetryApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_create_telemetry_state_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param CreateTelemetryStateDetails create_telemetry_state_details: The details of the telemetry state to create
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param create_telemetry_state_details: The details of the telemetry state to create
+        :type create_telemetry_state_details: CreateTelemetryStateDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(TelemetryState, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(TelemetryState, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -237,7 +284,8 @@ class TelemetryApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -280,6 +328,13 @@ class TelemetryApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            201: "TelemetryState",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Telemetry/States', 'POST',
@@ -289,36 +344,44 @@ class TelemetryApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TelemetryState',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def telemetry_get_telemetry_session(self, data_view_name, state_id, session_id, **kwargs):  # noqa: E501
         """Returns the details of a particular telemetry session  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_get_telemetry_session(data_view_name, state_id, session_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str state_id: The id of the telemetry state the session belongs to (required)
-        :param str session_id: The id of the telemetry session (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param state_id: The id of the telemetry state the session belongs to (required)
+        :type state_id: str
+        :param session_id: The id of the telemetry session (required)
+        :type session_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: TelemetrySession
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: TelemetrySession
         """
         kwargs['_return_http_data_only'] = True
         return self.telemetry_get_telemetry_session_with_http_info(data_view_name, state_id, session_id, **kwargs)  # noqa: E501
@@ -328,25 +391,37 @@ class TelemetryApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_get_telemetry_session_with_http_info(data_view_name, state_id, session_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str state_id: The id of the telemetry state the session belongs to (required)
-        :param str session_id: The id of the telemetry session (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param state_id: The id of the telemetry state the session belongs to (required)
+        :type state_id: str
+        :param session_id: The id of the telemetry session (required)
+        :type session_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(TelemetrySession, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(TelemetrySession, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -361,7 +436,8 @@ class TelemetryApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -410,6 +486,13 @@ class TelemetryApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "TelemetrySession",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Telemetry/States/{stateId}/Sessions/{sessionId}', 'GET',
@@ -419,35 +502,42 @@ class TelemetryApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TelemetrySession',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def telemetry_get_telemetry_state(self, data_view_name, state_id, **kwargs):  # noqa: E501
         """Returns the details of a particular telemetry state  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_get_telemetry_state(data_view_name, state_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str state_id: The id of the telemetry state to return (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param state_id: The id of the telemetry state to return (required)
+        :type state_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: TelemetryState
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: TelemetryState
         """
         kwargs['_return_http_data_only'] = True
         return self.telemetry_get_telemetry_state_with_http_info(data_view_name, state_id, **kwargs)  # noqa: E501
@@ -457,24 +547,35 @@ class TelemetryApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_get_telemetry_state_with_http_info(data_view_name, state_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str state_id: The id of the telemetry state to return (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param state_id: The id of the telemetry state to return (required)
+        :type state_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(TelemetryState, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(TelemetryState, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -488,7 +589,8 @@ class TelemetryApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -531,6 +633,13 @@ class TelemetryApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "TelemetryState",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Telemetry/States/{stateId}', 'GET',
@@ -540,35 +649,42 @@ class TelemetryApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TelemetryState',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def telemetry_get_telemetry_state_for_user(self, data_view_name, username, **kwargs):  # noqa: E501
         """Returns the details of a given user's telemetry state  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_get_telemetry_state_for_user(data_view_name, username, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str username: The username of the telemetry state to return (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param username: The username of the telemetry state to return (required)
+        :type username: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: TelemetryState
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: TelemetryState
         """
         kwargs['_return_http_data_only'] = True
         return self.telemetry_get_telemetry_state_for_user_with_http_info(data_view_name, username, **kwargs)  # noqa: E501
@@ -578,24 +694,35 @@ class TelemetryApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_get_telemetry_state_for_user_with_http_info(data_view_name, username, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str username: The username of the telemetry state to return (required)
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param username: The username of the telemetry state to return (required)
+        :type username: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(TelemetryState, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(TelemetryState, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -609,7 +736,8 @@ class TelemetryApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -652,6 +780,13 @@ class TelemetryApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "TelemetryState",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Telemetry/States/ForUser/{username}', 'GET',
@@ -661,37 +796,46 @@ class TelemetryApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TelemetryState',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def telemetry_update_telemetry_session(self, data_view_name, state_id, session_id, **kwargs):  # noqa: E501
         """Update a particular telemetry session from the given details  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_update_telemetry_session(data_view_name, state_id, session_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str state_id: The id of the telemetry state the session belongs to (required)
-        :param str session_id: The id of the telemetry session (required)
-        :param UpdateTelemetrySessionDetails update_telemetry_session_details: The details of the telemetry session to update
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param state_id: The id of the telemetry state the session belongs to (required)
+        :type state_id: str
+        :param session_id: The id of the telemetry session (required)
+        :type session_id: str
+        :param update_telemetry_session_details: The details of the telemetry session to update
+        :type update_telemetry_session_details: UpdateTelemetrySessionDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: TelemetrySession
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: TelemetrySession
         """
         kwargs['_return_http_data_only'] = True
         return self.telemetry_update_telemetry_session_with_http_info(data_view_name, state_id, session_id, **kwargs)  # noqa: E501
@@ -701,26 +845,39 @@ class TelemetryApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_update_telemetry_session_with_http_info(data_view_name, state_id, session_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str state_id: The id of the telemetry state the session belongs to (required)
-        :param str session_id: The id of the telemetry session (required)
-        :param UpdateTelemetrySessionDetails update_telemetry_session_details: The details of the telemetry session to update
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param state_id: The id of the telemetry state the session belongs to (required)
+        :type state_id: str
+        :param session_id: The id of the telemetry session (required)
+        :type session_id: str
+        :param update_telemetry_session_details: The details of the telemetry session to update
+        :type update_telemetry_session_details: UpdateTelemetrySessionDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(TelemetrySession, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(TelemetrySession, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -736,7 +893,8 @@ class TelemetryApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -791,6 +949,13 @@ class TelemetryApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "TelemetrySession",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Telemetry/States/{stateId}/Sessions/{sessionId}/Update', 'POST',
@@ -800,36 +965,44 @@ class TelemetryApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TelemetrySession',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
 
     def telemetry_update_telemetry_state(self, data_view_name, state_id, **kwargs):  # noqa: E501
         """Updates a particular telemetry state from the given details  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_update_telemetry_state(data_view_name, state_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str state_id: The id of the telemetry state to update (required)
-        :param UpdateTelemetryStateDetails update_telemetry_state_details: The details of the telemetry state to update
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param state_id: The id of the telemetry state to update (required)
+        :type state_id: str
+        :param update_telemetry_state_details: The details of the telemetry state to update
+        :type update_telemetry_state_details: UpdateTelemetryStateDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: TelemetryState
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: TelemetryState
         """
         kwargs['_return_http_data_only'] = True
         return self.telemetry_update_telemetry_state_with_http_info(data_view_name, state_id, **kwargs)  # noqa: E501
@@ -839,25 +1012,37 @@ class TelemetryApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.telemetry_update_telemetry_state_with_http_info(data_view_name, state_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str state_id: The id of the telemetry state to update (required)
-        :param UpdateTelemetryStateDetails update_telemetry_state_details: The details of the telemetry state to update
+        :param data_view_name: The name of the DataView to act on (required)
+        :type data_view_name: str
+        :param state_id: The id of the telemetry state to update (required)
+        :type state_id: str
+        :param update_telemetry_state_details: The details of the telemetry state to update
+        :type update_telemetry_state_details: UpdateTelemetryStateDetails
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(TelemetryState, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(TelemetryState, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -872,7 +1057,8 @@ class TelemetryApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout'
+                '_request_timeout',
+                '_request_auth'
             ]
         )
 
@@ -921,6 +1107,13 @@ class TelemetryApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
+        
+        response_types_map = {
+            200: "TelemetryState",
+            400: None,
+            403: None,
+            404: None,
+        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Telemetry/States/{stateId}/Update', 'POST',
@@ -930,10 +1123,11 @@ class TelemetryApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TelemetryState',  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))

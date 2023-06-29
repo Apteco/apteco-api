@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -54,7 +54,7 @@ class CreateUserRegistrationRequest(object):
     def __init__(self, username=None, firstname=None, surname=None, email_address=None, password=None, confirm_registration_url=None, local_vars_configuration=None):  # noqa: E501
         """CreateUserRegistrationRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._username = None
@@ -93,7 +93,7 @@ class CreateUserRegistrationRequest(object):
         The username for the new user to be created with  # noqa: E501
 
         :param username: The username of this CreateUserRegistrationRequest.  # noqa: E501
-        :type: str
+        :type username: str
         """
         if self.local_vars_configuration.client_side_validation and username is None:  # noqa: E501
             raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
@@ -118,7 +118,7 @@ class CreateUserRegistrationRequest(object):
         The first name for the new user  # noqa: E501
 
         :param firstname: The firstname of this CreateUserRegistrationRequest.  # noqa: E501
-        :type: str
+        :type firstname: str
         """
 
         self._firstname = firstname
@@ -141,7 +141,7 @@ class CreateUserRegistrationRequest(object):
         The surname for the new user  # noqa: E501
 
         :param surname: The surname of this CreateUserRegistrationRequest.  # noqa: E501
-        :type: str
+        :type surname: str
         """
 
         self._surname = surname
@@ -164,7 +164,7 @@ class CreateUserRegistrationRequest(object):
         The email address for the new user  # noqa: E501
 
         :param email_address: The email_address of this CreateUserRegistrationRequest.  # noqa: E501
-        :type: str
+        :type email_address: str
         """
         if self.local_vars_configuration.client_side_validation and email_address is None:  # noqa: E501
             raise ValueError("Invalid value for `email_address`, must not be `None`")  # noqa: E501
@@ -189,7 +189,7 @@ class CreateUserRegistrationRequest(object):
         The password for the new user  # noqa: E501
 
         :param password: The password of this CreateUserRegistrationRequest.  # noqa: E501
-        :type: str
+        :type password: str
         """
         if self.local_vars_configuration.client_side_validation and password is None:  # noqa: E501
             raise ValueError("Invalid value for `password`, must not be `None`")  # noqa: E501
@@ -214,32 +214,40 @@ class CreateUserRegistrationRequest(object):
         A URL to send in the notification to the user to allow them to confirm their registration.    If the URL is specified, it can use the {token} parameter:    http://www.example.com/register/{token}    If present, this parameter will be replaced with the token of the registration request, which will be needed when confirming the registration  # noqa: E501
 
         :param confirm_registration_url: The confirm_registration_url of this CreateUserRegistrationRequest.  # noqa: E501
-        :type: str
+        :type confirm_registration_url: str
         """
 
         self._confirm_registration_url = confirm_registration_url
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

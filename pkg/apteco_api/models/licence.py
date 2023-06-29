@@ -11,9 +11,9 @@
 """
 
 
+import inspect
 import pprint
 import re  # noqa: F401
-
 import six
 
 from apteco_api.configuration import Configuration
@@ -54,7 +54,7 @@ class Licence(object):
     def __init__(self, audience_selection=None, audience_preview=None, export=None, advanced_query=None, cube=None, profile=None, local_vars_configuration=None):  # noqa: E501
         """Licence - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._audience_selection = None
@@ -90,7 +90,7 @@ class Licence(object):
         Whether this user is allowed to access \"Audience Selection\" functionality  # noqa: E501
 
         :param audience_selection: The audience_selection of this Licence.  # noqa: E501
-        :type: bool
+        :type audience_selection: bool
         """
         if self.local_vars_configuration.client_side_validation and audience_selection is None:  # noqa: E501
             raise ValueError("Invalid value for `audience_selection`, must not be `None`")  # noqa: E501
@@ -115,7 +115,7 @@ class Licence(object):
         Whether this user is allowed to access \"Audience Preview\" functionality  # noqa: E501
 
         :param audience_preview: The audience_preview of this Licence.  # noqa: E501
-        :type: bool
+        :type audience_preview: bool
         """
         if self.local_vars_configuration.client_side_validation and audience_preview is None:  # noqa: E501
             raise ValueError("Invalid value for `audience_preview`, must not be `None`")  # noqa: E501
@@ -140,7 +140,7 @@ class Licence(object):
         Whether this user is allowed to access \"Export\" functionality  # noqa: E501
 
         :param export: The export of this Licence.  # noqa: E501
-        :type: bool
+        :type export: bool
         """
         if self.local_vars_configuration.client_side_validation and export is None:  # noqa: E501
             raise ValueError("Invalid value for `export`, must not be `None`")  # noqa: E501
@@ -165,7 +165,7 @@ class Licence(object):
         Whether this user is allowed to access \"Advanced Query\" functionality  # noqa: E501
 
         :param advanced_query: The advanced_query of this Licence.  # noqa: E501
-        :type: bool
+        :type advanced_query: bool
         """
         if self.local_vars_configuration.client_side_validation and advanced_query is None:  # noqa: E501
             raise ValueError("Invalid value for `advanced_query`, must not be `None`")  # noqa: E501
@@ -190,7 +190,7 @@ class Licence(object):
         Whether this user is allowed to access \"Cube\" functionality  # noqa: E501
 
         :param cube: The cube of this Licence.  # noqa: E501
-        :type: bool
+        :type cube: bool
         """
         if self.local_vars_configuration.client_side_validation and cube is None:  # noqa: E501
             raise ValueError("Invalid value for `cube`, must not be `None`")  # noqa: E501
@@ -215,34 +215,42 @@ class Licence(object):
         Whether this user is allowed to access \"Profile\" functionality.  # noqa: E501
 
         :param profile: The profile of this Licence.  # noqa: E501
-        :type: bool
+        :type profile: bool
         """
         if self.local_vars_configuration.client_side_validation and profile is None:  # noqa: E501
             raise ValueError("Invalid value for `profile`, must not be `None`")  # noqa: E501
 
         self._profile = profile
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = inspect.getargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    lambda x: convert(x),
                     value
                 ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
+                    lambda item: (item[0], convert(item[1])),
                     value.items()
                 ))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 
