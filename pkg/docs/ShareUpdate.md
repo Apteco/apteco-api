@@ -1,6 +1,7 @@
 # ShareUpdate
 
 Details for a particular update that happened to a share
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

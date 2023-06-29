@@ -1,6 +1,7 @@
 # UserLogin
 
 The last login details for the user
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

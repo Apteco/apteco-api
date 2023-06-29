@@ -1,6 +1,7 @@
 # ResourceDetails
 
 The details of a particular static resource
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

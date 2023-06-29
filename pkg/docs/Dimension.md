@@ -1,6 +1,7 @@
 # Dimension
 
 A dimension to define the categories to break the data in the cube down by
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

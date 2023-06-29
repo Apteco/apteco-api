@@ -1,6 +1,7 @@
 # AudienceDataLicensingInfoJobDetail
 
 Details for a job to get data licensing info for an audience
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

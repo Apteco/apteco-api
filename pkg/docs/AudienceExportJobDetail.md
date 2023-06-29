@@ -1,6 +1,7 @@
 # AudienceExportJobDetail
 
 Details for a job to export an audience
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

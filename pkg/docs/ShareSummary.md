@@ -1,6 +1,7 @@
 # ShareSummary
 
 Summary details for how a shareable item is shared
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

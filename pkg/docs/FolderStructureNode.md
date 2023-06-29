@@ -1,6 +1,7 @@
 # FolderStructureNode
 
 An item in the Folder structure tree
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

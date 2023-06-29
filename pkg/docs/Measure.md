@@ -1,6 +1,7 @@
 # Measure
 
 A measure to define the figures shown for each cell created by the dimensions of the cube
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

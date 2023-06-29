@@ -1,6 +1,7 @@
 # DataLicensingSystemDetail
 
 Top level details for a FastStats system
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

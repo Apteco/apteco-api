@@ -1,6 +1,7 @@
 # Column
 
 A column to output for every row in the export
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

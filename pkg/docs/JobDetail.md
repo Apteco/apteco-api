@@ -1,6 +1,7 @@
 # JobDetail
 
 Details for a job in FastStats
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

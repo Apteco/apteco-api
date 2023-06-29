@@ -1,6 +1,7 @@
 # SaveQueryFile
 
 Information to request the saving of a query to a file
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,6 +1,7 @@
 # UserConfigurationDetails
 
 The details of the user configuration
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

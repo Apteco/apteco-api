@@ -1,6 +1,7 @@
 # TransferAudienceOwnershipDetails
 
 The details required to transfer the ownership of an audience
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

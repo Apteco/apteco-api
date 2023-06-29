@@ -1,6 +1,7 @@
 # DataViewDetails
 
 Details of a DataView that can be connected to
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

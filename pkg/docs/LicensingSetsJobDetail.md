@@ -1,6 +1,7 @@
 # LicensingSetsJobDetail
 
 Details for a job to get data licensing sets
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

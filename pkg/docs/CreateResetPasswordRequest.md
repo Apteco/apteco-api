@@ -1,6 +1,7 @@
 # CreateResetPasswordRequest
 
 The parameters needed to create a new reset password request
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

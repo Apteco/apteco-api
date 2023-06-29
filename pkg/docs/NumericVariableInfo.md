@@ -1,6 +1,7 @@
 # NumericVariableInfo
 
 Details specific for numeric variables in the FastStats system
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

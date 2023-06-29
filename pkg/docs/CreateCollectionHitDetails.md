@@ -1,6 +1,7 @@
 # CreateCollectionHitDetails
 
 Details for registering a collection hit
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

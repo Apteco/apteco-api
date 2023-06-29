@@ -1,6 +1,7 @@
 # BuildResult
 
 The results of a FastStats system build
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

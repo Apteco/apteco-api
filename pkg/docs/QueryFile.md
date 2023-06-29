@@ -1,6 +1,7 @@
 # QueryFile
 
 Information to request the counting of a query stored in a file
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

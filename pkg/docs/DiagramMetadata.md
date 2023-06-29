@@ -1,6 +1,7 @@
 # DiagramMetadata
 
 Metadata information for a PeopleStage Diagram
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

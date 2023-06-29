@@ -1,6 +1,7 @@
 # Variable
 
 Details for a variable in the FastStats system
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

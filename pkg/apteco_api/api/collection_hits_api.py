@@ -100,6 +100,7 @@ class CollectionHitsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -118,7 +119,9 @@ class CollectionHitsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -149,7 +152,7 @@ class CollectionHitsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -161,7 +164,7 @@ class CollectionHitsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "CollectionHitDetail",
             400: None,
@@ -261,6 +264,7 @@ class CollectionHitsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -282,7 +286,9 @@ class CollectionHitsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -319,7 +325,7 @@ class CollectionHitsApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -331,7 +337,7 @@ class CollectionHitsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "PagedResultsCollectionHitSummary",
             400: None,

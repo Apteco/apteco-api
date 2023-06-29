@@ -1,6 +1,7 @@
 # CollectionPartDetail
 
 Details for a collection part
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

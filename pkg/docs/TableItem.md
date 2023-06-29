@@ -1,6 +1,7 @@
 # TableItem
 
 Details for a table in the FastStats system returned as part of the All items endpoint
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

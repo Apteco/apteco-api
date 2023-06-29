@@ -1,6 +1,7 @@
 # RangeStatistics
 
 Communication statistics for the specified date range
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

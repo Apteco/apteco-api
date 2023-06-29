@@ -1,6 +1,7 @@
 # UserCollectionSummary
 
 Summary details for a collection viewable by a given user
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

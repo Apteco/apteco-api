@@ -1,6 +1,7 @@
 # UpdateUserDetails
 
 Details to update a user with
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

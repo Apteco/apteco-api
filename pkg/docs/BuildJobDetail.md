@@ -1,6 +1,7 @@
 # BuildJobDetail
 
 Details for a job to build a FastStats system
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

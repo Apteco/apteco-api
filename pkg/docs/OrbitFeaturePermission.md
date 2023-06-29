@@ -1,6 +1,7 @@
 # OrbitFeaturePermission
 
 Details of what orbit features are controlled for the associated resource
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

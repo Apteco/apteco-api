@@ -1,6 +1,7 @@
 # AudienceUpdateSummary
 
 Summary for an audience update
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

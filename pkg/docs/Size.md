@@ -1,6 +1,7 @@
 # Size
 
 Information on the size of an item
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

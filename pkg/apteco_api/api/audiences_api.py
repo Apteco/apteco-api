@@ -106,6 +106,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -126,7 +127,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -159,7 +162,7 @@ class AudiencesApi(object):
         if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -172,12 +175,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "LicensingInfo",
             400: None,
@@ -271,6 +276,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -291,7 +297,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -324,7 +332,7 @@ class AudiencesApi(object):
         if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -337,12 +345,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             201: "AudienceResultDetail",
             400: None,
@@ -432,6 +442,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -451,7 +462,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -488,7 +501,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -496,7 +509,7 @@ class AudiencesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -581,6 +594,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -600,7 +614,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -637,7 +653,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -645,7 +661,7 @@ class AudiencesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -730,6 +746,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -749,7 +766,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -786,7 +805,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -794,7 +813,7 @@ class AudiencesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -879,6 +898,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -898,7 +918,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -935,7 +957,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -943,7 +965,7 @@ class AudiencesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -1032,6 +1054,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1052,7 +1075,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1085,7 +1110,7 @@ class AudiencesApi(object):
         if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1098,12 +1123,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "AudienceCheckDetail",
             400: None,
@@ -1191,6 +1218,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1209,7 +1237,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1234,7 +1264,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1247,12 +1277,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             201: "AudienceDetail",
             400: None,
@@ -1341,6 +1373,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1360,7 +1393,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1391,7 +1426,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1404,12 +1439,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "AudienceHitDetail",
             400: None,
@@ -1501,6 +1538,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1520,7 +1558,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1551,7 +1591,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1564,12 +1604,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             201: "AudienceUpdateDetail",
             400: None,
@@ -1659,6 +1701,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1678,7 +1721,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1709,7 +1754,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1722,12 +1767,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             201: "AudienceDataLicensingInfoJobDetail",
             400: None,
@@ -1817,6 +1864,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1836,7 +1884,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -1867,7 +1917,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -1880,12 +1930,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             201: "AudienceCalculateJobDetail",
             400: None,
@@ -1975,6 +2027,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1994,7 +2047,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2025,7 +2080,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -2038,12 +2093,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             201: "AudienceCheckJobDetail",
             400: None,
@@ -2135,6 +2192,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2154,7 +2212,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2185,7 +2245,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -2198,12 +2258,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             201: "AudienceExportJobDetail",
             400: None,
@@ -2291,6 +2353,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2309,7 +2372,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2340,7 +2405,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -2348,7 +2413,7 @@ class AudiencesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -2439,6 +2504,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2459,7 +2525,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2492,7 +2560,7 @@ class AudiencesApi(object):
         if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -2505,12 +2573,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "AudienceExportDetail",
             400: None,
@@ -2604,6 +2674,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2624,7 +2695,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2659,7 +2732,7 @@ class AudiencesApi(object):
         if 'include_brief' in local_var_params and local_var_params['include_brief'] is not None:  # noqa: E501
             query_params.append(('includeBrief', local_var_params['include_brief']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -2671,7 +2744,7 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "AudienceDetail",
             400: None,
@@ -2761,6 +2834,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2780,7 +2854,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2817,7 +2893,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -2829,7 +2905,7 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "AudienceHitDetail",
             400: None,
@@ -2931,6 +3007,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2953,7 +3030,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -2996,7 +3075,7 @@ class AudiencesApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3008,7 +3087,7 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "PagedResultsAudienceHitSummary",
             400: None,
@@ -3094,6 +3173,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3112,7 +3192,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -3143,7 +3225,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3155,7 +3237,7 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "str",
             400: None,
@@ -3245,6 +3327,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3264,7 +3347,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -3301,7 +3386,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3313,7 +3398,7 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "AudienceResultDetail",
             400: None,
@@ -3415,6 +3500,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3437,7 +3523,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -3480,7 +3568,7 @@ class AudiencesApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3492,7 +3580,7 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "PagedResultsAudienceResultSummary",
             400: None,
@@ -3590,6 +3678,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3611,7 +3700,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -3652,7 +3743,7 @@ class AudiencesApi(object):
         if 'include_brief' in local_var_params and local_var_params['include_brief'] is not None:  # noqa: E501
             query_params.append(('includeBrief', local_var_params['include_brief']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3664,7 +3755,7 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "AudienceUpdateDetail",
             400: None,
@@ -3766,6 +3857,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3788,7 +3880,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -3831,7 +3925,7 @@ class AudiencesApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -3843,7 +3937,7 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "PagedResultsAudienceUpdateSummary",
             400: None,
@@ -3947,6 +4041,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3969,7 +4064,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4008,7 +4105,7 @@ class AudiencesApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4020,7 +4117,7 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "PagedResultsAudienceSummary",
             400: None,
@@ -4114,6 +4211,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4134,7 +4232,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4171,7 +4271,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4184,12 +4284,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "AudienceDataLicensingInfoJobDetail",
             400: None,
@@ -4279,6 +4381,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4298,7 +4401,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4335,7 +4440,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4347,7 +4452,7 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "AudienceCalculateJobDetail",
             400: None,
@@ -4437,6 +4542,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4456,7 +4562,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4493,7 +4601,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4505,7 +4613,7 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "AudienceCheckJobDetail",
             400: None,
@@ -4595,6 +4703,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4614,7 +4723,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4651,7 +4762,7 @@ class AudiencesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4663,7 +4774,7 @@ class AudiencesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "AudienceExportJobDetail",
             400: None,
@@ -4763,6 +4874,7 @@ class AudiencesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4784,7 +4896,9 @@ class AudiencesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -4819,7 +4933,7 @@ class AudiencesApi(object):
         if 'include_brief' in local_var_params and local_var_params['include_brief'] is not None:  # noqa: E501
             query_params.append(('includeBrief', local_var_params['include_brief']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -4832,12 +4946,14 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'POST', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "AudienceDetail",
             400: None,

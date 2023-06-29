@@ -1,6 +1,7 @@
 # VersionDetails
 
 The version details for the API
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

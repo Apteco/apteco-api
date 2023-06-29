@@ -1,6 +1,7 @@
 # CreateSessionParameters
 
 The parameters needed to create a valid password hash value when creating a session
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

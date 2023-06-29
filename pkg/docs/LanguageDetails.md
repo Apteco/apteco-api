@@ -1,6 +1,7 @@
 # LanguageDetails
 
 The language details for the API
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

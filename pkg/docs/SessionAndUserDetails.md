@@ -1,6 +1,7 @@
 # SessionAndUserDetails
 
 The username associated with a given session
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -13,7 +13,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "apteco-api"
-VERSION = "0.2.7"
+VERSION = "0.2.8"
 README = "../introduction.md"
 
 # read the contents of your README file

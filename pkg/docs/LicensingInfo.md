@@ -1,6 +1,7 @@
 # LicensingInfo
 
 The details for licensing a given query
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

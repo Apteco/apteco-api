@@ -1,6 +1,7 @@
 # AudienceCheckJobDetail
 
 Details for a job to calculate check statistics for an audience
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

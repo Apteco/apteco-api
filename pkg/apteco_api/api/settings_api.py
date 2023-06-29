@@ -98,6 +98,7 @@ class SettingsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -116,7 +117,9 @@ class SettingsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -153,7 +156,7 @@ class SettingsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -161,7 +164,7 @@ class SettingsApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -238,6 +241,7 @@ class SettingsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -255,7 +259,9 @@ class SettingsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -280,7 +286,7 @@ class SettingsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -288,7 +294,7 @@ class SettingsApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -369,6 +375,7 @@ class SettingsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -387,7 +394,9 @@ class SettingsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -424,7 +433,7 @@ class SettingsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -436,7 +445,7 @@ class SettingsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "object",
             400: None,
@@ -518,6 +527,7 @@ class SettingsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -535,7 +545,9 @@ class SettingsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -560,7 +572,7 @@ class SettingsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -572,7 +584,7 @@ class SettingsApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "object",
             400: None,
@@ -662,6 +674,7 @@ class SettingsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -681,7 +694,9 @@ class SettingsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -718,7 +733,7 @@ class SettingsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -731,12 +746,14 @@ class SettingsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'PUT', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             201: "object",
             400: None,
@@ -822,6 +839,7 @@ class SettingsApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -840,7 +858,9 @@ class SettingsApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -865,7 +885,7 @@ class SettingsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -878,12 +898,14 @@ class SettingsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+        header_params['Content-Type'] = local_var_params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
+                'PUT', body_params))  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             201: "object",
             400: None,

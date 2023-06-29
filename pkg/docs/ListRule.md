@@ -1,5 +1,6 @@
 # ListRule
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

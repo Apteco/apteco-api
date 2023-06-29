@@ -1,6 +1,7 @@
 # ErrorMessage
 
 Details of an error that has occurred in the API
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

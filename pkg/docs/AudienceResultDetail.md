@@ -1,6 +1,7 @@
 # AudienceResultDetail
 
 Details for an audience result
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,6 +1,7 @@
 # FastStatsSystemItem
 
 Details for a FastStats system item
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

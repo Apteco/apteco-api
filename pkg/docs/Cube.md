@@ -1,6 +1,7 @@
 # Cube
 
 Information to request the calculating of a cube from FastStats based upon a query
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,6 +1,7 @@
 # GridItem
 
 The definition of one item to show in a grid composition
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,6 +1,7 @@
 # TemporaryFile
 
 Details of a temporary file
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

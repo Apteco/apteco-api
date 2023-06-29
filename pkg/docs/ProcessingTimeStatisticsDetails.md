@@ -1,6 +1,7 @@
 # ProcessingTimeStatisticsDetails
 
 Details for requesting some processing time statistics
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

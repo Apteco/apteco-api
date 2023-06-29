@@ -1,6 +1,7 @@
 # TokenLoginDetails
 
 The details required to create a session to log in with using the TokenLogin method
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

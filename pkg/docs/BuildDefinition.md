@@ -1,6 +1,7 @@
 # BuildDefinition
 
 The build definition for creating a FastStats system
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

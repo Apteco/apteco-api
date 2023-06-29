@@ -1,5 +1,6 @@
 # Clause
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

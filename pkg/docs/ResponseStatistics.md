@@ -1,6 +1,7 @@
 # ResponseStatistics
 
 Response statistics
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

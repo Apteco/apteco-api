@@ -1,6 +1,7 @@
 # PeopleStageSystemSummary
 
 Top level summary for a PeopleStage system
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

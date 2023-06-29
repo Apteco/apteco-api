@@ -106,6 +106,7 @@ class DirectoriesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -126,7 +127,9 @@ class DirectoriesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -171,7 +174,7 @@ class DirectoriesApi(object):
         if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -179,7 +182,7 @@ class DirectoriesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {}
 
         return self.api_client.call_api(
@@ -284,6 +287,7 @@ class DirectoriesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -308,7 +312,9 @@ class DirectoriesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -365,7 +371,7 @@ class DirectoriesApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -377,7 +383,7 @@ class DirectoriesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "PagedResultsFileEntry",
             400: None,
@@ -475,6 +481,7 @@ class DirectoriesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -496,7 +503,9 @@ class DirectoriesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -533,7 +542,7 @@ class DirectoriesApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -545,7 +554,7 @@ class DirectoriesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "PagedResultsFileSystemSummary",
             400: None,
@@ -651,6 +660,7 @@ class DirectoriesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -674,7 +684,9 @@ class DirectoriesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -719,7 +731,7 @@ class DirectoriesApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -731,7 +743,7 @@ class DirectoriesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             200: "PagedResultsFileEntry",
             400: None,
@@ -825,6 +837,7 @@ class DirectoriesApi(object):
                               request; this effectively ignores the authentication
                               in the spec for a single request.
         :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
@@ -845,7 +858,9 @@ class DirectoriesApi(object):
                 '_return_http_data_only',
                 '_preload_content',
                 '_request_timeout',
-                '_request_auth'
+                '_request_auth',
+                '_content_type',
+                '_headers'
             ]
         )
 
@@ -890,7 +905,7 @@ class DirectoriesApi(object):
         if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get('_headers', {}))
 
         form_params = []
         local_var_files = {}
@@ -902,7 +917,7 @@ class DirectoriesApi(object):
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-        
+
         response_types_map = {
             201: "FileEntry",
             400: None,

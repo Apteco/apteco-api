@@ -1,6 +1,7 @@
 # PagedResultsPermission
 
 Summary details for a user
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

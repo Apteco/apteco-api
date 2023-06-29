@@ -1,6 +1,7 @@
 # Capabilities
 
 The set of capabilities supported by a DataView
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

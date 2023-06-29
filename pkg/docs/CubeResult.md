@@ -1,6 +1,7 @@
 # CubeResult
 
 Results for processing a cube request
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

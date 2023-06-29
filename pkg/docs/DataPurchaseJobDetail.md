@@ -1,6 +1,7 @@
 # DataPurchaseJobDetail
 
 Details for a job to purchase data licensing records
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

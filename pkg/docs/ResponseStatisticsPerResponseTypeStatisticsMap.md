@@ -1,6 +1,7 @@
 # ResponseStatisticsPerResponseTypeStatisticsMap
 
 A map between a response type and its response statistics data
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

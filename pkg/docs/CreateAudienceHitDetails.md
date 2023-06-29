@@ -1,6 +1,7 @@
 # CreateAudienceHitDetails
 
 Details for registering an audience hit
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

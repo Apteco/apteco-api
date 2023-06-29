@@ -1,6 +1,7 @@
 # UpsertUserCollectionDetail
 
 Details used to create or update a collection for a given user
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

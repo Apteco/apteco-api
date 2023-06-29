@@ -1,5 +1,6 @@
 # CreateTelemetryStateDetails
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

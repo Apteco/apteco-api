@@ -1,6 +1,7 @@
 # CheckAudienceDetails
 
 The details required to calculate check statistics for an audience
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

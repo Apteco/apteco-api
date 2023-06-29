@@ -1,6 +1,7 @@
 # DashboardContentItemDetail
 
 The details of a dashboard item
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

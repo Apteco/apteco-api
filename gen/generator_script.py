@@ -29,7 +29,7 @@ API_SPEC_PATH = "gen/api-spec.json"
 INTRODUCTION_PATH = "introduction.md"
 PACKAGE_DIR = "pkg"
 GEN_CONFIG_PATH = "gen/config.yaml"
-GEN_VERSION = "5.0.1"
+GEN_VERSION = "5.4.0"
 README_PATH = f"{PACKAGE_DIR}/README.md"
 VERSION_PARTS = ["major", "minor", "patch", "dev_num"]
 
@@ -268,11 +268,11 @@ def check_generator_output(result):
         "[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)",
         "[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json-patch+json)",
         "[main] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (text/xml)",
-        "[main] WARN  o.o.c.l.PythonLegacyClientCodegen - Property (reserved word) cannot be used as model name. Renamed to ModelProperty",
+        "[main] WARN  o.o.c.l.AbstractPythonCodegen - Property (reserved word) cannot be used as model name. Renamed to ModelProperty",
         "[main] WARN  o.o.codegen.DefaultCodegen - Multiple MediaTypes found, using only the first one",
     ]
     OTHER_WARNINGS = [
-        "[main] WARN  o.o.c.l.PythonLegacyClientCodegen - Type object not handled properly in setParameterExampleValue",
+        "[main] WARN  o.o.c.l.AbstractPythonCodegen - Type object not handled properly in setParameterExampleValue",
         "[main] INFO  o.o.codegen.DefaultGenerator - Model ReferenceVariableInfo not generated since it's a free-form object",
         "[main] INFO  o.o.codegen.DefaultGenerator - Model AbstractAnalysisItemResult not generated since it's a free-form object",
     ]
@@ -282,6 +282,8 @@ def check_generator_output(result):
         "[main] INFO  o.o.codegen.DefaultGenerator - Generator 'python-legacy' is considered stable.",
         "[main] INFO  o.o.c.l.PythonLegacyClientCodegen - Environment variable PYTHON_POST_PROCESS_FILE not defined so the Python code may not be properly formatted. To define it, try 'export PYTHON_POST_PROCESS_FILE=\"/usr/local/bin/yapf -i\"' (Linux/Mac)",
         "[main] INFO  o.o.c.l.PythonLegacyClientCodegen - NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).",
+        "[main] INFO  o.o.c.l.AbstractPythonCodegen - Environment variable PYTHON_POST_PROCESS_FILE not defined so the Python code may not be properly formatted. To define it, try 'export PYTHON_POST_PROCESS_FILE=\"/usr/local/bin/yapf -i\"' (Linux/Mac)",
+        "[main] INFO  o.o.c.l.AbstractPythonCodegen - NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).",
     ]
     OKAY_TO_IGNORE = COMMON_WARNINGS + OTHER_WARNINGS + STANDARD_INFO
     GENERATOR_IGNORE_FORMAT = "[main] INFO  o.o.codegen.TemplateManager - Ignored {base_path}\\{file_path} (Ignored by rule in ignore file.)"

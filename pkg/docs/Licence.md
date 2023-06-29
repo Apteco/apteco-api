@@ -1,6 +1,7 @@
 # Licence
 
 The licence details for the user
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

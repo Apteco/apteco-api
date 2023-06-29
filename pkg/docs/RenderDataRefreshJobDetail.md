@@ -1,6 +1,7 @@
 # RenderDataRefreshJobDetail
 
 Details for a job to refresh the render data
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

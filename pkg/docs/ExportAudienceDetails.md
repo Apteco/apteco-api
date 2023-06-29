@@ -1,6 +1,7 @@
 # ExportAudienceDetails
 
 The details required to generate a data export for an audience
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

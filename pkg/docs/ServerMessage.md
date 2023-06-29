@@ -1,6 +1,7 @@
 # ServerMessage
 
 A Message returned by the server
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
