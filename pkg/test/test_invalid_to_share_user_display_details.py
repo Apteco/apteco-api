@@ -38,6 +38,7 @@ class TestInvalidToShareUserDisplayDetails(unittest.TestCase):
         if include_optional :
             return InvalidToShareUserDisplayDetails(
                 reason = 'ShareableAlreadySharedToUser', 
+                id = 56, 
                 username = '0', 
                 firstname = '0', 
                 surname = '0', 
@@ -46,6 +47,7 @@ class TestInvalidToShareUserDisplayDetails(unittest.TestCase):
         else :
             return InvalidToShareUserDisplayDetails(
                 reason = 'ShareableAlreadySharedToUser',
+                id = 56,
                 username = '0',
                 firstname = '0',
                 surname = '0',

@@ -347,7 +347,10 @@ class TestDimension(unittest.TestCase):
                                 denominator = 56, ), ), 
                         table_name = '0', 
                         name = '0', ), 
-                    today_at = '0', )
+                    today_at = '0', ), 
+                minimum_category_count = 56, 
+                top_n_category_count = 56, 
+                percentage_of_maximum_category_threshold = 56
             )
         else :
             return Dimension(

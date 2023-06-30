@@ -45,7 +45,8 @@ class TestExportAudienceDetails(unittest.TestCase):
                     delimiter = '0', 
                     alpha_encloser = '0', 
                     numeric_encloser = '0', 
-                    authorisation_code = '0', ), 
+                    authorisation_code = '0', 
+                    export_extra_name = '0', ), 
                 columns = [
                     apteco_api.models.column.Column(
                         id = '0', 
@@ -203,7 +204,9 @@ class TestExportAudienceDetails(unittest.TestCase):
                             today_at = '0', ), 
                         column_header = '0', 
                         detail = 'Code', 
-                        unclassified_format = 'FromDesign', )
+                        unclassified_format = 'FromDesign', 
+                        user_code = '0', 
+                        user_code_name = '0', )
                     ], 
                 generate_urn_file = True
             )
@@ -368,7 +371,9 @@ class TestExportAudienceDetails(unittest.TestCase):
                             today_at = '0', ), 
                         column_header = '0', 
                         detail = 'Code', 
-                        unclassified_format = 'FromDesign', )
+                        unclassified_format = 'FromDesign', 
+                        user_code = '0', 
+                        user_code_name = '0', )
                     ],
                 generate_urn_file = True,
         )

@@ -32,7 +32,7 @@ class TestCubesApi(unittest.TestCase):
     def test_cubes_calculate_cube_synchronously(self):
         """Test case for cubes_calculate_cube_synchronously
 
-        EXPERIMENTAL: Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.  # noqa: E501
+        Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.  # noqa: E501
         """
         pass
 

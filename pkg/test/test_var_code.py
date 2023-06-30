@@ -45,7 +45,6 @@ class TestVarCode(unittest.TestCase):
             return VarCode(
                 code = '0',
                 description = '0',
-                count = 56,
         )
 
     def testVarCode(self):

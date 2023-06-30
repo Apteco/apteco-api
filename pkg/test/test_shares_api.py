@@ -57,6 +57,13 @@ class TestSharesApi(unittest.TestCase):
         """
         pass
 
+    def test_shares_get_share_groups(self):
+        """Test case for shares_get_share_groups
+
+        Returns the list of groups that are associated with a particular share  # noqa: E501
+        """
+        pass
+
     def test_shares_get_share_update(self):
         """Test case for shares_get_share_update
 

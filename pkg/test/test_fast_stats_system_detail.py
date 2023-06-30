@@ -37,6 +37,10 @@ class TestFastStatsSystemDetail(unittest.TestCase):
         # model = apteco_api.models.fast_stats_system_detail.FastStatsSystemDetail()  # noqa: E501
         if include_optional :
             return FastStatsSystemDetail(
+                date_settings = apteco_api.models.date_settings.DateSettings(
+                    use_iso8601_week_of_year = True, 
+                    business_year_start_dd = 56, 
+                    business_year_start_mm = 56, ), 
                 name = '0', 
                 view_name = '0', 
                 description = '0', 
@@ -44,6 +48,10 @@ class TestFastStatsSystemDetail(unittest.TestCase):
             )
         else :
             return FastStatsSystemDetail(
+                date_settings = apteco_api.models.date_settings.DateSettings(
+                    use_iso8601_week_of_year = True, 
+                    business_year_start_dd = 56, 
+                    business_year_start_mm = 56, ),
                 name = '0',
                 view_name = '0',
                 description = '0',

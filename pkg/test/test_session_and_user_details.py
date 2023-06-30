@@ -38,6 +38,7 @@ class TestSessionAndUserDetails(unittest.TestCase):
         if include_optional :
             return SessionAndUserDetails(
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
+                    id = 56, 
                     username = '0', 
                     firstname = '0', 
                     surname = '0', 
@@ -47,6 +48,7 @@ class TestSessionAndUserDetails(unittest.TestCase):
         else :
             return SessionAndUserDetails(
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
+                    id = 56, 
                     username = '0', 
                     firstname = '0', 
                     surname = '0', 

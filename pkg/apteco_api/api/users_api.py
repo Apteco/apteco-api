@@ -163,18 +163,19 @@ class UsersApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def users_get_all_user_dashboards(self, data_view_name, username, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Gets a dashboard in the DataView.  # noqa: E501
+    def users_create_user(self, data_view_name, **kwargs):  # noqa: E501
+        """Requires OrbitAdmin: Creates a new user.  # noqa: E501
 
-        EXPERIMENTAL  # noqa: E501
+        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.users_get_all_user_dashboards(data_view_name, username, async_req=True)
+        >>> thread = api.users_create_user(data_view_name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str username: (required)
+        :param str system_name: The system name for the user to be associated with.
+        :param CreateUserDetails create_user_details: The details for the user to create.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -182,25 +183,26 @@ class UsersApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PagedResultsDashboardSummary
+        :return: UserSummary
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.users_get_all_user_dashboards_with_http_info(data_view_name, username, **kwargs)  # noqa: E501
+        return self.users_create_user_with_http_info(data_view_name, **kwargs)  # noqa: E501
 
-    def users_get_all_user_dashboards_with_http_info(self, data_view_name, username, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Gets a dashboard in the DataView.  # noqa: E501
+    def users_create_user_with_http_info(self, data_view_name, **kwargs):  # noqa: E501
+        """Requires OrbitAdmin: Creates a new user.  # noqa: E501
 
-        EXPERIMENTAL  # noqa: E501
+        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.users_get_all_user_dashboards_with_http_info(data_view_name, username, async_req=True)
+        >>> thread = api.users_create_user_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str username: (required)
+        :param str system_name: The system name for the user to be associated with.
+        :param CreateUserDetails create_user_details: The details for the user to create.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -210,7 +212,7 @@ class UsersApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PagedResultsDashboardSummary, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(UserSummary, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -219,7 +221,8 @@ class UsersApi(object):
 
         all_params = [
             'data_view_name',
-            'username'
+            'system_name',
+            'create_user_details'
         ]
         all_params.extend(
             [
@@ -234,18 +237,146 @@ class UsersApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method users_get_all_user_dashboards" % key
+                    " to method users_create_user" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
         if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['data_view_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_all_user_dashboards`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_create_user`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+
+        query_params = []
+        if 'system_name' in local_var_params and local_var_params['system_name'] is not None:  # noqa: E501
+            query_params.append(('systemName', local_var_params['system_name']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'create_user_details' in local_var_params:
+            body_params = local_var_params['create_user_details']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Users', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='UserSummary',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def users_delete_user(self, data_view_name, username, **kwargs):  # noqa: E501
+        """Requires OrbitAdmin: Deletes the specified user  # noqa: E501
+
+        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.users_delete_user(data_view_name, username, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str username: The username of the user to delete (required)
+        :param str system_name: If specified, whether to delete the user from this system only
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.users_delete_user_with_http_info(data_view_name, username, **kwargs)  # noqa: E501
+
+    def users_delete_user_with_http_info(self, data_view_name, username, **kwargs):  # noqa: E501
+        """Requires OrbitAdmin: Deletes the specified user  # noqa: E501
+
+        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.users_delete_user_with_http_info(data_view_name, username, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str username: The username of the user to delete (required)
+        :param str system_name: If specified, whether to delete the user from this system only
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'data_view_name',
+            'username',
+            'system_name'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method users_delete_user" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_delete_user`")  # noqa: E501
         # verify the required parameter 'username' is set
         if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
                                                         local_var_params['username'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `username` when calling `users_get_all_user_dashboards`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `username` when calling `users_delete_user`")  # noqa: E501
 
         collection_formats = {}
 
@@ -256,6 +387,8 @@ class UsersApi(object):
             path_params['username'] = local_var_params['username']  # noqa: E501
 
         query_params = []
+        if 'system_name' in local_var_params and local_var_params['system_name'] is not None:  # noqa: E501
+            query_params.append(('systemName', local_var_params['system_name']))  # noqa: E501
 
         header_params = {}
 
@@ -263,22 +396,18 @@ class UsersApi(object):
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
-
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{dataViewName}/Users/{username}/Dashboards', 'GET',
+            '/{dataViewName}/Users/{username}', 'DELETE',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PagedResultsDashboardSummary',  # noqa: E501
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -297,8 +426,8 @@ class UsersApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: (required)
         :param str username: The user to get login history for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, ClientType, SystemName, Timestamp
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, ClientType, SystemName, Timestamp
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, ClientType, SystemName, Timestamp.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, ClientType, SystemName, Timestamp.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -326,8 +455,8 @@ class UsersApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: (required)
         :param str username: The user to get login history for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, ClientType, SystemName, Timestamp
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, ClientType, SystemName, Timestamp
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, ClientType, SystemName, Timestamp.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, ClientType, SystemName, Timestamp.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -571,6 +700,281 @@ class UsersApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def users_get_user_audience_composition(self, data_view_name, username, composition_id, **kwargs):  # noqa: E501
+        """Returns the details of a particular composition  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.users_get_user_audience_composition(data_view_name, username, composition_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str username: The username to get the composition for (required)
+        :param int composition_id: The id of the composition to view (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: UserAudienceCompositionDetail
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.users_get_user_audience_composition_with_http_info(data_view_name, username, composition_id, **kwargs)  # noqa: E501
+
+    def users_get_user_audience_composition_with_http_info(self, data_view_name, username, composition_id, **kwargs):  # noqa: E501
+        """Returns the details of a particular composition  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.users_get_user_audience_composition_with_http_info(data_view_name, username, composition_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str username: The username to get the composition for (required)
+        :param int composition_id: The id of the composition to view (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(UserAudienceCompositionDetail, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'data_view_name',
+            'username',
+            'composition_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method users_get_user_audience_composition" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_user_audience_composition`")  # noqa: E501
+        # verify the required parameter 'username' is set
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `username` when calling `users_get_user_audience_composition`")  # noqa: E501
+        # verify the required parameter 'composition_id' is set
+        if self.api_client.client_side_validation and ('composition_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['composition_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `composition_id` when calling `users_get_user_audience_composition`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'username' in local_var_params:
+            path_params['username'] = local_var_params['username']  # noqa: E501
+        if 'composition_id' in local_var_params:
+            path_params['compositionId'] = local_var_params['composition_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Users/{username}/AudienceCompositions/{compositionId}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='UserAudienceCompositionDetail',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def users_get_user_audience_compositions(self, data_view_name, username, **kwargs):  # noqa: E501
+        """Returns the list of audience compositions associated with the given user  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.users_get_user_audience_compositions(data_view_name, username, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str username: The username to view the audience compositions for (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Description, Type, OwnerUsername, SharedToMe, SharedByMe.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Description, Type, OwnerUsername, SharedToMe, SharedByMe.
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: PagedResultsUserAudienceCompositionSummary
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.users_get_user_audience_compositions_with_http_info(data_view_name, username, **kwargs)  # noqa: E501
+
+    def users_get_user_audience_compositions_with_http_info(self, data_view_name, username, **kwargs):  # noqa: E501
+        """Returns the list of audience compositions associated with the given user  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.users_get_user_audience_compositions_with_http_info(data_view_name, username, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str username: The username to view the audience compositions for (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Description, Type, OwnerUsername, SharedToMe, SharedByMe.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Description, Type, OwnerUsername, SharedToMe, SharedByMe.
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(PagedResultsUserAudienceCompositionSummary, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'data_view_name',
+            'username',
+            'filter',
+            'order_by',
+            'offset',
+            'count'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method users_get_user_audience_compositions" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_user_audience_compositions`")  # noqa: E501
+        # verify the required parameter 'username' is set
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `username` when calling `users_get_user_audience_compositions`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `offset` when calling `users_get_user_audience_compositions`, must be a value greater than or equal to `0`")  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `count` when calling `users_get_user_audience_compositions`, must be a value greater than or equal to `0`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'username' in local_var_params:
+            path_params['username'] = local_var_params['username']  # noqa: E501
+
+        query_params = []
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
+            query_params.append(('filter', local_var_params['filter']))  # noqa: E501
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
+            query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
+            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
+            query_params.append(('count', local_var_params['count']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Users/{username}/AudienceCompositions', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PagedResultsUserAudienceCompositionSummary',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def users_get_user_audiences(self, data_view_name, username, **kwargs):  # noqa: E501
         """Returns the list of audiences associated with the given user  # noqa: E501
 
@@ -584,8 +988,8 @@ class UsersApi(object):
         :param str username: The username to view the audiences for (required)
         :param str include_deleted: If specified, whether to include deleted audiences, not deleted audiences or both.  Defaults to not deleted only
         :param bool apply_pinned_sort: If specified, whether to ensure that pinned audiences are returned first in the list.  Defaults to true
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -615,8 +1019,8 @@ class UsersApi(object):
         :param str username: The username to view the audiences for (required)
         :param str include_deleted: If specified, whether to include deleted audiences, not deleted audiences or both.  Defaults to not deleted only
         :param bool apply_pinned_sort: If specified, whether to ensure that pinned audiences are returned first in the list.  Defaults to true
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, BriefText, Status, SharedToMe, SharedByMe, LastUpdatedUsername, LastUpdatedOn.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -869,8 +1273,8 @@ class UsersApi(object):
         :param str username: The username to view the collections for (required)
         :param str include_deleted: If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only
         :param bool apply_pinned_sort: If specified, whether to ensure that pinned collections are returned first in the list.  Defaults to true
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -900,8 +1304,8 @@ class UsersApi(object):
         :param str username: The username to view the collections for (required)
         :param str include_deleted: If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only
         :param bool apply_pinned_sort: If specified, whether to ensure that pinned collections are returned first in the list.  Defaults to true
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, Status, DeletionDate, SharedToMe, SharedByMe.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -1124,9 +1528,8 @@ class UsersApi(object):
             collection_formats=collection_formats)
 
     def users_get_user_dashboard(self, data_view_name, username, dashboard_id, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Gets a dashboard in the DataView.  # noqa: E501
+        """Gets a dashboard in the DataView.  # noqa: E501
 
-        EXPERIMENTAL  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.users_get_user_dashboard(data_view_name, username, dashboard_id, async_req=True)
@@ -1134,8 +1537,8 @@ class UsersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str username: (required)
-        :param int dashboard_id: (required)
+        :param str username: The username to get the dashboard for (required)
+        :param int dashboard_id: The Id for the dashboard (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1143,7 +1546,7 @@ class UsersApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: DashboardDetail
+        :return: UserDashboardDetail
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1151,9 +1554,8 @@ class UsersApi(object):
         return self.users_get_user_dashboard_with_http_info(data_view_name, username, dashboard_id, **kwargs)  # noqa: E501
 
     def users_get_user_dashboard_with_http_info(self, data_view_name, username, dashboard_id, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Gets a dashboard in the DataView.  # noqa: E501
+        """Gets a dashboard in the DataView.  # noqa: E501
 
-        EXPERIMENTAL  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.users_get_user_dashboard_with_http_info(data_view_name, username, dashboard_id, async_req=True)
@@ -1161,8 +1563,8 @@ class UsersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str username: (required)
-        :param int dashboard_id: (required)
+        :param str username: The username to get the dashboard for (required)
+        :param int dashboard_id: The Id for the dashboard (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1172,7 +1574,7 @@ class UsersApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(DashboardDetail, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(UserDashboardDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1247,7 +1649,162 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='DashboardDetail',  # noqa: E501
+            response_type='UserDashboardDetail',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def users_get_user_dashboards(self, data_view_name, username, **kwargs):  # noqa: E501
+        """Gets a dashboard in the DataView.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.users_get_user_dashboards(data_view_name, username, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str username: The username to get the dashboard for (required)
+        :param str include_deleted: If specified, whether to include deleted dashboards, not deleted dashboards or both.  Defaults to not deleted only
+        :param bool apply_pinned_sort: If specified, whether to ensure that pinned dashboards are returned first in the list.  Defaults to true
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, Status, SharedToMe, SharedByMe, LastUpdatedBy, LastUpdatedOn.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, Status, SharedToMe, SharedByMe, LastUpdatedBy, LastUpdatedOn.
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: PagedResultsUserDashboardSummary
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.users_get_user_dashboards_with_http_info(data_view_name, username, **kwargs)  # noqa: E501
+
+    def users_get_user_dashboards_with_http_info(self, data_view_name, username, **kwargs):  # noqa: E501
+        """Gets a dashboard in the DataView.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.users_get_user_dashboards_with_http_info(data_view_name, username, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str username: The username to get the dashboard for (required)
+        :param str include_deleted: If specified, whether to include deleted dashboards, not deleted dashboards or both.  Defaults to not deleted only
+        :param bool apply_pinned_sort: If specified, whether to ensure that pinned dashboards are returned first in the list.  Defaults to true
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, Status, SharedToMe, SharedByMe, LastUpdatedBy, LastUpdatedOn.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, Status, SharedToMe, SharedByMe, LastUpdatedBy, LastUpdatedOn.
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(PagedResultsUserDashboardSummary, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'data_view_name',
+            'username',
+            'include_deleted',
+            'apply_pinned_sort',
+            'filter',
+            'order_by',
+            'offset',
+            'count'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method users_get_user_dashboards" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_get_user_dashboards`")  # noqa: E501
+        # verify the required parameter 'username' is set
+        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
+                                                        local_var_params['username'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `username` when calling `users_get_user_dashboards`")  # noqa: E501
+
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `offset` when calling `users_get_user_dashboards`, must be a value greater than or equal to `0`")  # noqa: E501
+        if self.api_client.client_side_validation and 'count' in local_var_params and local_var_params['count'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `count` when calling `users_get_user_dashboards`, must be a value greater than or equal to `0`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'username' in local_var_params:
+            path_params['username'] = local_var_params['username']  # noqa: E501
+
+        query_params = []
+        if 'include_deleted' in local_var_params and local_var_params['include_deleted'] is not None:  # noqa: E501
+            query_params.append(('includeDeleted', local_var_params['include_deleted']))  # noqa: E501
+        if 'apply_pinned_sort' in local_var_params and local_var_params['apply_pinned_sort'] is not None:  # noqa: E501
+            query_params.append(('applyPinnedSort', local_var_params['apply_pinned_sort']))  # noqa: E501
+        if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
+            query_params.append(('filter', local_var_params['filter']))  # noqa: E501
+        if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
+            query_params.append(('orderBy', local_var_params['order_by']))  # noqa: E501
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
+            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
+        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
+            query_params.append(('count', local_var_params['count']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Users/{username}/Dashboards', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PagedResultsUserDashboardSummary',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -1386,8 +1943,10 @@ class UsersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :param str system_name: If specified, whether to limit to only users attached to the system name
+        :param str include_disabled: If specified, whether to include disabled users, not disabled users or both.  Defaults to not disabled only
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1414,8 +1973,10 @@ class UsersApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :param str system_name: If specified, whether to limit to only users attached to the system name
+        :param str include_disabled: If specified, whether to include disabled users, not disabled users or both.  Defaults to not disabled only
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -1436,6 +1997,8 @@ class UsersApi(object):
 
         all_params = [
             'data_view_name',
+            'system_name',
+            'include_disabled',
             'filter',
             'order_by',
             'offset',
@@ -1474,6 +2037,10 @@ class UsersApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
+        if 'system_name' in local_var_params and local_var_params['system_name'] is not None:  # noqa: E501
+            query_params.append(('systemName', local_var_params['system_name']))  # noqa: E501
+        if 'include_disabled' in local_var_params and local_var_params['include_disabled'] is not None:  # noqa: E501
+            query_params.append(('includeDisabled', local_var_params['include_disabled']))  # noqa: E501
         if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
         if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
@@ -1784,20 +2351,19 @@ class UsersApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def users_patch_user_collection(self, data_view_name, username, collection_id, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Update some properties of a collection  # noqa: E501
+    def users_modify_user_dashboards(self, data_view_name, username, **kwargs):  # noqa: E501
+        """Updates one or more dashboards  # noqa: E501
 
-        EXPERIMENTAL  # noqa: E501
+        Might require licence flags [Dashboards]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.users_patch_user_collection(data_view_name, username, collection_id, async_req=True)
+        >>> thread = api.users_modify_user_dashboards(data_view_name, username, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str username: The username to update the collection for (required)
-        :param int collection_id: The id of the collection to update (required)
-        :param list[Operation] patch: The JSON patch specification of how to update some of the properties of the collection
+        :param str username: The username to update the dashboards for (required)
+        :param ModifyItemsModifyUserDashboard updates: The details of the dashboards to update.  Any value omitted for a dashboard will be left unchanged
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1805,27 +2371,26 @@ class UsersApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: UserCollectionDetail
+        :return: PagedResultsModifyUserDashboardDetailResults
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.users_patch_user_collection_with_http_info(data_view_name, username, collection_id, **kwargs)  # noqa: E501
+        return self.users_modify_user_dashboards_with_http_info(data_view_name, username, **kwargs)  # noqa: E501
 
-    def users_patch_user_collection_with_http_info(self, data_view_name, username, collection_id, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Update some properties of a collection  # noqa: E501
+    def users_modify_user_dashboards_with_http_info(self, data_view_name, username, **kwargs):  # noqa: E501
+        """Updates one or more dashboards  # noqa: E501
 
-        EXPERIMENTAL  # noqa: E501
+        Might require licence flags [Dashboards]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.users_patch_user_collection_with_http_info(data_view_name, username, collection_id, async_req=True)
+        >>> thread = api.users_modify_user_dashboards_with_http_info(data_view_name, username, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str username: The username to update the collection for (required)
-        :param int collection_id: The id of the collection to update (required)
-        :param list[Operation] patch: The JSON patch specification of how to update some of the properties of the collection
+        :param str username: The username to update the dashboards for (required)
+        :param ModifyItemsModifyUserDashboard updates: The details of the dashboards to update.  Any value omitted for a dashboard will be left unchanged
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1835,7 +2400,7 @@ class UsersApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(UserCollectionDetail, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(PagedResultsModifyUserDashboardDetailResults, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1845,8 +2410,7 @@ class UsersApi(object):
         all_params = [
             'data_view_name',
             'username',
-            'collection_id',
-            'patch'
+            'updates'
         ]
         all_params.extend(
             [
@@ -1861,22 +2425,18 @@ class UsersApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method users_patch_user_collection" % key
+                    " to method users_modify_user_dashboards" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'data_view_name' is set
         if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['data_view_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_patch_user_collection`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_modify_user_dashboards`")  # noqa: E501
         # verify the required parameter 'username' is set
         if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
                                                         local_var_params['username'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `username` when calling `users_patch_user_collection`")  # noqa: E501
-        # verify the required parameter 'collection_id' is set
-        if self.api_client.client_side_validation and ('collection_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['collection_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `collection_id` when calling `users_patch_user_collection`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `username` when calling `users_modify_user_dashboards`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1885,8 +2445,6 @@ class UsersApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
         if 'username' in local_var_params:
             path_params['username'] = local_var_params['username']  # noqa: E501
-        if 'collection_id' in local_var_params:
-            path_params['collectionId'] = local_var_params['collection_id']  # noqa: E501
 
         query_params = []
 
@@ -1896,8 +2454,8 @@ class UsersApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'patch' in local_var_params:
-            body_params = local_var_params['patch']
+        if 'updates' in local_var_params:
+            body_params = local_var_params['updates']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
@@ -1910,155 +2468,14 @@ class UsersApi(object):
         auth_settings = ['faststats_auth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{dataViewName}/Users/{username}/Collections/{collectionId}', 'PATCH',
+            '/{dataViewName}/Users/{username}/Dashboards/Modify', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='UserCollectionDetail',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def users_update_user_collection(self, data_view_name, username, collection_id, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Updates a collection  # noqa: E501
-
-        EXPERIMENTAL  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.users_update_user_collection(data_view_name, username, collection_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str username: The username to update the collection for (required)
-        :param int collection_id: The id of the collection to update (required)
-        :param UpsertUserCollectionDetail collection_detail: The new details of the collection
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: UserCollectionDetail
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.users_update_user_collection_with_http_info(data_view_name, username, collection_id, **kwargs)  # noqa: E501
-
-    def users_update_user_collection_with_http_info(self, data_view_name, username, collection_id, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Updates a collection  # noqa: E501
-
-        EXPERIMENTAL  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.users_update_user_collection_with_http_info(data_view_name, username, collection_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to act on (required)
-        :param str username: The username to update the collection for (required)
-        :param int collection_id: The id of the collection to update (required)
-        :param UpsertUserCollectionDetail collection_detail: The new details of the collection
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(UserCollectionDetail, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'data_view_name',
-            'username',
-            'collection_id',
-            'collection_detail'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method users_update_user_collection" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'data_view_name' is set
-        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['data_view_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `data_view_name` when calling `users_update_user_collection`")  # noqa: E501
-        # verify the required parameter 'username' is set
-        if self.api_client.client_side_validation and ('username' not in local_var_params or  # noqa: E501
-                                                        local_var_params['username'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `username` when calling `users_update_user_collection`")  # noqa: E501
-        # verify the required parameter 'collection_id' is set
-        if self.api_client.client_side_validation and ('collection_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['collection_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `collection_id` when calling `users_update_user_collection`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'data_view_name' in local_var_params:
-            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
-        if 'username' in local_var_params:
-            path_params['username'] = local_var_params['username']  # noqa: E501
-        if 'collection_id' in local_var_params:
-            path_params['collectionId'] = local_var_params['collection_id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'collection_detail' in local_var_params:
-            body_params = local_var_params['collection_detail']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['faststats_auth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/{dataViewName}/Users/{username}/Collections/{collectionId}', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='UserCollectionDetail',  # noqa: E501
+            response_type='PagedResultsModifyUserDashboardDetailResults',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

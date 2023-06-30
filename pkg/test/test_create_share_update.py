@@ -41,21 +41,34 @@ class TestCreateShareUpdate(unittest.TestCase):
                 email_addresses_to_add = [
                     '0'
                     ], 
-                notify_added_users = True, 
-                added_user_notification_message = '0', 
+                user_ids_to_add = [
+                    56
+                    ], 
+                group_ids_to_add = [
+                    56
+                    ], 
+                share_to_all = True, 
+                notify_added_recipients = True, 
+                added_recipient_notification_message = '0', 
                 email_addresses_to_remove = [
                     '0'
                     ], 
-                notify_removed_users = True, 
-                removed_user_notification_message = '0', 
-                notify_unchanged_users = True, 
-                unchanged_user_notification_message = '0'
+                user_ids_to_remove = [
+                    56
+                    ], 
+                group_ids_to_remove = [
+                    56
+                    ], 
+                notify_removed_recipients = True, 
+                removed_recipient_notification_message = '0', 
+                notify_unchanged_recipients = True, 
+                unchanged_recipient_notification_message = '0'
             )
         else :
             return CreateShareUpdate(
-                notify_added_users = True,
-                notify_removed_users = True,
-                notify_unchanged_users = True,
+                notify_added_recipients = True,
+                notify_removed_recipients = True,
+                notify_unchanged_recipients = True,
         )
 
     def testCreateShareUpdate(self):

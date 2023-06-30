@@ -946,6 +946,148 @@ class AudiencesApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def audiences_copy_audience(self, data_view_name, audience_id, **kwargs):  # noqa: E501
+        """Copies an existing audience for the logged in user.  # noqa: E501
+
+        Requires licence flags [AudienceSelection]  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audiences_copy_audience(data_view_name, audience_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int audience_id: The id of the audience to copy (required)
+        :param bool include_queries: If specified, whether to include the query definitions for the returned audience or not.  Defaults to true - to return query definitions
+        :param bool include_brief: If specified, whether to include the brief for this audience or not.  Defaults to true - to return the brief
+        :param CopyAudienceDetail audience_detail: The details used to create the new audience
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: AudienceDetail
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.audiences_copy_audience_with_http_info(data_view_name, audience_id, **kwargs)  # noqa: E501
+
+    def audiences_copy_audience_with_http_info(self, data_view_name, audience_id, **kwargs):  # noqa: E501
+        """Copies an existing audience for the logged in user.  # noqa: E501
+
+        Requires licence flags [AudienceSelection]  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.audiences_copy_audience_with_http_info(data_view_name, audience_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int audience_id: The id of the audience to copy (required)
+        :param bool include_queries: If specified, whether to include the query definitions for the returned audience or not.  Defaults to true - to return query definitions
+        :param bool include_brief: If specified, whether to include the brief for this audience or not.  Defaults to true - to return the brief
+        :param CopyAudienceDetail audience_detail: The details used to create the new audience
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(AudienceDetail, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'data_view_name',
+            'audience_id',
+            'include_queries',
+            'include_brief',
+            'audience_detail'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method audiences_copy_audience" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `audiences_copy_audience`")  # noqa: E501
+        # verify the required parameter 'audience_id' is set
+        if self.api_client.client_side_validation and ('audience_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['audience_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `audience_id` when calling `audiences_copy_audience`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'audience_id' in local_var_params:
+            path_params['audienceId'] = local_var_params['audience_id']  # noqa: E501
+
+        query_params = []
+        if 'include_queries' in local_var_params and local_var_params['include_queries'] is not None:  # noqa: E501
+            query_params.append(('includeQueries', local_var_params['include_queries']))  # noqa: E501
+        if 'include_brief' in local_var_params and local_var_params['include_brief'] is not None:  # noqa: E501
+            query_params.append(('includeBrief', local_var_params['include_brief']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'audience_detail' in local_var_params:
+            body_params = local_var_params['audience_detail']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Audiences/{audienceId}/Copy', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AudienceDetail',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def audiences_create_audience(self, data_view_name, **kwargs):  # noqa: E501
         """Creates a new audience from the given details for the logged in user.  # noqa: E501
 
@@ -957,7 +1099,7 @@ class AudiencesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param CreateAudienceDetail audience_detail: The details for the audience to create.  If you want              to update a specific audience then PUT to the /Audiences/{audienceId} URL
+        :param CreateAudienceDetail audience_detail: The details for the audience to create.  If you want              to update a specific audience then POST to the /Audiences/{audienceId} URL
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -983,7 +1125,7 @@ class AudiencesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param CreateAudienceDetail audience_detail: The details for the audience to create.  If you want              to update a specific audience then PUT to the /Audiences/{audienceId} URL
+        :param CreateAudienceDetail audience_detail: The details for the audience to create.  If you want              to update a specific audience then POST to the /Audiences/{audienceId} URL
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1610,7 +1752,7 @@ class AudiencesApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AudienceCheckJobDetail
+        :return: list[AudienceCheckJobDetail]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1638,7 +1780,7 @@ class AudiencesApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AudienceCheckJobDetail, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(list[AudienceCheckJobDetail], status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1713,7 +1855,7 @@ class AudiencesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AudienceCheckJobDetail',  # noqa: E501
+            response_type='list[AudienceCheckJobDetail]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -2381,8 +2523,8 @@ class AudiencesApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param int audience_id: The id of the audience to get the hit information for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -2410,8 +2552,8 @@ class AudiencesApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param int audience_id: The id of the audience to get the hit information for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -2777,8 +2919,8 @@ class AudiencesApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param int audience_id: The id of the audience to get the audience of results for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -2806,8 +2948,8 @@ class AudiencesApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param int audience_id: The id of the audience to get the audience of results for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -3062,8 +3204,8 @@ class AudiencesApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param int audience_id: The id of the audience to get the updates for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -3091,8 +3233,8 @@ class AudiencesApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param int audience_id: The id of the audience to get the updates for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -3208,8 +3350,8 @@ class AudiencesApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param str include_deleted: If specified, whether to include deleted audience, not deleted audience or both.  Defaults to not deleted only
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -3238,8 +3380,8 @@ class AudiencesApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param str include_deleted: If specified, whether to include deleted audience, not deleted audience or both.  Defaults to not deleted only
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code

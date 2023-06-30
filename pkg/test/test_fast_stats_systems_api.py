@@ -99,6 +99,13 @@ class TestFastStatsSystemsApi(unittest.TestCase):
         """
         pass
 
+    def test_fast_stats_systems_refresh_fast_stats_variable_codes_sync(self):
+        """Test case for fast_stats_systems_refresh_fast_stats_variable_codes_sync
+
+        Gets all the categories (var codes) for the specified variable in the FastStats system if it is a selector variable  # noqa: E501
+        """
+        pass
+
     def test_fast_stats_systems_refresh_system_information_sync(self):
         """Test case for fast_stats_systems_refresh_system_information_sync
 

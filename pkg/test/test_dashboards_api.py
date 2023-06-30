@@ -29,10 +29,108 @@ class TestDashboardsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_dashboards_batch_get_dashboard_job_results(self):
+        """Test case for dashboards_batch_get_dashboard_job_results
+
+        Return data needed to render visualisation for dashboard item(s) or the status of the job(s) if not complete  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_calculate_dashboard_data(self):
+        """Test case for dashboards_calculate_dashboard_data
+
+        Aysyncrounously request data needed to render an array of dashboard items  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_cancel_calculate_dashboard_data_job(self):
+        """Test case for dashboards_cancel_calculate_dashboard_data_job
+
+        Cancel a running calculate dashboard data job  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_cancel_dashboard_item_preview_data_job(self):
+        """Test case for dashboards_cancel_dashboard_item_preview_data_job
+
+        Cancel a running dashboard item preview job  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_convert_to_audience(self):
+        """Test case for dashboards_convert_to_audience
+
+        Converts a dashboard (including any global filters applied) to an Audience  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_copy_dashboard(self):
+        """Test case for dashboards_copy_dashboard
+
+        Copies an existing dashboard for the logged in user.  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_create_dashboard(self):
+        """Test case for dashboards_create_dashboard
+
+        Creates a new dashboard from the given details for the logged in user.  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_create_dashboard_item_preview_data_jobs(self):
+        """Test case for dashboards_create_dashboard_item_preview_data_jobs
+
+        Submit an array of jobs to calculate the data needed to render visualisation previews  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_create_dashboard_update(self):
+        """Test case for dashboards_create_dashboard_update
+
+        Updates the details of a particular dashboard.  If you don't have an id for the  dashboard then POST to the /Dashboards URL to create a new dashboard.  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_delete_dashboard(self):
+        """Test case for dashboards_delete_dashboard
+
+        Deletes the specified dashboard  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_get_dashboard_export_sync(self):
+        """Test case for dashboards_get_dashboard_export_sync
+
+        Return export data needed to view the underlying data for a dashboard  # noqa: E501
+        """
+        pass
+
     def test_dashboards_get_dashboard_item_data_sync(self):
         """Test case for dashboards_get_dashboard_item_data_sync
 
-        EXPERIMENTAL: Return data needed to render visualisation for dashboard item  # noqa: E501
+        Return data needed to render visualisation for dashboard item  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_get_dashboard_item_preview_data_job(self):
+        """Test case for dashboards_get_dashboard_item_preview_data_job
+
+        Return data needed to render visualisation for dashboard item when previewing  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_get_dashboard_item_preview_data_jobs(self):
+        """Test case for dashboards_get_dashboard_item_preview_data_jobs
+
+        Return data needed to render visualisation for dashboard preview item (s) or the status of the job(s) if not complete  # noqa: E501
+        """
+        pass
+
+    def test_dashboards_get_dashboard_job_results(self):
+        """Test case for dashboards_get_dashboard_job_results
+
+        Return data needed to render visualisation for dashboard item  # noqa: E501
         """
         pass
 

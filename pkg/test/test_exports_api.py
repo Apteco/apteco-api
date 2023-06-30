@@ -32,21 +32,21 @@ class TestExportsApi(unittest.TestCase):
     def test_exports_get_export_system(self):
         """Test case for exports_get_export_system
 
-        Returns some top-level details for the specified FastStats system to export from  # noqa: E501
+        SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns some top-level details for the specified FastStats system to export from  # noqa: E501
         """
         pass
 
     def test_exports_get_export_systems(self):
         """Test case for exports_get_export_systems
 
-        Returns the list of FastStats systems available for exporting data from  # noqa: E501
+        SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns the list of FastStats systems available for exporting data from  # noqa: E501
         """
         pass
 
     def test_exports_perform_export_synchronously(self):
         """Test case for exports_perform_export_synchronously
 
-        EXPERIMENTAL: Exports data using the given export definition and returns the results.  The results might contain the actual data in the \"rows\" part of the result or this might be written to a file.  The data to be exported is defined by the base query provided, along with any limits defined in the export request.  # noqa: E501
+        Exports data using the given export definition and returns the results.  The results might contain the actual data in the \"rows\" part of the result or this might be written to a file.  The data to be exported is defined by the base query provided, along with any limits defined in the export request.  # noqa: E501
         """
         pass
 

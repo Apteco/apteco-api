@@ -37,17 +37,25 @@ class CompositionSummary(object):
         'id': 'int',
         'description': 'str',
         'type': 'str',
-        'system_name': 'str'
+        'system_name': 'str',
+        'owner': 'UserDisplayDetails',
+        'number_of_users_shared_with': 'int',
+        'shared_to_all': 'bool',
+        'share_id': 'int'
     }
 
     attribute_map = {
         'id': 'id',
         'description': 'description',
         'type': 'type',
-        'system_name': 'systemName'
+        'system_name': 'systemName',
+        'owner': 'owner',
+        'number_of_users_shared_with': 'numberOfUsersSharedWith',
+        'shared_to_all': 'sharedToAll',
+        'share_id': 'shareId'
     }
 
-    def __init__(self, id=None, description=None, type=None, system_name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, description=None, type=None, system_name=None, owner=None, number_of_users_shared_with=None, shared_to_all=None, share_id=None, local_vars_configuration=None):  # noqa: E501
         """CompositionSummary - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -57,12 +65,21 @@ class CompositionSummary(object):
         self._description = None
         self._type = None
         self._system_name = None
+        self._owner = None
+        self._number_of_users_shared_with = None
+        self._shared_to_all = None
+        self._share_id = None
         self.discriminator = None
 
         self.id = id
         self.description = description
         self.type = type
         self.system_name = system_name
+        self.owner = owner
+        self.number_of_users_shared_with = number_of_users_shared_with
+        self.shared_to_all = shared_to_all
+        if share_id is not None:
+            self.share_id = share_id
 
     @property
     def id(self):
@@ -169,6 +186,102 @@ class CompositionSummary(object):
             raise ValueError("Invalid value for `system_name`, must not be `None`")  # noqa: E501
 
         self._system_name = system_name
+
+    @property
+    def owner(self):
+        """Gets the owner of this CompositionSummary.  # noqa: E501
+
+
+        :return: The owner of this CompositionSummary.  # noqa: E501
+        :rtype: UserDisplayDetails
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, owner):
+        """Sets the owner of this CompositionSummary.
+
+
+        :param owner: The owner of this CompositionSummary.  # noqa: E501
+        :type: UserDisplayDetails
+        """
+        if self.local_vars_configuration.client_side_validation and owner is None:  # noqa: E501
+            raise ValueError("Invalid value for `owner`, must not be `None`")  # noqa: E501
+
+        self._owner = owner
+
+    @property
+    def number_of_users_shared_with(self):
+        """Gets the number_of_users_shared_with of this CompositionSummary.  # noqa: E501
+
+        The number of people this composition has been shared with  # noqa: E501
+
+        :return: The number_of_users_shared_with of this CompositionSummary.  # noqa: E501
+        :rtype: int
+        """
+        return self._number_of_users_shared_with
+
+    @number_of_users_shared_with.setter
+    def number_of_users_shared_with(self, number_of_users_shared_with):
+        """Sets the number_of_users_shared_with of this CompositionSummary.
+
+        The number of people this composition has been shared with  # noqa: E501
+
+        :param number_of_users_shared_with: The number_of_users_shared_with of this CompositionSummary.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and number_of_users_shared_with is None:  # noqa: E501
+            raise ValueError("Invalid value for `number_of_users_shared_with`, must not be `None`")  # noqa: E501
+
+        self._number_of_users_shared_with = number_of_users_shared_with
+
+    @property
+    def shared_to_all(self):
+        """Gets the shared_to_all of this CompositionSummary.  # noqa: E501
+
+        Whether this composition has been shared to all users  # noqa: E501
+
+        :return: The shared_to_all of this CompositionSummary.  # noqa: E501
+        :rtype: bool
+        """
+        return self._shared_to_all
+
+    @shared_to_all.setter
+    def shared_to_all(self, shared_to_all):
+        """Sets the shared_to_all of this CompositionSummary.
+
+        Whether this composition has been shared to all users  # noqa: E501
+
+        :param shared_to_all: The shared_to_all of this CompositionSummary.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and shared_to_all is None:  # noqa: E501
+            raise ValueError("Invalid value for `shared_to_all`, must not be `None`")  # noqa: E501
+
+        self._shared_to_all = shared_to_all
+
+    @property
+    def share_id(self):
+        """Gets the share_id of this CompositionSummary.  # noqa: E501
+
+        The id of the share associated with this composition, or null if the  composition has not yet been shared  # noqa: E501
+
+        :return: The share_id of this CompositionSummary.  # noqa: E501
+        :rtype: int
+        """
+        return self._share_id
+
+    @share_id.setter
+    def share_id(self, share_id):
+        """Sets the share_id of this CompositionSummary.
+
+        The id of the share associated with this composition, or null if the  composition has not yet been shared  # noqa: E501
+
+        :param share_id: The share_id of this CompositionSummary.  # noqa: E501
+        :type: int
+        """
+
+        self._share_id = share_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

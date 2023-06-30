@@ -1,18 +1,18 @@
 # apteco_api.CubesApi
 
-All URIs are relative to *https://example.com/OrbitAPI*
+All URIs are relative to *http://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cubes_calculate_cube_synchronously**](CubesApi.md#cubes_calculate_cube_synchronously) | **POST** /{dataViewName}/Cubes/{systemName}/CalculateSync | EXPERIMENTAL: Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.
+[**cubes_calculate_cube_synchronously**](CubesApi.md#cubes_calculate_cube_synchronously) | **POST** /{dataViewName}/Cubes/{systemName}/CalculateSync | Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.
 
 
 # **cubes_calculate_cube_synchronously**
 > CubeResult cubes_calculate_cube_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, return_definition=return_definition, cube=cube)
 
-EXPERIMENTAL: Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.
+Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.
 
-EXPERIMENTAL  Requires licence flags [Cube]
+Requires licence flags [Cube]
 
 ### Example
 
@@ -23,10 +23,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -36,7 +36,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -55,7 +55,7 @@ return_definition = True # bool | Whether to include the cube's definition in th
 cube = apteco_api.Cube() # Cube | The cube definition to use (optional)
 
     try:
-        # EXPERIMENTAL: Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.
+        # Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.
         api_response = api_instance.cubes_calculate_cube_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, return_definition=return_definition, cube=cube)
         pprint(api_response)
     except ApiException as e:

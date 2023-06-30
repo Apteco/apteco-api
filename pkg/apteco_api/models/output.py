@@ -38,7 +38,8 @@ class Output(object):
         'delimiter': 'str',
         'alpha_encloser': 'str',
         'numeric_encloser': 'str',
-        'authorisation_code': 'str'
+        'authorisation_code': 'str',
+        'export_extra_name': 'str'
     }
 
     attribute_map = {
@@ -46,10 +47,11 @@ class Output(object):
         'delimiter': 'delimiter',
         'alpha_encloser': 'alphaEncloser',
         'numeric_encloser': 'numericEncloser',
-        'authorisation_code': 'authorisationCode'
+        'authorisation_code': 'authorisationCode',
+        'export_extra_name': 'exportExtraName'
     }
 
-    def __init__(self, format=None, delimiter=None, alpha_encloser=None, numeric_encloser=None, authorisation_code=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, format=None, delimiter=None, alpha_encloser=None, numeric_encloser=None, authorisation_code=None, export_extra_name=None, local_vars_configuration=None):  # noqa: E501
         """Output - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -60,6 +62,7 @@ class Output(object):
         self._alpha_encloser = None
         self._numeric_encloser = None
         self._authorisation_code = None
+        self._export_extra_name = None
         self.discriminator = None
 
         if format is not None:
@@ -72,6 +75,8 @@ class Output(object):
             self.numeric_encloser = numeric_encloser
         if authorisation_code is not None:
             self.authorisation_code = authorisation_code
+        if export_extra_name is not None:
+            self.export_extra_name = export_extra_name
 
     @property
     def format(self):
@@ -93,7 +98,7 @@ class Output(object):
         :param format: The format of this Output.  # noqa: E501
         :type: str
         """
-        allowed_values = ["CSV", "SDF", "XLSX", "MDB", "DBF", "URN"]  # noqa: E501
+        allowed_values = ["CSV", "SDF", "XLS", "XLSX", "MDB", "DBF", "URN", "NATIVEDUMP"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and format not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `format` ({0}), must be one of {1}"  # noqa: E501
@@ -193,6 +198,29 @@ class Output(object):
         """
 
         self._authorisation_code = authorisation_code
+
+    @property
+    def export_extra_name(self):
+        """Gets the export_extra_name of this Output.  # noqa: E501
+
+        The name of an \"Export Extras\" processing task, which can perform post-processing steps on a FastStats export  # noqa: E501
+
+        :return: The export_extra_name of this Output.  # noqa: E501
+        :rtype: str
+        """
+        return self._export_extra_name
+
+    @export_extra_name.setter
+    def export_extra_name(self, export_extra_name):
+        """Sets the export_extra_name of this Output.
+
+        The name of an \"Export Extras\" processing task, which can perform post-processing steps on a FastStats export  # noqa: E501
+
+        :param export_extra_name: The export_extra_name of this Output.  # noqa: E501
+        :type: str
+        """
+
+        self._export_extra_name = export_extra_name
 
     def to_dict(self):
         """Returns the model properties as a dict"""

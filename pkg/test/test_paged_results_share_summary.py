@@ -46,7 +46,8 @@ class TestPagedResultsShareSummary(unittest.TestCase):
                         shareable_type = 'Unknown', 
                         shareable_id = 56, 
                         shareable_title = '0', 
-                        number_of_users_shared_with = 56, )
+                        number_of_users_shared_with = 56, 
+                        shared_to_all = True, )
                     ]
             )
         else :
@@ -60,7 +61,8 @@ class TestPagedResultsShareSummary(unittest.TestCase):
                         shareable_type = 'Unknown', 
                         shareable_id = 56, 
                         shareable_title = '0', 
-                        number_of_users_shared_with = 56, )
+                        number_of_users_shared_with = 56, 
+                        shared_to_all = True, )
                     ],
         )
 

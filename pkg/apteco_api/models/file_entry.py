@@ -132,7 +132,7 @@ class FileEntry(object):
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["Unknown", "File", "Directory", "Chart", "Cluster", "Map", "Cube", "Tree", "Venn", "DataGrid", "DecisionTree", "Expression", "ModellingEnvironment", "ModelReport", "Profile", "Report", "Segmentation", "Selection", "Storyboard", "WordCloud"]  # noqa: E501
+        allowed_values = ["Unknown", "File", "Directory", "FTPDirectory", "Chart", "Cluster", "Map", "Cube", "Tree", "Venn", "DataGrid", "DecisionTree", "Expression", "ModellingEnvironment", "ModelReport", "Profile", "Report", "Segmentation", "Selection", "Storyboard", "WordCloud"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501

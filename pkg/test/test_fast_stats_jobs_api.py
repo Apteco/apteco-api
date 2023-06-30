@@ -43,6 +43,13 @@ class TestFastStatsJobsApi(unittest.TestCase):
         """
         pass
 
+    def test_fast_stats_jobs_clear_command_hash(self):
+        """Test case for fast_stats_jobs_clear_command_hash
+
+        EXPERIMENTAL: Requires OrbitAdmin: Clear the hash value column of cache in the FastStats job queue for the given system.  # noqa: E501
+        """
+        pass
+
     def test_fast_stats_jobs_get_fast_stats_job(self):
         """Test case for fast_stats_jobs_get_fast_stats_job
 

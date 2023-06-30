@@ -137,7 +137,7 @@ class TemporaryFilesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream'])  # noqa: E501
+            ['application/json', 'text/json', 'application/octet-stream'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
@@ -267,7 +267,7 @@ class TemporaryFilesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream'])  # noqa: E501
+            ['application/json', 'text/json', 'application/octet-stream'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501

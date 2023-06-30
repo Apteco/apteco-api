@@ -37,6 +37,7 @@ class TestUserLogin(unittest.TestCase):
         # model = apteco_api.models.user_login.UserLogin()  # noqa: E501
         if include_optional :
             return UserLogin(
+                user_id = 56, 
                 username = '0', 
                 system_name = '0', 
                 client_type = '0', 
@@ -44,6 +45,7 @@ class TestUserLogin(unittest.TestCase):
             )
         else :
             return UserLogin(
+                user_id = 56,
                 username = '0',
                 system_name = '0',
                 client_type = '0',

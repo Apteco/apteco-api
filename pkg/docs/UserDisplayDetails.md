@@ -4,6 +4,7 @@ Display details for a user
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **int** | The user&#39;s id | 
 **username** | **str** | The user&#39;s username | 
 **firstname** | **str** | The user&#39;s first name | 
 **surname** | **str** | The user&#39;s surname | 

@@ -36,10 +36,17 @@ class TestUsersApi(unittest.TestCase):
         """
         pass
 
-    def test_users_get_all_user_dashboards(self):
-        """Test case for users_get_all_user_dashboards
+    def test_users_create_user(self):
+        """Test case for users_create_user
 
-        EXPERIMENTAL: Gets a dashboard in the DataView.  # noqa: E501
+        Requires OrbitAdmin: Creates a new user.  # noqa: E501
+        """
+        pass
+
+    def test_users_delete_user(self):
+        """Test case for users_delete_user
+
+        Requires OrbitAdmin: Deletes the specified user  # noqa: E501
         """
         pass
 
@@ -54,6 +61,20 @@ class TestUsersApi(unittest.TestCase):
         """Test case for users_get_user_audience
 
         Returns the details of a particular audience  # noqa: E501
+        """
+        pass
+
+    def test_users_get_user_audience_composition(self):
+        """Test case for users_get_user_audience_composition
+
+        Returns the details of a particular composition  # noqa: E501
+        """
+        pass
+
+    def test_users_get_user_audience_compositions(self):
+        """Test case for users_get_user_audience_compositions
+
+        Returns the list of audience compositions associated with the given user  # noqa: E501
         """
         pass
 
@@ -88,7 +109,14 @@ class TestUsersApi(unittest.TestCase):
     def test_users_get_user_dashboard(self):
         """Test case for users_get_user_dashboard
 
-        EXPERIMENTAL: Gets a dashboard in the DataView.  # noqa: E501
+        Gets a dashboard in the DataView.  # noqa: E501
+        """
+        pass
+
+    def test_users_get_user_dashboards(self):
+        """Test case for users_get_user_dashboards
+
+        Gets a dashboard in the DataView.  # noqa: E501
         """
         pass
 
@@ -120,17 +148,10 @@ class TestUsersApi(unittest.TestCase):
         """
         pass
 
-    def test_users_patch_user_collection(self):
-        """Test case for users_patch_user_collection
+    def test_users_modify_user_dashboards(self):
+        """Test case for users_modify_user_dashboards
 
-        EXPERIMENTAL: Update some properties of a collection  # noqa: E501
-        """
-        pass
-
-    def test_users_update_user_collection(self):
-        """Test case for users_update_user_collection
-
-        EXPERIMENTAL: Updates a collection  # noqa: E501
+        Updates one or more dashboards  # noqa: E501
         """
         pass
 

@@ -34,6 +34,7 @@ class UserDisplayDetails(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'id': 'int',
         'username': 'str',
         'firstname': 'str',
         'surname': 'str',
@@ -41,28 +42,56 @@ class UserDisplayDetails(object):
     }
 
     attribute_map = {
+        'id': 'id',
         'username': 'username',
         'firstname': 'firstname',
         'surname': 'surname',
         'email_address': 'emailAddress'
     }
 
-    def __init__(self, username=None, firstname=None, surname=None, email_address=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, username=None, firstname=None, surname=None, email_address=None, local_vars_configuration=None):  # noqa: E501
         """UserDisplayDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._id = None
         self._username = None
         self._firstname = None
         self._surname = None
         self._email_address = None
         self.discriminator = None
 
+        self.id = id
         self.username = username
         self.firstname = firstname
         self.surname = surname
         self.email_address = email_address
+
+    @property
+    def id(self):
+        """Gets the id of this UserDisplayDetails.  # noqa: E501
+
+        The user's id  # noqa: E501
+
+        :return: The id of this UserDisplayDetails.  # noqa: E501
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this UserDisplayDetails.
+
+        The user's id  # noqa: E501
+
+        :param id: The id of this UserDisplayDetails.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
 
     @property
     def username(self):

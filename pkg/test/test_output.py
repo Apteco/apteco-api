@@ -41,7 +41,8 @@ class TestOutput(unittest.TestCase):
                 delimiter = '0', 
                 alpha_encloser = '0', 
                 numeric_encloser = '0', 
-                authorisation_code = '0'
+                authorisation_code = '0', 
+                export_extra_name = '0'
             )
         else :
             return Output(

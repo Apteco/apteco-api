@@ -38,6 +38,7 @@ class DashboardItem(object):
         'size': 'Size',
         'chart_type': 'str',
         'omit_zeros': 'bool',
+        'sort_order': 'str',
         'description': 'str'
     }
 
@@ -46,10 +47,11 @@ class DashboardItem(object):
         'size': 'size',
         'chart_type': 'chartType',
         'omit_zeros': 'omitZeros',
+        'sort_order': 'sortOrder',
         'description': 'description'
     }
 
-    def __init__(self, variable_name=None, size=None, chart_type=None, omit_zeros=None, description=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, variable_name=None, size=None, chart_type=None, omit_zeros=None, sort_order=None, description=None, local_vars_configuration=None):  # noqa: E501
         """DashboardItem - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -59,6 +61,7 @@ class DashboardItem(object):
         self._size = None
         self._chart_type = None
         self._omit_zeros = None
+        self._sort_order = None
         self._description = None
         self.discriminator = None
 
@@ -66,6 +69,7 @@ class DashboardItem(object):
         self.size = size
         self.chart_type = chart_type
         self.omit_zeros = omit_zeros
+        self.sort_order = sort_order
         self.description = description
 
     @property
@@ -138,7 +142,7 @@ class DashboardItem(object):
         """
         if self.local_vars_configuration.client_side_validation and chart_type is None:  # noqa: E501
             raise ValueError("Invalid value for `chart_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["Bar", "Column", "Pie", "Donut", "Line", "UKPostArea", "NLProvinces", "NLMunicipalities", "DE2DigitPostCode", "CH2DigitPostCode", "AU2DigitPostCode", "USStates", "NumberCard"]  # noqa: E501
+        allowed_values = ["Bar", "Column", "Pie", "Donut", "Line", "UKPostArea", "NLProvinces", "NLMunicipalities", "DE2DigitPostCode", "CH2DigitPostCode", "AU2DigitPostCode", "USStates", "NumberCard", "Text", "BandedPareto", "CategoricalPareto", "Area", "ClusteredColumn", "StackedColumn", "Stacked100Column", "RadarLine", "RadarColumn", "RadarArea", "Funnel"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and chart_type not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `chart_type` ({0}), must be one of {1}"  # noqa: E501
@@ -171,6 +175,37 @@ class DashboardItem(object):
             raise ValueError("Invalid value for `omit_zeros`, must not be `None`")  # noqa: E501
 
         self._omit_zeros = omit_zeros
+
+    @property
+    def sort_order(self):
+        """Gets the sort_order of this DashboardItem.  # noqa: E501
+
+        Whether the chart should be sorted in it's natural order, by ascending or descending values  # noqa: E501
+
+        :return: The sort_order of this DashboardItem.  # noqa: E501
+        :rtype: str
+        """
+        return self._sort_order
+
+    @sort_order.setter
+    def sort_order(self, sort_order):
+        """Sets the sort_order of this DashboardItem.
+
+        Whether the chart should be sorted in it's natural order, by ascending or descending values  # noqa: E501
+
+        :param sort_order: The sort_order of this DashboardItem.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and sort_order is None:  # noqa: E501
+            raise ValueError("Invalid value for `sort_order`, must not be `None`")  # noqa: E501
+        allowed_values = ["Natural", "AscendingByValue", "DescendingByValue"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and sort_order not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `sort_order` ({0}), must be one of {1}"  # noqa: E501
+                .format(sort_order, allowed_values)
+            )
+
+        self._sort_order = sort_order
 
     @property
     def description(self):

@@ -40,6 +40,11 @@ class TestUserSummary(unittest.TestCase):
                 id = 56, 
                 username = '0', 
                 group_id = 56, 
+                teams = [
+                    apteco_api.models.team_summary.TeamSummary(
+                        id = 56, 
+                        name = '0', )
+                    ], 
                 firstname = '0', 
                 surname = '0', 
                 email_address = '0', 
@@ -50,6 +55,11 @@ class TestUserSummary(unittest.TestCase):
                 id = 56,
                 username = '0',
                 group_id = 56,
+                teams = [
+                    apteco_api.models.team_summary.TeamSummary(
+                        id = 56, 
+                        name = '0', )
+                    ],
                 firstname = '0',
                 surname = '0',
                 email_address = '0',

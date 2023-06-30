@@ -37,6 +37,12 @@ class TestUpdateTelemetrySessionDetails(unittest.TestCase):
         # model = apteco_api.models.update_telemetry_session_details.UpdateTelemetrySessionDetails()  # noqa: E501
         if include_optional :
             return UpdateTelemetrySessionDetails(
+                bug_reports = [
+                    apteco_api.models.telemetry_bug_report.TelemetryBugReport(
+                        occurred = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        error_message = '0', 
+                        stack_trace = '0', )
+                    ], 
                 session_end = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else :

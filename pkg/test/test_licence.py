@@ -42,7 +42,9 @@ class TestLicence(unittest.TestCase):
                 export = True, 
                 advanced_query = True, 
                 cube = True, 
-                profile = True
+                profile = True, 
+                dashboards = True, 
+                dashboards_pareto = True
             )
         else :
             return Licence(
@@ -52,6 +54,8 @@ class TestLicence(unittest.TestCase):
                 advanced_query = True,
                 cube = True,
                 profile = True,
+                dashboards = True,
+                dashboards_pareto = True,
         )
 
     def testLicence(self):

@@ -42,6 +42,7 @@ class UserCollectionDetail(object):
         'owner': 'UserDisplayDetails',
         'number_of_parts': 'int',
         'number_of_users_shared_with': 'int',
+        'shared_to_all': 'bool',
         'share_id': 'int',
         'number_of_hits': 'int',
         'system_name': 'str',
@@ -61,6 +62,7 @@ class UserCollectionDetail(object):
         'owner': 'owner',
         'number_of_parts': 'numberOfParts',
         'number_of_users_shared_with': 'numberOfUsersSharedWith',
+        'shared_to_all': 'sharedToAll',
         'share_id': 'shareId',
         'number_of_hits': 'numberOfHits',
         'system_name': 'systemName',
@@ -71,7 +73,7 @@ class UserCollectionDetail(object):
         'deletion_date': 'deletionDate'
     }
 
-    def __init__(self, viewing_username=None, status=None, shared_to_me=None, shared_by_me=None, id=None, owner=None, number_of_parts=None, number_of_users_shared_with=None, share_id=None, number_of_hits=None, system_name=None, title=None, description=None, creation_date=None, file_path=None, deletion_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, viewing_username=None, status=None, shared_to_me=None, shared_by_me=None, id=None, owner=None, number_of_parts=None, number_of_users_shared_with=None, shared_to_all=None, share_id=None, number_of_hits=None, system_name=None, title=None, description=None, creation_date=None, file_path=None, deletion_date=None, local_vars_configuration=None):  # noqa: E501
         """UserCollectionDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -85,6 +87,7 @@ class UserCollectionDetail(object):
         self._owner = None
         self._number_of_parts = None
         self._number_of_users_shared_with = None
+        self._shared_to_all = None
         self._share_id = None
         self._number_of_hits = None
         self._system_name = None
@@ -104,6 +107,7 @@ class UserCollectionDetail(object):
         if number_of_parts is not None:
             self.number_of_parts = number_of_parts
         self.number_of_users_shared_with = number_of_users_shared_with
+        self.shared_to_all = shared_to_all
         self.share_id = share_id
         self.number_of_hits = number_of_hits
         self.system_name = system_name
@@ -315,6 +319,31 @@ class UserCollectionDetail(object):
             raise ValueError("Invalid value for `number_of_users_shared_with`, must not be `None`")  # noqa: E501
 
         self._number_of_users_shared_with = number_of_users_shared_with
+
+    @property
+    def shared_to_all(self):
+        """Gets the shared_to_all of this UserCollectionDetail.  # noqa: E501
+
+        Whether this collection has been shared with all users  # noqa: E501
+
+        :return: The shared_to_all of this UserCollectionDetail.  # noqa: E501
+        :rtype: bool
+        """
+        return self._shared_to_all
+
+    @shared_to_all.setter
+    def shared_to_all(self, shared_to_all):
+        """Sets the shared_to_all of this UserCollectionDetail.
+
+        Whether this collection has been shared with all users  # noqa: E501
+
+        :param shared_to_all: The shared_to_all of this UserCollectionDetail.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and shared_to_all is None:  # noqa: E501
+            raise ValueError("Invalid value for `shared_to_all`, must not be `None`")  # noqa: E501
+
+        self._shared_to_all = shared_to_all
 
     @property
     def share_id(self):

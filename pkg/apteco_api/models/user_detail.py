@@ -38,6 +38,7 @@ class UserDetail(object):
         'id': 'int',
         'username': 'str',
         'group_id': 'int',
+        'teams': 'list[TeamSummary]',
         'firstname': 'str',
         'surname': 'str',
         'email_address': 'str',
@@ -49,13 +50,14 @@ class UserDetail(object):
         'id': 'id',
         'username': 'username',
         'group_id': 'groupId',
+        'teams': 'teams',
         'firstname': 'firstname',
         'surname': 'surname',
         'email_address': 'emailAddress',
         'user_disabled_date': 'userDisabledDate'
     }
 
-    def __init__(self, licence=None, id=None, username=None, group_id=None, firstname=None, surname=None, email_address=None, user_disabled_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, licence=None, id=None, username=None, group_id=None, teams=None, firstname=None, surname=None, email_address=None, user_disabled_date=None, local_vars_configuration=None):  # noqa: E501
         """UserDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -65,6 +67,7 @@ class UserDetail(object):
         self._id = None
         self._username = None
         self._group_id = None
+        self._teams = None
         self._firstname = None
         self._surname = None
         self._email_address = None
@@ -75,6 +78,7 @@ class UserDetail(object):
         self.id = id
         self.username = username
         self.group_id = group_id
+        self.teams = teams
         self.firstname = firstname
         self.surname = surname
         self.email_address = email_address
@@ -177,6 +181,31 @@ class UserDetail(object):
             raise ValueError("Invalid value for `group_id`, must not be `None`")  # noqa: E501
 
         self._group_id = group_id
+
+    @property
+    def teams(self):
+        """Gets the teams of this UserDetail.  # noqa: E501
+
+        The teams that the user is a member of  # noqa: E501
+
+        :return: The teams of this UserDetail.  # noqa: E501
+        :rtype: list[TeamSummary]
+        """
+        return self._teams
+
+    @teams.setter
+    def teams(self, teams):
+        """Sets the teams of this UserDetail.
+
+        The teams that the user is a member of  # noqa: E501
+
+        :param teams: The teams of this UserDetail.  # noqa: E501
+        :type: list[TeamSummary]
+        """
+        if self.local_vars_configuration.client_side_validation and teams is None:  # noqa: E501
+            raise ValueError("Invalid value for `teams`, must not be `None`")  # noqa: E501
+
+        self._teams = teams
 
     @property
     def firstname(self):

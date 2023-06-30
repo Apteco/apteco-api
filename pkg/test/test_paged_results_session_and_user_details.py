@@ -43,6 +43,7 @@ class TestPagedResultsSessionAndUserDetails(unittest.TestCase):
                 list = [
                     apteco_api.models.session_and_user_details.SessionAndUserDetails(
                         user = apteco_api.models.user_display_details.UserDisplayDetails(
+                            id = 56, 
                             username = '0', 
                             firstname = '0', 
                             surname = '0', 
@@ -58,6 +59,7 @@ class TestPagedResultsSessionAndUserDetails(unittest.TestCase):
                 list = [
                     apteco_api.models.session_and_user_details.SessionAndUserDetails(
                         user = apteco_api.models.user_display_details.UserDisplayDetails(
+                            id = 56, 
                             username = '0', 
                             firstname = '0', 
                             surname = '0', 

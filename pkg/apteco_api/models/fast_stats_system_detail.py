@@ -34,6 +34,7 @@ class FastStatsSystemDetail(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'date_settings': 'DateSettings',
         'name': 'str',
         'view_name': 'str',
         'description': 'str',
@@ -41,29 +42,55 @@ class FastStatsSystemDetail(object):
     }
 
     attribute_map = {
+        'date_settings': 'dateSettings',
         'name': 'name',
         'view_name': 'viewName',
         'description': 'description',
         'fast_stats_build_date': 'fastStatsBuildDate'
     }
 
-    def __init__(self, name=None, view_name=None, description=None, fast_stats_build_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, date_settings=None, name=None, view_name=None, description=None, fast_stats_build_date=None, local_vars_configuration=None):  # noqa: E501
         """FastStatsSystemDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._date_settings = None
         self._name = None
         self._view_name = None
         self._description = None
         self._fast_stats_build_date = None
         self.discriminator = None
 
+        self.date_settings = date_settings
         self.name = name
         self.view_name = view_name
         self.description = description
         if fast_stats_build_date is not None:
             self.fast_stats_build_date = fast_stats_build_date
+
+    @property
+    def date_settings(self):
+        """Gets the date_settings of this FastStatsSystemDetail.  # noqa: E501
+
+
+        :return: The date_settings of this FastStatsSystemDetail.  # noqa: E501
+        :rtype: DateSettings
+        """
+        return self._date_settings
+
+    @date_settings.setter
+    def date_settings(self, date_settings):
+        """Sets the date_settings of this FastStatsSystemDetail.
+
+
+        :param date_settings: The date_settings of this FastStatsSystemDetail.  # noqa: E501
+        :type: DateSettings
+        """
+        if self.local_vars_configuration.client_side_validation and date_settings is None:  # noqa: E501
+            raise ValueError("Invalid value for `date_settings`, must not be `None`")  # noqa: E501
+
+        self._date_settings = date_settings
 
     @property
     def name(self):

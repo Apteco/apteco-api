@@ -1,6 +1,6 @@
 # apteco_api.SharesApi
 
-All URIs are relative to *https://example.com/OrbitAPI*
+All URIs are relative to *http://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**shares_create_share_update**](SharesApi.md#shares_create_share_update) | **POST** /{dataViewName}/Shares/{shareId}/Updates | Creates a new share update from the given details, sharing from the logged in user.
 [**shares_delete_share**](SharesApi.md#shares_delete_share) | **DELETE** /{dataViewName}/Shares/{shareId} | Deletes the specified share
 [**shares_get_share**](SharesApi.md#shares_get_share) | **GET** /{dataViewName}/Shares/{shareId} | Returns the details of a particular share
+[**shares_get_share_groups**](SharesApi.md#shares_get_share_groups) | **GET** /{dataViewName}/Shares/{shareId}/Groups | Returns the list of groups that are associated with a particular share
 [**shares_get_share_update**](SharesApi.md#shares_get_share_update) | **GET** /{dataViewName}/Shares/{shareId}/Updates/{shareUpdateId} | Returns a specific update that is associated with a particular share
 [**shares_get_share_update_added_users**](SharesApi.md#shares_get_share_update_added_users) | **GET** /{dataViewName}/Shares/{shareId}/Updates/{shareUpdateId}/AddedUsers | Returns the list of the users added to a share as part of a specific update
 [**shares_get_share_update_removed_users**](SharesApi.md#shares_get_share_update_removed_users) | **GET** /{dataViewName}/Shares/{shareId}/Updates/{shareUpdateId}/RemovedUsers | Returns the list of the users removed from a share as part of a specific update
@@ -30,10 +31,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -43,7 +44,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -109,10 +110,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -122,7 +123,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -190,10 +191,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -203,7 +204,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -269,10 +270,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -282,7 +283,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -335,6 +336,94 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **shares_get_share_groups**
+> PagedResultsGroupDetail shares_get_share_groups(data_view_name, share_id, filter=filter, order_by=order_by, offset=offset, count=count)
+
+Returns the list of groups that are associated with a particular share
+
+### Example
+
+* Api Key Authentication (faststats_auth):
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "http://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: faststats_auth
+configuration = apteco_api.Configuration(
+    host = "http://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SharesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+share_id = 56 # int | The id of the share to view the groups for
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, Name. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Name. (optional)
+offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
+count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
+
+    try:
+        # Returns the list of groups that are associated with a particular share
+        api_response = api_instance.shares_get_share_groups(data_view_name, share_id, filter=filter, order_by=order_by, offset=offset, count=count)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SharesApi->shares_get_share_groups: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data_view_name** | **str**| The name of the DataView to act on | 
+ **share_id** | **int**| The id of the share to view the groups for | 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, Name. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, Name. | [optional] 
+ **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
+ **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
+
+### Return type
+
+[**PagedResultsGroupDetail**](PagedResultsGroupDetail.md)
+
+### Authorization
+
+[faststats_auth](../README.md#faststats_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The current list of groups that the shareable item is shared with |  -  |
+**400** | A bad request |  -  |
+**403** | The given session is not allowed to see the details for this share |  -  |
+**404** | The DataView or share couldn&#39;t be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **shares_get_share_update**
 > ShareUpdate shares_get_share_update(data_view_name, share_id, share_update_id)
 
@@ -349,10 +438,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -362,7 +451,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -431,10 +520,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -444,7 +533,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -459,8 +548,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share the update is associated with
 share_update_id = 56 # int | The id of the share update to view
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Firstname, Surname (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Firstname, Surname. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -479,8 +568,8 @@ Name | Type | Description  | Notes
  **data_view_name** | **str**| The name of the DataView to act on | 
  **share_id** | **int**| The id of the share the update is associated with | 
  **share_update_id** | **int**| The id of the share update to view | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Firstname, Surname | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Firstname, Surname. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -521,10 +610,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -534,7 +623,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -549,8 +638,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share the update is associated with
 share_update_id = 56 # int | The id of the share update to view
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Firstname, Surname (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Firstname, Surname. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -569,8 +658,8 @@ Name | Type | Description  | Notes
  **data_view_name** | **str**| The name of the DataView to act on | 
  **share_id** | **int**| The id of the share the update is associated with | 
  **share_update_id** | **int**| The id of the share update to view | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Firstname, Surname | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Firstname, Surname. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Firstname, Surname. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -611,10 +700,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -624,7 +713,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -638,8 +727,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     api_instance = apteco_api.SharesApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share to view
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Notes (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Notes (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Notes. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Notes. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -657,8 +746,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
  **share_id** | **int**| The id of the share to view | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Notes | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Timestamp, Notes | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Notes. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Timestamp, Notes. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -699,10 +788,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -712,7 +801,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -726,8 +815,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     api_instance = apteco_api.SharesApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 share_id = 56 # int | The id of the share to view the users for
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -745,8 +834,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
  **share_id** | **int**| The id of the share to view the users for | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Username, EmailAddress | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Username, EmailAddress. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -789,10 +878,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -802,7 +891,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -815,8 +904,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = apteco_api.SharesApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are ShareableId, ShareableType, NumberOfUsersSharedWith (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are ShareableId, ShareableType, NumberOfUsersSharedWith (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are ShareableId, ShareableType, NumberOfUsersSharedWith. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are ShareableId, ShareableType, NumberOfUsersSharedWith. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -833,8 +922,8 @@ count = 56 # int | The maximum number of items to show from the (potentially fil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are ShareableId, ShareableType, NumberOfUsersSharedWith | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are ShareableId, ShareableType, NumberOfUsersSharedWith | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are ShareableId, ShareableType, NumberOfUsersSharedWith. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are ShareableId, ShareableType, NumberOfUsersSharedWith. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 

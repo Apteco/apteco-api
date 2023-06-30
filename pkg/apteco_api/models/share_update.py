@@ -40,8 +40,13 @@ class ShareUpdate(object):
         'notes': 'str',
         'number_of_added_users': 'int',
         'first_added_user': 'UserDisplayDetails',
+        'shared_to_all': 'bool',
         'number_of_removed_users': 'int',
-        'first_removed_user': 'UserDisplayDetails'
+        'first_removed_user': 'UserDisplayDetails',
+        'number_of_added_groups': 'int',
+        'first_added_group': 'GroupSummary',
+        'number_of_removed_groups': 'int',
+        'first_removed_group': 'GroupSummary'
     }
 
     attribute_map = {
@@ -51,11 +56,16 @@ class ShareUpdate(object):
         'notes': 'notes',
         'number_of_added_users': 'numberOfAddedUsers',
         'first_added_user': 'firstAddedUser',
+        'shared_to_all': 'sharedToAll',
         'number_of_removed_users': 'numberOfRemovedUsers',
-        'first_removed_user': 'firstRemovedUser'
+        'first_removed_user': 'firstRemovedUser',
+        'number_of_added_groups': 'numberOfAddedGroups',
+        'first_added_group': 'firstAddedGroup',
+        'number_of_removed_groups': 'numberOfRemovedGroups',
+        'first_removed_group': 'firstRemovedGroup'
     }
 
-    def __init__(self, id=None, timestamp=None, user=None, notes=None, number_of_added_users=None, first_added_user=None, number_of_removed_users=None, first_removed_user=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, timestamp=None, user=None, notes=None, number_of_added_users=None, first_added_user=None, shared_to_all=None, number_of_removed_users=None, first_removed_user=None, number_of_added_groups=None, first_added_group=None, number_of_removed_groups=None, first_removed_group=None, local_vars_configuration=None):  # noqa: E501
         """ShareUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -67,8 +77,13 @@ class ShareUpdate(object):
         self._notes = None
         self._number_of_added_users = None
         self._first_added_user = None
+        self._shared_to_all = None
         self._number_of_removed_users = None
         self._first_removed_user = None
+        self._number_of_added_groups = None
+        self._first_added_group = None
+        self._number_of_removed_groups = None
+        self._first_removed_group = None
         self.discriminator = None
 
         self.id = id
@@ -77,8 +92,13 @@ class ShareUpdate(object):
         self.notes = notes
         self.number_of_added_users = number_of_added_users
         self.first_added_user = first_added_user
+        self.shared_to_all = shared_to_all
         self.number_of_removed_users = number_of_removed_users
         self.first_removed_user = first_removed_user
+        self.number_of_added_groups = number_of_added_groups
+        self.first_added_group = first_added_group
+        self.number_of_removed_groups = number_of_removed_groups
+        self.first_removed_group = first_removed_group
 
     @property
     def id(self):
@@ -227,6 +247,31 @@ class ShareUpdate(object):
         self._first_added_user = first_added_user
 
     @property
+    def shared_to_all(self):
+        """Gets the shared_to_all of this ShareUpdate.  # noqa: E501
+
+        Whether this share was shared to all as part of this update  # noqa: E501
+
+        :return: The shared_to_all of this ShareUpdate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._shared_to_all
+
+    @shared_to_all.setter
+    def shared_to_all(self, shared_to_all):
+        """Sets the shared_to_all of this ShareUpdate.
+
+        Whether this share was shared to all as part of this update  # noqa: E501
+
+        :param shared_to_all: The shared_to_all of this ShareUpdate.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and shared_to_all is None:  # noqa: E501
+            raise ValueError("Invalid value for `shared_to_all`, must not be `None`")  # noqa: E501
+
+        self._shared_to_all = shared_to_all
+
+    @property
     def number_of_removed_users(self):
         """Gets the number_of_removed_users of this ShareUpdate.  # noqa: E501
 
@@ -273,6 +318,102 @@ class ShareUpdate(object):
             raise ValueError("Invalid value for `first_removed_user`, must not be `None`")  # noqa: E501
 
         self._first_removed_user = first_removed_user
+
+    @property
+    def number_of_added_groups(self):
+        """Gets the number_of_added_groups of this ShareUpdate.  # noqa: E501
+
+        The number of groups that were added to this share as part of this update  # noqa: E501
+
+        :return: The number_of_added_groups of this ShareUpdate.  # noqa: E501
+        :rtype: int
+        """
+        return self._number_of_added_groups
+
+    @number_of_added_groups.setter
+    def number_of_added_groups(self, number_of_added_groups):
+        """Sets the number_of_added_groups of this ShareUpdate.
+
+        The number of groups that were added to this share as part of this update  # noqa: E501
+
+        :param number_of_added_groups: The number_of_added_groups of this ShareUpdate.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and number_of_added_groups is None:  # noqa: E501
+            raise ValueError("Invalid value for `number_of_added_groups`, must not be `None`")  # noqa: E501
+
+        self._number_of_added_groups = number_of_added_groups
+
+    @property
+    def first_added_group(self):
+        """Gets the first_added_group of this ShareUpdate.  # noqa: E501
+
+
+        :return: The first_added_group of this ShareUpdate.  # noqa: E501
+        :rtype: GroupSummary
+        """
+        return self._first_added_group
+
+    @first_added_group.setter
+    def first_added_group(self, first_added_group):
+        """Sets the first_added_group of this ShareUpdate.
+
+
+        :param first_added_group: The first_added_group of this ShareUpdate.  # noqa: E501
+        :type: GroupSummary
+        """
+        if self.local_vars_configuration.client_side_validation and first_added_group is None:  # noqa: E501
+            raise ValueError("Invalid value for `first_added_group`, must not be `None`")  # noqa: E501
+
+        self._first_added_group = first_added_group
+
+    @property
+    def number_of_removed_groups(self):
+        """Gets the number_of_removed_groups of this ShareUpdate.  # noqa: E501
+
+        The number of groups that were removed from this share as part of this update  # noqa: E501
+
+        :return: The number_of_removed_groups of this ShareUpdate.  # noqa: E501
+        :rtype: int
+        """
+        return self._number_of_removed_groups
+
+    @number_of_removed_groups.setter
+    def number_of_removed_groups(self, number_of_removed_groups):
+        """Sets the number_of_removed_groups of this ShareUpdate.
+
+        The number of groups that were removed from this share as part of this update  # noqa: E501
+
+        :param number_of_removed_groups: The number_of_removed_groups of this ShareUpdate.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and number_of_removed_groups is None:  # noqa: E501
+            raise ValueError("Invalid value for `number_of_removed_groups`, must not be `None`")  # noqa: E501
+
+        self._number_of_removed_groups = number_of_removed_groups
+
+    @property
+    def first_removed_group(self):
+        """Gets the first_removed_group of this ShareUpdate.  # noqa: E501
+
+
+        :return: The first_removed_group of this ShareUpdate.  # noqa: E501
+        :rtype: GroupSummary
+        """
+        return self._first_removed_group
+
+    @first_removed_group.setter
+    def first_removed_group(self, first_removed_group):
+        """Sets the first_removed_group of this ShareUpdate.
+
+
+        :param first_removed_group: The first_removed_group of this ShareUpdate.  # noqa: E501
+        :type: GroupSummary
+        """
+        if self.local_vars_configuration.client_side_validation and first_removed_group is None:  # noqa: E501
+            raise ValueError("Invalid value for `first_removed_group`, must not be `None`")  # noqa: E501
+
+        self._first_removed_group = first_removed_group
 
     def to_dict(self):
         """Returns the model properties as a dict"""

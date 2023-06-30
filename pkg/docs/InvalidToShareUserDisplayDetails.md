@@ -5,6 +5,7 @@ Display details for a user that was invalid for being added or removed  from sha
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reason** | **str** | The reason why the user was not valid for updating the share | 
+**id** | **int** | The user&#39;s id | 
 **username** | **str** | The user&#39;s username | 
 **firstname** | **str** | The user&#39;s first name | 
 **surname** | **str** | The user&#39;s surname | 

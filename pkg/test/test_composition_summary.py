@@ -40,7 +40,16 @@ class TestCompositionSummary(unittest.TestCase):
                 id = 56, 
                 description = '0', 
                 type = 'Check', 
-                system_name = '0'
+                system_name = '0', 
+                owner = apteco_api.models.user_display_details.UserDisplayDetails(
+                    id = 56, 
+                    username = '0', 
+                    firstname = '0', 
+                    surname = '0', 
+                    email_address = '0', ), 
+                number_of_users_shared_with = 56, 
+                shared_to_all = True, 
+                share_id = 56
             )
         else :
             return CompositionSummary(
@@ -48,6 +57,14 @@ class TestCompositionSummary(unittest.TestCase):
                 description = '0',
                 type = 'Check',
                 system_name = '0',
+                owner = apteco_api.models.user_display_details.UserDisplayDetails(
+                    id = 56, 
+                    username = '0', 
+                    firstname = '0', 
+                    surname = '0', 
+                    email_address = '0', ),
+                number_of_users_shared_with = 56,
+                shared_to_all = True,
         )
 
     def testCompositionSummary(self):

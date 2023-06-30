@@ -34,55 +34,60 @@ class DashboardItemData(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'filter': 'Query',
+        'global_filter_applied': 'Query',
         'drill_down_level': 'int',
-        'dimension_filter': 'Query'
+        'dimension_filter': 'Query',
+        'sort_order': 'str'
     }
 
     attribute_map = {
-        'filter': 'filter',
+        'global_filter_applied': 'globalFilterApplied',
         'drill_down_level': 'drillDownLevel',
-        'dimension_filter': 'dimensionFilter'
+        'dimension_filter': 'dimensionFilter',
+        'sort_order': 'sortOrder'
     }
 
-    def __init__(self, filter=None, drill_down_level=None, dimension_filter=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, global_filter_applied=None, drill_down_level=None, dimension_filter=None, sort_order=None, local_vars_configuration=None):  # noqa: E501
         """DashboardItemData - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._filter = None
+        self._global_filter_applied = None
         self._drill_down_level = None
         self._dimension_filter = None
+        self._sort_order = None
         self.discriminator = None
 
-        if filter is not None:
-            self.filter = filter
+        if global_filter_applied is not None:
+            self.global_filter_applied = global_filter_applied
         if drill_down_level is not None:
             self.drill_down_level = drill_down_level
         if dimension_filter is not None:
             self.dimension_filter = dimension_filter
+        if sort_order is not None:
+            self.sort_order = sort_order
 
     @property
-    def filter(self):
-        """Gets the filter of this DashboardItemData.  # noqa: E501
+    def global_filter_applied(self):
+        """Gets the global_filter_applied of this DashboardItemData.  # noqa: E501
 
 
-        :return: The filter of this DashboardItemData.  # noqa: E501
+        :return: The global_filter_applied of this DashboardItemData.  # noqa: E501
         :rtype: Query
         """
-        return self._filter
+        return self._global_filter_applied
 
-    @filter.setter
-    def filter(self, filter):
-        """Sets the filter of this DashboardItemData.
+    @global_filter_applied.setter
+    def global_filter_applied(self, global_filter_applied):
+        """Sets the global_filter_applied of this DashboardItemData.
 
 
-        :param filter: The filter of this DashboardItemData.  # noqa: E501
+        :param global_filter_applied: The global_filter_applied of this DashboardItemData.  # noqa: E501
         :type: Query
         """
 
-        self._filter = filter
+        self._global_filter_applied = global_filter_applied
 
     @property
     def drill_down_level(self):
@@ -125,6 +130,33 @@ class DashboardItemData(object):
         """
 
         self._dimension_filter = dimension_filter
+
+    @property
+    def sort_order(self):
+        """Gets the sort_order of this DashboardItemData.  # noqa: E501
+
+
+        :return: The sort_order of this DashboardItemData.  # noqa: E501
+        :rtype: str
+        """
+        return self._sort_order
+
+    @sort_order.setter
+    def sort_order(self, sort_order):
+        """Sets the sort_order of this DashboardItemData.
+
+
+        :param sort_order: The sort_order of this DashboardItemData.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["Natural", "AscendingByValue", "DescendingByValue"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and sort_order not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `sort_order` ({0}), must be one of {1}"  # noqa: E501
+                .format(sort_order, allowed_values)
+            )
+
+        self._sort_order = sort_order
 
     def to_dict(self):
         """Returns the model properties as a dict"""

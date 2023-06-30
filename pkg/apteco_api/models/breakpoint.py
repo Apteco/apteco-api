@@ -35,26 +35,38 @@ class Breakpoint(object):
     """
     openapi_types = {
         'breakpoint': 'str',
-        'size': 'Size'
+        'x': 'int',
+        'y': 'int',
+        'size': 'Size',
+        'notes_alignment': 'NotesAlignment'
     }
 
     attribute_map = {
         'breakpoint': 'breakpoint',
-        'size': 'size'
+        'x': 'x',
+        'y': 'y',
+        'size': 'size',
+        'notes_alignment': 'notesAlignment'
     }
 
-    def __init__(self, breakpoint=None, size=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, breakpoint=None, x=None, y=None, size=None, notes_alignment=None, local_vars_configuration=None):  # noqa: E501
         """Breakpoint - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._breakpoint = None
+        self._x = None
+        self._y = None
         self._size = None
+        self._notes_alignment = None
         self.discriminator = None
 
         self.breakpoint = breakpoint
+        self.x = x
+        self.y = y
         self.size = size
+        self.notes_alignment = notes_alignment
 
     @property
     def breakpoint(self):
@@ -88,6 +100,56 @@ class Breakpoint(object):
         self._breakpoint = breakpoint
 
     @property
+    def x(self):
+        """Gets the x of this Breakpoint.  # noqa: E501
+
+        The target breakpoint x location  # noqa: E501
+
+        :return: The x of this Breakpoint.  # noqa: E501
+        :rtype: int
+        """
+        return self._x
+
+    @x.setter
+    def x(self, x):
+        """Sets the x of this Breakpoint.
+
+        The target breakpoint x location  # noqa: E501
+
+        :param x: The x of this Breakpoint.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and x is None:  # noqa: E501
+            raise ValueError("Invalid value for `x`, must not be `None`")  # noqa: E501
+
+        self._x = x
+
+    @property
+    def y(self):
+        """Gets the y of this Breakpoint.  # noqa: E501
+
+        The target breakpoint y location  # noqa: E501
+
+        :return: The y of this Breakpoint.  # noqa: E501
+        :rtype: int
+        """
+        return self._y
+
+    @y.setter
+    def y(self, y):
+        """Sets the y of this Breakpoint.
+
+        The target breakpoint y location  # noqa: E501
+
+        :param y: The y of this Breakpoint.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and y is None:  # noqa: E501
+            raise ValueError("Invalid value for `y`, must not be `None`")  # noqa: E501
+
+        self._y = y
+
+    @property
     def size(self):
         """Gets the size of this Breakpoint.  # noqa: E501
 
@@ -109,6 +171,29 @@ class Breakpoint(object):
             raise ValueError("Invalid value for `size`, must not be `None`")  # noqa: E501
 
         self._size = size
+
+    @property
+    def notes_alignment(self):
+        """Gets the notes_alignment of this Breakpoint.  # noqa: E501
+
+
+        :return: The notes_alignment of this Breakpoint.  # noqa: E501
+        :rtype: NotesAlignment
+        """
+        return self._notes_alignment
+
+    @notes_alignment.setter
+    def notes_alignment(self, notes_alignment):
+        """Sets the notes_alignment of this Breakpoint.
+
+
+        :param notes_alignment: The notes_alignment of this Breakpoint.  # noqa: E501
+        :type: NotesAlignment
+        """
+        if self.local_vars_configuration.client_side_validation and notes_alignment is None:  # noqa: E501
+            raise ValueError("Invalid value for `notes_alignment`, must not be `None`")  # noqa: E501
+
+        self._notes_alignment = notes_alignment
 
     def to_dict(self):
         """Returns the model properties as a dict"""

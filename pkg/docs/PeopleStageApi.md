@@ -1,6 +1,6 @@
 # apteco_api.PeopleStageApi
 
-All URIs are relative to *https://example.com/OrbitAPI*
+All URIs are relative to *http://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -34,10 +34,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -47,7 +47,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -116,10 +116,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -129,7 +129,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -143,8 +143,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     api_instance = apteco_api.PeopleStageApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Description, Type (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Description, Type. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -162,8 +162,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
  **system_name** | **str**| The name of the FastStats system to act on | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Description, Type | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Description, Type | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Description, Type. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Description, Type. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -204,10 +204,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -217,7 +217,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -286,10 +286,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -299,7 +299,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -368,10 +368,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -381,7 +381,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -396,8 +396,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 element_id = 'element_id_example' # str | The id of the PeopleStage element to view
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Description, Type (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Description, Type. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -416,8 +416,8 @@ Name | Type | Description  | Notes
  **data_view_name** | **str**| The name of the DataView to act on | 
  **system_name** | **str**| The name of the FastStats system to act on | 
  **element_id** | **str**| The id of the PeopleStage element to view | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Description, Type | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Description, Type | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Description, Type. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Description, Type. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -458,10 +458,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -471,7 +471,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -540,10 +540,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -553,7 +553,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -622,10 +622,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -635,7 +635,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -704,10 +704,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -717,7 +717,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -732,8 +732,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 element_id = 'element_id_example' # str | The id of the PeopleStage element to view
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, Description, Type, SuccessfulCampaignsCount, ErroredCampaignsCount, InactiveCampaignsCount, NeedsApprovalCampaignsCount, TotalCommunicationsCount, TotalDeliveriesCount, TotalMessagesCount, TotalCampaignsCount, FirstRan, LastRan (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Description, Type, SuccessfulCampaignsCount, ErroredCampaignsCount, InactiveCampaignsCount, NeedsApprovalCampaignsCount, TotalCommunicationsCount, TotalDeliveriesCount, TotalMessagesCount, TotalCampaignsCount, FirstRan, LastRan (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, Description, Type, SuccessfulCampaignsCount, ErroredCampaignsCount, InactiveCampaignsCount, NeedsApprovalCampaignsCount, TotalCommunicationsCount, TotalDeliveriesCount, TotalMessagesCount, TotalCampaignsCount, FirstRan, LastRan. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Description, Type, SuccessfulCampaignsCount, ErroredCampaignsCount, InactiveCampaignsCount, NeedsApprovalCampaignsCount, TotalCommunicationsCount, TotalDeliveriesCount, TotalMessagesCount, TotalCampaignsCount, FirstRan, LastRan. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -752,8 +752,8 @@ Name | Type | Description  | Notes
  **data_view_name** | **str**| The name of the DataView to act on | 
  **system_name** | **str**| The name of the FastStats system to act on | 
  **element_id** | **str**| The id of the PeopleStage element to view | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, Description, Type, SuccessfulCampaignsCount, ErroredCampaignsCount, InactiveCampaignsCount, NeedsApprovalCampaignsCount, TotalCommunicationsCount, TotalDeliveriesCount, TotalMessagesCount, TotalCampaignsCount, FirstRan, LastRan | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, Description, Type, SuccessfulCampaignsCount, ErroredCampaignsCount, InactiveCampaignsCount, NeedsApprovalCampaignsCount, TotalCommunicationsCount, TotalDeliveriesCount, TotalMessagesCount, TotalCampaignsCount, FirstRan, LastRan | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, Description, Type, SuccessfulCampaignsCount, ErroredCampaignsCount, InactiveCampaignsCount, NeedsApprovalCampaignsCount, TotalCommunicationsCount, TotalDeliveriesCount, TotalMessagesCount, TotalCampaignsCount, FirstRan, LastRan. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, Description, Type, SuccessfulCampaignsCount, ErroredCampaignsCount, InactiveCampaignsCount, NeedsApprovalCampaignsCount, TotalCommunicationsCount, TotalDeliveriesCount, TotalMessagesCount, TotalCampaignsCount, FirstRan, LastRan. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -794,10 +794,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -807,7 +807,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -821,8 +821,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     api_instance = apteco_api.PeopleStageApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Description, Type (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Description, Type. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Description, Type. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -840,8 +840,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
  **system_name** | **str**| The name of the FastStats system to act on | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Description, Type | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Description, Type | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Description, Type. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Description, Type. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -882,10 +882,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -895,7 +895,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -911,8 +911,8 @@ with apteco_api.ApiClient(configuration) as api_client:
 system_name = 'system_name_example' # str | The name of the FastStats system to act on
 element_id = 'element_id_example' # str | The id of the PeopleStage element to view
 timeout_in_seconds = 56 # int | The number of seconds before the request will time out.  Leave unspecified to use the default value given in the PeopleStage service's configuration (optional)
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, CommunicationsCount, DeliveriesCount, MessagesCount, CampaignsCount, FirstRan, LastRan (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, CommunicationsCount, DeliveriesCount, MessagesCount, CampaignsCount, FirstRan, LastRan (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, CommunicationsCount, DeliveriesCount, MessagesCount, CampaignsCount, FirstRan, LastRan. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, CommunicationsCount, DeliveriesCount, MessagesCount, CampaignsCount, FirstRan, LastRan. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 date_range = 'date_range_example' # str | Limit the date range of the returned data using a simple expression language.  The name of the field to use is Date (optional)
@@ -933,8 +933,8 @@ Name | Type | Description  | Notes
  **system_name** | **str**| The name of the FastStats system to act on | 
  **element_id** | **str**| The id of the PeopleStage element to view | 
  **timeout_in_seconds** | **int**| The number of seconds before the request will time out.  Leave unspecified to use the default value given in the PeopleStage service&#39;s configuration | [optional] 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, CommunicationsCount, DeliveriesCount, MessagesCount, CampaignsCount, FirstRan, LastRan | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, CommunicationsCount, DeliveriesCount, MessagesCount, CampaignsCount, FirstRan, LastRan | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, CommunicationsCount, DeliveriesCount, MessagesCount, CampaignsCount, FirstRan, LastRan. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, CommunicationsCount, DeliveriesCount, MessagesCount, CampaignsCount, FirstRan, LastRan. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
  **date_range** | **str**| Limit the date range of the returned data using a simple expression language.  The name of the field to use is Date | [optional] 
@@ -976,10 +976,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -989,7 +989,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1062,10 +1062,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1075,7 +1075,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1142,10 +1142,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1155,7 +1155,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1168,8 +1168,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = apteco_api.PeopleStageApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are SystemName, ProgrammeDescription (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are SystemName, ProgrammeDescription (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are SystemName, ProgrammeDescription. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are SystemName, ProgrammeDescription. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -1186,8 +1186,8 @@ count = 56 # int | The maximum number of items to show from the (potentially fil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are SystemName, ProgrammeDescription | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are SystemName, ProgrammeDescription | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are SystemName, ProgrammeDescription. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are SystemName, ProgrammeDescription. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -1208,6 +1208,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The list of systems |  -  |
+**202** | The list of systems is not ready - should think about retrying |  -  |
 **400** | A bad request |  -  |
 **403** | The given session is not allowed to see the list of systems |  -  |
 **404** | The DataView couldn&#39;t be found |  -  |

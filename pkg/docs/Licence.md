@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **advanced_query** | **bool** | Whether this user is allowed to access \&quot;Advanced Query\&quot; functionality | 
 **cube** | **bool** | Whether this user is allowed to access \&quot;Cube\&quot; functionality | 
 **profile** | **bool** | Whether this user is allowed to access \&quot;Profile\&quot; functionality. | 
+**dashboards** | **bool** | Whether this user is allowed to access \&quot;Dashboards\&quot; functionality. | 
+**dashboards_pareto** | **bool** | Whether this user is allowed to access \&quot;Dashboards Pareto\&quot; functionality. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

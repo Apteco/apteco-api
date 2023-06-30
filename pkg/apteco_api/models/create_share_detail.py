@@ -37,8 +37,11 @@ class CreateShareDetail(object):
         'shareable_type': 'str',
         'shareable_id': 'int',
         'email_addresses_to_add': 'list[str]',
-        'notify_added_users': 'bool',
-        'added_user_notification_message': 'str',
+        'user_ids_to_add': 'list[int]',
+        'group_ids_to_add': 'list[int]',
+        'share_to_all': 'bool',
+        'notify_added_recipients': 'bool',
+        'added_recipient_notification_message': 'str',
         'notes': 'str',
         'view_shareable_url': 'str'
     }
@@ -47,13 +50,16 @@ class CreateShareDetail(object):
         'shareable_type': 'shareableType',
         'shareable_id': 'shareableId',
         'email_addresses_to_add': 'emailAddressesToAdd',
-        'notify_added_users': 'notifyAddedUsers',
-        'added_user_notification_message': 'addedUserNotificationMessage',
+        'user_ids_to_add': 'userIdsToAdd',
+        'group_ids_to_add': 'groupIdsToAdd',
+        'share_to_all': 'shareToAll',
+        'notify_added_recipients': 'notifyAddedRecipients',
+        'added_recipient_notification_message': 'addedRecipientNotificationMessage',
         'notes': 'notes',
         'view_shareable_url': 'viewShareableUrl'
     }
 
-    def __init__(self, shareable_type=None, shareable_id=None, email_addresses_to_add=None, notify_added_users=None, added_user_notification_message=None, notes=None, view_shareable_url=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, shareable_type=None, shareable_id=None, email_addresses_to_add=None, user_ids_to_add=None, group_ids_to_add=None, share_to_all=None, notify_added_recipients=None, added_recipient_notification_message=None, notes=None, view_shareable_url=None, local_vars_configuration=None):  # noqa: E501
         """CreateShareDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -62,8 +68,11 @@ class CreateShareDetail(object):
         self._shareable_type = None
         self._shareable_id = None
         self._email_addresses_to_add = None
-        self._notify_added_users = None
-        self._added_user_notification_message = None
+        self._user_ids_to_add = None
+        self._group_ids_to_add = None
+        self._share_to_all = None
+        self._notify_added_recipients = None
+        self._added_recipient_notification_message = None
         self._notes = None
         self._view_shareable_url = None
         self.discriminator = None
@@ -71,9 +80,13 @@ class CreateShareDetail(object):
         self.shareable_type = shareable_type
         self.shareable_id = shareable_id
         self.email_addresses_to_add = email_addresses_to_add
-        self.notify_added_users = notify_added_users
-        if added_user_notification_message is not None:
-            self.added_user_notification_message = added_user_notification_message
+        self.user_ids_to_add = user_ids_to_add
+        self.group_ids_to_add = group_ids_to_add
+        if share_to_all is not None:
+            self.share_to_all = share_to_all
+        self.notify_added_recipients = notify_added_recipients
+        if added_recipient_notification_message is not None:
+            self.added_recipient_notification_message = added_recipient_notification_message
         if notes is not None:
             self.notes = notes
         if view_shareable_url is not None:
@@ -101,7 +114,7 @@ class CreateShareDetail(object):
         """
         if self.local_vars_configuration.client_side_validation and shareable_type is None:  # noqa: E501
             raise ValueError("Invalid value for `shareable_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["Collection", "Audience"]  # noqa: E501
+        allowed_values = ["Collection", "Audience", "Dashboard", "AudienceComposition"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and shareable_type not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `shareable_type` ({0}), must be one of {1}"  # noqa: E501
@@ -161,52 +174,125 @@ class CreateShareDetail(object):
         self._email_addresses_to_add = email_addresses_to_add
 
     @property
-    def notify_added_users(self):
-        """Gets the notify_added_users of this CreateShareDetail.  # noqa: E501
+    def user_ids_to_add(self):
+        """Gets the user_ids_to_add of this CreateShareDetail.  # noqa: E501
 
-        Whether to notify the users added in this share that the shareable item has now been shared with them  # noqa: E501
+        The list of user id's to share this shareable item with  # noqa: E501
 
-        :return: The notify_added_users of this CreateShareDetail.  # noqa: E501
-        :rtype: bool
+        :return: The user_ids_to_add of this CreateShareDetail.  # noqa: E501
+        :rtype: list[int]
         """
-        return self._notify_added_users
+        return self._user_ids_to_add
 
-    @notify_added_users.setter
-    def notify_added_users(self, notify_added_users):
-        """Sets the notify_added_users of this CreateShareDetail.
+    @user_ids_to_add.setter
+    def user_ids_to_add(self, user_ids_to_add):
+        """Sets the user_ids_to_add of this CreateShareDetail.
 
-        Whether to notify the users added in this share that the shareable item has now been shared with them  # noqa: E501
+        The list of user id's to share this shareable item with  # noqa: E501
 
-        :param notify_added_users: The notify_added_users of this CreateShareDetail.  # noqa: E501
-        :type: bool
+        :param user_ids_to_add: The user_ids_to_add of this CreateShareDetail.  # noqa: E501
+        :type: list[int]
         """
-        if self.local_vars_configuration.client_side_validation and notify_added_users is None:  # noqa: E501
-            raise ValueError("Invalid value for `notify_added_users`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and user_ids_to_add is None:  # noqa: E501
+            raise ValueError("Invalid value for `user_ids_to_add`, must not be `None`")  # noqa: E501
 
-        self._notify_added_users = notify_added_users
+        self._user_ids_to_add = user_ids_to_add
 
     @property
-    def added_user_notification_message(self):
-        """Gets the added_user_notification_message of this CreateShareDetail.  # noqa: E501
+    def group_ids_to_add(self):
+        """Gets the group_ids_to_add of this CreateShareDetail.  # noqa: E501
 
-        If added users are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
+        The list of group id's to share this shareable item with  # noqa: E501
 
-        :return: The added_user_notification_message of this CreateShareDetail.  # noqa: E501
+        :return: The group_ids_to_add of this CreateShareDetail.  # noqa: E501
+        :rtype: list[int]
+        """
+        return self._group_ids_to_add
+
+    @group_ids_to_add.setter
+    def group_ids_to_add(self, group_ids_to_add):
+        """Sets the group_ids_to_add of this CreateShareDetail.
+
+        The list of group id's to share this shareable item with  # noqa: E501
+
+        :param group_ids_to_add: The group_ids_to_add of this CreateShareDetail.  # noqa: E501
+        :type: list[int]
+        """
+        if self.local_vars_configuration.client_side_validation and group_ids_to_add is None:  # noqa: E501
+            raise ValueError("Invalid value for `group_ids_to_add`, must not be `None`")  # noqa: E501
+
+        self._group_ids_to_add = group_ids_to_add
+
+    @property
+    def share_to_all(self):
+        """Gets the share_to_all of this CreateShareDetail.  # noqa: E501
+
+        Whether to share to all users  # noqa: E501
+
+        :return: The share_to_all of this CreateShareDetail.  # noqa: E501
+        :rtype: bool
+        """
+        return self._share_to_all
+
+    @share_to_all.setter
+    def share_to_all(self, share_to_all):
+        """Sets the share_to_all of this CreateShareDetail.
+
+        Whether to share to all users  # noqa: E501
+
+        :param share_to_all: The share_to_all of this CreateShareDetail.  # noqa: E501
+        :type: bool
+        """
+
+        self._share_to_all = share_to_all
+
+    @property
+    def notify_added_recipients(self):
+        """Gets the notify_added_recipients of this CreateShareDetail.  # noqa: E501
+
+        Whether to notify the users added in this share that the shareable item has now been shared with them  # noqa: E501
+
+        :return: The notify_added_recipients of this CreateShareDetail.  # noqa: E501
+        :rtype: bool
+        """
+        return self._notify_added_recipients
+
+    @notify_added_recipients.setter
+    def notify_added_recipients(self, notify_added_recipients):
+        """Sets the notify_added_recipients of this CreateShareDetail.
+
+        Whether to notify the users added in this share that the shareable item has now been shared with them  # noqa: E501
+
+        :param notify_added_recipients: The notify_added_recipients of this CreateShareDetail.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and notify_added_recipients is None:  # noqa: E501
+            raise ValueError("Invalid value for `notify_added_recipients`, must not be `None`")  # noqa: E501
+
+        self._notify_added_recipients = notify_added_recipients
+
+    @property
+    def added_recipient_notification_message(self):
+        """Gets the added_recipient_notification_message of this CreateShareDetail.  # noqa: E501
+
+        If added recipients are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
+
+        :return: The added_recipient_notification_message of this CreateShareDetail.  # noqa: E501
         :rtype: str
         """
-        return self._added_user_notification_message
+        return self._added_recipient_notification_message
 
-    @added_user_notification_message.setter
-    def added_user_notification_message(self, added_user_notification_message):
-        """Sets the added_user_notification_message of this CreateShareDetail.
+    @added_recipient_notification_message.setter
+    def added_recipient_notification_message(self, added_recipient_notification_message):
+        """Sets the added_recipient_notification_message of this CreateShareDetail.
 
-        If added users are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
+        If added recipients are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
 
-        :param added_user_notification_message: The added_user_notification_message of this CreateShareDetail.  # noqa: E501
+        :param added_recipient_notification_message: The added_recipient_notification_message of this CreateShareDetail.  # noqa: E501
         :type: str
         """
 
-        self._added_user_notification_message = added_user_notification_message
+        self._added_recipient_notification_message = added_recipient_notification_message
 
     @property
     def notes(self):

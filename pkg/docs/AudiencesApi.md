@@ -1,6 +1,6 @@
 # apteco_api.AudiencesApi
 
-All URIs are relative to *https://example.com/OrbitAPI*
+All URIs are relative to *http://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**audiences_cancel_check_audience_job**](AudiencesApi.md#audiences_cancel_check_audience_job) | **DELETE** /{dataViewName}/Audiences/{audienceId}/CheckJobs/{jobId} | Cancel a running check job
 [**audiences_cancel_export_audience_job**](AudiencesApi.md#audiences_cancel_export_audience_job) | **DELETE** /{dataViewName}/Audiences/{audienceId}/ExportJobs/{jobId} | Cancel a running export job
 [**audiences_check_audience_latest_update_sync**](AudiencesApi.md#audiences_check_audience_latest_update_sync) | **POST** /{dataViewName}/Audiences/{audienceId}/CheckSync | Calculate check statistics against the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to identify the data to analyse and the specified dimensions will be used to perform the analysis.
+[**audiences_copy_audience**](AudiencesApi.md#audiences_copy_audience) | **POST** /{dataViewName}/Audiences/{audienceId}/Copy | Copies an existing audience for the logged in user.
 [**audiences_create_audience**](AudiencesApi.md#audiences_create_audience) | **POST** /{dataViewName}/Audiences | Creates a new audience from the given details for the logged in user.
 [**audiences_create_audience_hit_for_audience**](AudiencesApi.md#audiences_create_audience_hit_for_audience) | **POST** /{dataViewName}/Audiences/{audienceId}/Hits | Register a hit (view) for the given audience
 [**audiences_create_audience_update**](AudiencesApi.md#audiences_create_audience_update) | **POST** /{dataViewName}/Audiences/{audienceId}/Updates | Updates the details of a particular audience.  If you don&#39;t have an id for the  audience then POST to the /Audiences URL to create a new audience.
@@ -50,10 +51,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -63,7 +64,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -134,10 +135,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -147,7 +148,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -218,10 +219,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -231,7 +232,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -299,10 +300,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -312,7 +313,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -380,10 +381,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -393,7 +394,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -461,10 +462,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -474,7 +475,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -542,10 +543,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -555,7 +556,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -612,6 +613,93 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **audiences_copy_audience**
+> AudienceDetail audiences_copy_audience(data_view_name, audience_id, include_queries=include_queries, include_brief=include_brief, audience_detail=audience_detail)
+
+Copies an existing audience for the logged in user.
+
+Requires licence flags [AudienceSelection]
+
+### Example
+
+* Api Key Authentication (faststats_auth):
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "http://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: faststats_auth
+configuration = apteco_api.Configuration(
+    host = "http://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AudiencesApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+audience_id = 56 # int | The id of the audience to copy
+include_queries = True # bool | If specified, whether to include the query definitions for the returned audience or not.  Defaults to true - to return query definitions (optional)
+include_brief = True # bool | If specified, whether to include the brief for this audience or not.  Defaults to true - to return the brief (optional)
+audience_detail = apteco_api.CopyAudienceDetail() # CopyAudienceDetail | The details used to create the new audience (optional)
+
+    try:
+        # Copies an existing audience for the logged in user.
+        api_response = api_instance.audiences_copy_audience(data_view_name, audience_id, include_queries=include_queries, include_brief=include_brief, audience_detail=audience_detail)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AudiencesApi->audiences_copy_audience: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data_view_name** | **str**| The name of the DataView to act on | 
+ **audience_id** | **int**| The id of the audience to copy | 
+ **include_queries** | **bool**| If specified, whether to include the query definitions for the returned audience or not.  Defaults to true - to return query definitions | [optional] 
+ **include_brief** | **bool**| If specified, whether to include the brief for this audience or not.  Defaults to true - to return the brief | [optional] 
+ **audience_detail** | [**CopyAudienceDetail**](CopyAudienceDetail.md)| The details used to create the new audience | [optional] 
+
+### Return type
+
+[**AudienceDetail**](AudienceDetail.md)
+
+### Authorization
+
+[faststats_auth](../README.md#faststats_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json, application/xml, text/xml, application/*+xml
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | The copy of the specified audience was created successfully |  -  |
+**400** | A bad request |  -  |
+**404** | The DataView couldn&#39;t be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **audiences_create_audience**
 > AudienceDetail audiences_create_audience(data_view_name, audience_detail=audience_detail)
 
@@ -628,10 +716,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -641,7 +729,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -654,7 +742,7 @@ with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = apteco_api.AudiencesApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
-audience_detail = apteco_api.CreateAudienceDetail() # CreateAudienceDetail | The details for the audience to create.  If you want              to update a specific audience then PUT to the /Audiences/{audienceId} URL (optional)
+audience_detail = apteco_api.CreateAudienceDetail() # CreateAudienceDetail | The details for the audience to create.  If you want              to update a specific audience then POST to the /Audiences/{audienceId} URL (optional)
 
     try:
         # Creates a new audience from the given details for the logged in user.
@@ -669,7 +757,7 @@ audience_detail = apteco_api.CreateAudienceDetail() # CreateAudienceDetail | The
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
- **audience_detail** | [**CreateAudienceDetail**](CreateAudienceDetail.md)| The details for the audience to create.  If you want              to update a specific audience then PUT to the /Audiences/{audienceId} URL | [optional] 
+ **audience_detail** | [**CreateAudienceDetail**](CreateAudienceDetail.md)| The details for the audience to create.  If you want              to update a specific audience then POST to the /Audiences/{audienceId} URL | [optional] 
 
 ### Return type
 
@@ -707,10 +795,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -720,7 +808,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -791,10 +879,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -804,7 +892,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -873,10 +961,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -886,7 +974,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -955,10 +1043,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -968,7 +1056,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1024,7 +1112,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **audiences_create_check_audience_job_for_latest_update**
-> AudienceCheckJobDetail audiences_create_check_audience_job_for_latest_update(data_view_name, audience_id, check_audience_details=check_audience_details)
+> list[AudienceCheckJobDetail] audiences_create_check_audience_job_for_latest_update(data_view_name, audience_id, check_audience_details=check_audience_details)
 
 Create a new job to calculate check statistics against the FastStats system for the latest version of this audience.  The different queries associated with the latest  version of this audience will be combined to identify the data to analyse and the specified dimensions will be used to perform the analysis.
 
@@ -1037,10 +1125,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1050,7 +1138,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1084,7 +1172,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AudienceCheckJobDetail**](AudienceCheckJobDetail.md)
+[**list[AudienceCheckJobDetail]**](AudienceCheckJobDetail.md)
 
 ### Authorization
 
@@ -1098,6 +1186,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | Success |  -  |
 **201** | The check job was successfully created |  -  |
 **400** | A bad request |  -  |
 **403** | The given session is not allowed to check this audience. |  -  |
@@ -1121,10 +1210,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1134,7 +1223,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1205,10 +1294,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1218,7 +1307,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1286,10 +1375,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1299,7 +1388,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1370,10 +1459,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1383,7 +1472,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1454,10 +1543,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1467,7 +1556,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1536,10 +1625,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1549,7 +1638,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1563,8 +1652,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     api_instance = apteco_api.AudiencesApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 audience_id = 56 # int | The id of the audience to get the hit information for
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -1582,8 +1671,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
  **audience_id** | **int**| The id of the audience to get the hit information for | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Username, Timestamp, UserAgentDetails | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Username, Timestamp, UserAgentDetails. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -1624,10 +1713,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1637,7 +1726,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1704,10 +1793,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1717,7 +1806,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1786,10 +1875,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1799,7 +1888,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1813,8 +1902,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     api_instance = apteco_api.AudiencesApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 audience_id = 56 # int | The id of the audience to get the audience of results for
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -1832,8 +1921,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
  **audience_id** | **int**| The id of the audience to get the audience of results for | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Timestamp, Username, AudienceUpdateId, Description, OwnerUsername, IsDeleted, ResolveTableName, BriefText. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -1874,10 +1963,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1887,7 +1976,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1960,10 +2049,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1973,7 +2062,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -1987,8 +2076,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     api_instance = apteco_api.AudiencesApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 audience_id = 56 # int | The id of the audience to get the updates for
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -2006,8 +2095,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
  **audience_id** | **int**| The id of the audience to get the updates for | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Timestamp, Username, Title, Description, OwnerUsername, IsDeleted, ResolveTableName. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -2050,10 +2139,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2063,7 +2152,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -2077,8 +2166,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     api_instance = apteco_api.AudiencesApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 include_deleted = 'include_deleted_example' # str | If specified, whether to include deleted audience, not deleted audience or both.  Defaults to not deleted only (optional)
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -2096,8 +2185,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
  **include_deleted** | **str**| If specified, whether to include deleted audience, not deleted audience or both.  Defaults to not deleted only | [optional] 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, SystemName, Title, Description, OwnerUsername, CreatedOn, DeletedOn, ResolveTableName, LastUpdatedUsername, LastUpdatedOn. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -2138,10 +2227,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2151,7 +2240,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -2222,10 +2311,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2235,7 +2324,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -2304,10 +2393,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2317,7 +2406,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -2386,10 +2475,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2399,7 +2488,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -2470,10 +2559,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2483,7 +2572,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }

@@ -1,10 +1,13 @@
 # apteco_api.AboutApi
 
-All URIs are relative to *https://example.com/OrbitAPI*
+All URIs are relative to *http://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**about_example_experimental_resource**](AboutApi.md#about_example_experimental_resource) | **GET** /About/ExampleExperimentalResource | EXPERIMENTAL: Returns a sample string if experimental endpoints are enabled
+[**about_example_subject_to_change_or_removal_resource**](AboutApi.md#about_example_subject_to_change_or_removal_resource) | **GET** /About/ExampleSubjectToChangeOrRemovalResource | SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns a sample string
+[**about_example_under_development_resource**](AboutApi.md#about_example_under_development_resource) | **GET** /About/ExampleUnderDevelopmentResource | UNDER DEVELOPMENT: Returns a sample string if under development endpoints are enabled
+[**about_force_internal_server_error**](AboutApi.md#about_force_internal_server_error) | **POST** /About/ForceInternalServerError | Requires OrbitAdmin: Forces an internal server error to be returned to the client
 [**about_force_process_garbage_collection**](AboutApi.md#about_force_process_garbage_collection) | **POST** /About/Process/ForceGarbageCollection | Requires OrbitAdmin: Forces a garbage collection in the API&#39;s process and then returns details about the API&#39;s .Net process
 [**about_get_data_view**](AboutApi.md#about_get_data_view) | **GET** /About/DataViews/{dataViewName} | Get details for a particular DataView.
 [**about_get_data_views**](AboutApi.md#about_get_data_views) | **GET** /About/DataViews | Get the list of DataViews that are available.
@@ -33,10 +36,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 
@@ -77,6 +80,197 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **about_example_subject_to_change_or_removal_resource**
+> Message about_example_subject_to_change_or_removal_resource()
+
+SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns a sample string
+
+SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "http://example.com/OrbitAPI"
+)
+
+
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    
+    try:
+        # SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns a sample string
+        api_response = api_instance.about_example_subject_to_change_or_removal_resource()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_example_subject_to_change_or_removal_resource: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Message**](Message.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A sample message |  -  |
+**500** | An error message |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **about_example_under_development_resource**
+> Message about_example_under_development_resource()
+
+UNDER DEVELOPMENT: Returns a sample string if under development endpoints are enabled
+
+UNDER DEVELOPMENT
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "http://example.com/OrbitAPI"
+)
+
+
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    
+    try:
+        # UNDER DEVELOPMENT: Returns a sample string if under development endpoints are enabled
+        api_response = api_instance.about_example_under_development_resource()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_example_under_development_resource: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Message**](Message.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A sample message |  -  |
+**500** | An error message |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **about_force_internal_server_error**
+> about_force_internal_server_error()
+
+Requires OrbitAdmin: Forces an internal server error to be returned to the client
+
+This endpoint is only available for users with the OrbitAdmin role
+
+### Example
+
+* Api Key Authentication (faststats_auth):
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "http://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: faststats_auth
+configuration = apteco_api.Configuration(
+    host = "http://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.AboutApi(api_client)
+    
+    try:
+        # Requires OrbitAdmin: Forces an internal server error to be returned to the client
+        api_instance.about_force_internal_server_error()
+    except ApiException as e:
+        print("Exception when calling AboutApi->about_force_internal_server_error: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[faststats_auth](../README.md#faststats_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**500** | A dummy error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **about_force_process_garbage_collection**
 > ProcessDetails about_force_process_garbage_collection()
 
@@ -93,10 +287,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -106,7 +300,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -165,10 +359,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -178,7 +372,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -242,10 +436,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 
@@ -253,8 +447,8 @@ configuration = apteco_api.Configuration(
 with apteco_api.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = apteco_api.AboutApi(api_client)
-    filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name (optional)
+    filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -270,8 +464,8 @@ count = 56 # int | The maximum number of items to show from the (potentially fil
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Name | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Name | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Name. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Name. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -309,10 +503,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 
@@ -321,8 +515,8 @@ with apteco_api.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = apteco_api.AboutApi(api_client)
     domain = 'domain_example' # str | The email domain to list DataViews for (i.e. \"example.com\")
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -339,8 +533,8 @@ count = 56 # int | The maximum number of items to show from the (potentially fil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **domain** | **str**| The email domain to list DataViews for (i.e. \&quot;example.com\&quot;) | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Name | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Name | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Name. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Name. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -378,10 +572,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 
@@ -390,8 +584,8 @@ with apteco_api.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = apteco_api.AboutApi(api_client)
     system_name = 'system_name_example' # str | The name of the system to list DataViews for (i.e. \"holidays\")
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -408,8 +602,8 @@ count = 56 # int | The maximum number of items to show from the (potentially fil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_name** | **str**| The name of the system to list DataViews for (i.e. \&quot;holidays\&quot;) | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Name | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Name | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Name. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Name. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -447,10 +641,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 
@@ -460,8 +654,8 @@ with apteco_api.ApiClient() as api_client:
     api_instance = apteco_api.AboutApi(api_client)
     exclude_endpoints_with_no_licence_requirements = True # bool | If specified, don't return endpoints in the output that have no licence requirements.  Defaults to false - returns all endpoints (optional)
 exclude_endpoints_with_no_role_requirements = True # bool | If specified, don't return endpoints in the output that have no role requirements.  Defaults to false - returns all endpoints (optional)
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name, GroupName, Method, UrlTemplate (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, GroupName, Method, UrlTemplate (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Name, GroupName, Method, UrlTemplate. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, GroupName, Method, UrlTemplate. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -479,8 +673,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **exclude_endpoints_with_no_licence_requirements** | **bool**| If specified, don&#39;t return endpoints in the output that have no licence requirements.  Defaults to false - returns all endpoints | [optional] 
  **exclude_endpoints_with_no_role_requirements** | **bool**| If specified, don&#39;t return endpoints in the output that have no role requirements.  Defaults to false - returns all endpoints | [optional] 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Name, GroupName, Method, UrlTemplate | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Name, GroupName, Method, UrlTemplate | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Name, GroupName, Method, UrlTemplate. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Name, GroupName, Method, UrlTemplate. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -517,10 +711,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 
@@ -573,10 +767,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 
@@ -636,10 +830,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 
@@ -698,10 +892,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -711,7 +905,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -769,10 +963,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 

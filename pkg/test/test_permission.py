@@ -37,15 +37,23 @@ class TestPermission(unittest.TestCase):
         # model = apteco_api.models.permission.Permission()  # noqa: E501
         if include_optional :
             return Permission(
-                _resource_path = '0', 
-                file_permission = apteco_api.models.file_permission.FilePermission(
-                    permission_type = 'None', ), 
-                orbit_feature_permission = apteco_api.models.orbit_feature_permission.OrbitFeaturePermission(
-                    permission_type = 'None', )
+                id = 56, 
+                permission = None, 
+                permission_type = 'Unknown', 
+                resource = '0', 
+                resource_type = 'Unknown', 
+                grant = True, 
+                deny = True, 
+                inherit = True
             )
         else :
             return Permission(
-                _resource_path = '0',
+                id = 56,
+                permission_type = 'Unknown',
+                resource_type = 'Unknown',
+                grant = True,
+                deny = True,
+                inherit = True,
         )
 
     def testPermission(self):

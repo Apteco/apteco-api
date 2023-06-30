@@ -37,25 +37,31 @@ class DashboardContentItemDetail(object):
         'drilldown_level': 'int',
         'description': 'str',
         'chart_type': 'str',
-        'resolve_table_name': 'str',
-        'dimensions': 'list[Dimension]',
-        'measures': 'list[Measure]',
+        'data_specification': 'DashboardItemDataSpecification',
+        'allow_category_display': 'bool',
+        'category_display': 'DashboardItemCategoryDisplay',
         'omit_zeros': 'bool',
-        'omit_unclassified': 'bool'
+        'omit_unclassified': 'bool',
+        'sort_order': 'str',
+        'show_underlying_data': 'bool',
+        'notes': 'str'
     }
 
     attribute_map = {
         'drilldown_level': 'drilldownLevel',
         'description': 'description',
         'chart_type': 'chartType',
-        'resolve_table_name': 'resolveTableName',
-        'dimensions': 'dimensions',
-        'measures': 'measures',
+        'data_specification': 'dataSpecification',
+        'allow_category_display': 'allowCategoryDisplay',
+        'category_display': 'categoryDisplay',
         'omit_zeros': 'omitZeros',
-        'omit_unclassified': 'omitUnclassified'
+        'omit_unclassified': 'omitUnclassified',
+        'sort_order': 'sortOrder',
+        'show_underlying_data': 'showUnderlyingData',
+        'notes': 'notes'
     }
 
-    def __init__(self, drilldown_level=None, description=None, chart_type=None, resolve_table_name=None, dimensions=None, measures=None, omit_zeros=None, omit_unclassified=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, drilldown_level=None, description=None, chart_type=None, data_specification=None, allow_category_display=None, category_display=None, omit_zeros=None, omit_unclassified=None, sort_order=None, show_underlying_data=None, notes=None, local_vars_configuration=None):  # noqa: E501
         """DashboardContentItemDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -64,26 +70,35 @@ class DashboardContentItemDetail(object):
         self._drilldown_level = None
         self._description = None
         self._chart_type = None
-        self._resolve_table_name = None
-        self._dimensions = None
-        self._measures = None
+        self._data_specification = None
+        self._allow_category_display = None
+        self._category_display = None
         self._omit_zeros = None
         self._omit_unclassified = None
+        self._sort_order = None
+        self._show_underlying_data = None
+        self._notes = None
         self.discriminator = None
 
         self.drilldown_level = drilldown_level
         if description is not None:
             self.description = description
         self.chart_type = chart_type
-        self.resolve_table_name = resolve_table_name
-        if dimensions is not None:
-            self.dimensions = dimensions
-        if measures is not None:
-            self.measures = measures
+        if data_specification is not None:
+            self.data_specification = data_specification
+        if allow_category_display is not None:
+            self.allow_category_display = allow_category_display
+        if category_display is not None:
+            self.category_display = category_display
         if omit_zeros is not None:
             self.omit_zeros = omit_zeros
         if omit_unclassified is not None:
             self.omit_unclassified = omit_unclassified
+        self.sort_order = sort_order
+        if show_underlying_data is not None:
+            self.show_underlying_data = show_underlying_data
+        if notes is not None:
+            self.notes = notes
 
     @property
     def drilldown_level(self):
@@ -155,7 +170,7 @@ class DashboardContentItemDetail(object):
         """
         if self.local_vars_configuration.client_side_validation and chart_type is None:  # noqa: E501
             raise ValueError("Invalid value for `chart_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["Bar", "Column", "Pie", "Donut", "Line", "UKPostArea", "NLProvinces", "NLMunicipalities", "DE2DigitPostCode", "CH2DigitPostCode", "AU2DigitPostCode", "USStates", "NumberCard"]  # noqa: E501
+        allowed_values = ["Bar", "Column", "Pie", "Donut", "Line", "UKPostArea", "NLProvinces", "NLMunicipalities", "DE2DigitPostCode", "CH2DigitPostCode", "AU2DigitPostCode", "USStates", "NumberCard", "Text", "BandedPareto", "CategoricalPareto", "Area", "ClusteredColumn", "StackedColumn", "Stacked100Column", "RadarLine", "RadarColumn", "RadarArea", "Funnel"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and chart_type not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `chart_type` ({0}), must be one of {1}"  # noqa: E501
@@ -165,75 +180,69 @@ class DashboardContentItemDetail(object):
         self._chart_type = chart_type
 
     @property
-    def resolve_table_name(self):
-        """Gets the resolve_table_name of this DashboardContentItemDetail.  # noqa: E501
+    def data_specification(self):
+        """Gets the data_specification of this DashboardContentItemDetail.  # noqa: E501
 
-        The table name that the data will resolve to  # noqa: E501
 
-        :return: The resolve_table_name of this DashboardContentItemDetail.  # noqa: E501
-        :rtype: str
+        :return: The data_specification of this DashboardContentItemDetail.  # noqa: E501
+        :rtype: DashboardItemDataSpecification
         """
-        return self._resolve_table_name
+        return self._data_specification
 
-    @resolve_table_name.setter
-    def resolve_table_name(self, resolve_table_name):
-        """Sets the resolve_table_name of this DashboardContentItemDetail.
+    @data_specification.setter
+    def data_specification(self, data_specification):
+        """Sets the data_specification of this DashboardContentItemDetail.
 
-        The table name that the data will resolve to  # noqa: E501
 
-        :param resolve_table_name: The resolve_table_name of this DashboardContentItemDetail.  # noqa: E501
-        :type: str
+        :param data_specification: The data_specification of this DashboardContentItemDetail.  # noqa: E501
+        :type: DashboardItemDataSpecification
         """
-        if self.local_vars_configuration.client_side_validation and resolve_table_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `resolve_table_name`, must not be `None`")  # noqa: E501
 
-        self._resolve_table_name = resolve_table_name
+        self._data_specification = data_specification
 
     @property
-    def dimensions(self):
-        """Gets the dimensions of this DashboardContentItemDetail.  # noqa: E501
+    def allow_category_display(self):
+        """Gets the allow_category_display of this DashboardContentItemDetail.  # noqa: E501
 
-        The dimensions of the dashboard item chart  # noqa: E501
+        Whether to allow category display on the dashboard item  # noqa: E501
 
-        :return: The dimensions of this DashboardContentItemDetail.  # noqa: E501
-        :rtype: list[Dimension]
+        :return: The allow_category_display of this DashboardContentItemDetail.  # noqa: E501
+        :rtype: bool
         """
-        return self._dimensions
+        return self._allow_category_display
 
-    @dimensions.setter
-    def dimensions(self, dimensions):
-        """Sets the dimensions of this DashboardContentItemDetail.
+    @allow_category_display.setter
+    def allow_category_display(self, allow_category_display):
+        """Sets the allow_category_display of this DashboardContentItemDetail.
 
-        The dimensions of the dashboard item chart  # noqa: E501
+        Whether to allow category display on the dashboard item  # noqa: E501
 
-        :param dimensions: The dimensions of this DashboardContentItemDetail.  # noqa: E501
-        :type: list[Dimension]
+        :param allow_category_display: The allow_category_display of this DashboardContentItemDetail.  # noqa: E501
+        :type: bool
         """
 
-        self._dimensions = dimensions
+        self._allow_category_display = allow_category_display
 
     @property
-    def measures(self):
-        """Gets the measures of this DashboardContentItemDetail.  # noqa: E501
+    def category_display(self):
+        """Gets the category_display of this DashboardContentItemDetail.  # noqa: E501
 
-        The measures of the dashboard item chart  # noqa: E501
 
-        :return: The measures of this DashboardContentItemDetail.  # noqa: E501
-        :rtype: list[Measure]
+        :return: The category_display of this DashboardContentItemDetail.  # noqa: E501
+        :rtype: DashboardItemCategoryDisplay
         """
-        return self._measures
+        return self._category_display
 
-    @measures.setter
-    def measures(self, measures):
-        """Sets the measures of this DashboardContentItemDetail.
+    @category_display.setter
+    def category_display(self, category_display):
+        """Sets the category_display of this DashboardContentItemDetail.
 
-        The measures of the dashboard item chart  # noqa: E501
 
-        :param measures: The measures of this DashboardContentItemDetail.  # noqa: E501
-        :type: list[Measure]
+        :param category_display: The category_display of this DashboardContentItemDetail.  # noqa: E501
+        :type: DashboardItemCategoryDisplay
         """
 
-        self._measures = measures
+        self._category_display = category_display
 
     @property
     def omit_zeros(self):
@@ -280,6 +289,83 @@ class DashboardContentItemDetail(object):
         """
 
         self._omit_unclassified = omit_unclassified
+
+    @property
+    def sort_order(self):
+        """Gets the sort_order of this DashboardContentItemDetail.  # noqa: E501
+
+        Whether the chart should be sorted in it's natural order, by ascending or descending values  # noqa: E501
+
+        :return: The sort_order of this DashboardContentItemDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._sort_order
+
+    @sort_order.setter
+    def sort_order(self, sort_order):
+        """Sets the sort_order of this DashboardContentItemDetail.
+
+        Whether the chart should be sorted in it's natural order, by ascending or descending values  # noqa: E501
+
+        :param sort_order: The sort_order of this DashboardContentItemDetail.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and sort_order is None:  # noqa: E501
+            raise ValueError("Invalid value for `sort_order`, must not be `None`")  # noqa: E501
+        allowed_values = ["Natural", "AscendingByValue", "DescendingByValue"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and sort_order not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `sort_order` ({0}), must be one of {1}"  # noqa: E501
+                .format(sort_order, allowed_values)
+            )
+
+        self._sort_order = sort_order
+
+    @property
+    def show_underlying_data(self):
+        """Gets the show_underlying_data of this DashboardContentItemDetail.  # noqa: E501
+
+        Whether to show the underlying data of the dashboard item  # noqa: E501
+
+        :return: The show_underlying_data of this DashboardContentItemDetail.  # noqa: E501
+        :rtype: bool
+        """
+        return self._show_underlying_data
+
+    @show_underlying_data.setter
+    def show_underlying_data(self, show_underlying_data):
+        """Sets the show_underlying_data of this DashboardContentItemDetail.
+
+        Whether to show the underlying data of the dashboard item  # noqa: E501
+
+        :param show_underlying_data: The show_underlying_data of this DashboardContentItemDetail.  # noqa: E501
+        :type: bool
+        """
+
+        self._show_underlying_data = show_underlying_data
+
+    @property
+    def notes(self):
+        """Gets the notes of this DashboardContentItemDetail.  # noqa: E501
+
+        The notes for the dashboard item  # noqa: E501
+
+        :return: The notes of this DashboardContentItemDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._notes
+
+    @notes.setter
+    def notes(self, notes):
+        """Sets the notes of this DashboardContentItemDetail.
+
+        The notes for the dashboard item  # noqa: E501
+
+        :param notes: The notes of this DashboardContentItemDetail.  # noqa: E501
+        :type: str
+        """
+
+        self._notes = notes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

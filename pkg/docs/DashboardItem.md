@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **size** | [**Size**](Size.md) |  | 
 **chart_type** | **str** | The type of chart to use to display this dashboard item | 
 **omit_zeros** | **bool** | Whether the chart should omit categories with zero counts | 
+**sort_order** | **str** | Whether the chart should be sorted in it&#39;s natural order, by ascending or descending values | 
 **description** | **str** | The description to use for this item | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

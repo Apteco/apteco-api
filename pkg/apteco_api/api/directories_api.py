@@ -187,8 +187,8 @@ class DirectoriesApi(object):
         :param str system_name: The name of the FastStats system to act on (required)
         :param str directory_path: The path of the directory to list the contents of (required)
         :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -218,8 +218,8 @@ class DirectoriesApi(object):
         :param str system_name: The name of the FastStats system to act on (required)
         :param str directory_path: The path of the directory to list the contents of (required)
         :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -349,8 +349,8 @@ class DirectoriesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are SystemName
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are SystemName
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are SystemName.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are SystemName.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -377,8 +377,8 @@ class DirectoriesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are SystemName
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are SystemName
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are SystemName.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are SystemName.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -487,8 +487,8 @@ class DirectoriesApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
         :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -517,8 +517,8 @@ class DirectoriesApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
         :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Type.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Type.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code

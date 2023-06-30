@@ -34,23 +34,28 @@ class SystemLookup(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'variables_lookup': 'list[VariableLookup]'
+        'variables_lookup': 'list[VariableLookup]',
+        'folders_lookup': 'list[Folder]'
     }
 
     attribute_map = {
-        'variables_lookup': 'variablesLookup'
+        'variables_lookup': 'variablesLookup',
+        'folders_lookup': 'foldersLookup'
     }
 
-    def __init__(self, variables_lookup=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, variables_lookup=None, folders_lookup=None, local_vars_configuration=None):  # noqa: E501
         """SystemLookup - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._variables_lookup = None
+        self._folders_lookup = None
         self.discriminator = None
 
         self.variables_lookup = variables_lookup
+        if folders_lookup is not None:
+            self.folders_lookup = folders_lookup
 
     @property
     def variables_lookup(self):
@@ -76,6 +81,29 @@ class SystemLookup(object):
             raise ValueError("Invalid value for `variables_lookup`, must not be `None`")  # noqa: E501
 
         self._variables_lookup = variables_lookup
+
+    @property
+    def folders_lookup(self):
+        """Gets the folders_lookup of this SystemLookup.  # noqa: E501
+
+        A list of folder descriptions  # noqa: E501
+
+        :return: The folders_lookup of this SystemLookup.  # noqa: E501
+        :rtype: list[Folder]
+        """
+        return self._folders_lookup
+
+    @folders_lookup.setter
+    def folders_lookup(self, folders_lookup):
+        """Sets the folders_lookup of this SystemLookup.
+
+        A list of folder descriptions  # noqa: E501
+
+        :param folders_lookup: The folders_lookup of this SystemLookup.  # noqa: E501
+        :type: list[Folder]
+        """
+
+        self._folders_lookup = folders_lookup
 
     def to_dict(self):
         """Returns the model properties as a dict"""

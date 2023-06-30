@@ -57,6 +57,7 @@ class TestAudienceCalculateJobDetail(unittest.TestCase):
                     timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     user = apteco_api.models.user_display_details.UserDisplayDetails(
+                        id = 56, 
                         username = '0', 
                         firstname = '0', 
                         surname = '0', 

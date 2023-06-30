@@ -39,6 +39,7 @@ class ShareDetail(object):
         'shareable_id': 'int',
         'shareable_title': 'str',
         'number_of_users_shared_with': 'int',
+        'shared_to_all': 'bool',
         'view_shareable_url': 'str'
     }
 
@@ -48,10 +49,11 @@ class ShareDetail(object):
         'shareable_id': 'shareableId',
         'shareable_title': 'shareableTitle',
         'number_of_users_shared_with': 'numberOfUsersSharedWith',
+        'shared_to_all': 'sharedToAll',
         'view_shareable_url': 'viewShareableUrl'
     }
 
-    def __init__(self, id=None, shareable_type=None, shareable_id=None, shareable_title=None, number_of_users_shared_with=None, view_shareable_url=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, shareable_type=None, shareable_id=None, shareable_title=None, number_of_users_shared_with=None, shared_to_all=None, view_shareable_url=None, local_vars_configuration=None):  # noqa: E501
         """ShareDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -62,6 +64,7 @@ class ShareDetail(object):
         self._shareable_id = None
         self._shareable_title = None
         self._number_of_users_shared_with = None
+        self._shared_to_all = None
         self._view_shareable_url = None
         self.discriminator = None
 
@@ -70,6 +73,7 @@ class ShareDetail(object):
         self.shareable_id = shareable_id
         self.shareable_title = shareable_title
         self.number_of_users_shared_with = number_of_users_shared_with
+        self.shared_to_all = shared_to_all
         self.view_shareable_url = view_shareable_url
 
     @property
@@ -119,7 +123,7 @@ class ShareDetail(object):
         """
         if self.local_vars_configuration.client_side_validation and shareable_type is None:  # noqa: E501
             raise ValueError("Invalid value for `shareable_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["Unknown", "Collection", "Audience"]  # noqa: E501
+        allowed_values = ["Unknown", "Collection", "Audience", "Dashboard", "AudienceComposition"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and shareable_type not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `shareable_type` ({0}), must be one of {1}"  # noqa: E501
@@ -202,6 +206,31 @@ class ShareDetail(object):
             raise ValueError("Invalid value for `number_of_users_shared_with`, must not be `None`")  # noqa: E501
 
         self._number_of_users_shared_with = number_of_users_shared_with
+
+    @property
+    def shared_to_all(self):
+        """Gets the shared_to_all of this ShareDetail.  # noqa: E501
+
+        Whether the shareable item has been shared to all users  # noqa: E501
+
+        :return: The shared_to_all of this ShareDetail.  # noqa: E501
+        :rtype: bool
+        """
+        return self._shared_to_all
+
+    @shared_to_all.setter
+    def shared_to_all(self, shared_to_all):
+        """Sets the shared_to_all of this ShareDetail.
+
+        Whether the shareable item has been shared to all users  # noqa: E501
+
+        :param shared_to_all: The shared_to_all of this ShareDetail.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and shared_to_all is None:  # noqa: E501
+            raise ValueError("Invalid value for `shared_to_all`, must not be `None`")  # noqa: E501
+
+        self._shared_to_all = shared_to_all
 
     @property
     def view_shareable_url(self):

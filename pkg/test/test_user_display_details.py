@@ -37,6 +37,7 @@ class TestUserDisplayDetails(unittest.TestCase):
         # model = apteco_api.models.user_display_details.UserDisplayDetails()  # noqa: E501
         if include_optional :
             return UserDisplayDetails(
+                id = 56, 
                 username = '0', 
                 firstname = '0', 
                 surname = '0', 
@@ -44,6 +45,7 @@ class TestUserDisplayDetails(unittest.TestCase):
             )
         else :
             return UserDisplayDetails(
+                id = 56,
                 username = '0',
                 firstname = '0',
                 surname = '0',

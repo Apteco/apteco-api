@@ -35,30 +35,38 @@ class ResourceDetails(object):
     """
     openapi_types = {
         'name': 'str',
+        'id': 'int',
         'size': 'int',
-        'last_modified': 'datetime'
+        'last_modified': 'datetime',
+        'url': 'str'
     }
 
     attribute_map = {
         'name': 'name',
+        'id': 'id',
         'size': 'size',
-        'last_modified': 'lastModified'
+        'last_modified': 'lastModified',
+        'url': 'url'
     }
 
-    def __init__(self, name=None, size=None, last_modified=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, id=None, size=None, last_modified=None, url=None, local_vars_configuration=None):  # noqa: E501
         """ResourceDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
+        self._id = None
         self._size = None
         self._last_modified = None
+        self._url = None
         self.discriminator = None
 
         self.name = name
+        self.id = id
         self.size = size
         self.last_modified = last_modified
+        self.url = url
 
     @property
     def name(self):
@@ -84,6 +92,31 @@ class ResourceDetails(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def id(self):
+        """Gets the id of this ResourceDetails.  # noqa: E501
+
+        The id of the resource  # noqa: E501
+
+        :return: The id of this ResourceDetails.  # noqa: E501
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this ResourceDetails.
+
+        The id of the resource  # noqa: E501
+
+        :param id: The id of this ResourceDetails.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
 
     @property
     def size(self):
@@ -134,6 +167,31 @@ class ResourceDetails(object):
             raise ValueError("Invalid value for `last_modified`, must not be `None`")  # noqa: E501
 
         self._last_modified = last_modified
+
+    @property
+    def url(self):
+        """Gets the url of this ResourceDetails.  # noqa: E501
+
+        The API URL to access the content of the resource  # noqa: E501
+
+        :return: The url of this ResourceDetails.  # noqa: E501
+        :rtype: str
+        """
+        return self._url
+
+    @url.setter
+    def url(self, url):
+        """Sets the url of this ResourceDetails.
+
+        The API URL to access the content of the resource  # noqa: E501
+
+        :param url: The url of this ResourceDetails.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+
+        self._url = url
 
     def to_dict(self):
         """Returns the model properties as a dict"""

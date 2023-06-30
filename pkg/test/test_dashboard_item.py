@@ -43,6 +43,7 @@ class TestDashboardItem(unittest.TestCase):
                     height = 1.337, ), 
                 chart_type = 'Bar', 
                 omit_zeros = True, 
+                sort_order = 'Natural', 
                 description = '0'
             )
         else :
@@ -53,6 +54,7 @@ class TestDashboardItem(unittest.TestCase):
                     height = 1.337, ),
                 chart_type = 'Bar',
                 omit_zeros = True,
+                sort_order = 'Natural',
                 description = '0',
         )
 

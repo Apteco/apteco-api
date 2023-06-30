@@ -38,7 +38,8 @@ class ShareSummary(object):
         'shareable_type': 'str',
         'shareable_id': 'int',
         'shareable_title': 'str',
-        'number_of_users_shared_with': 'int'
+        'number_of_users_shared_with': 'int',
+        'shared_to_all': 'bool'
     }
 
     attribute_map = {
@@ -46,10 +47,11 @@ class ShareSummary(object):
         'shareable_type': 'shareableType',
         'shareable_id': 'shareableId',
         'shareable_title': 'shareableTitle',
-        'number_of_users_shared_with': 'numberOfUsersSharedWith'
+        'number_of_users_shared_with': 'numberOfUsersSharedWith',
+        'shared_to_all': 'sharedToAll'
     }
 
-    def __init__(self, id=None, shareable_type=None, shareable_id=None, shareable_title=None, number_of_users_shared_with=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, shareable_type=None, shareable_id=None, shareable_title=None, number_of_users_shared_with=None, shared_to_all=None, local_vars_configuration=None):  # noqa: E501
         """ShareSummary - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -60,6 +62,7 @@ class ShareSummary(object):
         self._shareable_id = None
         self._shareable_title = None
         self._number_of_users_shared_with = None
+        self._shared_to_all = None
         self.discriminator = None
 
         self.id = id
@@ -67,6 +70,7 @@ class ShareSummary(object):
         self.shareable_id = shareable_id
         self.shareable_title = shareable_title
         self.number_of_users_shared_with = number_of_users_shared_with
+        self.shared_to_all = shared_to_all
 
     @property
     def id(self):
@@ -115,7 +119,7 @@ class ShareSummary(object):
         """
         if self.local_vars_configuration.client_side_validation and shareable_type is None:  # noqa: E501
             raise ValueError("Invalid value for `shareable_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["Unknown", "Collection", "Audience"]  # noqa: E501
+        allowed_values = ["Unknown", "Collection", "Audience", "Dashboard", "AudienceComposition"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and shareable_type not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `shareable_type` ({0}), must be one of {1}"  # noqa: E501
@@ -198,6 +202,31 @@ class ShareSummary(object):
             raise ValueError("Invalid value for `number_of_users_shared_with`, must not be `None`")  # noqa: E501
 
         self._number_of_users_shared_with = number_of_users_shared_with
+
+    @property
+    def shared_to_all(self):
+        """Gets the shared_to_all of this ShareSummary.  # noqa: E501
+
+        Whether the shareable item has been shared with all users  # noqa: E501
+
+        :return: The shared_to_all of this ShareSummary.  # noqa: E501
+        :rtype: bool
+        """
+        return self._shared_to_all
+
+    @shared_to_all.setter
+    def shared_to_all(self, shared_to_all):
+        """Sets the shared_to_all of this ShareSummary.
+
+        Whether the shareable item has been shared with all users  # noqa: E501
+
+        :param shared_to_all: The shared_to_all of this ShareSummary.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and shared_to_all is None:  # noqa: E501
+            raise ValueError("Invalid value for `shared_to_all`, must not be `None`")  # noqa: E501
+
+        self._shared_to_all = shared_to_all
 
     def to_dict(self):
         """Returns the model properties as a dict"""

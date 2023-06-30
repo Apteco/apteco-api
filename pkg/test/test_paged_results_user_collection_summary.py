@@ -51,6 +51,7 @@ class TestPagedResultsUserCollectionSummary(unittest.TestCase):
                         description = '0', 
                         creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         owner = apteco_api.models.user_display_details.UserDisplayDetails(
+                            id = 56, 
                             username = '0', 
                             firstname = '0', 
                             surname = '0', 
@@ -58,6 +59,7 @@ class TestPagedResultsUserCollectionSummary(unittest.TestCase):
                         deletion_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         number_of_parts = 56, 
                         number_of_users_shared_with = 56, 
+                        shared_to_all = True, 
                         share_id = 56, 
                         number_of_hits = 56, 
                         system_name = '0', )
@@ -79,6 +81,7 @@ class TestPagedResultsUserCollectionSummary(unittest.TestCase):
                         description = '0', 
                         creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         owner = apteco_api.models.user_display_details.UserDisplayDetails(
+                            id = 56, 
                             username = '0', 
                             firstname = '0', 
                             surname = '0', 
@@ -86,6 +89,7 @@ class TestPagedResultsUserCollectionSummary(unittest.TestCase):
                         deletion_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         number_of_parts = 56, 
                         number_of_users_shared_with = 56, 
+                        shared_to_all = True, 
                         share_id = 56, 
                         number_of_hits = 56, 
                         system_name = '0', )

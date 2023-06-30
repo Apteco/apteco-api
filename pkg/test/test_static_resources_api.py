@@ -29,6 +29,13 @@ class TestStaticResourcesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_static_resources_delete_static_resource_file(self):
+        """Test case for static_resources_delete_static_resource_file
+
+        Returns a resource file (such as an image file) for the given category and system  # noqa: E501
+        """
+        pass
+
     def test_static_resources_get_static_resource_categories(self):
         """Test case for static_resources_get_static_resource_categories
 
@@ -60,7 +67,14 @@ class TestStaticResourcesApi(unittest.TestCase):
     def test_static_resources_get_static_resources_for_category(self):
         """Test case for static_resources_get_static_resources_for_category
 
-        Requires OrbitAdmin: Returns a list of details for the resource files (such as image files) in the given resource category and system  # noqa: E501
+        Returns a list of details for the resource files (such as image files) in the given resource category and system  # noqa: E501
+        """
+        pass
+
+    def test_static_resources_post_static_resource_file(self):
+        """Test case for static_resources_post_static_resource_file
+
+        Uploads a resource file (such as an image file) for the given category and system  # noqa: E501
         """
         pass
 

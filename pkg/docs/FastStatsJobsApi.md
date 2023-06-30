@@ -1,11 +1,12 @@
 # apteco_api.FastStatsJobsApi
 
-All URIs are relative to *https://example.com/OrbitAPI*
+All URIs are relative to *http://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**fast_stats_jobs_calculate_processing_time_stats_for_system_sync**](FastStatsJobsApi.md#fast_stats_jobs_calculate_processing_time_stats_for_system_sync) | **POST** /{dataViewName}/FastStatsJobs/{systemName}/CalculateProcessingTimeStatsSync | EXPERIMENTAL: Requires OrbitAdmin: Calculate processing statistics for the specified jobs in the FastStats job queue for the given system.
 [**fast_stats_jobs_calculate_processing_time_stats_sync**](FastStatsJobsApi.md#fast_stats_jobs_calculate_processing_time_stats_sync) | **POST** /{dataViewName}/FastStatsJobs/CalculateProcessingTimeStatsSync | EXPERIMENTAL: Requires OrbitAdmin: Calculate processing statistics for the specified jobs in the FastStats job queue for all systems in a particular DataView.
+[**fast_stats_jobs_clear_command_hash**](FastStatsJobsApi.md#fast_stats_jobs_clear_command_hash) | **POST** /{dataViewName}/FastStatsJobs/{systemName}/ClearCommandHash | EXPERIMENTAL: Requires OrbitAdmin: Clear the hash value column of cache in the FastStats job queue for the given system.
 [**fast_stats_jobs_get_fast_stats_job**](FastStatsJobsApi.md#fast_stats_jobs_get_fast_stats_job) | **GET** /{dataViewName}/FastStatsJobs/{systemName}/{jobId} | EXPERIMENTAL: Requires OrbitAdmin: Gets details for a particular job in the FastStats job queue for the given system.
 [**fast_stats_jobs_get_fast_stats_jobs**](FastStatsJobsApi.md#fast_stats_jobs_get_fast_stats_jobs) | **GET** /{dataViewName}/FastStatsJobs | EXPERIMENTAL: Requires OrbitAdmin: Gets all the jobs in the FastStats job queue for all systems in a particular DataView.
 [**fast_stats_jobs_get_fast_stats_jobs_for_system**](FastStatsJobsApi.md#fast_stats_jobs_get_fast_stats_jobs_for_system) | **GET** /{dataViewName}/FastStatsJobs/{systemName} | EXPERIMENTAL: Requires OrbitAdmin: Gets all the jobs in the FastStats job queue for the given system.
@@ -27,10 +28,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -40,7 +41,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -111,10 +112,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -124,7 +125,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -177,6 +178,86 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **fast_stats_jobs_clear_command_hash**
+> fast_stats_jobs_clear_command_hash(data_view_name, system_name)
+
+EXPERIMENTAL: Requires OrbitAdmin: Clear the hash value column of cache in the FastStats job queue for the given system.
+
+EXPERIMENTAL  This endpoint is only available for users with the OrbitAdmin role
+
+### Example
+
+* Api Key Authentication (faststats_auth):
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "http://example.com/OrbitAPI"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: faststats_auth
+configuration = apteco_api.Configuration(
+    host = "http://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.FastStatsJobsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+system_name = 'system_name_example' # str | The name of the FastStats system to act on
+
+    try:
+        # EXPERIMENTAL: Requires OrbitAdmin: Clear the hash value column of cache in the FastStats job queue for the given system.
+        api_instance.fast_stats_jobs_clear_command_hash(data_view_name, system_name)
+    except ApiException as e:
+        print("Exception when calling FastStatsJobsApi->fast_stats_jobs_clear_command_hash: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data_view_name** | **str**| The name of the DataView to act on | 
+ **system_name** | **str**| The name of the FastStats system to act on | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[faststats_auth](../README.md#faststats_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**400** | A bad request |  -  |
+**403** | The user isn&#39;t an admin user |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **fast_stats_jobs_get_fast_stats_job**
 > JobDetail fast_stats_jobs_get_fast_stats_job(data_view_name, system_name, job_id, return_request=return_request, return_results=return_results)
 
@@ -193,10 +274,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -206,7 +287,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -281,10 +362,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -294,7 +375,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -307,8 +388,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = apteco_api.FastStatsJobsApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -325,8 +406,8 @@ count = 56 # int | The maximum number of items to show from the (potentially fil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -369,10 +450,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -382,7 +463,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -396,8 +477,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     api_instance = apteco_api.FastStatsJobsApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 system_name = 'system_name_example' # str | The name of the system to return jobs for
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -415,8 +496,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
  **system_name** | **str**| The name of the system to return jobs for | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 

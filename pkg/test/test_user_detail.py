@@ -43,10 +43,17 @@ class TestUserDetail(unittest.TestCase):
                     export = True, 
                     advanced_query = True, 
                     cube = True, 
-                    profile = True, ), 
+                    profile = True, 
+                    dashboards = True, 
+                    dashboards_pareto = True, ), 
                 id = 56, 
                 username = '0', 
                 group_id = 56, 
+                teams = [
+                    apteco_api.models.team_summary.TeamSummary(
+                        id = 56, 
+                        name = '0', )
+                    ], 
                 firstname = '0', 
                 surname = '0', 
                 email_address = '0', 
@@ -60,10 +67,17 @@ class TestUserDetail(unittest.TestCase):
                     export = True, 
                     advanced_query = True, 
                     cube = True, 
-                    profile = True, ),
+                    profile = True, 
+                    dashboards = True, 
+                    dashboards_pareto = True, ),
                 id = 56,
                 username = '0',
                 group_id = 56,
+                teams = [
+                    apteco_api.models.team_summary.TeamSummary(
+                        id = 56, 
+                        name = '0', )
+                    ],
                 firstname = '0',
                 surname = '0',
                 email_address = '0',

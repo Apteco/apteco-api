@@ -1,11 +1,12 @@
 # apteco_api.SessionsApi
 
-All URIs are relative to *https://example.com/OrbitAPI*
+All URIs are relative to *http://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**sessions_convert_session_to_access_token**](SessionsApi.md#sessions_convert_session_to_access_token) | **POST** /{dataViewName}/Sessions/ConvertSession | Creates an API session token from a traditional FastStats session id
 [**sessions_create_login_parameters**](SessionsApi.md#sessions_create_login_parameters) | **POST** /{dataViewName}/Sessions/LoginParameters | Creates a new set of parameters to use when creating a new session via the salted login method.
+[**sessions_create_session_from_login_token**](SessionsApi.md#sessions_create_session_from_login_token) | **POST** /{dataViewName}/Sessions/TokenLogin | Creates a session to use for other API requests given a JWT login token from the Apteco Login Service.  The API must have the appriopriate JWT issuer, audience and signing key specified to be able to validate the token.
 [**sessions_create_session_salted**](SessionsApi.md#sessions_create_session_salted) | **POST** /{dataViewName}/Sessions/SaltedLogin | Creates a session to use for other API requests
 [**sessions_create_session_simple**](SessionsApi.md#sessions_create_session_simple) | **POST** /{dataViewName}/Sessions/SimpleLogin | Creates a session to use for other API requests
 [**sessions_get_session_details**](SessionsApi.md#sessions_get_session_details) | **GET** /{dataViewName}/Sessions/{sessionId} | Gets some simple user details for the given session id
@@ -26,10 +27,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 
@@ -91,10 +92,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 
@@ -142,8 +143,73 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **sessions_create_session_from_login_token**
+> SessionDetails sessions_create_session_from_login_token(data_view_name, login_details=login_details)
+
+Creates a session to use for other API requests given a JWT login token from the Apteco Login Service.  The API must have the appriopriate JWT issuer, audience and signing key specified to be able to validate the token.
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import apteco_api
+from apteco_api.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
+# See configuration.py for a list of all supported configuration parameters.
+configuration = apteco_api.Configuration(
+    host = "http://example.com/OrbitAPI"
+)
+
+
+# Enter a context with an instance of the API client
+with apteco_api.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = apteco_api.SessionsApi(api_client)
+    data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
+login_details = apteco_api.TokenLoginDetails() # TokenLoginDetails | The details used to create the session (optional)
+
+    try:
+        # Creates a session to use for other API requests given a JWT login token from the Apteco Login Service.  The API must have the appriopriate JWT issuer, audience and signing key specified to be able to validate the token.
+        api_response = api_instance.sessions_create_session_from_login_token(data_view_name, login_details=login_details)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling SessionsApi->sessions_create_session_from_login_token: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data_view_name** | **str**| The name of the DataView to act on | 
+ **login_details** | [**TokenLoginDetails**](TokenLoginDetails.md)| The details used to create the session | [optional] 
+
+### Return type
+
+[**SessionDetails**](SessionDetails.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json, application/xml, text/xml, application/*+xml
+ - **Accept**: application/json, text/json, application/xml, text/xml
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Session created |  -  |
+**400** | Bad request |  -  |
+**401** | Bad login credentials |  -  |
+**404** | The DataView couldn&#39;t be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **sessions_create_session_salted**
-> SessionDetails sessions_create_session_salted(data_view_name, username, login_salt, password_hash)
+> SessionDetails sessions_create_session_salted(data_view_name, username, login_salt, password_hash, client_type=client_type)
 
 Creates a session to use for other API requests
 
@@ -155,10 +221,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 
@@ -170,10 +236,11 @@ with apteco_api.ApiClient() as api_client:
 username = 'username_example' # str | The username of the user
 login_salt = 'login_salt_example' # str | The salt to use when loging in
 password_hash = 'password_hash_example' # str | The password hash for the user.  Depending on the settings for the user this will be generated in a complicated way
+client_type = 'client_type_example' # str | If specified, the type of client creating the session.  Otherwise a default value will be used. (optional)
 
     try:
         # Creates a session to use for other API requests
-        api_response = api_instance.sessions_create_session_salted(data_view_name, username, login_salt, password_hash)
+        api_response = api_instance.sessions_create_session_salted(data_view_name, username, login_salt, password_hash, client_type=client_type)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling SessionsApi->sessions_create_session_salted: %s\n" % e)
@@ -187,6 +254,7 @@ Name | Type | Description  | Notes
  **username** | **str**| The username of the user | 
  **login_salt** | **str**| The salt to use when loging in | 
  **password_hash** | **str**| The password hash for the user.  Depending on the settings for the user this will be generated in a complicated way | 
+ **client_type** | **str**| If specified, the type of client creating the session.  Otherwise a default value will be used. | [optional] 
 
 ### Return type
 
@@ -212,7 +280,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sessions_create_session_simple**
-> SessionDetails sessions_create_session_simple(data_view_name, user_login, password)
+> SessionDetails sessions_create_session_simple(data_view_name, user_login, password, client_type=client_type)
 
 Creates a session to use for other API requests
 
@@ -224,10 +292,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 
@@ -238,10 +306,11 @@ with apteco_api.ApiClient() as api_client:
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
 user_login = 'user_login_example' # str | The piece of information used to identify the user.  This always be a username, and  if the option has been configured an email address can also be used.  Note that a  user can only successfully log on with their email address if no other user has  the same email address registered in the system.
 password = 'password_example' # str | The password for the user.
+client_type = 'client_type_example' # str | If specified, the type of client creating the session.  Otherwise a default value will be used. (optional)
 
     try:
         # Creates a session to use for other API requests
-        api_response = api_instance.sessions_create_session_simple(data_view_name, user_login, password)
+        api_response = api_instance.sessions_create_session_simple(data_view_name, user_login, password, client_type=client_type)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling SessionsApi->sessions_create_session_simple: %s\n" % e)
@@ -254,6 +323,7 @@ Name | Type | Description  | Notes
  **data_view_name** | **str**| The name of the DataView to act on | 
  **user_login** | **str**| The piece of information used to identify the user.  This always be a username, and  if the option has been configured an email address can also be used.  Note that a  user can only successfully log on with their email address if no other user has  the same email address registered in the system. | 
  **password** | **str**| The password for the user. | 
+ **client_type** | **str**| If specified, the type of client creating the session.  Otherwise a default value will be used. | [optional] 
 
 ### Return type
 
@@ -292,10 +362,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -305,7 +375,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -373,10 +443,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -386,7 +456,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -399,8 +469,8 @@ with apteco_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = apteco_api.SessionsApi(api_client)
     data_view_name = 'data_view_name_example' # str | The name of the DataView to act on
-filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username (optional)
-order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username (optional)
+filter = 'filter_example' # str | Filter the list of items using a simple expression language.  The available list of fields are Username. (optional)
+order_by = 'order_by_example' # str | Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username. (optional)
 offset = 56 # int | The number of items to skip in the (potentially filtered) result set before returning subsequent items. (optional)
 count = 56 # int | The maximum number of items to show from the (potentially filtered) result set. (optional)
 
@@ -417,8 +487,8 @@ count = 56 # int | The maximum number of items to show from the (potentially fil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data_view_name** | **str**| The name of the DataView to act on | 
- **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Username | [optional] 
- **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Username | [optional] 
+ **filter** | **str**| Filter the list of items using a simple expression language.  The available list of fields are Username. | [optional] 
+ **order_by** | **str**| Order the items by a given field (in ascending order unless the field is preceeded by a \&quot;-\&quot; character).  The available list of fields are Username. | [optional] 
  **offset** | **int**| The number of items to skip in the (potentially filtered) result set before returning subsequent items. | [optional] 
  **count** | **int**| The maximum number of items to show from the (potentially filtered) result set. | [optional] 
 
@@ -458,10 +528,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -471,7 +541,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }

@@ -37,7 +37,7 @@ class TestDashboardItemData(unittest.TestCase):
         # model = apteco_api.models.dashboard_item_data.DashboardItemData()  # noqa: E501
         if include_optional :
             return DashboardItemData(
-                filter = apteco_api.models.query.Query(
+                global_filter_applied = apteco_api.models.query.Query(
                     selection = apteco_api.models.selection.Selection(
                         ancestor_counts = True, 
                         record_set = apteco_api.models.record_set.RecordSet(
@@ -339,7 +339,8 @@ class TestDashboardItemData(unittest.TestCase):
                                 denominator = 56, ), ), 
                         table_name = '0', 
                         name = '0', ), 
-                    today_at = '0', )
+                    today_at = '0', ), 
+                sort_order = 'Natural'
             )
         else :
             return DashboardItemData(

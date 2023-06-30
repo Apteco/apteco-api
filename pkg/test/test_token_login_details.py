@@ -37,7 +37,8 @@ class TestTokenLoginDetails(unittest.TestCase):
         # model = apteco_api.models.token_login_details.TokenLoginDetails()  # noqa: E501
         if include_optional :
             return TokenLoginDetails(
-                token = '0'
+                token = '0', 
+                client_type = '0'
             )
         else :
             return TokenLoginDetails(

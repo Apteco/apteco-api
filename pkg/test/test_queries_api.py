@@ -32,28 +32,28 @@ class TestQueriesApi(unittest.TestCase):
     def test_queries_perform_get_query_file_definition_synchronously(self):
         """Test case for queries_perform_get_query_file_definition_synchronously
 
-        EXPERIMENTAL: Get the query definition in the specified file  # noqa: E501
+        Get the query definition in the specified file  # noqa: E501
         """
         pass
 
     def test_queries_perform_query_count_synchronously(self):
         """Test case for queries_perform_query_count_synchronously
 
-        EXPERIMENTAL: Counts the given query and returns the results  # noqa: E501
+        Counts the given query and returns the results  # noqa: E501
         """
         pass
 
     def test_queries_perform_query_file_count_synchronously(self):
         """Test case for queries_perform_query_file_count_synchronously
 
-        EXPERIMENTAL: Counts the query in the specified file and returns the results  # noqa: E501
+        Counts the query in the specified file and returns the results  # noqa: E501
         """
         pass
 
     def test_queries_perform_save_query_file_definition_synchronously(self):
         """Test case for queries_perform_save_query_file_definition_synchronously
 
-        EXPERIMENTAL: Get the query definition in the specified file  # noqa: E501
+        Get the query definition in the specified file  # noqa: E501
         """
         pass
 

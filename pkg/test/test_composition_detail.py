@@ -46,6 +46,7 @@ class TestCompositionDetail(unittest.TestCase):
                                 height = 1.337, ), 
                             chart_type = 'Bar', 
                             omit_zeros = True, 
+                            sort_order = 'Natural', 
                             description = '0', )
                         ], 
                     grid_items = [
@@ -61,7 +62,8 @@ class TestCompositionDetail(unittest.TestCase):
                         delimiter = '0', 
                         alpha_encloser = '0', 
                         numeric_encloser = '0', 
-                        authorisation_code = '0', ), 
+                        authorisation_code = '0', 
+                        export_extra_name = '0', ), 
                     grid_items = [
                         apteco_api.models.grid_item.GridItem(
                             variable_name = '0', 
@@ -108,11 +110,25 @@ class TestCompositionDetail(unittest.TestCase):
                                     description = '0', 
                                     count = 56, )
                                 ], )
+                        ], 
+                    folders_lookup = [
+                        apteco_api.models.folder.Folder(
+                            name = '0', 
+                            description = '0', )
                         ], ), 
                 id = 56, 
                 description = '0', 
                 type = 'Check', 
-                system_name = '0'
+                system_name = '0', 
+                owner = apteco_api.models.user_display_details.UserDisplayDetails(
+                    id = 56, 
+                    username = '0', 
+                    firstname = '0', 
+                    surname = '0', 
+                    email_address = '0', ), 
+                number_of_users_shared_with = 56, 
+                shared_to_all = True, 
+                share_id = 56
             )
         else :
             return CompositionDetail(
@@ -120,6 +136,14 @@ class TestCompositionDetail(unittest.TestCase):
                 description = '0',
                 type = 'Check',
                 system_name = '0',
+                owner = apteco_api.models.user_display_details.UserDisplayDetails(
+                    id = 56, 
+                    username = '0', 
+                    firstname = '0', 
+                    surname = '0', 
+                    email_address = '0', ),
+                number_of_users_shared_with = 56,
+                shared_to_all = True,
         )
 
     def testCompositionDetail(self):

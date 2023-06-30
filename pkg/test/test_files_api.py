@@ -29,6 +29,13 @@ class TestFilesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_files_copy_file(self):
+        """Test case for files_copy_file
+
+        Copies a file  # noqa: E501
+        """
+        pass
+
     def test_files_delete_file(self):
         """Test case for files_delete_file
 

@@ -38,14 +38,18 @@ class TestResourceSummary(unittest.TestCase):
         if include_optional :
             return ResourceSummary(
                 name = '0', 
+                id = 56, 
                 size = 56, 
-                last_modified = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+                last_modified = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                url = '0'
             )
         else :
             return ResourceSummary(
                 name = '0',
+                id = 56,
                 size = 56,
                 last_modified = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                url = '0',
         )
 
     def testResourceSummary(self):

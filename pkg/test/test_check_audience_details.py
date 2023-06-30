@@ -200,7 +200,10 @@ class TestCheckAudienceDetails(unittest.TestCase):
                         none_cell = True, 
                         omit_unclassified = True, 
                         filter_query = apteco_api.models.query.Query(
-                            today_at = '0', ), )
+                            today_at = '0', ), 
+                        minimum_category_count = 56, 
+                        top_n_category_count = 56, 
+                        percentage_of_maximum_category_threshold = 56, )
                     ]
             )
         else :
@@ -368,7 +371,10 @@ class TestCheckAudienceDetails(unittest.TestCase):
                         none_cell = True, 
                         omit_unclassified = True, 
                         filter_query = apteco_api.models.query.Query(
-                            today_at = '0', ), )
+                            today_at = '0', ), 
+                        minimum_category_count = 56, 
+                        top_n_category_count = 56, 
+                        percentage_of_maximum_category_threshold = 56, )
                     ],
         )
 

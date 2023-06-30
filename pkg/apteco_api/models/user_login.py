@@ -34,6 +34,7 @@ class UserLogin(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'user_id': 'int',
         'username': 'str',
         'system_name': 'str',
         'client_type': 'str',
@@ -41,34 +42,62 @@ class UserLogin(object):
     }
 
     attribute_map = {
+        'user_id': 'userId',
         'username': 'username',
         'system_name': 'systemName',
         'client_type': 'clientType',
         'timestamp': 'timestamp'
     }
 
-    def __init__(self, username=None, system_name=None, client_type=None, timestamp=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, user_id=None, username=None, system_name=None, client_type=None, timestamp=None, local_vars_configuration=None):  # noqa: E501
         """UserLogin - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._user_id = None
         self._username = None
         self._system_name = None
         self._client_type = None
         self._timestamp = None
         self.discriminator = None
 
+        self.user_id = user_id
         self.username = username
         self.system_name = system_name
         self.client_type = client_type
         self.timestamp = timestamp
 
     @property
+    def user_id(self):
+        """Gets the user_id of this UserLogin.  # noqa: E501
+
+        The user's id  # noqa: E501
+
+        :return: The user_id of this UserLogin.  # noqa: E501
+        :rtype: int
+        """
+        return self._user_id
+
+    @user_id.setter
+    def user_id(self, user_id):
+        """Sets the user_id of this UserLogin.
+
+        The user's id  # noqa: E501
+
+        :param user_id: The user_id of this UserLogin.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and user_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
+
+        self._user_id = user_id
+
+    @property
     def username(self):
         """Gets the username of this UserLogin.  # noqa: E501
 
-        The username  # noqa: E501
+        The user's name  # noqa: E501
 
         :return: The username of this UserLogin.  # noqa: E501
         :rtype: str
@@ -79,7 +108,7 @@ class UserLogin(object):
     def username(self, username):
         """Sets the username of this UserLogin.
 
-        The username  # noqa: E501
+        The user's name  # noqa: E501
 
         :param username: The username of this UserLogin.  # noqa: E501
         :type: str

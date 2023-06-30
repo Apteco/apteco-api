@@ -38,9 +38,9 @@ class QueriesApi(object):
         self.api_client = api_client
 
     def queries_perform_get_query_file_definition_synchronously(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Get the query definition in the specified file  # noqa: E501
+        """Get the query definition in the specified file  # noqa: E501
 
-        EXPERIMENTAL  Requires licence flags [AdvancedQuery]  # noqa: E501
+        Requires licence flags [AdvancedQuery]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.queries_perform_get_query_file_definition_synchronously(data_view_name, system_name, async_req=True)
@@ -66,9 +66,9 @@ class QueriesApi(object):
         return self.queries_perform_get_query_file_definition_synchronously_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
 
     def queries_perform_get_query_file_definition_synchronously_with_http_info(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Get the query definition in the specified file  # noqa: E501
+        """Get the query definition in the specified file  # noqa: E501
 
-        EXPERIMENTAL  Requires licence flags [AdvancedQuery]  # noqa: E501
+        Requires licence flags [AdvancedQuery]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.queries_perform_get_query_file_definition_synchronously_with_http_info(data_view_name, system_name, async_req=True)
@@ -175,9 +175,9 @@ class QueriesApi(object):
             collection_formats=collection_formats)
 
     def queries_perform_query_count_synchronously(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Counts the given query and returns the results  # noqa: E501
+        """Counts the given query and returns the results  # noqa: E501
 
-        EXPERIMENTAL  Requires licence flags [AdvancedQuery]  # noqa: E501
+        Requires licence flags [AdvancedQuery]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.queries_perform_query_count_synchronously(data_view_name, system_name, async_req=True)
@@ -204,9 +204,9 @@ class QueriesApi(object):
         return self.queries_perform_query_count_synchronously_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
 
     def queries_perform_query_count_synchronously_with_http_info(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Counts the given query and returns the results  # noqa: E501
+        """Counts the given query and returns the results  # noqa: E501
 
-        EXPERIMENTAL  Requires licence flags [AdvancedQuery]  # noqa: E501
+        Requires licence flags [AdvancedQuery]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.queries_perform_query_count_synchronously_with_http_info(data_view_name, system_name, async_req=True)
@@ -317,9 +317,9 @@ class QueriesApi(object):
             collection_formats=collection_formats)
 
     def queries_perform_query_file_count_synchronously(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Counts the query in the specified file and returns the results  # noqa: E501
+        """Counts the query in the specified file and returns the results  # noqa: E501
 
-        EXPERIMENTAL  Requires licence flags [AdvancedQuery]  # noqa: E501
+        Requires licence flags [AdvancedQuery]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.queries_perform_query_file_count_synchronously(data_view_name, system_name, async_req=True)
@@ -346,9 +346,9 @@ class QueriesApi(object):
         return self.queries_perform_query_file_count_synchronously_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
 
     def queries_perform_query_file_count_synchronously_with_http_info(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Counts the query in the specified file and returns the results  # noqa: E501
+        """Counts the query in the specified file and returns the results  # noqa: E501
 
-        EXPERIMENTAL  Requires licence flags [AdvancedQuery]  # noqa: E501
+        Requires licence flags [AdvancedQuery]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.queries_perform_query_file_count_synchronously_with_http_info(data_view_name, system_name, async_req=True)
@@ -459,9 +459,9 @@ class QueriesApi(object):
             collection_formats=collection_formats)
 
     def queries_perform_save_query_file_definition_synchronously(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Get the query definition in the specified file  # noqa: E501
+        """Get the query definition in the specified file  # noqa: E501
 
-        EXPERIMENTAL  Requires licence flags [AdvancedQuery]  # noqa: E501
+        Requires licence flags [AdvancedQuery]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.queries_perform_save_query_file_definition_synchronously(data_view_name, system_name, async_req=True)
@@ -487,9 +487,9 @@ class QueriesApi(object):
         return self.queries_perform_save_query_file_definition_synchronously_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
 
     def queries_perform_save_query_file_definition_synchronously_with_http_info(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Get the query definition in the specified file  # noqa: E501
+        """Get the query definition in the specified file  # noqa: E501
 
-        EXPERIMENTAL  Requires licence flags [AdvancedQuery]  # noqa: E501
+        Requires licence flags [AdvancedQuery]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.queries_perform_save_query_file_definition_synchronously_with_http_info(data_view_name, system_name, async_req=True)

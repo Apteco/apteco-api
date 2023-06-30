@@ -41,6 +41,7 @@ class TestAudienceHitSummary(unittest.TestCase):
                 audience_id = 56, 
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
+                    id = 56, 
                     username = '0', 
                     firstname = '0', 
                     surname = '0', 
@@ -52,6 +53,7 @@ class TestAudienceHitSummary(unittest.TestCase):
                 audience_id = 56,
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
+                    id = 56, 
                     username = '0', 
                     firstname = '0', 
                     surname = '0', 

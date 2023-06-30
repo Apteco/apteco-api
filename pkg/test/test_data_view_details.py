@@ -38,13 +38,17 @@ class TestDataViewDetails(unittest.TestCase):
         if include_optional :
             return DataViewDetails(
                 capabilities = apteco_api.models.capabilities.Capabilities(
-                    supports_audiences = True, ), 
+                    supports_audiences = True, 
+                    supports_permissions = True, 
+                    supports_dashboards_pareto = True, ), 
                 name = '0'
             )
         else :
             return DataViewDetails(
                 capabilities = apteco_api.models.capabilities.Capabilities(
-                    supports_audiences = True, ),
+                    supports_audiences = True, 
+                    supports_permissions = True, 
+                    supports_dashboards_pareto = True, ),
                 name = '0',
         )
 

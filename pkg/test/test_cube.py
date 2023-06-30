@@ -353,7 +353,10 @@ class TestCube(unittest.TestCase):
                         none_cell = True, 
                         omit_unclassified = True, 
                         filter_query = apteco_api.models.query.Query(
-                            today_at = '0', ), )
+                            today_at = '0', ), 
+                        minimum_category_count = 56, 
+                        top_n_category_count = 56, 
+                        percentage_of_maximum_category_threshold = 56, )
                     ], 
                 measures = [
                     apteco_api.models.measure.Measure(
@@ -842,7 +845,10 @@ class TestCube(unittest.TestCase):
                         none_cell = True, 
                         omit_unclassified = True, 
                         filter_query = apteco_api.models.query.Query(
-                            today_at = '0', ), )
+                            today_at = '0', ), 
+                        minimum_category_count = 56, 
+                        top_n_category_count = 56, 
+                        percentage_of_maximum_category_threshold = 56, )
                     ],
                 measures = [
                     apteco_api.models.measure.Measure(

@@ -37,7 +37,6 @@ class ResetPasswordRequestDetail(object):
         'reset_password_url': 'str',
         'has_notification_been_sent': 'bool',
         'token': 'str',
-        'username': 'str',
         'email_address': 'str',
         'creation_date': 'datetime',
         'confirmed_date': 'datetime',
@@ -48,14 +47,13 @@ class ResetPasswordRequestDetail(object):
         'reset_password_url': 'resetPasswordUrl',
         'has_notification_been_sent': 'hasNotificationBeenSent',
         'token': 'token',
-        'username': 'username',
         'email_address': 'emailAddress',
         'creation_date': 'creationDate',
         'confirmed_date': 'confirmedDate',
         'expired_date': 'expiredDate'
     }
 
-    def __init__(self, reset_password_url=None, has_notification_been_sent=None, token=None, username=None, email_address=None, creation_date=None, confirmed_date=None, expired_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, reset_password_url=None, has_notification_been_sent=None, token=None, email_address=None, creation_date=None, confirmed_date=None, expired_date=None, local_vars_configuration=None):  # noqa: E501
         """ResetPasswordRequestDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -64,7 +62,6 @@ class ResetPasswordRequestDetail(object):
         self._reset_password_url = None
         self._has_notification_been_sent = None
         self._token = None
-        self._username = None
         self._email_address = None
         self._creation_date = None
         self._confirmed_date = None
@@ -75,7 +72,6 @@ class ResetPasswordRequestDetail(object):
             self.reset_password_url = reset_password_url
         self.has_notification_been_sent = has_notification_been_sent
         self.token = token
-        self.username = username
         self.email_address = email_address
         self.creation_date = creation_date
         if confirmed_date is not None:
@@ -155,31 +151,6 @@ class ResetPasswordRequestDetail(object):
             raise ValueError("Invalid value for `token`, must not be `None`")  # noqa: E501
 
         self._token = token
-
-    @property
-    def username(self):
-        """Gets the username of this ResetPasswordRequestDetail.  # noqa: E501
-
-        The username of the user requesting the reset password  # noqa: E501
-
-        :return: The username of this ResetPasswordRequestDetail.  # noqa: E501
-        :rtype: str
-        """
-        return self._username
-
-    @username.setter
-    def username(self, username):
-        """Sets the username of this ResetPasswordRequestDetail.
-
-        The username of the user requesting the reset password  # noqa: E501
-
-        :param username: The username of this ResetPasswordRequestDetail.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and username is None:  # noqa: E501
-            raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
-
-        self._username = username
 
     @property
     def email_address(self):

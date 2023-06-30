@@ -418,8 +418,8 @@ class UserResetPasswordRequestsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -447,8 +447,8 @@ class UserResetPasswordRequestsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code

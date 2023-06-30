@@ -42,6 +42,7 @@ class TestShareDetail(unittest.TestCase):
                 shareable_id = 56, 
                 shareable_title = '0', 
                 number_of_users_shared_with = 56, 
+                shared_to_all = True, 
                 view_shareable_url = '0'
             )
         else :
@@ -51,6 +52,7 @@ class TestShareDetail(unittest.TestCase):
                 shareable_id = 56,
                 shareable_title = '0',
                 number_of_users_shared_with = 56,
+                shared_to_all = True,
                 view_shareable_url = '0',
         )
 

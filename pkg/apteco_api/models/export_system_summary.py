@@ -35,15 +35,17 @@ class ExportSystemSummary(object):
     """
     openapi_types = {
         'name': 'str',
-        'is_velocity_enabled': 'bool'
+        'is_velocity_enabled': 'bool',
+        'output_types': 'list[OutputType]'
     }
 
     attribute_map = {
         'name': 'name',
-        'is_velocity_enabled': 'isVelocityEnabled'
+        'is_velocity_enabled': 'isVelocityEnabled',
+        'output_types': 'outputTypes'
     }
 
-    def __init__(self, name=None, is_velocity_enabled=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, is_velocity_enabled=None, output_types=None, local_vars_configuration=None):  # noqa: E501
         """ExportSystemSummary - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -51,11 +53,14 @@ class ExportSystemSummary(object):
 
         self._name = None
         self._is_velocity_enabled = None
+        self._output_types = None
         self.discriminator = None
 
         self.name = name
         if is_velocity_enabled is not None:
             self.is_velocity_enabled = is_velocity_enabled
+        if output_types is not None:
+            self.output_types = output_types
 
     @property
     def name(self):
@@ -104,6 +109,29 @@ class ExportSystemSummary(object):
         """
 
         self._is_velocity_enabled = is_velocity_enabled
+
+    @property
+    def output_types(self):
+        """Gets the output_types of this ExportSystemSummary.  # noqa: E501
+
+        The set of export output types defined for this system  # noqa: E501
+
+        :return: The output_types of this ExportSystemSummary.  # noqa: E501
+        :rtype: list[OutputType]
+        """
+        return self._output_types
+
+    @output_types.setter
+    def output_types(self, output_types):
+        """Sets the output_types of this ExportSystemSummary.
+
+        The set of export output types defined for this system  # noqa: E501
+
+        :param output_types: The output_types of this ExportSystemSummary.  # noqa: E501
+        :type: list[OutputType]
+        """
+
+        self._output_types = output_types
 
     def to_dict(self):
         """Returns the model properties as a dict"""

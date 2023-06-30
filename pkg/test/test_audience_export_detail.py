@@ -41,6 +41,7 @@ class TestAudienceExportDetail(unittest.TestCase):
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
+                    id = 56, 
                     username = '0', 
                     firstname = '0', 
                     surname = '0', 
@@ -59,7 +60,8 @@ class TestAudienceExportDetail(unittest.TestCase):
                     delimiter = '0', 
                     alpha_encloser = '0', 
                     numeric_encloser = '0', 
-                    authorisation_code = '0', ), 
+                    authorisation_code = '0', 
+                    export_extra_name = '0', ), 
                 columns = [
                     apteco_api.models.column.Column(
                         id = '0', 
@@ -217,7 +219,9 @@ class TestAudienceExportDetail(unittest.TestCase):
                             today_at = '0', ), 
                         column_header = '0', 
                         detail = 'Code', 
-                        unclassified_format = 'FromDesign', )
+                        unclassified_format = 'FromDesign', 
+                        user_code = '0', 
+                        user_code_name = '0', )
                     ], 
                 rows = [
                     apteco_api.models.row.Row(
@@ -231,6 +235,7 @@ class TestAudienceExportDetail(unittest.TestCase):
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
+                    id = 56, 
                     username = '0', 
                     firstname = '0', 
                     surname = '0', 
@@ -400,7 +405,9 @@ class TestAudienceExportDetail(unittest.TestCase):
                             today_at = '0', ), 
                         column_header = '0', 
                         detail = 'Code', 
-                        unclassified_format = 'FromDesign', )
+                        unclassified_format = 'FromDesign', 
+                        user_code = '0', 
+                        user_code_name = '0', )
                     ],
         )
 

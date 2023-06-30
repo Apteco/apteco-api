@@ -243,6 +243,11 @@ class TestPagedResultsModifyUserAudienceDetailResults(unittest.TestCase):
                                                 description = '0', 
                                                 count = 56, )
                                             ], )
+                                    ], 
+                                folders_lookup = [
+                                    apteco_api.models.folder.Folder(
+                                        name = '0', 
+                                        description = '0', )
                                     ], ), 
                             last_result = apteco_api.models.audience_result_detail.AudienceResultDetail(
                                 exclude_results = apteco_api.models.audience_query_result.AudienceQueryResult(
@@ -264,6 +269,7 @@ class TestPagedResultsModifyUserAudienceDetailResults(unittest.TestCase):
                                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                 fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                 user = apteco_api.models.user_display_details.UserDisplayDetails(
+                                    id = 56, 
                                     username = '0', 
                                     firstname = '0', 
                                     surname = '0', 
@@ -275,6 +281,7 @@ class TestPagedResultsModifyUserAudienceDetailResults(unittest.TestCase):
                             description = '0', 
                             creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             owner = apteco_api.models.user_display_details.UserDisplayDetails(
+                                id = 56, 
                                 username = '0', 
                                 firstname = '0', 
                                 surname = '0', 
@@ -283,10 +290,12 @@ class TestPagedResultsModifyUserAudienceDetailResults(unittest.TestCase):
                             resolve_table_name = '0', 
                             resolve_table_nett_count = 56, 
                             number_of_users_shared_with = 56, 
+                            shared_to_all = True, 
                             share_id = 56, 
                             number_of_hits = 56, 
                             system_name = '0', 
                             last_updated_user = apteco_api.models.user_display_details.UserDisplayDetails(
+                                id = 56, 
                                 username = '0', 
                                 firstname = '0', 
                                 surname = '0', 
@@ -507,6 +516,11 @@ class TestPagedResultsModifyUserAudienceDetailResults(unittest.TestCase):
                                                 description = '0', 
                                                 count = 56, )
                                             ], )
+                                    ], 
+                                folders_lookup = [
+                                    apteco_api.models.folder.Folder(
+                                        name = '0', 
+                                        description = '0', )
                                     ], ), 
                             last_result = apteco_api.models.audience_result_detail.AudienceResultDetail(
                                 exclude_results = apteco_api.models.audience_query_result.AudienceQueryResult(
@@ -528,6 +542,7 @@ class TestPagedResultsModifyUserAudienceDetailResults(unittest.TestCase):
                                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                 fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                 user = apteco_api.models.user_display_details.UserDisplayDetails(
+                                    id = 56, 
                                     username = '0', 
                                     firstname = '0', 
                                     surname = '0', 
@@ -539,6 +554,7 @@ class TestPagedResultsModifyUserAudienceDetailResults(unittest.TestCase):
                             description = '0', 
                             creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             owner = apteco_api.models.user_display_details.UserDisplayDetails(
+                                id = 56, 
                                 username = '0', 
                                 firstname = '0', 
                                 surname = '0', 
@@ -547,10 +563,12 @@ class TestPagedResultsModifyUserAudienceDetailResults(unittest.TestCase):
                             resolve_table_name = '0', 
                             resolve_table_nett_count = 56, 
                             number_of_users_shared_with = 56, 
+                            shared_to_all = True, 
                             share_id = 56, 
                             number_of_hits = 56, 
                             system_name = '0', 
                             last_updated_user = apteco_api.models.user_display_details.UserDisplayDetails(
+                                id = 56, 
                                 username = '0', 
                                 firstname = '0', 
                                 surname = '0', 

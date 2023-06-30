@@ -42,8 +42,15 @@ class TestCreateShareDetail(unittest.TestCase):
                 email_addresses_to_add = [
                     '0'
                     ], 
-                notify_added_users = True, 
-                added_user_notification_message = '0', 
+                user_ids_to_add = [
+                    56
+                    ], 
+                group_ids_to_add = [
+                    56
+                    ], 
+                share_to_all = True, 
+                notify_added_recipients = True, 
+                added_recipient_notification_message = '0', 
                 notes = '0', 
                 view_shareable_url = '0'
             )
@@ -54,7 +61,13 @@ class TestCreateShareDetail(unittest.TestCase):
                 email_addresses_to_add = [
                     '0'
                     ],
-                notify_added_users = True,
+                user_ids_to_add = [
+                    56
+                    ],
+                group_ids_to_add = [
+                    56
+                    ],
+                notify_added_recipients = True,
         )
 
     def testCreateShareDetail(self):

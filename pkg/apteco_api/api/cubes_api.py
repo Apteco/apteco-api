@@ -38,9 +38,9 @@ class CubesApi(object):
         self.api_client = api_client
 
     def cubes_calculate_cube_synchronously(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.  # noqa: E501
+        """Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.  # noqa: E501
 
-        EXPERIMENTAL  Requires licence flags [Cube]  # noqa: E501
+        Requires licence flags [Cube]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.cubes_calculate_cube_synchronously(data_view_name, system_name, async_req=True)
@@ -67,9 +67,9 @@ class CubesApi(object):
         return self.cubes_calculate_cube_synchronously_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
 
     def cubes_calculate_cube_synchronously_with_http_info(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """EXPERIMENTAL: Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.  # noqa: E501
+        """Calcaultes a cube using the given definition and returns the results.  The data to build the cube from is defined by the base query provided.  # noqa: E501
 
-        EXPERIMENTAL  Requires licence flags [Cube]  # noqa: E501
+        Requires licence flags [Cube]  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.cubes_calculate_cube_synchronously_with_http_info(data_view_name, system_name, async_req=True)

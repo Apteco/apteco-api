@@ -142,6 +142,317 @@ class AboutApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def about_example_subject_to_change_or_removal_resource(self, **kwargs):  # noqa: E501
+        """SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns a sample string  # noqa: E501
+
+        SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.about_example_subject_to_change_or_removal_resource(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Message
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.about_example_subject_to_change_or_removal_resource_with_http_info(**kwargs)  # noqa: E501
+
+    def about_example_subject_to_change_or_removal_resource_with_http_info(self, **kwargs):  # noqa: E501
+        """SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns a sample string  # noqa: E501
+
+        SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.about_example_subject_to_change_or_removal_resource_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(Message, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method about_example_subject_to_change_or_removal_resource" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/About/ExampleSubjectToChangeOrRemovalResource', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='Message',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def about_example_under_development_resource(self, **kwargs):  # noqa: E501
+        """UNDER DEVELOPMENT: Returns a sample string if under development endpoints are enabled  # noqa: E501
+
+        UNDER DEVELOPMENT  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.about_example_under_development_resource(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Message
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.about_example_under_development_resource_with_http_info(**kwargs)  # noqa: E501
+
+    def about_example_under_development_resource_with_http_info(self, **kwargs):  # noqa: E501
+        """UNDER DEVELOPMENT: Returns a sample string if under development endpoints are enabled  # noqa: E501
+
+        UNDER DEVELOPMENT  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.about_example_under_development_resource_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(Message, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method about_example_under_development_resource" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/About/ExampleUnderDevelopmentResource', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='Message',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def about_force_internal_server_error(self, **kwargs):  # noqa: E501
+        """Requires OrbitAdmin: Forces an internal server error to be returned to the client  # noqa: E501
+
+        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.about_force_internal_server_error(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.about_force_internal_server_error_with_http_info(**kwargs)  # noqa: E501
+
+    def about_force_internal_server_error_with_http_info(self, **kwargs):  # noqa: E501
+        """Requires OrbitAdmin: Forces an internal server error to be returned to the client  # noqa: E501
+
+        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.about_force_internal_server_error_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method about_force_internal_server_error" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/About/ForceInternalServerError', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def about_force_process_garbage_collection(self, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Forces a garbage collection in the API's process and then returns details about the API's .Net process  # noqa: E501
 
@@ -368,8 +679,8 @@ class AboutApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -395,8 +706,8 @@ class AboutApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -496,8 +807,8 @@ class AboutApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str domain: The email domain to list DataViews for (i.e. \"example.com\") (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -524,8 +835,8 @@ class AboutApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str domain: The email domain to list DataViews for (i.e. \"example.com\") (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -632,8 +943,8 @@ class AboutApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str system_name: The name of the system to list DataViews for (i.e. \"holidays\") (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -660,8 +971,8 @@ class AboutApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str system_name: The name of the system to list DataViews for (i.e. \"holidays\") (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -769,8 +1080,8 @@ class AboutApi(object):
         :param async_req bool: execute request asynchronously
         :param bool exclude_endpoints_with_no_licence_requirements: If specified, don't return endpoints in the output that have no licence requirements.  Defaults to false - returns all endpoints
         :param bool exclude_endpoints_with_no_role_requirements: If specified, don't return endpoints in the output that have no role requirements.  Defaults to false - returns all endpoints
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, GroupName, Method, UrlTemplate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, GroupName, Method, UrlTemplate
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, GroupName, Method, UrlTemplate.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, GroupName, Method, UrlTemplate.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -798,8 +1109,8 @@ class AboutApi(object):
         :param async_req bool: execute request asynchronously
         :param bool exclude_endpoints_with_no_licence_requirements: If specified, don't return endpoints in the output that have no licence requirements.  Defaults to false - returns all endpoints
         :param bool exclude_endpoints_with_no_role_requirements: If specified, don't return endpoints in the output that have no role requirements.  Defaults to false - returns all endpoints
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, GroupName, Method, UrlTemplate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, GroupName, Method, UrlTemplate
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, GroupName, Method, UrlTemplate.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, GroupName, Method, UrlTemplate.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code

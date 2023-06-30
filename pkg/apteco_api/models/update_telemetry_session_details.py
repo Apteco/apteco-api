@@ -34,24 +34,52 @@ class UpdateTelemetrySessionDetails(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'bug_reports': 'list[TelemetryBugReport]',
         'session_end': 'datetime'
     }
 
     attribute_map = {
+        'bug_reports': 'bugReports',
         'session_end': 'sessionEnd'
     }
 
-    def __init__(self, session_end=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, bug_reports=None, session_end=None, local_vars_configuration=None):  # noqa: E501
         """UpdateTelemetrySessionDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._bug_reports = None
         self._session_end = None
         self.discriminator = None
 
+        if bug_reports is not None:
+            self.bug_reports = bug_reports
         if session_end is not None:
             self.session_end = session_end
+
+    @property
+    def bug_reports(self):
+        """Gets the bug_reports of this UpdateTelemetrySessionDetails.  # noqa: E501
+
+        The details of a bug received in this telemetry session  # noqa: E501
+
+        :return: The bug_reports of this UpdateTelemetrySessionDetails.  # noqa: E501
+        :rtype: list[TelemetryBugReport]
+        """
+        return self._bug_reports
+
+    @bug_reports.setter
+    def bug_reports(self, bug_reports):
+        """Sets the bug_reports of this UpdateTelemetrySessionDetails.
+
+        The details of a bug received in this telemetry session  # noqa: E501
+
+        :param bug_reports: The bug_reports of this UpdateTelemetrySessionDetails.  # noqa: E501
+        :type: list[TelemetryBugReport]
+        """
+
+        self._bug_reports = bug_reports
 
     @property
     def session_end(self):

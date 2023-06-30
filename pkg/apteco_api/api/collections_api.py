@@ -667,8 +667,8 @@ class CollectionsApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param int collection_id: The id of the collection to get the hit information for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -696,8 +696,8 @@ class CollectionsApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param int collection_id: The id of the collection to get the hit information for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -942,8 +942,8 @@ class CollectionsApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param int collection_id: The id of the collection to get the parts for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Title, VisualisationType
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Title, VisualisationType
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Title, VisualisationType.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Title, VisualisationType.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -971,8 +971,8 @@ class CollectionsApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param int collection_id: The id of the collection to get the parts for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Title, VisualisationType
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Title, VisualisationType
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Title, VisualisationType.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Title, VisualisationType.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -1088,8 +1088,8 @@ class CollectionsApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param str include_deleted: If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1118,8 +1118,8 @@ class CollectionsApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param str include_deleted: If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code

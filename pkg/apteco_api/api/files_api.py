@@ -37,6 +37,153 @@ class FilesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def files_copy_file(self, data_view_name, system_name, to_file_path, **kwargs):  # noqa: E501
+        """Copies a file  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.files_copy_file(data_view_name, system_name, to_file_path, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param str to_file_path: The path of the destination file (required)
+        :param str from_file_path: The path of the source file
+        :param str target_base_directory: The base directory to receive the file
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.files_copy_file_with_http_info(data_view_name, system_name, to_file_path, **kwargs)  # noqa: E501
+
+    def files_copy_file_with_http_info(self, data_view_name, system_name, to_file_path, **kwargs):  # noqa: E501
+        """Copies a file  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.files_copy_file_with_http_info(data_view_name, system_name, to_file_path, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param str to_file_path: The path of the destination file (required)
+        :param str from_file_path: The path of the source file
+        :param str target_base_directory: The base directory to receive the file
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the file service's configuration
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'data_view_name',
+            'system_name',
+            'to_file_path',
+            'from_file_path',
+            'target_base_directory',
+            'timeout_in_seconds'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method files_copy_file" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `files_copy_file`")  # noqa: E501
+        # verify the required parameter 'system_name' is set
+        if self.api_client.client_side_validation and ('system_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['system_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `system_name` when calling `files_copy_file`")  # noqa: E501
+        # verify the required parameter 'to_file_path' is set
+        if self.api_client.client_side_validation and ('to_file_path' not in local_var_params or  # noqa: E501
+                                                        local_var_params['to_file_path'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to_file_path` when calling `files_copy_file`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'system_name' in local_var_params:
+            path_params['systemName'] = local_var_params['system_name']  # noqa: E501
+        if 'to_file_path' in local_var_params:
+            # handle 'to_file_path' correctly as parameter with 'path' format 
+            to_file_path_segments = local_var_params['to_file_path'].split('/')
+            to_file_path_extra_path_params = {f'toFilePath{i}': seg for i, seg in enumerate(to_file_path_segments)}
+            to_file_path_template = '/'.join(f'{{{k}}}' for k in to_file_path_extra_path_params.keys())
+            path_params.update(to_file_path_extra_path_params)
+        else:
+            to_file_path_template = '{toFilePath}'
+
+        query_params = []
+        if 'from_file_path' in local_var_params and local_var_params['from_file_path'] is not None:  # noqa: E501
+            query_params.append(('fromFilePath', local_var_params['from_file_path']))  # noqa: E501
+        if 'target_base_directory' in local_var_params and local_var_params['target_base_directory'] is not None:  # noqa: E501
+            query_params.append(('targetBaseDirectory', local_var_params['target_base_directory']))  # noqa: E501
+        if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
+            query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Files/{systemName}/' + to_file_path_template, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def files_delete_file(self, data_view_name, system_name, file_path, **kwargs):  # noqa: E501
         """Deletes file at location  # noqa: E501
 
@@ -294,7 +441,7 @@ class FilesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/octet-stream'])  # noqa: E501
+            ['application/json', 'text/json', 'application/octet-stream'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501

@@ -43,7 +43,13 @@ class TestPagedResultsExportSystemSummary(unittest.TestCase):
                 list = [
                     apteco_api.models.export_system_summary.ExportSystemSummary(
                         name = '0', 
-                        is_velocity_enabled = True, )
+                        is_velocity_enabled = True, 
+                        output_types = [
+                            apteco_api.models.output_type.OutputType(
+                                name = '0', 
+                                format = 'CSV', 
+                                export_extra_name = '0', )
+                            ], )
                     ]
             )
         else :
@@ -54,7 +60,13 @@ class TestPagedResultsExportSystemSummary(unittest.TestCase):
                 list = [
                     apteco_api.models.export_system_summary.ExportSystemSummary(
                         name = '0', 
-                        is_velocity_enabled = True, )
+                        is_velocity_enabled = True, 
+                        output_types = [
+                            apteco_api.models.output_type.OutputType(
+                                name = '0', 
+                                format = 'CSV', 
+                                export_extra_name = '0', )
+                            ], )
                     ],
         )
 

@@ -42,6 +42,7 @@ class TestPagedResultsUserLogin(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.user_login.UserLogin(
+                        user_id = 56, 
                         username = '0', 
                         system_name = '0', 
                         client_type = '0', 
@@ -55,6 +56,7 @@ class TestPagedResultsUserLogin(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.user_login.UserLogin(
+                        user_id = 56, 
                         username = '0', 
                         system_name = '0', 
                         client_type = '0', 

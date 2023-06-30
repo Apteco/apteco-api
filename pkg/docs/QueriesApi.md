@@ -1,21 +1,21 @@
 # apteco_api.QueriesApi
 
-All URIs are relative to *https://example.com/OrbitAPI*
+All URIs are relative to *http://example.com/OrbitAPI*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**queries_perform_get_query_file_definition_synchronously**](QueriesApi.md#queries_perform_get_query_file_definition_synchronously) | **POST** /{dataViewName}/Queries/{systemName}/GetFileSync | EXPERIMENTAL: Get the query definition in the specified file
-[**queries_perform_query_count_synchronously**](QueriesApi.md#queries_perform_query_count_synchronously) | **POST** /{dataViewName}/Queries/{systemName}/CountSync | EXPERIMENTAL: Counts the given query and returns the results
-[**queries_perform_query_file_count_synchronously**](QueriesApi.md#queries_perform_query_file_count_synchronously) | **POST** /{dataViewName}/Queries/{systemName}/CountFileSync | EXPERIMENTAL: Counts the query in the specified file and returns the results
-[**queries_perform_save_query_file_definition_synchronously**](QueriesApi.md#queries_perform_save_query_file_definition_synchronously) | **POST** /{dataViewName}/Queries/{systemName}/SaveFileSync | EXPERIMENTAL: Get the query definition in the specified file
+[**queries_perform_get_query_file_definition_synchronously**](QueriesApi.md#queries_perform_get_query_file_definition_synchronously) | **POST** /{dataViewName}/Queries/{systemName}/GetFileSync | Get the query definition in the specified file
+[**queries_perform_query_count_synchronously**](QueriesApi.md#queries_perform_query_count_synchronously) | **POST** /{dataViewName}/Queries/{systemName}/CountSync | Counts the given query and returns the results
+[**queries_perform_query_file_count_synchronously**](QueriesApi.md#queries_perform_query_file_count_synchronously) | **POST** /{dataViewName}/Queries/{systemName}/CountFileSync | Counts the query in the specified file and returns the results
+[**queries_perform_save_query_file_definition_synchronously**](QueriesApi.md#queries_perform_save_query_file_definition_synchronously) | **POST** /{dataViewName}/Queries/{systemName}/SaveFileSync | Get the query definition in the specified file
 
 
 # **queries_perform_get_query_file_definition_synchronously**
 > QueryResult queries_perform_get_query_file_definition_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, query_file=query_file)
 
-EXPERIMENTAL: Get the query definition in the specified file
+Get the query definition in the specified file
 
-EXPERIMENTAL  Requires licence flags [AdvancedQuery]
+Requires licence flags [AdvancedQuery]
 
 ### Example
 
@@ -26,10 +26,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -39,7 +39,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -57,7 +57,7 @@ timeout_in_seconds = 56 # int | The number of seconds before the request will ti
 query_file = apteco_api.QueryFile() # QueryFile | The file that holds the query definition (optional)
 
     try:
-        # EXPERIMENTAL: Get the query definition in the specified file
+        # Get the query definition in the specified file
         api_response = api_instance.queries_perform_get_query_file_definition_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, query_file=query_file)
         pprint(api_response)
     except ApiException as e:
@@ -99,9 +99,9 @@ Name | Type | Description  | Notes
 # **queries_perform_query_count_synchronously**
 > QueryResult queries_perform_query_count_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, return_definition=return_definition, query=query)
 
-EXPERIMENTAL: Counts the given query and returns the results
+Counts the given query and returns the results
 
-EXPERIMENTAL  Requires licence flags [AdvancedQuery]
+Requires licence flags [AdvancedQuery]
 
 ### Example
 
@@ -112,10 +112,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -125,7 +125,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -144,7 +144,7 @@ return_definition = True # bool | Whether to include the query's definition in t
 query = apteco_api.Query() # Query | The query definition to count (optional)
 
     try:
-        # EXPERIMENTAL: Counts the given query and returns the results
+        # Counts the given query and returns the results
         api_response = api_instance.queries_perform_query_count_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, return_definition=return_definition, query=query)
         pprint(api_response)
     except ApiException as e:
@@ -187,9 +187,9 @@ Name | Type | Description  | Notes
 # **queries_perform_query_file_count_synchronously**
 > QueryResult queries_perform_query_file_count_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, return_definition=return_definition, query_file=query_file)
 
-EXPERIMENTAL: Counts the query in the specified file and returns the results
+Counts the query in the specified file and returns the results
 
-EXPERIMENTAL  Requires licence flags [AdvancedQuery]
+Requires licence flags [AdvancedQuery]
 
 ### Example
 
@@ -200,10 +200,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -213,7 +213,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -232,7 +232,7 @@ return_definition = True # bool | Whether to include the query's definition in t
 query_file = apteco_api.QueryFile() # QueryFile | The file that holds the query definition to count (optional)
 
     try:
-        # EXPERIMENTAL: Counts the query in the specified file and returns the results
+        # Counts the query in the specified file and returns the results
         api_response = api_instance.queries_perform_query_file_count_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, return_definition=return_definition, query_file=query_file)
         pprint(api_response)
     except ApiException as e:
@@ -275,9 +275,9 @@ Name | Type | Description  | Notes
 # **queries_perform_save_query_file_definition_synchronously**
 > queries_perform_save_query_file_definition_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, save_query_file=save_query_file)
 
-EXPERIMENTAL: Get the query definition in the specified file
+Get the query definition in the specified file
 
-EXPERIMENTAL  Requires licence flags [AdvancedQuery]
+Requires licence flags [AdvancedQuery]
 
 ### Example
 
@@ -288,10 +288,10 @@ import time
 import apteco_api
 from apteco_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://example.com/OrbitAPI
+# Defining the host is optional and defaults to http://example.com/OrbitAPI
 # See configuration.py for a list of all supported configuration parameters.
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI"
+    host = "http://example.com/OrbitAPI"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -301,7 +301,7 @@ configuration = apteco_api.Configuration(
 
 # Configure API key authorization: faststats_auth
 configuration = apteco_api.Configuration(
-    host = "https://example.com/OrbitAPI",
+    host = "http://example.com/OrbitAPI",
     api_key = {
         'Authorization': 'YOUR_API_KEY'
     }
@@ -319,7 +319,7 @@ timeout_in_seconds = 56 # int | The number of seconds before the request will ti
 save_query_file = apteco_api.SaveQueryFile() # SaveQueryFile | The file that holds the query definition (optional)
 
     try:
-        # EXPERIMENTAL: Get the query definition in the specified file
+        # Get the query definition in the specified file
         api_instance.queries_perform_save_query_file_definition_synchronously(data_view_name, system_name, timeout_in_seconds=timeout_in_seconds, save_query_file=save_query_file)
     except ApiException as e:
         print("Exception when calling QueriesApi->queries_perform_save_query_file_definition_synchronously: %s\n" % e)

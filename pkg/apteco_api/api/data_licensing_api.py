@@ -541,8 +541,9 @@ class DataLicensingApi(object):
             collection_formats=collection_formats)
 
     def data_licensing_get_data_licensing_system(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """Returns some top-level details for the specified FastStats system to license data from  # noqa: E501
+        """SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns some top-level details for the specified FastStats system to license data from  # noqa: E501
 
+        SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_licensing_get_data_licensing_system(data_view_name, system_name, async_req=True)
@@ -566,8 +567,9 @@ class DataLicensingApi(object):
         return self.data_licensing_get_data_licensing_system_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
 
     def data_licensing_get_data_licensing_system_with_http_info(self, data_view_name, system_name, **kwargs):  # noqa: E501
-        """Returns some top-level details for the specified FastStats system to license data from  # noqa: E501
+        """SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns some top-level details for the specified FastStats system to license data from  # noqa: E501
 
+        SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_licensing_get_data_licensing_system_with_http_info(data_view_name, system_name, async_req=True)
@@ -662,8 +664,9 @@ class DataLicensingApi(object):
             collection_formats=collection_formats)
 
     def data_licensing_get_data_licensing_systems(self, data_view_name, **kwargs):  # noqa: E501
-        """Returns the list of FastStats systems available for licensing data from  # noqa: E501
+        """SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns the list of FastStats systems available for licensing data from  # noqa: E501
 
+        SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_licensing_get_data_licensing_systems(data_view_name, async_req=True)
@@ -671,8 +674,8 @@ class DataLicensingApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -690,8 +693,9 @@ class DataLicensingApi(object):
         return self.data_licensing_get_data_licensing_systems_with_http_info(data_view_name, **kwargs)  # noqa: E501
 
     def data_licensing_get_data_licensing_systems_with_http_info(self, data_view_name, **kwargs):  # noqa: E501
-        """Returns the list of FastStats systems available for licensing data from  # noqa: E501
+        """SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns the list of FastStats systems available for licensing data from  # noqa: E501
 
+        SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_licensing_get_data_licensing_systems_with_http_info(data_view_name, async_req=True)
@@ -699,8 +703,8 @@ class DataLicensingApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -1069,8 +1073,8 @@ class DataLicensingApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
         :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1099,8 +1103,8 @@ class DataLicensingApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str system_name: The name of the FastStats system to act on (required)
         :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code

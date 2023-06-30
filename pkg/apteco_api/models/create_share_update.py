@@ -36,28 +36,38 @@ class CreateShareUpdate(object):
     openapi_types = {
         'notes': 'str',
         'email_addresses_to_add': 'list[str]',
-        'notify_added_users': 'bool',
-        'added_user_notification_message': 'str',
+        'user_ids_to_add': 'list[int]',
+        'group_ids_to_add': 'list[int]',
+        'share_to_all': 'bool',
+        'notify_added_recipients': 'bool',
+        'added_recipient_notification_message': 'str',
         'email_addresses_to_remove': 'list[str]',
-        'notify_removed_users': 'bool',
-        'removed_user_notification_message': 'str',
-        'notify_unchanged_users': 'bool',
-        'unchanged_user_notification_message': 'str'
+        'user_ids_to_remove': 'list[int]',
+        'group_ids_to_remove': 'list[int]',
+        'notify_removed_recipients': 'bool',
+        'removed_recipient_notification_message': 'str',
+        'notify_unchanged_recipients': 'bool',
+        'unchanged_recipient_notification_message': 'str'
     }
 
     attribute_map = {
         'notes': 'notes',
         'email_addresses_to_add': 'emailAddressesToAdd',
-        'notify_added_users': 'notifyAddedUsers',
-        'added_user_notification_message': 'addedUserNotificationMessage',
+        'user_ids_to_add': 'userIdsToAdd',
+        'group_ids_to_add': 'groupIdsToAdd',
+        'share_to_all': 'shareToAll',
+        'notify_added_recipients': 'notifyAddedRecipients',
+        'added_recipient_notification_message': 'addedRecipientNotificationMessage',
         'email_addresses_to_remove': 'emailAddressesToRemove',
-        'notify_removed_users': 'notifyRemovedUsers',
-        'removed_user_notification_message': 'removedUserNotificationMessage',
-        'notify_unchanged_users': 'notifyUnchangedUsers',
-        'unchanged_user_notification_message': 'unchangedUserNotificationMessage'
+        'user_ids_to_remove': 'userIdsToRemove',
+        'group_ids_to_remove': 'groupIdsToRemove',
+        'notify_removed_recipients': 'notifyRemovedRecipients',
+        'removed_recipient_notification_message': 'removedRecipientNotificationMessage',
+        'notify_unchanged_recipients': 'notifyUnchangedRecipients',
+        'unchanged_recipient_notification_message': 'unchangedRecipientNotificationMessage'
     }
 
-    def __init__(self, notes=None, email_addresses_to_add=None, notify_added_users=None, added_user_notification_message=None, email_addresses_to_remove=None, notify_removed_users=None, removed_user_notification_message=None, notify_unchanged_users=None, unchanged_user_notification_message=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, notes=None, email_addresses_to_add=None, user_ids_to_add=None, group_ids_to_add=None, share_to_all=None, notify_added_recipients=None, added_recipient_notification_message=None, email_addresses_to_remove=None, user_ids_to_remove=None, group_ids_to_remove=None, notify_removed_recipients=None, removed_recipient_notification_message=None, notify_unchanged_recipients=None, unchanged_recipient_notification_message=None, local_vars_configuration=None):  # noqa: E501
         """CreateShareUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -65,30 +75,45 @@ class CreateShareUpdate(object):
 
         self._notes = None
         self._email_addresses_to_add = None
-        self._notify_added_users = None
-        self._added_user_notification_message = None
+        self._user_ids_to_add = None
+        self._group_ids_to_add = None
+        self._share_to_all = None
+        self._notify_added_recipients = None
+        self._added_recipient_notification_message = None
         self._email_addresses_to_remove = None
-        self._notify_removed_users = None
-        self._removed_user_notification_message = None
-        self._notify_unchanged_users = None
-        self._unchanged_user_notification_message = None
+        self._user_ids_to_remove = None
+        self._group_ids_to_remove = None
+        self._notify_removed_recipients = None
+        self._removed_recipient_notification_message = None
+        self._notify_unchanged_recipients = None
+        self._unchanged_recipient_notification_message = None
         self.discriminator = None
 
         if notes is not None:
             self.notes = notes
         if email_addresses_to_add is not None:
             self.email_addresses_to_add = email_addresses_to_add
-        self.notify_added_users = notify_added_users
-        if added_user_notification_message is not None:
-            self.added_user_notification_message = added_user_notification_message
+        if user_ids_to_add is not None:
+            self.user_ids_to_add = user_ids_to_add
+        if group_ids_to_add is not None:
+            self.group_ids_to_add = group_ids_to_add
+        if share_to_all is not None:
+            self.share_to_all = share_to_all
+        self.notify_added_recipients = notify_added_recipients
+        if added_recipient_notification_message is not None:
+            self.added_recipient_notification_message = added_recipient_notification_message
         if email_addresses_to_remove is not None:
             self.email_addresses_to_remove = email_addresses_to_remove
-        self.notify_removed_users = notify_removed_users
-        if removed_user_notification_message is not None:
-            self.removed_user_notification_message = removed_user_notification_message
-        self.notify_unchanged_users = notify_unchanged_users
-        if unchanged_user_notification_message is not None:
-            self.unchanged_user_notification_message = unchanged_user_notification_message
+        if user_ids_to_remove is not None:
+            self.user_ids_to_remove = user_ids_to_remove
+        if group_ids_to_remove is not None:
+            self.group_ids_to_remove = group_ids_to_remove
+        self.notify_removed_recipients = notify_removed_recipients
+        if removed_recipient_notification_message is not None:
+            self.removed_recipient_notification_message = removed_recipient_notification_message
+        self.notify_unchanged_recipients = notify_unchanged_recipients
+        if unchanged_recipient_notification_message is not None:
+            self.unchanged_recipient_notification_message = unchanged_recipient_notification_message
 
     @property
     def notes(self):
@@ -137,52 +162,121 @@ class CreateShareUpdate(object):
         self._email_addresses_to_add = email_addresses_to_add
 
     @property
-    def notify_added_users(self):
-        """Gets the notify_added_users of this CreateShareUpdate.  # noqa: E501
+    def user_ids_to_add(self):
+        """Gets the user_ids_to_add of this CreateShareUpdate.  # noqa: E501
 
-        Whether to notify new users that the shareable item has now been shared with them  # noqa: E501
+        Ids of new users to share this shareable item with  # noqa: E501
 
-        :return: The notify_added_users of this CreateShareUpdate.  # noqa: E501
-        :rtype: bool
+        :return: The user_ids_to_add of this CreateShareUpdate.  # noqa: E501
+        :rtype: list[int]
         """
-        return self._notify_added_users
+        return self._user_ids_to_add
 
-    @notify_added_users.setter
-    def notify_added_users(self, notify_added_users):
-        """Sets the notify_added_users of this CreateShareUpdate.
+    @user_ids_to_add.setter
+    def user_ids_to_add(self, user_ids_to_add):
+        """Sets the user_ids_to_add of this CreateShareUpdate.
 
-        Whether to notify new users that the shareable item has now been shared with them  # noqa: E501
+        Ids of new users to share this shareable item with  # noqa: E501
 
-        :param notify_added_users: The notify_added_users of this CreateShareUpdate.  # noqa: E501
-        :type: bool
+        :param user_ids_to_add: The user_ids_to_add of this CreateShareUpdate.  # noqa: E501
+        :type: list[int]
         """
-        if self.local_vars_configuration.client_side_validation and notify_added_users is None:  # noqa: E501
-            raise ValueError("Invalid value for `notify_added_users`, must not be `None`")  # noqa: E501
 
-        self._notify_added_users = notify_added_users
+        self._user_ids_to_add = user_ids_to_add
 
     @property
-    def added_user_notification_message(self):
-        """Gets the added_user_notification_message of this CreateShareUpdate.  # noqa: E501
+    def group_ids_to_add(self):
+        """Gets the group_ids_to_add of this CreateShareUpdate.  # noqa: E501
 
-        If added users are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
+        Ids of new groups to share this shareable item with  # noqa: E501
 
-        :return: The added_user_notification_message of this CreateShareUpdate.  # noqa: E501
+        :return: The group_ids_to_add of this CreateShareUpdate.  # noqa: E501
+        :rtype: list[int]
+        """
+        return self._group_ids_to_add
+
+    @group_ids_to_add.setter
+    def group_ids_to_add(self, group_ids_to_add):
+        """Sets the group_ids_to_add of this CreateShareUpdate.
+
+        Ids of new groups to share this shareable item with  # noqa: E501
+
+        :param group_ids_to_add: The group_ids_to_add of this CreateShareUpdate.  # noqa: E501
+        :type: list[int]
+        """
+
+        self._group_ids_to_add = group_ids_to_add
+
+    @property
+    def share_to_all(self):
+        """Gets the share_to_all of this CreateShareUpdate.  # noqa: E501
+
+        Whether to share this shareable item with all users  # noqa: E501
+
+        :return: The share_to_all of this CreateShareUpdate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._share_to_all
+
+    @share_to_all.setter
+    def share_to_all(self, share_to_all):
+        """Sets the share_to_all of this CreateShareUpdate.
+
+        Whether to share this shareable item with all users  # noqa: E501
+
+        :param share_to_all: The share_to_all of this CreateShareUpdate.  # noqa: E501
+        :type: bool
+        """
+
+        self._share_to_all = share_to_all
+
+    @property
+    def notify_added_recipients(self):
+        """Gets the notify_added_recipients of this CreateShareUpdate.  # noqa: E501
+
+        Whether to notify new recipients that the shareable item has now been shared with them  # noqa: E501
+
+        :return: The notify_added_recipients of this CreateShareUpdate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._notify_added_recipients
+
+    @notify_added_recipients.setter
+    def notify_added_recipients(self, notify_added_recipients):
+        """Sets the notify_added_recipients of this CreateShareUpdate.
+
+        Whether to notify new recipients that the shareable item has now been shared with them  # noqa: E501
+
+        :param notify_added_recipients: The notify_added_recipients of this CreateShareUpdate.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and notify_added_recipients is None:  # noqa: E501
+            raise ValueError("Invalid value for `notify_added_recipients`, must not be `None`")  # noqa: E501
+
+        self._notify_added_recipients = notify_added_recipients
+
+    @property
+    def added_recipient_notification_message(self):
+        """Gets the added_recipient_notification_message of this CreateShareUpdate.  # noqa: E501
+
+        If added recipients are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
+
+        :return: The added_recipient_notification_message of this CreateShareUpdate.  # noqa: E501
         :rtype: str
         """
-        return self._added_user_notification_message
+        return self._added_recipient_notification_message
 
-    @added_user_notification_message.setter
-    def added_user_notification_message(self, added_user_notification_message):
-        """Sets the added_user_notification_message of this CreateShareUpdate.
+    @added_recipient_notification_message.setter
+    def added_recipient_notification_message(self, added_recipient_notification_message):
+        """Sets the added_recipient_notification_message of this CreateShareUpdate.
 
-        If added users are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
+        If added recipients are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
 
-        :param added_user_notification_message: The added_user_notification_message of this CreateShareUpdate.  # noqa: E501
+        :param added_recipient_notification_message: The added_recipient_notification_message of this CreateShareUpdate.  # noqa: E501
         :type: str
         """
 
-        self._added_user_notification_message = added_user_notification_message
+        self._added_recipient_notification_message = added_recipient_notification_message
 
     @property
     def email_addresses_to_remove(self):
@@ -208,100 +302,146 @@ class CreateShareUpdate(object):
         self._email_addresses_to_remove = email_addresses_to_remove
 
     @property
-    def notify_removed_users(self):
-        """Gets the notify_removed_users of this CreateShareUpdate.  # noqa: E501
+    def user_ids_to_remove(self):
+        """Gets the user_ids_to_remove of this CreateShareUpdate.  # noqa: E501
 
-        Whether to notify existing users that the share has been updated  # noqa: E501
+        Ids of users that this shareable item has already been shared with that should be removed from the share  # noqa: E501
 
-        :return: The notify_removed_users of this CreateShareUpdate.  # noqa: E501
-        :rtype: bool
+        :return: The user_ids_to_remove of this CreateShareUpdate.  # noqa: E501
+        :rtype: list[int]
         """
-        return self._notify_removed_users
+        return self._user_ids_to_remove
 
-    @notify_removed_users.setter
-    def notify_removed_users(self, notify_removed_users):
-        """Sets the notify_removed_users of this CreateShareUpdate.
+    @user_ids_to_remove.setter
+    def user_ids_to_remove(self, user_ids_to_remove):
+        """Sets the user_ids_to_remove of this CreateShareUpdate.
 
-        Whether to notify existing users that the share has been updated  # noqa: E501
+        Ids of users that this shareable item has already been shared with that should be removed from the share  # noqa: E501
 
-        :param notify_removed_users: The notify_removed_users of this CreateShareUpdate.  # noqa: E501
-        :type: bool
+        :param user_ids_to_remove: The user_ids_to_remove of this CreateShareUpdate.  # noqa: E501
+        :type: list[int]
         """
-        if self.local_vars_configuration.client_side_validation and notify_removed_users is None:  # noqa: E501
-            raise ValueError("Invalid value for `notify_removed_users`, must not be `None`")  # noqa: E501
 
-        self._notify_removed_users = notify_removed_users
+        self._user_ids_to_remove = user_ids_to_remove
 
     @property
-    def removed_user_notification_message(self):
-        """Gets the removed_user_notification_message of this CreateShareUpdate.  # noqa: E501
+    def group_ids_to_remove(self):
+        """Gets the group_ids_to_remove of this CreateShareUpdate.  # noqa: E501
 
-        If removed users are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
+        Ids of groups that this shareable item has already been shared with that should be removed from the share  # noqa: E501
 
-        :return: The removed_user_notification_message of this CreateShareUpdate.  # noqa: E501
+        :return: The group_ids_to_remove of this CreateShareUpdate.  # noqa: E501
+        :rtype: list[int]
+        """
+        return self._group_ids_to_remove
+
+    @group_ids_to_remove.setter
+    def group_ids_to_remove(self, group_ids_to_remove):
+        """Sets the group_ids_to_remove of this CreateShareUpdate.
+
+        Ids of groups that this shareable item has already been shared with that should be removed from the share  # noqa: E501
+
+        :param group_ids_to_remove: The group_ids_to_remove of this CreateShareUpdate.  # noqa: E501
+        :type: list[int]
+        """
+
+        self._group_ids_to_remove = group_ids_to_remove
+
+    @property
+    def notify_removed_recipients(self):
+        """Gets the notify_removed_recipients of this CreateShareUpdate.  # noqa: E501
+
+        Whether to notify existing recipients that the share has been updated  # noqa: E501
+
+        :return: The notify_removed_recipients of this CreateShareUpdate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._notify_removed_recipients
+
+    @notify_removed_recipients.setter
+    def notify_removed_recipients(self, notify_removed_recipients):
+        """Sets the notify_removed_recipients of this CreateShareUpdate.
+
+        Whether to notify existing recipients that the share has been updated  # noqa: E501
+
+        :param notify_removed_recipients: The notify_removed_recipients of this CreateShareUpdate.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and notify_removed_recipients is None:  # noqa: E501
+            raise ValueError("Invalid value for `notify_removed_recipients`, must not be `None`")  # noqa: E501
+
+        self._notify_removed_recipients = notify_removed_recipients
+
+    @property
+    def removed_recipient_notification_message(self):
+        """Gets the removed_recipient_notification_message of this CreateShareUpdate.  # noqa: E501
+
+        If removed recipients are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
+
+        :return: The removed_recipient_notification_message of this CreateShareUpdate.  # noqa: E501
         :rtype: str
         """
-        return self._removed_user_notification_message
+        return self._removed_recipient_notification_message
 
-    @removed_user_notification_message.setter
-    def removed_user_notification_message(self, removed_user_notification_message):
-        """Sets the removed_user_notification_message of this CreateShareUpdate.
+    @removed_recipient_notification_message.setter
+    def removed_recipient_notification_message(self, removed_recipient_notification_message):
+        """Sets the removed_recipient_notification_message of this CreateShareUpdate.
 
-        If removed users are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
+        If removed recipients are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
 
-        :param removed_user_notification_message: The removed_user_notification_message of this CreateShareUpdate.  # noqa: E501
+        :param removed_recipient_notification_message: The removed_recipient_notification_message of this CreateShareUpdate.  # noqa: E501
         :type: str
         """
 
-        self._removed_user_notification_message = removed_user_notification_message
+        self._removed_recipient_notification_message = removed_recipient_notification_message
 
     @property
-    def notify_unchanged_users(self):
-        """Gets the notify_unchanged_users of this CreateShareUpdate.  # noqa: E501
+    def notify_unchanged_recipients(self):
+        """Gets the notify_unchanged_recipients of this CreateShareUpdate.  # noqa: E501
 
-        Whether to notify users that the shareable item is shared with, but that haven't   been added or removed that the share has been updated  # noqa: E501
+        Whether to notify recipients that the shareable item is shared with, but that haven't   been added or removed that the share has been updated  # noqa: E501
 
-        :return: The notify_unchanged_users of this CreateShareUpdate.  # noqa: E501
+        :return: The notify_unchanged_recipients of this CreateShareUpdate.  # noqa: E501
         :rtype: bool
         """
-        return self._notify_unchanged_users
+        return self._notify_unchanged_recipients
 
-    @notify_unchanged_users.setter
-    def notify_unchanged_users(self, notify_unchanged_users):
-        """Sets the notify_unchanged_users of this CreateShareUpdate.
+    @notify_unchanged_recipients.setter
+    def notify_unchanged_recipients(self, notify_unchanged_recipients):
+        """Sets the notify_unchanged_recipients of this CreateShareUpdate.
 
-        Whether to notify users that the shareable item is shared with, but that haven't   been added or removed that the share has been updated  # noqa: E501
+        Whether to notify recipients that the shareable item is shared with, but that haven't   been added or removed that the share has been updated  # noqa: E501
 
-        :param notify_unchanged_users: The notify_unchanged_users of this CreateShareUpdate.  # noqa: E501
+        :param notify_unchanged_recipients: The notify_unchanged_recipients of this CreateShareUpdate.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and notify_unchanged_users is None:  # noqa: E501
-            raise ValueError("Invalid value for `notify_unchanged_users`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and notify_unchanged_recipients is None:  # noqa: E501
+            raise ValueError("Invalid value for `notify_unchanged_recipients`, must not be `None`")  # noqa: E501
 
-        self._notify_unchanged_users = notify_unchanged_users
+        self._notify_unchanged_recipients = notify_unchanged_recipients
 
     @property
-    def unchanged_user_notification_message(self):
-        """Gets the unchanged_user_notification_message of this CreateShareUpdate.  # noqa: E501
+    def unchanged_recipient_notification_message(self):
+        """Gets the unchanged_recipient_notification_message of this CreateShareUpdate.  # noqa: E501
 
-        If unchanged users are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
+        If unchanged recipients are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
 
-        :return: The unchanged_user_notification_message of this CreateShareUpdate.  # noqa: E501
+        :return: The unchanged_recipient_notification_message of this CreateShareUpdate.  # noqa: E501
         :rtype: str
         """
-        return self._unchanged_user_notification_message
+        return self._unchanged_recipient_notification_message
 
-    @unchanged_user_notification_message.setter
-    def unchanged_user_notification_message(self, unchanged_user_notification_message):
-        """Sets the unchanged_user_notification_message of this CreateShareUpdate.
+    @unchanged_recipient_notification_message.setter
+    def unchanged_recipient_notification_message(self, unchanged_recipient_notification_message):
+        """Sets the unchanged_recipient_notification_message of this CreateShareUpdate.
 
-        If unchanged users are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
+        If unchanged recipients are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
 
-        :param unchanged_user_notification_message: The unchanged_user_notification_message of this CreateShareUpdate.  # noqa: E501
+        :param unchanged_recipient_notification_message: The unchanged_recipient_notification_message of this CreateShareUpdate.  # noqa: E501
         :type: str
         """
 
-        self._unchanged_user_notification_message = unchanged_user_notification_message
+        self._unchanged_recipient_notification_message = unchanged_recipient_notification_message
 
     def to_dict(self):
         """Returns the model properties as a dict"""

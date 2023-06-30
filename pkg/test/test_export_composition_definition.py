@@ -42,7 +42,8 @@ class TestExportCompositionDefinition(unittest.TestCase):
                     delimiter = '0', 
                     alpha_encloser = '0', 
                     numeric_encloser = '0', 
-                    authorisation_code = '0', ), 
+                    authorisation_code = '0', 
+                    export_extra_name = '0', ), 
                 grid_items = [
                     apteco_api.models.grid_item.GridItem(
                         variable_name = '0', 
@@ -58,7 +59,8 @@ class TestExportCompositionDefinition(unittest.TestCase):
                     delimiter = '0', 
                     alpha_encloser = '0', 
                     numeric_encloser = '0', 
-                    authorisation_code = '0', ),
+                    authorisation_code = '0', 
+                    export_extra_name = '0', ),
                 grid_items = [
                     apteco_api.models.grid_item.GridItem(
                         variable_name = '0', 

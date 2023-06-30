@@ -36,6 +36,27 @@ class TestAboutApi(unittest.TestCase):
         """
         pass
 
+    def test_about_example_subject_to_change_or_removal_resource(self):
+        """Test case for about_example_subject_to_change_or_removal_resource
+
+        SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns a sample string  # noqa: E501
+        """
+        pass
+
+    def test_about_example_under_development_resource(self):
+        """Test case for about_example_under_development_resource
+
+        UNDER DEVELOPMENT: Returns a sample string if under development endpoints are enabled  # noqa: E501
+        """
+        pass
+
+    def test_about_force_internal_server_error(self):
+        """Test case for about_force_internal_server_error
+
+        Requires OrbitAdmin: Forces an internal server error to be returned to the client  # noqa: E501
+        """
+        pass
+
     def test_about_force_process_garbage_collection(self):
         """Test case for about_force_process_garbage_collection
 

@@ -34,100 +34,245 @@ class Permission(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        '_resource_path': 'str',
-        'file_permission': 'FilePermission',
-        'orbit_feature_permission': 'OrbitFeaturePermission'
+        'id': 'int',
+        'permission': 'object',
+        'permission_type': 'str',
+        'resource': 'str',
+        'resource_type': 'str',
+        'grant': 'bool',
+        'deny': 'bool',
+        'inherit': 'bool'
     }
 
     attribute_map = {
-        '_resource_path': 'resourcePath',
-        'file_permission': 'filePermission',
-        'orbit_feature_permission': 'orbitFeaturePermission'
+        'id': 'id',
+        'permission': 'permission',
+        'permission_type': 'permissionType',
+        'resource': 'resource',
+        'resource_type': 'resourceType',
+        'grant': 'grant',
+        'deny': 'deny',
+        'inherit': 'inherit'
     }
 
-    def __init__(self, _resource_path=None, file_permission=None, orbit_feature_permission=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, permission=None, permission_type=None, resource=None, resource_type=None, grant=None, deny=None, inherit=None, local_vars_configuration=None):  # noqa: E501
         """Permission - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self.__resource_path = None
-        self._file_permission = None
-        self._orbit_feature_permission = None
+        self._id = None
+        self._permission = None
+        self._permission_type = None
+        self._resource = None
+        self._resource_type = None
+        self._grant = None
+        self._deny = None
+        self._inherit = None
         self.discriminator = None
 
-        self._resource_path = _resource_path
-        if file_permission is not None:
-            self.file_permission = file_permission
-        if orbit_feature_permission is not None:
-            self.orbit_feature_permission = orbit_feature_permission
+        self.id = id
+        if permission is not None:
+            self.permission = permission
+        self.permission_type = permission_type
+        if resource is not None:
+            self.resource = resource
+        self.resource_type = resource_type
+        self.grant = grant
+        self.deny = deny
+        self.inherit = inherit
 
     @property
-    def _resource_path(self):
-        """Gets the _resource_path of this Permission.  # noqa: E501
+    def id(self):
+        """Gets the id of this Permission.  # noqa: E501
 
-        The path to the resource associated with this permission  # noqa: E501
 
-        :return: The _resource_path of this Permission.  # noqa: E501
+        :return: The id of this Permission.  # noqa: E501
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this Permission.
+
+
+        :param id: The id of this Permission.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
+
+    @property
+    def permission(self):
+        """Gets the permission of this Permission.  # noqa: E501
+
+
+        :return: The permission of this Permission.  # noqa: E501
+        :rtype: object
+        """
+        return self._permission
+
+    @permission.setter
+    def permission(self, permission):
+        """Sets the permission of this Permission.
+
+
+        :param permission: The permission of this Permission.  # noqa: E501
+        :type: object
+        """
+
+        self._permission = permission
+
+    @property
+    def permission_type(self):
+        """Gets the permission_type of this Permission.  # noqa: E501
+
+
+        :return: The permission_type of this Permission.  # noqa: E501
         :rtype: str
         """
-        return self.__resource_path
+        return self._permission_type
 
-    @_resource_path.setter
-    def _resource_path(self, _resource_path):
-        """Sets the _resource_path of this Permission.
+    @permission_type.setter
+    def permission_type(self, permission_type):
+        """Sets the permission_type of this Permission.
 
-        The path to the resource associated with this permission  # noqa: E501
 
-        :param _resource_path: The _resource_path of this Permission.  # noqa: E501
+        :param permission_type: The permission_type of this Permission.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and _resource_path is None:  # noqa: E501
-            raise ValueError("Invalid value for `_resource_path`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and permission_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `permission_type`, must not be `None`")  # noqa: E501
+        allowed_values = ["Unknown", "AccessRights", "PublishRights", "ExecutionRights", "SettingsRights", "DataRights", "DiagramRights", "StageRights", "UsageRights"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and permission_type not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `permission_type` ({0}), must be one of {1}"  # noqa: E501
+                .format(permission_type, allowed_values)
+            )
 
-        self.__resource_path = _resource_path
-
-    @property
-    def file_permission(self):
-        """Gets the file_permission of this Permission.  # noqa: E501
-
-
-        :return: The file_permission of this Permission.  # noqa: E501
-        :rtype: FilePermission
-        """
-        return self._file_permission
-
-    @file_permission.setter
-    def file_permission(self, file_permission):
-        """Sets the file_permission of this Permission.
-
-
-        :param file_permission: The file_permission of this Permission.  # noqa: E501
-        :type: FilePermission
-        """
-
-        self._file_permission = file_permission
+        self._permission_type = permission_type
 
     @property
-    def orbit_feature_permission(self):
-        """Gets the orbit_feature_permission of this Permission.  # noqa: E501
+    def resource(self):
+        """Gets the resource of this Permission.  # noqa: E501
 
 
-        :return: The orbit_feature_permission of this Permission.  # noqa: E501
-        :rtype: OrbitFeaturePermission
+        :return: The resource of this Permission.  # noqa: E501
+        :rtype: str
         """
-        return self._orbit_feature_permission
+        return self._resource
 
-    @orbit_feature_permission.setter
-    def orbit_feature_permission(self, orbit_feature_permission):
-        """Sets the orbit_feature_permission of this Permission.
+    @resource.setter
+    def resource(self, resource):
+        """Sets the resource of this Permission.
 
 
-        :param orbit_feature_permission: The orbit_feature_permission of this Permission.  # noqa: E501
-        :type: OrbitFeaturePermission
+        :param resource: The resource of this Permission.  # noqa: E501
+        :type: str
         """
 
-        self._orbit_feature_permission = orbit_feature_permission
+        self._resource = resource
+
+    @property
+    def resource_type(self):
+        """Gets the resource_type of this Permission.  # noqa: E501
+
+
+        :return: The resource_type of this Permission.  # noqa: E501
+        :rtype: str
+        """
+        return self._resource_type
+
+    @resource_type.setter
+    def resource_type(self, resource_type):
+        """Sets the resource_type of this Permission.
+
+
+        :param resource_type: The resource_type of this Permission.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and resource_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `resource_type`, must not be `None`")  # noqa: E501
+        allowed_values = ["Unknown", "File", "PeopleStageElement", "PeopleStageDiagram", "PeopleStageSeed", "PeopleStageSeedSet", "PeopleStageChannel", "PeopleStageAggregation", "PeopleStageVoucherSet", "PeopleStageTemplate", "CascadeElement", "FastStatsElement", "UserElement"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and resource_type not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `resource_type` ({0}), must be one of {1}"  # noqa: E501
+                .format(resource_type, allowed_values)
+            )
+
+        self._resource_type = resource_type
+
+    @property
+    def grant(self):
+        """Gets the grant of this Permission.  # noqa: E501
+
+
+        :return: The grant of this Permission.  # noqa: E501
+        :rtype: bool
+        """
+        return self._grant
+
+    @grant.setter
+    def grant(self, grant):
+        """Sets the grant of this Permission.
+
+
+        :param grant: The grant of this Permission.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and grant is None:  # noqa: E501
+            raise ValueError("Invalid value for `grant`, must not be `None`")  # noqa: E501
+
+        self._grant = grant
+
+    @property
+    def deny(self):
+        """Gets the deny of this Permission.  # noqa: E501
+
+
+        :return: The deny of this Permission.  # noqa: E501
+        :rtype: bool
+        """
+        return self._deny
+
+    @deny.setter
+    def deny(self, deny):
+        """Sets the deny of this Permission.
+
+
+        :param deny: The deny of this Permission.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and deny is None:  # noqa: E501
+            raise ValueError("Invalid value for `deny`, must not be `None`")  # noqa: E501
+
+        self._deny = deny
+
+    @property
+    def inherit(self):
+        """Gets the inherit of this Permission.  # noqa: E501
+
+
+        :return: The inherit of this Permission.  # noqa: E501
+        :rtype: bool
+        """
+        return self._inherit
+
+    @inherit.setter
+    def inherit(self, inherit):
+        """Sets the inherit of this Permission.
+
+
+        :param inherit: The inherit of this Permission.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and inherit is None:  # noqa: E501
+            raise ValueError("Invalid value for `inherit`, must not be `None`")  # noqa: E501
+
+        self._inherit = inherit
 
     def to_dict(self):
         """Returns the model properties as a dict"""

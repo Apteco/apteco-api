@@ -45,6 +45,7 @@ class TestPagedResultsShareUpdate(unittest.TestCase):
                         id = 56, 
                         timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         user = apteco_api.models.user_display_details.UserDisplayDetails(
+                            id = 56, 
                             username = '0', 
                             firstname = '0', 
                             surname = '0', 
@@ -52,16 +53,27 @@ class TestPagedResultsShareUpdate(unittest.TestCase):
                         notes = '0', 
                         number_of_added_users = 56, 
                         first_added_user = apteco_api.models.user_display_details.UserDisplayDetails(
+                            id = 56, 
                             username = '0', 
                             firstname = '0', 
                             surname = '0', 
                             email_address = '0', ), 
+                        shared_to_all = True, 
                         number_of_removed_users = 56, 
                         first_removed_user = apteco_api.models.user_display_details.UserDisplayDetails(
+                            id = 56, 
                             username = '0', 
                             firstname = '0', 
                             surname = '0', 
-                            email_address = '0', ), )
+                            email_address = '0', ), 
+                        number_of_added_groups = 56, 
+                        first_added_group = apteco_api.models.group_summary.GroupSummary(
+                            id = 56, 
+                            name = '0', ), 
+                        number_of_removed_groups = 56, 
+                        first_removed_group = apteco_api.models.group_summary.GroupSummary(
+                            id = 56, 
+                            name = '0', ), )
                     ]
             )
         else :
@@ -74,6 +86,7 @@ class TestPagedResultsShareUpdate(unittest.TestCase):
                         id = 56, 
                         timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         user = apteco_api.models.user_display_details.UserDisplayDetails(
+                            id = 56, 
                             username = '0', 
                             firstname = '0', 
                             surname = '0', 
@@ -81,16 +94,27 @@ class TestPagedResultsShareUpdate(unittest.TestCase):
                         notes = '0', 
                         number_of_added_users = 56, 
                         first_added_user = apteco_api.models.user_display_details.UserDisplayDetails(
+                            id = 56, 
                             username = '0', 
                             firstname = '0', 
                             surname = '0', 
                             email_address = '0', ), 
+                        shared_to_all = True, 
                         number_of_removed_users = 56, 
                         first_removed_user = apteco_api.models.user_display_details.UserDisplayDetails(
+                            id = 56, 
                             username = '0', 
                             firstname = '0', 
                             surname = '0', 
-                            email_address = '0', ), )
+                            email_address = '0', ), 
+                        number_of_added_groups = 56, 
+                        first_added_group = apteco_api.models.group_summary.GroupSummary(
+                            id = 56, 
+                            name = '0', ), 
+                        number_of_removed_groups = 56, 
+                        first_removed_group = apteco_api.models.group_summary.GroupSummary(
+                            id = 56, 
+                            name = '0', ), )
                     ],
         )
 

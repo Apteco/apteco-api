@@ -75,6 +75,11 @@ class TestSystemLookup(unittest.TestCase):
                                 description = '0', 
                                 count = 56, )
                             ], )
+                    ], 
+                folders_lookup = [
+                    apteco_api.models.folder.Folder(
+                        name = '0', 
+                        description = '0', )
                     ]
             )
         else :

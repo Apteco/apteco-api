@@ -37,11 +37,15 @@ class TestCapabilities(unittest.TestCase):
         # model = apteco_api.models.capabilities.Capabilities()  # noqa: E501
         if include_optional :
             return Capabilities(
-                supports_audiences = True
+                supports_audiences = True, 
+                supports_permissions = True, 
+                supports_dashboards_pareto = True
             )
         else :
             return Capabilities(
                 supports_audiences = True,
+                supports_permissions = True,
+                supports_dashboards_pareto = True,
         )
 
     def testCapabilities(self):

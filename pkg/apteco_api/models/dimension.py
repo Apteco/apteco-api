@@ -42,7 +42,10 @@ class Dimension(object):
         'function': 'str',
         'none_cell': 'bool',
         'omit_unclassified': 'bool',
-        'filter_query': 'Query'
+        'filter_query': 'Query',
+        'minimum_category_count': 'int',
+        'top_n_category_count': 'int',
+        'percentage_of_maximum_category_threshold': 'int'
     }
 
     attribute_map = {
@@ -54,10 +57,13 @@ class Dimension(object):
         'function': 'function',
         'none_cell': 'noneCell',
         'omit_unclassified': 'omitUnclassified',
-        'filter_query': 'filterQuery'
+        'filter_query': 'filterQuery',
+        'minimum_category_count': 'minimumCategoryCount',
+        'top_n_category_count': 'topNCategoryCount',
+        'percentage_of_maximum_category_threshold': 'percentageOfMaximumCategoryThreshold'
     }
 
-    def __init__(self, id=None, type=None, query=None, variable_name=None, banding=None, function=None, none_cell=None, omit_unclassified=None, filter_query=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, type=None, query=None, variable_name=None, banding=None, function=None, none_cell=None, omit_unclassified=None, filter_query=None, minimum_category_count=None, top_n_category_count=None, percentage_of_maximum_category_threshold=None, local_vars_configuration=None):  # noqa: E501
         """Dimension - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -72,6 +78,9 @@ class Dimension(object):
         self._none_cell = None
         self._omit_unclassified = None
         self._filter_query = None
+        self._minimum_category_count = None
+        self._top_n_category_count = None
+        self._percentage_of_maximum_category_threshold = None
         self.discriminator = None
 
         self.id = id
@@ -90,6 +99,12 @@ class Dimension(object):
             self.omit_unclassified = omit_unclassified
         if filter_query is not None:
             self.filter_query = filter_query
+        if minimum_category_count is not None:
+            self.minimum_category_count = minimum_category_count
+        if top_n_category_count is not None:
+            self.top_n_category_count = top_n_category_count
+        if percentage_of_maximum_category_threshold is not None:
+            self.percentage_of_maximum_category_threshold = percentage_of_maximum_category_threshold
 
     @property
     def id(self):
@@ -307,6 +322,75 @@ class Dimension(object):
         """
 
         self._filter_query = filter_query
+
+    @property
+    def minimum_category_count(self):
+        """Gets the minimum_category_count of this Dimension.  # noqa: E501
+
+        If defined, a minimum threshold for all categories in this dimension before they are included in the results for the cube.  The  value for the threshold is the category's instant count.  If this property is specified then the TopNCategoryCount and PercentageOfMaximumCategoryThreshold properties must be left undefined.  # noqa: E501
+
+        :return: The minimum_category_count of this Dimension.  # noqa: E501
+        :rtype: int
+        """
+        return self._minimum_category_count
+
+    @minimum_category_count.setter
+    def minimum_category_count(self, minimum_category_count):
+        """Sets the minimum_category_count of this Dimension.
+
+        If defined, a minimum threshold for all categories in this dimension before they are included in the results for the cube.  The  value for the threshold is the category's instant count.  If this property is specified then the TopNCategoryCount and PercentageOfMaximumCategoryThreshold properties must be left undefined.  # noqa: E501
+
+        :param minimum_category_count: The minimum_category_count of this Dimension.  # noqa: E501
+        :type: int
+        """
+
+        self._minimum_category_count = minimum_category_count
+
+    @property
+    def top_n_category_count(self):
+        """Gets the top_n_category_count of this Dimension.  # noqa: E501
+
+        If defined, specifies how many categories to return for this dimension (sorted descending by their instant count).   If this property is specified then the MinimumCategoryCount and PercentageOfMaximumCategoryThreshold properties must be left undefined.  # noqa: E501
+
+        :return: The top_n_category_count of this Dimension.  # noqa: E501
+        :rtype: int
+        """
+        return self._top_n_category_count
+
+    @top_n_category_count.setter
+    def top_n_category_count(self, top_n_category_count):
+        """Sets the top_n_category_count of this Dimension.
+
+        If defined, specifies how many categories to return for this dimension (sorted descending by their instant count).   If this property is specified then the MinimumCategoryCount and PercentageOfMaximumCategoryThreshold properties must be left undefined.  # noqa: E501
+
+        :param top_n_category_count: The top_n_category_count of this Dimension.  # noqa: E501
+        :type: int
+        """
+
+        self._top_n_category_count = top_n_category_count
+
+    @property
+    def percentage_of_maximum_category_threshold(self):
+        """Gets the percentage_of_maximum_category_threshold of this Dimension.  # noqa: E501
+
+        If defined, a threshold for all categories in this dimension before they are included in the results for the cube.  The  threshold is specified as a percentage of the biggest instant count for any category in this dimension.  If this property is specified then the MinimumCategoryCount and TopNCategoryCount properties must be left undefined.  # noqa: E501
+
+        :return: The percentage_of_maximum_category_threshold of this Dimension.  # noqa: E501
+        :rtype: int
+        """
+        return self._percentage_of_maximum_category_threshold
+
+    @percentage_of_maximum_category_threshold.setter
+    def percentage_of_maximum_category_threshold(self, percentage_of_maximum_category_threshold):
+        """Sets the percentage_of_maximum_category_threshold of this Dimension.
+
+        If defined, a threshold for all categories in this dimension before they are included in the results for the cube.  The  threshold is specified as a percentage of the biggest instant count for any category in this dimension.  If this property is specified then the MinimumCategoryCount and TopNCategoryCount properties must be left undefined.  # noqa: E501
+
+        :param percentage_of_maximum_category_threshold: The percentage_of_maximum_category_threshold of this Dimension.  # noqa: E501
+        :type: int
+        """
+
+        self._percentage_of_maximum_category_threshold = percentage_of_maximum_category_threshold
 
     def to_dict(self):
         """Returns the model properties as a dict"""

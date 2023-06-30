@@ -75,7 +75,7 @@ conf = apteco_api.Configuration(
 
     _default = None
 
-    def __init__(self, host="https://example.com/OrbitAPI",
+    def __init__(self, host="http://example.com/OrbitAPI",
                  api_key=None, api_key_prefix=None,
                  username=None, password=None,
                  discard_unknown_keys=False,
@@ -353,7 +353,7 @@ conf = apteco_api.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v2\n"\
-               "SDK Package Version: 0.2.6".\
+               "SDK Package Version: 0.3.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
@@ -363,7 +363,7 @@ conf = apteco_api.Configuration(
         """
         return [
             {
-                'url': "https://example.com/OrbitAPI/",
+                'url': "http://example.com/OrbitAPI/",
                 'description': "No description provided",
             }
         ]

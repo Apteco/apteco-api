@@ -48,6 +48,7 @@ class TestCreateAudienceCompositionDetail(unittest.TestCase):
                                 height = 1.337, ), 
                             chart_type = 'Bar', 
                             omit_zeros = True, 
+                            sort_order = 'Natural', 
                             description = '0', )
                         ], 
                     grid_items = [
@@ -63,7 +64,8 @@ class TestCreateAudienceCompositionDetail(unittest.TestCase):
                         delimiter = '0', 
                         alpha_encloser = '0', 
                         numeric_encloser = '0', 
-                        authorisation_code = '0', ), 
+                        authorisation_code = '0', 
+                        export_extra_name = '0', ), 
                     grid_items = [
                         apteco_api.models.grid_item.GridItem(
                             variable_name = '0', 

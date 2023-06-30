@@ -38,9 +38,8 @@ class GroupsApi(object):
         self.api_client = api_client
 
     def groups_get_group_details(self, data_view_name, group_id, **kwargs):  # noqa: E501
-        """Requires OrbitAdmin: Returns details for the given group  # noqa: E501
+        """Returns details for the given group  # noqa: E501
 
-        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.groups_get_group_details(data_view_name, group_id, async_req=True)
@@ -56,7 +55,7 @@ class GroupsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: UserDetail
+        :return: GroupDetail
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -64,9 +63,8 @@ class GroupsApi(object):
         return self.groups_get_group_details_with_http_info(data_view_name, group_id, **kwargs)  # noqa: E501
 
     def groups_get_group_details_with_http_info(self, data_view_name, group_id, **kwargs):  # noqa: E501
-        """Requires OrbitAdmin: Returns details for the given group  # noqa: E501
+        """Returns details for the given group  # noqa: E501
 
-        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.groups_get_group_details_with_http_info(data_view_name, group_id, async_req=True)
@@ -84,7 +82,7 @@ class GroupsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(UserDetail, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(GroupDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -152,7 +150,7 @@ class GroupsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='UserDetail',  # noqa: E501
+            response_type='GroupDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -161,9 +159,8 @@ class GroupsApi(object):
             collection_formats=collection_formats)
 
     def groups_get_groups(self, data_view_name, **kwargs):  # noqa: E501
-        """Requires OrbitAdmin: Returns all groups in the DataView.  # noqa: E501
+        """Returns all groups in the DataView.  # noqa: E501
 
-        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.groups_get_groups(data_view_name, async_req=True)
@@ -171,8 +168,9 @@ class GroupsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param str system_name: If specified, whether to limit to only groups attached to the system name
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -190,9 +188,8 @@ class GroupsApi(object):
         return self.groups_get_groups_with_http_info(data_view_name, **kwargs)  # noqa: E501
 
     def groups_get_groups_with_http_info(self, data_view_name, **kwargs):  # noqa: E501
-        """Requires OrbitAdmin: Returns all groups in the DataView.  # noqa: E501
+        """Returns all groups in the DataView.  # noqa: E501
 
-        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.groups_get_groups_with_http_info(data_view_name, async_req=True)
@@ -200,8 +197,9 @@ class GroupsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param str system_name: If specified, whether to limit to only groups attached to the system name
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -222,6 +220,7 @@ class GroupsApi(object):
 
         all_params = [
             'data_view_name',
+            'system_name',
             'filter',
             'order_by',
             'offset',
@@ -260,6 +259,8 @@ class GroupsApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
+        if 'system_name' in local_var_params and local_var_params['system_name'] is not None:  # noqa: E501
+            query_params.append(('systemName', local_var_params['system_name']))  # noqa: E501
         if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
         if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
@@ -299,9 +300,8 @@ class GroupsApi(object):
             collection_formats=collection_formats)
 
     def groups_get_user_details_for_group(self, data_view_name, group_id, **kwargs):  # noqa: E501
-        """Requires OrbitAdmin: Returns all users in the given group.  # noqa: E501
+        """Returns all users in the given group.  # noqa: E501
 
-        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.groups_get_user_details_for_group(data_view_name, group_id, async_req=True)
@@ -310,8 +310,9 @@ class GroupsApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param int group_id: The id of the group to get users for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :param str include_disabled: If specified, whether to include disabled users, not disabled users or both.  Defaults to not disabled only
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -329,9 +330,8 @@ class GroupsApi(object):
         return self.groups_get_user_details_for_group_with_http_info(data_view_name, group_id, **kwargs)  # noqa: E501
 
     def groups_get_user_details_for_group_with_http_info(self, data_view_name, group_id, **kwargs):  # noqa: E501
-        """Requires OrbitAdmin: Returns all users in the given group.  # noqa: E501
+        """Returns all users in the given group.  # noqa: E501
 
-        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.groups_get_user_details_for_group_with_http_info(data_view_name, group_id, async_req=True)
@@ -340,8 +340,9 @@ class GroupsApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
         :param int group_id: The id of the group to get users for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :param str include_disabled: If specified, whether to include disabled users, not disabled users or both.  Defaults to not disabled only
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -363,6 +364,7 @@ class GroupsApi(object):
         all_params = [
             'data_view_name',
             'group_id',
+            'include_disabled',
             'filter',
             'order_by',
             'offset',
@@ -407,6 +409,8 @@ class GroupsApi(object):
             path_params['groupId'] = local_var_params['group_id']  # noqa: E501
 
         query_params = []
+        if 'include_disabled' in local_var_params and local_var_params['include_disabled'] is not None:  # noqa: E501
+            query_params.append(('includeDisabled', local_var_params['include_disabled']))  # noqa: E501
         if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
         if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
@@ -446,9 +450,8 @@ class GroupsApi(object):
             collection_formats=collection_formats)
 
     def groups_get_user_details_for_unallocated_group(self, data_view_name, **kwargs):  # noqa: E501
-        """Requires OrbitAdmin: Returns all users that haven't been allocated to a group.  # noqa: E501
+        """Returns all users that haven't been allocated to a group.  # noqa: E501
 
-        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.groups_get_user_details_for_unallocated_group(data_view_name, async_req=True)
@@ -456,8 +459,9 @@ class GroupsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :param str include_disabled: If specified, whether to include disabled users, not disabled users or both.  Defaults to not disabled only
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -475,9 +479,8 @@ class GroupsApi(object):
         return self.groups_get_user_details_for_unallocated_group_with_http_info(data_view_name, **kwargs)  # noqa: E501
 
     def groups_get_user_details_for_unallocated_group_with_http_info(self, data_view_name, **kwargs):  # noqa: E501
-        """Requires OrbitAdmin: Returns all users that haven't been allocated to a group.  # noqa: E501
+        """Returns all users that haven't been allocated to a group.  # noqa: E501
 
-        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.groups_get_user_details_for_unallocated_group_with_http_info(data_view_name, async_req=True)
@@ -485,8 +488,9 @@ class GroupsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate
+        :param str include_disabled: If specified, whether to include disabled users, not disabled users or both.  Defaults to not disabled only
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, EmailAddress, Firstname, Surname, UserDisabledDate.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -507,6 +511,7 @@ class GroupsApi(object):
 
         all_params = [
             'data_view_name',
+            'include_disabled',
             'filter',
             'order_by',
             'offset',
@@ -545,6 +550,8 @@ class GroupsApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
+        if 'include_disabled' in local_var_params and local_var_params['include_disabled'] is not None:  # noqa: E501
+            query_params.append(('includeDisabled', local_var_params['include_disabled']))  # noqa: E501
         if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
         if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501

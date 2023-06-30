@@ -58,7 +58,8 @@ class VarCode(object):
 
         self.code = code
         self.description = description
-        self.count = count
+        if count is not None:
+            self.count = count
 
     @property
     def code(self):
@@ -114,7 +115,7 @@ class VarCode(object):
     def count(self):
         """Gets the count of this VarCode.  # noqa: E501
 
-        The number of records for the variable in the whole FastStats system that have been asigned this code  # noqa: E501
+        The number of records for the variable in the whole FastStats system that have been asigned this code.  If this is null, then the count is temporarily unavailable (perhaps due to row filters having been applied)  # noqa: E501
 
         :return: The count of this VarCode.  # noqa: E501
         :rtype: int
@@ -125,13 +126,11 @@ class VarCode(object):
     def count(self, count):
         """Sets the count of this VarCode.
 
-        The number of records for the variable in the whole FastStats system that have been asigned this code  # noqa: E501
+        The number of records for the variable in the whole FastStats system that have been asigned this code.  If this is null, then the count is temporarily unavailable (perhaps due to row filters having been applied)  # noqa: E501
 
         :param count: The count of this VarCode.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and count is None:  # noqa: E501
-            raise ValueError("Invalid value for `count`, must not be `None`")  # noqa: E501
 
         self._count = count
 

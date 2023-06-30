@@ -37,6 +37,132 @@ class StaticResourcesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def static_resources_delete_static_resource_file(self, data_view_name, resource_category, resource_id, **kwargs):  # noqa: E501
+        """Returns a resource file (such as an image file) for the given category and system  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.static_resources_delete_static_resource_file(data_view_name, resource_category, resource_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to delete the resource for (required)
+        :param str resource_category: The category of the resource to delete (required)
+        :param str resource_id: The resourceId of the resource to delete (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.static_resources_delete_static_resource_file_with_http_info(data_view_name, resource_category, resource_id, **kwargs)  # noqa: E501
+
+    def static_resources_delete_static_resource_file_with_http_info(self, data_view_name, resource_category, resource_id, **kwargs):  # noqa: E501
+        """Returns a resource file (such as an image file) for the given category and system  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.static_resources_delete_static_resource_file_with_http_info(data_view_name, resource_category, resource_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to delete the resource for (required)
+        :param str resource_category: The category of the resource to delete (required)
+        :param str resource_id: The resourceId of the resource to delete (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'data_view_name',
+            'resource_category',
+            'resource_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method static_resources_delete_static_resource_file" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `static_resources_delete_static_resource_file`")  # noqa: E501
+        # verify the required parameter 'resource_category' is set
+        if self.api_client.client_side_validation and ('resource_category' not in local_var_params or  # noqa: E501
+                                                        local_var_params['resource_category'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `resource_category` when calling `static_resources_delete_static_resource_file`")  # noqa: E501
+        # verify the required parameter 'resource_id' is set
+        if self.api_client.client_side_validation and ('resource_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['resource_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `resource_id` when calling `static_resources_delete_static_resource_file`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'resource_category' in local_var_params:
+            path_params['resourceCategory'] = local_var_params['resource_category']  # noqa: E501
+        if 'resource_id' in local_var_params:
+            path_params['resourceId'] = local_var_params['resource_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/StaticResources/{resourceCategory}/Resources/{resourceId}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def static_resources_get_static_resource_categories(self, data_view_name, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Returns a list of categories of resource files for the given system  # noqa: E501
 
@@ -47,9 +173,10 @@ class StaticResourcesApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to list resource categories for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description
+        :param str data_view_name: (required)
+        :param str system_name: The name of the system to list resource categories for
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -76,9 +203,10 @@ class StaticResourcesApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str data_view_name: The name of the DataView to list resource categories for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description
+        :param str data_view_name: (required)
+        :param str system_name: The name of the system to list resource categories for
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -99,6 +227,7 @@ class StaticResourcesApi(object):
 
         all_params = [
             'data_view_name',
+            'system_name',
             'filter',
             'order_by',
             'offset',
@@ -137,6 +266,8 @@ class StaticResourcesApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
 
         query_params = []
+        if 'system_name' in local_var_params and local_var_params['system_name'] is not None:  # noqa: E501
+            query_params.append(('systemName', local_var_params['system_name']))  # noqa: E501
         if 'filter' in local_var_params and local_var_params['filter'] is not None:  # noqa: E501
             query_params.append(('filter', local_var_params['filter']))  # noqa: E501
         if 'order_by' in local_var_params and local_var_params['order_by'] is not None:  # noqa: E501
@@ -298,17 +429,18 @@ class StaticResourcesApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def static_resources_get_static_resource_file(self, data_view_name, resource_category, resource_name, **kwargs):  # noqa: E501
+    def static_resources_get_static_resource_file(self, data_view_name, resource_category, resource_id, resource_name, **kwargs):  # noqa: E501
         """Returns a resource file (such as an image file) for the given category and system  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.static_resources_get_static_resource_file(data_view_name, resource_category, resource_name, async_req=True)
+        >>> thread = api.static_resources_get_static_resource_file(data_view_name, resource_category, resource_id, resource_name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to find the resource for (required)
         :param str resource_category: The category of the resource to return (required)
+        :param str resource_id: The id of the resource to return (required)
         :param str resource_name: The name of the resource to return (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
@@ -322,19 +454,20 @@ class StaticResourcesApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.static_resources_get_static_resource_file_with_http_info(data_view_name, resource_category, resource_name, **kwargs)  # noqa: E501
+        return self.static_resources_get_static_resource_file_with_http_info(data_view_name, resource_category, resource_id, resource_name, **kwargs)  # noqa: E501
 
-    def static_resources_get_static_resource_file_with_http_info(self, data_view_name, resource_category, resource_name, **kwargs):  # noqa: E501
+    def static_resources_get_static_resource_file_with_http_info(self, data_view_name, resource_category, resource_id, resource_name, **kwargs):  # noqa: E501
         """Returns a resource file (such as an image file) for the given category and system  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.static_resources_get_static_resource_file_with_http_info(data_view_name, resource_category, resource_name, async_req=True)
+        >>> thread = api.static_resources_get_static_resource_file_with_http_info(data_view_name, resource_category, resource_id, resource_name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to find the resource for (required)
         :param str resource_category: The category of the resource to return (required)
+        :param str resource_id: The id of the resource to return (required)
         :param str resource_name: The name of the resource to return (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
@@ -355,6 +488,7 @@ class StaticResourcesApi(object):
         all_params = [
             'data_view_name',
             'resource_category',
+            'resource_id',
             'resource_name'
         ]
         all_params.extend(
@@ -382,6 +516,10 @@ class StaticResourcesApi(object):
         if self.api_client.client_side_validation and ('resource_category' not in local_var_params or  # noqa: E501
                                                         local_var_params['resource_category'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `resource_category` when calling `static_resources_get_static_resource_file`")  # noqa: E501
+        # verify the required parameter 'resource_id' is set
+        if self.api_client.client_side_validation and ('resource_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['resource_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `resource_id` when calling `static_resources_get_static_resource_file`")  # noqa: E501
         # verify the required parameter 'resource_name' is set
         if self.api_client.client_side_validation and ('resource_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['resource_name'] is None):  # noqa: E501
@@ -394,6 +532,8 @@ class StaticResourcesApi(object):
             path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
         if 'resource_category' in local_var_params:
             path_params['resourceCategory'] = local_var_params['resource_category']  # noqa: E501
+        if 'resource_id' in local_var_params:
+            path_params['resourceId'] = local_var_params['resource_id']  # noqa: E501
         if 'resource_name' in local_var_params:
             path_params['resourceName'] = local_var_params['resource_name']  # noqa: E501
 
@@ -409,7 +549,7 @@ class StaticResourcesApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/{dataViewName}/StaticResources/{resourceCategory}/Resources/{resourceName}', 'GET',
+            '/{dataViewName}/StaticResources/{resourceCategory}/Resources/{resourceId}/{resourceName}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -557,9 +697,8 @@ class StaticResourcesApi(object):
             collection_formats=collection_formats)
 
     def static_resources_get_static_resources_for_category(self, data_view_name, resource_category, **kwargs):  # noqa: E501
-        """Requires OrbitAdmin: Returns a list of details for the resource files (such as image files) in the given resource category and system  # noqa: E501
+        """Returns a list of details for the resource files (such as image files) in the given resource category and system  # noqa: E501
 
-        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.static_resources_get_static_resources_for_category(data_view_name, resource_category, async_req=True)
@@ -568,8 +707,8 @@ class StaticResourcesApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to list resources (required)
         :param str resource_category: The category to return resources for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Size, LastModified
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Size, LastModified
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Size, LastModified.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Size, LastModified.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -587,9 +726,8 @@ class StaticResourcesApi(object):
         return self.static_resources_get_static_resources_for_category_with_http_info(data_view_name, resource_category, **kwargs)  # noqa: E501
 
     def static_resources_get_static_resources_for_category_with_http_info(self, data_view_name, resource_category, **kwargs):  # noqa: E501
-        """Requires OrbitAdmin: Returns a list of details for the resource files (such as image files) in the given resource category and system  # noqa: E501
+        """Returns a list of details for the resource files (such as image files) in the given resource category and system  # noqa: E501
 
-        This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.static_resources_get_static_resources_for_category_with_http_info(data_view_name, resource_category, async_req=True)
@@ -598,8 +736,8 @@ class StaticResourcesApi(object):
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to list resources (required)
         :param str resource_category: The category to return resources for (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Size, LastModified
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Size, LastModified
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Size, LastModified.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Size, LastModified.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
@@ -696,6 +834,132 @@ class StaticResourcesApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='PagedResultsResourceSummary',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def static_resources_post_static_resource_file(self, data_view_name, resource_category, **kwargs):  # noqa: E501
+        """Uploads a resource file (such as an image file) for the given category and system  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.static_resources_post_static_resource_file(data_view_name, resource_category, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to find the resource for (required)
+        :param str resource_category: The category of the resource to return (required)
+        :param file file: The file to upload
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.static_resources_post_static_resource_file_with_http_info(data_view_name, resource_category, **kwargs)  # noqa: E501
+
+    def static_resources_post_static_resource_file_with_http_info(self, data_view_name, resource_category, **kwargs):  # noqa: E501
+        """Uploads a resource file (such as an image file) for the given category and system  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.static_resources_post_static_resource_file_with_http_info(data_view_name, resource_category, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to find the resource for (required)
+        :param str resource_category: The category of the resource to return (required)
+        :param file file: The file to upload
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'data_view_name',
+            'resource_category',
+            'file'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method static_resources_post_static_resource_file" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `static_resources_post_static_resource_file`")  # noqa: E501
+        # verify the required parameter 'resource_category' is set
+        if self.api_client.client_side_validation and ('resource_category' not in local_var_params or  # noqa: E501
+                                                        local_var_params['resource_category'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `resource_category` when calling `static_resources_post_static_resource_file`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+        if 'resource_category' in local_var_params:
+            path_params['resourceCategory'] = local_var_params['resource_category']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in local_var_params:
+            local_var_files['file'] = local_var_params['file']  # noqa: E501
+
+        body_params = None
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['faststats_auth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/StaticResources/{resourceCategory}/Resources', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

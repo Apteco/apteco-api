@@ -40,7 +40,6 @@ class TestResetPasswordRequestDetail(unittest.TestCase):
                 reset_password_url = '0', 
                 has_notification_been_sent = True, 
                 token = '0', 
-                username = '0', 
                 email_address = '0', 
                 creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 confirmed_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
@@ -50,7 +49,6 @@ class TestResetPasswordRequestDetail(unittest.TestCase):
             return ResetPasswordRequestDetail(
                 has_notification_been_sent = True,
                 token = '0',
-                username = '0',
                 email_address = '0',
                 creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
         )

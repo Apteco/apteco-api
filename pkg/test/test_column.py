@@ -192,7 +192,9 @@ class TestColumn(unittest.TestCase):
                     today_at = '0', ), 
                 column_header = '0', 
                 detail = 'Code', 
-                unclassified_format = 'FromDesign'
+                unclassified_format = 'FromDesign', 
+                user_code = '0', 
+                user_code_name = '0'
             )
         else :
             return Column(

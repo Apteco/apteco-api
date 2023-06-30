@@ -283,6 +283,127 @@ class SessionsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def sessions_create_session_from_login_token(self, data_view_name, **kwargs):  # noqa: E501
+        """Creates a session to use for other API requests given a JWT login token from the Apteco Login Service.  The API must have the appriopriate JWT issuer, audience and signing key specified to be able to validate the token.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.sessions_create_session_from_login_token(data_view_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param TokenLoginDetails login_details: The details used to create the session
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: SessionDetails
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.sessions_create_session_from_login_token_with_http_info(data_view_name, **kwargs)  # noqa: E501
+
+    def sessions_create_session_from_login_token_with_http_info(self, data_view_name, **kwargs):  # noqa: E501
+        """Creates a session to use for other API requests given a JWT login token from the Apteco Login Service.  The API must have the appriopriate JWT issuer, audience and signing key specified to be able to validate the token.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.sessions_create_session_from_login_token_with_http_info(data_view_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param TokenLoginDetails login_details: The details used to create the session
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(SessionDetails, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'data_view_name',
+            'login_details'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method sessions_create_session_from_login_token" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'data_view_name' is set
+        if self.api_client.client_side_validation and ('data_view_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data_view_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data_view_name` when calling `sessions_create_session_from_login_token`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'data_view_name' in local_var_params:
+            path_params['dataViewName'] = local_var_params['data_view_name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'login_details' in local_var_params:
+            body_params = local_var_params['login_details']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{dataViewName}/Sessions/TokenLogin', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='SessionDetails',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def sessions_create_session_salted(self, data_view_name, username, login_salt, password_hash, **kwargs):  # noqa: E501
         """Creates a session to use for other API requests  # noqa: E501
 
@@ -296,6 +417,7 @@ class SessionsApi(object):
         :param str username: The username of the user (required)
         :param str login_salt: The salt to use when loging in (required)
         :param str password_hash: The password hash for the user.  Depending on the settings for the user this will be generated in a complicated way (required)
+        :param str client_type: If specified, the type of client creating the session.  Otherwise a default value will be used.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -323,6 +445,7 @@ class SessionsApi(object):
         :param str username: The username of the user (required)
         :param str login_salt: The salt to use when loging in (required)
         :param str password_hash: The password hash for the user.  Depending on the settings for the user this will be generated in a complicated way (required)
+        :param str client_type: If specified, the type of client creating the session.  Otherwise a default value will be used.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -343,7 +466,8 @@ class SessionsApi(object):
             'data_view_name',
             'username',
             'login_salt',
-            'password_hash'
+            'password_hash',
+            'client_type'
         ]
         all_params.extend(
             [
@@ -397,6 +521,8 @@ class SessionsApi(object):
             form_params.append(('LoginSalt', local_var_params['login_salt']))  # noqa: E501
         if 'password_hash' in local_var_params:
             form_params.append(('PasswordHash', local_var_params['password_hash']))  # noqa: E501
+        if 'client_type' in local_var_params:
+            form_params.append(('ClientType', local_var_params['client_type']))  # noqa: E501
 
         body_params = None
         # HTTP header `Accept`
@@ -438,6 +564,7 @@ class SessionsApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str user_login: The piece of information used to identify the user.  This always be a username, and  if the option has been configured an email address can also be used.  Note that a  user can only successfully log on with their email address if no other user has  the same email address registered in the system. (required)
         :param str password: The password for the user. (required)
+        :param str client_type: If specified, the type of client creating the session.  Otherwise a default value will be used.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -464,6 +591,7 @@ class SessionsApi(object):
         :param str data_view_name: The name of the DataView to act on (required)
         :param str user_login: The piece of information used to identify the user.  This always be a username, and  if the option has been configured an email address can also be used.  Note that a  user can only successfully log on with their email address if no other user has  the same email address registered in the system. (required)
         :param str password: The password for the user. (required)
+        :param str client_type: If specified, the type of client creating the session.  Otherwise a default value will be used.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -483,7 +611,8 @@ class SessionsApi(object):
         all_params = [
             'data_view_name',
             'user_login',
-            'password'
+            'password',
+            'client_type'
         ]
         all_params.extend(
             [
@@ -531,6 +660,8 @@ class SessionsApi(object):
             form_params.append(('UserLogin', local_var_params['user_login']))  # noqa: E501
         if 'password' in local_var_params:
             form_params.append(('Password', local_var_params['password']))  # noqa: E501
+        if 'client_type' in local_var_params:
+            form_params.append(('ClientType', local_var_params['client_type']))  # noqa: E501
 
         body_params = None
         # HTTP header `Accept`
@@ -692,8 +823,8 @@ class SessionsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -721,8 +852,8 @@ class SessionsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str data_view_name: The name of the DataView to act on (required)
-        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username
-        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username.
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username.
         :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
         :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code

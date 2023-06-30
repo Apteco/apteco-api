@@ -34,72 +34,213 @@ class DashboardDetail(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'base_query': 'Query',
+        'dashboard_items': 'list[DashboardContentItem]',
+        'base_query_lookup': 'SystemLookup',
+        'theme_id': 'int',
+        'logo_id': 'int',
         'id': 'int',
         'title': 'str',
         'description': 'str',
-        'base_query': 'Query',
-        'dashboard_items': 'list[DashboardContentItem]',
         'system_name': 'str',
-        'base_query_lookup': 'SystemLookup',
         'created_on': 'datetime',
+        'owner': 'UserDisplayDetails',
         'last_updated_on': 'datetime',
-        'last_updated_by': 'str',
+        'last_updated_by': 'UserDisplayDetails',
+        'last_update_id': 'int',
+        'number_of_users_shared_with': 'int',
+        'shared_to_all': 'bool',
+        'share_id': 'int',
         'deleted_on': 'datetime'
     }
 
     attribute_map = {
+        'base_query': 'baseQuery',
+        'dashboard_items': 'dashboardItems',
+        'base_query_lookup': 'baseQueryLookup',
+        'theme_id': 'themeId',
+        'logo_id': 'logoId',
         'id': 'id',
         'title': 'title',
         'description': 'description',
-        'base_query': 'baseQuery',
-        'dashboard_items': 'dashboardItems',
         'system_name': 'systemName',
-        'base_query_lookup': 'baseQueryLookup',
         'created_on': 'createdOn',
+        'owner': 'owner',
         'last_updated_on': 'lastUpdatedOn',
         'last_updated_by': 'lastUpdatedBy',
+        'last_update_id': 'lastUpdateId',
+        'number_of_users_shared_with': 'numberOfUsersSharedWith',
+        'shared_to_all': 'sharedToAll',
+        'share_id': 'shareId',
         'deleted_on': 'deletedOn'
     }
 
-    def __init__(self, id=None, title=None, description=None, base_query=None, dashboard_items=None, system_name=None, base_query_lookup=None, created_on=None, last_updated_on=None, last_updated_by=None, deleted_on=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, base_query=None, dashboard_items=None, base_query_lookup=None, theme_id=None, logo_id=None, id=None, title=None, description=None, system_name=None, created_on=None, owner=None, last_updated_on=None, last_updated_by=None, last_update_id=None, number_of_users_shared_with=None, shared_to_all=None, share_id=None, deleted_on=None, local_vars_configuration=None):  # noqa: E501
         """DashboardDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._base_query = None
+        self._dashboard_items = None
+        self._base_query_lookup = None
+        self._theme_id = None
+        self._logo_id = None
         self._id = None
         self._title = None
         self._description = None
-        self._base_query = None
-        self._dashboard_items = None
         self._system_name = None
-        self._base_query_lookup = None
         self._created_on = None
+        self._owner = None
         self._last_updated_on = None
         self._last_updated_by = None
+        self._last_update_id = None
+        self._number_of_users_shared_with = None
+        self._shared_to_all = None
+        self._share_id = None
         self._deleted_on = None
         self.discriminator = None
 
-        self.id = id
-        self.title = title
-        if description is not None:
-            self.description = description
         if base_query is not None:
             self.base_query = base_query
         if dashboard_items is not None:
             self.dashboard_items = dashboard_items
-        if system_name is not None:
-            self.system_name = system_name
         if base_query_lookup is not None:
             self.base_query_lookup = base_query_lookup
+        if theme_id is not None:
+            self.theme_id = theme_id
+        if logo_id is not None:
+            self.logo_id = logo_id
+        self.id = id
+        self.title = title
+        if description is not None:
+            self.description = description
+        self.system_name = system_name
         if created_on is not None:
             self.created_on = created_on
+        self.owner = owner
         if last_updated_on is not None:
             self.last_updated_on = last_updated_on
         if last_updated_by is not None:
             self.last_updated_by = last_updated_by
+        self.last_update_id = last_update_id
+        self.number_of_users_shared_with = number_of_users_shared_with
+        self.shared_to_all = shared_to_all
+        if share_id is not None:
+            self.share_id = share_id
         if deleted_on is not None:
             self.deleted_on = deleted_on
+
+    @property
+    def base_query(self):
+        """Gets the base_query of this DashboardDetail.  # noqa: E501
+
+
+        :return: The base_query of this DashboardDetail.  # noqa: E501
+        :rtype: Query
+        """
+        return self._base_query
+
+    @base_query.setter
+    def base_query(self, base_query):
+        """Sets the base_query of this DashboardDetail.
+
+
+        :param base_query: The base_query of this DashboardDetail.  # noqa: E501
+        :type: Query
+        """
+
+        self._base_query = base_query
+
+    @property
+    def dashboard_items(self):
+        """Gets the dashboard_items of this DashboardDetail.  # noqa: E501
+
+        The items that are contained within the dashboard  # noqa: E501
+
+        :return: The dashboard_items of this DashboardDetail.  # noqa: E501
+        :rtype: list[DashboardContentItem]
+        """
+        return self._dashboard_items
+
+    @dashboard_items.setter
+    def dashboard_items(self, dashboard_items):
+        """Sets the dashboard_items of this DashboardDetail.
+
+        The items that are contained within the dashboard  # noqa: E501
+
+        :param dashboard_items: The dashboard_items of this DashboardDetail.  # noqa: E501
+        :type: list[DashboardContentItem]
+        """
+
+        self._dashboard_items = dashboard_items
+
+    @property
+    def base_query_lookup(self):
+        """Gets the base_query_lookup of this DashboardDetail.  # noqa: E501
+
+
+        :return: The base_query_lookup of this DashboardDetail.  # noqa: E501
+        :rtype: SystemLookup
+        """
+        return self._base_query_lookup
+
+    @base_query_lookup.setter
+    def base_query_lookup(self, base_query_lookup):
+        """Sets the base_query_lookup of this DashboardDetail.
+
+
+        :param base_query_lookup: The base_query_lookup of this DashboardDetail.  # noqa: E501
+        :type: SystemLookup
+        """
+
+        self._base_query_lookup = base_query_lookup
+
+    @property
+    def theme_id(self):
+        """Gets the theme_id of this DashboardDetail.  # noqa: E501
+
+        The themeId of the dashboard  # noqa: E501
+
+        :return: The theme_id of this DashboardDetail.  # noqa: E501
+        :rtype: int
+        """
+        return self._theme_id
+
+    @theme_id.setter
+    def theme_id(self, theme_id):
+        """Sets the theme_id of this DashboardDetail.
+
+        The themeId of the dashboard  # noqa: E501
+
+        :param theme_id: The theme_id of this DashboardDetail.  # noqa: E501
+        :type: int
+        """
+
+        self._theme_id = theme_id
+
+    @property
+    def logo_id(self):
+        """Gets the logo_id of this DashboardDetail.  # noqa: E501
+
+        The logoId of the dashboard  # noqa: E501
+
+        :return: The logo_id of this DashboardDetail.  # noqa: E501
+        :rtype: int
+        """
+        return self._logo_id
+
+    @logo_id.setter
+    def logo_id(self, logo_id):
+        """Sets the logo_id of this DashboardDetail.
+
+        The logoId of the dashboard  # noqa: E501
+
+        :param logo_id: The logo_id of this DashboardDetail.  # noqa: E501
+        :type: int
+        """
+
+        self._logo_id = logo_id
 
     @property
     def id(self):
@@ -175,54 +316,10 @@ class DashboardDetail(object):
         self._description = description
 
     @property
-    def base_query(self):
-        """Gets the base_query of this DashboardDetail.  # noqa: E501
-
-
-        :return: The base_query of this DashboardDetail.  # noqa: E501
-        :rtype: Query
-        """
-        return self._base_query
-
-    @base_query.setter
-    def base_query(self, base_query):
-        """Sets the base_query of this DashboardDetail.
-
-
-        :param base_query: The base_query of this DashboardDetail.  # noqa: E501
-        :type: Query
-        """
-
-        self._base_query = base_query
-
-    @property
-    def dashboard_items(self):
-        """Gets the dashboard_items of this DashboardDetail.  # noqa: E501
-
-        The items that are contained within the dashboard  # noqa: E501
-
-        :return: The dashboard_items of this DashboardDetail.  # noqa: E501
-        :rtype: list[DashboardContentItem]
-        """
-        return self._dashboard_items
-
-    @dashboard_items.setter
-    def dashboard_items(self, dashboard_items):
-        """Sets the dashboard_items of this DashboardDetail.
-
-        The items that are contained within the dashboard  # noqa: E501
-
-        :param dashboard_items: The dashboard_items of this DashboardDetail.  # noqa: E501
-        :type: list[DashboardContentItem]
-        """
-
-        self._dashboard_items = dashboard_items
-
-    @property
     def system_name(self):
         """Gets the system_name of this DashboardDetail.  # noqa: E501
 
-        The connected system of the dashboard  # noqa: E501
+        The FastStats system that this dashboard has been created against  # noqa: E501
 
         :return: The system_name of this DashboardDetail.  # noqa: E501
         :rtype: str
@@ -233,39 +330,21 @@ class DashboardDetail(object):
     def system_name(self, system_name):
         """Sets the system_name of this DashboardDetail.
 
-        The connected system of the dashboard  # noqa: E501
+        The FastStats system that this dashboard has been created against  # noqa: E501
 
         :param system_name: The system_name of this DashboardDetail.  # noqa: E501
         :type: str
         """
+        if self.local_vars_configuration.client_side_validation and system_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `system_name`, must not be `None`")  # noqa: E501
 
         self._system_name = system_name
-
-    @property
-    def base_query_lookup(self):
-        """Gets the base_query_lookup of this DashboardDetail.  # noqa: E501
-
-
-        :return: The base_query_lookup of this DashboardDetail.  # noqa: E501
-        :rtype: SystemLookup
-        """
-        return self._base_query_lookup
-
-    @base_query_lookup.setter
-    def base_query_lookup(self, base_query_lookup):
-        """Sets the base_query_lookup of this DashboardDetail.
-
-
-        :param base_query_lookup: The base_query_lookup of this DashboardDetail.  # noqa: E501
-        :type: SystemLookup
-        """
-
-        self._base_query_lookup = base_query_lookup
 
     @property
     def created_on(self):
         """Gets the created_on of this DashboardDetail.  # noqa: E501
 
+        The date the dashboard was created  # noqa: E501
 
         :return: The created_on of this DashboardDetail.  # noqa: E501
         :rtype: datetime
@@ -276,6 +355,7 @@ class DashboardDetail(object):
     def created_on(self, created_on):
         """Sets the created_on of this DashboardDetail.
 
+        The date the dashboard was created  # noqa: E501
 
         :param created_on: The created_on of this DashboardDetail.  # noqa: E501
         :type: datetime
@@ -284,9 +364,33 @@ class DashboardDetail(object):
         self._created_on = created_on
 
     @property
+    def owner(self):
+        """Gets the owner of this DashboardDetail.  # noqa: E501
+
+
+        :return: The owner of this DashboardDetail.  # noqa: E501
+        :rtype: UserDisplayDetails
+        """
+        return self._owner
+
+    @owner.setter
+    def owner(self, owner):
+        """Sets the owner of this DashboardDetail.
+
+
+        :param owner: The owner of this DashboardDetail.  # noqa: E501
+        :type: UserDisplayDetails
+        """
+        if self.local_vars_configuration.client_side_validation and owner is None:  # noqa: E501
+            raise ValueError("Invalid value for `owner`, must not be `None`")  # noqa: E501
+
+        self._owner = owner
+
+    @property
     def last_updated_on(self):
         """Gets the last_updated_on of this DashboardDetail.  # noqa: E501
 
+        The date the dashboard was last updated  # noqa: E501
 
         :return: The last_updated_on of this DashboardDetail.  # noqa: E501
         :rtype: datetime
@@ -297,6 +401,7 @@ class DashboardDetail(object):
     def last_updated_on(self, last_updated_on):
         """Sets the last_updated_on of this DashboardDetail.
 
+        The date the dashboard was last updated  # noqa: E501
 
         :param last_updated_on: The last_updated_on of this DashboardDetail.  # noqa: E501
         :type: datetime
@@ -310,7 +415,7 @@ class DashboardDetail(object):
 
 
         :return: The last_updated_by of this DashboardDetail.  # noqa: E501
-        :rtype: str
+        :rtype: UserDisplayDetails
         """
         return self._last_updated_by
 
@@ -320,15 +425,114 @@ class DashboardDetail(object):
 
 
         :param last_updated_by: The last_updated_by of this DashboardDetail.  # noqa: E501
-        :type: str
+        :type: UserDisplayDetails
         """
 
         self._last_updated_by = last_updated_by
 
     @property
+    def last_update_id(self):
+        """Gets the last_update_id of this DashboardDetail.  # noqa: E501
+
+        The id of the last update for this dashboard  # noqa: E501
+
+        :return: The last_update_id of this DashboardDetail.  # noqa: E501
+        :rtype: int
+        """
+        return self._last_update_id
+
+    @last_update_id.setter
+    def last_update_id(self, last_update_id):
+        """Sets the last_update_id of this DashboardDetail.
+
+        The id of the last update for this dashboard  # noqa: E501
+
+        :param last_update_id: The last_update_id of this DashboardDetail.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and last_update_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `last_update_id`, must not be `None`")  # noqa: E501
+
+        self._last_update_id = last_update_id
+
+    @property
+    def number_of_users_shared_with(self):
+        """Gets the number_of_users_shared_with of this DashboardDetail.  # noqa: E501
+
+        The number of people this dashboard has been shared with  # noqa: E501
+
+        :return: The number_of_users_shared_with of this DashboardDetail.  # noqa: E501
+        :rtype: int
+        """
+        return self._number_of_users_shared_with
+
+    @number_of_users_shared_with.setter
+    def number_of_users_shared_with(self, number_of_users_shared_with):
+        """Sets the number_of_users_shared_with of this DashboardDetail.
+
+        The number of people this dashboard has been shared with  # noqa: E501
+
+        :param number_of_users_shared_with: The number_of_users_shared_with of this DashboardDetail.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and number_of_users_shared_with is None:  # noqa: E501
+            raise ValueError("Invalid value for `number_of_users_shared_with`, must not be `None`")  # noqa: E501
+
+        self._number_of_users_shared_with = number_of_users_shared_with
+
+    @property
+    def shared_to_all(self):
+        """Gets the shared_to_all of this DashboardDetail.  # noqa: E501
+
+        Whether this dashboard has been shared to all users  # noqa: E501
+
+        :return: The shared_to_all of this DashboardDetail.  # noqa: E501
+        :rtype: bool
+        """
+        return self._shared_to_all
+
+    @shared_to_all.setter
+    def shared_to_all(self, shared_to_all):
+        """Sets the shared_to_all of this DashboardDetail.
+
+        Whether this dashboard has been shared to all users  # noqa: E501
+
+        :param shared_to_all: The shared_to_all of this DashboardDetail.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and shared_to_all is None:  # noqa: E501
+            raise ValueError("Invalid value for `shared_to_all`, must not be `None`")  # noqa: E501
+
+        self._shared_to_all = shared_to_all
+
+    @property
+    def share_id(self):
+        """Gets the share_id of this DashboardDetail.  # noqa: E501
+
+        The id of the share associated with this dashboard, or null if the  dashboard has not yet been shared  # noqa: E501
+
+        :return: The share_id of this DashboardDetail.  # noqa: E501
+        :rtype: int
+        """
+        return self._share_id
+
+    @share_id.setter
+    def share_id(self, share_id):
+        """Sets the share_id of this DashboardDetail.
+
+        The id of the share associated with this dashboard, or null if the  dashboard has not yet been shared  # noqa: E501
+
+        :param share_id: The share_id of this DashboardDetail.  # noqa: E501
+        :type: int
+        """
+
+        self._share_id = share_id
+
+    @property
     def deleted_on(self):
         """Gets the deleted_on of this DashboardDetail.  # noqa: E501
 
+        The date the dashboard was deleted, or null if it has not been deleted  # noqa: E501
 
         :return: The deleted_on of this DashboardDetail.  # noqa: E501
         :rtype: datetime
@@ -339,6 +543,7 @@ class DashboardDetail(object):
     def deleted_on(self, deleted_on):
         """Sets the deleted_on of this DashboardDetail.
 
+        The date the dashboard was deleted, or null if it has not been deleted  # noqa: E501
 
         :param deleted_on: The deleted_on of this DashboardDetail.  # noqa: E501
         :type: datetime

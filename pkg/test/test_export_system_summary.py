@@ -38,7 +38,13 @@ class TestExportSystemSummary(unittest.TestCase):
         if include_optional :
             return ExportSystemSummary(
                 name = '0', 
-                is_velocity_enabled = True
+                is_velocity_enabled = True, 
+                output_types = [
+                    apteco_api.models.output_type.OutputType(
+                        name = '0', 
+                        format = 'CSV', 
+                        export_extra_name = '0', )
+                    ]
             )
         else :
             return ExportSystemSummary(

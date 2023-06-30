@@ -78,6 +78,13 @@ class TestAudiencesApi(unittest.TestCase):
         """
         pass
 
+    def test_audiences_copy_audience(self):
+        """Test case for audiences_copy_audience
+
+        Copies an existing audience for the logged in user.  # noqa: E501
+        """
+        pass
+
     def test_audiences_create_audience(self):
         """Test case for audiences_create_audience
 

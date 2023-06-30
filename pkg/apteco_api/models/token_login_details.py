@@ -34,23 +34,28 @@ class TokenLoginDetails(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'token': 'str'
+        'token': 'str',
+        'client_type': 'str'
     }
 
     attribute_map = {
-        'token': 'token'
+        'token': 'token',
+        'client_type': 'clientType'
     }
 
-    def __init__(self, token=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, token=None, client_type=None, local_vars_configuration=None):  # noqa: E501
         """TokenLoginDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._token = None
+        self._client_type = None
         self.discriminator = None
 
         self.token = token
+        if client_type is not None:
+            self.client_type = client_type
 
     @property
     def token(self):
@@ -76,6 +81,29 @@ class TokenLoginDetails(object):
             raise ValueError("Invalid value for `token`, must not be `None`")  # noqa: E501
 
         self._token = token
+
+    @property
+    def client_type(self):
+        """Gets the client_type of this TokenLoginDetails.  # noqa: E501
+
+        If specified, the type of client creating the session.  Otherwise a default value will be used.  # noqa: E501
+
+        :return: The client_type of this TokenLoginDetails.  # noqa: E501
+        :rtype: str
+        """
+        return self._client_type
+
+    @client_type.setter
+    def client_type(self, client_type):
+        """Sets the client_type of this TokenLoginDetails.
+
+        If specified, the type of client creating the session.  Otherwise a default value will be used.  # noqa: E501
+
+        :param client_type: The client_type of this TokenLoginDetails.  # noqa: E501
+        :type: str
+        """
+
+        self._client_type = client_type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

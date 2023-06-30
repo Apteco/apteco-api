@@ -39,7 +39,9 @@ class Column(object):
         'query': 'Query',
         'column_header': 'str',
         'detail': 'str',
-        'unclassified_format': 'str'
+        'unclassified_format': 'str',
+        'user_code': 'str',
+        'user_code_name': 'str'
     }
 
     attribute_map = {
@@ -48,10 +50,12 @@ class Column(object):
         'query': 'query',
         'column_header': 'columnHeader',
         'detail': 'detail',
-        'unclassified_format': 'unclassifiedFormat'
+        'unclassified_format': 'unclassifiedFormat',
+        'user_code': 'userCode',
+        'user_code_name': 'userCodeName'
     }
 
-    def __init__(self, id=None, variable_name=None, query=None, column_header=None, detail=None, unclassified_format=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, variable_name=None, query=None, column_header=None, detail=None, unclassified_format=None, user_code=None, user_code_name=None, local_vars_configuration=None):  # noqa: E501
         """Column - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -63,6 +67,8 @@ class Column(object):
         self._column_header = None
         self._detail = None
         self._unclassified_format = None
+        self._user_code = None
+        self._user_code_name = None
         self.discriminator = None
 
         self.id = id
@@ -75,6 +81,10 @@ class Column(object):
             self.detail = detail
         if unclassified_format is not None:
             self.unclassified_format = unclassified_format
+        if user_code is not None:
+            self.user_code = user_code
+        if user_code_name is not None:
+            self.user_code_name = user_code_name
 
     @property
     def id(self):
@@ -227,6 +237,52 @@ class Column(object):
             )
 
         self._unclassified_format = unclassified_format
+
+    @property
+    def user_code(self):
+        """Gets the user_code of this Column.  # noqa: E501
+
+        Defines the user code for the column  # noqa: E501
+
+        :return: The user_code of this Column.  # noqa: E501
+        :rtype: str
+        """
+        return self._user_code
+
+    @user_code.setter
+    def user_code(self, user_code):
+        """Sets the user_code of this Column.
+
+        Defines the user code for the column  # noqa: E501
+
+        :param user_code: The user_code of this Column.  # noqa: E501
+        :type: str
+        """
+
+        self._user_code = user_code
+
+    @property
+    def user_code_name(self):
+        """Gets the user_code_name of this Column.  # noqa: E501
+
+        Defines the name of the user code for the column  # noqa: E501
+
+        :return: The user_code_name of this Column.  # noqa: E501
+        :rtype: str
+        """
+        return self._user_code_name
+
+    @user_code_name.setter
+    def user_code_name(self, user_code_name):
+        """Sets the user_code_name of this Column.
+
+        Defines the name of the user code for the column  # noqa: E501
+
+        :param user_code_name: The user_code_name of this Column.  # noqa: E501
+        :type: str
+        """
+
+        self._user_code_name = user_code_name
 
     def to_dict(self):
         """Returns the model properties as a dict"""

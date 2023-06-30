@@ -38,16 +38,28 @@ class TestBreakpoint(unittest.TestCase):
         if include_optional :
             return Breakpoint(
                 breakpoint = 'xs', 
+                x = 56, 
+                y = 56, 
                 size = apteco_api.models.size.Size(
                     width = 1.337, 
-                    height = 1.337, )
+                    height = 1.337, ), 
+                notes_alignment = apteco_api.models.notes_alignment.NotesAlignment(
+                    notes_position = 'Top', 
+                    notes_content_vertical_alignment = 'Top', 
+                    notes_content_horizontal_alignment = 'Left', )
             )
         else :
             return Breakpoint(
                 breakpoint = 'xs',
+                x = 56,
+                y = 56,
                 size = apteco_api.models.size.Size(
                     width = 1.337, 
                     height = 1.337, ),
+                notes_alignment = apteco_api.models.notes_alignment.NotesAlignment(
+                    notes_position = 'Top', 
+                    notes_content_vertical_alignment = 'Top', 
+                    notes_content_horizontal_alignment = 'Left', ),
         )
 
     def testBreakpoint(self):

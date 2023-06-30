@@ -285,7 +285,7 @@ class EndpointDetails(object):
         """
         if self.local_vars_configuration.client_side_validation and requires_licence_flags is None:  # noqa: E501
             raise ValueError("Invalid value for `requires_licence_flags`, must not be `None`")  # noqa: E501
-        allowed_values = ["AudienceSelection", "AudiencePreview", "Export", "AdvancedQuery", "Cube", "Profile"]  # noqa: E501
+        allowed_values = ["AudienceSelection", "AudiencePreview", "Export", "AdvancedQuery", "Cube", "Profile", "Dashboards"]  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 not set(requires_licence_flags).issubset(set(allowed_values))):  # noqa: E501
             raise ValueError(
@@ -318,7 +318,7 @@ class EndpointDetails(object):
         """
         if self.local_vars_configuration.client_side_validation and optionally_requires_licence_flags is None:  # noqa: E501
             raise ValueError("Invalid value for `optionally_requires_licence_flags`, must not be `None`")  # noqa: E501
-        allowed_values = ["AudienceSelection", "AudiencePreview", "Export", "AdvancedQuery", "Cube", "Profile"]  # noqa: E501
+        allowed_values = ["AudienceSelection", "AudiencePreview", "Export", "AdvancedQuery", "Cube", "Profile", "Dashboards"]  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 not set(optionally_requires_licence_flags).issubset(set(allowed_values))):  # noqa: E501
             raise ValueError(

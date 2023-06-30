@@ -60,14 +60,14 @@ class TestDataLicensingApi(unittest.TestCase):
     def test_data_licensing_get_data_licensing_system(self):
         """Test case for data_licensing_get_data_licensing_system
 
-        Returns some top-level details for the specified FastStats system to license data from  # noqa: E501
+        SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns some top-level details for the specified FastStats system to license data from  # noqa: E501
         """
         pass
 
     def test_data_licensing_get_data_licensing_systems(self):
         """Test case for data_licensing_get_data_licensing_systems
 
-        Returns the list of FastStats systems available for licensing data from  # noqa: E501
+        SUBJECT TO CHANGE OR REMOVAL WITHOUT NOTICE: Returns the list of FastStats systems available for licensing data from  # noqa: E501
         """
         pass
 

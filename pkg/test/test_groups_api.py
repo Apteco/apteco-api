@@ -32,28 +32,28 @@ class TestGroupsApi(unittest.TestCase):
     def test_groups_get_group_details(self):
         """Test case for groups_get_group_details
 
-        Requires OrbitAdmin: Returns details for the given group  # noqa: E501
+        Returns details for the given group  # noqa: E501
         """
         pass
 
     def test_groups_get_groups(self):
         """Test case for groups_get_groups
 
-        Requires OrbitAdmin: Returns all groups in the DataView.  # noqa: E501
+        Returns all groups in the DataView.  # noqa: E501
         """
         pass
 
     def test_groups_get_user_details_for_group(self):
         """Test case for groups_get_user_details_for_group
 
-        Requires OrbitAdmin: Returns all users in the given group.  # noqa: E501
+        Returns all users in the given group.  # noqa: E501
         """
         pass
 
     def test_groups_get_user_details_for_unallocated_group(self):
         """Test case for groups_get_user_details_for_unallocated_group
 
-        Requires OrbitAdmin: Returns all users that haven't been allocated to a group.  # noqa: E501
+        Returns all users that haven't been allocated to a group.  # noqa: E501
         """
         pass
 

@@ -45,6 +45,7 @@ class TestCheckCompositionDefinition(unittest.TestCase):
                             height = 1.337, ), 
                         chart_type = 'Bar', 
                         omit_zeros = True, 
+                        sort_order = 'Natural', 
                         description = '0', )
                     ], 
                 grid_items = [
@@ -65,6 +66,7 @@ class TestCheckCompositionDefinition(unittest.TestCase):
                             height = 1.337, ), 
                         chart_type = 'Bar', 
                         omit_zeros = True, 
+                        sort_order = 'Natural', 
                         description = '0', )
                     ],
                 grid_items = [

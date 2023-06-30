@@ -39,7 +39,9 @@ class Licence(object):
         'export': 'bool',
         'advanced_query': 'bool',
         'cube': 'bool',
-        'profile': 'bool'
+        'profile': 'bool',
+        'dashboards': 'bool',
+        'dashboards_pareto': 'bool'
     }
 
     attribute_map = {
@@ -48,10 +50,12 @@ class Licence(object):
         'export': 'export',
         'advanced_query': 'advancedQuery',
         'cube': 'cube',
-        'profile': 'profile'
+        'profile': 'profile',
+        'dashboards': 'dashboards',
+        'dashboards_pareto': 'dashboardsPareto'
     }
 
-    def __init__(self, audience_selection=None, audience_preview=None, export=None, advanced_query=None, cube=None, profile=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, audience_selection=None, audience_preview=None, export=None, advanced_query=None, cube=None, profile=None, dashboards=None, dashboards_pareto=None, local_vars_configuration=None):  # noqa: E501
         """Licence - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -63,6 +67,8 @@ class Licence(object):
         self._advanced_query = None
         self._cube = None
         self._profile = None
+        self._dashboards = None
+        self._dashboards_pareto = None
         self.discriminator = None
 
         self.audience_selection = audience_selection
@@ -71,6 +77,8 @@ class Licence(object):
         self.advanced_query = advanced_query
         self.cube = cube
         self.profile = profile
+        self.dashboards = dashboards
+        self.dashboards_pareto = dashboards_pareto
 
     @property
     def audience_selection(self):
@@ -221,6 +229,56 @@ class Licence(object):
             raise ValueError("Invalid value for `profile`, must not be `None`")  # noqa: E501
 
         self._profile = profile
+
+    @property
+    def dashboards(self):
+        """Gets the dashboards of this Licence.  # noqa: E501
+
+        Whether this user is allowed to access \"Dashboards\" functionality.  # noqa: E501
+
+        :return: The dashboards of this Licence.  # noqa: E501
+        :rtype: bool
+        """
+        return self._dashboards
+
+    @dashboards.setter
+    def dashboards(self, dashboards):
+        """Sets the dashboards of this Licence.
+
+        Whether this user is allowed to access \"Dashboards\" functionality.  # noqa: E501
+
+        :param dashboards: The dashboards of this Licence.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and dashboards is None:  # noqa: E501
+            raise ValueError("Invalid value for `dashboards`, must not be `None`")  # noqa: E501
+
+        self._dashboards = dashboards
+
+    @property
+    def dashboards_pareto(self):
+        """Gets the dashboards_pareto of this Licence.  # noqa: E501
+
+        Whether this user is allowed to access \"Dashboards Pareto\" functionality.  # noqa: E501
+
+        :return: The dashboards_pareto of this Licence.  # noqa: E501
+        :rtype: bool
+        """
+        return self._dashboards_pareto
+
+    @dashboards_pareto.setter
+    def dashboards_pareto(self, dashboards_pareto):
+        """Sets the dashboards_pareto of this Licence.
+
+        Whether this user is allowed to access \"Dashboards Pareto\" functionality.  # noqa: E501
+
+        :param dashboards_pareto: The dashboards_pareto of this Licence.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and dashboards_pareto is None:  # noqa: E501
+            raise ValueError("Invalid value for `dashboards_pareto`, must not be `None`")  # noqa: E501
+
+        self._dashboards_pareto = dashboards_pareto
 
     def to_dict(self):
         """Returns the model properties as a dict"""

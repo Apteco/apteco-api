@@ -1,6 +1,6 @@
 packageName: "apteco_api"
 projectName: "apteco-api"
-packageVersion: "0.2.6"
+packageVersion: "0.3.0"
 ignoreFileOverride: "pkg/.openapi-generator-ignore"
 #packageUrl: null
 #sortParamsByRequiredFlag: true

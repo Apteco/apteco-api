@@ -50,6 +50,7 @@ class AudienceDetail(object):
         'resolve_table_name': 'str',
         'resolve_table_nett_count': 'int',
         'number_of_users_shared_with': 'int',
+        'shared_to_all': 'bool',
         'share_id': 'int',
         'number_of_hits': 'int',
         'system_name': 'str',
@@ -75,6 +76,7 @@ class AudienceDetail(object):
         'resolve_table_name': 'resolveTableName',
         'resolve_table_nett_count': 'resolveTableNettCount',
         'number_of_users_shared_with': 'numberOfUsersSharedWith',
+        'shared_to_all': 'sharedToAll',
         'share_id': 'shareId',
         'number_of_hits': 'numberOfHits',
         'system_name': 'systemName',
@@ -83,7 +85,7 @@ class AudienceDetail(object):
         'last_update_id': 'lastUpdateId'
     }
 
-    def __init__(self, brief_text=None, exclude_query=None, include_query=None, body_query=None, selection_modifiers=None, queries_lookup=None, last_result=None, id=None, title=None, description=None, creation_date=None, owner=None, deletion_date=None, resolve_table_name=None, resolve_table_nett_count=None, number_of_users_shared_with=None, share_id=None, number_of_hits=None, system_name=None, last_updated_user=None, last_updated_date=None, last_update_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, brief_text=None, exclude_query=None, include_query=None, body_query=None, selection_modifiers=None, queries_lookup=None, last_result=None, id=None, title=None, description=None, creation_date=None, owner=None, deletion_date=None, resolve_table_name=None, resolve_table_nett_count=None, number_of_users_shared_with=None, shared_to_all=None, share_id=None, number_of_hits=None, system_name=None, last_updated_user=None, last_updated_date=None, last_update_id=None, local_vars_configuration=None):  # noqa: E501
         """AudienceDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -105,6 +107,7 @@ class AudienceDetail(object):
         self._resolve_table_name = None
         self._resolve_table_nett_count = None
         self._number_of_users_shared_with = None
+        self._shared_to_all = None
         self._share_id = None
         self._number_of_hits = None
         self._system_name = None
@@ -138,6 +141,7 @@ class AudienceDetail(object):
         if resolve_table_nett_count is not None:
             self.resolve_table_nett_count = resolve_table_nett_count
         self.number_of_users_shared_with = number_of_users_shared_with
+        self.shared_to_all = shared_to_all
         if share_id is not None:
             self.share_id = share_id
         self.number_of_hits = number_of_hits
@@ -513,6 +517,31 @@ class AudienceDetail(object):
             raise ValueError("Invalid value for `number_of_users_shared_with`, must not be `None`")  # noqa: E501
 
         self._number_of_users_shared_with = number_of_users_shared_with
+
+    @property
+    def shared_to_all(self):
+        """Gets the shared_to_all of this AudienceDetail.  # noqa: E501
+
+        Whether the audience has been shared to all users  # noqa: E501
+
+        :return: The shared_to_all of this AudienceDetail.  # noqa: E501
+        :rtype: bool
+        """
+        return self._shared_to_all
+
+    @shared_to_all.setter
+    def shared_to_all(self, shared_to_all):
+        """Sets the shared_to_all of this AudienceDetail.
+
+        Whether the audience has been shared to all users  # noqa: E501
+
+        :param shared_to_all: The shared_to_all of this AudienceDetail.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and shared_to_all is None:  # noqa: E501
+            raise ValueError("Invalid value for `shared_to_all`, must not be `None`")  # noqa: E501
+
+        self._shared_to_all = shared_to_all
 
     @property
     def share_id(self):
