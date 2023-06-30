@@ -1,7 +1,6 @@
 # AudienceSummary
 
 Summary details for an audience
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

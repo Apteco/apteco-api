@@ -1,7 +1,6 @@
 # ElementStatus
 
 Status information for a PeopleStage element
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

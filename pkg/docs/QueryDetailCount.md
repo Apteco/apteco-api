@@ -1,6 +1,5 @@
 # QueryDetailCount
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

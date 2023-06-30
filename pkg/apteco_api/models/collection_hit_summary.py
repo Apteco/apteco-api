@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -53,7 +50,7 @@ class CollectionHitSummary(object):
     def __init__(self, id=None, collection_id=None, timestamp=None, user=None, local_vars_configuration=None):  # noqa: E501
         """CollectionHitSummary - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -85,7 +82,7 @@ class CollectionHitSummary(object):
         The id of the hit itself  # noqa: E501
 
         :param id: The id of this CollectionHitSummary.  # noqa: E501
-        :type id: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -110,7 +107,7 @@ class CollectionHitSummary(object):
         The id of the collection viewed  # noqa: E501
 
         :param collection_id: The collection_id of this CollectionHitSummary.  # noqa: E501
-        :type collection_id: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and collection_id is None:  # noqa: E501
             raise ValueError("Invalid value for `collection_id`, must not be `None`")  # noqa: E501
@@ -135,7 +132,7 @@ class CollectionHitSummary(object):
         The timestamp of when the hit was recorded  # noqa: E501
 
         :param timestamp: The timestamp of this CollectionHitSummary.  # noqa: E501
-        :type timestamp: datetime
+        :type: datetime
         """
         if self.local_vars_configuration.client_side_validation and timestamp is None:  # noqa: E501
             raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
@@ -158,42 +155,34 @@ class CollectionHitSummary(object):
 
 
         :param user: The user of this CollectionHitSummary.  # noqa: E501
-        :type user: UserDisplayDetails
+        :type: UserDisplayDetails
         """
         if self.local_vars_configuration.client_side_validation and user is None:  # noqa: E501
             raise ValueError("Invalid value for `user`, must not be `None`")  # noqa: E501
 
         self._user = user
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

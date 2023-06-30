@@ -37,12 +37,12 @@ class TestCount(unittest.TestCase):
         # model = apteco_api.models.count.Count()  # noqa: E501
         if include_optional :
             return Count(
-                table_name = '', 
+                table_name = '0', 
                 count_value = 56
             )
         else :
             return Count(
-                table_name = '',
+                table_name = '0',
                 count_value = 56,
         )
 
@@ -50,6 +50,7 @@ class TestCount(unittest.TestCase):
         """Test Count"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

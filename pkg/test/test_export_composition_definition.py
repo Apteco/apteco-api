@@ -39,32 +39,32 @@ class TestExportCompositionDefinition(unittest.TestCase):
             return ExportCompositionDefinition(
                 output = apteco_api.models.output.Output(
                     format = 'CSV', 
-                    delimiter = '', 
-                    alpha_encloser = '', 
-                    numeric_encloser = '', 
-                    authorisation_code = '', ), 
+                    delimiter = '0', 
+                    alpha_encloser = '0', 
+                    numeric_encloser = '0', 
+                    authorisation_code = '0', ), 
                 grid_items = [
                     apteco_api.models.grid_item.GridItem(
-                        variable_name = '', 
+                        variable_name = '0', 
                         detail = 'Code', 
                         unclassified_format = 'FromDesign', 
-                        description = '', )
+                        description = '0', )
                     ]
             )
         else :
             return ExportCompositionDefinition(
                 output = apteco_api.models.output.Output(
                     format = 'CSV', 
-                    delimiter = '', 
-                    alpha_encloser = '', 
-                    numeric_encloser = '', 
-                    authorisation_code = '', ),
+                    delimiter = '0', 
+                    alpha_encloser = '0', 
+                    numeric_encloser = '0', 
+                    authorisation_code = '0', ),
                 grid_items = [
                     apteco_api.models.grid_item.GridItem(
-                        variable_name = '', 
+                        variable_name = '0', 
                         detail = 'Code', 
                         unclassified_format = 'FromDesign', 
-                        description = '', )
+                        description = '0', )
                     ],
         )
 
@@ -72,6 +72,7 @@ class TestExportCompositionDefinition(unittest.TestCase):
         """Test ExportCompositionDefinition"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

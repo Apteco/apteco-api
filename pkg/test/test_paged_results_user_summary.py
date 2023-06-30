@@ -43,11 +43,11 @@ class TestPagedResultsUserSummary(unittest.TestCase):
                 list = [
                     apteco_api.models.user_summary.UserSummary(
                         id = 56, 
-                        username = '', 
+                        username = '0', 
                         group_id = 56, 
-                        firstname = '', 
-                        surname = '', 
-                        email_address = '', 
+                        firstname = '0', 
+                        surname = '0', 
+                        email_address = '0', 
                         user_disabled_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ]
             )
@@ -59,11 +59,11 @@ class TestPagedResultsUserSummary(unittest.TestCase):
                 list = [
                     apteco_api.models.user_summary.UserSummary(
                         id = 56, 
-                        username = '', 
+                        username = '0', 
                         group_id = 56, 
-                        firstname = '', 
-                        surname = '', 
-                        email_address = '', 
+                        firstname = '0', 
+                        surname = '0', 
+                        email_address = '0', 
                         user_disabled_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
         )
@@ -72,6 +72,7 @@ class TestPagedResultsUserSummary(unittest.TestCase):
         """Test PagedResultsUserSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

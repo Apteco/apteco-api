@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -49,7 +46,7 @@ class PerResponseTypePerChannelStatistics(object):
     def __init__(self, responses_counts=None, total_responses_count=None, local_vars_configuration=None):  # noqa: E501
         """PerResponseTypePerChannelStatistics - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._responses_counts = None
@@ -77,7 +74,7 @@ class PerResponseTypePerChannelStatistics(object):
         The set of counts representing the number of responses for the corresponding response type and channel.  The first figure is data for the first day in the days list in the parent object, and so on.  # noqa: E501
 
         :param responses_counts: The responses_counts of this PerResponseTypePerChannelStatistics.  # noqa: E501
-        :type responses_counts: list[int]
+        :type: list[int]
         """
         if self.local_vars_configuration.client_side_validation and responses_counts is None:  # noqa: E501
             raise ValueError("Invalid value for `responses_counts`, must not be `None`")  # noqa: E501
@@ -102,42 +99,34 @@ class PerResponseTypePerChannelStatistics(object):
         The total number of responses for the given response type and channel  # noqa: E501
 
         :param total_responses_count: The total_responses_count of this PerResponseTypePerChannelStatistics.  # noqa: E501
-        :type total_responses_count: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and total_responses_count is None:  # noqa: E501
             raise ValueError("Invalid value for `total_responses_count`, must not be `None`")  # noqa: E501
 
         self._total_responses_count = total_responses_count
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

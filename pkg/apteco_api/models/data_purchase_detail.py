@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -59,7 +56,7 @@ class DataPurchaseDetail(object):
     def __init__(self, query_id=None, licensing_set=None, filename=None, grand_total_cost=None, purchase_order_number=None, password=None, authorisation_code=None, local_vars_configuration=None):  # noqa: E501
         """DataPurchaseDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._query_id = None
@@ -104,7 +101,7 @@ class DataPurchaseDetail(object):
         The unique id of the data licensing query to purchase records for  # noqa: E501
 
         :param query_id: The query_id of this DataPurchaseDetail.  # noqa: E501
-        :type query_id: str
+        :type: str
         """
 
         self._query_id = query_id
@@ -127,7 +124,7 @@ class DataPurchaseDetail(object):
         The name of the licensing set to purchase records for  # noqa: E501
 
         :param licensing_set: The licensing_set of this DataPurchaseDetail.  # noqa: E501
-        :type licensing_set: str
+        :type: str
         """
 
         self._licensing_set = licensing_set
@@ -150,7 +147,7 @@ class DataPurchaseDetail(object):
         The name of the file saved to the user's private directory  # noqa: E501
 
         :param filename: The filename of this DataPurchaseDetail.  # noqa: E501
-        :type filename: str
+        :type: str
         """
 
         self._filename = filename
@@ -173,7 +170,7 @@ class DataPurchaseDetail(object):
         The total cost to license the records  # noqa: E501
 
         :param grand_total_cost: The grand_total_cost of this DataPurchaseDetail.  # noqa: E501
-        :type grand_total_cost: float
+        :type: float
         """
 
         self._grand_total_cost = grand_total_cost
@@ -196,7 +193,7 @@ class DataPurchaseDetail(object):
         The order number for this purchase of records  # noqa: E501
 
         :param purchase_order_number: The purchase_order_number of this DataPurchaseDetail.  # noqa: E501
-        :type purchase_order_number: str
+        :type: str
         """
 
         self._purchase_order_number = purchase_order_number
@@ -219,7 +216,7 @@ class DataPurchaseDetail(object):
         String of characters to authorise purchase  # noqa: E501
 
         :param password: The password of this DataPurchaseDetail.  # noqa: E501
-        :type password: str
+        :type: str
         """
 
         self._password = password
@@ -242,40 +239,32 @@ class DataPurchaseDetail(object):
         Authorisation code to purchase records over velocity limit  # noqa: E501
 
         :param authorisation_code: The authorisation_code of this DataPurchaseDetail.  # noqa: E501
-        :type authorisation_code: str
+        :type: str
         """
 
         self._authorisation_code = authorisation_code
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

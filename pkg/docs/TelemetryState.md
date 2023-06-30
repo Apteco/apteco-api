@@ -1,6 +1,5 @@
 # TelemetryState
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

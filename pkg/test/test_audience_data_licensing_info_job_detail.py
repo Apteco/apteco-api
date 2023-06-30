@@ -41,7 +41,7 @@ class TestAudienceDataLicensingInfoJobDetail(unittest.TestCase):
                     credit_remaining = 1.337, 
                     grand_total_cost = 1.337, 
                     number_of_records_to_license = 56, 
-                    query_id = '', ), 
+                    query_id = '0', ), 
                 id = 56, 
                 is_complete = True, 
                 queue_position = 56, 
@@ -57,6 +57,7 @@ class TestAudienceDataLicensingInfoJobDetail(unittest.TestCase):
         """Test AudienceDataLicensingInfoJobDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

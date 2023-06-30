@@ -43,9 +43,9 @@ class TestPagedResultsCompositionSummary(unittest.TestCase):
                 list = [
                     apteco_api.models.composition_summary.CompositionSummary(
                         id = 56, 
-                        description = '', 
+                        description = '0', 
                         type = 'Check', 
-                        system_name = '', )
+                        system_name = '0', )
                     ]
             )
         else :
@@ -56,9 +56,9 @@ class TestPagedResultsCompositionSummary(unittest.TestCase):
                 list = [
                     apteco_api.models.composition_summary.CompositionSummary(
                         id = 56, 
-                        description = '', 
+                        description = '0', 
                         type = 'Check', 
-                        system_name = '', )
+                        system_name = '0', )
                     ],
         )
 
@@ -66,6 +66,7 @@ class TestPagedResultsCompositionSummary(unittest.TestCase):
         """Test PagedResultsCompositionSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

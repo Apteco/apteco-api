@@ -37,8 +37,8 @@ class TestModelProperty(unittest.TestCase):
         # model = apteco_api.models.model_property.ModelProperty()  # noqa: E501
         if include_optional :
             return ModelProperty(
-                name = '', 
-                property_value = '', 
+                name = '0', 
+                property_value = '0', 
                 hidden = True
             )
         else :
@@ -49,6 +49,7 @@ class TestModelProperty(unittest.TestCase):
         """Test ModelProperty"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

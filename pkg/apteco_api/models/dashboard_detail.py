@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -67,7 +64,7 @@ class DashboardDetail(object):
     def __init__(self, id=None, title=None, description=None, base_query=None, dashboard_items=None, system_name=None, base_query_lookup=None, created_on=None, last_updated_on=None, last_updated_by=None, deleted_on=None, local_vars_configuration=None):  # noqa: E501
         """DashboardDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -122,7 +119,7 @@ class DashboardDetail(object):
         The dashboard's id  # noqa: E501
 
         :param id: The id of this DashboardDetail.  # noqa: E501
-        :type id: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -147,7 +144,7 @@ class DashboardDetail(object):
         The title of the dashboard  # noqa: E501
 
         :param title: The title of this DashboardDetail.  # noqa: E501
-        :type title: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and title is None:  # noqa: E501
             raise ValueError("Invalid value for `title`, must not be `None`")  # noqa: E501
@@ -172,7 +169,7 @@ class DashboardDetail(object):
         The description of the dashboard  # noqa: E501
 
         :param description: The description of this DashboardDetail.  # noqa: E501
-        :type description: str
+        :type: str
         """
 
         self._description = description
@@ -193,7 +190,7 @@ class DashboardDetail(object):
 
 
         :param base_query: The base_query of this DashboardDetail.  # noqa: E501
-        :type base_query: Query
+        :type: Query
         """
 
         self._base_query = base_query
@@ -216,7 +213,7 @@ class DashboardDetail(object):
         The items that are contained within the dashboard  # noqa: E501
 
         :param dashboard_items: The dashboard_items of this DashboardDetail.  # noqa: E501
-        :type dashboard_items: list[DashboardContentItem]
+        :type: list[DashboardContentItem]
         """
 
         self._dashboard_items = dashboard_items
@@ -239,7 +236,7 @@ class DashboardDetail(object):
         The connected system of the dashboard  # noqa: E501
 
         :param system_name: The system_name of this DashboardDetail.  # noqa: E501
-        :type system_name: str
+        :type: str
         """
 
         self._system_name = system_name
@@ -260,7 +257,7 @@ class DashboardDetail(object):
 
 
         :param base_query_lookup: The base_query_lookup of this DashboardDetail.  # noqa: E501
-        :type base_query_lookup: SystemLookup
+        :type: SystemLookup
         """
 
         self._base_query_lookup = base_query_lookup
@@ -281,7 +278,7 @@ class DashboardDetail(object):
 
 
         :param created_on: The created_on of this DashboardDetail.  # noqa: E501
-        :type created_on: datetime
+        :type: datetime
         """
 
         self._created_on = created_on
@@ -302,7 +299,7 @@ class DashboardDetail(object):
 
 
         :param last_updated_on: The last_updated_on of this DashboardDetail.  # noqa: E501
-        :type last_updated_on: datetime
+        :type: datetime
         """
 
         self._last_updated_on = last_updated_on
@@ -323,7 +320,7 @@ class DashboardDetail(object):
 
 
         :param last_updated_by: The last_updated_by of this DashboardDetail.  # noqa: E501
-        :type last_updated_by: str
+        :type: str
         """
 
         self._last_updated_by = last_updated_by
@@ -344,40 +341,32 @@ class DashboardDetail(object):
 
 
         :param deleted_on: The deleted_on of this DashboardDetail.  # noqa: E501
-        :type deleted_on: datetime
+        :type: datetime
         """
 
         self._deleted_on = deleted_on
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -55,7 +52,7 @@ class SessionDetails(object):
     def __init__(self, access_token=None, user=None, session_id=None, last_login=None, licence=None, local_vars_configuration=None):  # noqa: E501
         """SessionDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._access_token = None
@@ -90,7 +87,7 @@ class SessionDetails(object):
         The access token that needs to be included when making requests that require authentication  # noqa: E501
 
         :param access_token: The access_token of this SessionDetails.  # noqa: E501
-        :type access_token: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and access_token is None:  # noqa: E501
             raise ValueError("Invalid value for `access_token`, must not be `None`")  # noqa: E501
@@ -113,7 +110,7 @@ class SessionDetails(object):
 
 
         :param user: The user of this SessionDetails.  # noqa: E501
-        :type user: UserDisplayDetails
+        :type: UserDisplayDetails
         """
         if self.local_vars_configuration.client_side_validation and user is None:  # noqa: E501
             raise ValueError("Invalid value for `user`, must not be `None`")  # noqa: E501
@@ -138,7 +135,7 @@ class SessionDetails(object):
         The id for this current session  # noqa: E501
 
         :param session_id: The session_id of this SessionDetails.  # noqa: E501
-        :type session_id: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and session_id is None:  # noqa: E501
             raise ValueError("Invalid value for `session_id`, must not be `None`")  # noqa: E501
@@ -163,7 +160,7 @@ class SessionDetails(object):
         The last login for the user  # noqa: E501
 
         :param last_login: The last_login of this SessionDetails.  # noqa: E501
-        :type last_login: datetime
+        :type: datetime
         """
 
         self._last_login = last_login
@@ -184,42 +181,34 @@ class SessionDetails(object):
 
 
         :param licence: The licence of this SessionDetails.  # noqa: E501
-        :type licence: Licence
+        :type: Licence
         """
         if self.local_vars_configuration.client_side_validation and licence is None:  # noqa: E501
             raise ValueError("Invalid value for `licence`, must not be `None`")  # noqa: E501
 
         self._licence = licence
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

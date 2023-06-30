@@ -37,17 +37,18 @@ class TestTokenLoginDetails(unittest.TestCase):
         # model = apteco_api.models.token_login_details.TokenLoginDetails()  # noqa: E501
         if include_optional :
             return TokenLoginDetails(
-                token = ''
+                token = '0'
             )
         else :
             return TokenLoginDetails(
-                token = '',
+                token = '0',
         )
 
     def testTokenLoginDetails(self):
         """Test TokenLoginDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

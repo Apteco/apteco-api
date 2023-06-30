@@ -42,30 +42,23 @@ class DataLicensingApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_cancel_data_purchase_job(data_view_name, system_name, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param job_id: The id of the job to cancel (required)
-        :type job_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int job_id: The id of the job to cancel (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.data_licensing_cancel_data_purchase_job_with_http_info(data_view_name, system_name, job_id, **kwargs)  # noqa: E501
@@ -75,38 +68,25 @@ class DataLicensingApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_cancel_data_purchase_job_with_http_info(data_view_name, system_name, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param job_id: The id of the job to cancel (required)
-        :type job_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int job_id: The id of the job to cancel (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
         """
 
         local_var_params = locals()
@@ -121,10 +101,7 @@ class DataLicensingApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -161,7 +138,7 @@ class DataLicensingApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -169,8 +146,6 @@ class DataLicensingApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-
-        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/DataLicensing/{systemName}/DataPurchaseJobs/{jobId}', 'DELETE',
@@ -180,44 +155,36 @@ class DataLicensingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def data_licensing_cancel_licensing_sets_job(self, data_view_name, system_name, job_id, **kwargs):  # noqa: E501
         """Cancel a running licensing sets job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_cancel_licensing_sets_job(data_view_name, system_name, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param job_id: The id of the job to cancel (required)
-        :type job_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int job_id: The id of the job to cancel (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.data_licensing_cancel_licensing_sets_job_with_http_info(data_view_name, system_name, job_id, **kwargs)  # noqa: E501
@@ -227,38 +194,25 @@ class DataLicensingApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_cancel_licensing_sets_job_with_http_info(data_view_name, system_name, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param job_id: The id of the job to cancel (required)
-        :type job_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int job_id: The id of the job to cancel (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
         """
 
         local_var_params = locals()
@@ -273,10 +227,7 @@ class DataLicensingApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -313,7 +264,7 @@ class DataLicensingApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -321,8 +272,6 @@ class DataLicensingApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-
-        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/DataLicensing/{systemName}/LicensingSetsJobs/{jobId}', 'DELETE',
@@ -332,42 +281,35 @@ class DataLicensingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def data_licensing_create_get_licensing_sets_job(self, data_view_name, system_name, **kwargs):  # noqa: E501
         """Create a new job to get the available licensing sets for a system  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_create_get_licensing_sets_job(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: LicensingSetsJobDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: LicensingSetsJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.data_licensing_create_get_licensing_sets_job_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
@@ -377,36 +319,24 @@ class DataLicensingApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_create_get_licensing_sets_job_with_http_info(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(LicensingSetsJobDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(LicensingSetsJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -420,10 +350,7 @@ class DataLicensingApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -454,7 +381,7 @@ class DataLicensingApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -467,13 +394,6 @@ class DataLicensingApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            201: "LicensingSetsJobDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/DataLicensing/{systemName}/LicensingSetsJobs', 'POST',
             path_params,
@@ -482,44 +402,36 @@ class DataLicensingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='LicensingSetsJobDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def data_licensing_create_purchase_data_licensing_job(self, data_view_name, system_name, **kwargs):  # noqa: E501
         """Create a new job to purchase data licensing information  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_create_purchase_data_licensing_job(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param purchase_detail: The details for the data licensing purchase
-        :type purchase_detail: DataPurchaseDetail
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param DataPurchaseDetail purchase_detail: The details for the data licensing purchase
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: DataPurchaseJobDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: DataPurchaseJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.data_licensing_create_purchase_data_licensing_job_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
@@ -529,38 +441,25 @@ class DataLicensingApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_create_purchase_data_licensing_job_with_http_info(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param purchase_detail: The details for the data licensing purchase
-        :type purchase_detail: DataPurchaseDetail
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param DataPurchaseDetail purchase_detail: The details for the data licensing purchase
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(DataPurchaseJobDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(DataPurchaseJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -575,10 +474,7 @@ class DataLicensingApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -609,7 +505,7 @@ class DataLicensingApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -622,20 +518,11 @@ class DataLicensingApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = local_var_params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
-                'POST', body_params))  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-
-        response_types_map = {
-            201: "DataPurchaseJobDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
 
         return self.api_client.call_api(
             '/{dataViewName}/DataLicensing/{systemName}/DataPurchaseJobs', 'POST',
@@ -645,42 +532,35 @@ class DataLicensingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='DataPurchaseJobDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def data_licensing_get_data_licensing_system(self, data_view_name, system_name, **kwargs):  # noqa: E501
         """Returns some top-level details for the specified FastStats system to license data from  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_get_data_licensing_system(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to return details for (required)
-        :type system_name: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to return details for (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: DataLicensingSystemDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: DataLicensingSystemDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.data_licensing_get_data_licensing_system_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
@@ -690,36 +570,24 @@ class DataLicensingApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_get_data_licensing_system_with_http_info(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to return details for (required)
-        :type system_name: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to return details for (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(DataLicensingSystemDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(DataLicensingSystemDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -733,10 +601,7 @@ class DataLicensingApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -767,7 +632,7 @@ class DataLicensingApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -780,13 +645,6 @@ class DataLicensingApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "DataLicensingSystemDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/DataLicensing/{systemName}', 'GET',
             path_params,
@@ -795,48 +653,38 @@ class DataLicensingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='DataLicensingSystemDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def data_licensing_get_data_licensing_systems(self, data_view_name, **kwargs):  # noqa: E501
         """Returns the list of FastStats systems available for licensing data from  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_get_data_licensing_systems(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: PagedResultsDataLicensingSystemSummary
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PagedResultsDataLicensingSystemSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.data_licensing_get_data_licensing_systems_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -846,42 +694,27 @@ class DataLicensingApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_get_data_licensing_systems_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(PagedResultsDataLicensingSystemSummary, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PagedResultsDataLicensingSystemSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -898,10 +731,7 @@ class DataLicensingApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -938,7 +768,7 @@ class DataLicensingApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -951,13 +781,6 @@ class DataLicensingApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "PagedResultsDataLicensingSystemSummary",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/DataLicensing', 'GET',
             path_params,
@@ -966,44 +789,36 @@ class DataLicensingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='PagedResultsDataLicensingSystemSummary',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def data_licensing_get_data_purchase_job(self, data_view_name, system_name, job_id, **kwargs):  # noqa: E501
         """Get the status of a running purchase job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_get_data_purchase_job(data_view_name, system_name, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param job_id: The id of the job to get the status for. (required)
-        :type job_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int job_id: The id of the job to get the status for. (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: DataPurchaseJobDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: DataPurchaseJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.data_licensing_get_data_purchase_job_with_http_info(data_view_name, system_name, job_id, **kwargs)  # noqa: E501
@@ -1013,38 +828,25 @@ class DataLicensingApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_get_data_purchase_job_with_http_info(data_view_name, system_name, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param job_id: The id of the job to get the status for. (required)
-        :type job_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int job_id: The id of the job to get the status for. (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(DataPurchaseJobDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(DataPurchaseJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1059,10 +861,7 @@ class DataLicensingApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -1099,7 +898,7 @@ class DataLicensingApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -1112,13 +911,6 @@ class DataLicensingApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "DataPurchaseJobDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/DataLicensing/{systemName}/DataPurchaseJobs/{jobId}', 'GET',
             path_params,
@@ -1127,44 +919,36 @@ class DataLicensingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='DataPurchaseJobDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def data_licensing_get_licensing_sets_job(self, data_view_name, system_name, job_id, **kwargs):  # noqa: E501
         """Get the status of a running licensing sets job  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_get_licensing_sets_job(data_view_name, system_name, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param job_id: The id of the job to get the status for. (required)
-        :type job_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int job_id: The id of the job to get the status for. (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: LicensingSetsJobDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: LicensingSetsJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.data_licensing_get_licensing_sets_job_with_http_info(data_view_name, system_name, job_id, **kwargs)  # noqa: E501
@@ -1174,38 +958,25 @@ class DataLicensingApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_get_licensing_sets_job_with_http_info(data_view_name, system_name, job_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param job_id: The id of the job to get the status for. (required)
-        :type job_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int job_id: The id of the job to get the status for. (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(LicensingSetsJobDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(LicensingSetsJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1220,10 +991,7 @@ class DataLicensingApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -1260,7 +1028,7 @@ class DataLicensingApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -1273,13 +1041,6 @@ class DataLicensingApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "LicensingSetsJobDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/DataLicensing/{systemName}/LicensingSetsJobs/{jobId}', 'GET',
             path_params,
@@ -1288,52 +1049,40 @@ class DataLicensingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='LicensingSetsJobDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def data_licensing_get_licensing_sets_sync(self, data_view_name, system_name, **kwargs):  # noqa: E501
         """Get the licensing sets for a system  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_get_licensing_sets_sync(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :type timeout_in_seconds: int
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: PagedResultsLicensingSet
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PagedResultsLicensingSet
         """
         kwargs['_return_http_data_only'] = True
         return self.data_licensing_get_licensing_sets_sync_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
@@ -1343,46 +1092,29 @@ class DataLicensingApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_get_licensing_sets_sync_with_http_info(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :type timeout_in_seconds: int
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(PagedResultsLicensingSet, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PagedResultsLicensingSet, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1401,10 +1133,7 @@ class DataLicensingApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -1449,7 +1178,7 @@ class DataLicensingApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -1462,13 +1191,6 @@ class DataLicensingApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "PagedResultsLicensingSet",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/DataLicensing/{systemName}/LicensingSets', 'GET',
             path_params,
@@ -1477,46 +1199,37 @@ class DataLicensingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='PagedResultsLicensingSet',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def data_licensing_purchase_data_licensing_sync(self, data_view_name, system_name, **kwargs):  # noqa: E501
         """Purchase data licensing information  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_purchase_data_licensing_sync(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :type timeout_in_seconds: int
-        :param purchase_detail: The details for the data licensing purchase
-        :type purchase_detail: DataPurchaseDetail
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :param DataPurchaseDetail purchase_detail: The details for the data licensing purchase
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: PurchaseInfo
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PurchaseInfo
         """
         kwargs['_return_http_data_only'] = True
         return self.data_licensing_purchase_data_licensing_sync_with_http_info(data_view_name, system_name, **kwargs)  # noqa: E501
@@ -1526,40 +1239,26 @@ class DataLicensingApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.data_licensing_purchase_data_licensing_sync_with_http_info(data_view_name, system_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param system_name: The name of the FastStats system to act on (required)
-        :type system_name: str
-        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
-        :type timeout_in_seconds: int
-        :param purchase_detail: The details for the data licensing purchase
-        :type purchase_detail: DataPurchaseDetail
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str system_name: The name of the FastStats system to act on (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the audience service's configuration
+        :param DataPurchaseDetail purchase_detail: The details for the data licensing purchase
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(PurchaseInfo, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PurchaseInfo, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1575,10 +1274,7 @@ class DataLicensingApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -1611,7 +1307,7 @@ class DataLicensingApi(object):
         if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -1624,20 +1320,11 @@ class DataLicensingApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = local_var_params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
-                'POST', body_params))  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-
-        response_types_map = {
-            201: "PurchaseInfo",
-            400: None,
-            403: None,
-            404: None,
-        }
 
         return self.api_client.call_api(
             '/{dataViewName}/DataLicensing/{systemName}/PurchaseSync', 'POST',
@@ -1647,11 +1334,10 @@ class DataLicensingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='PurchaseInfo',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)

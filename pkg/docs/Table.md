@@ -1,7 +1,6 @@
 # Table
 
 Details for a table in the FastStats system
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

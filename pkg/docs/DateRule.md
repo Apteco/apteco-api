@@ -1,6 +1,5 @@
 # DateRule
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

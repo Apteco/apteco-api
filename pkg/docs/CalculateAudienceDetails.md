@@ -1,7 +1,6 @@
 # CalculateAudienceDetails
 
 The details required to perform a count of an audience
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

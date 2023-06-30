@@ -1,10 +1,9 @@
 # FileStream
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**handle** | **object** |  | [optional] [readonly] 
+**handle** | [**object**](.md) |  | [optional] [readonly] 
 **can_read** | **bool** |  | [optional] [readonly] 
 **can_write** | **bool** |  | [optional] [readonly] 
 **safe_file_handle** | [**SafeFileHandle**](SafeFileHandle.md) |  | [optional] 

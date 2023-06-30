@@ -41,22 +41,22 @@ class TestAudienceCheckDetail(unittest.TestCase):
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '', 
-                    firstname = '', 
-                    surname = '', 
-                    email_address = '', ), 
+                    username = '0', 
+                    firstname = '0', 
+                    surname = '0', 
+                    email_address = '0', ), 
                 nett_counts = [
                     apteco_api.models.count.Count(
-                        table_name = '', 
+                        table_name = '0', 
                         count_value = 56, )
                     ], 
                 dimension_results = [
                     apteco_api.models.check_dimension_result.CheckDimensionResult(
-                        id = '', 
-                        codes = '', 
-                        descriptions = '', 
-                        base_counts = '', 
-                        audience_counts = '', )
+                        id = '0', 
+                        codes = '0', 
+                        descriptions = '0', 
+                        base_counts = '0', 
+                        audience_counts = '0', )
                     ]
             )
         else :
@@ -65,22 +65,22 @@ class TestAudienceCheckDetail(unittest.TestCase):
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '', 
-                    firstname = '', 
-                    surname = '', 
-                    email_address = '', ),
+                    username = '0', 
+                    firstname = '0', 
+                    surname = '0', 
+                    email_address = '0', ),
                 nett_counts = [
                     apteco_api.models.count.Count(
-                        table_name = '', 
+                        table_name = '0', 
                         count_value = 56, )
                     ],
                 dimension_results = [
                     apteco_api.models.check_dimension_result.CheckDimensionResult(
-                        id = '', 
-                        codes = '', 
-                        descriptions = '', 
-                        base_counts = '', 
-                        audience_counts = '', )
+                        id = '0', 
+                        codes = '0', 
+                        descriptions = '0', 
+                        base_counts = '0', 
+                        audience_counts = '0', )
                     ],
         )
 
@@ -88,6 +88,7 @@ class TestAudienceCheckDetail(unittest.TestCase):
         """Test AudienceCheckDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -42,28 +42,22 @@ class CollectionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_create_collection(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_detail: The details for the collection to create.  If you want              to update a specific collection then PUT to the /Collections/{collectionId} URL
-        :type collection_detail: UpsertCollectionDetail
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param UpsertCollectionDetail collection_detail: The details for the collection to create.  If you want              to update a specific collection then PUT to the /Collections/{collectionId} URL
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: UpsertCollectionDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: UpsertCollectionDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.collections_create_collection_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -73,36 +67,24 @@ class CollectionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_create_collection_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_detail: The details for the collection to create.  If you want              to update a specific collection then PUT to the /Collections/{collectionId} URL
-        :type collection_detail: UpsertCollectionDetail
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param UpsertCollectionDetail collection_detail: The details for the collection to create.  If you want              to update a specific collection then PUT to the /Collections/{collectionId} URL
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(UpsertCollectionDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(UpsertCollectionDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -116,10 +98,7 @@ class CollectionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -144,7 +123,7 @@ class CollectionsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -157,19 +136,11 @@ class CollectionsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = local_var_params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
-                'POST', body_params))  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-
-        response_types_map = {
-            201: "UpsertCollectionDetail",
-            400: None,
-            404: None,
-        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Collections', 'POST',
@@ -179,44 +150,36 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='UpsertCollectionDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def collections_create_collection_hit_for_collection(self, data_view_name, collection_id, **kwargs):  # noqa: E501
         """Register a hit (view) for the given collection  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_create_collection_hit_for_collection(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to register the hit for (required)
-        :type collection_id: int
-        :param create_collection_hit_details: Details to register the hit with
-        :type create_collection_hit_details: CreateCollectionHitDetails
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to register the hit for (required)
+        :param CreateCollectionHitDetails create_collection_hit_details: Details to register the hit with
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: CollectionHitDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CollectionHitDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.collections_create_collection_hit_for_collection_with_http_info(data_view_name, collection_id, **kwargs)  # noqa: E501
@@ -226,38 +189,25 @@ class CollectionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_create_collection_hit_for_collection_with_http_info(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to register the hit for (required)
-        :type collection_id: int
-        :param create_collection_hit_details: Details to register the hit with
-        :type create_collection_hit_details: CreateCollectionHitDetails
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to register the hit for (required)
+        :param CreateCollectionHitDetails create_collection_hit_details: Details to register the hit with
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(CollectionHitDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CollectionHitDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -272,10 +222,7 @@ class CollectionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -306,7 +253,7 @@ class CollectionsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -319,20 +266,11 @@ class CollectionsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = local_var_params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
-                'POST', body_params))  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-
-        response_types_map = {
-            200: "CollectionHitDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Collections/{collectionId}/Hits', 'POST',
@@ -342,42 +280,35 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='CollectionHitDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def collections_delete_collection(self, data_view_name, collection_id, **kwargs):  # noqa: E501
         """Deletes the specified collection  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_delete_collection(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to delete (required)
-        :type collection_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to delete (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.collections_delete_collection_with_http_info(data_view_name, collection_id, **kwargs)  # noqa: E501
@@ -387,36 +318,24 @@ class CollectionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_delete_collection_with_http_info(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to delete (required)
-        :type collection_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to delete (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
         """
 
         local_var_params = locals()
@@ -430,10 +349,7 @@ class CollectionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -464,7 +380,7 @@ class CollectionsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -472,8 +388,6 @@ class CollectionsApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-
-        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/Collections/{collectionId}', 'DELETE',
@@ -483,42 +397,35 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def collections_get_collection(self, data_view_name, collection_id, **kwargs):  # noqa: E501
         """Returns the details of a particular collection  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_get_collection(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to view (required)
-        :type collection_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to view (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: CollectionDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CollectionDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.collections_get_collection_with_http_info(data_view_name, collection_id, **kwargs)  # noqa: E501
@@ -528,36 +435,24 @@ class CollectionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_get_collection_with_http_info(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to view (required)
-        :type collection_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to view (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(CollectionDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CollectionDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -571,10 +466,7 @@ class CollectionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -605,7 +497,7 @@ class CollectionsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -618,13 +510,6 @@ class CollectionsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "CollectionDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/Collections/{collectionId}', 'GET',
             path_params,
@@ -633,44 +518,36 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='CollectionDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def collections_get_collection_hit_for_collection(self, data_view_name, collection_id, collection_hit_id, **kwargs):  # noqa: E501
         """Returns details for a given collection hit for this collection  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_get_collection_hit_for_collection(data_view_name, collection_id, collection_hit_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to get the hit information for (required)
-        :type collection_id: int
-        :param collection_hit_id: The id of the hit (required)
-        :type collection_hit_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to get the hit information for (required)
+        :param int collection_hit_id: The id of the hit (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: CollectionHitDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CollectionHitDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.collections_get_collection_hit_for_collection_with_http_info(data_view_name, collection_id, collection_hit_id, **kwargs)  # noqa: E501
@@ -680,38 +557,25 @@ class CollectionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_get_collection_hit_for_collection_with_http_info(data_view_name, collection_id, collection_hit_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to get the hit information for (required)
-        :type collection_id: int
-        :param collection_hit_id: The id of the hit (required)
-        :type collection_hit_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to get the hit information for (required)
+        :param int collection_hit_id: The id of the hit (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(CollectionHitDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CollectionHitDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -726,10 +590,7 @@ class CollectionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -766,7 +627,7 @@ class CollectionsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -779,13 +640,6 @@ class CollectionsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "CollectionHitDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/Collections/{collectionId}/Hits/{collectionHitId}', 'GET',
             path_params,
@@ -794,50 +648,39 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='CollectionHitDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def collections_get_collection_hits_for_collection(self, data_view_name, collection_id, **kwargs):  # noqa: E501
         """Returns a summary of the hits for this collection - i.e. information about when users have viewed the collection.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_get_collection_hits_for_collection(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to get the hit information for (required)
-        :type collection_id: int
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to get the hit information for (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: PagedResultsCollectionHitSummary
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PagedResultsCollectionHitSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.collections_get_collection_hits_for_collection_with_http_info(data_view_name, collection_id, **kwargs)  # noqa: E501
@@ -847,44 +690,28 @@ class CollectionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_get_collection_hits_for_collection_with_http_info(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to get the hit information for (required)
-        :type collection_id: int
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to get the hit information for (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Timestamp, UserAgentDetails
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Timestamp, UserAgentDetails
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(PagedResultsCollectionHitSummary, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PagedResultsCollectionHitSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -902,10 +729,7 @@ class CollectionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -948,7 +772,7 @@ class CollectionsApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -961,13 +785,6 @@ class CollectionsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "PagedResultsCollectionHitSummary",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/Collections/{collectionId}/Hits', 'GET',
             path_params,
@@ -976,44 +793,36 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='PagedResultsCollectionHitSummary',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def collections_get_collection_part(self, data_view_name, collection_id, part_index, **kwargs):  # noqa: E501
         """Returns details of a part contained within a particular collection  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_get_collection_part(data_view_name, collection_id, part_index, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection that contains the part (required)
-        :type collection_id: int
-        :param part_index: The index of the part within the collection (required)
-        :type part_index: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection that contains the part (required)
+        :param int part_index: The index of the part within the collection (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: CollectionPartDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CollectionPartDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.collections_get_collection_part_with_http_info(data_view_name, collection_id, part_index, **kwargs)  # noqa: E501
@@ -1023,38 +832,25 @@ class CollectionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_get_collection_part_with_http_info(data_view_name, collection_id, part_index, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection that contains the part (required)
-        :type collection_id: int
-        :param part_index: The index of the part within the collection (required)
-        :type part_index: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection that contains the part (required)
+        :param int part_index: The index of the part within the collection (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(CollectionPartDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CollectionPartDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1069,10 +865,7 @@ class CollectionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -1109,7 +902,7 @@ class CollectionsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -1122,13 +915,6 @@ class CollectionsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "CollectionPartDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/Collections/{collectionId}/Parts/{partIndex}', 'GET',
             path_params,
@@ -1137,50 +923,39 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='CollectionPartDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def collections_get_collection_parts(self, data_view_name, collection_id, **kwargs):  # noqa: E501
         """Returns a summary of the parts contained within a particular collection  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_get_collection_parts(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to get the parts for (required)
-        :type collection_id: int
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Title, VisualisationType
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Title, VisualisationType
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to get the parts for (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Title, VisualisationType
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Title, VisualisationType
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: PagedResultsCollectionPartSummary
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PagedResultsCollectionPartSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.collections_get_collection_parts_with_http_info(data_view_name, collection_id, **kwargs)  # noqa: E501
@@ -1190,44 +965,28 @@ class CollectionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_get_collection_parts_with_http_info(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to get the parts for (required)
-        :type collection_id: int
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Title, VisualisationType
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Title, VisualisationType
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to get the parts for (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Title, VisualisationType
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Title, VisualisationType
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(PagedResultsCollectionPartSummary, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PagedResultsCollectionPartSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1245,10 +1004,7 @@ class CollectionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -1291,7 +1047,7 @@ class CollectionsApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -1304,13 +1060,6 @@ class CollectionsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "PagedResultsCollectionPartSummary",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/Collections/{collectionId}/Parts', 'GET',
             path_params,
@@ -1319,14 +1068,13 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='PagedResultsCollectionPartSummary',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def collections_get_collections(self, data_view_name, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Gets summary information about each collection in the DataView.  # noqa: E501
@@ -1334,36 +1082,26 @@ class CollectionsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_get_collections(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param include_deleted: If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only
-        :type include_deleted: str
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str include_deleted: If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: PagedResultsCollectionSummary
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PagedResultsCollectionSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.collections_get_collections_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -1374,44 +1112,28 @@ class CollectionsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_get_collections_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param include_deleted: If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only
-        :type include_deleted: str
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str include_deleted: If specified, whether to include deleted collections, not deleted collections or both.  Defaults to not deleted only
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Id, Title, Description, CreationDate, OwnerUsername, DeletionDate
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(PagedResultsCollectionSummary, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PagedResultsCollectionSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1429,10 +1151,7 @@ class CollectionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -1471,7 +1190,7 @@ class CollectionsApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -1484,13 +1203,6 @@ class CollectionsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "PagedResultsCollectionSummary",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/Collections', 'GET',
             path_params,
@@ -1499,44 +1211,36 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='PagedResultsCollectionSummary',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def collections_transfer_collection_ownership(self, data_view_name, collection_id, **kwargs):  # noqa: E501
         """Transfer ownership of a collection from the current user to a new owner  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_transfer_collection_ownership(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to transfer. (required)
-        :type collection_id: int
-        :param transfer_ownership_details: The details for transferring ownership of the collection.
-        :type transfer_ownership_details: TransferCollectionOwnershipDetails
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to transfer. (required)
+        :param TransferCollectionOwnershipDetails transfer_ownership_details: The details for transferring ownership of the collection.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: CollectionDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CollectionDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.collections_transfer_collection_ownership_with_http_info(data_view_name, collection_id, **kwargs)  # noqa: E501
@@ -1546,38 +1250,25 @@ class CollectionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_transfer_collection_ownership_with_http_info(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to transfer. (required)
-        :type collection_id: int
-        :param transfer_ownership_details: The details for transferring ownership of the collection.
-        :type transfer_ownership_details: TransferCollectionOwnershipDetails
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to transfer. (required)
+        :param TransferCollectionOwnershipDetails transfer_ownership_details: The details for transferring ownership of the collection.
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(CollectionDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CollectionDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1592,10 +1283,7 @@ class CollectionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -1626,7 +1314,7 @@ class CollectionsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -1639,20 +1327,11 @@ class CollectionsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = local_var_params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
-                'POST', body_params))  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-
-        response_types_map = {
-            200: "CollectionDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Collections/{collectionId}/TransferOwnership', 'POST',
@@ -1662,44 +1341,36 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='CollectionDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def collections_upsert_collection(self, data_view_name, collection_id, **kwargs):  # noqa: E501
         """Updates the details of a particular collection.  If you don't have an id for the  collection then POST to the /Collections URL to create a new collection.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_upsert_collection(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to add/update (required)
-        :type collection_id: int
-        :param collection_detail: The details for the collection to add/update
-        :type collection_detail: UpsertCollectionDetail
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to add/update (required)
+        :param UpsertCollectionDetail collection_detail: The details for the collection to add/update
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: CollectionDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CollectionDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.collections_upsert_collection_with_http_info(data_view_name, collection_id, **kwargs)  # noqa: E501
@@ -1709,38 +1380,25 @@ class CollectionsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.collections_upsert_collection_with_http_info(data_view_name, collection_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param collection_id: The id of the collection to add/update (required)
-        :type collection_id: int
-        :param collection_detail: The details for the collection to add/update
-        :type collection_detail: UpsertCollectionDetail
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int collection_id: The id of the collection to add/update (required)
+        :param UpsertCollectionDetail collection_detail: The details for the collection to add/update
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(CollectionDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CollectionDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -1755,10 +1413,7 @@ class CollectionsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -1789,7 +1444,7 @@ class CollectionsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -1802,20 +1457,11 @@ class CollectionsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = local_var_params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
-                'PUT', body_params))  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-
-        response_types_map = {
-            201: "CollectionDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Collections/{collectionId}', 'PUT',
@@ -1825,11 +1471,10 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='CollectionDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)

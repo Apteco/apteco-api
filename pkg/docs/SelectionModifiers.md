@@ -1,7 +1,6 @@
 # SelectionModifiers
 
 Modifiers for the nett selection query
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "0.2.8"
+__version__ = "0.2.6"
 
 # import apis into sdk package
 from apteco_api.api.about_api import AboutApi
@@ -54,7 +54,6 @@ from apteco_api.exceptions import OpenApiException
 from apteco_api.exceptions import ApiTypeError
 from apteco_api.exceptions import ApiValueError
 from apteco_api.exceptions import ApiKeyError
-from apteco_api.exceptions import ApiAttributeError
 from apteco_api.exceptions import ApiException
 # import models into sdk package
 from apteco_api.models.abstract_render_spec import AbstractRenderSpec

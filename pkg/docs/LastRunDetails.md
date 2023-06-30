@@ -1,6 +1,5 @@
 # LastRunDetails
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

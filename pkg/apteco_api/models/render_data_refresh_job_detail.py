@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -49,7 +46,7 @@ class RenderDataRefreshJobDetail(object):
     def __init__(self, id=None, is_complete=None, local_vars_configuration=None):  # noqa: E501
         """RenderDataRefreshJobDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -77,7 +74,7 @@ class RenderDataRefreshJobDetail(object):
         The job's id  # noqa: E501
 
         :param id: The id of this RenderDataRefreshJobDetail.  # noqa: E501
-        :type id: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -102,42 +99,34 @@ class RenderDataRefreshJobDetail(object):
         Whether the job is complete or not  # noqa: E501
 
         :param is_complete: The is_complete of this RenderDataRefreshJobDetail.  # noqa: E501
-        :type is_complete: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and is_complete is None:  # noqa: E501
             raise ValueError("Invalid value for `is_complete`, must not be `None`")  # noqa: E501
 
         self._is_complete = is_complete
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

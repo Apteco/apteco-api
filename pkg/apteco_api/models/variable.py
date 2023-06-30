@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -71,7 +68,7 @@ class Variable(object):
     def __init__(self, name=None, description=None, type=None, folder_name=None, table_name=None, is_selectable=None, is_browsable=None, is_exportable=None, is_virtual=None, selector_info=None, numeric_info=None, text_info=None, reference_info=None, local_vars_configuration=None):  # noqa: E501
         """Variable - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
@@ -126,7 +123,7 @@ class Variable(object):
         The name of the variable  # noqa: E501
 
         :param name: The name of this Variable.  # noqa: E501
-        :type name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -151,7 +148,7 @@ class Variable(object):
         The description of the variable  # noqa: E501
 
         :param description: The description of this Variable.  # noqa: E501
-        :type description: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
             raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
@@ -176,7 +173,7 @@ class Variable(object):
         The type of the variable  # noqa: E501
 
         :param type: The type of this Variable.  # noqa: E501
-        :type type: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -207,7 +204,7 @@ class Variable(object):
         The name of the folder that this variable belongs to within the FastStats system  # noqa: E501
 
         :param folder_name: The folder_name of this Variable.  # noqa: E501
-        :type folder_name: str
+        :type: str
         """
 
         self._folder_name = folder_name
@@ -230,7 +227,7 @@ class Variable(object):
         The name of the table that this variable is from  # noqa: E501
 
         :param table_name: The table_name of this Variable.  # noqa: E501
-        :type table_name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and table_name is None:  # noqa: E501
             raise ValueError("Invalid value for `table_name`, must not be `None`")  # noqa: E501
@@ -255,7 +252,7 @@ class Variable(object):
         Whether the variable is allowed to used in selections  # noqa: E501
 
         :param is_selectable: The is_selectable of this Variable.  # noqa: E501
-        :type is_selectable: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and is_selectable is None:  # noqa: E501
             raise ValueError("Invalid value for `is_selectable`, must not be `None`")  # noqa: E501
@@ -280,7 +277,7 @@ class Variable(object):
         Whether the variable is allowed to viewed with a client application (but not exported)  # noqa: E501
 
         :param is_browsable: The is_browsable of this Variable.  # noqa: E501
-        :type is_browsable: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and is_browsable is None:  # noqa: E501
             raise ValueError("Invalid value for `is_browsable`, must not be `None`")  # noqa: E501
@@ -305,7 +302,7 @@ class Variable(object):
         Whether the variable is allowed to exported by a client application  # noqa: E501
 
         :param is_exportable: The is_exportable of this Variable.  # noqa: E501
-        :type is_exportable: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and is_exportable is None:  # noqa: E501
             raise ValueError("Invalid value for `is_exportable`, must not be `None`")  # noqa: E501
@@ -330,7 +327,7 @@ class Variable(object):
         Whether the variable is a virtual variable (i.e. created after the system has been built) or not  # noqa: E501
 
         :param is_virtual: The is_virtual of this Variable.  # noqa: E501
-        :type is_virtual: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and is_virtual is None:  # noqa: E501
             raise ValueError("Invalid value for `is_virtual`, must not be `None`")  # noqa: E501
@@ -353,7 +350,7 @@ class Variable(object):
 
 
         :param selector_info: The selector_info of this Variable.  # noqa: E501
-        :type selector_info: SelectorVariableInfo
+        :type: SelectorVariableInfo
         """
 
         self._selector_info = selector_info
@@ -374,7 +371,7 @@ class Variable(object):
 
 
         :param numeric_info: The numeric_info of this Variable.  # noqa: E501
-        :type numeric_info: NumericVariableInfo
+        :type: NumericVariableInfo
         """
 
         self._numeric_info = numeric_info
@@ -395,7 +392,7 @@ class Variable(object):
 
 
         :param text_info: The text_info of this Variable.  # noqa: E501
-        :type text_info: TextVariableInfo
+        :type: TextVariableInfo
         """
 
         self._text_info = text_info
@@ -418,40 +415,32 @@ class Variable(object):
         Details specific for reference (URN) variables in the FastStats system  # noqa: E501
 
         :param reference_info: The reference_info of this Variable.  # noqa: E501
-        :type reference_info: object
+        :type: object
         """
 
         self._reference_info = reference_info
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

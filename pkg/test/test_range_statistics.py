@@ -37,7 +37,7 @@ class TestRangeStatistics(unittest.TestCase):
         # model = apteco_api.models.range_statistics.RangeStatistics()  # noqa: E501
         if include_optional :
             return RangeStatistics(
-                id = '', 
+                id = '0', 
                 communications_count = 56, 
                 deliveries_count = 56, 
                 messages_count = 56, 
@@ -48,13 +48,14 @@ class TestRangeStatistics(unittest.TestCase):
             )
         else :
             return RangeStatistics(
-                id = '',
+                id = '0',
         )
 
     def testRangeStatistics(self):
         """Test RangeStatistics"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

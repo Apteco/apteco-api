@@ -37,19 +37,20 @@ class TestResourceCategorySummary(unittest.TestCase):
         # model = apteco_api.models.resource_category_summary.ResourceCategorySummary()  # noqa: E501
         if include_optional :
             return ResourceCategorySummary(
-                name = '', 
-                description = ''
+                name = '0', 
+                description = '0'
             )
         else :
             return ResourceCategorySummary(
-                name = '',
-                description = '',
+                name = '0',
+                description = '0',
         )
 
     def testResourceCategorySummary(self):
         """Test ResourceCategorySummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,7 +1,6 @@
 # VariableLookup
 
 Lookup information for a variable and its var code descriptions returned in a result
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

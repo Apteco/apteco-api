@@ -37,13 +37,13 @@ class TestDataPurchaseDetail(unittest.TestCase):
         # model = apteco_api.models.data_purchase_detail.DataPurchaseDetail()  # noqa: E501
         if include_optional :
             return DataPurchaseDetail(
-                query_id = '', 
-                licensing_set = '', 
-                filename = '', 
+                query_id = '0', 
+                licensing_set = '0', 
+                filename = '0', 
                 grand_total_cost = 1.337, 
-                purchase_order_number = '', 
-                password = '', 
-                authorisation_code = ''
+                purchase_order_number = '0', 
+                password = '0', 
+                authorisation_code = '0'
             )
         else :
             return DataPurchaseDetail(
@@ -53,6 +53,7 @@ class TestDataPurchaseDetail(unittest.TestCase):
         """Test DataPurchaseDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

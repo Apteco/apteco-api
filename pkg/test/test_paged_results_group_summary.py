@@ -43,7 +43,7 @@ class TestPagedResultsGroupSummary(unittest.TestCase):
                 list = [
                     apteco_api.models.group_summary.GroupSummary(
                         id = 56, 
-                        name = '', )
+                        name = '0', )
                     ]
             )
         else :
@@ -54,7 +54,7 @@ class TestPagedResultsGroupSummary(unittest.TestCase):
                 list = [
                     apteco_api.models.group_summary.GroupSummary(
                         id = 56, 
-                        name = '', )
+                        name = '0', )
                     ],
         )
 
@@ -62,6 +62,7 @@ class TestPagedResultsGroupSummary(unittest.TestCase):
         """Test PagedResultsGroupSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

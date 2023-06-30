@@ -1,7 +1,6 @@
 # FileSystemSummary
 
 Top level summary for filesystem information
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -61,7 +58,7 @@ class AudienceUpdateSummary(object):
     def __init__(self, id=None, timestamp=None, user=None, title=None, description=None, owner=None, is_deleted=None, resolve_table_name=None, local_vars_configuration=None):  # noqa: E501
         """AudienceUpdateSummary - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -101,7 +98,7 @@ class AudienceUpdateSummary(object):
         The audience update's id  # noqa: E501
 
         :param id: The id of this AudienceUpdateSummary.  # noqa: E501
-        :type id: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -126,7 +123,7 @@ class AudienceUpdateSummary(object):
         The timestamp of when the update happened  # noqa: E501
 
         :param timestamp: The timestamp of this AudienceUpdateSummary.  # noqa: E501
-        :type timestamp: datetime
+        :type: datetime
         """
         if self.local_vars_configuration.client_side_validation and timestamp is None:  # noqa: E501
             raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
@@ -149,7 +146,7 @@ class AudienceUpdateSummary(object):
 
 
         :param user: The user of this AudienceUpdateSummary.  # noqa: E501
-        :type user: UserDisplayDetails
+        :type: UserDisplayDetails
         """
         if self.local_vars_configuration.client_side_validation and user is None:  # noqa: E501
             raise ValueError("Invalid value for `user`, must not be `None`")  # noqa: E501
@@ -174,7 +171,7 @@ class AudienceUpdateSummary(object):
         The title of the audience at the time of this update  # noqa: E501
 
         :param title: The title of this AudienceUpdateSummary.  # noqa: E501
-        :type title: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and title is None:  # noqa: E501
             raise ValueError("Invalid value for `title`, must not be `None`")  # noqa: E501
@@ -199,7 +196,7 @@ class AudienceUpdateSummary(object):
         The description of the audience at the time of this update  # noqa: E501
 
         :param description: The description of this AudienceUpdateSummary.  # noqa: E501
-        :type description: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
             raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
@@ -222,7 +219,7 @@ class AudienceUpdateSummary(object):
 
 
         :param owner: The owner of this AudienceUpdateSummary.  # noqa: E501
-        :type owner: UserDisplayDetails
+        :type: UserDisplayDetails
         """
         if self.local_vars_configuration.client_side_validation and owner is None:  # noqa: E501
             raise ValueError("Invalid value for `owner`, must not be `None`")  # noqa: E501
@@ -247,7 +244,7 @@ class AudienceUpdateSummary(object):
         Whether this update set the audience to be deleted or not  # noqa: E501
 
         :param is_deleted: The is_deleted of this AudienceUpdateSummary.  # noqa: E501
-        :type is_deleted: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and is_deleted is None:  # noqa: E501
             raise ValueError("Invalid value for `is_deleted`, must not be `None`")  # noqa: E501
@@ -272,42 +269,34 @@ class AudienceUpdateSummary(object):
         The FastStats table that the audience is defined against at the time of this update  # noqa: E501
 
         :param resolve_table_name: The resolve_table_name of this AudienceUpdateSummary.  # noqa: E501
-        :type resolve_table_name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and resolve_table_name is None:  # noqa: E501
             raise ValueError("Invalid value for `resolve_table_name`, must not be `None`")  # noqa: E501
 
         self._resolve_table_name = resolve_table_name
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

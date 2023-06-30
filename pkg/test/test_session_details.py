@@ -37,13 +37,13 @@ class TestSessionDetails(unittest.TestCase):
         # model = apteco_api.models.session_details.SessionDetails()  # noqa: E501
         if include_optional :
             return SessionDetails(
-                access_token = '', 
+                access_token = '0', 
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '', 
-                    firstname = '', 
-                    surname = '', 
-                    email_address = '', ), 
-                session_id = '', 
+                    username = '0', 
+                    firstname = '0', 
+                    surname = '0', 
+                    email_address = '0', ), 
+                session_id = '0', 
                 last_login = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 licence = apteco_api.models.licence.Licence(
                     audience_selection = True, 
@@ -55,13 +55,13 @@ class TestSessionDetails(unittest.TestCase):
             )
         else :
             return SessionDetails(
-                access_token = '',
+                access_token = '0',
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '', 
-                    firstname = '', 
-                    surname = '', 
-                    email_address = '', ),
-                session_id = '',
+                    username = '0', 
+                    firstname = '0', 
+                    surname = '0', 
+                    email_address = '0', ),
+                session_id = '0',
                 licence = apteco_api.models.licence.Licence(
                     audience_selection = True, 
                     audience_preview = True, 
@@ -75,6 +75,7 @@ class TestSessionDetails(unittest.TestCase):
         """Test SessionDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

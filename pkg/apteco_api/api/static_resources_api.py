@@ -43,34 +43,25 @@ class StaticResourcesApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.static_resources_get_static_resource_categories(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to list resource categories for (required)
-        :type data_view_name: str
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to list resource categories for (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: PagedResultsResourceCategorySummary
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PagedResultsResourceCategorySummary
         """
         kwargs['_return_http_data_only'] = True
         return self.static_resources_get_static_resource_categories_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -81,42 +72,27 @@ class StaticResourcesApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.static_resources_get_static_resource_categories_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to list resource categories for (required)
-        :type data_view_name: str
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to list resource categories for (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Description
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Description
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(PagedResultsResourceCategorySummary, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PagedResultsResourceCategorySummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -133,10 +109,7 @@ class StaticResourcesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -173,7 +146,7 @@ class StaticResourcesApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -186,12 +159,6 @@ class StaticResourcesApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "PagedResultsResourceCategorySummary",
-            400: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/StaticResources', 'GET',
             path_params,
@@ -200,14 +167,13 @@ class StaticResourcesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='PagedResultsResourceCategorySummary',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def static_resources_get_static_resource_category(self, data_view_name, resource_category, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Returns details of a resource category for a given category name and system  # noqa: E501
@@ -215,28 +181,22 @@ class StaticResourcesApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.static_resources_get_static_resource_category(data_view_name, resource_category, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to list resources (required)
-        :type data_view_name: str
-        :param resource_category: The category to return the details for (required)
-        :type resource_category: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to list resources (required)
+        :param str resource_category: The category to return the details for (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: ResourceCategoryDetails
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: ResourceCategoryDetails
         """
         kwargs['_return_http_data_only'] = True
         return self.static_resources_get_static_resource_category_with_http_info(data_view_name, resource_category, **kwargs)  # noqa: E501
@@ -247,36 +207,24 @@ class StaticResourcesApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.static_resources_get_static_resource_category_with_http_info(data_view_name, resource_category, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to list resources (required)
-        :type data_view_name: str
-        :param resource_category: The category to return the details for (required)
-        :type resource_category: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to list resources (required)
+        :param str resource_category: The category to return the details for (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(ResourceCategoryDetails, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(ResourceCategoryDetails, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -290,10 +238,7 @@ class StaticResourcesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -324,7 +269,7 @@ class StaticResourcesApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -337,12 +282,6 @@ class StaticResourcesApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "ResourceCategoryDetails",
-            400: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/StaticResources/{resourceCategory}', 'GET',
             path_params,
@@ -351,44 +290,36 @@ class StaticResourcesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='ResourceCategoryDetails',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def static_resources_get_static_resource_file(self, data_view_name, resource_category, resource_name, **kwargs):  # noqa: E501
         """Returns a resource file (such as an image file) for the given category and system  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.static_resources_get_static_resource_file(data_view_name, resource_category, resource_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to find the resource for (required)
-        :type data_view_name: str
-        :param resource_category: The category of the resource to return (required)
-        :type resource_category: str
-        :param resource_name: The name of the resource to return (required)
-        :type resource_name: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to find the resource for (required)
+        :param str resource_category: The category of the resource to return (required)
+        :param str resource_name: The name of the resource to return (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.static_resources_get_static_resource_file_with_http_info(data_view_name, resource_category, resource_name, **kwargs)  # noqa: E501
@@ -398,38 +329,25 @@ class StaticResourcesApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.static_resources_get_static_resource_file_with_http_info(data_view_name, resource_category, resource_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to find the resource for (required)
-        :type data_view_name: str
-        :param resource_category: The category of the resource to return (required)
-        :type resource_category: str
-        :param resource_name: The name of the resource to return (required)
-        :type resource_name: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to find the resource for (required)
+        :param str resource_category: The category of the resource to return (required)
+        :param str resource_name: The name of the resource to return (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
         """
 
         local_var_params = locals()
@@ -444,10 +362,7 @@ class StaticResourcesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -484,7 +399,7 @@ class StaticResourcesApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -492,8 +407,6 @@ class StaticResourcesApi(object):
         body_params = None
         # Authentication setting
         auth_settings = []  # noqa: E501
-
-        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/StaticResources/{resourceCategory}/Resources/{resourceName}', 'GET',
@@ -503,14 +416,13 @@ class StaticResourcesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def static_resources_get_static_resource_file_details(self, data_view_name, resource_category, resource_name, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Returns the details of a resource file (such as an image file) for the given category and system  # noqa: E501
@@ -518,30 +430,23 @@ class StaticResourcesApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.static_resources_get_static_resource_file_details(data_view_name, resource_category, resource_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to find the resource for (required)
-        :type data_view_name: str
-        :param resource_category: The category of the resource to return (required)
-        :type resource_category: str
-        :param resource_name: The name of the resource to return (required)
-        :type resource_name: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to find the resource for (required)
+        :param str resource_category: The category of the resource to return (required)
+        :param str resource_name: The name of the resource to return (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: ResourceDetails
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: ResourceDetails
         """
         kwargs['_return_http_data_only'] = True
         return self.static_resources_get_static_resource_file_details_with_http_info(data_view_name, resource_category, resource_name, **kwargs)  # noqa: E501
@@ -552,38 +457,25 @@ class StaticResourcesApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.static_resources_get_static_resource_file_details_with_http_info(data_view_name, resource_category, resource_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to find the resource for (required)
-        :type data_view_name: str
-        :param resource_category: The category of the resource to return (required)
-        :type resource_category: str
-        :param resource_name: The name of the resource to return (required)
-        :type resource_name: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to find the resource for (required)
+        :param str resource_category: The category of the resource to return (required)
+        :param str resource_name: The name of the resource to return (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(ResourceDetails, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(ResourceDetails, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -598,10 +490,7 @@ class StaticResourcesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -638,7 +527,7 @@ class StaticResourcesApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -651,12 +540,6 @@ class StaticResourcesApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "ResourceDetails",
-            400: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/StaticResources/{resourceCategory}/Resources/{resourceName}/Details', 'GET',
             path_params,
@@ -665,14 +548,13 @@ class StaticResourcesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='ResourceDetails',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def static_resources_get_static_resources_for_category(self, data_view_name, resource_category, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Returns a list of details for the resource files (such as image files) in the given resource category and system  # noqa: E501
@@ -680,36 +562,26 @@ class StaticResourcesApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.static_resources_get_static_resources_for_category(data_view_name, resource_category, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to list resources (required)
-        :type data_view_name: str
-        :param resource_category: The category to return resources for (required)
-        :type resource_category: str
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Size, LastModified
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Size, LastModified
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to list resources (required)
+        :param str resource_category: The category to return resources for (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Size, LastModified
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Size, LastModified
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: PagedResultsResourceSummary
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PagedResultsResourceSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.static_resources_get_static_resources_for_category_with_http_info(data_view_name, resource_category, **kwargs)  # noqa: E501
@@ -720,44 +592,28 @@ class StaticResourcesApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.static_resources_get_static_resources_for_category_with_http_info(data_view_name, resource_category, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to list resources (required)
-        :type data_view_name: str
-        :param resource_category: The category to return resources for (required)
-        :type resource_category: str
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Size, LastModified
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Size, LastModified
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to list resources (required)
+        :param str resource_category: The category to return resources for (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Name, Size, LastModified
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Name, Size, LastModified
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(PagedResultsResourceSummary, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PagedResultsResourceSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -775,10 +631,7 @@ class StaticResourcesApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -821,7 +674,7 @@ class StaticResourcesApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -834,12 +687,6 @@ class StaticResourcesApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "PagedResultsResourceSummary",
-            400: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/StaticResources/{resourceCategory}/Resources', 'GET',
             path_params,
@@ -848,11 +695,10 @@ class StaticResourcesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='PagedResultsResourceSummary',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)

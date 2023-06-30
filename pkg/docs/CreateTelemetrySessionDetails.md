@@ -1,6 +1,5 @@
 # CreateTelemetrySessionDetails
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

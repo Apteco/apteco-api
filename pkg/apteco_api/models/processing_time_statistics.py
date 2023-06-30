@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -67,7 +64,7 @@ class ProcessingTimeStatistics(object):
     def __init__(self, categories=None, frequencies=None, minimum_durations_in_seconds=None, maximum_durations_in_seconds=None, mean_durations_in_seconds=None, standard_deviation_of_durations_in_seconds=None, median_durations_in_seconds=None, percent75_durations_in_seconds=None, percent90_durations_in_seconds=None, percent95_durations_in_seconds=None, percent99_durations_in_seconds=None, local_vars_configuration=None):  # noqa: E501
         """ProcessingTimeStatistics - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._categories = None
@@ -113,7 +110,7 @@ class ProcessingTimeStatistics(object):
         The set of categories that the jobs have been broken down into  # noqa: E501
 
         :param categories: The categories of this ProcessingTimeStatistics.  # noqa: E501
-        :type categories: list[str]
+        :type: list[str]
         """
         if self.local_vars_configuration.client_side_validation and categories is None:  # noqa: E501
             raise ValueError("Invalid value for `categories`, must not be `None`")  # noqa: E501
@@ -138,7 +135,7 @@ class ProcessingTimeStatistics(object):
         The set of counts representing the number of jobs in each corresponding time period.  The first figure is data for the first category in the Categories list, and so on.  # noqa: E501
 
         :param frequencies: The frequencies of this ProcessingTimeStatistics.  # noqa: E501
-        :type frequencies: list[int]
+        :type: list[int]
         """
         if self.local_vars_configuration.client_side_validation and frequencies is None:  # noqa: E501
             raise ValueError("Invalid value for `frequencies`, must not be `None`")  # noqa: E501
@@ -163,7 +160,7 @@ class ProcessingTimeStatistics(object):
         The set of figures representing the minimum job duration for each corresponding time period.  The first figure is data for the first category in the Categories  list, and so on.  # noqa: E501
 
         :param minimum_durations_in_seconds: The minimum_durations_in_seconds of this ProcessingTimeStatistics.  # noqa: E501
-        :type minimum_durations_in_seconds: list[float]
+        :type: list[float]
         """
         if self.local_vars_configuration.client_side_validation and minimum_durations_in_seconds is None:  # noqa: E501
             raise ValueError("Invalid value for `minimum_durations_in_seconds`, must not be `None`")  # noqa: E501
@@ -188,7 +185,7 @@ class ProcessingTimeStatistics(object):
         The set of figures representing the maximum job duration for each corresponding time period.  The first figure is data for the first category in the Categories  list, and so on.  # noqa: E501
 
         :param maximum_durations_in_seconds: The maximum_durations_in_seconds of this ProcessingTimeStatistics.  # noqa: E501
-        :type maximum_durations_in_seconds: list[float]
+        :type: list[float]
         """
         if self.local_vars_configuration.client_side_validation and maximum_durations_in_seconds is None:  # noqa: E501
             raise ValueError("Invalid value for `maximum_durations_in_seconds`, must not be `None`")  # noqa: E501
@@ -213,7 +210,7 @@ class ProcessingTimeStatistics(object):
         The set of figures representing the mean job duration for each corresponding time period.  The first figure is data for the first category in the Categories  list, and so on.  # noqa: E501
 
         :param mean_durations_in_seconds: The mean_durations_in_seconds of this ProcessingTimeStatistics.  # noqa: E501
-        :type mean_durations_in_seconds: list[float]
+        :type: list[float]
         """
         if self.local_vars_configuration.client_side_validation and mean_durations_in_seconds is None:  # noqa: E501
             raise ValueError("Invalid value for `mean_durations_in_seconds`, must not be `None`")  # noqa: E501
@@ -238,7 +235,7 @@ class ProcessingTimeStatistics(object):
         The set of figures representing the standard deviation for job duration for each corresponding time period.  The first figure is data for the first category in the Categories  list, and so on.  # noqa: E501
 
         :param standard_deviation_of_durations_in_seconds: The standard_deviation_of_durations_in_seconds of this ProcessingTimeStatistics.  # noqa: E501
-        :type standard_deviation_of_durations_in_seconds: list[float]
+        :type: list[float]
         """
         if self.local_vars_configuration.client_side_validation and standard_deviation_of_durations_in_seconds is None:  # noqa: E501
             raise ValueError("Invalid value for `standard_deviation_of_durations_in_seconds`, must not be `None`")  # noqa: E501
@@ -263,7 +260,7 @@ class ProcessingTimeStatistics(object):
         The set of figures representing the median job duration for each corresponding time period.  The first figure is data for the first category in the Categories  list, and so on.  # noqa: E501
 
         :param median_durations_in_seconds: The median_durations_in_seconds of this ProcessingTimeStatistics.  # noqa: E501
-        :type median_durations_in_seconds: list[float]
+        :type: list[float]
         """
         if self.local_vars_configuration.client_side_validation and median_durations_in_seconds is None:  # noqa: E501
             raise ValueError("Invalid value for `median_durations_in_seconds`, must not be `None`")  # noqa: E501
@@ -288,7 +285,7 @@ class ProcessingTimeStatistics(object):
         The set of figures representing the 75th percentile job duration for each corresponding time period.  The first figure is data for the first category in the Categories  list, and so on.  # noqa: E501
 
         :param percent75_durations_in_seconds: The percent75_durations_in_seconds of this ProcessingTimeStatistics.  # noqa: E501
-        :type percent75_durations_in_seconds: list[float]
+        :type: list[float]
         """
         if self.local_vars_configuration.client_side_validation and percent75_durations_in_seconds is None:  # noqa: E501
             raise ValueError("Invalid value for `percent75_durations_in_seconds`, must not be `None`")  # noqa: E501
@@ -313,7 +310,7 @@ class ProcessingTimeStatistics(object):
         The set of figures representing the 90th percentile job duration for each corresponding time period.  The first figure is data for the first category in the Categories  list, and so on.  # noqa: E501
 
         :param percent90_durations_in_seconds: The percent90_durations_in_seconds of this ProcessingTimeStatistics.  # noqa: E501
-        :type percent90_durations_in_seconds: list[float]
+        :type: list[float]
         """
         if self.local_vars_configuration.client_side_validation and percent90_durations_in_seconds is None:  # noqa: E501
             raise ValueError("Invalid value for `percent90_durations_in_seconds`, must not be `None`")  # noqa: E501
@@ -338,7 +335,7 @@ class ProcessingTimeStatistics(object):
         The set of figures representing the 95th percentile job duration for each corresponding time period.  The first figure is data for the first category in the Categories  list, and so on.  # noqa: E501
 
         :param percent95_durations_in_seconds: The percent95_durations_in_seconds of this ProcessingTimeStatistics.  # noqa: E501
-        :type percent95_durations_in_seconds: list[float]
+        :type: list[float]
         """
         if self.local_vars_configuration.client_side_validation and percent95_durations_in_seconds is None:  # noqa: E501
             raise ValueError("Invalid value for `percent95_durations_in_seconds`, must not be `None`")  # noqa: E501
@@ -363,42 +360,34 @@ class ProcessingTimeStatistics(object):
         The set of figures representing the 99th percentile job duration for each corresponding time period.  The first figure is data for the first category in the Categories  list, and so on.  # noqa: E501
 
         :param percent99_durations_in_seconds: The percent99_durations_in_seconds of this ProcessingTimeStatistics.  # noqa: E501
-        :type percent99_durations_in_seconds: list[float]
+        :type: list[float]
         """
         if self.local_vars_configuration.client_side_validation and percent99_durations_in_seconds is None:  # noqa: E501
             raise ValueError("Invalid value for `percent99_durations_in_seconds`, must not be `None`")  # noqa: E501
 
         self._percent99_durations_in_seconds = percent99_durations_in_seconds
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

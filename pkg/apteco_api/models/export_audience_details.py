@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -57,7 +54,7 @@ class ExportAudienceDetails(object):
     def __init__(self, maximum_number_of_rows_to_browse=None, return_browse_rows=None, filename=None, output=None, columns=None, generate_urn_file=None, local_vars_configuration=None):  # noqa: E501
         """ExportAudienceDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._maximum_number_of_rows_to_browse = None
@@ -95,7 +92,7 @@ class ExportAudienceDetails(object):
         The maximum number of rows to return when browsing the data  # noqa: E501
 
         :param maximum_number_of_rows_to_browse: The maximum_number_of_rows_to_browse of this ExportAudienceDetails.  # noqa: E501
-        :type maximum_number_of_rows_to_browse: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and maximum_number_of_rows_to_browse is None:  # noqa: E501
             raise ValueError("Invalid value for `maximum_number_of_rows_to_browse`, must not be `None`")  # noqa: E501
@@ -120,7 +117,7 @@ class ExportAudienceDetails(object):
         Whether to return data rows in the response or just export data to a file  # noqa: E501
 
         :param return_browse_rows: The return_browse_rows of this ExportAudienceDetails.  # noqa: E501
-        :type return_browse_rows: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and return_browse_rows is None:  # noqa: E501
             raise ValueError("Invalid value for `return_browse_rows`, must not be `None`")  # noqa: E501
@@ -145,7 +142,7 @@ class ExportAudienceDetails(object):
         If specified, the filename of a file to create, containing the full export data.  The file will be created in the directory for the associated audience, as configured in the API  # noqa: E501
 
         :param filename: The filename of this ExportAudienceDetails.  # noqa: E501
-        :type filename: str
+        :type: str
         """
 
         self._filename = filename
@@ -166,7 +163,7 @@ class ExportAudienceDetails(object):
 
 
         :param output: The output of this ExportAudienceDetails.  # noqa: E501
-        :type output: Output
+        :type: Output
         """
 
         self._output = output
@@ -189,7 +186,7 @@ class ExportAudienceDetails(object):
         The list of columns to include in this export  # noqa: E501
 
         :param columns: The columns of this ExportAudienceDetails.  # noqa: E501
-        :type columns: list[Column]
+        :type: list[Column]
         """
         if self.local_vars_configuration.client_side_validation and columns is None:  # noqa: E501
             raise ValueError("Invalid value for `columns`, must not be `None`")  # noqa: E501
@@ -214,42 +211,34 @@ class ExportAudienceDetails(object):
         Whether to generate a URN file with this export or not  # noqa: E501
 
         :param generate_urn_file: The generate_urn_file of this ExportAudienceDetails.  # noqa: E501
-        :type generate_urn_file: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and generate_urn_file is None:  # noqa: E501
             raise ValueError("Invalid value for `generate_urn_file`, must not be `None`")  # noqa: E501
 
         self._generate_urn_file = generate_urn_file
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

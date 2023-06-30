@@ -39,14 +39,14 @@ class TestAudienceQueryResult(unittest.TestCase):
             return AudienceQueryResult(
                 counts = [
                     apteco_api.models.count.Count(
-                        table_name = '', 
+                        table_name = '0', 
                         count_value = 56, )
                     ], 
                 messages = [
                     apteco_api.models.server_message.ServerMessage(
                         type = 'Error', 
                         number = 56, 
-                        text = '', )
+                        text = '0', )
                     ]
             )
         else :
@@ -57,6 +57,7 @@ class TestAudienceQueryResult(unittest.TestCase):
         """Test AudienceQueryResult"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

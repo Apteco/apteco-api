@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -53,7 +50,7 @@ class ModifyUserCollectionDetail(object):
     def __init__(self, status=None, title=None, description=None, file_path=None, local_vars_configuration=None):  # noqa: E501
         """ModifyUserCollectionDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._status = None
@@ -89,7 +86,7 @@ class ModifyUserCollectionDetail(object):
         The status of the collection  # noqa: E501
 
         :param status: The status of this ModifyUserCollectionDetail.  # noqa: E501
-        :type status: str
+        :type: str
         """
         allowed_values = ["Default", "Pinned", "Archived"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
@@ -118,7 +115,7 @@ class ModifyUserCollectionDetail(object):
         The title of the collection  # noqa: E501
 
         :param title: The title of this ModifyUserCollectionDetail.  # noqa: E501
-        :type title: str
+        :type: str
         """
 
         self._title = title
@@ -141,7 +138,7 @@ class ModifyUserCollectionDetail(object):
         The description of the collection  # noqa: E501
 
         :param description: The description of this ModifyUserCollectionDetail.  # noqa: E501
-        :type description: str
+        :type: str
         """
 
         self._description = description
@@ -164,40 +161,32 @@ class ModifyUserCollectionDetail(object):
         The path to the file that contains the parts of this collection  # noqa: E501
 
         :param file_path: The file_path of this ModifyUserCollectionDetail.  # noqa: E501
-        :type file_path: str
+        :type: str
         """
 
         self._file_path = file_path
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

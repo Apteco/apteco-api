@@ -1,7 +1,6 @@
 # UserAudienceDetail
 
 Details for an audience viewable by a given user
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,7 +1,6 @@
 # EmailRequirements
 
 The details of the email requirements within the user configuration
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

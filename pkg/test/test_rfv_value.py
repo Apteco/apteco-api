@@ -37,9 +37,9 @@ class TestRFVValue(unittest.TestCase):
         # model = apteco_api.models.rfv_value.RFVValue()  # noqa: E501
         if include_optional :
             return RFVValue(
-                variable_name = '', 
+                variable_name = '0', 
                 action = 'Sum', 
-                values = ''
+                values = '0'
             )
         else :
             return RFVValue(
@@ -49,6 +49,7 @@ class TestRFVValue(unittest.TestCase):
         """Test RFVValue"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

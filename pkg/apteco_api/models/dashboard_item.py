@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -55,7 +52,7 @@ class DashboardItem(object):
     def __init__(self, variable_name=None, size=None, chart_type=None, omit_zeros=None, description=None, local_vars_configuration=None):  # noqa: E501
         """DashboardItem - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._variable_name = None
@@ -89,7 +86,7 @@ class DashboardItem(object):
         The name of the FastStats variable to use to calculate this dashboard item  # noqa: E501
 
         :param variable_name: The variable_name of this DashboardItem.  # noqa: E501
-        :type variable_name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and variable_name is None:  # noqa: E501
             raise ValueError("Invalid value for `variable_name`, must not be `None`")  # noqa: E501
@@ -112,7 +109,7 @@ class DashboardItem(object):
 
 
         :param size: The size of this DashboardItem.  # noqa: E501
-        :type size: Size
+        :type: Size
         """
         if self.local_vars_configuration.client_side_validation and size is None:  # noqa: E501
             raise ValueError("Invalid value for `size`, must not be `None`")  # noqa: E501
@@ -137,7 +134,7 @@ class DashboardItem(object):
         The type of chart to use to display this dashboard item  # noqa: E501
 
         :param chart_type: The chart_type of this DashboardItem.  # noqa: E501
-        :type chart_type: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and chart_type is None:  # noqa: E501
             raise ValueError("Invalid value for `chart_type`, must not be `None`")  # noqa: E501
@@ -168,7 +165,7 @@ class DashboardItem(object):
         Whether the chart should omit categories with zero counts  # noqa: E501
 
         :param omit_zeros: The omit_zeros of this DashboardItem.  # noqa: E501
-        :type omit_zeros: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and omit_zeros is None:  # noqa: E501
             raise ValueError("Invalid value for `omit_zeros`, must not be `None`")  # noqa: E501
@@ -193,42 +190,34 @@ class DashboardItem(object):
         The description to use for this item  # noqa: E501
 
         :param description: The description of this DashboardItem.  # noqa: E501
-        :type description: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
             raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
 
         self._description = description
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

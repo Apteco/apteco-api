@@ -37,8 +37,8 @@ class TestRFVRecency(unittest.TestCase):
         # model = apteco_api.models.rfv_recency.RFVRecency()  # noqa: E501
         if include_optional :
             return RFVRecency(
-                variable_name = '', 
-                sequence = '', 
+                variable_name = '0', 
+                sequence = '0', 
                 direction = 'Any', 
                 value = 56, 
                 distinct = True
@@ -51,6 +51,7 @@ class TestRFVRecency(unittest.TestCase):
         """Test RFVRecency"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

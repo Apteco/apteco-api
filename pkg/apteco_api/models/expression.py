@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -61,7 +58,7 @@ class Expression(object):
     def __init__(self, table_name=None, queries=None, desc=None, display_text=None, server_text=None, query_descriptions=None, output_type=None, string_size=None, local_vars_configuration=None):  # noqa: E501
         """Expression - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._table_name = None
@@ -107,7 +104,7 @@ class Expression(object):
 
 
         :param table_name: The table_name of this Expression.  # noqa: E501
-        :type table_name: str
+        :type: str
         """
 
         self._table_name = table_name
@@ -128,7 +125,7 @@ class Expression(object):
 
 
         :param queries: The queries of this Expression.  # noqa: E501
-        :type queries: list[Query]
+        :type: list[Query]
         """
 
         self._queries = queries
@@ -149,7 +146,7 @@ class Expression(object):
 
 
         :param desc: The desc of this Expression.  # noqa: E501
-        :type desc: str
+        :type: str
         """
 
         self._desc = desc
@@ -170,7 +167,7 @@ class Expression(object):
 
 
         :param display_text: The display_text of this Expression.  # noqa: E501
-        :type display_text: str
+        :type: str
         """
 
         self._display_text = display_text
@@ -191,7 +188,7 @@ class Expression(object):
 
 
         :param server_text: The server_text of this Expression.  # noqa: E501
-        :type server_text: str
+        :type: str
         """
 
         self._server_text = server_text
@@ -212,7 +209,7 @@ class Expression(object):
 
 
         :param query_descriptions: The query_descriptions of this Expression.  # noqa: E501
-        :type query_descriptions: list[str]
+        :type: list[str]
         """
 
         self._query_descriptions = query_descriptions
@@ -233,7 +230,7 @@ class Expression(object):
 
 
         :param output_type: The output_type of this Expression.  # noqa: E501
-        :type output_type: str
+        :type: str
         """
         allowed_values = ["Double", "Integer", "String", "Date", "DateTime", "Selector"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and output_type not in allowed_values:  # noqa: E501
@@ -260,40 +257,32 @@ class Expression(object):
 
 
         :param string_size: The string_size of this Expression.  # noqa: E501
-        :type string_size: int
+        :type: int
         """
 
         self._string_size = string_size
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

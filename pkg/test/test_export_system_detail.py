@@ -37,18 +37,19 @@ class TestExportSystemDetail(unittest.TestCase):
         # model = apteco_api.models.export_system_detail.ExportSystemDetail()  # noqa: E501
         if include_optional :
             return ExportSystemDetail(
-                name = '', 
+                name = '0', 
                 is_velocity_enabled = True
             )
         else :
             return ExportSystemDetail(
-                name = '',
+                name = '0',
         )
 
     def testExportSystemDetail(self):
         """Test ExportSystemDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

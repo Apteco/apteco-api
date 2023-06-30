@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -61,7 +58,7 @@ class TelemetrySession(object):
     def __init__(self, id=None, api_version=None, client_type=None, client_version=None, session_start=None, session_end=None, last_session_action=None, user_agent_details=None, local_vars_configuration=None):  # noqa: E501
         """TelemetrySession - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -107,7 +104,7 @@ class TelemetrySession(object):
         The Id for this telemetry session  # noqa: E501
 
         :param id: The id of this TelemetrySession.  # noqa: E501
-        :type id: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -132,7 +129,7 @@ class TelemetrySession(object):
         The API version for this telemetry session  # noqa: E501
 
         :param api_version: The api_version of this TelemetrySession.  # noqa: E501
-        :type api_version: str
+        :type: str
         """
 
         self._api_version = api_version
@@ -155,7 +152,7 @@ class TelemetrySession(object):
         The client type for this telemetry session  # noqa: E501
 
         :param client_type: The client_type of this TelemetrySession.  # noqa: E501
-        :type client_type: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and client_type is None:  # noqa: E501
             raise ValueError("Invalid value for `client_type`, must not be `None`")  # noqa: E501
@@ -186,7 +183,7 @@ class TelemetrySession(object):
         The client version for this telemetry session  # noqa: E501
 
         :param client_version: The client_version of this TelemetrySession.  # noqa: E501
-        :type client_version: str
+        :type: str
         """
 
         self._client_version = client_version
@@ -209,7 +206,7 @@ class TelemetrySession(object):
         The start time for this telemetry session  # noqa: E501
 
         :param session_start: The session_start of this TelemetrySession.  # noqa: E501
-        :type session_start: datetime
+        :type: datetime
         """
 
         self._session_start = session_start
@@ -232,7 +229,7 @@ class TelemetrySession(object):
         The end time for this telemetry session  # noqa: E501
 
         :param session_end: The session_end of this TelemetrySession.  # noqa: E501
-        :type session_end: datetime
+        :type: datetime
         """
 
         self._session_end = session_end
@@ -255,7 +252,7 @@ class TelemetrySession(object):
         The last action time for this telemetry session  # noqa: E501
 
         :param last_session_action: The last_session_action of this TelemetrySession.  # noqa: E501
-        :type last_session_action: datetime
+        :type: datetime
         """
 
         self._last_session_action = last_session_action
@@ -278,40 +275,32 @@ class TelemetrySession(object):
         The user agent details for this telemetry session  # noqa: E501
 
         :param user_agent_details: The user_agent_details of this TelemetrySession.  # noqa: E501
-        :type user_agent_details: str
+        :type: str
         """
 
         self._user_agent_details = user_agent_details
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

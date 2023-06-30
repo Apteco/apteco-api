@@ -37,17 +37,18 @@ class TestDataViewSummary(unittest.TestCase):
         # model = apteco_api.models.data_view_summary.DataViewSummary()  # noqa: E501
         if include_optional :
             return DataViewSummary(
-                name = ''
+                name = '0'
             )
         else :
             return DataViewSummary(
-                name = '',
+                name = '0',
         )
 
     def testDataViewSummary(self):
         """Test DataViewSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -46,7 +46,7 @@ class TestSelectorVariableInfo(unittest.TestCase):
                 maximum_var_code_count = 56, 
                 minimum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 maximum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                combined_from_variable_name = ''
+                combined_from_variable_name = '0'
             )
         else :
             return SelectorVariableInfo(
@@ -56,6 +56,7 @@ class TestSelectorVariableInfo(unittest.TestCase):
         """Test SelectorVariableInfo"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

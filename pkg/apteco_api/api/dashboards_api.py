@@ -43,34 +43,25 @@ class DashboardsApi(object):
         EXPERIMENTAL  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.dashboards_get_dashboard_item_data_sync(data_view_name, dashboard_id, dashboard_item_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param dashboard_id: The id of the dashboard to calculate the result for (required)
-        :type dashboard_id: int
-        :param dashboard_item_id: The id of the dashboard item to calculate the results for (required)
-        :type dashboard_item_id: str
-        :param timeout_in_seconds: The number of seconds before the request will time out. Leave unspecified to use the default value given in the dashboards service's configuration
-        :type timeout_in_seconds: int
-        :param request_data: Used to filter the data on the dashboard item and define the drill down level
-        :type request_data: DashboardItemData
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int dashboard_id: The id of the dashboard to calculate the result for (required)
+        :param str dashboard_item_id: The id of the dashboard item to calculate the results for (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out. Leave unspecified to use the default value given in the dashboards service's configuration
+        :param DashboardItemData request_data: Used to filter the data on the dashboard item and define the drill down level
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: DashboardItemDataResult
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: DashboardItemDataResult
         """
         kwargs['_return_http_data_only'] = True
         return self.dashboards_get_dashboard_item_data_sync_with_http_info(data_view_name, dashboard_id, dashboard_item_id, **kwargs)  # noqa: E501
@@ -81,42 +72,27 @@ class DashboardsApi(object):
         EXPERIMENTAL  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.dashboards_get_dashboard_item_data_sync_with_http_info(data_view_name, dashboard_id, dashboard_item_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param dashboard_id: The id of the dashboard to calculate the result for (required)
-        :type dashboard_id: int
-        :param dashboard_item_id: The id of the dashboard item to calculate the results for (required)
-        :type dashboard_item_id: str
-        :param timeout_in_seconds: The number of seconds before the request will time out. Leave unspecified to use the default value given in the dashboards service's configuration
-        :type timeout_in_seconds: int
-        :param request_data: Used to filter the data on the dashboard item and define the drill down level
-        :type request_data: DashboardItemData
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param int dashboard_id: The id of the dashboard to calculate the result for (required)
+        :param str dashboard_item_id: The id of the dashboard item to calculate the results for (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out. Leave unspecified to use the default value given in the dashboards service's configuration
+        :param DashboardItemData request_data: Used to filter the data on the dashboard item and define the drill down level
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(DashboardItemDataResult, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(DashboardItemDataResult, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -133,10 +109,7 @@ class DashboardsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -175,7 +148,7 @@ class DashboardsApi(object):
         if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -188,20 +161,11 @@ class DashboardsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = local_var_params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
-                'POST', body_params))  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-
-        response_types_map = {
-            200: "DashboardItemDataResult",
-            400: None,
-            403: None,
-            404: None,
-        }
 
         return self.api_client.call_api(
             '/{dataViewName}/Dashboards/{dashboardId}/Items/{dashboardItemId}/CalculateSync', 'POST',
@@ -211,11 +175,10 @@ class DashboardsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='DashboardItemDataResult',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)

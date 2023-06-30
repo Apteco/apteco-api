@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -53,7 +50,7 @@ class LastRunDetails(object):
     def __init__(self, system_name=None, system_load_date=None, user_name=None, run_date=None, local_vars_configuration=None):  # noqa: E501
         """LastRunDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._system_name = None
@@ -87,7 +84,7 @@ class LastRunDetails(object):
 
 
         :param system_name: The system_name of this LastRunDetails.  # noqa: E501
-        :type system_name: str
+        :type: str
         """
 
         self._system_name = system_name
@@ -108,7 +105,7 @@ class LastRunDetails(object):
 
 
         :param system_load_date: The system_load_date of this LastRunDetails.  # noqa: E501
-        :type system_load_date: datetime
+        :type: datetime
         """
 
         self._system_load_date = system_load_date
@@ -129,7 +126,7 @@ class LastRunDetails(object):
 
 
         :param user_name: The user_name of this LastRunDetails.  # noqa: E501
-        :type user_name: str
+        :type: str
         """
 
         self._user_name = user_name
@@ -150,40 +147,32 @@ class LastRunDetails(object):
 
 
         :param run_date: The run_date of this LastRunDetails.  # noqa: E501
-        :type run_date: datetime
+        :type: datetime
         """
 
         self._run_date = run_date
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

@@ -42,9 +42,9 @@ class TestModifyItemsModifyUserCollection(unittest.TestCase):
                     apteco_api.models.modify_user_collection.ModifyUserCollection(
                         collection = apteco_api.models.modify_user_collection_detail.ModifyUserCollectionDetail(
                             status = 'Default', 
-                            title = '', 
-                            description = '', 
-                            file_path = '', ), 
+                            title = '0', 
+                            description = '0', 
+                            file_path = '0', ), 
                         id = 56, 
                         modification_type = 'Modify', )
                     ]
@@ -56,9 +56,9 @@ class TestModifyItemsModifyUserCollection(unittest.TestCase):
                     apteco_api.models.modify_user_collection.ModifyUserCollection(
                         collection = apteco_api.models.modify_user_collection_detail.ModifyUserCollectionDetail(
                             status = 'Default', 
-                            title = '', 
-                            description = '', 
-                            file_path = '', ), 
+                            title = '0', 
+                            description = '0', 
+                            file_path = '0', ), 
                         id = 56, 
                         modification_type = 'Modify', )
                     ],
@@ -68,6 +68,7 @@ class TestModifyItemsModifyUserCollection(unittest.TestCase):
         """Test ModifyItemsModifyUserCollection"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

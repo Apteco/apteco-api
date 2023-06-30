@@ -1,7 +1,6 @@
 # QueryResult
 
 Details for a count of a particular query
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

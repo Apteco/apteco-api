@@ -39,19 +39,20 @@ class TestDataViewDetails(unittest.TestCase):
             return DataViewDetails(
                 capabilities = apteco_api.models.capabilities.Capabilities(
                     supports_audiences = True, ), 
-                name = ''
+                name = '0'
             )
         else :
             return DataViewDetails(
                 capabilities = apteco_api.models.capabilities.Capabilities(
                     supports_audiences = True, ),
-                name = '',
+                name = '0',
         )
 
     def testDataViewDetails(self):
         """Test DataViewDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

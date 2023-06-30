@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -61,7 +58,7 @@ class CreateAudienceUpdate(object):
     def __init__(self, title=None, description=None, is_deleted=None, exclude_query=None, include_query=None, body_query=None, selection_modifiers=None, brief_text=None, local_vars_configuration=None):  # noqa: E501
         """CreateAudienceUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._title = None
@@ -109,7 +106,7 @@ class CreateAudienceUpdate(object):
         The title of the audience  # noqa: E501
 
         :param title: The title of this CreateAudienceUpdate.  # noqa: E501
-        :type title: str
+        :type: str
         """
 
         self._title = title
@@ -132,7 +129,7 @@ class CreateAudienceUpdate(object):
         The description of the audience  # noqa: E501
 
         :param description: The description of this CreateAudienceUpdate.  # noqa: E501
-        :type description: str
+        :type: str
         """
 
         self._description = description
@@ -155,7 +152,7 @@ class CreateAudienceUpdate(object):
         Whether this audience should be deleted or not  # noqa: E501
 
         :param is_deleted: The is_deleted of this CreateAudienceUpdate.  # noqa: E501
-        :type is_deleted: bool
+        :type: bool
         """
 
         self._is_deleted = is_deleted
@@ -176,7 +173,7 @@ class CreateAudienceUpdate(object):
 
 
         :param exclude_query: The exclude_query of this CreateAudienceUpdate.  # noqa: E501
-        :type exclude_query: Query
+        :type: Query
         """
 
         self._exclude_query = exclude_query
@@ -197,7 +194,7 @@ class CreateAudienceUpdate(object):
 
 
         :param include_query: The include_query of this CreateAudienceUpdate.  # noqa: E501
-        :type include_query: Query
+        :type: Query
         """
 
         self._include_query = include_query
@@ -218,7 +215,7 @@ class CreateAudienceUpdate(object):
 
 
         :param body_query: The body_query of this CreateAudienceUpdate.  # noqa: E501
-        :type body_query: Query
+        :type: Query
         """
 
         self._body_query = body_query
@@ -239,7 +236,7 @@ class CreateAudienceUpdate(object):
 
 
         :param selection_modifiers: The selection_modifiers of this CreateAudienceUpdate.  # noqa: E501
-        :type selection_modifiers: SelectionModifiers
+        :type: SelectionModifiers
         """
 
         self._selection_modifiers = selection_modifiers
@@ -262,40 +259,32 @@ class CreateAudienceUpdate(object):
         Notes associated with the audience  # noqa: E501
 
         :param brief_text: The brief_text of this CreateAudienceUpdate.  # noqa: E501
-        :type brief_text: str
+        :type: str
         """
 
         self._brief_text = brief_text
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

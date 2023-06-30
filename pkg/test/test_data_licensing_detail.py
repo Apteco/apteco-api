@@ -37,7 +37,7 @@ class TestDataLicensingDetail(unittest.TestCase):
         # model = apteco_api.models.data_licensing_detail.DataLicensingDetail()  # noqa: E501
         if include_optional :
             return DataLicensingDetail(
-                licensing_set = ''
+                licensing_set = '0'
             )
         else :
             return DataLicensingDetail(
@@ -47,6 +47,7 @@ class TestDataLicensingDetail(unittest.TestCase):
         """Test DataLicensingDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

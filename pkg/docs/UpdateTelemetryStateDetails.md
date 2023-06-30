@@ -1,6 +1,5 @@
 # UpdateTelemetryStateDetails
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,7 +1,6 @@
 # CommunicationStatistics
 
 Communication statistics for a given set of days
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

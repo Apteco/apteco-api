@@ -1,7 +1,6 @@
 # Folder
 
 Details for a folder in the FastStats system
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

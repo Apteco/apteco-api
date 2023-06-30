@@ -42,28 +42,22 @@ class UserRegistrationRequestsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.user_registration_requests_confirm_registration_request(data_view_name, token, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param token: The token of the request (required)
-        :type token: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str token: The token of the request (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: UserSummary
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: UserSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.user_registration_requests_confirm_registration_request_with_http_info(data_view_name, token, **kwargs)  # noqa: E501
@@ -73,36 +67,24 @@ class UserRegistrationRequestsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.user_registration_requests_confirm_registration_request_with_http_info(data_view_name, token, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param token: The token of the request (required)
-        :type token: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str token: The token of the request (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(UserSummary, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(UserSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -116,10 +98,7 @@ class UserRegistrationRequestsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -150,7 +129,7 @@ class UserRegistrationRequestsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -163,12 +142,6 @@ class UserRegistrationRequestsApi(object):
         # Authentication setting
         auth_settings = []  # noqa: E501
 
-        response_types_map = {
-            201: "UserSummary",
-            400: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/UserRegistrationRequests/{token}', 'POST',
             path_params,
@@ -177,42 +150,35 @@ class UserRegistrationRequestsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='UserSummary',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def user_registration_requests_create_registration_request(self, data_view_name, **kwargs):  # noqa: E501
         """Creates a new user registration requests, which will check the sign-up details and then issue a confirmation notification  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.user_registration_requests_create_registration_request(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param create_user_registration_request: The details needed to create the registration request
-        :type create_user_registration_request: CreateUserRegistrationRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param CreateUserRegistrationRequest create_user_registration_request: The details needed to create the registration request
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: UserRegistrationRequestDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: UserRegistrationRequestDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.user_registration_requests_create_registration_request_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -222,36 +188,24 @@ class UserRegistrationRequestsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.user_registration_requests_create_registration_request_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param create_user_registration_request: The details needed to create the registration request
-        :type create_user_registration_request: CreateUserRegistrationRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param CreateUserRegistrationRequest create_user_registration_request: The details needed to create the registration request
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(UserRegistrationRequestDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(UserRegistrationRequestDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -265,10 +219,7 @@ class UserRegistrationRequestsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -293,7 +244,7 @@ class UserRegistrationRequestsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -306,19 +257,11 @@ class UserRegistrationRequestsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = local_var_params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'],
-                'POST', body_params))  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json-patch+json', 'application/json', 'text/json', 'application/*+json', 'application/xml', 'text/xml', 'application/*+xml'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
-
-        response_types_map = {
-            201: "UserRegistrationRequestDetail",
-            400: None,
-            404: None,
-        }
 
         return self.api_client.call_api(
             '/{dataViewName}/UserRegistrationRequests', 'POST',
@@ -328,14 +271,13 @@ class UserRegistrationRequestsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='UserRegistrationRequestDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def user_registration_requests_get_registration_request(self, data_view_name, token, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Returns details for a given user registration request  # noqa: E501
@@ -343,28 +285,22 @@ class UserRegistrationRequestsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.user_registration_requests_get_registration_request(data_view_name, token, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param token: The token of the request (required)
-        :type token: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str token: The token of the request (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: UserRegistrationRequestDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: UserRegistrationRequestDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.user_registration_requests_get_registration_request_with_http_info(data_view_name, token, **kwargs)  # noqa: E501
@@ -375,36 +311,24 @@ class UserRegistrationRequestsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.user_registration_requests_get_registration_request_with_http_info(data_view_name, token, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param token: The token of the request (required)
-        :type token: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str token: The token of the request (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(UserRegistrationRequestDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(UserRegistrationRequestDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -418,10 +342,7 @@ class UserRegistrationRequestsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -452,7 +373,7 @@ class UserRegistrationRequestsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -465,13 +386,6 @@ class UserRegistrationRequestsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "UserRegistrationRequestDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/UserRegistrationRequests/{token}', 'GET',
             path_params,
@@ -480,14 +394,13 @@ class UserRegistrationRequestsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='UserRegistrationRequestDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def user_registration_requests_get_registration_requests(self, data_view_name, **kwargs):  # noqa: E501
         """Requires OrbitAdmin: Returns all the current user regisration requests in the system.  # noqa: E501
@@ -495,34 +408,25 @@ class UserRegistrationRequestsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.user_registration_requests_get_registration_requests(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Firstname, Surname, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Firstname, Surname, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Firstname, Surname, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Firstname, Surname, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: PagedResultsUserRegistrationRequestSummary
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: PagedResultsUserRegistrationRequestSummary
         """
         kwargs['_return_http_data_only'] = True
         return self.user_registration_requests_get_registration_requests_with_http_info(data_view_name, **kwargs)  # noqa: E501
@@ -533,42 +437,27 @@ class UserRegistrationRequestsApi(object):
         This endpoint is only available for users with the OrbitAdmin role  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.user_registration_requests_get_registration_requests_with_http_info(data_view_name, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Firstname, Surname, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate
-        :type filter: str
-        :param order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Firstname, Surname, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate
-        :type order_by: str
-        :param offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
-        :type offset: int
-        :param count: The maximum number of items to show from the (potentially filtered) result set.
-        :type count: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str filter: Filter the list of items using a simple expression language.  The available list of fields are Username, Firstname, Surname, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate
+        :param str order_by: Order the items by a given field (in ascending order unless the field is preceeded by a \"-\" character).  The available list of fields are Username, Firstname, Surname, EmailAddress, CreationDate, ConfirmedDate, ExpiredDate
+        :param int offset: The number of items to skip in the (potentially filtered) result set before returning subsequent items.
+        :param int count: The maximum number of items to show from the (potentially filtered) result set.
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(PagedResultsUserRegistrationRequestSummary, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(PagedResultsUserRegistrationRequestSummary, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -585,10 +474,7 @@ class UserRegistrationRequestsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -625,7 +511,7 @@ class UserRegistrationRequestsApi(object):
         if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
             query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -638,13 +524,6 @@ class UserRegistrationRequestsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "PagedResultsUserRegistrationRequestSummary",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/UserRegistrationRequests', 'GET',
             path_params,
@@ -653,11 +532,10 @@ class UserRegistrationRequestsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='PagedResultsUserRegistrationRequestSummary',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)

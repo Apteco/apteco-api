@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -59,7 +56,7 @@ class CreateShareDetail(object):
     def __init__(self, shareable_type=None, shareable_id=None, email_addresses_to_add=None, notify_added_users=None, added_user_notification_message=None, notes=None, view_shareable_url=None, local_vars_configuration=None):  # noqa: E501
         """CreateShareDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._shareable_type = None
@@ -100,7 +97,7 @@ class CreateShareDetail(object):
         The type of the shareable item (collection, audience, etc.) being shared  # noqa: E501
 
         :param shareable_type: The shareable_type of this CreateShareDetail.  # noqa: E501
-        :type shareable_type: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and shareable_type is None:  # noqa: E501
             raise ValueError("Invalid value for `shareable_type`, must not be `None`")  # noqa: E501
@@ -131,7 +128,7 @@ class CreateShareDetail(object):
         The id of the shareable item being shared  # noqa: E501
 
         :param shareable_id: The shareable_id of this CreateShareDetail.  # noqa: E501
-        :type shareable_id: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and shareable_id is None:  # noqa: E501
             raise ValueError("Invalid value for `shareable_id`, must not be `None`")  # noqa: E501
@@ -156,7 +153,7 @@ class CreateShareDetail(object):
         The list of email addresses to share this shareable item with  # noqa: E501
 
         :param email_addresses_to_add: The email_addresses_to_add of this CreateShareDetail.  # noqa: E501
-        :type email_addresses_to_add: list[str]
+        :type: list[str]
         """
         if self.local_vars_configuration.client_side_validation and email_addresses_to_add is None:  # noqa: E501
             raise ValueError("Invalid value for `email_addresses_to_add`, must not be `None`")  # noqa: E501
@@ -181,7 +178,7 @@ class CreateShareDetail(object):
         Whether to notify the users added in this share that the shareable item has now been shared with them  # noqa: E501
 
         :param notify_added_users: The notify_added_users of this CreateShareDetail.  # noqa: E501
-        :type notify_added_users: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and notify_added_users is None:  # noqa: E501
             raise ValueError("Invalid value for `notify_added_users`, must not be `None`")  # noqa: E501
@@ -206,7 +203,7 @@ class CreateShareDetail(object):
         If added users are to be notified, this is the message to be sent to them.  The URL of the view of the shareable item (specified when the shareable item was created)  will be added to the notification after this message.  # noqa: E501
 
         :param added_user_notification_message: The added_user_notification_message of this CreateShareDetail.  # noqa: E501
-        :type added_user_notification_message: str
+        :type: str
         """
 
         self._added_user_notification_message = added_user_notification_message
@@ -229,7 +226,7 @@ class CreateShareDetail(object):
         The notes associated with this share update  # noqa: E501
 
         :param notes: The notes of this CreateShareDetail.  # noqa: E501
-        :type notes: str
+        :type: str
         """
 
         self._notes = notes
@@ -252,40 +249,32 @@ class CreateShareDetail(object):
         A URL of a page to view the shareable item.  If specified this will be used in notification  messages to show added or removed users where to view the shareable item    If the URL is specified, it can use {shareableId} and {emailAddress} parameters    http://www.example.com/collections/{shareableId}?email={emailAddress}    If present, these parameters will be replaced with the id of the shareable item and the email address of the user being added/removed  # noqa: E501
 
         :param view_shareable_url: The view_shareable_url of this CreateShareDetail.  # noqa: E501
-        :type view_shareable_url: str
+        :type: str
         """
 
         self._view_shareable_url = view_shareable_url
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

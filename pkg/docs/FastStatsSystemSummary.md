@@ -1,7 +1,6 @@
 # FastStatsSystemSummary
 
 Top level summary for a FastStats system
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

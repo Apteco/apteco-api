@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -65,7 +62,7 @@ class EndpointDetails(object):
     def __init__(self, name=None, group_name=None, method=None, url_template=None, allows_anonymous_access=None, is_experimental=None, is_under_development=None, requires_licence_flags=None, optionally_requires_licence_flags=None, requires_roles=None, local_vars_configuration=None):  # noqa: E501
         """EndpointDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
@@ -109,7 +106,7 @@ class EndpointDetails(object):
         The name of the endpoint  # noqa: E501
 
         :param name: The name of this EndpointDetails.  # noqa: E501
-        :type name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -134,7 +131,7 @@ class EndpointDetails(object):
         The name of the group this endpoint belongs to  # noqa: E501
 
         :param group_name: The group_name of this EndpointDetails.  # noqa: E501
-        :type group_name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and group_name is None:  # noqa: E501
             raise ValueError("Invalid value for `group_name`, must not be `None`")  # noqa: E501
@@ -159,7 +156,7 @@ class EndpointDetails(object):
         The HTTP method used for calling this endpoint  # noqa: E501
 
         :param method: The method of this EndpointDetails.  # noqa: E501
-        :type method: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and method is None:  # noqa: E501
             raise ValueError("Invalid value for `method`, must not be `None`")  # noqa: E501
@@ -184,7 +181,7 @@ class EndpointDetails(object):
         The URL template of this endpoint  # noqa: E501
 
         :param url_template: The url_template of this EndpointDetails.  # noqa: E501
-        :type url_template: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and url_template is None:  # noqa: E501
             raise ValueError("Invalid value for `url_template`, must not be `None`")  # noqa: E501
@@ -209,7 +206,7 @@ class EndpointDetails(object):
         Whether this endpoint can be accessed without authentication details  # noqa: E501
 
         :param allows_anonymous_access: The allows_anonymous_access of this EndpointDetails.  # noqa: E501
-        :type allows_anonymous_access: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and allows_anonymous_access is None:  # noqa: E501
             raise ValueError("Invalid value for `allows_anonymous_access`, must not be `None`")  # noqa: E501
@@ -234,7 +231,7 @@ class EndpointDetails(object):
         Whether this endpoint has been marked as experimental  # noqa: E501
 
         :param is_experimental: The is_experimental of this EndpointDetails.  # noqa: E501
-        :type is_experimental: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and is_experimental is None:  # noqa: E501
             raise ValueError("Invalid value for `is_experimental`, must not be `None`")  # noqa: E501
@@ -259,7 +256,7 @@ class EndpointDetails(object):
         Whether this endpoint has been marked as under development  # noqa: E501
 
         :param is_under_development: The is_under_development of this EndpointDetails.  # noqa: E501
-        :type is_under_development: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and is_under_development is None:  # noqa: E501
             raise ValueError("Invalid value for `is_under_development`, must not be `None`")  # noqa: E501
@@ -284,7 +281,7 @@ class EndpointDetails(object):
         The set of licence flags that the user must have in order to be able to call the endpoint  # noqa: E501
 
         :param requires_licence_flags: The requires_licence_flags of this EndpointDetails.  # noqa: E501
-        :type requires_licence_flags: list[str]
+        :type: list[str]
         """
         if self.local_vars_configuration.client_side_validation and requires_licence_flags is None:  # noqa: E501
             raise ValueError("Invalid value for `requires_licence_flags`, must not be `None`")  # noqa: E501
@@ -317,7 +314,7 @@ class EndpointDetails(object):
         The set of licence flags that the user might need to have in order to be able to call the endpoint, depending on the type of request sent to the endpoint  # noqa: E501
 
         :param optionally_requires_licence_flags: The optionally_requires_licence_flags of this EndpointDetails.  # noqa: E501
-        :type optionally_requires_licence_flags: list[str]
+        :type: list[str]
         """
         if self.local_vars_configuration.client_side_validation and optionally_requires_licence_flags is None:  # noqa: E501
             raise ValueError("Invalid value for `optionally_requires_licence_flags`, must not be `None`")  # noqa: E501
@@ -350,42 +347,34 @@ class EndpointDetails(object):
         Any roles that the user must have to access this endpoint  # noqa: E501
 
         :param requires_roles: The requires_roles of this EndpointDetails.  # noqa: E501
-        :type requires_roles: list[str]
+        :type: list[str]
         """
         if self.local_vars_configuration.client_side_validation and requires_roles is None:  # noqa: E501
             raise ValueError("Invalid value for `requires_roles`, must not be `None`")  # noqa: E501
 
         self._requires_roles = requires_roles
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

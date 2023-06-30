@@ -1,7 +1,6 @@
 # ExportCompositionDefinition
 
 Details for the definition of a composition for the audience export screen
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

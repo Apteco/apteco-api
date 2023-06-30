@@ -37,22 +37,22 @@ class TestMeasureResult(unittest.TestCase):
         # model = apteco_api.models.measure_result.MeasureResult()  # noqa: E501
         if include_optional :
             return MeasureResult(
-                id = '', 
+                id = '0', 
                 rows = [
-                    ''
+                    '0'
                     ], 
                 cells = [
-                    ''
+                    '0'
                     ]
             )
         else :
             return MeasureResult(
-                id = '',
+                id = '0',
                 rows = [
-                    ''
+                    '0'
                     ],
                 cells = [
-                    ''
+                    '0'
                     ],
         )
 
@@ -60,6 +60,7 @@ class TestMeasureResult(unittest.TestCase):
         """Test MeasureResult"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

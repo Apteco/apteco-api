@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -47,7 +44,7 @@ class UpdateTelemetryStateDetails(object):
     def __init__(self, opt_state=None, local_vars_configuration=None):  # noqa: E501
         """UpdateTelemetryStateDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._opt_state = None
@@ -73,7 +70,7 @@ class UpdateTelemetryStateDetails(object):
         The optState for this telemetry state  # noqa: E501
 
         :param opt_state: The opt_state of this UpdateTelemetryStateDetails.  # noqa: E501
-        :type opt_state: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and opt_state is None:  # noqa: E501
             raise ValueError("Invalid value for `opt_state`, must not be `None`")  # noqa: E501
@@ -86,35 +83,27 @@ class UpdateTelemetryStateDetails(object):
 
         self._opt_state = opt_state
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

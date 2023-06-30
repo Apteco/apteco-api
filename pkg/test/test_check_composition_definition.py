@@ -39,40 +39,40 @@ class TestCheckCompositionDefinition(unittest.TestCase):
             return CheckCompositionDefinition(
                 dashboard_items = [
                     apteco_api.models.dashboard_item.DashboardItem(
-                        variable_name = '', 
+                        variable_name = '0', 
                         size = apteco_api.models.size.Size(
                             width = 1.337, 
                             height = 1.337, ), 
                         chart_type = 'Bar', 
                         omit_zeros = True, 
-                        description = '', )
+                        description = '0', )
                     ], 
                 grid_items = [
                     apteco_api.models.grid_item.GridItem(
-                        variable_name = '', 
+                        variable_name = '0', 
                         detail = 'Code', 
                         unclassified_format = 'FromDesign', 
-                        description = '', )
+                        description = '0', )
                     ]
             )
         else :
             return CheckCompositionDefinition(
                 dashboard_items = [
                     apteco_api.models.dashboard_item.DashboardItem(
-                        variable_name = '', 
+                        variable_name = '0', 
                         size = apteco_api.models.size.Size(
                             width = 1.337, 
                             height = 1.337, ), 
                         chart_type = 'Bar', 
                         omit_zeros = True, 
-                        description = '', )
+                        description = '0', )
                     ],
                 grid_items = [
                     apteco_api.models.grid_item.GridItem(
-                        variable_name = '', 
+                        variable_name = '0', 
                         detail = 'Code', 
                         unclassified_format = 'FromDesign', 
-                        description = '', )
+                        description = '0', )
                     ],
         )
 
@@ -80,6 +80,7 @@ class TestCheckCompositionDefinition(unittest.TestCase):
         """Test CheckCompositionDefinition"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

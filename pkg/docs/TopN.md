@@ -1,6 +1,5 @@
 # TopN
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

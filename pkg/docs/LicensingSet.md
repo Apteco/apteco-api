@@ -1,7 +1,6 @@
 # LicensingSet
 
 Details for a licensing set
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -37,19 +37,20 @@ class TestChangePasswordDetails(unittest.TestCase):
         # model = apteco_api.models.change_password_details.ChangePasswordDetails()  # noqa: E501
         if include_optional :
             return ChangePasswordDetails(
-                current_password = '', 
-                new_password = ''
+                current_password = '0', 
+                new_password = '0'
             )
         else :
             return ChangePasswordDetails(
-                current_password = '',
-                new_password = '',
+                current_password = '0',
+                new_password = '0',
         )
 
     def testChangePasswordDetails(self):
         """Test ChangePasswordDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,6 +1,5 @@
 # RecordSet
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

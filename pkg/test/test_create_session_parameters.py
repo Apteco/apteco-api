@@ -37,17 +37,17 @@ class TestCreateSessionParameters(unittest.TestCase):
         # model = apteco_api.models.create_session_parameters.CreateSessionParameters()  # noqa: E501
         if include_optional :
             return CreateSessionParameters(
-                login_salt = '', 
+                login_salt = '0', 
                 salt_password = True, 
-                user_salt = '', 
+                user_salt = '0', 
                 use_password_hashes = True, 
                 hash_algorithm = 'BasicCipher'
             )
         else :
             return CreateSessionParameters(
-                login_salt = '',
+                login_salt = '0',
                 salt_password = True,
-                user_salt = '',
+                user_salt = '0',
                 use_password_hashes = True,
                 hash_algorithm = 'BasicCipher',
         )
@@ -56,6 +56,7 @@ class TestCreateSessionParameters(unittest.TestCase):
         """Test CreateSessionParameters"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

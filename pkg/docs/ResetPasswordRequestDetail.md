@@ -1,7 +1,6 @@
 # ResetPasswordRequestDetail
 
 Details of a reset password request
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

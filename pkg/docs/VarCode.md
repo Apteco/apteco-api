@@ -1,7 +1,6 @@
 # VarCode
 
 Details for a category for a selector variable in the FastStats system
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

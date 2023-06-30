@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -65,7 +62,7 @@ class Table(object):
     def __init__(self, name=None, singular_display_name=None, plural_display_name=None, is_default_table=None, is_people_table=None, total_records=None, child_relationship_name=None, parent_relationship_name=None, has_child_tables=None, parent_table=None, local_vars_configuration=None):  # noqa: E501
         """Table - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
@@ -109,7 +106,7 @@ class Table(object):
         The name of the table  # noqa: E501
 
         :param name: The name of this Table.  # noqa: E501
-        :type name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -134,7 +131,7 @@ class Table(object):
         A description to use for this table when refering to a single entity (i.e. \"A Person\")  # noqa: E501
 
         :param singular_display_name: The singular_display_name of this Table.  # noqa: E501
-        :type singular_display_name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and singular_display_name is None:  # noqa: E501
             raise ValueError("Invalid value for `singular_display_name`, must not be `None`")  # noqa: E501
@@ -159,7 +156,7 @@ class Table(object):
         A description to use for this table when refering to multiple entities (i.e. \"Many People\")  # noqa: E501
 
         :param plural_display_name: The plural_display_name of this Table.  # noqa: E501
-        :type plural_display_name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and plural_display_name is None:  # noqa: E501
             raise ValueError("Invalid value for `plural_display_name`, must not be `None`")  # noqa: E501
@@ -184,7 +181,7 @@ class Table(object):
         Whether this table is the default table in the FastStats system or not - i.e. the table to use when creating a blank query  # noqa: E501
 
         :param is_default_table: The is_default_table of this Table.  # noqa: E501
-        :type is_default_table: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and is_default_table is None:  # noqa: E501
             raise ValueError("Invalid value for `is_default_table`, must not be `None`")  # noqa: E501
@@ -209,7 +206,7 @@ class Table(object):
         Whether this table is the one in the FastStats system used to represent natural people  # noqa: E501
 
         :param is_people_table: The is_people_table of this Table.  # noqa: E501
-        :type is_people_table: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and is_people_table is None:  # noqa: E501
             raise ValueError("Invalid value for `is_people_table`, must not be `None`")  # noqa: E501
@@ -234,7 +231,7 @@ class Table(object):
         The total number of records in this table  # noqa: E501
 
         :param total_records: The total_records of this Table.  # noqa: E501
-        :type total_records: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and total_records is None:  # noqa: E501
             raise ValueError("Invalid value for `total_records`, must not be `None`")  # noqa: E501
@@ -259,7 +256,7 @@ class Table(object):
         A descriptive word or phrase to use when relating this table to one of its child tables (i.e. a Households \"is occupied by\" a Customer)  # noqa: E501
 
         :param child_relationship_name: The child_relationship_name of this Table.  # noqa: E501
-        :type child_relationship_name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and child_relationship_name is None:  # noqa: E501
             raise ValueError("Invalid value for `child_relationship_name`, must not be `None`")  # noqa: E501
@@ -284,7 +281,7 @@ class Table(object):
         A descriptive word or phrase to use when relating this table to one of its parent tables (i.e. a Customer \"lives at\" a Households)  # noqa: E501
 
         :param parent_relationship_name: The parent_relationship_name of this Table.  # noqa: E501
-        :type parent_relationship_name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and parent_relationship_name is None:  # noqa: E501
             raise ValueError("Invalid value for `parent_relationship_name`, must not be `None`")  # noqa: E501
@@ -309,7 +306,7 @@ class Table(object):
         Whether this table has any child tables  # noqa: E501
 
         :param has_child_tables: The has_child_tables of this Table.  # noqa: E501
-        :type has_child_tables: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and has_child_tables is None:  # noqa: E501
             raise ValueError("Invalid value for `has_child_tables`, must not be `None`")  # noqa: E501
@@ -334,42 +331,34 @@ class Table(object):
         The name of the parent table for this table.  The Master table is the only table without a parent  # noqa: E501
 
         :param parent_table: The parent_table of this Table.  # noqa: E501
-        :type parent_table: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and parent_table is None:  # noqa: E501
             raise ValueError("Invalid value for `parent_table`, must not be `None`")  # noqa: E501
 
         self._parent_table = parent_table
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

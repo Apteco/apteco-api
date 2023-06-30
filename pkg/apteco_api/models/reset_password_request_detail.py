@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -61,7 +58,7 @@ class ResetPasswordRequestDetail(object):
     def __init__(self, reset_password_url=None, has_notification_been_sent=None, token=None, username=None, email_address=None, creation_date=None, confirmed_date=None, expired_date=None, local_vars_configuration=None):  # noqa: E501
         """ResetPasswordRequestDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._reset_password_url = None
@@ -104,7 +101,7 @@ class ResetPasswordRequestDetail(object):
         The URL sent in the notification to the user to allow them to confirm they want to reset their password.  # noqa: E501
 
         :param reset_password_url: The reset_password_url of this ResetPasswordRequestDetail.  # noqa: E501
-        :type reset_password_url: str
+        :type: str
         """
 
         self._reset_password_url = reset_password_url
@@ -127,7 +124,7 @@ class ResetPasswordRequestDetail(object):
         Whether the notification has been sent to the user or not.  # noqa: E501
 
         :param has_notification_been_sent: The has_notification_been_sent of this ResetPasswordRequestDetail.  # noqa: E501
-        :type has_notification_been_sent: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and has_notification_been_sent is None:  # noqa: E501
             raise ValueError("Invalid value for `has_notification_been_sent`, must not be `None`")  # noqa: E501
@@ -152,7 +149,7 @@ class ResetPasswordRequestDetail(object):
         The token for this reset password request  # noqa: E501
 
         :param token: The token of this ResetPasswordRequestDetail.  # noqa: E501
-        :type token: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and token is None:  # noqa: E501
             raise ValueError("Invalid value for `token`, must not be `None`")  # noqa: E501
@@ -177,7 +174,7 @@ class ResetPasswordRequestDetail(object):
         The username of the user requesting the reset password  # noqa: E501
 
         :param username: The username of this ResetPasswordRequestDetail.  # noqa: E501
-        :type username: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and username is None:  # noqa: E501
             raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
@@ -202,7 +199,7 @@ class ResetPasswordRequestDetail(object):
         The email address of the user requesting the reset password  # noqa: E501
 
         :param email_address: The email_address of this ResetPasswordRequestDetail.  # noqa: E501
-        :type email_address: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and email_address is None:  # noqa: E501
             raise ValueError("Invalid value for `email_address`, must not be `None`")  # noqa: E501
@@ -227,7 +224,7 @@ class ResetPasswordRequestDetail(object):
         The date and time this request was created  # noqa: E501
 
         :param creation_date: The creation_date of this ResetPasswordRequestDetail.  # noqa: E501
-        :type creation_date: datetime
+        :type: datetime
         """
         if self.local_vars_configuration.client_side_validation and creation_date is None:  # noqa: E501
             raise ValueError("Invalid value for `creation_date`, must not be `None`")  # noqa: E501
@@ -252,7 +249,7 @@ class ResetPasswordRequestDetail(object):
         The date and time this request was confirmed  # noqa: E501
 
         :param confirmed_date: The confirmed_date of this ResetPasswordRequestDetail.  # noqa: E501
-        :type confirmed_date: datetime
+        :type: datetime
         """
 
         self._confirmed_date = confirmed_date
@@ -275,40 +272,32 @@ class ResetPasswordRequestDetail(object):
         The date and time this request expired  # noqa: E501
 
         :param expired_date: The expired_date of this ResetPasswordRequestDetail.  # noqa: E501
-        :type expired_date: datetime
+        :type: datetime
         """
 
         self._expired_date = expired_date
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

@@ -37,22 +37,23 @@ class TestFastStatsSystemSummary(unittest.TestCase):
         # model = apteco_api.models.fast_stats_system_summary.FastStatsSystemSummary()  # noqa: E501
         if include_optional :
             return FastStatsSystemSummary(
-                name = '', 
-                view_name = '', 
-                description = '', 
+                name = '0', 
+                view_name = '0', 
+                description = '0', 
                 fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else :
             return FastStatsSystemSummary(
-                name = '',
-                view_name = '',
-                description = '',
+                name = '0',
+                view_name = '0',
+                description = '0',
         )
 
     def testFastStatsSystemSummary(self):
         """Test FastStatsSystemSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

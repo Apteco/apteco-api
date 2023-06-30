@@ -37,11 +37,11 @@ class TestVariable(unittest.TestCase):
         # model = apteco_api.models.variable.Variable()  # noqa: E501
         if include_optional :
             return Variable(
-                name = '', 
-                description = '', 
+                name = '0', 
+                description = '0', 
                 type = 'Selector', 
-                folder_name = '', 
-                table_name = '', 
+                folder_name = '0', 
+                table_name = '0', 
                 is_selectable = True, 
                 is_browsable = True, 
                 is_exportable = True, 
@@ -56,23 +56,23 @@ class TestVariable(unittest.TestCase):
                     maximum_var_code_count = 56, 
                     minimum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     maximum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    combined_from_variable_name = '', ), 
+                    combined_from_variable_name = '0', ), 
                 numeric_info = apteco_api.models.numeric_variable_info.NumericVariableInfo(
                     minimum = 1.337, 
                     maximum = 1.337, 
                     is_currency = True, 
-                    currency_locale = '', 
-                    currency_symbol = '', ), 
+                    currency_locale = '0', 
+                    currency_symbol = '0', ), 
                 text_info = apteco_api.models.text_variable_info.TextVariableInfo(
                     maximum_text_length = 56, ), 
                 reference_info = apteco_api.models.reference_variable_info.ReferenceVariableInfo()
             )
         else :
             return Variable(
-                name = '',
-                description = '',
+                name = '0',
+                description = '0',
                 type = 'Selector',
-                table_name = '',
+                table_name = '0',
                 is_selectable = True,
                 is_browsable = True,
                 is_exportable = True,
@@ -83,6 +83,7 @@ class TestVariable(unittest.TestCase):
         """Test Variable"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

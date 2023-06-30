@@ -38,10 +38,10 @@ class TestOutput(unittest.TestCase):
         if include_optional :
             return Output(
                 format = 'CSV', 
-                delimiter = '', 
-                alpha_encloser = '', 
-                numeric_encloser = '', 
-                authorisation_code = ''
+                delimiter = '0', 
+                alpha_encloser = '0', 
+                numeric_encloser = '0', 
+                authorisation_code = '0'
             )
         else :
             return Output(
@@ -51,6 +51,7 @@ class TestOutput(unittest.TestCase):
         """Test Output"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -40,7 +40,7 @@ class TestShareSummary(unittest.TestCase):
                 id = 56, 
                 shareable_type = 'Unknown', 
                 shareable_id = 56, 
-                shareable_title = '', 
+                shareable_title = '0', 
                 number_of_users_shared_with = 56
             )
         else :
@@ -48,7 +48,7 @@ class TestShareSummary(unittest.TestCase):
                 id = 56,
                 shareable_type = 'Unknown',
                 shareable_id = 56,
-                shareable_title = '',
+                shareable_title = '0',
                 number_of_users_shared_with = 56,
         )
 
@@ -56,6 +56,7 @@ class TestShareSummary(unittest.TestCase):
         """Test ShareSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

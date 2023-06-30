@@ -37,15 +37,15 @@ class TestCollectionHitDetail(unittest.TestCase):
         # model = apteco_api.models.collection_hit_detail.CollectionHitDetail()  # noqa: E501
         if include_optional :
             return CollectionHitDetail(
-                user_agent_details = '', 
+                user_agent_details = '0', 
                 id = 56, 
                 collection_id = 56, 
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '', 
-                    firstname = '', 
-                    surname = '', 
-                    email_address = '', )
+                    username = '0', 
+                    firstname = '0', 
+                    surname = '0', 
+                    email_address = '0', )
             )
         else :
             return CollectionHitDetail(
@@ -53,16 +53,17 @@ class TestCollectionHitDetail(unittest.TestCase):
                 collection_id = 56,
                 timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 user = apteco_api.models.user_display_details.UserDisplayDetails(
-                    username = '', 
-                    firstname = '', 
-                    surname = '', 
-                    email_address = '', ),
+                    username = '0', 
+                    firstname = '0', 
+                    surname = '0', 
+                    email_address = '0', ),
         )
 
     def testCollectionHitDetail(self):
         """Test CollectionHitDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

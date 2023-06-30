@@ -42,30 +42,23 @@ class VisualisationsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.visualisations_cancel_visualisation_render_data_refresh_job(data_view_name, visualisation_id, refresh_request_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param visualisation_id: The id of the visualisation that the job is refreshing (required)
-        :type visualisation_id: str
-        :param refresh_request_id: The id of the refresh job to cancel (required)
-        :type refresh_request_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str visualisation_id: The id of the visualisation that the job is refreshing (required)
+        :param int refresh_request_id: The id of the refresh job to cancel (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
         """
         kwargs['_return_http_data_only'] = True
         return self.visualisations_cancel_visualisation_render_data_refresh_job_with_http_info(data_view_name, visualisation_id, refresh_request_id, **kwargs)  # noqa: E501
@@ -75,38 +68,25 @@ class VisualisationsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.visualisations_cancel_visualisation_render_data_refresh_job_with_http_info(data_view_name, visualisation_id, refresh_request_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param visualisation_id: The id of the visualisation that the job is refreshing (required)
-        :type visualisation_id: str
-        :param refresh_request_id: The id of the refresh job to cancel (required)
-        :type refresh_request_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str visualisation_id: The id of the visualisation that the job is refreshing (required)
+        :param int refresh_request_id: The id of the refresh job to cancel (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
         """
 
         local_var_params = locals()
@@ -121,10 +101,7 @@ class VisualisationsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -161,7 +138,7 @@ class VisualisationsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -169,8 +146,6 @@ class VisualisationsApi(object):
         body_params = None
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
-
-        response_types_map = {}
 
         return self.api_client.call_api(
             '/{dataViewName}/Visualisations/{visualisationId}/RenderData/RefreshJobs/{refreshRequestId}', 'DELETE',
@@ -180,42 +155,35 @@ class VisualisationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def visualisations_create_visualisation_render_data_refresh_job(self, data_view_name, visualisation_id, **kwargs):  # noqa: E501
         """Creates a job to refresh the render data for a particular visualisation  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.visualisations_create_visualisation_render_data_refresh_job(data_view_name, visualisation_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param visualisation_id: The id of the visualisation that the job is to refresh (required)
-        :type visualisation_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str visualisation_id: The id of the visualisation that the job is to refresh (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: RenderDataRefreshJobDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: RenderDataRefreshJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.visualisations_create_visualisation_render_data_refresh_job_with_http_info(data_view_name, visualisation_id, **kwargs)  # noqa: E501
@@ -225,36 +193,24 @@ class VisualisationsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.visualisations_create_visualisation_render_data_refresh_job_with_http_info(data_view_name, visualisation_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param visualisation_id: The id of the visualisation that the job is to refresh (required)
-        :type visualisation_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str visualisation_id: The id of the visualisation that the job is to refresh (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(RenderDataRefreshJobDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(RenderDataRefreshJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -268,10 +224,7 @@ class VisualisationsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -302,7 +255,7 @@ class VisualisationsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -315,13 +268,6 @@ class VisualisationsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            201: "RenderDataRefreshJobDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/Visualisations/{visualisationId}/RenderData/RefreshJobs', 'POST',
             path_params,
@@ -330,42 +276,35 @@ class VisualisationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='RenderDataRefreshJobDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def visualisations_get_visualisation(self, data_view_name, visualisation_id, **kwargs):  # noqa: E501
         """Returns the details of a particular visualisation  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.visualisations_get_visualisation(data_view_name, visualisation_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param visualisation_id: The id of the visualisation to view (required)
-        :type visualisation_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str visualisation_id: The id of the visualisation to view (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: VisualisationDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: VisualisationDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.visualisations_get_visualisation_with_http_info(data_view_name, visualisation_id, **kwargs)  # noqa: E501
@@ -375,36 +314,24 @@ class VisualisationsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.visualisations_get_visualisation_with_http_info(data_view_name, visualisation_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param visualisation_id: The id of the visualisation to view (required)
-        :type visualisation_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str visualisation_id: The id of the visualisation to view (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(VisualisationDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(VisualisationDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -418,10 +345,7 @@ class VisualisationsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -452,7 +376,7 @@ class VisualisationsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -465,13 +389,6 @@ class VisualisationsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "VisualisationDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/Visualisations/{visualisationId}', 'GET',
             path_params,
@@ -480,42 +397,35 @@ class VisualisationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='VisualisationDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def visualisations_get_visualisation_render_data(self, data_view_name, visualisation_id, **kwargs):  # noqa: E501
         """Returns the render data for a particular visualisation  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.visualisations_get_visualisation_render_data(data_view_name, visualisation_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param visualisation_id: The id of the visualisation to generate the render data for (required)
-        :type visualisation_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str visualisation_id: The id of the visualisation to generate the render data for (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: AbstractRenderSpec
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: AbstractRenderSpec
         """
         kwargs['_return_http_data_only'] = True
         return self.visualisations_get_visualisation_render_data_with_http_info(data_view_name, visualisation_id, **kwargs)  # noqa: E501
@@ -525,36 +435,24 @@ class VisualisationsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.visualisations_get_visualisation_render_data_with_http_info(data_view_name, visualisation_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param visualisation_id: The id of the visualisation to generate the render data for (required)
-        :type visualisation_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str visualisation_id: The id of the visualisation to generate the render data for (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(AbstractRenderSpec, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(AbstractRenderSpec, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -568,10 +466,7 @@ class VisualisationsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -602,7 +497,7 @@ class VisualisationsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -615,13 +510,6 @@ class VisualisationsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "AbstractRenderSpec",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/Visualisations/{visualisationId}/RenderData', 'GET',
             path_params,
@@ -630,44 +518,36 @@ class VisualisationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='AbstractRenderSpec',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def visualisations_get_visualisation_render_data_refresh_job(self, data_view_name, visualisation_id, refresh_request_id, **kwargs):  # noqa: E501
         """Returns the details of a job to refresh the render data for a particular visualisation  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.visualisations_get_visualisation_render_data_refresh_job(data_view_name, visualisation_id, refresh_request_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param visualisation_id: The id of the visualisation that the job is refreshing (required)
-        :type visualisation_id: str
-        :param refresh_request_id: The id of the refresh job to view (required)
-        :type refresh_request_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str visualisation_id: The id of the visualisation that the job is refreshing (required)
+        :param int refresh_request_id: The id of the refresh job to view (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: RenderDataRefreshJobDetail
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: RenderDataRefreshJobDetail
         """
         kwargs['_return_http_data_only'] = True
         return self.visualisations_get_visualisation_render_data_refresh_job_with_http_info(data_view_name, visualisation_id, refresh_request_id, **kwargs)  # noqa: E501
@@ -677,38 +557,25 @@ class VisualisationsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.visualisations_get_visualisation_render_data_refresh_job_with_http_info(data_view_name, visualisation_id, refresh_request_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param visualisation_id: The id of the visualisation that the job is refreshing (required)
-        :type visualisation_id: str
-        :param refresh_request_id: The id of the refresh job to view (required)
-        :type refresh_request_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str visualisation_id: The id of the visualisation that the job is refreshing (required)
+        :param int refresh_request_id: The id of the refresh job to view (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(RenderDataRefreshJobDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(RenderDataRefreshJobDetail, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -723,10 +590,7 @@ class VisualisationsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -763,7 +627,7 @@ class VisualisationsApi(object):
 
         query_params = []
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -776,13 +640,6 @@ class VisualisationsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "RenderDataRefreshJobDetail",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/Visualisations/{visualisationId}/RenderData/RefreshJobs/{refreshRequestId}', 'GET',
             path_params,
@@ -791,44 +648,36 @@ class VisualisationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='RenderDataRefreshJobDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)
 
     def visualisations_perform_visualisation_render_data_refresh_synchronously(self, data_view_name, visualisation_id, **kwargs):  # noqa: E501
         """Performs a synchronous refresh of the render data for a particular visualisation  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.visualisations_perform_visualisation_render_data_refresh_synchronously(data_view_name, visualisation_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param visualisation_id: The id of the visualisation to generate the render data for (required)
-        :type visualisation_id: str
-        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the visualisation service's configuration
-        :type timeout_in_seconds: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str visualisation_id: The id of the visualisation to generate the render data for (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the visualisation service's configuration
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Returns the result object.
+        :return: AbstractRenderSpec
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: AbstractRenderSpec
         """
         kwargs['_return_http_data_only'] = True
         return self.visualisations_perform_visualisation_render_data_refresh_synchronously_with_http_info(data_view_name, visualisation_id, **kwargs)  # noqa: E501
@@ -838,38 +687,25 @@ class VisualisationsApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-
         >>> thread = api.visualisations_perform_visualisation_render_data_refresh_synchronously_with_http_info(data_view_name, visualisation_id, async_req=True)
         >>> result = thread.get()
 
-        :param data_view_name: The name of the DataView to act on (required)
-        :type data_view_name: str
-        :param visualisation_id: The id of the visualisation to generate the render data for (required)
-        :type visualisation_id: str
-        :param timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the visualisation service's configuration
-        :type timeout_in_seconds: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
+        :param async_req bool: execute request asynchronously
+        :param str data_view_name: The name of the DataView to act on (required)
+        :param str visualisation_id: The id of the visualisation to generate the render data for (required)
+        :param int timeout_in_seconds: The number of seconds before the request will time out.  Leave unspecified to use the default value given in the visualisation service's configuration
         :param _return_http_data_only: response data without head status code
                                        and headers
-        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
-        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
+        :return: tuple(AbstractRenderSpec, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(AbstractRenderSpec, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -884,10 +720,7 @@ class VisualisationsApi(object):
                 'async_req',
                 '_return_http_data_only',
                 '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
+                '_request_timeout'
             ]
         )
 
@@ -920,7 +753,7 @@ class VisualisationsApi(object):
         if 'timeout_in_seconds' in local_var_params and local_var_params['timeout_in_seconds'] is not None:  # noqa: E501
             query_params.append(('timeoutInSeconds', local_var_params['timeout_in_seconds']))  # noqa: E501
 
-        header_params = dict(local_var_params.get('_headers', {}))
+        header_params = {}
 
         form_params = []
         local_var_files = {}
@@ -933,13 +766,6 @@ class VisualisationsApi(object):
         # Authentication setting
         auth_settings = ['faststats_auth']  # noqa: E501
 
-        response_types_map = {
-            200: "AbstractRenderSpec",
-            400: None,
-            403: None,
-            404: None,
-        }
-
         return self.api_client.call_api(
             '/{dataViewName}/Visualisations/{visualisationId}/RenderData/RefreshSync', 'POST',
             path_params,
@@ -948,11 +774,10 @@ class VisualisationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_types_map=response_types_map,
+            response_type='AbstractRenderSpec',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=local_var_params.get('_preload_content', True),
             _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
+            collection_formats=collection_formats)

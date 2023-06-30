@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -53,7 +50,7 @@ class PerChannelStatistics(object):
     def __init__(self, communications_counts=None, costs=None, total_communications_count=None, total_cost=None, local_vars_configuration=None):  # noqa: E501
         """PerChannelStatistics - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._communications_counts = None
@@ -85,7 +82,7 @@ class PerChannelStatistics(object):
         The set of counts representing the number of communications for the corresponding channel.  The first figure is data for the first day in the days list in the parent object, and so on.  # noqa: E501
 
         :param communications_counts: The communications_counts of this PerChannelStatistics.  # noqa: E501
-        :type communications_counts: list[int]
+        :type: list[int]
         """
         if self.local_vars_configuration.client_side_validation and communications_counts is None:  # noqa: E501
             raise ValueError("Invalid value for `communications_counts`, must not be `None`")  # noqa: E501
@@ -110,7 +107,7 @@ class PerChannelStatistics(object):
         The set of figures representing the total cost for the corresponding channel.  The first figure is data for the first day in the days list in the parent object, and so on.  # noqa: E501
 
         :param costs: The costs of this PerChannelStatistics.  # noqa: E501
-        :type costs: list[float]
+        :type: list[float]
         """
         if self.local_vars_configuration.client_side_validation and costs is None:  # noqa: E501
             raise ValueError("Invalid value for `costs`, must not be `None`")  # noqa: E501
@@ -135,7 +132,7 @@ class PerChannelStatistics(object):
         The total number of communications  # noqa: E501
 
         :param total_communications_count: The total_communications_count of this PerChannelStatistics.  # noqa: E501
-        :type total_communications_count: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and total_communications_count is None:  # noqa: E501
             raise ValueError("Invalid value for `total_communications_count`, must not be `None`")  # noqa: E501
@@ -160,42 +157,34 @@ class PerChannelStatistics(object):
         The total cost  # noqa: E501
 
         :param total_cost: The total_cost of this PerChannelStatistics.  # noqa: E501
-        :type total_cost: float
+        :type: float
         """
         if self.local_vars_configuration.client_side_validation and total_cost is None:  # noqa: E501
             raise ValueError("Invalid value for `total_cost`, must not be `None`")  # noqa: E501
 
         self._total_cost = total_cost
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

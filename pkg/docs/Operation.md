@@ -1,10 +1,9 @@
 # Operation
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **object** |  | [optional] 
+**value** | [**object**](.md) |  | [optional] 
 **path** | **str** |  | [optional] 
 **op** | **str** |  | [optional] 
 **_from** | **str** |  | [optional] 

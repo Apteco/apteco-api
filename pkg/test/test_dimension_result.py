@@ -37,21 +37,22 @@ class TestDimensionResult(unittest.TestCase):
         # model = apteco_api.models.dimension_result.DimensionResult()  # noqa: E501
         if include_optional :
             return DimensionResult(
-                id = '', 
-                header_codes = '', 
-                header_descriptions = ''
+                id = '0', 
+                header_codes = '0', 
+                header_descriptions = '0'
             )
         else :
             return DimensionResult(
-                id = '',
-                header_codes = '',
-                header_descriptions = '',
+                id = '0',
+                header_codes = '0',
+                header_descriptions = '0',
         )
 
     def testDimensionResult(self):
         """Test DimensionResult"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

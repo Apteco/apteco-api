@@ -1,7 +1,6 @@
 # UserRegistrationRequestDetail
 
 Details of a user registration request
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

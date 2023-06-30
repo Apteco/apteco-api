@@ -37,29 +37,30 @@ class TestDashboardItem(unittest.TestCase):
         # model = apteco_api.models.dashboard_item.DashboardItem()  # noqa: E501
         if include_optional :
             return DashboardItem(
-                variable_name = '', 
+                variable_name = '0', 
                 size = apteco_api.models.size.Size(
                     width = 1.337, 
                     height = 1.337, ), 
                 chart_type = 'Bar', 
                 omit_zeros = True, 
-                description = ''
+                description = '0'
             )
         else :
             return DashboardItem(
-                variable_name = '',
+                variable_name = '0',
                 size = apteco_api.models.size.Size(
                     width = 1.337, 
                     height = 1.337, ),
                 chart_type = 'Bar',
                 omit_zeros = True,
-                description = '',
+                description = '0',
         )
 
     def testDashboardItem(self):
         """Test DashboardItem"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

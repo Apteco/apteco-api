@@ -37,8 +37,8 @@ class TestQueryDetailCount(unittest.TestCase):
         # model = apteco_api.models.query_detail_count.QueryDetailCount()  # noqa: E501
         if include_optional :
             return QueryDetailCount(
-                table_name = '', 
-                table_description = '', 
+                table_name = '0', 
+                table_description = '0', 
                 count_value = 56
             )
         else :
@@ -49,6 +49,7 @@ class TestQueryDetailCount(unittest.TestCase):
         """Test QueryDetailCount"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

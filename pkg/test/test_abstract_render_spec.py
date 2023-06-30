@@ -37,35 +37,35 @@ class TestAbstractRenderSpec(unittest.TestCase):
         # model = apteco_api.models.abstract_render_spec.AbstractRenderSpec()  # noqa: E501
         if include_optional :
             return AbstractRenderSpec(
-                type = '', 
-                title = '', 
+                type = '0', 
+                title = '0', 
                 page_width = 56, 
                 page_height = 56, 
                 visualisation_width = 56, 
                 visualisation_height = 56, 
                 ran_successfully = True, 
-                notes_title = '', 
-                notes = '', 
+                notes_title = '0', 
+                notes = '0', 
                 show_notes = True, 
-                selection_title = '', 
+                selection_title = '0', 
                 show_selection = True, 
                 last_run_details = apteco_api.models.last_run_details.LastRunDetails(
-                    system_name = '', 
+                    system_name = '0', 
                     system_load_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    user_name = '', 
+                    user_name = '0', 
                     run_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ), 
                 query_details = apteco_api.models.query_details.QueryDetails(
-                    description = '', 
+                    description = '0', 
                     counts = [
                         apteco_api.models.query_detail_count.QueryDetailCount(
-                            table_name = '', 
-                            table_description = '', 
+                            table_name = '0', 
+                            table_description = '0', 
                             count_value = 56, )
                         ], 
                     properties = [
                         apteco_api.models.property.Property(
-                            name = '', 
-                            property_value = '', 
+                            name = '0', 
+                            property_value = '0', 
                             hidden = True, )
                         ], )
             )
@@ -77,6 +77,7 @@ class TestAbstractRenderSpec(unittest.TestCase):
         """Test AbstractRenderSpec"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

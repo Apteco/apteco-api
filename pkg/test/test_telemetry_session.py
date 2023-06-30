@@ -37,18 +37,18 @@ class TestTelemetrySession(unittest.TestCase):
         # model = apteco_api.models.telemetry_session.TelemetrySession()  # noqa: E501
         if include_optional :
             return TelemetrySession(
-                id = '', 
-                api_version = '', 
+                id = '0', 
+                api_version = '0', 
                 client_type = 'Orbit', 
-                client_version = '', 
+                client_version = '0', 
                 session_start = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 session_end = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 last_session_action = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                user_agent_details = ''
+                user_agent_details = '0'
             )
         else :
             return TelemetrySession(
-                id = '',
+                id = '0',
                 client_type = 'Orbit',
         )
 
@@ -56,6 +56,7 @@ class TestTelemetrySession(unittest.TestCase):
         """Test TelemetrySession"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

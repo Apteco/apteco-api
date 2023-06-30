@@ -37,14 +37,14 @@ class TestVarCode(unittest.TestCase):
         # model = apteco_api.models.var_code.VarCode()  # noqa: E501
         if include_optional :
             return VarCode(
-                code = '', 
-                description = '', 
+                code = '0', 
+                description = '0', 
                 count = 56
             )
         else :
             return VarCode(
-                code = '',
-                description = '',
+                code = '0',
+                description = '0',
                 count = 56,
         )
 
@@ -52,6 +52,7 @@ class TestVarCode(unittest.TestCase):
         """Test VarCode"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

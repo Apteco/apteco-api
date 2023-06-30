@@ -37,35 +37,36 @@ class TestTable(unittest.TestCase):
         # model = apteco_api.models.table.Table()  # noqa: E501
         if include_optional :
             return Table(
-                name = '', 
-                singular_display_name = '', 
-                plural_display_name = '', 
+                name = '0', 
+                singular_display_name = '0', 
+                plural_display_name = '0', 
                 is_default_table = True, 
                 is_people_table = True, 
                 total_records = 56, 
-                child_relationship_name = '', 
-                parent_relationship_name = '', 
+                child_relationship_name = '0', 
+                parent_relationship_name = '0', 
                 has_child_tables = True, 
-                parent_table = ''
+                parent_table = '0'
             )
         else :
             return Table(
-                name = '',
-                singular_display_name = '',
-                plural_display_name = '',
+                name = '0',
+                singular_display_name = '0',
+                plural_display_name = '0',
                 is_default_table = True,
                 is_people_table = True,
                 total_records = 56,
-                child_relationship_name = '',
-                parent_relationship_name = '',
+                child_relationship_name = '0',
+                parent_relationship_name = '0',
                 has_child_tables = True,
-                parent_table = '',
+                parent_table = '0',
         )
 
     def testTable(self):
         """Test Table"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

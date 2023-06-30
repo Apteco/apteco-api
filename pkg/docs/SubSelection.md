@@ -1,6 +1,5 @@
 # SubSelection
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

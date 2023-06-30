@@ -39,14 +39,14 @@ class TestEmailRequirements(unittest.TestCase):
             return EmailRequirements(
                 allow_unrestricted_email_domains = True, 
                 restricted_email_domains = [
-                    ''
+                    '0'
                     ]
             )
         else :
             return EmailRequirements(
                 allow_unrestricted_email_domains = True,
                 restricted_email_domains = [
-                    ''
+                    '0'
                     ],
         )
 
@@ -54,6 +54,7 @@ class TestEmailRequirements(unittest.TestCase):
         """Test EmailRequirements"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

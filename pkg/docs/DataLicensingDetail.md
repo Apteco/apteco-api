@@ -1,7 +1,6 @@
 # DataLicensingDetail
 
 The details required to get data licensing information for an audience
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

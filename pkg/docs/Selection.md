@@ -1,6 +1,5 @@
 # Selection
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

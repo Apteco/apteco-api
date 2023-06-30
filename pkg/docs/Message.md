@@ -1,7 +1,6 @@
 # Message
 
 A general return message from the API
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

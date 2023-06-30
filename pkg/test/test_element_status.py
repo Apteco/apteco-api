@@ -37,8 +37,8 @@ class TestElementStatus(unittest.TestCase):
         # model = apteco_api.models.element_status.ElementStatus()  # noqa: E501
         if include_optional :
             return ElementStatus(
-                id = '', 
-                description = '', 
+                id = '0', 
+                description = '0', 
                 type = 'Unknown', 
                 successful_campaigns_count = 56, 
                 errored_campaigns_count = 56, 
@@ -52,14 +52,14 @@ class TestElementStatus(unittest.TestCase):
                 statistics_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 path = [
                     apteco_api.models.element_key.ElementKey(
-                        id = '', 
-                        description = '', )
+                        id = '0', 
+                        description = '0', )
                     ]
             )
         else :
             return ElementStatus(
-                id = '',
-                description = '',
+                id = '0',
+                description = '0',
                 type = 'Unknown',
         )
 
@@ -67,6 +67,7 @@ class TestElementStatus(unittest.TestCase):
         """Test ElementStatus"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -51,7 +48,7 @@ class UpdateUserDetails(object):
     def __init__(self, firstname=None, surname=None, email_address=None, local_vars_configuration=None):  # noqa: E501
         """UpdateUserDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._firstname = None
@@ -84,7 +81,7 @@ class UpdateUserDetails(object):
         When specified, the new first name for the user  # noqa: E501
 
         :param firstname: The firstname of this UpdateUserDetails.  # noqa: E501
-        :type firstname: str
+        :type: str
         """
 
         self._firstname = firstname
@@ -107,7 +104,7 @@ class UpdateUserDetails(object):
         When specified, the new surname for the user  # noqa: E501
 
         :param surname: The surname of this UpdateUserDetails.  # noqa: E501
-        :type surname: str
+        :type: str
         """
 
         self._surname = surname
@@ -130,40 +127,32 @@ class UpdateUserDetails(object):
         When specified, the new email address for the user  # noqa: E501
 
         :param email_address: The email_address of this UpdateUserDetails.  # noqa: E501
-        :type email_address: str
+        :type: str
         """
 
         self._email_address = email_address
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

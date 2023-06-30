@@ -37,7 +37,7 @@ class TestCreateCollectionHitDetails(unittest.TestCase):
         # model = apteco_api.models.create_collection_hit_details.CreateCollectionHitDetails()  # noqa: E501
         if include_optional :
             return CreateCollectionHitDetails(
-                user_agent_details = ''
+                user_agent_details = '0'
             )
         else :
             return CreateCollectionHitDetails(
@@ -47,6 +47,7 @@ class TestCreateCollectionHitDetails(unittest.TestCase):
         """Test CreateCollectionHitDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

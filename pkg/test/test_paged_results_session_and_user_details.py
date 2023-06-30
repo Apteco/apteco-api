@@ -43,11 +43,11 @@ class TestPagedResultsSessionAndUserDetails(unittest.TestCase):
                 list = [
                     apteco_api.models.session_and_user_details.SessionAndUserDetails(
                         user = apteco_api.models.user_display_details.UserDisplayDetails(
-                            username = '', 
-                            firstname = '', 
-                            surname = '', 
-                            email_address = '', ), 
-                        session_id = '', )
+                            username = '0', 
+                            firstname = '0', 
+                            surname = '0', 
+                            email_address = '0', ), 
+                        session_id = '0', )
                     ]
             )
         else :
@@ -58,11 +58,11 @@ class TestPagedResultsSessionAndUserDetails(unittest.TestCase):
                 list = [
                     apteco_api.models.session_and_user_details.SessionAndUserDetails(
                         user = apteco_api.models.user_display_details.UserDisplayDetails(
-                            username = '', 
-                            firstname = '', 
-                            surname = '', 
-                            email_address = '', ), 
-                        session_id = '', )
+                            username = '0', 
+                            firstname = '0', 
+                            surname = '0', 
+                            email_address = '0', ), 
+                        session_id = '0', )
                     ],
         )
 
@@ -70,6 +70,7 @@ class TestPagedResultsSessionAndUserDetails(unittest.TestCase):
         """Test PagedResultsSessionAndUserDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

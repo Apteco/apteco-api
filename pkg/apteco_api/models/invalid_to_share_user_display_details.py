@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -55,7 +52,7 @@ class InvalidToShareUserDisplayDetails(object):
     def __init__(self, reason=None, username=None, firstname=None, surname=None, email_address=None, local_vars_configuration=None):  # noqa: E501
         """InvalidToShareUserDisplayDetails - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._reason = None
@@ -89,7 +86,7 @@ class InvalidToShareUserDisplayDetails(object):
         The reason why the user was not valid for updating the share  # noqa: E501
 
         :param reason: The reason of this InvalidToShareUserDisplayDetails.  # noqa: E501
-        :type reason: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and reason is None:  # noqa: E501
             raise ValueError("Invalid value for `reason`, must not be `None`")  # noqa: E501
@@ -120,7 +117,7 @@ class InvalidToShareUserDisplayDetails(object):
         The user's username  # noqa: E501
 
         :param username: The username of this InvalidToShareUserDisplayDetails.  # noqa: E501
-        :type username: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and username is None:  # noqa: E501
             raise ValueError("Invalid value for `username`, must not be `None`")  # noqa: E501
@@ -145,7 +142,7 @@ class InvalidToShareUserDisplayDetails(object):
         The user's first name  # noqa: E501
 
         :param firstname: The firstname of this InvalidToShareUserDisplayDetails.  # noqa: E501
-        :type firstname: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and firstname is None:  # noqa: E501
             raise ValueError("Invalid value for `firstname`, must not be `None`")  # noqa: E501
@@ -170,7 +167,7 @@ class InvalidToShareUserDisplayDetails(object):
         The user's surname  # noqa: E501
 
         :param surname: The surname of this InvalidToShareUserDisplayDetails.  # noqa: E501
-        :type surname: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and surname is None:  # noqa: E501
             raise ValueError("Invalid value for `surname`, must not be `None`")  # noqa: E501
@@ -195,42 +192,34 @@ class InvalidToShareUserDisplayDetails(object):
         The user's email address  # noqa: E501
 
         :param email_address: The email_address of this InvalidToShareUserDisplayDetails.  # noqa: E501
-        :type email_address: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and email_address is None:  # noqa: E501
             raise ValueError("Invalid value for `email_address`, must not be `None`")  # noqa: E501
 
         self._email_address = email_address
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

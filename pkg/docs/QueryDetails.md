@@ -1,6 +1,5 @@
 # QueryDetails
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

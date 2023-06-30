@@ -37,44 +37,44 @@ class TestCreateAudienceCompositionDetail(unittest.TestCase):
         # model = apteco_api.models.create_audience_composition_detail.CreateAudienceCompositionDetail()  # noqa: E501
         if include_optional :
             return CreateAudienceCompositionDetail(
-                description = '', 
+                description = '0', 
                 type = 'Check', 
                 check_composition_definition = apteco_api.models.check_composition_definition.CheckCompositionDefinition(
                     dashboard_items = [
                         apteco_api.models.dashboard_item.DashboardItem(
-                            variable_name = '', 
+                            variable_name = '0', 
                             size = apteco_api.models.size.Size(
                                 width = 1.337, 
                                 height = 1.337, ), 
                             chart_type = 'Bar', 
                             omit_zeros = True, 
-                            description = '', )
+                            description = '0', )
                         ], 
                     grid_items = [
                         apteco_api.models.grid_item.GridItem(
-                            variable_name = '', 
+                            variable_name = '0', 
                             detail = 'Code', 
                             unclassified_format = 'FromDesign', 
-                            description = '', )
+                            description = '0', )
                         ], ), 
                 export_composition_definition = apteco_api.models.export_composition_definition.ExportCompositionDefinition(
                     output = apteco_api.models.output.Output(
                         format = 'CSV', 
-                        delimiter = '', 
-                        alpha_encloser = '', 
-                        numeric_encloser = '', 
-                        authorisation_code = '', ), 
+                        delimiter = '0', 
+                        alpha_encloser = '0', 
+                        numeric_encloser = '0', 
+                        authorisation_code = '0', ), 
                     grid_items = [
                         apteco_api.models.grid_item.GridItem(
-                            variable_name = '', 
+                            variable_name = '0', 
                             detail = 'Code', 
                             unclassified_format = 'FromDesign', 
-                            description = '', )
+                            description = '0', )
                         ], )
             )
         else :
             return CreateAudienceCompositionDetail(
-                description = '',
+                description = '0',
                 type = 'Check',
         )
 
@@ -82,6 +82,7 @@ class TestCreateAudienceCompositionDetail(unittest.TestCase):
         """Test CreateAudienceCompositionDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

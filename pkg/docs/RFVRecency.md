@@ -1,6 +1,5 @@
 # RFVRecency
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -38,7 +38,7 @@ class TestProcessingTimeStatistics(unittest.TestCase):
         if include_optional :
             return ProcessingTimeStatistics(
                 categories = [
-                    ''
+                    '0'
                     ], 
                 frequencies = [
                     56
@@ -74,7 +74,7 @@ class TestProcessingTimeStatistics(unittest.TestCase):
         else :
             return ProcessingTimeStatistics(
                 categories = [
-                    ''
+                    '0'
                     ],
                 frequencies = [
                     56
@@ -112,6 +112,7 @@ class TestProcessingTimeStatistics(unittest.TestCase):
         """Test ProcessingTimeStatistics"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

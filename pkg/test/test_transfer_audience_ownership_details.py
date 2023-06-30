@@ -37,17 +37,18 @@ class TestTransferAudienceOwnershipDetails(unittest.TestCase):
         # model = apteco_api.models.transfer_audience_ownership_details.TransferAudienceOwnershipDetails()  # noqa: E501
         if include_optional :
             return TransferAudienceOwnershipDetails(
-                new_username = ''
+                new_username = '0'
             )
         else :
             return TransferAudienceOwnershipDetails(
-                new_username = '',
+                new_username = '0',
         )
 
     def testTransferAudienceOwnershipDetails(self):
         """Test TransferAudienceOwnershipDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

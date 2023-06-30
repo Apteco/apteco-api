@@ -1,6 +1,5 @@
 # RFVFrequency
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

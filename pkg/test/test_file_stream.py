@@ -43,7 +43,7 @@ class TestFileStream(unittest.TestCase):
                 safe_file_handle = apteco_api.models.safe_file_handle.SafeFileHandle(
                     is_invalid = True, 
                     is_closed = True, ), 
-                name = '', 
+                name = '0', 
                 is_async = True, 
                 length = 56, 
                 position = 56, 
@@ -60,6 +60,7 @@ class TestFileStream(unittest.TestCase):
         """Test FileStream"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

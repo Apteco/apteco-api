@@ -1,6 +1,5 @@
 # DashboardItemData
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

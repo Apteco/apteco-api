@@ -1,7 +1,6 @@
 # Count
 
 Details for a count of records from a particular table
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -46,10 +46,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -124,10 +128,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -208,10 +216,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -286,10 +298,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -364,10 +380,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -450,10 +470,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -528,10 +552,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -606,10 +634,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -684,10 +716,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -770,10 +806,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -854,10 +894,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -944,10 +988,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -1026,10 +1074,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:
@@ -1102,10 +1154,14 @@ configuration = apteco_api.Configuration(
 # satisfies your auth use case.
 
 # Configure API key authorization: faststats_auth
-configuration.api_key['faststats_auth'] = 'YOUR_API_KEY'
-
+configuration = apteco_api.Configuration(
+    host = "https://example.com/OrbitAPI",
+    api_key = {
+        'Authorization': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['faststats_auth'] = 'Bearer'
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with apteco_api.ApiClient(configuration) as api_client:

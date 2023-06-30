@@ -38,25 +38,26 @@ class TestDashboardSummary(unittest.TestCase):
         if include_optional :
             return DashboardSummary(
                 id = 56, 
-                title = '', 
-                description = '', 
-                system_name = '', 
+                title = '0', 
+                description = '0', 
+                system_name = '0', 
                 created_on = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 last_updated_on = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                last_updated_by = '', 
+                last_updated_by = '0', 
                 deleted_on = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else :
             return DashboardSummary(
                 id = 56,
-                title = '',
-                system_name = '',
+                title = '0',
+                system_name = '0',
         )
 
     def testDashboardSummary(self):
         """Test DashboardSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

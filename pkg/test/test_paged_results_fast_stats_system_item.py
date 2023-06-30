@@ -44,11 +44,11 @@ class TestPagedResultsFastStatsSystemItem(unittest.TestCase):
                     apteco_api.models.fast_stats_system_item.FastStatsSystemItem(
                         type = 'Variable', 
                         variable = apteco_api.models.variable.Variable(
-                            name = '', 
-                            description = '', 
+                            name = '0', 
+                            description = '0', 
                             type = 'Selector', 
-                            folder_name = '', 
-                            table_name = '', 
+                            folder_name = '0', 
+                            table_name = '0', 
                             is_selectable = True, 
                             is_browsable = True, 
                             is_exportable = True, 
@@ -63,26 +63,26 @@ class TestPagedResultsFastStatsSystemItem(unittest.TestCase):
                                 maximum_var_code_count = 56, 
                                 minimum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                 maximum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                combined_from_variable_name = '', ), 
+                                combined_from_variable_name = '0', ), 
                             numeric_info = apteco_api.models.numeric_variable_info.NumericVariableInfo(
                                 minimum = 1.337, 
                                 maximum = 1.337, 
                                 is_currency = True, 
-                                currency_locale = '', 
-                                currency_symbol = '', ), 
+                                currency_locale = '0', 
+                                currency_symbol = '0', ), 
                             text_info = apteco_api.models.text_variable_info.TextVariableInfo(
                                 maximum_text_length = 56, ), 
                             reference_info = apteco_api.models.reference_variable_info.ReferenceVariableInfo(), ), 
                         var_code = apteco_api.models.var_code.VarCode(
-                            code = '', 
-                            description = '', 
+                            code = '0', 
+                            description = '0', 
                             count = 56, ), 
                         table = apteco_api.models.table_item.TableItem(
-                            name = '', 
-                            plural_display_name = '', ), 
+                            name = '0', 
+                            plural_display_name = '0', ), 
                         folder = apteco_api.models.folder.Folder(
-                            name = '', 
-                            description = '', ), )
+                            name = '0', 
+                            description = '0', ), )
                     ]
             )
         else :
@@ -94,11 +94,11 @@ class TestPagedResultsFastStatsSystemItem(unittest.TestCase):
                     apteco_api.models.fast_stats_system_item.FastStatsSystemItem(
                         type = 'Variable', 
                         variable = apteco_api.models.variable.Variable(
-                            name = '', 
-                            description = '', 
+                            name = '0', 
+                            description = '0', 
                             type = 'Selector', 
-                            folder_name = '', 
-                            table_name = '', 
+                            folder_name = '0', 
+                            table_name = '0', 
                             is_selectable = True, 
                             is_browsable = True, 
                             is_exportable = True, 
@@ -113,26 +113,26 @@ class TestPagedResultsFastStatsSystemItem(unittest.TestCase):
                                 maximum_var_code_count = 56, 
                                 minimum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                                 maximum_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                                combined_from_variable_name = '', ), 
+                                combined_from_variable_name = '0', ), 
                             numeric_info = apteco_api.models.numeric_variable_info.NumericVariableInfo(
                                 minimum = 1.337, 
                                 maximum = 1.337, 
                                 is_currency = True, 
-                                currency_locale = '', 
-                                currency_symbol = '', ), 
+                                currency_locale = '0', 
+                                currency_symbol = '0', ), 
                             text_info = apteco_api.models.text_variable_info.TextVariableInfo(
                                 maximum_text_length = 56, ), 
                             reference_info = apteco_api.models.reference_variable_info.ReferenceVariableInfo(), ), 
                         var_code = apteco_api.models.var_code.VarCode(
-                            code = '', 
-                            description = '', 
+                            code = '0', 
+                            description = '0', 
                             count = 56, ), 
                         table = apteco_api.models.table_item.TableItem(
-                            name = '', 
-                            plural_display_name = '', ), 
+                            name = '0', 
+                            plural_display_name = '0', ), 
                         folder = apteco_api.models.folder.Folder(
-                            name = '', 
-                            description = '', ), )
+                            name = '0', 
+                            description = '0', ), )
                     ],
         )
 
@@ -140,6 +140,7 @@ class TestPagedResultsFastStatsSystemItem(unittest.TestCase):
         """Test PagedResultsFastStatsSystemItem"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

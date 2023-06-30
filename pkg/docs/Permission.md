@@ -1,7 +1,6 @@
 # Permission
 
 Details for a permission in the system
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

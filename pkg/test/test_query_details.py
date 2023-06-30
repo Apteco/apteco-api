@@ -37,17 +37,17 @@ class TestQueryDetails(unittest.TestCase):
         # model = apteco_api.models.query_details.QueryDetails()  # noqa: E501
         if include_optional :
             return QueryDetails(
-                description = '', 
+                description = '0', 
                 counts = [
                     apteco_api.models.query_detail_count.QueryDetailCount(
-                        table_name = '', 
-                        table_description = '', 
+                        table_name = '0', 
+                        table_description = '0', 
                         count_value = 56, )
                     ], 
                 properties = [
                     apteco_api.models.property.Property(
-                        name = '', 
-                        property_value = '', 
+                        name = '0', 
+                        property_value = '0', 
                         hidden = True, )
                     ]
             )
@@ -59,6 +59,7 @@ class TestQueryDetails(unittest.TestCase):
         """Test QueryDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

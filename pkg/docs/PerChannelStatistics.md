@@ -1,7 +1,6 @@
 # PerChannelStatistics
 
 Per-channel communication and cost data
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

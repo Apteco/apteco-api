@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -59,7 +56,7 @@ class RecordSet(object):
     def __init__(self, type=None, key_variable_name=None, by_reference=None, path=None, transient=None, values=None, min_occurs=None, local_vars_configuration=None):  # noqa: E501
         """RecordSet - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._type = None
@@ -102,7 +99,7 @@ class RecordSet(object):
 
 
         :param type: The type of this RecordSet.  # noqa: E501
-        :type type: str
+        :type: str
         """
         allowed_values = ["URN", "SBM", "FSRN"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
@@ -129,7 +126,7 @@ class RecordSet(object):
 
 
         :param key_variable_name: The key_variable_name of this RecordSet.  # noqa: E501
-        :type key_variable_name: str
+        :type: str
         """
 
         self._key_variable_name = key_variable_name
@@ -150,7 +147,7 @@ class RecordSet(object):
 
 
         :param by_reference: The by_reference of this RecordSet.  # noqa: E501
-        :type by_reference: bool
+        :type: bool
         """
 
         self._by_reference = by_reference
@@ -171,7 +168,7 @@ class RecordSet(object):
 
 
         :param path: The path of this RecordSet.  # noqa: E501
-        :type path: str
+        :type: str
         """
 
         self._path = path
@@ -192,7 +189,7 @@ class RecordSet(object):
 
 
         :param transient: The transient of this RecordSet.  # noqa: E501
-        :type transient: bool
+        :type: bool
         """
 
         self._transient = transient
@@ -213,7 +210,7 @@ class RecordSet(object):
 
 
         :param values: The values of this RecordSet.  # noqa: E501
-        :type values: str
+        :type: str
         """
 
         self._values = values
@@ -234,40 +231,32 @@ class RecordSet(object):
 
 
         :param min_occurs: The min_occurs of this RecordSet.  # noqa: E501
-        :type min_occurs: int
+        :type: int
         """
 
         self._min_occurs = min_occurs
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

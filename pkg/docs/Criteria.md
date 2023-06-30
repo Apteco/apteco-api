@@ -1,6 +1,5 @@
 # Criteria
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

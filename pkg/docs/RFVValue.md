@@ -1,6 +1,5 @@
 # RFVValue
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

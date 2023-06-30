@@ -1,7 +1,6 @@
 # Row
 
 A row of data in the export results
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

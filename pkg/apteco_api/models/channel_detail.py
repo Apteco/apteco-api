@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -55,7 +52,7 @@ class ChannelDetail(object):
     def __init__(self, id=None, schema_id=None, description=None, type=None, parent_id=None, local_vars_configuration=None):  # noqa: E501
         """ChannelDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -91,7 +88,7 @@ class ChannelDetail(object):
         The channel's id  # noqa: E501
 
         :param id: The id of this ChannelDetail.  # noqa: E501
-        :type id: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -116,7 +113,7 @@ class ChannelDetail(object):
         The channel's \"schema id\", used for looking up information about the channel in the run history of PeopleStage  # noqa: E501
 
         :param schema_id: The schema_id of this ChannelDetail.  # noqa: E501
-        :type schema_id: int
+        :type: int
         """
 
         self._schema_id = schema_id
@@ -139,7 +136,7 @@ class ChannelDetail(object):
         The channel's description  # noqa: E501
 
         :param description: The description of this ChannelDetail.  # noqa: E501
-        :type description: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
             raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
@@ -164,7 +161,7 @@ class ChannelDetail(object):
         The channel's type  # noqa: E501
 
         :param type: The type of this ChannelDetail.  # noqa: E501
-        :type type: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -195,40 +192,32 @@ class ChannelDetail(object):
         The id of the channel's parent  # noqa: E501
 
         :param parent_id: The parent_id of this ChannelDetail.  # noqa: E501
-        :type parent_id: str
+        :type: str
         """
 
         self._parent_id = parent_id
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

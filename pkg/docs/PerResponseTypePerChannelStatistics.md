@@ -1,7 +1,6 @@
 # PerResponseTypePerChannelStatistics
 
 Per-response type, per-channel response data
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

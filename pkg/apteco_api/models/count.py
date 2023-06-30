@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -49,7 +46,7 @@ class Count(object):
     def __init__(self, table_name=None, count_value=None, local_vars_configuration=None):  # noqa: E501
         """Count - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._table_name = None
@@ -77,7 +74,7 @@ class Count(object):
         The name of the table that the count comes from  # noqa: E501
 
         :param table_name: The table_name of this Count.  # noqa: E501
-        :type table_name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and table_name is None:  # noqa: E501
             raise ValueError("Invalid value for `table_name`, must not be `None`")  # noqa: E501
@@ -102,42 +99,34 @@ class Count(object):
         The count of the number of records selected on this table  # noqa: E501
 
         :param count_value: The count_value of this Count.  # noqa: E501
-        :type count_value: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and count_value is None:  # noqa: E501
             raise ValueError("Invalid value for `count_value`, must not be `None`")  # noqa: E501
 
         self._count_value = count_value
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

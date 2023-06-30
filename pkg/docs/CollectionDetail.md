@@ -1,7 +1,6 @@
 # CollectionDetail
 
 Details for a collection
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

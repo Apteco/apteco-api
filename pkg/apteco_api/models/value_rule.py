@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -57,7 +54,7 @@ class ValueRule(object):
     def __init__(self, age_rule=None, date_rule=None, list_rule=None, time_rule=None, predefined_rule=None, name=None, local_vars_configuration=None):  # noqa: E501
         """ValueRule - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._age_rule = None
@@ -97,7 +94,7 @@ class ValueRule(object):
 
 
         :param age_rule: The age_rule of this ValueRule.  # noqa: E501
-        :type age_rule: AgeRule
+        :type: AgeRule
         """
 
         self._age_rule = age_rule
@@ -118,7 +115,7 @@ class ValueRule(object):
 
 
         :param date_rule: The date_rule of this ValueRule.  # noqa: E501
-        :type date_rule: DateRule
+        :type: DateRule
         """
 
         self._date_rule = date_rule
@@ -139,7 +136,7 @@ class ValueRule(object):
 
 
         :param list_rule: The list_rule of this ValueRule.  # noqa: E501
-        :type list_rule: ListRule
+        :type: ListRule
         """
 
         self._list_rule = list_rule
@@ -160,7 +157,7 @@ class ValueRule(object):
 
 
         :param time_rule: The time_rule of this ValueRule.  # noqa: E501
-        :type time_rule: TimeRule
+        :type: TimeRule
         """
 
         self._time_rule = time_rule
@@ -181,7 +178,7 @@ class ValueRule(object):
 
 
         :param predefined_rule: The predefined_rule of this ValueRule.  # noqa: E501
-        :type predefined_rule: str
+        :type: str
         """
         allowed_values = ["DateRange", "AdhocDates", "AdhocValues", "Today", "Yesterday", "Tomorrow", "ThisWeek", "ThisMonth", "ThisQuarter", "ThisYear", "LastWeek", "Last4Weeks", "LastMonth", "LastQuarter", "LastYear", "NextWeek", "Next4Weeks", "NextMonth", "NextQuarter", "NextYear", "ThisWeekToDate", "ThisMonthToDate", "ThisQuarterToDate", "ThisYearToDate", "LastWeekToDate", "LastMonthToDate", "LastQuarterToDate", "LastYearToDate", "TheLastWeek", "TheLast4Weeks", "TheLastMonth", "TheLastQuarter", "TheLastYear", "TheNextWeek", "TheNext4Weeks", "TheNextMonth", "TheNextQuarter", "TheNextYear", "ThisBusinessMonth", "ThisBusinessQuarter", "ThisBusinessYear", "LastBusinessMonth", "LastBusinessQuarter", "LastBusinessYear", "NextBusinessMonth", "NextBusinessQuarter", "NextBusinessYear", "ThisBusinessMonthToDate", "ThisBusinessQuarterToDate", "ThisBusinessYearToDate", "LastBusinessMonthToDate", "LastBusinessQuarterToDate", "LastBusinessYearToDate", "CustomRule", "CustomAgeRule", "CustomTimeRule"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and predefined_rule not in allowed_values:  # noqa: E501
@@ -208,40 +205,32 @@ class ValueRule(object):
 
 
         :param name: The name of this ValueRule.  # noqa: E501
-        :type name: str
+        :type: str
         """
 
         self._name = name
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

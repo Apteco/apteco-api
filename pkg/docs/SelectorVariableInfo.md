@@ -1,7 +1,6 @@
 # SelectorVariableInfo
 
 Details specific for selector variables in the FastStats system
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

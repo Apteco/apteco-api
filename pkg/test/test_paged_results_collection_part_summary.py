@@ -42,10 +42,10 @@ class TestPagedResultsCollectionPartSummary(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.collection_part_summary.CollectionPartSummary(
-                        title = '', 
+                        title = '0', 
                         index = 56, 
                         visualisation_type = 'None', 
-                        visualisation_id = '', )
+                        visualisation_id = '0', )
                     ]
             )
         else :
@@ -55,10 +55,10 @@ class TestPagedResultsCollectionPartSummary(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.collection_part_summary.CollectionPartSummary(
-                        title = '', 
+                        title = '0', 
                         index = 56, 
                         visualisation_type = 'None', 
-                        visualisation_id = '', )
+                        visualisation_id = '0', )
                     ],
         )
 
@@ -66,6 +66,7 @@ class TestPagedResultsCollectionPartSummary(unittest.TestCase):
         """Test PagedResultsCollectionPartSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

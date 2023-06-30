@@ -42,39 +42,39 @@ class TestAudienceExportJobDetail(unittest.TestCase):
                     timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     fast_stats_build_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     user = apteco_api.models.user_display_details.UserDisplayDetails(
-                        username = '', 
-                        firstname = '', 
-                        surname = '', 
-                        email_address = '', ), 
+                        username = '0', 
+                        firstname = '0', 
+                        surname = '0', 
+                        email_address = '0', ), 
                     nett_counts = [
                         apteco_api.models.count.Count(
-                            table_name = '', 
+                            table_name = '0', 
                             count_value = 56, )
                         ], 
-                    urn_file_path = '', 
+                    urn_file_path = '0', 
                     maximum_number_of_rows_to_browse = 56, 
                     return_browse_rows = True, 
-                    file_path = '', 
+                    file_path = '0', 
                     output = apteco_api.models.output.Output(
                         format = 'CSV', 
-                        delimiter = '', 
-                        alpha_encloser = '', 
-                        numeric_encloser = '', 
-                        authorisation_code = '', ), 
+                        delimiter = '0', 
+                        alpha_encloser = '0', 
+                        numeric_encloser = '0', 
+                        authorisation_code = '0', ), 
                     columns = [
                         apteco_api.models.column.Column(
-                            id = '', 
-                            variable_name = '', 
+                            id = '0', 
+                            variable_name = '0', 
                             query = apteco_api.models.query.Query(
                                 selection = apteco_api.models.selection.Selection(
                                     ancestor_counts = True, 
                                     record_set = apteco_api.models.record_set.RecordSet(
                                         type = 'URN', 
-                                        key_variable_name = '', 
+                                        key_variable_name = '0', 
                                         by_reference = True, 
-                                        path = '', 
+                                        path = '0', 
                                         transient = True, 
-                                        values = '', 
+                                        values = '0', 
                                         min_occurs = 56, ), 
                                     rule = apteco_api.models.rule.Rule(
                                         clause = apteco_api.models.clause.Clause(
@@ -83,8 +83,8 @@ class TestAudienceExportJobDetail(unittest.TestCase):
                                                 operands = [
                                                     apteco_api.models.clause.Clause(
                                                         criteria = apteco_api.models.criteria.Criteria(
-                                                            variable_name = '', 
-                                                            path = '', 
+                                                            variable_name = '0', 
+                                                            path = '0', 
                                                             include = True, 
                                                             ignore_case = True, 
                                                             text_match_type = 'Ranges', 
@@ -122,86 +122,86 @@ class TestAudienceExportJobDetail(unittest.TestCase):
                                                                         range_max_occurrences = 56, ), 
                                                                     list_rule = apteco_api.models.list_rule.ListRule(
                                                                         banding_type = 'None', 
-                                                                        list = '', 
-                                                                        variable_name = '', ), 
+                                                                        list = '0', 
+                                                                        variable_name = '0', ), 
                                                                     time_rule = apteco_api.models.time_rule.TimeRule(
-                                                                        range_low = '', 
-                                                                        range_high = '', ), 
+                                                                        range_low = '0', 
+                                                                        range_high = '0', ), 
                                                                     predefined_rule = 'DateRange', 
-                                                                    name = '', )
+                                                                    name = '0', )
                                                                 ], 
                                                             expression_rule = apteco_api.models.expression.Expression(
-                                                                table_name = '', 
+                                                                table_name = '0', 
                                                                 queries = [
                                                                     apteco_api.models.query.Query(
-                                                                        today_at = '', )
+                                                                        today_at = '0', )
                                                                     ], 
-                                                                desc = '', 
-                                                                display_text = '', 
-                                                                server_text = '', 
+                                                                desc = '0', 
+                                                                display_text = '0', 
+                                                                server_text = '0', 
                                                                 query_descriptions = [
-                                                                    ''
+                                                                    '0'
                                                                     ], 
                                                                 output_type = 'Double', 
                                                                 string_size = 56, ), 
-                                                            today_at = '', 
-                                                            table_name = '', 
-                                                            name = '', ), 
+                                                            today_at = '0', 
+                                                            table_name = '0', 
+                                                            name = '0', ), 
                                                         sub_selection = apteco_api.models.sub_selection.SubSelection(
                                                             by_reference = True, 
-                                                            path = '', ), )
+                                                            path = '0', ), )
                                                     ], 
-                                                table_name = '', 
-                                                name = '', ), 
+                                                table_name = '0', 
+                                                name = '0', ), 
                                             criteria = apteco_api.models.criteria.Criteria(
-                                                variable_name = '', 
-                                                path = '', 
+                                                variable_name = '0', 
+                                                path = '0', 
                                                 include = True, 
                                                 ignore_case = True, 
                                                 text_match_type = 'Ranges', 
-                                                today_at = '', 
-                                                table_name = '', 
-                                                name = '', ), 
+                                                today_at = '0', 
+                                                table_name = '0', 
+                                                name = '0', ), 
                                             sub_selection = apteco_api.models.sub_selection.SubSelection(
                                                 by_reference = True, 
-                                                path = '', ), ), ), 
+                                                path = '0', ), ), ), 
                                     rfv = apteco_api.models.rfv.RFV(
                                         frequency = apteco_api.models.rfv_frequency.RFVFrequency(
-                                            values = '', ), 
+                                            values = '0', ), 
                                         recency = apteco_api.models.rfv_recency.RFVRecency(
-                                            variable_name = '', 
-                                            sequence = '', 
+                                            variable_name = '0', 
+                                            sequence = '0', 
                                             direction = 'Any', 
                                             value = 56, 
                                             distinct = True, ), 
                                         value = apteco_api.models.rfv_value.RFVValue(
-                                            variable_name = '', 
+                                            variable_name = '0', 
                                             action = 'Sum', 
-                                            values = '', ), 
-                                        grouping_table = '', 
-                                        transactional_table = '', ), 
+                                            values = '0', ), 
+                                        grouping_table = '0', 
+                                        transactional_table = '0', ), 
                                     n_per = apteco_api.models.n_per.NPer(
-                                        grouping_table_name = '', 
-                                        transactional_table_name = '', ), 
+                                        grouping_table_name = '0', 
+                                        transactional_table_name = '0', ), 
                                     top_n = apteco_api.models.top_n.TopN(
-                                        variable_name = '', 
+                                        variable_name = '0', 
                                         order_expression = apteco_api.models.expression.Expression(
-                                            table_name = '', 
-                                            desc = '', 
-                                            display_text = '', 
-                                            server_text = '', 
+                                            table_name = '0', 
+                                            desc = '0', 
+                                            display_text = '0', 
+                                            server_text = '0', 
                                             output_type = 'Double', 
                                             string_size = 56, ), 
-                                        expression = '', 
+                                        expression = '0', 
                                         direction = 'Top', 
                                         percent = 1.337, 
                                         min_value = 1.337, 
                                         max_value = 1.337, 
-                                        sequence = '', 
-                                        grouping_variable_name = '', 
-                                        grouping_sequence_variable_name = '', 
+                                        sequence = '0', 
+                                        grouping_variable_name = '0', 
+                                        grouping_sequence_variable_name = '0', 
                                         grouping_ascending = True, 
-                                        grouping_sequence = '', 
+                                        grouping_sequence = '0', 
                                         group_max = 56, ), 
                                     limits = apteco_api.models.limits.Limits(
                                         sampling = 'All', 
@@ -213,17 +213,17 @@ class TestAudienceExportJobDetail(unittest.TestCase):
                                         fraction = apteco_api.models.fraction.Fraction(
                                             numerator = 56, 
                                             denominator = 56, ), ), 
-                                    table_name = '', 
-                                    name = '', ), 
-                                today_at = '', ), 
-                            column_header = '', 
+                                    table_name = '0', 
+                                    name = '0', ), 
+                                today_at = '0', ), 
+                            column_header = '0', 
                             detail = 'Code', 
                             unclassified_format = 'FromDesign', )
                         ], 
                     rows = [
                         apteco_api.models.row.Row(
-                            codes = '', 
-                            descriptions = '', )
+                            codes = '0', 
+                            descriptions = '0', )
                         ], ), 
                 id = 56, 
                 is_complete = True, 
@@ -240,6 +240,7 @@ class TestAudienceExportJobDetail(unittest.TestCase):
         """Test AudienceExportJobDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

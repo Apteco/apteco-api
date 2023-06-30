@@ -38,8 +38,8 @@ class TestCreateTelemetrySessionDetails(unittest.TestCase):
         if include_optional :
             return CreateTelemetrySessionDetails(
                 client_type = 'Orbit', 
-                client_version = '', 
-                user_agent_details = ''
+                client_version = '0', 
+                user_agent_details = '0'
             )
         else :
             return CreateTelemetrySessionDetails(
@@ -50,6 +50,7 @@ class TestCreateTelemetrySessionDetails(unittest.TestCase):
         """Test CreateTelemetrySessionDetails"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

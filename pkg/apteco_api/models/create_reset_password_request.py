@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -49,7 +46,7 @@ class CreateResetPasswordRequest(object):
     def __init__(self, email_address=None, reset_password_url=None, local_vars_configuration=None):  # noqa: E501
         """CreateResetPasswordRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._email_address = None
@@ -78,7 +75,7 @@ class CreateResetPasswordRequest(object):
         The email address for the user resetting their password  # noqa: E501
 
         :param email_address: The email_address of this CreateResetPasswordRequest.  # noqa: E501
-        :type email_address: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and email_address is None:  # noqa: E501
             raise ValueError("Invalid value for `email_address`, must not be `None`")  # noqa: E501
@@ -103,40 +100,32 @@ class CreateResetPasswordRequest(object):
         A URL to send in the notification to the user to allow them to confirm they want to reset their password.    If the URL is specified, it can use the {token}, {emailAddress} and {username} parameters:    http://www.example.com/resetPassword/{token}?email={emailAddress}&amp;username={username}    If present, the {token} parameter will be replaced with the token of the password reset request, which  will be needed when performing the reset.  The {emailAddress} parameter will be replaced with the email address  of the user resetting their password.  The {username} parameter will be replaced with the username of the  user resetting their password.  # noqa: E501
 
         :param reset_password_url: The reset_password_url of this CreateResetPasswordRequest.  # noqa: E501
-        :type reset_password_url: str
+        :type: str
         """
 
         self._reset_password_url = reset_password_url
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

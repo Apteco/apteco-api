@@ -39,19 +39,20 @@ class TestServerMessage(unittest.TestCase):
             return ServerMessage(
                 type = 'Error', 
                 number = 56, 
-                text = ''
+                text = '0'
             )
         else :
             return ServerMessage(
                 type = 'Error',
                 number = 56,
-                text = '',
+                text = '0',
         )
 
     def testServerMessage(self):
         """Test ServerMessage"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

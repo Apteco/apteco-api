@@ -42,31 +42,31 @@ class TestPagedResultsUserAudienceSummary(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.user_audience_summary.UserAudienceSummary(
-                        viewing_username = '', 
+                        viewing_username = '0', 
                         status = 'Default', 
                         shared_to_me = True, 
                         shared_by_me = True, 
                         id = 56, 
-                        title = '', 
-                        description = '', 
+                        title = '0', 
+                        description = '0', 
                         creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         owner = apteco_api.models.user_display_details.UserDisplayDetails(
-                            username = '', 
-                            firstname = '', 
-                            surname = '', 
-                            email_address = '', ), 
+                            username = '0', 
+                            firstname = '0', 
+                            surname = '0', 
+                            email_address = '0', ), 
                         deletion_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        resolve_table_name = '', 
+                        resolve_table_name = '0', 
                         resolve_table_nett_count = 56, 
                         number_of_users_shared_with = 56, 
                         share_id = 56, 
                         number_of_hits = 56, 
-                        system_name = '', 
+                        system_name = '0', 
                         last_updated_user = apteco_api.models.user_display_details.UserDisplayDetails(
-                            username = '', 
-                            firstname = '', 
-                            surname = '', 
-                            email_address = '', ), 
+                            username = '0', 
+                            firstname = '0', 
+                            surname = '0', 
+                            email_address = '0', ), 
                         last_updated_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         last_update_id = 56, )
                     ]
@@ -78,31 +78,31 @@ class TestPagedResultsUserAudienceSummary(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.user_audience_summary.UserAudienceSummary(
-                        viewing_username = '', 
+                        viewing_username = '0', 
                         status = 'Default', 
                         shared_to_me = True, 
                         shared_by_me = True, 
                         id = 56, 
-                        title = '', 
-                        description = '', 
+                        title = '0', 
+                        description = '0', 
                         creation_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         owner = apteco_api.models.user_display_details.UserDisplayDetails(
-                            username = '', 
-                            firstname = '', 
-                            surname = '', 
-                            email_address = '', ), 
+                            username = '0', 
+                            firstname = '0', 
+                            surname = '0', 
+                            email_address = '0', ), 
                         deletion_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        resolve_table_name = '', 
+                        resolve_table_name = '0', 
                         resolve_table_nett_count = 56, 
                         number_of_users_shared_with = 56, 
                         share_id = 56, 
                         number_of_hits = 56, 
-                        system_name = '', 
+                        system_name = '0', 
                         last_updated_user = apteco_api.models.user_display_details.UserDisplayDetails(
-                            username = '', 
-                            firstname = '', 
-                            surname = '', 
-                            email_address = '', ), 
+                            username = '0', 
+                            firstname = '0', 
+                            surname = '0', 
+                            email_address = '0', ), 
                         last_updated_date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         last_update_id = 56, )
                     ],
@@ -112,6 +112,7 @@ class TestPagedResultsUserAudienceSummary(unittest.TestCase):
         """Test PagedResultsUserAudienceSummary"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

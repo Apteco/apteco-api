@@ -1,6 +1,5 @@
 # DashboardSummary
 
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

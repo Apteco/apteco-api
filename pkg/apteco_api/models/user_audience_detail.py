@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -97,7 +94,7 @@ class UserAudienceDetail(object):
     def __init__(self, viewing_username=None, status=None, shared_to_me=None, shared_by_me=None, brief_text=None, exclude_query=None, include_query=None, body_query=None, selection_modifiers=None, queries_lookup=None, last_result=None, id=None, title=None, description=None, creation_date=None, owner=None, deletion_date=None, resolve_table_name=None, resolve_table_nett_count=None, number_of_users_shared_with=None, share_id=None, number_of_hits=None, system_name=None, last_updated_user=None, last_updated_date=None, last_update_id=None, local_vars_configuration=None):  # noqa: E501
         """UserAudienceDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._viewing_username = None
@@ -183,7 +180,7 @@ class UserAudienceDetail(object):
         The username of the user that has access to this audience  # noqa: E501
 
         :param viewing_username: The viewing_username of this UserAudienceDetail.  # noqa: E501
-        :type viewing_username: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and viewing_username is None:  # noqa: E501
             raise ValueError("Invalid value for `viewing_username`, must not be `None`")  # noqa: E501
@@ -208,7 +205,7 @@ class UserAudienceDetail(object):
         The status of the audience  # noqa: E501
 
         :param status: The status of this UserAudienceDetail.  # noqa: E501
-        :type status: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
@@ -239,7 +236,7 @@ class UserAudienceDetail(object):
         Whether this audience has been shared to the given user by someone else  # noqa: E501
 
         :param shared_to_me: The shared_to_me of this UserAudienceDetail.  # noqa: E501
-        :type shared_to_me: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and shared_to_me is None:  # noqa: E501
             raise ValueError("Invalid value for `shared_to_me`, must not be `None`")  # noqa: E501
@@ -264,7 +261,7 @@ class UserAudienceDetail(object):
         Whether this audience has been shared to others by the given user  # noqa: E501
 
         :param shared_by_me: The shared_by_me of this UserAudienceDetail.  # noqa: E501
-        :type shared_by_me: bool
+        :type: bool
         """
         if self.local_vars_configuration.client_side_validation and shared_by_me is None:  # noqa: E501
             raise ValueError("Invalid value for `shared_by_me`, must not be `None`")  # noqa: E501
@@ -289,7 +286,7 @@ class UserAudienceDetail(object):
         Notes associated with the audience  # noqa: E501
 
         :param brief_text: The brief_text of this UserAudienceDetail.  # noqa: E501
-        :type brief_text: str
+        :type: str
         """
 
         self._brief_text = brief_text
@@ -310,7 +307,7 @@ class UserAudienceDetail(object):
 
 
         :param exclude_query: The exclude_query of this UserAudienceDetail.  # noqa: E501
-        :type exclude_query: Query
+        :type: Query
         """
 
         self._exclude_query = exclude_query
@@ -331,7 +328,7 @@ class UserAudienceDetail(object):
 
 
         :param include_query: The include_query of this UserAudienceDetail.  # noqa: E501
-        :type include_query: Query
+        :type: Query
         """
 
         self._include_query = include_query
@@ -352,7 +349,7 @@ class UserAudienceDetail(object):
 
 
         :param body_query: The body_query of this UserAudienceDetail.  # noqa: E501
-        :type body_query: Query
+        :type: Query
         """
 
         self._body_query = body_query
@@ -373,7 +370,7 @@ class UserAudienceDetail(object):
 
 
         :param selection_modifiers: The selection_modifiers of this UserAudienceDetail.  # noqa: E501
-        :type selection_modifiers: SelectionModifiers
+        :type: SelectionModifiers
         """
 
         self._selection_modifiers = selection_modifiers
@@ -394,7 +391,7 @@ class UserAudienceDetail(object):
 
 
         :param queries_lookup: The queries_lookup of this UserAudienceDetail.  # noqa: E501
-        :type queries_lookup: SystemLookup
+        :type: SystemLookup
         """
 
         self._queries_lookup = queries_lookup
@@ -415,7 +412,7 @@ class UserAudienceDetail(object):
 
 
         :param last_result: The last_result of this UserAudienceDetail.  # noqa: E501
-        :type last_result: AudienceResultDetail
+        :type: AudienceResultDetail
         """
 
         self._last_result = last_result
@@ -438,7 +435,7 @@ class UserAudienceDetail(object):
         The audience's id  # noqa: E501
 
         :param id: The id of this UserAudienceDetail.  # noqa: E501
-        :type id: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -463,7 +460,7 @@ class UserAudienceDetail(object):
         The title of the audience  # noqa: E501
 
         :param title: The title of this UserAudienceDetail.  # noqa: E501
-        :type title: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and title is None:  # noqa: E501
             raise ValueError("Invalid value for `title`, must not be `None`")  # noqa: E501
@@ -488,7 +485,7 @@ class UserAudienceDetail(object):
         The description of the audience  # noqa: E501
 
         :param description: The description of this UserAudienceDetail.  # noqa: E501
-        :type description: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
             raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
@@ -513,7 +510,7 @@ class UserAudienceDetail(object):
         The date the audience was created  # noqa: E501
 
         :param creation_date: The creation_date of this UserAudienceDetail.  # noqa: E501
-        :type creation_date: datetime
+        :type: datetime
         """
         if self.local_vars_configuration.client_side_validation and creation_date is None:  # noqa: E501
             raise ValueError("Invalid value for `creation_date`, must not be `None`")  # noqa: E501
@@ -536,7 +533,7 @@ class UserAudienceDetail(object):
 
 
         :param owner: The owner of this UserAudienceDetail.  # noqa: E501
-        :type owner: UserDisplayDetails
+        :type: UserDisplayDetails
         """
         if self.local_vars_configuration.client_side_validation and owner is None:  # noqa: E501
             raise ValueError("Invalid value for `owner`, must not be `None`")  # noqa: E501
@@ -561,7 +558,7 @@ class UserAudienceDetail(object):
         The date the audience was deleted, or null if it has not been deleted  # noqa: E501
 
         :param deletion_date: The deletion_date of this UserAudienceDetail.  # noqa: E501
-        :type deletion_date: datetime
+        :type: datetime
         """
 
         self._deletion_date = deletion_date
@@ -584,7 +581,7 @@ class UserAudienceDetail(object):
         The FastStats table that the audience is defined against  # noqa: E501
 
         :param resolve_table_name: The resolve_table_name of this UserAudienceDetail.  # noqa: E501
-        :type resolve_table_name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and resolve_table_name is None:  # noqa: E501
             raise ValueError("Invalid value for `resolve_table_name`, must not be `None`")  # noqa: E501
@@ -609,7 +606,7 @@ class UserAudienceDetail(object):
         If the audience has been counted, the latest overall count for the resolve table  # noqa: E501
 
         :param resolve_table_nett_count: The resolve_table_nett_count of this UserAudienceDetail.  # noqa: E501
-        :type resolve_table_nett_count: int
+        :type: int
         """
 
         self._resolve_table_nett_count = resolve_table_nett_count
@@ -632,7 +629,7 @@ class UserAudienceDetail(object):
         The number of people this audience has been shared with  # noqa: E501
 
         :param number_of_users_shared_with: The number_of_users_shared_with of this UserAudienceDetail.  # noqa: E501
-        :type number_of_users_shared_with: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and number_of_users_shared_with is None:  # noqa: E501
             raise ValueError("Invalid value for `number_of_users_shared_with`, must not be `None`")  # noqa: E501
@@ -657,7 +654,7 @@ class UserAudienceDetail(object):
         The id of the share associated with this audience, or null if the  audience has not yet been shared  # noqa: E501
 
         :param share_id: The share_id of this UserAudienceDetail.  # noqa: E501
-        :type share_id: int
+        :type: int
         """
 
         self._share_id = share_id
@@ -680,7 +677,7 @@ class UserAudienceDetail(object):
         The number of hits associated with this audience  # noqa: E501
 
         :param number_of_hits: The number_of_hits of this UserAudienceDetail.  # noqa: E501
-        :type number_of_hits: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and number_of_hits is None:  # noqa: E501
             raise ValueError("Invalid value for `number_of_hits`, must not be `None`")  # noqa: E501
@@ -705,7 +702,7 @@ class UserAudienceDetail(object):
         The FastStats system that this audience has been created against  # noqa: E501
 
         :param system_name: The system_name of this UserAudienceDetail.  # noqa: E501
-        :type system_name: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and system_name is None:  # noqa: E501
             raise ValueError("Invalid value for `system_name`, must not be `None`")  # noqa: E501
@@ -728,7 +725,7 @@ class UserAudienceDetail(object):
 
 
         :param last_updated_user: The last_updated_user of this UserAudienceDetail.  # noqa: E501
-        :type last_updated_user: UserDisplayDetails
+        :type: UserDisplayDetails
         """
         if self.local_vars_configuration.client_side_validation and last_updated_user is None:  # noqa: E501
             raise ValueError("Invalid value for `last_updated_user`, must not be `None`")  # noqa: E501
@@ -753,7 +750,7 @@ class UserAudienceDetail(object):
         The date the audience was last updated  # noqa: E501
 
         :param last_updated_date: The last_updated_date of this UserAudienceDetail.  # noqa: E501
-        :type last_updated_date: datetime
+        :type: datetime
         """
         if self.local_vars_configuration.client_side_validation and last_updated_date is None:  # noqa: E501
             raise ValueError("Invalid value for `last_updated_date`, must not be `None`")  # noqa: E501
@@ -778,42 +775,34 @@ class UserAudienceDetail(object):
         The id of the last update for this audience  # noqa: E501
 
         :param last_update_id: The last_update_id of this UserAudienceDetail.  # noqa: E501
-        :type last_update_id: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and last_update_id is None:  # noqa: E501
             raise ValueError("Invalid value for `last_update_id`, must not be `None`")  # noqa: E501
 
         self._last_update_id = last_update_id
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

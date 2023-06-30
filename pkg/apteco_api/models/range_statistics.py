@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -61,7 +58,7 @@ class RangeStatistics(object):
     def __init__(self, id=None, communications_count=None, deliveries_count=None, messages_count=None, campaigns_count=None, first_ran=None, last_ran=None, statistics_timestamp=None, local_vars_configuration=None):  # noqa: E501
         """RangeStatistics - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -108,7 +105,7 @@ class RangeStatistics(object):
         The element's id  # noqa: E501
 
         :param id: The id of this RangeStatistics.  # noqa: E501
-        :type id: str
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -133,7 +130,7 @@ class RangeStatistics(object):
         The number of communications sent within this element during the specified date range  # noqa: E501
 
         :param communications_count: The communications_count of this RangeStatistics.  # noqa: E501
-        :type communications_count: int
+        :type: int
         """
 
         self._communications_count = communications_count
@@ -156,7 +153,7 @@ class RangeStatistics(object):
         The number of deliveries that have run within this element during the specified date range  # noqa: E501
 
         :param deliveries_count: The deliveries_count of this RangeStatistics.  # noqa: E501
-        :type deliveries_count: int
+        :type: int
         """
 
         self._deliveries_count = deliveries_count
@@ -179,7 +176,7 @@ class RangeStatistics(object):
         The number of messages that have had at least one delivery run within this element during the specified date range  # noqa: E501
 
         :param messages_count: The messages_count of this RangeStatistics.  # noqa: E501
-        :type messages_count: int
+        :type: int
         """
 
         self._messages_count = messages_count
@@ -202,7 +199,7 @@ class RangeStatistics(object):
         The number of campaigns that have had at least one delivery run within this element during the specified date range  # noqa: E501
 
         :param campaigns_count: The campaigns_count of this RangeStatistics.  # noqa: E501
-        :type campaigns_count: int
+        :type: int
         """
 
         self._campaigns_count = campaigns_count
@@ -225,7 +222,7 @@ class RangeStatistics(object):
         The first time that any deliveries ran within this element during the specified date range  # noqa: E501
 
         :param first_ran: The first_ran of this RangeStatistics.  # noqa: E501
-        :type first_ran: datetime
+        :type: datetime
         """
 
         self._first_ran = first_ran
@@ -248,7 +245,7 @@ class RangeStatistics(object):
         The last time that any deliveries ran within this element during the specified date range  # noqa: E501
 
         :param last_ran: The last_ran of this RangeStatistics.  # noqa: E501
-        :type last_ran: datetime
+        :type: datetime
         """
 
         self._last_ran = last_ran
@@ -271,40 +268,32 @@ class RangeStatistics(object):
         The date and time that the campaign statistics were calculated  # noqa: E501
 
         :param statistics_timestamp: The statistics_timestamp of this RangeStatistics.  # noqa: E501
-        :type statistics_timestamp: datetime
+        :type: datetime
         """
 
         self._statistics_timestamp = statistics_timestamp
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

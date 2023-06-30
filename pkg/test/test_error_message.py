@@ -39,11 +39,11 @@ class TestErrorMessage(unittest.TestCase):
             return ErrorMessage(
                 code = 56, 
                 id = 56, 
-                message = '', 
+                message = '0', 
                 parameters = [
                     apteco_api.models.error_message_parameter.ErrorMessageParameter(
-                        key = '', 
-                        value = '', )
+                        key = '0', 
+                        value = '0', )
                     ]
             )
         else :
@@ -54,6 +54,7 @@ class TestErrorMessage(unittest.TestCase):
         """Test ErrorMessage"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

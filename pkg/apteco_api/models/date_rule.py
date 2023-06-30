@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -85,7 +82,7 @@ class DateRule(object):
     def __init__(self, pattern_frequency=None, pattern_interval=None, pattern_type=None, pattern_days_of_week=None, pattern_day_of_month=None, pattern_month_of_year=None, pattern_occurrence_of_day_in_month=None, start_range_limit=None, range_start_date=None, start_range_relative=None, start_range_offset_direction=None, start_range_offset=None, start_range_offset_units=None, end_range_limit=None, range_end_date=None, end_range_relative=None, end_range_offset_direction=None, end_range_offset=None, end_range_offset_units=None, range_max_occurrences=None, local_vars_configuration=None):  # noqa: E501
         """DateRule - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._pattern_frequency = None
@@ -167,7 +164,7 @@ class DateRule(object):
 
 
         :param pattern_frequency: The pattern_frequency of this DateRule.  # noqa: E501
-        :type pattern_frequency: str
+        :type: str
         """
         allowed_values = ["Daily", "Weekly", "Monthly", "Yearly"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and pattern_frequency not in allowed_values:  # noqa: E501
@@ -194,7 +191,7 @@ class DateRule(object):
 
 
         :param pattern_interval: The pattern_interval of this DateRule.  # noqa: E501
-        :type pattern_interval: int
+        :type: int
         """
 
         self._pattern_interval = pattern_interval
@@ -215,7 +212,7 @@ class DateRule(object):
 
 
         :param pattern_type: The pattern_type of this DateRule.  # noqa: E501
-        :type pattern_type: str
+        :type: str
         """
         allowed_values = ["CalculatedDay", "CalculatedMonth", "CalculatedYear", "Explicit"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and pattern_type not in allowed_values:  # noqa: E501
@@ -242,7 +239,7 @@ class DateRule(object):
 
 
         :param pattern_days_of_week: The pattern_days_of_week of this DateRule.  # noqa: E501
-        :type pattern_days_of_week: list[str]
+        :type: list[str]
         """
         allowed_values = ["None", "All", "AllWeekdays", "AllWeekendDays", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
@@ -271,7 +268,7 @@ class DateRule(object):
 
 
         :param pattern_day_of_month: The pattern_day_of_month of this DateRule.  # noqa: E501
-        :type pattern_day_of_month: int
+        :type: int
         """
 
         self._pattern_day_of_month = pattern_day_of_month
@@ -292,7 +289,7 @@ class DateRule(object):
 
 
         :param pattern_month_of_year: The pattern_month_of_year of this DateRule.  # noqa: E501
-        :type pattern_month_of_year: int
+        :type: int
         """
 
         self._pattern_month_of_year = pattern_month_of_year
@@ -313,7 +310,7 @@ class DateRule(object):
 
 
         :param pattern_occurrence_of_day_in_month: The pattern_occurrence_of_day_in_month of this DateRule.  # noqa: E501
-        :type pattern_occurrence_of_day_in_month: str
+        :type: str
         """
         allowed_values = ["None", "First", "Second", "Third", "Fourth", "Last"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and pattern_occurrence_of_day_in_month not in allowed_values:  # noqa: E501
@@ -340,7 +337,7 @@ class DateRule(object):
 
 
         :param start_range_limit: The start_range_limit of this DateRule.  # noqa: E501
-        :type start_range_limit: str
+        :type: str
         """
         allowed_values = ["Earliest", "Latest", "Actual", "Relative"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and start_range_limit not in allowed_values:  # noqa: E501
@@ -367,7 +364,7 @@ class DateRule(object):
 
 
         :param range_start_date: The range_start_date of this DateRule.  # noqa: E501
-        :type range_start_date: datetime
+        :type: datetime
         """
 
         self._range_start_date = range_start_date
@@ -388,7 +385,7 @@ class DateRule(object):
 
 
         :param start_range_relative: The start_range_relative of this DateRule.  # noqa: E501
-        :type start_range_relative: str
+        :type: str
         """
         allowed_values = ["Today", "Tomorrow", "Yesterday", "ThisWeek", "ThisMonth", "ThisQuarter", "ThisYear", "ThisBusinessMonth", "ThisBusinessQuarter", "ThisBusinessYear", "LoadDate", "LoadWeek", "LoadMonth", "LoadQuarter", "LoadYear", "FirstPopulatedDate", "FirstPopulatedWeek", "FirstPopulatedMonth", "FirstPopulatedQuarter", "FirstPopulatedYear", "LastPopulatedDate", "LastPopulatedWeek", "LastPopulatedMonth", "LastPopulatedQuarter", "LastPopulatedYear", "CustomDate"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and start_range_relative not in allowed_values:  # noqa: E501
@@ -415,7 +412,7 @@ class DateRule(object):
 
 
         :param start_range_offset_direction: The start_range_offset_direction of this DateRule.  # noqa: E501
-        :type start_range_offset_direction: str
+        :type: str
         """
         allowed_values = ["Forward", "Backward"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and start_range_offset_direction not in allowed_values:  # noqa: E501
@@ -442,7 +439,7 @@ class DateRule(object):
 
 
         :param start_range_offset: The start_range_offset of this DateRule.  # noqa: E501
-        :type start_range_offset: int
+        :type: int
         """
 
         self._start_range_offset = start_range_offset
@@ -463,7 +460,7 @@ class DateRule(object):
 
 
         :param start_range_offset_units: The start_range_offset_units of this DateRule.  # noqa: E501
-        :type start_range_offset_units: str
+        :type: str
         """
         allowed_values = ["Days", "Weeks", "Months", "Quarters", "Years"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and start_range_offset_units not in allowed_values:  # noqa: E501
@@ -490,7 +487,7 @@ class DateRule(object):
 
 
         :param end_range_limit: The end_range_limit of this DateRule.  # noqa: E501
-        :type end_range_limit: str
+        :type: str
         """
         allowed_values = ["Earliest", "Latest", "Actual", "Forward", "Backward", "Relative"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and end_range_limit not in allowed_values:  # noqa: E501
@@ -517,7 +514,7 @@ class DateRule(object):
 
 
         :param range_end_date: The range_end_date of this DateRule.  # noqa: E501
-        :type range_end_date: datetime
+        :type: datetime
         """
 
         self._range_end_date = range_end_date
@@ -538,7 +535,7 @@ class DateRule(object):
 
 
         :param end_range_relative: The end_range_relative of this DateRule.  # noqa: E501
-        :type end_range_relative: str
+        :type: str
         """
         allowed_values = ["Today", "Tomorrow", "Yesterday", "ThisWeek", "ThisMonth", "ThisQuarter", "ThisYear", "ThisBusinessMonth", "ThisBusinessQuarter", "ThisBusinessYear", "LoadDate", "LoadWeek", "LoadMonth", "LoadQuarter", "LoadYear", "FirstPopulatedDate", "FirstPopulatedWeek", "FirstPopulatedMonth", "FirstPopulatedQuarter", "FirstPopulatedYear", "LastPopulatedDate", "LastPopulatedWeek", "LastPopulatedMonth", "LastPopulatedQuarter", "LastPopulatedYear", "CustomDate"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and end_range_relative not in allowed_values:  # noqa: E501
@@ -565,7 +562,7 @@ class DateRule(object):
 
 
         :param end_range_offset_direction: The end_range_offset_direction of this DateRule.  # noqa: E501
-        :type end_range_offset_direction: str
+        :type: str
         """
         allowed_values = ["Forward", "Backward"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and end_range_offset_direction not in allowed_values:  # noqa: E501
@@ -592,7 +589,7 @@ class DateRule(object):
 
 
         :param end_range_offset: The end_range_offset of this DateRule.  # noqa: E501
-        :type end_range_offset: int
+        :type: int
         """
 
         self._end_range_offset = end_range_offset
@@ -613,7 +610,7 @@ class DateRule(object):
 
 
         :param end_range_offset_units: The end_range_offset_units of this DateRule.  # noqa: E501
-        :type end_range_offset_units: str
+        :type: str
         """
         allowed_values = ["Days", "Weeks", "Months", "Quarters", "Years"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and end_range_offset_units not in allowed_values:  # noqa: E501
@@ -640,40 +637,32 @@ class DateRule(object):
 
 
         :param range_max_occurrences: The range_max_occurrences of this DateRule.  # noqa: E501
-        :type range_max_occurrences: int
+        :type: int
         """
 
         self._range_max_occurrences = range_max_occurrences
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

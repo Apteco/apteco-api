@@ -1,7 +1,6 @@
 # ResourceCategoryDetails
 
 The details of a particular category of static resources
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

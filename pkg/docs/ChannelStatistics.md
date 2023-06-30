@@ -1,7 +1,6 @@
 # ChannelStatistics
 
 Channel communication statistics
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

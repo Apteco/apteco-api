@@ -1,7 +1,6 @@
 # TransferCollectionOwnershipDetails
 
 The details required to transfer the ownership of a collection
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

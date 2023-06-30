@@ -1,7 +1,6 @@
 # CreateAudienceUpdate
 
 Details used to create an audience update
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,7 +1,6 @@
 # Export
 
 Information to request the exporting data from FastStats based upon a query
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

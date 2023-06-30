@@ -39,22 +39,22 @@ class TestDashboardItemDataResult(unittest.TestCase):
             return DashboardItemDataResult(
                 dimension_results = [
                     apteco_api.models.dimension_result.DimensionResult(
-                        id = '', 
-                        header_codes = '', 
-                        header_descriptions = '', )
+                        id = '0', 
+                        header_codes = '0', 
+                        header_descriptions = '0', )
                     ], 
                 measure_results = [
                     apteco_api.models.measure_result.MeasureResult(
-                        id = '', 
+                        id = '0', 
                         rows = [
-                            ''
+                            '0'
                             ], 
                         cells = [
-                            ''
+                            '0'
                             ], )
                     ], 
                 count = apteco_api.models.count.Count(
-                    table_name = '', 
+                    table_name = '0', 
                     count_value = 56, )
             )
         else :
@@ -65,6 +65,7 @@ class TestDashboardItemDataResult(unittest.TestCase):
         """Test DashboardItemDataResult"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

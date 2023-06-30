@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -53,7 +50,7 @@ class PagedResultsDataViewSummary(object):
     def __init__(self, offset=None, count=None, total_count=None, list=None, local_vars_configuration=None):  # noqa: E501
         """PagedResultsDataViewSummary - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._offset = None
@@ -85,7 +82,7 @@ class PagedResultsDataViewSummary(object):
         The number of items that were skipped over from the (potentially filtered) result set  # noqa: E501
 
         :param offset: The offset of this PagedResultsDataViewSummary.  # noqa: E501
-        :type offset: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and offset is None:  # noqa: E501
             raise ValueError("Invalid value for `offset`, must not be `None`")  # noqa: E501
@@ -110,7 +107,7 @@ class PagedResultsDataViewSummary(object):
         The number of items returned in this page of the result set  # noqa: E501
 
         :param count: The count of this PagedResultsDataViewSummary.  # noqa: E501
-        :type count: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and count is None:  # noqa: E501
             raise ValueError("Invalid value for `count`, must not be `None`")  # noqa: E501
@@ -135,7 +132,7 @@ class PagedResultsDataViewSummary(object):
         The total number of items available in the (potentially filtered) result set  # noqa: E501
 
         :param total_count: The total_count of this PagedResultsDataViewSummary.  # noqa: E501
-        :type total_count: int
+        :type: int
         """
         if self.local_vars_configuration.client_side_validation and total_count is None:  # noqa: E501
             raise ValueError("Invalid value for `total_count`, must not be `None`")  # noqa: E501
@@ -160,42 +157,34 @@ class PagedResultsDataViewSummary(object):
         The list of results  # noqa: E501
 
         :param list: The list of this PagedResultsDataViewSummary.  # noqa: E501
-        :type list: list[DataViewSummary]
+        :type: list[DataViewSummary]
         """
         if self.local_vars_configuration.client_side_validation and list is None:  # noqa: E501
             raise ValueError("Invalid value for `list`, must not be `None`")  # noqa: E501
 
         self._list = list
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

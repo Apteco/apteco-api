@@ -42,8 +42,8 @@ class TestPagedResultsFileEntry(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.file_entry.FileEntry(
-                        name = '', 
-                        path = '', 
+                        name = '0', 
+                        path = '0', 
                         type = 'Unknown', )
                     ]
             )
@@ -54,8 +54,8 @@ class TestPagedResultsFileEntry(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.file_entry.FileEntry(
-                        name = '', 
-                        path = '', 
+                        name = '0', 
+                        path = '0', 
                         type = 'Unknown', )
                     ],
         )
@@ -64,6 +64,7 @@ class TestPagedResultsFileEntry(unittest.TestCase):
         """Test PagedResultsFileEntry"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

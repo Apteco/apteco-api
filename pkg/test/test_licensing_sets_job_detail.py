@@ -39,7 +39,7 @@ class TestLicensingSetsJobDetail(unittest.TestCase):
             return LicensingSetsJobDetail(
                 licensing_sets = [
                     apteco_api.models.licensing_set.LicensingSet(
-                        name = '', )
+                        name = '0', )
                     ], 
                 id = 56, 
                 is_complete = True, 
@@ -56,6 +56,7 @@ class TestLicensingSetsJobDetail(unittest.TestCase):
         """Test LicensingSetsJobDetail"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

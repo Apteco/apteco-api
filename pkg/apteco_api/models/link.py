@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -61,7 +58,7 @@ class Link(object):
     def __init__(self, href=None, templated=None, type=None, deprecation=None, name=None, profile=None, title=None, hreflang=None, local_vars_configuration=None):  # noqa: E501
         """Link - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._href = None
@@ -107,7 +104,7 @@ class Link(object):
 
 
         :param href: The href of this Link.  # noqa: E501
-        :type href: str
+        :type: str
         """
 
         self._href = href
@@ -128,7 +125,7 @@ class Link(object):
 
 
         :param templated: The templated of this Link.  # noqa: E501
-        :type templated: bool
+        :type: bool
         """
 
         self._templated = templated
@@ -149,7 +146,7 @@ class Link(object):
 
 
         :param type: The type of this Link.  # noqa: E501
-        :type type: str
+        :type: str
         """
 
         self._type = type
@@ -170,7 +167,7 @@ class Link(object):
 
 
         :param deprecation: The deprecation of this Link.  # noqa: E501
-        :type deprecation: bool
+        :type: bool
         """
 
         self._deprecation = deprecation
@@ -191,7 +188,7 @@ class Link(object):
 
 
         :param name: The name of this Link.  # noqa: E501
-        :type name: str
+        :type: str
         """
 
         self._name = name
@@ -212,7 +209,7 @@ class Link(object):
 
 
         :param profile: The profile of this Link.  # noqa: E501
-        :type profile: str
+        :type: str
         """
 
         self._profile = profile
@@ -233,7 +230,7 @@ class Link(object):
 
 
         :param title: The title of this Link.  # noqa: E501
-        :type title: str
+        :type: str
         """
 
         self._title = title
@@ -254,40 +251,32 @@ class Link(object):
 
 
         :param hreflang: The hreflang of this Link.  # noqa: E501
-        :type hreflang: str
+        :type: str
         """
 
         self._hreflang = hreflang
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

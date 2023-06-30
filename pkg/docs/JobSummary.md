@@ -1,7 +1,6 @@
 # JobSummary
 
 Summary information for a job in FastStats
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

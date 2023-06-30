@@ -42,16 +42,16 @@ class TestPagedResultsTable(unittest.TestCase):
                 total_count = 56, 
                 list = [
                     apteco_api.models.table.Table(
-                        name = '', 
-                        singular_display_name = '', 
-                        plural_display_name = '', 
+                        name = '0', 
+                        singular_display_name = '0', 
+                        plural_display_name = '0', 
                         is_default_table = True, 
                         is_people_table = True, 
                         total_records = 56, 
-                        child_relationship_name = '', 
-                        parent_relationship_name = '', 
+                        child_relationship_name = '0', 
+                        parent_relationship_name = '0', 
                         has_child_tables = True, 
-                        parent_table = '', )
+                        parent_table = '0', )
                     ]
             )
         else :
@@ -61,16 +61,16 @@ class TestPagedResultsTable(unittest.TestCase):
                 total_count = 56,
                 list = [
                     apteco_api.models.table.Table(
-                        name = '', 
-                        singular_display_name = '', 
-                        plural_display_name = '', 
+                        name = '0', 
+                        singular_display_name = '0', 
+                        plural_display_name = '0', 
                         is_default_table = True, 
                         is_people_table = True, 
                         total_records = 56, 
-                        child_relationship_name = '', 
-                        parent_relationship_name = '', 
+                        child_relationship_name = '0', 
+                        parent_relationship_name = '0', 
                         has_child_tables = True, 
-                        parent_table = '', )
+                        parent_table = '0', )
                     ],
         )
 
@@ -78,6 +78,7 @@ class TestPagedResultsTable(unittest.TestCase):
         """Test PagedResultsTable"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

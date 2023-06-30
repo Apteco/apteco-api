@@ -38,13 +38,13 @@ class TestNPer(unittest.TestCase):
         if include_optional :
             return NPer(
                 recency = apteco_api.models.rfv_recency.RFVRecency(
-                    variable_name = '', 
-                    sequence = '', 
+                    variable_name = '0', 
+                    sequence = '0', 
                     direction = 'Any', 
                     value = 56, 
                     distinct = True, ), 
-                grouping_table_name = '', 
-                transactional_table_name = ''
+                grouping_table_name = '0', 
+                transactional_table_name = '0'
             )
         else :
             return NPer(
@@ -54,6 +54,7 @@ class TestNPer(unittest.TestCase):
         """Test NPer"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

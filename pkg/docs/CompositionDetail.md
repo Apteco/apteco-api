@@ -1,7 +1,6 @@
 # CompositionDetail
 
 Details for an audience composition
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

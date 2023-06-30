@@ -11,12 +11,9 @@
 """
 
 
-try:
-    from inspect import getfullargspec
-except ImportError:
-    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
+
 import six
 
 from apteco_api.configuration import Configuration
@@ -73,7 +70,7 @@ class TopN(object):
     def __init__(self, variable_name=None, order_expression=None, expression=None, direction=None, value=None, percent=None, min_value=None, max_value=None, sequence=None, grouping_variable_name=None, grouping_sequence_variable_name=None, grouping_ascending=None, grouping_sequence=None, group_max=None, local_vars_configuration=None):  # noqa: E501
         """TopN - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration.get_default_copy()
+            local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._variable_name = None
@@ -137,7 +134,7 @@ class TopN(object):
 
 
         :param variable_name: The variable_name of this TopN.  # noqa: E501
-        :type variable_name: str
+        :type: str
         """
 
         self._variable_name = variable_name
@@ -158,7 +155,7 @@ class TopN(object):
 
 
         :param order_expression: The order_expression of this TopN.  # noqa: E501
-        :type order_expression: Expression
+        :type: Expression
         """
 
         self._order_expression = order_expression
@@ -179,7 +176,7 @@ class TopN(object):
 
 
         :param expression: The expression of this TopN.  # noqa: E501
-        :type expression: str
+        :type: str
         """
 
         self._expression = expression
@@ -200,7 +197,7 @@ class TopN(object):
 
 
         :param direction: The direction of this TopN.  # noqa: E501
-        :type direction: str
+        :type: str
         """
         allowed_values = ["Top", "Bottom", "RangeTopDown", "RangeBottomUp", "PercentRangeTopDown", "PercentRangeBottomUp"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and direction not in allowed_values:  # noqa: E501
@@ -227,7 +224,7 @@ class TopN(object):
 
 
         :param value: The value of this TopN.  # noqa: E501
-        :type value: int
+        :type: int
         """
 
         self._value = value
@@ -248,7 +245,7 @@ class TopN(object):
 
 
         :param percent: The percent of this TopN.  # noqa: E501
-        :type percent: float
+        :type: float
         """
 
         self._percent = percent
@@ -269,7 +266,7 @@ class TopN(object):
 
 
         :param min_value: The min_value of this TopN.  # noqa: E501
-        :type min_value: float
+        :type: float
         """
 
         self._min_value = min_value
@@ -290,7 +287,7 @@ class TopN(object):
 
 
         :param max_value: The max_value of this TopN.  # noqa: E501
-        :type max_value: float
+        :type: float
         """
 
         self._max_value = max_value
@@ -311,7 +308,7 @@ class TopN(object):
 
 
         :param sequence: The sequence of this TopN.  # noqa: E501
-        :type sequence: str
+        :type: str
         """
 
         self._sequence = sequence
@@ -332,7 +329,7 @@ class TopN(object):
 
 
         :param grouping_variable_name: The grouping_variable_name of this TopN.  # noqa: E501
-        :type grouping_variable_name: str
+        :type: str
         """
 
         self._grouping_variable_name = grouping_variable_name
@@ -353,7 +350,7 @@ class TopN(object):
 
 
         :param grouping_sequence_variable_name: The grouping_sequence_variable_name of this TopN.  # noqa: E501
-        :type grouping_sequence_variable_name: str
+        :type: str
         """
 
         self._grouping_sequence_variable_name = grouping_sequence_variable_name
@@ -374,7 +371,7 @@ class TopN(object):
 
 
         :param grouping_ascending: The grouping_ascending of this TopN.  # noqa: E501
-        :type grouping_ascending: bool
+        :type: bool
         """
 
         self._grouping_ascending = grouping_ascending
@@ -395,7 +392,7 @@ class TopN(object):
 
 
         :param grouping_sequence: The grouping_sequence of this TopN.  # noqa: E501
-        :type grouping_sequence: str
+        :type: str
         """
 
         self._grouping_sequence = grouping_sequence
@@ -416,40 +413,32 @@ class TopN(object):
 
 
         :param group_max: The group_max of this TopN.  # noqa: E501
-        :type group_max: int
+        :type: int
         """
 
         self._group_max = group_max
 
-    def to_dict(self, serialize=False):
+    def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
 
-        def convert(x):
-            if hasattr(x, "to_dict"):
-                args = getfullargspec(x.to_dict).args
-                if len(args) == 1:
-                    return x.to_dict()
-                else:
-                    return x.to_dict(serialize)
-            else:
-                return x
-
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
-            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
                 result[attr] = list(map(
-                    lambda x: convert(x),
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
                     value
                 ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(map(
-                    lambda item: (item[0], convert(item[1])),
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
             else:
-                result[attr] = convert(value)
+                result[attr] = value
 
         return result
 

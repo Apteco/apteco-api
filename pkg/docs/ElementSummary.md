@@ -1,7 +1,6 @@
 # ElementSummary
 
 Summary information for a PeopleStage Element
-
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
