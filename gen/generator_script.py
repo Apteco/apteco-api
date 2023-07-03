@@ -105,14 +105,6 @@ def update_spec(spec, api_spec_path=API_SPEC_PATH):
 
 def fix_spec_issues(spec):
     """Apply manual fixes to spec."""
-
-    # lastLogin property in SessionDetails should be optional
-    session_details_required = spec["definitions"]["SessionDetails"]["required"]
-    if "lastLogin" in session_details_required:
-        session_details_required.remove("lastLogin")
-    else:
-        print("Spec issue not detected: `lastLogin` property for `SessionDetails` already set as optional")
-
     # FastStatsSystems_GetFastStatsFolder should return PagedResults[FolderStructureNode] not Folder
     fast_stats_systems_get_fast_stats_folder_response_schema = spec["paths"]["/{dataViewName}/FastStatsSystems/{systemName}/Folders/{path}"]["get"]["responses"]["200"]["schema"]
     response_type = fast_stats_systems_get_fast_stats_folder_response_schema.get("$ref")
