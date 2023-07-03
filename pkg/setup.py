@@ -67,6 +67,7 @@ setup(
         "REST",
     ],
     install_requires=REQUIRES,
+    package_dir={"": "pkg"},
     packages=["apteco_api", "apteco_api.api", "apteco_api.models"],
     include_package_data=True,
 )
