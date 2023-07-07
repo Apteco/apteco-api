@@ -44,7 +44,6 @@ class TestDateSettings(unittest.TestCase):
         else :
             return DateSettings(
                 use_iso8601_week_of_year = True,
-                business_year_start_mm = 56,
         )
 
     def testDateSettings(self):

@@ -23016,8 +23016,7 @@
         "DateSettings": {
             "description": "Date settings for a FastStats system",
             "required": [
-                "useIso8601WeekOfYear",
-                "businessYearStartMM"
+                "useIso8601WeekOfYear"
             ],
             "type": "object",
             "properties": {

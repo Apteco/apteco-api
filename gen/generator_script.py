@@ -105,6 +105,15 @@ def update_spec(spec, api_spec_path=API_SPEC_PATH):
 
 def fix_spec_issues(spec):
     """Apply manual fixes to spec."""
+
+    # businessYearStartMM property in DateSettings should be optional
+    date_settings_required = spec["definitions"]["DateSettings"]["required"]
+    if "businessYearStartMM" in date_settings_required:
+        date_settings_required.remove("businessYearStartMM")
+        print("Spec issue corrected: set `businessYearStartMM` property for `DateSettings` from required to optional")
+    else:
+        print("Spec issue not detected: `businessYearStartMM` property for `DateSettings` already set as optional")
+
     # FastStatsSystems_GetFastStatsFolder should return PagedResults[FolderStructureNode] not Folder
     fast_stats_systems_get_fast_stats_folder_response_schema = spec["paths"]["/{dataViewName}/FastStatsSystems/{systemName}/Folders/{path}"]["get"]["responses"]["200"]["schema"]
     response_type = fast_stats_systems_get_fast_stats_folder_response_schema.get("$ref")

@@ -59,7 +59,8 @@ class DateSettings(object):
         self.use_iso8601_week_of_year = use_iso8601_week_of_year
         if business_year_start_dd is not None:
             self.business_year_start_dd = business_year_start_dd
-        self.business_year_start_mm = business_year_start_mm
+        if business_year_start_mm is not None:
+            self.business_year_start_mm = business_year_start_mm
 
     @property
     def use_iso8601_week_of_year(self):
@@ -129,8 +130,6 @@ class DateSettings(object):
         :param business_year_start_mm: The business_year_start_mm of this DateSettings.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and business_year_start_mm is None:  # noqa: E501
-            raise ValueError("Invalid value for `business_year_start_mm`, must not be `None`")  # noqa: E501
 
         self._business_year_start_mm = business_year_start_mm
 
