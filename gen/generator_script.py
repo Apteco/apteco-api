@@ -114,6 +114,46 @@ def fix_spec_issues(spec):
     else:
         print("Spec issue not detected: `businessYearStartMM` property for `DateSettings` already set as optional")
 
+    # add missing ChannelType enum values
+    channel_summary_enum = spec["definitions"]["ChannelSummary"]["properties"]["type"]
+    channel_detail_enum = spec["definitions"]["ChannelDetail"]["properties"]["type"]
+    element_status_channel_types_enum = spec["definitions"]["ElementStatus"]["properties"]["channelTypes"]["items"]
+    affected_enums = (
+        (channel_summary_enum, "ChannelSummary:type"),
+        (channel_detail_enum, "ChannelDetail:type"),
+        (element_status_channel_types_enum, "ElementStatus:channelTypes"),
+    )
+
+    missing_channel_types_enum_values = ["PullMarketing", "Email", "Sms", "Waba", "Mock"]
+    new_channel_types_enum = [
+      "Unknown",
+      "Control",
+      "Broadcast",
+      "File",
+      "Ftp",
+      "Facebook",
+      "MicrosoftDynamics",
+      "SalesForce",
+      "PushNotification",
+      "Twitter",
+      "Google",
+      "LinkedIn",
+      "PullMarketing",
+      "Composite",
+      "Email",
+      "Sms",
+      "Waba",
+      "Mock"
+    ]
+
+    for enum, name in affected_enums:
+        current_enum = enum["enum"]
+        if any(val not in current_enum for val in missing_channel_types_enum_values):
+            enum["enum"] = new_channel_types_enum
+            print(f"Spec issue corrected: added missing channel type enum values for {name}")
+        else:
+            print(f"Spec issue not detected: no missing channel type enum values for {name}")
+
     # FastStatsSystems_GetFastStatsFolder should return PagedResults[FolderStructureNode] not Folder
     fast_stats_systems_get_fast_stats_folder_response_schema = spec["paths"]["/{dataViewName}/FastStatsSystems/{systemName}/Folders/{path}"]["get"]["responses"]["200"]["schema"]
     response_type = fast_stats_systems_get_fast_stats_folder_response_schema.get("$ref")

@@ -298,7 +298,7 @@ class ElementStatus(object):
         :param channel_types: The channel_types of this ElementStatus.  # noqa: E501
         :type: list[str]
         """
-        allowed_values = ["Unknown", "Control", "Broadcast", "File", "Ftp", "Facebook", "MicrosoftDynamics", "SalesForce", "PushNotification", "Twitter", "Google", "LinkedIn", "Composite"]  # noqa: E501
+        allowed_values = ["Unknown", "Control", "Broadcast", "File", "Ftp", "Facebook", "MicrosoftDynamics", "SalesForce", "PushNotification", "Twitter", "Google", "LinkedIn", "PullMarketing", "Composite", "Email", "Sms", "Waba", "Mock"]  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 not set(channel_types).issubset(set(allowed_values))):  # noqa: E501
             raise ValueError(

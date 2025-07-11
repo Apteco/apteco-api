@@ -23782,7 +23782,12 @@
                         "Twitter",
                         "Google",
                         "LinkedIn",
-                        "Composite"
+                        "PullMarketing",
+                        "Composite",
+                        "Email",
+                        "Sms",
+                        "Waba",
+                        "Mock"
                     ],
                     "type": "string"
                 },
@@ -23829,7 +23834,12 @@
                         "Twitter",
                         "Google",
                         "LinkedIn",
-                        "Composite"
+                        "PullMarketing",
+                        "Composite",
+                        "Email",
+                        "Sms",
+                        "Waba",
+                        "Mock"
                     ],
                     "type": "string"
                 },
@@ -24447,7 +24457,12 @@
                             "Twitter",
                             "Google",
                             "LinkedIn",
-                            "Composite"
+                            "PullMarketing",
+                            "Composite",
+                            "Email",
+                            "Sms",
+                            "Waba",
+                            "Mock"
                         ],
                         "type": "string"
                     }
